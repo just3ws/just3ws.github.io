@@ -227,21 +227,60 @@ class EcosystemDatalake
       }
     },
     {
+      'id' => 'fog-gem-contribution-2013',
+      'initiative' => 'fog Ruby Cloud Services Library (fog/fog)',
+      'title' => 'fog Gem Upstream Contribution (PR #1562, Commit fecbf150) & Contributor T-Shirt',
+      'era' => '2013',
+      'artifact_type' => 'open_source_package',
+      'source_repo' => 'fog/fog',
+      'file_path' => '_data/portfolio.yml',
+      'description' => 'On February 13, 2013, Mike Hall submitted fog/fog PR #1562 (commit fecbf150a4574a0080d5d454807a248f0b71d31a from ugtastic/master) upgrading the net-scp dependency from ~>1.0.4 to ~>1.1 after v1.0.6 was yanked from RubyGems.org. Merged by fog creator Wesley Beary (@geemus) in commit 2fccaa27 and credited in the fog v1.10.0 CHANGELOG.md ("*thanks Michael D. Hall*"), earning the official fog contributor t-shirt and later preserved in the 2020 GitHub Arctic Code Vault.',
+      'canonical_url' => 'https://github.com/fog/fog/pull/1562',
+      'provenance_details' => {
+        'pr_url' => 'https://github.com/fog/fog/pull/1562',
+        'commit_url' => 'https://github.com/fog/fog/commit/fecbf150a4574a0080d5d454807a248f0b71d31a',
+        'merge_commit_url' => 'https://github.com/fog/fog/commit/2fccaa27131b4b5b41cb8b89368b40879a945bbd',
+        'release' => 'fog v1.10.0 (2013-03-01)',
+        'merged_by' => 'Wesley Beary (@geemus)'
+      }
+    },
+    {
       'id' => 'github-arctic-code-vault-2020',
       'initiative' => 'GitHub Archive Program / Arctic Code Vault (Svalbard, Norway)',
       'title' => '2020 GitHub Arctic Code Vault Contributor (02/02/2020 Snapshot)',
-      'era' => '2014 - 2020',
+      'era' => '2011 - 2020',
       'artifact_type' => 'archive_record',
       'source_repo' => 'coderwall/coderwall-legacy',
       'file_path' => '_data/portfolio.yml',
-      'description' => 'Preserved on piqlFilm silver-halide polyester reels 250 meters deep in the Svalbard permafrost in the 2020-02-02 GitHub Arctic Code Vault snapshot. Officially cited repositories on github.com/just3ws include countries/countries (commit ec5d33ea, 2014-06-18), coderwall/coderwall-legacy (634 commits by just3ws, #1 contributor), asm-helpful/helpful-web (commits eda66bf9, 528cf37f, c7b7a269, 503275cf, a99642b1 in May-June 2014), alongside just3ws/nerd-font-cheatsheets, just3ws/biscotti, just3ws/zdots, just3ws/vdots, and just3ws/just3ws.github.io.',
+      'description' => 'Preserved on piqlFilm silver-halide polyester reels 250 meters deep in the Svalbard permafrost in the 2020-02-02 GitHub Arctic Code Vault snapshot. Officially cited and archived repositories with Mike Hall commits include countries/countries (commit ec5d33ea, 2014-06-18), coderwall/coderwall-legacy (634 commits by just3ws, #1 contributor), asm-helpful/helpful-web (commits eda66bf9, 528cf37f, c7b7a269, 503275cf, a99642b1 in May-June 2014), fog/fog (PR #1562, commit fecbf150, 2013-02-13), carlhuda/janus (PRs #70, #159, #160, commit 01b31564 in 2011), cdnjs/cdnjs (PRs #703, #712, commit 559fdedb in 2012), alongside just3ws/nerd-font-cheatsheets, just3ws/biscotti, just3ws/zdots, just3ws/vdots, and just3ws/just3ws.github.io.',
       'canonical_url' => 'https://github.com/users/just3ws/achievements/arctic-code-vault-contributor/detail',
       'provenance_details' => {
         'unlocked_at' => '2020-02-02T08:00:00Z',
         'countries_commit' => 'https://github.com/countries/countries/commit/ec5d33ea',
         'coderwall_legacy' => 'https://github.com/coderwall/coderwall-legacy (634 commits)',
         'helpful_web' => 'https://github.com/asm-helpful/helpful-web (7+ commits in May-June 2014)',
+        'fog_commit' => 'https://github.com/fog/fog/commit/fecbf150a4574a0080d5d454807a248f0b71d31a (PR #1562)',
+        'janus_commit' => 'https://github.com/carlhuda/janus/commit/01b31564 (PR #70, #159, #160)',
+        'cdnjs_commit' => 'https://github.com/cdnjs/cdnjs/commit/559fdedb (PR #703, #712)',
         'nerd_font_cheatsheets' => 'https://github.com/just3ws/nerd-font-cheatsheets (Starstruck x2, 129 stars)'
+      }
+    },
+    {
+      'id' => 'omf-geekfest-otel-wg-hackathons-2022-2025',
+      'initiative' => 'OneMain Financial / Geekfest@OMF & OpenTelemetry Working Group (OTel WG)',
+      'title' => 'Geekfest@OMF (49+ Sessions), Corporate Hackathons (Rasa & Buckaroo Bonsais) & OTel WG Handoff',
+      'era' => '2022 - 2025',
+      'artifact_type' => 'community_of_practice',
+      'source_repo' => 'just3ws/just3ws.github.io',
+      'file_path' => 'docs/retrospectives/onemain-financial-system-cartography-and-architecture-retrospective.md',
+      'description' => 'Three-year enterprise engineering enablement and observability arc at OneMain Financial: placed in the March 2022 corporate hackathon with a Rasa 3.0 conversational AI prototype; launched Open Tech Talks (June 2022) and officially rebranded to Geekfest@OMF (November 2022), facilitating 49+ weekly recorded brown-bag sessions across Ruby source inspection, Legacy Code, SOLID principles, early LLMs (April 2023), Cynefin (August 2023), OpenTelemetry (September 2023), KubeCon Chicago recap, and Local LLMs with Ollama (November 2023); placed in the February 2024 corporate hackathon leading team The Buckaroo Bonsais (automated JSON Schema inference batch pipeline with end-to-end OpenTelemetry tracing); evolved Geekfest@OMF in April 2024 into the OpenTelemetry Working Group (OTel WG), the company first Community of Practice scaling to 122 invited members across six lanes; and completed formal executive handoff on September 12, 2025 after leadership funded two full-time observability roles and three permanent working groups.',
+      'canonical_url' => 'https://www.just3ws.com/resume/positions/onemain-financial/',
+      'provenance_details' => {
+        'hackathon_2022_03' => 'Rasa 3.0 Conversational AI Prototype (March 2022)',
+        'geekfest_omf_span' => 'June 2022 (Open Tech Talks) / November 2022 (Geekfest@OMF) to February 2024 (49+ weekly Tuesday sessions)',
+        'hackathon_2024_02' => 'Team The Buckaroo Bonsais: Automated JSON Schema Inference & OpenTelemetry Batch Tracing (Feb 28-29, 2024)',
+        'otel_wg_span' => 'April 2024 to September 12, 2025 (First Community of Practice at OMF, 122 invited members, 40+ active engineers)',
+        'handoff_date' => '2025-09-12 (Transitioned to newly funded Director + Staff Engineer observability program)'
       }
     }
   ].freeze
@@ -394,6 +433,23 @@ class EcosystemDatalake
       }.to_json
     },
     {
+      'id' => 'milestone-2013-fog-gem-contribution',
+      'event_date' => '2013-02-13',
+      'year' => 2013,
+      'era' => 'Distributed Services & Micro-Apps (2012-2015)',
+      'initiative' => 'fog Ruby Cloud Library (fog/fog)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'fog Gem Upstream Contribution (PR #1562, Commit fecbf150) & Contributor T-Shirt',
+      'description' => 'Mike Hall submits fog/fog PR #1562 (commit fecbf150 from ugtastic/master) upgrading net-scp after v1.0.6 was yanked from RubyGems.org; merged by Wesley Beary (@geemus) in 2fccaa27 and credited in fog v1.10.0 CHANGELOG.md ("*thanks Michael D. Hall*"), earning the official fog contributor t-shirt.',
+      'details_json' => {
+        'pr_url' => 'https://github.com/fog/fog/pull/1562',
+        'commit_url' => 'https://github.com/fog/fog/commit/fecbf150a4574a0080d5d454807a248f0b71d31a',
+        'merge_commit_url' => 'https://github.com/fog/fog/commit/2fccaa27131b4b5b41cb8b89368b40879a945bbd',
+        'merged_by' => 'Wesley Beary (@geemus)'
+      }.to_json
+    },
+    {
       'id' => 'milestone-2014-coderwall-open-source',
       'event_date' => '2014-09-12',
       'year' => 2014,
@@ -495,12 +551,106 @@ class EcosystemDatalake
       'initiative' => 'GitHub Arctic Code Vault (Svalbard, Norway)',
       'repo_full_name' => 'just3ws/just3ws.github.io',
       'event_type' => 'community_milestone',
-      'title' => '2020 GitHub Arctic Code Vault Snapshot (countries, coderwall-legacy, helpful-web & just3ws Repos)',
-      'description' => 'On February 2, 2020 (08:00 UTC), Mike Hall contributions across countries/countries (commit ec5d33ea), coderwall/coderwall-legacy (634 commits), asm-helpful/helpful-web (commits eda66bf9, 528cf37f, c7b7a269, 503275cf, a99642b1), just3ws/nerd-font-cheatsheets, just3ws/biscotti, just3ws/zdots, just3ws/vdots, and just3ws/just3ws.github.io are archived in the GitHub Arctic Code Vault in Svalbard, Norway.',
+      'title' => '2020 GitHub Arctic Code Vault Snapshot (countries, coderwall-legacy, helpful-web, fog & just3ws Repos)',
+      'description' => 'On February 2, 2020 (08:00 UTC), Mike Hall contributions across countries/countries (commit ec5d33ea), coderwall/coderwall-legacy (634 commits), asm-helpful/helpful-web (commits eda66bf9, 528cf37f, c7b7a269, 503275cf, a99642b1), fog/fog (PR #1562, commit fecbf150), carlhuda/janus (PRs #70, #159, #160), cdnjs/cdnjs (PRs #703, #712), just3ws/nerd-font-cheatsheets, just3ws/biscotti, just3ws/zdots, just3ws/vdots, and just3ws/just3ws.github.io are archived in the GitHub Arctic Code Vault in Svalbard, Norway.',
       'details_json' => {
         'snapshot_date' => '2020-02-02T08:00:00Z',
         'achievement_url' => 'https://github.com/just3ws?achievement=arctic-code-vault-contributor&tab=achievements',
-        'cited_repos' => ['countries/countries', 'coderwall/coderwall-legacy', 'asm-helpful/helpful-web', 'just3ws/nerd-font-cheatsheets', 'just3ws/biscotti']
+        'cited_repos' => ['countries/countries', 'coderwall/coderwall-legacy', 'asm-helpful/helpful-web', 'fog/fog', 'carlhuda/janus', 'cdnjs/cdnjs', 'just3ws/nerd-font-cheatsheets', 'just3ws/biscotti']
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2022-omf-rasa-hackathon',
+      'event_date' => '2022-03-19',
+      'year' => 2022,
+      'era' => 'Calm Systems & Local Platforms (2018-2022)',
+      'initiative' => 'OneMain Financial Corporate Hackathon',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Corporate Hackathon Placement: Conversational AI Prototype with Rasa 3.0',
+      'description' => 'Mike Hall builds and places in the OneMain Financial corporate hackathon with a conversational AI workflow prototype powered by Rasa 3.0, predating the public release of ChatGPT by eight months.',
+      'details_json' => {
+        'stack' => 'Python, Rasa 3.0, NLU & Dialogue Policies',
+        'context' => 'Pre-ChatGPT conversational AI hackathon prototype'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2022-geekfest-omf-launch',
+      'event_date' => '2022-11-01',
+      'year' => 2022,
+      'era' => 'Calm Systems & Local Platforms (2018-2022)',
+      'initiative' => 'Geekfest@OMF (OneMain Financial)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Launch of Geekfest@OMF Weekly Engineering Brown-Bag Series (49+ Recorded Sessions)',
+      'description' => 'Following initial Open Tech Talks in June-October 2022 (Microservices, Federated GraphQL, Event-Driven Architecture, Git Katas), Mike Hall officially launches Geekfest@OMF in November 2022 (honoring the Tuesday peer-learning tradition from Obtiva and featured in the OneTech Newsletter), facilitating 49+ weekly recorded sessions covering Reading Ruby, Working Effectively with Legacy Code, a 5-part SOLID series, early LLMs (April 2023), and Cynefin (August 2023).',
+      'details_json' => {
+        'cadence' => 'Weekly Tuesdays 12:15-1:00 PM CT',
+        'precursor' => 'Open Tech Talks (started 2022-06-15)',
+        'lineage' => 'Obtiva Tuesday Geekfest craftsmanship tradition'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2023-geekfest-otel-ollama',
+      'event_date' => '2023-09-12',
+      'year' => 2023,
+      'era' => 'Oral History & AI Audio Renaissance (2023-2026)',
+      'initiative' => 'Geekfest@OMF / OpenTelemetry & Local AI',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'OpenTelemetry Live Tracing Demos, KubeCon Chicago Recap & Local LLMs with Ollama at Geekfest@OMF',
+      'description' => 'Mike Hall introduces OpenTelemetry distributed tracing at Geekfest@OMF ("Looking at OpenTelemetry" on 2023-09-12 and "OpenTelemetry the Demo" on 2023-09-19), delivers the KubeCon + CloudNativeCon North America Chicago 2023 recap (2023-11-21), and demonstrates privacy-conscious local open-weight models ("Local LLM with Ollama" on 2023-11-28 and RAG text-to-SQL with Vanna.ai on 2024-01-23).',
+      'details_json' => {
+        'otel_sessions' => ['2023-09-12 Looking at OpenTelemetry', '2023-09-19 OpenTelemetry the Demo'],
+        'kubecon_recap' => '2023-11-21 KubeCon Chicago 2023 Recap',
+        'local_ai_sessions' => ['2023-04-04 Let\'s Look More at LLMs', '2023-11-28 Local LLM with Ollama', '2024-01-23 Spin up SQL with Vanna.ai']
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2024-buckaroo-bonsais-hackathon',
+      'event_date' => '2024-02-28',
+      'year' => 2024,
+      'era' => 'Oral History & AI Audio Renaissance (2023-2026)',
+      'initiative' => 'OneMain Financial Corporate Hackathon (The Buckaroo Bonsais)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Corporate Hackathon Placement: Team The Buckaroo Bonsais (Automated JSON Schema Inference & OpenTelemetry)',
+      'description' => 'Leading team The Buckaroo Bonsais (the-buckaroo-bonsais), Mike Hall places in the February 2024 corporate hackathon by building a multi-stage JSON Schema inference batch pipeline and Rails service instrumented end-to-end with OpenTelemetry distributed tracing (OTEL_SERVICE_NAME=the-buckaroo-bonsais) and a local Ollama documentation summarizer.',
+      'details_json' => {
+        'team' => 'The Buckaroo Bonsais',
+        'stack' => 'Ruby on Rails, JSON Schema Inference, OpenTelemetry OTLP/Jaeger, Local Ollama LLM',
+        'dates' => '2024-02-28 to 2024-02-29'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2024-otel-wg-formation',
+      'event_date' => '2024-04-05',
+      'year' => 2024,
+      'era' => 'Oral History & AI Audio Renaissance (2023-2026)',
+      'initiative' => 'OpenTelemetry Working Group (OTel WG)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Formation of the OpenTelemetry Working Group (First Community of Practice at OneMain Financial)',
+      'description' => 'Mike Hall evolves Geekfest@OMF into the enterprise OpenTelemetry Working Group (OTel WG), establishing the first Community of Practice at OneMain Financial and scaling the weekly Friday series to 122 invited members (40+ active cross-lane engineers across Acquisition, Originations, Core/Mainframe, MuleSoft, GraphQL, SRE, and Cybersecurity).',
+      'details_json' => {
+        'invited_members' => 122,
+        'active_Cross_lane_participants' => '40+ engineers across 6 lanes',
+        'technical_scope' => 'W3C Trace Context across Rails, Node.js, Kafka, MuleSoft, AWS ADOT, and IBM z/OS Mainframes'
+      }.to_json
+    },
+    {
+      'id' => 'milestone-2025-otel-wg-handoff',
+      'event_date' => '2025-09-12',
+      'year' => 2025,
+      'era' => 'Oral History & AI Audio Renaissance (2023-2026)',
+      'initiative' => 'OpenTelemetry Working Group (OTel WG)',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'community_milestone',
+      'title' => 'Executive Institutionalization & Formal Stewardship Handoff of OpenTelemetry Working Group',
+      'description' => 'After proving the strategic value of OpenTelemetry ("Observability 2.0"), executive leadership funds two dedicated full-time roles (Director and Staff Engineer) and establishes a standing program subdivided into three working groups; Mike Hall hosts his final session as founder on September 12, 2025, cleanly handing off operational governance to return full-time to Acquisition Lane architecture.',
+      'details_json' => {
+        'handoff_date' => '2025-09-12',
+        'organizational_outcome' => '2 dedicated full-time observability leadership roles funded + 3 standing working groups'
       }.to_json
     }
   ].freeze

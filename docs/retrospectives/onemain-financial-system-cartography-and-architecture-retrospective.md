@@ -11,7 +11,7 @@
 
 When joining OneMain Financial in early 2021, the digital lending platform was undergoing rapid expansion. Over a decade of feature accretion had created implicit lateral state dependencies across distributed Ruby on Rails monoliths, MuleSoft API integration layers, and IBM mainframe core banking systems.
 
-In 2022, Director Lance Smith appointed Mike Hall as **Software Architect for the Acquisition Lane** with an explicit executive mandate:
+In 2022, engineering leadership appointed Mike Hall as **Software Architect for the Acquisition Lane** with an explicit executive mandate:
 1. **Untangle the Monolith:** Map seven heterogeneous customer acquisition channels processing hundreds of millions in loan volume.
 2. **Decouple Lane Boundaries:** Establish clean domain isolation between Acquisition and digital Originations.
 3. **Eliminate Dark Failure Modes:** Diagnose and fix a persistent, unmonitored session-cookie overflow defect silently dropping 4% of digital loan applications during offer selection and e-signing.
@@ -83,13 +83,15 @@ In 2022, Director Lance Smith appointed Mike Hall as **Software Architect for th
 
 ---
 
-### Chapter 5: Sustainable Community Enablement & SRE Handoff
-* **The Challenge:** Engineering departments operated in isolated silos with minimal cross-lane architectural sharing.
-* **The Technical Intervention:** Drove a 3-year cultural and technical enablement initiative:
-  1. Founded **Geekfest@OMF** (weekly recorded technical brown-bag sessions across the enterprise for 1 full year).
-  2. Evolved the forum into the weekly **OpenTelemetry Working Group**, scaling voluntary weekly attendance to 40+ engineers across six lanes.
-  3. Partnered with SRE leadership to transition ongoing operational facilitation, establishing a permanent, self-sustaining community of practice.
-* **The Structural Result:** Institutionalized distributed tracing standards enterprise-wide, allowing Mike to return to core Acquisition Lane architecture representation.
+### Chapter 5: Sustainable Community Enablement, Hackathons & Observability Handoff
+* **The Challenge:** Engineering departments operated in isolated silos with minimal cross-lane architectural sharing or unified observability standards.
+* **The Technical Intervention:** Drove a 3-year cultural and technical enablement arc alongside two corporate hackathon placements:
+  1. **Corporate Hackathon #1 (March 2022):** Built and placed with a conversational AI workflow prototype powered by **Rasa 3.0** (`bot`), predating the public release of ChatGPT by eight months.
+  2. **Geekfest@OMF (June 2022 to February 2024):** Initiated as *Open Tech Talks* in June 2022 (covering Microservices, Federated GraphQL, Event-Driven Architecture, and Git Katas) before officially launching as **Geekfest@OMF** in November 2022 (honoring the Tuesday peer-learning tradition from Obtiva and featured in the *OneTech Newsletter*). Facilitated 49+ weekly recorded brown-bag sessions covering *Reading Ruby*, *Working Effectively with Legacy Code*, a 5-part *SOLID Principles* series (Dec 2022 to Jan 2023), early Generative AI (*Let's Look More at LLMs*, April 4, 2023), *Cynefin* sense-making (August 8, 2023), *Looking at OpenTelemetry* & live tracing demos (September 12 and 19, 2023), *KubeCon Chicago 2023 Recap* (November 21, 2023), privacy-conscious *Local LLM with Ollama* (November 28, 2023), and RAG text-to-SQL with *Vanna.ai* (January 23, 2024).
+  3. **Corporate Hackathon #2 (February 28 to 29, 2024, *The Buckaroo Bonsais*):** Led team *The Buckaroo Bonsais* (`the-buckaroo-bonsais`), placing in the corporate hackathon by engineering an automated JSON Schema inference batch pipeline and Rails service (`json-schema-generator`) instrumented end-to-end with OpenTelemetry distributed tracing (`OTEL_SERVICE_NAME=the-buckaroo-bonsais`) and a local Ollama documentation summarizer.
+  4. **OpenTelemetry Working Group (OTel WG, April 2024 to September 12, 2025):** Evolved Geekfest@OMF into the enterprise **OpenTelemetry Working Group**, establishing the **first Community of Practice at OneMain Financial**. Scaled the weekly Friday afternoon series to **122 invited members** (with 40+ active cross-lane participants across Acquisition, Originations, Core/Mainframe, MuleSoft, GraphQL, SRE, and Cybersecurity) running live instrumentation swarms across Ruby on Rails, Node.js, Kafka, AWS ADOT collectors, and W3C Trace Context propagation to IBM z/OS mainframes.
+  5. **Executive Institutionalization & Handoff (September 12, 2025):** After proving the strategic value of unified distributed tracing ("Observability 2.0"), executive leadership funded two dedicated full-time roles (a Director and a Staff Engineer) and established a permanent standing observability program subdivided into three working groups. On **September 12, 2025**, Mike delivered his final session as founder and steward, cleanly transitioning governance to the newly staffed observability program to return full-time to Acquisition Lane architecture.
+* **The Structural Result:** Institutionalized distributed tracing and peer-led engineering enablement enterprise-wide, proving that a grassroots community of practice succeeds when it graduates into a funded, self-sustaining organizational capability.
 
 ---
 
