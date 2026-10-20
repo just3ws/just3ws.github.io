@@ -27,9 +27,15 @@
            - Consolidated `just3ws.com` as the canonical root namespace for all independent engineering, writing, and archival work, resolving legacy handles (`@whoistechcmty`) and sub-platforms back to the sovereign core.
          - Digital Garden AI Disclosure Calibration (`_layouts/post.html`, `docs/ai-content-disclosure-and-provenance.md`):
            - Re-aligned disclosure banner with Mike Hall's explicit practitioner voice: acknowledging that claiming to have personally line-edited every word or guaranteed every claim is inaccurate, curating the digital garden where "parts of the garden grow faster than others, working through the process but there are no guarantees."
-         - Resume Project Consolidation & Layout Polish:
-           - Removed speculative agent tooling entries from resume configurations, retaining core projects (`phalanx-duel`, `technical-conversation-archive`).
-           - Rebalanced homepage retrospective table column widths and Post 1 measure.
+         - Resume Project Consolidation & Local AI Orchestration Purge (`_data/resume/ats.yml`, `_data/resume/timeline.yml`, `exports/resume.md`):
+           - Purged lingering `agent-tooling` ("Local AI Orchestration & Developer Runtime") entries from all resume sources and exports, keeping only the two core projects (`phalanx-duel` and `technical-conversation-archive`).
+           - Recompiled 5 archetype resumes, ATS exports, and CareerOS datalake (100% highlight parity across 28 positions, 0 errors).
+         - Broadcast Readiness Verification for Episodes -1, 0, and 1 (`bin/stage_episode_workflow.rb`, `obs/teleprompter/`):
+           - Verified all three opening episodes through pre-broadcast staging gates:
+             - Episode -1 (*The Fluffle Precursor: Distributed whisper.cpp & Dead Rabbit Radio*): 6-act teleprompter verified (`obs/teleprompter/errata-fluffle-precursor.textream`), OBS overlay simulated, 50 API units.
+             - Episode 0 (*The Mirage of Competence: AI Slop & Domain Boundaries*): 6-act teleprompter verified (`obs/teleprompter/episode-00.textream`), OBS overlay simulated, YouTube broadcast `XS7EZ1eWH4U` cued, 100 API units.
+             - Episode 1 (*The First Room: Chicago Alt.NET with Sergio Pereira*): 6-act teleprompter verified (`obs/teleprompter/episode-01.textream`), OBS overlay simulated, primary asset `qOHdZKz1WFw` aligned, YouTube broadcast `eGXG7Qu4G1E` cued, 100 API units.
+           - Confirmed zero em dashes across all compiled `.textream` documents and dossier manifests.
          - Verification:
            - 302/302 RSpec tests passing, fast validation passing cleanly across 498 Markdown files, Jekyll build clean across 1,045 pages, zero em dashes across all edits.
 

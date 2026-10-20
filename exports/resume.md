@@ -84,22 +84,6 @@ safer change inside a legacy backend.
 **Skills:** PHP, MySQL, Ember.js, JavaScript, Legacy System Modernization, Backend
 System Architecture, Automated Testing, Performance Optimization
 
-### Principal Architect at Local AI Orchestration & Developer Runtime
-**January 2026 - Present**
-
-Built local-first tools that help engineers and AI systems work with clear context
-boundaries, observable behavior, and human-reviewed change.
-
-**Key Outcomes:**
-- Built tools that make technical context reusable across sessions without treating
-  generated output as authority.
-- Added observable diagnostics and bounded review steps to keep automated engineering
-  work understandable and reversible.
-
-**Skills:** Model Context Protocol (MCP), Agentic Workflow Design, Claude Code,
-Anthropic API, LLM Tool Design, PostgreSQL, OpenTelemetry, OpenObserve, llama.cpp,
-whisper.cpp, Local Inference, PHI Scrubbing & Compliance, Ruby
-
 ### Principal Architect at Phalanx Duel
 **January 2022 - Present**
 
