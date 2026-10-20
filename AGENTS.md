@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - MATT RUBY ARCHIVE DIARIZATION FIX & PUBLIC SURFACE RECALIBRATION (2026-10-19):
+         Reconciled the ending turns of the Matt Ruby (creator of Vooza) interview via local `ztranscribe` pipeline and recalibrated public identity surfaces for authentic, understated trust:
+         - Matt Ruby Interview Diarization & Audio Grounding (`_data/transcripts/interview-with-matt-ruby-creator-of-vooza-general.yml`, `_data/video_assets.yml`, `assets/subtitles/interview-with-matt-ruby-creator-of-vooza-general.vtt`):
+           - Transcribed full 30:18 audio using `ztranscribe` (`ggml-large-v3.bin`) with primed vocabulary (`Matt Ruby`, `Vooza`, `Mike Hall`, `Vlogbrothers`, `Subbable`, `UGtastic`).
+           - Disentangled the conflated closing turns between Mike Hall (M1) and Matt Ruby (S1): correctly attributed the Transformers / Bud Light Honest Trailers analogy (M1), Patreon and hybrid startup monetization (S1), Vlogbrothers / Subbable channel crowd-funding context (M1), live events and merchandise response (S1), outro sign-off (M1), Matt's goodbye (S1), and separated the closing UGtastic outro jingle. Corrected "blog brothers" to "Vlogbrothers" and "vuza. com" to "Vooza.com".
+           - Updated `video_assets.yml` with accurate `duration_seconds: 1818` / `duration_minutes: 30.3` and regenerated synchronized WebVTT subtitles spanning the complete 30:18 recording.
+         - Public Surface Tone & Collaboration Calibration (`about/index.html`, `contact/index.html`):
+           - Restructured `about/index.html` around "How I Work With Teams" and "What I Value on an Engineering Team" (curiosity over blame, fast feedback loops, generosity with context). Removed intense confessional narratives in favor of calm, authentic, low-ego craftsmanship.
+           - Updated `contact/index.html` to clearly invite Staff and Principal Software Engineering roles and technical collaboration.
+         - Verification:
+           - Fast validation passing cleanly across 497 Markdown files, 300/300 RSpec tests passing, zero em dashes across all edits, and verified on `just3ws.localhost`. Commit `a4723392` pushed to `origin/master`.
+
        - BIOGRAPHICAL, MILITARY SERVICE, SSA WORK SPAN & MINISTERIAL PROVENANCE (2026-10-19):
          Grounded verified personal and service history from primary records across `$HOME/ai/inbox/` (DD Form 214s, Universal Life Church ordination records, SSA earnings statement, AFJROTC, Eagle Scout, Order of the Arrow Brotherhood, and OPFOR training):
          - Military Service Provenance (`docs/biographical-and-service-provenance.md`, `~/my/book/military-service-and-ordination-provenance.md`):
