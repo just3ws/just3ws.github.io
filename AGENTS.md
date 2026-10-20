@@ -11,8 +11,12 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - LOCAL-FIRST SSD MEDIA INTAKE SEAM & ASYNCHRONOUS COLD ARCHIVING (2026-10-20):
-         Decoupled video ingestion from the macOS Google Drive CloudStorage FileProvider bottleneck, migrating active queues to fast local NVMe SSD (`~/.local/var/media_intake`) with asynchronous cold-storage mirroring:
+       - LOCAL-FIRST SSD MEDIA INTAKE & POLITE SCHEDULING SEAM (2026-10-20):
+         Decoupled video ingestion from the macOS Google Drive CloudStorage FileProvider bottleneck, migrating active queues to fast local NVMe SSD (`~/.local/var/media_intake`) with polite OS-level scheduling and asynchronous cold-storage mirroring:
+         - Background Scheduling Politeness (`bin/intake_drive_video.rb`, `bin/live_dashboard_streamer.rb`):
+           - Enforced POSIX scheduling nice level 15 via `Process.setpriority(Process::PRIO_PROCESS, 0, 15)` so media processing automatically yields CPU cycles to interactive user tasks, typing, and desktop UI.
+           - Enforced macOS Darwin Quality of Service (QoS) Background tier via `/usr/sbin/taskpolicy -b -p <pid>`, routing compute to Apple Silicon Efficiency cores and throttling disk I/O to background priority.
+           - Explicitly prefixed child worker pipelines (`ffmpeg`, `ztranscribe` / `whisper-cli`, `generate_career_datalake.rb`) with `nice -n 15` and applied `taskpolicy -b` upon spawning autonomous workers from the live streamer.
          - Local SSD Queue Foundation (`_data/media_intake_targets.yml`, `bin/intake_drive_video.rb`):
            - Configured `base_path: "~/.local/var/media_intake"` and `cloud_archive_path: "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"`.
            - Scaffolded all channel targets (`whoistechcmty/ramblin-amblin`, `the-sound-above`, `errata`) across `staged/`, `pending/`, `processing/`, `processed/`, `failed/`, and `blocked/`.
@@ -24,7 +28,7 @@
            - Hardened `bin/sync_topic_prompts.rb` to sync topic sheets to local SSD immediately and gracefully rescue cloud provider timeout errors (`Errno::ETIMEDOUT`) when writing to Google Drive.
            - Updated `bin/youtube-swiftbar` to prioritize the configured local SSD base path over cloud storage paths.
          - Verification:
-           - 301/301 RSpec tests passing (added unit test for `--drop`), fast validation passing cleanly across 497 Markdown files, and site verified and installed to `just3ws.localhost` (1,045 pages). Zero em dashes across all code and documentation.
+           - 302/302 RSpec tests passing (including unit tests for `--drop` and scheduling politeness), fast validation passing cleanly across 497 Markdown files, and site verified and installed to `just3ws.localhost` (1,045 pages). Zero em dashes across all code and documentation.
 
        - SOUND ABOVE PILOT (EPISODE 00) SYNTHESIS: RAMBLIN' DEHUM RE-ATTEMPT & THE MIRAGE OF COMPETENCE (2026-10-19):
          Synthesized the recent Ramblin' & Amblin' field monologue (`ramblin-amblin-ok-next-experiment.yml`) into the episode dossier and teleprompter script for Episode 00 ("The Mirage of Competence: AI Slop & Domain Boundaries"):

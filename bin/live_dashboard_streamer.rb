@@ -302,6 +302,9 @@ class LiveDashboardStreamer
       out: [worker_log, 'a'],
       err: [:child, :out]
     )
+    if RbConfig::CONFIG['host_os'] =~ /darwin/i && File.exist?('/usr/sbin/taskpolicy')
+      system("/usr/sbin/taskpolicy -b -p #{pid} >/dev/null 2>&1")
+    end
     File.write(pid_file, pid.to_s)
     Process.detach(pid)
     log_activity('autonomous', "Autonomous intake triggered single-worker ingestion (PID #{pid})", level: 'info', details: { 'pid' => pid })

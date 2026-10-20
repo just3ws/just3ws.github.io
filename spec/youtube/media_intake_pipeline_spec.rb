@@ -98,6 +98,13 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       FileUtils.rm_f(staged_target)
       FileUtils.rm_f(test_file)
     end
+
+    it 'applies scheduling politeness (nice priority >= 15)' do
+      require_relative '../../bin/intake_drive_video'
+      expect { MediaIntakePipeline.apply_process_politeness! }.not_to raise_error
+      prio = Process.getpriority(Process::PRIO_PROCESS, 0)
+      expect(prio).to be >= 10
+    end
   end
 
   describe 'Metadata & Speech Synthesis Unit Logic' do

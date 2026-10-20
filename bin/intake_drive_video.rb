@@ -123,6 +123,26 @@ class MediaIntakePipeline
     File.exist?(STOP_SENTINEL)
   end
 
+  # Apply OS-level scheduling politeness so background media processing never starves interactive desktop UI
+  def self.apply_process_politeness!
+    return if @politeness_applied
+
+    # 1. Lower POSIX scheduling priority (nice level 15: range 0 to 19)
+    begin
+      Process.setpriority(Process::PRIO_PROCESS, 0, 15)
+    rescue StandardError
+      # Non-blocking if OS or user limits prevent priority adjustments
+    end
+
+    # 2. macOS Apple Silicon Quality of Service (QoS): Background Priority & Throttled I/O
+    if RbConfig::CONFIG['host_os'] =~ /darwin/i && File.exist?('/usr/sbin/taskpolicy')
+      system("/usr/sbin/taskpolicy -b -p #{Process.pid} >/dev/null 2>&1")
+    end
+
+    @politeness_applied = true
+    log_activity('scheduler', "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)", level: 'info', details: { 'pid' => Process.pid })
+  end
+
   def initialize(options = {})
     @options = options
     @config = load_config
@@ -134,6 +154,7 @@ class MediaIntakePipeline
     @current_original_path = nil
     @current_scratch_files = []
     @current_subprocesses = []
+    self.class.apply_process_politeness! unless @options[:status]
   end
 
   def load_config
@@ -1105,7 +1126,7 @@ class MediaIntakePipeline
 
   # Extract Audio to 16kHz mono WAV
   def extract_audio(input_path, output_wav)
-    cmd = "ffmpeg -i #{input_path.shellescape} -vn -ar 16000 -ac 1 -c:a pcm_s16le #{output_wav.shellescape} -y -loglevel error"
+    cmd = "nice -n 15 ffmpeg -i #{input_path.shellescape} -vn -ar 16000 -ac 1 -c:a pcm_s16le #{output_wav.shellescape} -y -loglevel error"
     success = system(cmd)
     raise "ffmpeg failed to extract audio from #{input_path}" unless success && File.exist?(output_wav)
   end
@@ -1121,8 +1142,8 @@ class MediaIntakePipeline
 
     prompt = "UGtastic, Software Craftsmanship, Chicago Alt.NET, NUnit, NHibernate, StructureMap, Ruby, Rails, RSpec, Obtiva"
 
-    puts "🧠 Running canonical ztranscribe pipeline from zdots on Apple Silicon..."
-    cmd = "#{ztranscribe_bin.shellescape} #{wav_path.shellescape} --out-dir #{out_dir.shellescape} --profile standard --prompt #{prompt.shellescape} 2>&1"
+    puts "🧠 Running canonical ztranscribe pipeline from zdots on Apple Silicon (nice 15, background QoS)..."
+    cmd = "nice -n 15 #{ztranscribe_bin.shellescape} #{wav_path.shellescape} --out-dir #{out_dir.shellescape} --profile standard --prompt #{prompt.shellescape} 2>&1"
     output = `#{cmd}`
     exit_code = $?.exitstatus
 
@@ -1362,7 +1383,7 @@ class MediaIntakePipeline
   def update_local_knowledge_system!
     script = File.join(ROOT_DIR, 'bin', 'generate_career_datalake.rb')
     if File.exist?(script)
-      system("ruby #{script} > /dev/null 2>&1")
+      system("nice -n 15 ruby #{script} > /dev/null 2>&1")
       puts "🧠 Local CareerOS Datalake updated with new video transcripts."
     end
   end
