@@ -11,6 +11,31 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - NAVIGATION GRAPH COHESION, LINKEDIN PROFILE MAPPING & COMMAND PALETTE (2026-10-20):
+         Coordinated navigation graph cohesion, eliminated localhost hover traps, established the LinkedIn profile mapping guide and live export tooling, and expanded Shift+Cmd+K command palette coverage:
+         - Responsive Navigation & Hover Trap Elimination (`_sass/_p_theme_modern.scss`, `_sass/_p_site_styles.scss`, `_includes/localhost-subnav.html`):
+           - Resolved horizontal navigation clipping on viewports between 890px and 1240px by adding fluid scaling rules and raising the tablet mobile collapse gate to 890px.
+           - Replaced CSS `:hover` triggers on `.lh-dropdown-menu` with explicit `.is-open` click toggles, preventing accidental mouse movements from obscuring page titles and breadcrumbs.
+           - Standardized all localhost subnav buttons to `<button type="button" class="lh-dropdown-btn">`.
+           - Expanded `📺 The Sound Above` subnav dropdown across all 6 movements, codas, prologue pilot, and production broadcast kits.
+         - Series Episode Wayfinding & Quick-Jump Selector (`_includes/series_wayfinding.html`, `_layouts/series_episode.html`, `series/the-sound-above/episode-01.html`):
+           - Created unified `_includes/series_wayfinding.html` component embedded at top and bottom of all episode pages.
+           - Integrated interactive `<select>` quick-jump dropdown grouped by historical movement across all 35 rewatch episodes, Ep 00, Errata, and closing Codas.
+           - Fixed broken Episode 01 next link to point to `/series/the-sound-above/episode-02/` and linked backward to Episode 00 (`/ai/2026/10/12/...`).
+           - Added canonical breadcrumbs (`Home / The Sound Above / Episode XX`).
+         - LinkedIn Profile Mapping Guide & Interactive Export Tooling (`docs/linkedin-profile-mapping-guide.md`, `linkedin.html`, `_data/linkedin/`):
+           - Authored comprehensive mapping guide (`docs/linkedin-profile-mapping-guide.md`) projecting primary presence portfolio into LinkedIn concepts (Headline, About, Featured, Projects, Experience, Skills).
+           - Enforced EMR-Bear Approach A (strictly omitted from LinkedIn) and 2-project rule (Phalanx Duel and Technical Conversation Archive, purging local AI runtime tooling).
+           - Upgraded `linkedin.html` interactive export tool: added copy blocks and live character-count validation for 220-char Headline, 2,600-char About section, Featured links, 2 Projects, Experience roles (<2000 chars), and Top 5 Pinned + 50 de-duplicated skills.
+           - Added pre-formatted LinkedIn overrides for SK Holdings (`_data/linkedin/sk-holdings.yml`) and ActiveCampaign (`_data/linkedin/activecampaign.yml`).
+         - Shift+Cmd+K Command Palette & Knowledge Graph Integration (`_includes/command-palette.html`, `assets/data/site-search-index.json`, `_data/navigation.yml`):
+           - Wired Sovereign Verification series, The Sound Above curriculum, LinkedIn export tool, Writing hub, SCMC archive, Chicago Monograph, and Interactive Dehum Lab into the default command palette and search index.
+           - Updated keydown listener to support both `Shift+Cmd+K` and plain `Cmd+K` / `Ctrl+K` when not focused on input elements.
+           - Fixed em dashes in search index to clean hyphens and colons.
+           - Rebuilt AST code graph (`graphify update .`) to 9,974 nodes and 12,973 edges.
+         - Verification:
+           - 305/305 RSpec tests passing, fast validation passing cleanly across 499 Markdown files, zero em dashes across all edits.
+
        - LOCAL DISK HYGIENE, QUOTA COOLDOWN PRE-FLIGHT GUARDS & CLOUD QUARANTINE (2026-10-20):
          Root-caused and resolved local NVMe SSD space exhaustion (~6.3 GB free on 228 GB drive), establishing deterministic pre-flight guards, cloud quarantine offloading, and storage hygiene integration:
          - Local SSD Starvation Root Cause & Pipeline Defense (`bin/intake_drive_video.rb`, `bin/youtube_sweeper.rb`, `bin/live_dashboard_streamer.rb`):
