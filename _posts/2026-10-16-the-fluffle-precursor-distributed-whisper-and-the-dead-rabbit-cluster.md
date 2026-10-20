@@ -68,7 +68,7 @@ I created a new open-source repository on GitHub: [`github.com/just3ws/fluffle`]
 
 ### The 5-Node Raspberry Pi Cluster
 
-I did not have an expensive cloud cluster or a bank of high-end NVIDIA GPUs. What I had in my home lab was a stack of five Raspberry Pi single-board computers.
+I did not have an expensive cloud cluster or a bank of high-end NVIDIA GPUs. What I had in my home lab was a stack of five Raspberry Pi 4 single-board computers, a mix of Pi 4 and Pi 4 Model B boards.
 
 Running whisper.cpp on a single Raspberry Pi CPU is slow. Transcribing an hour of audio can take two to three hours of computation. If I wanted to transcribe over one thousand episodes without waiting eighteen months, I had to build a distributed pipeline.
 
@@ -84,12 +84,13 @@ Working alongside early ChatGPT to draft Ruby orchestration scripts, I designed 
          |                         |                         |
          v                         v                         v
 +-----------------+       +-----------------+       +-----------------+
-| node01 (RPi 4)  |       | node02 (RPi 4)  |       | node03 (RPi 4)  |
+| node01 (Pi 4)   |       | node02 (Pi 4)   |       | node03 (Pi 4)   |
 | whisper.cpp     |       | whisper.cpp     |       | whisper.cpp     |
 | ggml-small.bin  |       | ggml-small.bin  |       | ggml-small.bin  |
 +-----------------+       +-----------------+       +-----------------+
          |                         |                         |
          +-------------------------+-------------------------+
+              (node04 and node05 follow the same pattern)
                                    |
                                    v
                         +----------------------+
@@ -194,7 +195,7 @@ The `fluffle` experiment was not a failure. It was the essential skunkworks labo
 1. **Deterministic Pre-Processing Over Magic**: `fluffle` proved that trying to feed raw, inconsistent audio files directly into machine learning models will always fail. You must normalize audio deterministically before inference. That lesson directly produced our 16kHz mono PCM extraction filters and channel-splitting algorithms.
 2. **Maildir State Machines Over Ad-Hoc Scripts**: In `fluffle`, when a Pi rebooted or dropped an SSH connection, files were stranded in ambiguous states. That pain directly drove the design of our Maildir architecture (`pending`, `processing`, `processed`, `failed`) and the atomic `JobSubstateTracker` we rely on today.
 3. **Lexical Priming & Brand Repair**: Transcribing Jason Carpenter taught me how Whisper systematically misinterprets proper nouns. When `fluffle` generated words like "Garbender" or "Karpner" for Carpenter, I wrote `replacements.yaml`. That simple YAML dictionary evolved directly into our custom domain lexicon priming that now restores "UGtastic," "SCMC," and "StructureMap" flawlessly.
-4. **Local Hardware Sovereignty**: Watching five $35 Raspberry Pis transcribe one thousand hours of spoken audio without sending a single byte to an external cloud API permanently anchored my commitment to local-first, zero-egress software craftsmanship.
+4. **Local Hardware Sovereignty**: Watching five Raspberry Pi 4s transcribe one thousand hours of spoken audio without sending a single byte to an external cloud API permanently anchored my commitment to local-first, zero-egress software craftsmanship.
 
 ---
 
