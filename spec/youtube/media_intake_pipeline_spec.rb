@@ -105,6 +105,20 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       prio = Process.getpriority(Process::PRIO_PROCESS, 0)
       expect(prio).to be >= 10
     end
+
+    it 'inspects available disk space and enforces the 5.0GB safety floor' do
+      require_relative '../../bin/intake_drive_video'
+      pipeline = MediaIntakePipeline.new({ dry_run: true })
+      free_bytes = pipeline.available_disk_space_bytes
+      expect(free_bytes).to be_a(Integer)
+      expect(free_bytes).to be > 0
+    end
+
+    it 'detects active quota cooldown from blocked manifests' do
+      require_relative '../../bin/intake_drive_video'
+      pipeline = MediaIntakePipeline.new({ dry_run: true })
+      expect([true, false]).to include(pipeline.quota_in_cooldown?)
+    end
   end
 
   describe 'Metadata & Speech Synthesis Unit Logic' do

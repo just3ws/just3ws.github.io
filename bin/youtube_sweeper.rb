@@ -84,6 +84,7 @@ class YouTubeSweeper
 
     cfg = YAML.safe_load(File.read(@targets_path), permitted_classes: [Date, Time], aliases: true) rescue {}
     root_base = cfg['base_path'] ? File.expand_path(cfg['base_path']) : nil
+    cloud_base = cfg['cloud_archive_path'] ? File.expand_path(cfg['cloud_archive_path']) : nil
     channels = cfg['channels'] || {}
 
     channels.each do |chan_key, chan_data|
@@ -95,7 +96,9 @@ class YouTubeSweeper
                      end
         next unless target_dir && Dir.exist?(target_dir)
 
-        yield(chan_key, tgt_key, tgt_data, target_dir)
+        cloud_target_dir = cloud_base ? File.join(cloud_base, chan_key, tgt_key) : nil
+
+        yield(chan_key, tgt_key, tgt_data, target_dir, cloud_target_dir)
       end
     end
   end
@@ -109,14 +112,69 @@ class YouTubeSweeper
 
     unblocked_files = []
 
-    each_target_directory do |_chan_key, tgt_key, _tgt_data, target_dir|
+    each_target_directory do |_chan_key, tgt_key, _tgt_data, target_dir, cloud_target_dir|
       blocked_dir = File.join(target_dir, 'blocked')
       pending_dir = File.join(target_dir, 'pending')
       next unless Dir.exist?(blocked_dir)
 
+      # 1. Unblock manifests (.blocked.json) which may reference cloud or local media files
+      blocked_manifests = Dir.glob(File.join(blocked_dir, '*.blocked.json')).sort
+      manifest_fns = {}
+
+      blocked_manifests.each do |bf|
+        bdata = JSON.parse(File.read(bf)) rescue {}
+        fn = File.basename(bf, '.blocked.json')
+        manifest_fns[fn] = true
+
+        cloud_file = bdata['cloud_path'] || (cloud_target_dir ? File.join(cloud_target_dir, 'blocked', fn) : nil)
+        local_file = File.join(blocked_dir, fn)
+
+        media_source = if cloud_file && File.exist?(cloud_file)
+                         cloud_file
+                       elsif File.exist?(local_file)
+                         local_file
+                       end
+
+        if live
+          dest = nil
+          if media_source == cloud_file && cloud_target_dir
+            # Keep on cloud archive in pending/ to avoid flooding local NVMe SSD
+            cloud_pending = File.join(cloud_target_dir, 'pending')
+            FileUtils.mkdir_p(cloud_pending)
+            dest = File.join(cloud_pending, fn)
+            FileUtils.mv(cloud_file, dest) if File.exist?(cloud_file)
+          elsif media_source && File.exist?(media_source)
+            FileUtils.mkdir_p(pending_dir)
+            dest = File.join(pending_dir, fn)
+            FileUtils.mv(media_source, dest)
+          end
+
+          # Update companion state and move to pending
+          companion_state = File.join(blocked_dir, "#{fn}.state.json")
+          if File.exist?(companion_state)
+            state_data = JSON.parse(File.read(companion_state)) rescue nil
+            if state_data
+              state_data['file_path'] = dest if dest
+              state_data['meta_phase'] = 'pending' if state_data['meta_phase'] == 'blocked'
+              File.write(companion_state, JSON.pretty_generate(state_data)) rescue nil
+            end
+            FileUtils.mv(companion_state, File.join(pending_dir, "#{fn}.state.json")) rescue nil
+          end
+
+          FileUtils.rm_f(bf)
+          puts "🔓 Unblocked expired cooldown job: #{tgt_key}/#{fn} -> pending/" unless options[:quiet] || options[:json]
+        else
+          puts "🔍 [DRY RUN] Would unblock expired cooldown job: #{tgt_key}/#{fn} -> pending/" unless options[:quiet] || options[:json]
+        end
+        unblocked_files << { target: tgt_key, filename: fn, applied: live }
+      end
+
+      # 2. Legacy fallback for raw media files in blocked_dir without .blocked.json
       media_files = Dir.glob(File.join(blocked_dir, '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.sort
       media_files.each do |f|
         fn = File.basename(f)
+        next if manifest_fns[fn]
+
         if live
           FileUtils.mkdir_p(pending_dir)
           dest = File.join(pending_dir, fn)
@@ -503,10 +561,19 @@ class YouTubeSweeper
   def audit_queue_health
     result = { pending_count: 0, processing_count: 0, blocked_count: 0, failed_count: 0 }
 
-    each_target_directory do |_chan_key, _tgt_key, _tgt_data, target_dir|
-      result[:pending_count] += Dir.glob(File.join(target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
+    each_target_directory do |_chan_key, _tgt_key, _tgt_data, target_dir, cloud_target_dir|
+      pending_files = Dir.glob(File.join(target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      if cloud_target_dir && Dir.exist?(cloud_target_dir)
+        pending_files += Dir.glob(File.join(cloud_target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      end
+      result[:pending_count] += pending_files.map { |f| File.basename(f) }.uniq.size
+
       result[:processing_count] += Dir.glob(File.join(target_dir, 'processing', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
-      result[:blocked_count] += Dir.glob(File.join(target_dir, 'blocked', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
+
+      blocked_manifests = Dir.glob(File.join(target_dir, 'blocked', '*.blocked.json')).size
+      blocked_media = Dir.glob(File.join(target_dir, 'blocked', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
+      result[:blocked_count] += [blocked_manifests, blocked_media].max
+
       result[:failed_count] += Dir.glob(File.join(target_dir, 'failed', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.size
     end
 

@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LOCAL DISK HYGIENE, QUOTA COOLDOWN PRE-FLIGHT GUARDS & CLOUD QUARANTINE (2026-10-20):
+         Root-caused and resolved local NVMe SSD space exhaustion (~6.3 GB free on 228 GB drive), establishing deterministic pre-flight guards, cloud quarantine offloading, and storage hygiene integration:
+         - Local SSD Starvation Root Cause & Pipeline Defense (`bin/intake_drive_video.rb`, `bin/youtube_sweeper.rb`, `bin/live_dashboard_streamer.rb`):
+           - Identified root cause: when YouTube API daily quota was exhausted (`upstream_quota_blocked`), `intake_drive_video.rb` continued pulling multi-gigabyte video masters from Google Drive onto the fast NVMe SSD (`~/.local/var/media_intake`) and moving them into `blocked/`, leaving 15.2 GB parked locally.
+           - Implemented `quota_in_cooldown?` pre-flight check in `bin/intake_drive_video.rb`: pauses queue ingestion when upstream quota exhaustion is active until the 2:00 AM CT (00:00 PT) reset, preventing redundant processing and disk starvation.
+           - Implemented `available_disk_space_bytes` and `MIN_FREE_DISK_BYTES` (5.0 GB safety floor): halts intake workers before locking or pulling files if local NVMe disk headroom is degraded.
+           - Implemented cloud quarantine offload on `upstream_quota_blocked`: relocates large video files directly to Google Drive `cloud_archive_path/<channel>/<target_name>/blocked/<filename>`, retaining only lightweight `.blocked.json` and `.state.json` sidecars on local SSD.
+           - Enhanced `bin/youtube_sweeper.rb` and `bin/live_dashboard_streamer.rb` cooldown unblockers to detect cloud-quarantined video masters and unblock them sequentially into cloud `pending/`, keeping heavy assets off local NVMe SSD until FIFO processing begins.
+         - Physical Storage Recovery & Safe Archival:
+           - Byte-verified and safely archived 4 staging `.mov` files (1.6 GB) from `~/Movies/` to Google Drive `My Drive/Media Intake/archive/obs_staging/` before pruning local copies.
+           - Confirmed bit-for-bit parity of `~/ai/dehum/` masters (`VID_20261009_111445043.mp4` and `VID_20261009_111445043_fixed.mp4`, 6.1 GB) with Google Drive cold storage (`Google Drive / ai / dehum /`) and YouTube master `8LYHo1dOkMo`, pruned local duplicate files, and updated pointer documentation.
+           - Safely relocated active blocked video `VID_20261019_102821897.mp4` (1.4 GB) to Google Drive `blocked/`, bringing local blocked video bytes to 0.
+           - Free disk space recovered from 6.3 GB to 13.0 GB available.
+         - Unified System Storage Hygiene (`~/.config/zsh/bin/zdots-hygiene`):
+           - Added Action 7 to `zdots-hygiene`: audits and purges stale intermediate audio scratch files (`~/.local/state/just3ws/scratch/*/*.wav`) older than 2 days.
+           - Committed update to zdots repo (`~/.config/zsh`, commit `f0aed78`).
+         - Verification:
+           - 305/305 RSpec tests passing (33 intake/sweeper specs passing in 1.98s), fast validation passing cleanly across 498 Markdown files, zero em dashes across all edits.
+
        - ROLLING HORIZON SWEEPER, IDENTITY CONSOLIDATION & DIGITAL GARDEN DISCLOSURE (2026-10-20):
          Resolved playlist ephemerality sweeper fallback, grounded root domain origin and identity consolidation, and recalibrated digital garden AI disclosures:
          - YouTube Rolling Horizon Sweeper Fallback & Compliance Wire-up (`bin/youtube_sweeper.rb`, `bin/live_dashboard_streamer.rb`, `bin/lib/youtube_deduplicator.rb`):

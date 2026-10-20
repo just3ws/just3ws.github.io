@@ -34,6 +34,7 @@ PID_FILE = File.join(STATE_DIR, 'pipeline.pid')
 ACTIVITY_LOG_PATH = File.join(STATE_DIR, 'pipeline_activity.jsonl')
 TRANSCRIPTS_DATA_DIR = File.join(ROOT_DIR, '_data', 'transcripts')
 VIDEO_ASSETS_PATH = File.join(ROOT_DIR, '_data', 'video_assets.yml')
+MIN_FREE_DISK_BYTES = 5 * 1024 * 1024 * 1024 # 5 GB floor to preserve localhost OS stability
 
 class MediaIntakePipeline
   attr_reader :config, :client, :options, :state_dir
@@ -195,6 +196,50 @@ class MediaIntakePipeline
     rescue StandardError
       File.mtime(path)
     end
+  end
+
+  # Available disk space on media intake volume in bytes
+  # ponytail: procedural df -k parse: simple standard library call without external gems;
+  # upgrade trigger: multi-platform Windows support required.
+  def available_disk_space_bytes(path = base_path)
+    target = path || Dir.pwd
+    output = `df -k "#{target}" 2>/dev/null`.lines.to_a
+    return nil if output.size < 2
+
+    parts = output[1].split(/\s+/)
+    parts[3].to_i * 1024
+  rescue StandardError
+    nil
+  end
+
+  # Check if YouTube Data API is currently within the daily quota cooldown window
+  def quota_in_cooldown?
+    now_utc = Time.now.utc
+    now_pt = now_utc.getlocal('-07:00')
+    last_reset_pt = Time.new(now_pt.year, now_pt.month, now_pt.day, 0, 0, 0, '-07:00')
+
+    search_dirs = []
+    channels = config['channels'] || {}
+    channels.each do |ch_name, ch_conf|
+      (ch_conf['targets'] || {}).each do |target_name, _|
+        search_dirs << File.join(base_path, ch_name, target_name, 'blocked') if base_path
+        search_dirs << File.join(cloud_archive_path, ch_name, target_name, 'blocked') if cloud_archive_path
+      end
+    end
+
+    search_dirs.compact.uniq.select { |d| Dir.exist?(d) }.each do |bdir|
+      Dir.glob(File.join(bdir, '*.blocked.json')).each do |bf|
+        bdata = JSON.parse(File.read(bf)) rescue {}
+        if bdata['reason'] == 'upstream_quota_blocked' && bdata['blocked_at']
+          blocked_at = Time.parse(bdata['blocked_at']) rescue nil
+          return true if blocked_at && blocked_at >= last_reset_pt
+        end
+      end
+    end
+
+    false
+  rescue StandardError
+    false
   end
 
   # ponytail: serialize processing to 1 file at a time across all channels for localhost resources;
@@ -401,6 +446,20 @@ class MediaIntakePipeline
         return 0
       end
 
+      # Quota Cooldown Guard: Do not pull new candidates if YouTube API is in cooldown
+      if quota_in_cooldown? && !options[:dry_run] && !options[:skip_upload]
+        puts "⏳ Upstream YouTube API quota cooldown is active until 2:00 AM CT (00:00 PT). Intake queue paused to prevent local disk starvation."
+        return 0
+      end
+
+      # Disk Space Pre-flight Guard: Verify local volume has safe operational headroom
+      free_disk = available_disk_space_bytes
+      if free_disk && free_disk < MIN_FREE_DISK_BYTES && !options[:dry_run]
+        warn "⚠️ Insufficient disk space (#{format_size(free_disk)} free, minimum #{format_size(MIN_FREE_DISK_BYTES)} required). Intake queue paused to protect operating system stability."
+        log_activity('disk_guard', "Intake paused: #{format_size(free_disk)} free below 5.0GB floor", level: 'warning')
+        return 0
+      end
+
       total_processed = 0
 
       loop do
@@ -554,6 +613,14 @@ class MediaIntakePipeline
     if active_other.any?
       puts "⚠️ Cannot process #{filename}: another video is currently active in processing/ (#{active_other.first[:filename]})."
       puts "   Aborting intake for this file to maintain single-video serialization."
+      return false
+    end
+
+    # Pre-flight Guard: Verify local SSD has safe operating headroom before moving file
+    free_disk = available_disk_space_bytes
+    if free_disk && free_disk < MIN_FREE_DISK_BYTES && !options[:dry_run]
+      warn "⚠️ Cannot process #{filename}: available disk space is #{format_size(free_disk)}, below 5.0GB safety floor."
+      log_activity('disk_guard', "Skipped #{filename}: #{format_size(free_disk)} free below 5.0GB floor", level: 'warning')
       return false
     end
 
@@ -972,9 +1039,23 @@ class MediaIntakePipeline
         tracker.block_step(tracker.current_step || 'unknown', e.message, 'resets_at' => '2:00 AM CT (00:00 PT)', 'decision' => 'upstream_quota_blocked')
 
         unless options[:dry_run]
-          blocked_dest = File.join(blocked_dir, filename)
-          FileUtils.mv(processing_path, blocked_dest) if File.exist?(processing_path)
-          tracker.relocate_file_path!(blocked_dest)
+          cloud_target_dir = cloud_archive_path ? File.join(cloud_archive_path, channel, target_name) : nil
+          cloud_blocked_dir = cloud_target_dir ? File.join(cloud_target_dir, 'blocked') : nil
+          relocated_cloud_dest = nil
+
+          if cloud_blocked_dir && Dir.exist?(File.dirname(cloud_blocked_dir))
+            FileUtils.mkdir_p(cloud_blocked_dir)
+            relocated_cloud_dest = File.join(cloud_blocked_dir, filename)
+            FileUtils.mv(processing_path, relocated_cloud_dest) if File.exist?(processing_path)
+            tracker.relocate_file_path!(relocated_cloud_dest)
+            puts "☁️ Relocated video master to cloud archive: #{relocated_cloud_dest} (conserving local SSD space)."
+          else
+            blocked_dest = File.join(blocked_dir, filename)
+            FileUtils.mv(processing_path, blocked_dest) if File.exist?(processing_path)
+            tracker.relocate_file_path!(blocked_dest)
+            puts "⏳ Moved to blocked/#{filename} (Waiting for 2:00 AM CT / 00:00 PT quota cooldown)."
+          end
+
           FileUtils.mv(sidecar_path, File.join(blocked_dir, File.basename(sidecar_path))) if sidecar_path && File.exist?(sidecar_path)
           blocked_info = File.join(blocked_dir, "#{filename}.blocked.json")
           File.write(blocked_info, JSON.pretty_generate({
@@ -982,9 +1063,9 @@ class MediaIntakePipeline
             'reason' => 'upstream_quota_blocked',
             'cooldown_resets_at' => '2:00 AM CT (00:00 PT)',
             'step' => tracker.current_step,
-            'diagnostic' => e.message
+            'diagnostic' => e.message,
+            'cloud_path' => relocated_cloud_dest
           }))
-          puts "⏳ Moved to blocked/#{filename} (Waiting for 2:00 AM CT / 00:00 PT quota cooldown)."
         end
       else
         warn "❌ [Error] Failed processing #{filename}: #{e.message}"

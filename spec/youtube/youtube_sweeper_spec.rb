@@ -96,6 +96,16 @@ RSpec.describe YouTubeSweeper do
       result = sweeper.unblock_expired_cooldown_jobs(live: false)
       expect(result).to eq([])
     end
+
+    it 'identifies unblock candidates in dry-run mode when quota resets' do
+      allow(sweeper).to receive(:calculate_quota_status).and_return({
+        in_cooldown: false,
+        hours_until_reset: 0,
+        minutes_until_reset: 0
+      })
+      result = sweeper.unblock_expired_cooldown_jobs(live: false)
+      expect(result).to be_an(Array)
+    end
   end
 
   describe '#requeue_quarantined_jobs' do

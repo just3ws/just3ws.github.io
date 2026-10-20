@@ -694,6 +694,7 @@ class LiveDashboardStreamer
   def resume_all_blocked!
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
     base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
+    cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
     return 0 unless base_p && Dir.exist?(base_p)
 
     channel = config['channel'] || 'whoistechcmty'
@@ -703,10 +704,49 @@ class LiveDashboardStreamer
     targets.each_key do |target_name|
       blocked_dir = File.join(base_p, channel, target_name, 'blocked')
       pending_dir = File.join(base_p, channel, target_name, 'pending')
+      cloud_target_dir = cloud_p ? File.join(cloud_p, channel, target_name) : nil
       next unless Dir.exist?(blocked_dir)
+
+      manifest_fns = {}
+      Dir.glob(File.join(blocked_dir, '*.blocked.json')).each do |bf|
+        fn = File.basename(bf, '.blocked.json')
+        manifest_fns[fn] = true
+        bdata = JSON.parse(File.read(bf)) rescue {}
+
+        cloud_file = bdata['cloud_path'] || (cloud_target_dir ? File.join(cloud_target_dir, 'blocked', fn) : nil)
+        local_file = File.join(blocked_dir, fn)
+        dest = nil
+
+        if cloud_file && File.exist?(cloud_file) && cloud_target_dir
+          cloud_pending = File.join(cloud_target_dir, 'pending')
+          FileUtils.mkdir_p(cloud_pending)
+          dest = File.join(cloud_pending, fn)
+          FileUtils.mv(cloud_file, dest)
+        elsif File.exist?(local_file)
+          dest = File.join(pending_dir, fn)
+          FileUtils.mv(local_file, dest)
+        end
+
+        Dir.glob(File.join(blocked_dir, "#{fn}.*")).each do |companion|
+          next if companion.end_with?('.blocked.json')
+          if companion.end_with?('.state.json')
+            state_data = JSON.parse(File.read(companion)) rescue nil
+            if state_data
+              state_data['file_path'] = dest if dest
+              state_data['meta_phase'] = 'pending' if state_data['meta_phase'] == 'blocked'
+              File.write(companion, JSON.pretty_generate(state_data)) rescue nil
+            end
+          end
+          FileUtils.mv(companion, File.join(pending_dir, File.basename(companion))) rescue nil
+        end
+        FileUtils.rm_f(bf)
+        resumed_count += 1
+      end
 
       Dir.glob(File.join(blocked_dir, '*')).select { |f| f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.each do |f|
         fn = File.basename(f)
+        next if manifest_fns[fn]
+
         dest = File.join(pending_dir, fn)
         FileUtils.mv(f, dest)
         Dir.glob("#{f}.*").each do |companion|
