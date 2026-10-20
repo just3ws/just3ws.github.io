@@ -560,7 +560,7 @@ class YouTubePipeline
   def compile_media_intake_telemetry
     return {} unless File.exist?(MEDIA_INTAKE_TARGETS_PATH)
     config = YAML.safe_load(File.read(MEDIA_INTAKE_TARGETS_PATH)) rescue {}
-    base_p = config['base_path']
+    base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     channel = 'whoistechcmty'
     targets = config.dig('channels', channel, 'targets') || {}
 

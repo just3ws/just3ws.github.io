@@ -1,14 +1,16 @@
 # _data/media_intake_targets.yml
 # Media Intake Pipeline Configuration
-# Maps Google Drive folder aliases to YouTube publishing targets and series dossiers.
+# Maps local intake directories to YouTube publishing targets and series dossiers.
 # Lifecycle states:
-#   staged/     Pre-intake storage: backed up to Google Drive, held until ready to queue
+#   staged/     Pre-intake storage: held on local SSD until ready to queue
 #   pending/    Ingress queue: watched by pipeline for automated ingestion
 #   processing/ Active atomic execution: audio DSP, whisper.cpp, YouTube upload
-#   processed/  Archived completed masters: organized by YYYY-MM
+#   processed/  Archived completed masters: organized by YYYY-MM on local SSD
 #   failed/     Quarantined failures with diagnostic error notes
+#   blocked/    Temporarily deferred (e.g. daily quota reset cooldown)
 #
-base_path: "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"
+base_path: "~/.local/var/media_intake"
+cloud_archive_path: "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"
 
 channels:
   whoistechcmty:

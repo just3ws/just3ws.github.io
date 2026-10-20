@@ -19,16 +19,17 @@ ROOT_DIR = File.expand_path('..', __dir__)
 CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
 TELEMETRY_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
 
-# Resolve Google Drive Intake base path
-DEFAULT_INTAKE_BASE = File.expand_path('~/Google Drive/My Drive/Media Intake')
-FALLBACK_INTAKE_BASE = File.expand_path('~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake')
+# Resolve Media Intake base path (SSD local queue preferred, Google Drive fallback)
+FALLBACK_CLOUD_BASE = File.expand_path('~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake')
+intake_config = (File.exist?(CONFIG_PATH) ? YAML.safe_load(File.read(CONFIG_PATH)) : {}) rescue {}
+configured_base = intake_config['base_path'] ? File.expand_path(intake_config['base_path']) : nil
 
-intake_base = if Dir.exist?(DEFAULT_INTAKE_BASE)
-                DEFAULT_INTAKE_BASE
-              elsif Dir.exist?(FALLBACK_INTAKE_BASE)
-                FALLBACK_INTAKE_BASE
+intake_base = if configured_base && Dir.exist?(configured_base)
+                configured_base
+              elsif Dir.exist?(FALLBACK_CLOUD_BASE)
+                FALLBACK_CLOUD_BASE
               else
-                DEFAULT_INTAKE_BASE
+                File.expand_path('~/.local/var/media_intake')
               end
 
 channel = 'whoistechcmty'

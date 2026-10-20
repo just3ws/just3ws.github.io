@@ -91,7 +91,7 @@ class MediaIntakePipeline
 
     # Scan and restore any stranded processing/ files back to pending/
     config = YAML.safe_load(File.read(CONFIG_PATH)) rescue {}
-    base_p = config['base_path']
+    base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     if base_p && Dir.exist?(base_p)
       (config.dig('channels', 'whoistechcmty', 'targets') || {}).each do |tname, _|
         proc_dir = File.join(base_p, 'whoistechcmty', tname, 'processing')
@@ -150,7 +150,11 @@ class MediaIntakePipeline
   end
 
   def base_path
-    config['base_path']
+    @base_path ||= File.expand_path(config['base_path'] || '~/.local/var/media_intake')
+  end
+
+  def cloud_archive_path
+    @cloud_archive_path ||= config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
   end
 
   def channel_config(channel = 'whoistechcmty')
@@ -885,6 +889,21 @@ class MediaIntakePipeline
         puts "📄 Ingress Receipt written: #{File.basename(receipt_path)}"
         puts "⏱️ Execution Telemetry: Total #{duration_total}s (DSP: #{duration_dsp}s, Whisper: #{duration_whisper}s, Upload: #{duration_upload}s at #{upload_mb_s} MB/s)"
 
+        # Asynchronous cold backup mirror to Google Drive if configured
+        if cloud_archive_path && Dir.exist?(cloud_archive_path)
+          begin
+            cloud_month_dir = File.join(cloud_archive_path, channel, target_name, 'processed', Time.now.strftime('%Y-%m'))
+            FileUtils.mkdir_p(cloud_month_dir)
+            FileUtils.cp(final_dest, File.join(cloud_month_dir, filename))
+            FileUtils.cp(receipt_path, File.join(cloud_month_dir, File.basename(receipt_path))) if File.exist?(receipt_path)
+            puts "☁️ Mirrored master to cloud archive: #{cloud_month_dir}"
+            log_activity('archival', "Mirrored master to cloud archive: #{cloud_month_dir}", level: 'info', details: { 'cloud_dest' => cloud_month_dir })
+          rescue StandardError => cloud_err
+            warn "⚠️ Cloud archive mirror notice: #{cloud_err.message}"
+            log_activity('archival', "Cloud archive mirror skipped: #{cloud_err.message}", level: 'warning')
+          end
+        end
+
         begin
           hist_file = File.join(@state_dir, 'pipeline_execution_history.jsonl')
           File.open(hist_file, 'a') do |hf|
@@ -1307,7 +1326,7 @@ class MediaIntakePipeline
 
   # Check if a video was already archived with a completed receipt
   def find_archived_receipt(filename, processed_dir = nil)
-    search_dirs = [processed_dir, base_path].compact.uniq
+    search_dirs = [processed_dir, base_path, cloud_archive_path].compact.uniq
     receipt_files = []
     search_dirs.each do |dir|
       next unless dir && Dir.exist?(dir)
@@ -1364,6 +1383,9 @@ if __FILE__ == $PROGRAM_NAME
     opts.banner = "Usage: bin/intake_drive_video.rb [options]"
 
     opts.on("-s", "--status", "Display visual status of queue across all targets") { options[:status] = true }
+    opts.on("--drop FILE", "--ingest FILE", "Stage a local file into pending queue (e.g. from LocalSend or USB pull)") do |f|
+      options[:drop_file] = f
+    end
     opts.on("-t", "--target TARGET", "Process specific target (ramblin-amblin, the-sound-above, errata)") { |t| options[:target] = t }
     opts.on("-c", "--channel CHANNEL", "Channel key (defaults to all channels)") { |c| options[:channel] = c }
     opts.on("-1", "--one", "--single", "Process only the single oldest file (FIFO) and exit") { options[:one] = true }
@@ -1393,6 +1415,24 @@ if __FILE__ == $PROGRAM_NAME
   end.parse!
 
   pipeline = MediaIntakePipeline.new(options)
+
+  if options[:drop_file]
+    src = File.expand_path(options[:drop_file])
+    unless File.file?(src)
+      warn "❌ Source file does not exist: #{src}"
+      exit 1
+    end
+    tgt = options[:target] || 'ramblin-amblin'
+    chan = options[:channel] || 'whoistechcmty'
+    dest_dir = File.join(pipeline.base_path, chan, tgt, 'pending')
+    FileUtils.mkdir_p(dest_dir)
+    dest_file = File.join(dest_dir, File.basename(src))
+    FileUtils.cp(src, dest_file)
+    puts "📥 Ingested #{File.basename(src)} into #{tgt} pending queue:"
+    puts "   Destination: #{dest_file}"
+    puts "   Run './bin/pipeline media intake --single' to process now, or '--watch' for autonomous background processing."
+    exit 0
+  end
 
   if options[:status]
     pipeline.print_status(options[:channel])

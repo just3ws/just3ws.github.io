@@ -373,7 +373,7 @@ class LiveDashboardStreamer
   def compile_live_intake_queues
     return {} unless File.exist?(INTAKE_CONFIG_PATH)
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
-    base_p = config['base_path']
+    base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     channel = 'whoistechcmty'
     targets = config.dig('channels', channel, 'targets') || {}
 
@@ -655,7 +655,7 @@ class LiveDashboardStreamer
     filename = params['file']
     if target && filename
       config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
-      base_p = config['base_path']
+      base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
       src_failed = File.join(base_p, 'whoistechcmty', target, 'failed', filename)
       src_blocked = File.join(base_p, 'whoistechcmty', target, 'blocked', filename)
       src = File.exist?(src_failed) ? src_failed : (File.exist?(src_blocked) ? src_blocked : nil)
@@ -684,7 +684,7 @@ class LiveDashboardStreamer
 
   def resume_all_blocked!
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
-    base_p = config['base_path']
+    base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     return 0 unless base_p && Dir.exist?(base_p)
 
     channel = config['channel'] || 'whoistechcmty'
@@ -746,7 +746,7 @@ class LiveDashboardStreamer
     filename = params['file']
     if target && filename
       config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
-      base_p = config['base_path']
+      base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
       src = File.join(base_p, 'whoistechcmty', target, 'staged', filename)
       dst = File.join(base_p, 'whoistechcmty', target, 'pending', filename)
       if File.exist?(src)
@@ -806,7 +806,7 @@ class LiveDashboardStreamer
   def restore_processing_to_pending!
     return unless File.exist?(INTAKE_CONFIG_PATH)
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
-    base_p = config['base_path']
+    base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     channel = 'whoistechcmty'
     targets = config.dig('channels', channel, 'targets') || {}
     targets.each_key do |target_name|

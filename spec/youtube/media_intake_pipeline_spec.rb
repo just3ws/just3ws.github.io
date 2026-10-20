@@ -85,6 +85,19 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(status.success?).to be true
       expect(stdout).to include('MEDIA INTAKE QUEUE STATUS')
     end
+
+    it 'supports --drop to stage a local file into pending queue' do
+      test_file = File.join(Dir.tmpdir, "test_intake_#{Time.now.to_i}.mp4")
+      File.write(test_file, 'dummy content')
+      stdout, stderr, status = Open3.capture3("ruby #{cli_path} --drop #{test_file} --target ramblin-amblin")
+      expect(status.success?).to be true
+      expect(stdout).to include('Ingested')
+      expect(stdout).to include('pending queue')
+      staged_target = File.join(File.expand_path('~/.local/var/media_intake'), 'whoistechcmty', 'ramblin-amblin', 'pending', File.basename(test_file))
+      expect(File.exist?(staged_target)).to be true
+      FileUtils.rm_f(staged_target)
+      FileUtils.rm_f(test_file)
+    end
   end
 
   describe 'Metadata & Speech Synthesis Unit Logic' do

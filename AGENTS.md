@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-19
+     CURRENT FOCUS - last updated 2026-10-20
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,21 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LOCAL-FIRST SSD MEDIA INTAKE SEAM & ASYNCHRONOUS COLD ARCHIVING (2026-10-20):
+         Decoupled video ingestion from the macOS Google Drive CloudStorage FileProvider bottleneck, migrating active queues to fast local NVMe SSD (`~/.local/var/media_intake`) with asynchronous cold-storage mirroring:
+         - Local SSD Queue Foundation (`_data/media_intake_targets.yml`, `bin/intake_drive_video.rb`):
+           - Configured `base_path: "~/.local/var/media_intake"` and `cloud_archive_path: "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"`.
+           - Scaffolded all channel targets (`whoistechcmty/ramblin-amblin`, `the-sound-above`, `errata`) across `staged/`, `pending/`, `processing/`, `processed/`, `failed/`, and `blocked/`.
+           - In `bin/intake_drive_video.rb`, enabled automatic path expansion (`File.expand_path`), decoupled active processing from Google Drive virtual mounts, and added `--drop FILE` (`--ingest FILE`) CLI flags to instantly stage files arriving from LocalSend (`~/Downloads`) or direct USB cable pulls.
+           - Implemented Step 11 asynchronous cold-backup mirroring: once a video is published to YouTube, registered in datalake, and archived locally with its `.receipt.json`, it mirrors the master to Google Drive `processed/YYYY-MM/` in the background with non-blocking error handling.
+           - Enriched `find_archived_receipt` to inspect both local SSD and cloud archive receipts to preserve idempotency across previously published masters.
+         - Telemetry Streamer & Prompt Sync Resilience (`bin/live_dashboard_streamer.rb`, `bin/sync_topic_prompts.rb`, `bin/youtube-swiftbar`, `bin/youtube_pipeline.rb`):
+           - Updated `bin/live_dashboard_streamer.rb` and `bin/youtube_pipeline.rb` to resolve expanded paths, serving the live local queue to the dashboard (`http://127.0.0.1:7025/telemetry.json`).
+           - Hardened `bin/sync_topic_prompts.rb` to sync topic sheets to local SSD immediately and gracefully rescue cloud provider timeout errors (`Errno::ETIMEDOUT`) when writing to Google Drive.
+           - Updated `bin/youtube-swiftbar` to prioritize the configured local SSD base path over cloud storage paths.
+         - Verification:
+           - 301/301 RSpec tests passing (added unit test for `--drop`), fast validation passing cleanly across 497 Markdown files, and site verified and installed to `just3ws.localhost` (1,045 pages). Zero em dashes across all code and documentation.
+
        - SOUND ABOVE PILOT (EPISODE 00) SYNTHESIS: RAMBLIN' DEHUM RE-ATTEMPT & THE MIRAGE OF COMPETENCE (2026-10-19):
          Synthesized the recent Ramblin' & Amblin' field monologue (`ramblin-amblin-ok-next-experiment.yml`) into the episode dossier and teleprompter script for Episode 00 ("The Mirage of Competence: AI Slop & Domain Boundaries"):
          - Field Monologue Grounding & Physical Characterization (`_data/episodes/episode-00.yml`, `obs/teleprompter/episode-00.textream`):

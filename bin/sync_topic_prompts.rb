@@ -499,7 +499,10 @@ def sync_prompts
   FileUtils.mkdir_p(PROMPTS_DOCS_DIR)
 
   config = File.exist?(CONFIG_PATH) ? YAML.safe_load(File.read(CONFIG_PATH)) : {}
-  base_path = config['base_path']
+  target_roots = [
+    config['base_path'] ? File.expand_path(config['base_path']) : nil,
+    config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
+  ].compact.uniq.select { |p| Dir.exist?(p) }
 
   # 1. Compile Ramblin' & Amblin'
   ramblin_desc = "Conversations on the move: engineering observations, personal history, systems architecture, and practitioner reflections recorded during walks, train rides, and field dispatches."
@@ -513,16 +516,20 @@ def sync_prompts
   File.write(local_ramblin, ramblin_md)
   puts "✅ Saved local copy: docs/prompts/ramblin-amblin-topics.md"
 
-  if base_path && Dir.exist?(base_path)
-    drive_ramblin_dir = File.join(base_path, 'whoistechcmty', 'ramblin-amblin')
+  target_roots.each do |root|
+    drive_ramblin_dir = File.join(root, 'whoistechcmty', 'ramblin-amblin')
     if Dir.exist?(drive_ramblin_dir)
-      drive_ramblin_file = File.join(drive_ramblin_dir, 'TOPIC_PROMPTS.md')
-      File.write(drive_ramblin_file, ramblin_md)
-      drive_ramblin_json = File.join(drive_ramblin_dir, 'topic_prompts.json')
-      File.write(drive_ramblin_json, JSON.pretty_generate(RAMBLIN_TOPICS) + "\n")
-      puts "☁️ Synced to Google Drive: #{drive_ramblin_file}"
+      begin
+        drive_ramblin_file = File.join(drive_ramblin_dir, 'TOPIC_PROMPTS.md')
+        File.write(drive_ramblin_file, ramblin_md)
+        drive_ramblin_json = File.join(drive_ramblin_dir, 'topic_prompts.json')
+        File.write(drive_ramblin_json, JSON.pretty_generate(RAMBLIN_TOPICS) + "\n")
+        puts "📋 Synced topic prompts to: #{drive_ramblin_file}"
+      rescue StandardError, Errno::ETIMEDOUT => e
+        warn "⚠️ Non-fatal sync notice for #{drive_ramblin_dir}: #{e.message}"
+      end
     else
-      warn "⚠️ Google Drive directory missing: #{drive_ramblin_dir}"
+      warn "⚠️ Intake directory missing: #{drive_ramblin_dir}"
     end
   end
 
@@ -538,16 +545,20 @@ def sync_prompts
   File.write(local_errata, errata_md)
   puts "✅ Saved local copy: docs/prompts/errata-topics.md"
 
-  if base_path && Dir.exist?(base_path)
-    drive_errata_dir = File.join(base_path, 'whoistechcmty', 'errata')
+  target_roots.each do |root|
+    drive_errata_dir = File.join(root, 'whoistechcmty', 'errata')
     if Dir.exist?(drive_errata_dir)
-      drive_errata_file = File.join(drive_errata_dir, 'TOPIC_PROMPTS.md')
-      File.write(drive_errata_file, errata_md)
-      drive_errata_json = File.join(drive_errata_dir, 'topic_prompts.json')
-      File.write(drive_errata_json, JSON.pretty_generate(ERRATA_TOPICS) + "\n")
-      puts "☁️ Synced to Google Drive: #{drive_errata_file}"
+      begin
+        drive_errata_file = File.join(drive_errata_dir, 'TOPIC_PROMPTS.md')
+        File.write(drive_errata_file, errata_md)
+        drive_errata_json = File.join(drive_errata_dir, 'topic_prompts.json')
+        File.write(drive_errata_json, JSON.pretty_generate(ERRATA_TOPICS) + "\n")
+        puts "📋 Synced topic prompts to: #{drive_errata_file}"
+      rescue StandardError, Errno::ETIMEDOUT => e
+        warn "⚠️ Non-fatal sync notice for #{drive_errata_dir}: #{e.message}"
+      end
     else
-      warn "⚠️ Google Drive directory missing: #{drive_errata_dir}"
+      warn "⚠️ Intake directory missing: #{drive_errata_dir}"
     end
   end
 
