@@ -2,6 +2,14 @@
 layout: post
 title: "The Mirage of Competence: Sovereign Verification, Field Re-Tests, and the Meters vs Yards Trap"
 date: 2026-10-20 11:30:00 -0500
+permalink: /ai/2026/10/20/the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap/
+redirect_from:
+  - /2026/10/20/the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories: [ai, craftsmanship, systems-architecture]
 tags: [ai-competence, software-craftsmanship, audio-forensics, domain-boundaries, verification, systems-leadership]
 description: "Walking back underneath the 345kV transmission lines to test whether an AI audio restoration tool was generalizable or an overfitted mirage, examining the dual-model chasm between code and prose, and confronting the compounding risk of ungrounded generative predictions at scale."

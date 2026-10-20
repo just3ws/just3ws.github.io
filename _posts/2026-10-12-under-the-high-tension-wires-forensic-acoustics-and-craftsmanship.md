@@ -774,8 +774,8 @@ Sovereign verification cannot live in cloud abstractions alone. Operating on an 
 This case study under the high-tension wires is Part 1 of a unified three-part systems architecture investigation:
 
 - **Part 1 (This Document)**: [Under the High-Tension Wires: Building Deterministic Tools from Nondeterministic Systems](/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/)
-- **Part 2**: [The Mirage of Competence: Sovereign Verification and the Meters vs. Yards Trap](/2026/10/20/the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.html)
-- **Part 3**: [The Digital Theremin: Attention Bleed, Uncanny Boundaries, and the Low-Trust Panopticon](/2026/10/20/the-digital-theremin-attention-bleed-and-the-uncanny-boundary.html)
+- **Part 2**: [The Mirage of Competence: Sovereign Verification and the Meters vs. Yards Trap](/ai/2026/10/20/the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap/)
+- **Part 3**: [The Digital Theremin: Attention Bleed, Uncanny Boundaries, and the Low-Trust Panopticon](/ai/2026/10/20/the-digital-theremin-attention-bleed-and-the-uncanny-boundary/)
 - **Overarching Curriculum & Archival Index**: [The Sovereign Verification Project Overview](/series/ai-competence/)
 - **Storage Hygiene Architecture**: [Autonomous Storage Hygiene & Self-Evolving OS Architecture Monograph](/docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture/)
 

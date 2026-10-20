@@ -2,6 +2,14 @@
 layout: post
 title: "The Digital Theremin: Attention Bleed, Uncanny Boundaries, and the Low-Trust Panopticon"
 date: 2026-10-20 12:05:00 -0500
+permalink: /ai/2026/10/20/the-digital-theremin-attention-bleed-and-the-uncanny-boundary/
+redirect_from:
+  - /2026/10/20/the-digital-theremin-attention-bleed-and-the-uncanny-boundary.html
+ai_generated: true
+human_led: true
+source_kind: ai-augmented-human-led
+robots: noindex,follow
+sitemap: false
 categories: [ai, craftsmanship, systems-architecture]
 tags: [ai-competence, software-craftsmanship, digital-theremin, attention-bleed, boundaries, epistemology]
 description: "Examining why generative media triggers an uncanny valley of hyper-lubricated coherence, how self-attention and diffusion erase discrete physical boundaries, and why working with frontier AI models resembles playing a fretless electromagnetic theremin."
