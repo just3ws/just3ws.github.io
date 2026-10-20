@@ -11,6 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOVEREIGN VERIFICATION PROJECT OVERVIEW & ARCHIVAL INDEX PUBLICATION (2026-10-20):
+         Built out the overarching project index page and curriculum hub at `/series/ai-competence/` (`series/ai-competence/index.html`), unifying the complete 3-part AI Competence & Sovereign Verification series:
+         - Overarching Project Index & Provenance Surface (`series/ai-competence/index.html`):
+           - Curated the complete 3-part series: Part 1 (*Under the High-Tension Wires*), Part 2 (*The Mirage of Competence: Sovereign Verification and the Meters vs Yards Trap*), and Part 3 (*The Digital Theremin: Attention Bleed, Uncanny Boundaries, and the Low-Trust Panopticon*).
+           - Anchored direct links to historical sources on GitHub (`just3ws/dehum` and `just3ws/just3ws.github.io`), critical git commit diffs (`f152d11`, `fff9cd58`, `e410b77d`, `2447163a`, `4124ebef`, `c6c060fe`), and primary field transcripts (`ramblin-amblin-ok-next-experiment.yml`).
+           - Documented Google Drive storage migration architecture: transitioning from macOS CloudStorage FileProvider virtual mount stalls to fast local NVMe SSD queues (`~/.local/var/media_intake`) with polite POSIX nice 15 / macOS Darwin Background QoS scheduling and asynchronous Google Drive mirroring.
+           - Established the Epistemic Drift vs Invariant Continuity Matrix: contrasting day-1 generative hallucinations (quartz crystal clock drift) against day-8 verified physical invariants (dual-mic hardware geometry, 60Hz utility AC harmonics) and the digital theremin operating framework.
+         - Verbatim Authorial Quote Grounding:
+           - Embedded Mike Hall's raw console and field notes as verbatim blockquotes across Part 2 and Part 3 without over-elaboration, preserving authentic authorial voice and verifiable provenance.
+         - Site Navigation & Localhost Verification:
+           - Cross-linked from `/dehum/index.html` (header nav and hero CTA) and site primary navigation (`_data/navigation.yml`).
+           - Built across 1,048 pages and verified live on `https://just3ws.localhost/series/ai-competence/` (HTTP 200).
+           - Fast validation passing cleanly across 497 Markdown files, zero em dashes across all edits.
+
        - THE DIGITAL THEREMIN & ATTENTION BLEED ESSAY PUBLICATION (2026-10-20):
          Synthesized Mike Hall's raw authorial reflection on the uncanny valley of generative AI, the mathematical coupling of latent diffusion tensors, and the digital theremin metaphor into a systems craftsmanship essay ready for publication to `just3ws.com` (`_posts/2026-10-20-the-digital-theremin-attention-bleed-and-the-uncanny-boundary.md`):
          - Essay Synthesis & Conceptual Framing:
