@@ -652,7 +652,7 @@ section {
     font-size: 0.95rem;
     color: $nord3;
     line-height: 1.5;
-    max-width: 50rem;
+    max-width: 100%;
   }
 
   .post-metadata-row {
@@ -996,9 +996,26 @@ a, button, select, input, .nav-link, .era-btn, .web-btn, .tab-btn {
 }
 
 /* Ergonomic Reading Measure & Fluid Typography Scale */
-article, .prose, .transcript-turn-text, .short-quote-box, .woven-quote-box {
-  max-width: 68ch;
+article {
+  max-width: var(--container-max-width, 84rem);
+  width: 100%;
+}
+
+.page,
+.post {
+  max-width: var(--container-max-width, 84rem);
+  width: 100%;
+}
+
+.prose, .transcript-turn-text, .short-quote-box, .woven-quote-box {
+  max-width: 76ch;
   line-height: 1.68;
+}
+
+.post-body > p,
+.post-body > ul,
+.post-body > ol {
+  max-width: 78ch;
 }
 
 h1 { font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.2; }

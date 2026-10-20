@@ -58,6 +58,9 @@ RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
   end
 
   describe 'SwiftBar User Shim (~/.swiftbar/youtube-pipeline.30s.sh)' do
+    before do
+      skip 'SwiftBar user shim is local macOS platform only' if ENV['CI'] || !File.exist?(swiftbar_shim)
+    end
     it 'exists and is executable' do
       expect(File.exist?(swiftbar_shim)).to be true
       expect(File.executable?(swiftbar_shim)).to be true

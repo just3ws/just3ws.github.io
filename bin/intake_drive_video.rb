@@ -231,18 +231,27 @@ class MediaIntakePipeline
       (ch_conf['targets'] || {}).each do |target_name, target_info|
         next if target_filter && target_name != target_filter
 
-        pending_dir = File.join(base_path, ch_name, target_name, 'pending')
-        next unless Dir.exist?(pending_dir)
+        search_dirs = [
+          base_path ? File.join(base_path, ch_name, target_name, 'pending') : nil,
+          cloud_archive_path ? File.join(cloud_archive_path, ch_name, target_name, 'pending') : nil
+        ].compact.select { |d| Dir.exist?(d) }
 
-        list_media_files(pending_dir).each do |f|
-          candidates << {
-            file_path: f,
-            channel: ch_name,
-            target_name: target_name,
-            target_info: target_info,
-            filename: File.basename(f),
-            timestamp: file_age_timestamp(f)
-          }
+        seen = {}
+        search_dirs.each do |pending_dir|
+          list_media_files(pending_dir).each do |f|
+            fn = File.basename(f)
+            next if seen[fn]
+            seen[fn] = true
+
+            candidates << {
+              file_path: f,
+              channel: ch_name,
+              target_name: target_name,
+              target_info: target_info,
+              filename: fn,
+              timestamp: file_age_timestamp(f)
+            }
+          end
         end
       end
     end
@@ -262,12 +271,16 @@ class MediaIntakePipeline
       puts ("=" * 72)
 
       ch_conf['targets'].each do |target_name, target_info|
-        target_dir = File.join(base_path, ch_name, target_name)
-        staged_files = list_media_files(File.join(target_dir, 'staged'))
-        pending_files = list_media_files(File.join(target_dir, 'pending'))
-        processing_files = list_media_files(File.join(target_dir, 'processing'))
-        processed_count = count_files_recursive(File.join(target_dir, 'processed'))
-        failed_count = list_media_files(File.join(target_dir, 'failed')).size
+        search_dirs = [
+          base_path ? File.join(base_path, ch_name, target_name) : nil,
+          cloud_archive_path ? File.join(cloud_archive_path, ch_name, target_name) : nil
+        ].compact.select { |d| Dir.exist?(d) }
+
+        staged_files = search_dirs.flat_map { |td| list_media_files(File.join(td, 'staged')) }.uniq { |f| File.basename(f) }
+        pending_files = search_dirs.flat_map { |td| list_media_files(File.join(td, 'pending')) }.uniq { |f| File.basename(f) }
+        processing_files = search_dirs.flat_map { |td| list_media_files(File.join(td, 'processing')) }.uniq { |f| File.basename(f) }
+        processed_count = search_dirs.sum { |td| count_files_recursive(File.join(td, 'processed')) }
+        failed_count = search_dirs.sum { |td| list_media_files(File.join(td, 'failed')).size }
 
         puts "\n📁 Target: #{target_name}"
         puts "   Series:    #{target_info['series_name']}"

@@ -377,6 +377,7 @@ class LiveDashboardStreamer
     return {} unless File.exist?(INTAKE_CONFIG_PATH)
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
     base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
+    cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
     channel = 'whoistechcmty'
     targets = config.dig('channels', channel, 'targets') || {}
 
@@ -441,13 +442,18 @@ class LiveDashboardStreamer
 
     target_stats = {}
     targets.each do |target_name, target_info|
-      target_dir = File.join(base_p, channel, target_name)
-      staged_files = Dir.glob(File.join(target_dir, 'staged', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
-      pending_files = Dir.glob(File.join(target_dir, 'pending', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
-      processing_files = Dir.glob(File.join(target_dir, 'processing', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
-      processed_files = Dir.glob(File.join(target_dir, 'processed', '**', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
-      failed_files = Dir.glob(File.join(target_dir, 'failed', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
-      blocked_files = Dir.glob(File.join(target_dir, 'blocked', '*')).select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+      search_dirs = [
+        (base_p && Dir.exist?(base_p)) ? File.join(base_p, channel, target_name) : nil,
+        (cloud_p && Dir.exist?(cloud_p)) ? File.join(cloud_p, channel, target_name) : nil
+      ].compact
+      target_dir = search_dirs.first || File.join(base_p || '', channel, target_name)
+
+      staged_files = search_dirs.flat_map { |td| Dir.glob(File.join(td, 'staged', '*')) }.select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.uniq { |f| File.basename(f) }
+      pending_files = search_dirs.flat_map { |td| Dir.glob(File.join(td, 'pending', '*')) }.select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.uniq { |f| File.basename(f) }
+      processing_files = search_dirs.flat_map { |td| Dir.glob(File.join(td, 'processing', '*')) }.select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.uniq { |f| File.basename(f) }
+      processed_files = search_dirs.flat_map { |td| Dir.glob(File.join(td, 'processed', '**', '*')) }.select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.uniq { |f| File.basename(f) }
+      failed_files = search_dirs.flat_map { |td| Dir.glob(File.join(td, 'failed', '*')) }.select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.uniq { |f| File.basename(f) }
+      blocked_files = search_dirs.flat_map { |td| Dir.glob(File.join(td, 'blocked', '*')) }.select { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }.uniq { |f| File.basename(f) }
 
       pending_sorted = pending_files.sort_by do |f|
         begin
@@ -546,7 +552,7 @@ class LiveDashboardStreamer
           'filename' => File.basename(f),
           'size_bytes' => (File.size(f) rescue 0),
           'archived_at' => (File.mtime(f).utc.iso8601 rescue nil),
-          'archive_path' => f.sub("#{target_dir}/", ''),
+          'archive_path' => f.sub(/^.*\/processed\//, 'processed/'),
           'video_id' => receipt['video_id'],
           'youtube_url' => receipt['youtube_url'] || (receipt['video_id'] ? "https://youtu.be/#{receipt['video_id']}" : nil),
           'title' => receipt['title'],

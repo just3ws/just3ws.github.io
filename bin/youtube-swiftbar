@@ -23,17 +23,16 @@ TELEMETRY_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
 FALLBACK_CLOUD_BASE = File.expand_path('~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake')
 intake_config = (File.exist?(CONFIG_PATH) ? YAML.safe_load(File.read(CONFIG_PATH)) : {}) rescue {}
 configured_base = intake_config['base_path'] ? File.expand_path(intake_config['base_path']) : nil
+cloud_base = intake_config['cloud_archive_path'] ? File.expand_path(intake_config['cloud_archive_path']) : FALLBACK_CLOUD_BASE
 
-intake_base = if configured_base && Dir.exist?(configured_base)
-                configured_base
-              elsif Dir.exist?(FALLBACK_CLOUD_BASE)
-                FALLBACK_CLOUD_BASE
-              else
-                File.expand_path('~/.local/var/media_intake')
-              end
+search_bases = [
+  configured_base && Dir.exist?(configured_base) ? configured_base : nil,
+  cloud_base && Dir.exist?(cloud_base) ? cloud_base : nil
+].compact.uniq
+search_bases << File.expand_path('~/.local/var/media_intake') if search_bases.empty?
 
 channel = 'whoistechcmty'
-channel_dir = File.join(intake_base, channel)
+channel_dir = File.join(search_bases.first, channel)
 
 # Target playlists
 targets = {
@@ -65,56 +64,34 @@ total_failed = 0
 target_stats = {}
 
 targets.each do |target_key, target_meta|
-  target_dir = File.join(channel_dir, target_key)
-  staged_files = []
-  pending_files = []
-  processing_files = []
-  processed_count = 0
-  failed_files = []
+  search_dirs = search_bases.map { |b| File.join(b, channel, target_key) }.select { |d| Dir.exist?(d) }
+  target_dir = search_dirs.first || File.join(search_bases.first, channel, target_key)
 
-  if Dir.exist?(target_dir)
-    staged_dir = File.join(target_dir, 'staged')
-    pending_dir = File.join(target_dir, 'pending')
-    processing_dir = File.join(target_dir, 'processing')
-    processed_dir = File.join(target_dir, 'processed')
-    failed_dir = File.join(target_dir, 'failed')
+  staged_files = search_dirs.flat_map do |td|
+    Dir.exist?(File.join(td, 'staged')) ? Dir.children(File.join(td, 'staged')).select { |f| media_exts.include?(File.extname(f)) && !f.start_with?('.') } : []
+  end.uniq
 
-    if Dir.exist?(staged_dir)
-      staged_files = Dir.children(staged_dir).select do |f|
-        media_exts.include?(File.extname(f)) && !f.start_with?('.')
-      end
-    end
+  pending_files = search_dirs.flat_map do |td|
+    Dir.exist?(File.join(td, 'pending')) ? Dir.children(File.join(td, 'pending')).select { |f| media_exts.include?(File.extname(f)) && !f.start_with?('.') } : []
+  end.uniq
 
-    if Dir.exist?(pending_dir)
-      pending_files = Dir.children(pending_dir).select do |f|
-        media_exts.include?(File.extname(f)) && !f.start_with?('.')
-      end
-    end
+  processing_files = search_dirs.flat_map do |td|
+    Dir.exist?(File.join(td, 'processing')) ? Dir.children(File.join(td, 'processing')).select { |f| media_exts.include?(File.extname(f)) && !f.start_with?('.') } : []
+  end.uniq
 
-    if Dir.exist?(processing_dir)
-      processing_files = Dir.children(processing_dir).select do |f|
-        media_exts.include?(File.extname(f)) && !f.start_with?('.')
-      end
-    end
-
-    if Dir.exist?(processed_dir)
-      # Count all files in processed including subfolders (YYYY-MM)
-      processed_count = Dir.glob(File.join(processed_dir, '**', '*')).count { |f| File.file?(f) && !File.basename(f).start_with?('.') }
-    end
-
-    if Dir.exist?(failed_dir)
-      # Count unique failed media jobs rather than raw sidecar count
-      failed_media = Dir.children(failed_dir).select do |f|
-        media_exts.include?(File.extname(f)) && !f.start_with?('.')
-      end
-      if failed_media.any?
-        failed_files = failed_media
-      else
-        # Fallback: if only sidecar error logs remain, count unique failed bases
-        failed_files = Dir.children(failed_dir).select { |f| f.end_with?('.error.log') }.map { |f| f.sub(/\.error\.log$/, '') }
-      end
-    end
+  processed_count = search_dirs.sum do |td|
+    Dir.exist?(File.join(td, 'processed')) ? Dir.glob(File.join(td, 'processed', '**', '*')).count { |f| File.file?(f) && !File.basename(f).start_with?('.') } : 0
   end
+
+  failed_files = search_dirs.flat_map do |td|
+    next [] unless Dir.exist?(File.join(td, 'failed'))
+    f_media = Dir.children(File.join(td, 'failed')).select { |f| media_exts.include?(File.extname(f)) && !f.start_with?('.') }
+    if f_media.any?
+      f_media
+    else
+      Dir.children(File.join(td, 'failed')).select { |f| f.end_with?('.error.log') }.map { |f| f.sub(/\.error\.log$/, '') }
+    end
+  end.uniq
 
   total_staged += staged_files.size
   total_pending += pending_files.size

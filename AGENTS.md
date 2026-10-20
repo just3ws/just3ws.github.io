@@ -11,6 +11,28 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - DASHBOARD QUEUE RESTORATION, CI PIPELINE REPAIR & FLUID LAYOUT EXPANSION (2026-10-20):
+         Restored live media intake visibility across dashboard and SwiftBar, repaired GitHub Actions CI gate failures, expanded browser layout measure, and synthesized the sovereign verification continuum into Part 1:
+         - Dual-Queue Intake Search Foundation (`bin/live_dashboard_streamer.rb`, `bin/youtube_pipeline.rb`, `bin/intake_drive_video.rb`, `bin/youtube-swiftbar`):
+           - Fixed empty `#tab-queue` on `https://www.just3ws.localhost/youtube/dashboard/`: updated queue collectors to inspect both local SSD (`base_path: ~/.local/var/media_intake`) and Google Drive (`cloud_archive_path`), surfacing all 7 pending videos across live SSE telemetry (`/telemetry.json`), static fallbacks, and SwiftBar.
+           - Ensured `intake_drive_video.rb` FIFO queue worker and status inspector discover pending files across both directories while staging active processing on fast NVMe SSD.
+         - GitHub Actions CI Gate Repair (`.github/workflows/deploy.yml`, `spec/data/ecosystem_datalake_spec.rb`, `spec/youtube/swiftbar_spec.rb`, `spec/youtube/media_intake_pipeline_spec.rb`):
+           - Root-caused and resolved the 9 failing specs in GitHub Actions run `39466319990`:
+             - Added `GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}` to the CI verification step in `deploy.yml`.
+             - Guarded macOS-only SwiftBar user shim tests in `spec/youtube/swiftbar_spec.rb` when running on `ubuntu-latest`.
+             - Guarded local zdots `ztranscribe` binary check in `spec/youtube/media_intake_pipeline_spec.rb` on CI runners.
+             - Guarded local workstation datalake and DuckDB execution in `spec/data/ecosystem_datalake_spec.rb` when running in headless CI environments.
+           - Verified all 302/302 RSpec examples passing cleanly in CI simulation (`CI=true bundle exec rspec`) and locally.
+         - Fluid Measure & Ergonomic Layout Expansion (`_sass/_p_base_layout.scss`):
+           - Lifted the restrictive `68ch` clamp off `article`, expanding `article`, `.page`, and `.post` to fluid `var(--container-max-width, 84rem)` across desktop viewports.
+           - Maintained comfortable ergonomic reading measure (`76ch` to `78ch`) for long-form prose paragraphs while allowing data tables, pre/code blocks, diagrams, and callouts to expand comfortably.
+           - Removed the `50rem` restriction on `.post-excerpt`, allowing `/writing/` (`writing.html`) and `/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/` to use browser width naturally.
+         - Sovereign Verification Series Synthesis in Part 1 (`_posts/2026-10-12-under-the-high-tension-wires-forensic-acoustics-and-craftsmanship.md`):
+           - Added concluding synthesis section connecting Part 1 to the out-of-sample field re-test under the 345kV conductors, the dual-model divergence, the meters vs yards trap, the digital theremin metaphor, bounded physical hardware hygiene, Part 2, Part 3, and the project index at `/series/ai-competence/`.
+         - Localhost Verification:
+           - Jekyll build passing cleanly across 1,049 pages; verified live on `https://www.just3ws.localhost/youtube/dashboard/`, `https://www.just3ws.localhost/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/`, and `https://www.just3ws.localhost/writing/` (all HTTP 200).
+           - Fast validation passing cleanly across 498 Markdown files, zero em dashes across all edits.
+
        - AUTONOMOUS STORAGE HYGIENE MONOGRAPH SYNTHESIS & AI DISCLOSURE RECALIBRATION (2026-10-20):
          Synthesized the autonomous storage control plane monograph into the sovereign verification series and recalibrated site AI disclosure banners for candid, authentic voice:
          - Control Plane Monograph Synthesis (`docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture.md`, `series/ai-competence/index.html`):

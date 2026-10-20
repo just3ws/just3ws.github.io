@@ -737,6 +737,50 @@ When we unite Alan Watts and Peter Watts, the lesson for software craftsmanship 
 
 ---
 
+## The Sovereign Verification Field Re-Test: From Initial Fluke to Generalizable Discipline
+
+Eight days after this initial DSP restoration, the core question returned with renewed urgency: **Was the tool created on that first video a reusable, general-purpose engineering asset, or was it an overfitted fluke specifically tuned to a single corrupt artifact?**
+
+To find out, I deliberately returned to the physical trail beneath the 345kV conductors on October 19, 2026, recording a fresh field monologue while walking and talking continuously (`VID_20261019_102821897.mp4`). The results from this out-of-sample stress test severed the illusion of generative fluency from physical engineering reality, establishing the four pillars of the Sovereign Verification series:
+
+### 1. Invariants Hold, Generative Speculation Collapses
+
+When the restored DSP filtergraph was applied to the fresh recording:
+- **The Physical Invariants Held**: The hardware-level bottom microphone isolation (`c0=c0|c1=c0`) and the cascaded 60 Hz utility harmonic notch filters stripped the electromagnetic interference cleanly. The physical laws governing acoustic geometry and the North American electrical grid did not drift.
+- **The LLM's Speculative Gap-Filling Collapsed**: The celebrated 20% "quartz crystal clock drift" (`atempo=0.837`) that the model had generated with supreme mathematical confidence was revealed as total hallucination. Speech had been recorded at 1.0x playback speed all along. The 3.5-minute difference between audio and video containers was simply silent walking footage after I said "Thank you." When presented with an ungrounded gap, the generative model had manufactured a plausible-sounding physical defect rather than admit it could not see the silence.
+
+### 2. The Dual-Model Divergence & The Meters vs. Yards Trap
+
+Software practitioners in 2026 are caught between two fundamentally different model architectures:
+- **Deterministic Code Models**: Bounded by compilers, syntax trees, characterization suites, and process exit codes. If an import fails, the build breaks immediately.
+- **Generative Language Models**: Operating purely on probabilistic token continuation. They possess zero causal ground truth. When an information gap appears, they fill it speculatively and persuasively.
+
+At small scale, an ungrounded speculation looks like harmless linguistic lubrication. At enterprise scale, it is the Mars Climate Orbiter trap: one team calculating in metric newton-seconds, the other in imperial pound-seconds, while the predictive prose bridges the divide with velvet assurances until the spacecraft disintegrates in the Martian atmosphere.
+
+### 3. The Digital Theremin & Attention Bleed
+
+Why does generative text and media feel subtly uncanny? In physical reality and analog photography, two adjacent objects share space purely by coincidence of line of sight from an observer; the pixels have no causal or predictive relationship to one another.
+
+In transformer self-attention ($QK^T / \sqrt{d}$) and latent diffusion, every token and latent vector is universally aware of every other element. This creates an over-lubricated velvet surface where sharp physical boundaries bleed into broadstroke compromises. Generative AI is a **Digital Theremin**: an invisible, continuous probability field without discrete keys, frets, or physical stops. If the human practitioner does not supply rigorous boundary tests and empirical ground truth, the instrument generates pure hallucinatory feedback.
+
+### 4. Grounding in Bounded Physical Hardware
+
+Sovereign verification cannot live in cloud abstractions alone. Operating on an Apple Silicon MacBook Air with a finite 228 GB primary SSD imposes immediate physical discipline. The autonomous media pipeline was redesigned around a local-first SSD queue (`~/.local/var/media_intake`), polite OS-level CPU scheduling (POSIX `nice 15` and macOS Darwin Background QoS `taskpolicy -b`), and zero-disk-waste intermediate chunk eviction. True systems craftsmanship begins by respecting the physical boundaries of the local machine.
+
+---
+
+### The Sovereign Verification Series Continuum
+
+This case study under the high-tension wires is Part 1 of a unified three-part systems architecture investigation:
+
+- **Part 1 (This Document)**: [Under the High-Tension Wires: Building Deterministic Tools from Nondeterministic Systems](/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/)
+- **Part 2**: [The Mirage of Competence: Sovereign Verification and the Meters vs. Yards Trap](/2026/10/20/the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.html)
+- **Part 3**: [The Digital Theremin: Attention Bleed, Uncanny Boundaries, and the Low-Trust Panopticon](/2026/10/20/the-digital-theremin-attention-bleed-and-the-uncanny-boundary.html)
+- **Overarching Curriculum & Archival Index**: [The Sovereign Verification Project Overview](/series/ai-competence/)
+- **Storage Hygiene Architecture**: [Autonomous Storage Hygiene & Self-Evolving OS Architecture Monograph](/docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture/)
+
+---
+
 - **Restoration Toolchain Repo**: [GitHub: `just3ws/dehum`](https://github.com/just3ws/dehum)
 - **Chronological Forensic Timeline**: [`CONVERSATION_TIMELINE.md`](https://github.com/just3ws/dehum/blob/main/CONVERSATION_TIMELINE.md) (Complete 41-turn, 1,793-step execution audit across 64 hours)
 - **Comprehensive Audit Report**: [`ECONOMIC_AND_TECHNICAL_AUDIT.md`](https://github.com/just3ws/dehum/blob/main/ECONOMIC_AND_TECHNICAL_AUDIT.md) (Complete token telemetry, $40 vs $10,010 labor equivalence, and compromise breakdown)

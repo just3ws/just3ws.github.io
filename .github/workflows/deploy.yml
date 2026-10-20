@@ -40,6 +40,8 @@ jobs:
           ruby-version: '4.0.6'
           bundler-cache: true
       - name: Run CI gate
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./bin/pipeline verify
       - name: Upload failure diagnostics
         if: failure()
