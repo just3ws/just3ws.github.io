@@ -11,6 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - AUTONOMOUS STORAGE HYGIENE MONOGRAPH SYNTHESIS & AI DISCLOSURE RECALIBRATION (2026-10-20):
+         Synthesized the autonomous storage control plane monograph into the sovereign verification series and recalibrated site AI disclosure banners for candid, authentic voice:
+         - Control Plane Monograph Synthesis (`docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture.md`, `series/ai-competence/index.html`):
+           - Grounded the philosophical thesis of sovereign verification in bounded physical hardware: operating on an Apple Silicon MacBook Air with a finite 228 GB primary SSD where unchecked pipeline residue poses an existential risk to system stability.
+           - Integrated the 7 semantic storage buckets (`Root`, `Models`, `Docker`, `Ingest`, `Caches`, `Logs`, `Backups`), the hygiene triad (`zdots-storage`, `zdots-hygiene`, `log-rotate`), multi-tier guardrails (The Tilde Shield, Anti-Bitrot structural signatures, The Schrute Test), and the Dual-AI symbiosis (zero-cost on-device `whisper.cpp` / `nomic-embed` paired with strategic cloud frontier reasoning).
+           - Documented the Virtuous Loop: harvesting intellectual lessons into `~/my` before intermediate WAV chunk eviction and zstd log compaction (85%+ compression ratios).
+         - Authentic AI Warning Blurb Recalibration (`_layouts/post.html`, `docs/ai-content-disclosure-and-provenance.md`):
+           - Replaced bureaucratic boilerplate with Mike Hall's candid authorial voice: ironically acknowledging the meta-dissonance of using an AI assistant to warn readers about the epistemic limits of AI ("what is even entirely 'pure' text anymore?").
+           - Framed the site as an open experiment in learning in public, applying safety protocols while remaining humble and actively welcoming suggestions for tighter boundaries.
+         - Localhost Verification:
+           - Jekyll build passing across 1,049 pages; verified live on `https://just3ws.localhost/series/ai-competence/` (HTTP 200) and `https://just3ws.localhost/docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture/` (HTTP 200).
+           - Fast validation passing cleanly across 498 Markdown files, zero em dashes across all edits.
+
        - SOVEREIGN VERIFICATION PROJECT OVERVIEW & ARCHIVAL INDEX PUBLICATION (2026-10-20):
          Built out the overarching project index page and curriculum hub at `/series/ai-competence/` (`series/ai-competence/index.html`), unifying the complete 3-part AI Competence & Sovereign Verification series:
          - Overarching Project Index & Provenance Surface (`series/ai-competence/index.html`):

@@ -257,28 +257,32 @@ body_class: surface-editorial
     </div>
   </section>
 
-  <!-- Section 3: Google Drive & Local Storage Architecture -->
+  <!-- Section 3: The Control Plane Engine & Finite Workstation Reality -->
   <section aria-labelledby="storage-topology" style="margin-bottom: 3.5rem;">
     <div style="border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
       <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent, #b45309);">
-        Storage Architecture
+        Platform Control Plane
       </div>
       <h2 id="storage-topology" style="font-size: 1.6rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0.25rem 0 0;">
-        From CloudProvider Bottleneck to Local NVMe Seam
+        The Engine Beneath the Field: Autonomous Control Planes &amp; The 228 GB Workstation Reality
       </h2>
     </div>
 
-    <p style="font-size: 1rem; line-height: 1.6; color: var(--color-text, #1e232a); margin-bottom: 1.5rem;">
-      During the field investigations, active video intake originally relied on Google Drive via macOS CloudStorage (<code>/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake</code>). This created a severe operational bottleneck: mobile devices had to push multi-gigabyte files to Google cloud infrastructure, only for macOS FileProvider daemons to stall local disk I/O while synchronizing.
+    <p style="font-size: 1rem; line-height: 1.6; color: var(--color-text, #1e232a); margin-bottom: 1.25rem;">
+      Sovereign verification is not an abstract philosophical concept: it is an operational survival discipline dictated by bounded physical hardware. All audio extraction, dehum DSP filtering, local Whisper speech recognition, and datalake compilation run on a single Apple Silicon MacBook Air with a <strong>finite 228 GB primary SSD</strong>.
     </p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted, #525866); margin-bottom: 1.5rem;">
+      In high-velocity media pipelines, unchecked intermediate files can swallow 10 to 25 GB in an afternoon. If available root storage drops below 5 GB, SQLite databases lock, container runtimes corrupt, and macOS swaps aggressively. Rather than relying on panicked manual cleanups or risky AI scripts, the platform operates a decade-long continuum of personal OS architecture (<code>zdots</code>) detailed in our monograph: <a href="/docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture/" style="color: var(--color-primary, #0f766e); font-weight: 700;">The Self-Evolving Control Plane</a>.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.75rem;">
       <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; font-weight: 800; margin: 0 0 0.5rem; color: #b91c1c;">
-          ❌ The CloudProvider Failure Mode
+        <h3 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.5rem; color: #b91c1c;">
+          ❌ The CloudProvider Bottleneck
         </h3>
         <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
-          Mobile upload to cloud stalled; macOS FileProvider hung file system reads with <code>Errno::ETIMEDOUT</code>; fanless MacBook Air throttled running Whisper and FFmpeg simultaneously.
+          Staged media inside macOS CloudStorage (<code>GoogleDrive-mike@just3ws.com/My Drive/Media Intake</code>) triggered synchronous FileProvider virtual mount deadlocks (<code>Errno::ETIMEDOUT</code>), blocking pipeline workers while phones struggled with multi-gigabyte cellular uploads.
         </p>
         <div style="font-size: 0.8rem; font-family: monospace; color: var(--color-text-muted, #525866);">
           Phone &rarr; Internet &rarr; Drive &rarr; Mac Sync &rarr; YouTube
@@ -286,16 +290,49 @@ body_class: surface-editorial
       </div>
 
       <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-primary, #0f766e); border-radius: 8px; padding: 1.5rem;">
-        <h3 style="font-size: 1.1rem; font-weight: 800; margin: 0 0 0.5rem; color: var(--color-primary, #0f766e);">
-          ✅ The Local-First Ingest Architecture
+        <h3 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.5rem; color: var(--color-primary, #0f766e);">
+          ✅ The Local NVMe Seam &amp; Dual AI Symbiosis
         </h3>
         <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
-          Direct peer-to-peer Wi-Fi via LocalSend / Syncthing or direct USB pull directly into <code>~/.local/var/media_intake</code>; background workers nice'd to priority 15; cold archive mirrored to Google Drive asynchronously after YouTube publish.
+          Direct peer-to-peer Wi-Fi (LocalSend / Syncthing) into fast local NVMe SSD (<code>~/.local/var/media_intake</code>); background compute nice'd to level 15; on-device private AI (<code>whisper.cpp</code>, <code>nomic-embed</code>) handles high-throughput pipelines while frontier models handle strategic reasoning.
         </p>
         <div style="font-size: 0.8rem; font-family: monospace; color: var(--color-primary, #0f766e);">
           Phone &rarr; Local Wi-Fi &rarr; NVMe SSD &rarr; Async Cloud
         </div>
       </div>
+    </div>
+
+    <!-- The Control Plane Triad & Guardrails Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <div style="background: var(--color-bg-base, #f8f6f0); border: 1px solid var(--color-border, #e3dfd7); border-radius: 6px; padding: 1rem;">
+        <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e);">The Hygiene Triad</div>
+        <p style="font-size: 0.85rem; color: var(--color-text, #1e232a); margin: 0.35rem 0 0; line-height: 1.45;">
+          <code>zdots-storage</code> (continuous telemetry), <code>zdots-hygiene</code> (bounded dry-run sweeper), and <code>log-rotate</code> (zero-downtime log truncation).
+        </p>
+      </div>
+
+      <div style="background: var(--color-bg-base, #f8f6f0); border: 1px solid var(--color-border, #e3dfd7); border-radius: 6px; padding: 1rem;">
+        <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e);">The Tilde Shield</div>
+        <p style="font-size: 0.85rem; color: var(--color-text, #1e232a); margin: 0.35rem 0 0; line-height: 1.45;">
+          Strict boundary defense prohibiting naked <code>~</code> or unanchored variables in destructive shell commands, preventing AI agents from wiping <code>$HOME</code>.
+        </p>
+      </div>
+
+      <div style="background: var(--color-bg-base, #f8f6f0); border: 1px solid var(--color-border, #e3dfd7); border-radius: 6px; padding: 1rem;">
+        <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--color-primary, #0f766e);">The Virtuous Loop</div>
+        <p style="font-size: 0.85rem; color: var(--color-text, #1e232a); margin: 0.35rem 0 0; line-height: 1.45;">
+          Intellectual lessons harvested into <code>~/my</code> and CareerOS datalake before intermediate WAV chunks are evicted and session logs compressed via <code>zstd</code> (85%+ ratios).
+        </p>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid var(--color-border, #eeebe3); padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+      <a href="/docs/architecture/autonomous-storage-hygiene-and-self-evolving-os-architecture/" style="font-size: 0.85rem; font-weight: 800; color: var(--color-primary, #0f766e); text-decoration: none;">
+        Read the Complete Storage Hygiene &amp; Control Plane Monograph &rarr;
+      </a>
+      <span style="font-size: 0.8rem; font-family: monospace; color: var(--color-text-muted, #525866);">
+        bats tests: 32 passing contract proofs
+      </span>
     </div>
   </section>
 

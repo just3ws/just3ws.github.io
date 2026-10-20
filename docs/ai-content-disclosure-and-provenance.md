@@ -8,14 +8,15 @@ sitemap: true
 
 # AI Content Disclosure and Provenance Policy
 
-This public archive uses AI tools as research and writing assistants. Mike Hall
-is the human author and publisher of the articles that carry this disclosure.
-He supplies the intent, source material, interpretation, corrections, and final
-approval.
+This public archive uses AI tools as research, drafting, and organizing assistants.
+Mike Hall is the human author, operator, and publisher of the articles that carry this disclosure.
+He supplies the intent, lived memories, source material, interpretation, corrections, and final approval.
+
+We are in a distinctly weird moment in computing. Using an AI assistant to warn readers about the epistemic limits and hallucination traps of AI carries an unmistakable irony: at this point, what is even entirely "pure" text anymore? This archive is an open experiment in learning in public. I am doing my best to apply rigorous safety protocols, contract tests, and physical ground truth, but it remains a continuous learning process. If you spot holes, ungrounded leaps, or opportunities for tighter boundaries, suggestions and corrections are genuinely welcome.
 
 AI tools can help organize a large archive, suggest structure, summarize source
 material, and draw diagrams. They cannot independently verify a memory, hear a
-recording, establish a historical fact, or take responsibility for a claim.
+recording, establish a physical invariant, or take responsibility for an engineering claim.
 
 ## The publication rule
 
