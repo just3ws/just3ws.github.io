@@ -18,12 +18,75 @@
         </a>
       </li>
       <li>
-        <a href="/resume.html" class="cmd-item" data-search="resume executive cv positions history experience ats print vector canonical profile">
+        <a href="/resume/" class="cmd-item" data-search="resume executive cv positions history experience ats print vector canonical profile">
           <div class="cmd-item-left">
             <span class="cmd-item-icon">📄</span>
             <span class="cmd-item-title">Executive Resume (ATS & Vector Print)</span>
           </div>
           <span class="cmd-item-badge">/resume</span>
+        </a>
+      </li>
+      <li>
+        <a href="/series/ai-competence/" class="cmd-item" data-search="the sovereign verification project ai competence high tension wires digital theremin meters vs yards trap dsp forensic acoustics 345kv audio dehum">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🧭</span>
+            <span class="cmd-item-title">The Sovereign Verification Project (3-Part Series)</span>
+          </div>
+          <span class="cmd-item-badge">/series/ai-competence</span>
+        </a>
+      </li>
+      <li>
+        <a href="/series/the-sound-above/" class="cmd-item" data-search="the sound above oral history rewatch series curriculum 37 episodes ugtastic chicago craftsmanship sergio pereira scna">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">📺</span>
+            <span class="cmd-item-title">The Sound Above: 37-Episode Curriculum Hub</span>
+          </div>
+          <span class="cmd-item-badge">/series/the-sound-above</span>
+        </a>
+      </li>
+      <li>
+        <a href="/linkedin/" class="cmd-item" data-search="linkedin profile mapping export headline about summary featured projects experience skills copy text blocks">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">💼</span>
+            <span class="cmd-item-title">LinkedIn Profile Mapping &amp; Export Tool</span>
+          </div>
+          <span class="cmd-item-badge">/linkedin</span>
+        </a>
+      </li>
+      <li>
+        <a href="/writing/" class="cmd-item" data-search="writing practice thinking essays monographs systems engineering technical articles software craftsmanship">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">✍️</span>
+            <span class="cmd-item-title">Practice &amp; Thinking Writing Hub</span>
+          </div>
+          <span class="cmd-item-badge">/writing</span>
+        </a>
+      </li>
+      <li>
+        <a href="/chicago-craftsmanship/" class="cmd-item" data-search="chicago software craftsmanship renaissance monograph origins scna alt.net obtiva 8th light groupon 2006 2015">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🏛️</span>
+            <span class="cmd-item-title">Chicago Craftsmanship History Monograph</span>
+          </div>
+          <span class="cmd-item-badge">/chicago-craftsmanship</span>
+        </a>
+      </li>
+      <li>
+        <a href="/scmc/" class="cmd-item" data-search="scmc software craftsmanship mchenry county archive 17 years meetup follett ryan gerry jim suchy mike hall">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">🏛️</span>
+            <span class="cmd-item-title">SCMC Community Archive (17 Years)</span>
+          </div>
+          <span class="cmd-item-badge">/scmc</span>
+        </a>
+      </li>
+      <li>
+        <a href="/dehum/" class="cmd-item" data-search="interactive dehum audio forensics lab web audio api high tension wires 60hz notch filters spectrogram">
+          <div class="cmd-item-left">
+            <span class="cmd-item-icon">⚡</span>
+            <span class="cmd-item-title">Interactive Dehum Audio Forensics Lab</span>
+          </div>
+          <span class="cmd-item-badge">/dehum</span>
         </a>
       </li>
       <li>
@@ -367,17 +430,24 @@
       visible[newIdx].scrollIntoView({ block: 'nearest' });
     }
 
-    // Standardize on Cmd+Shift+K on macOS and Ctrl+Shift+K on Windows/Linux.
-    // Firefox reserves plain Cmd+K for web search, and browser-level shortcuts
-    // may not reach the page. Capture the safe page-level binding early while
-    // keeping the visible palette button available as a universal fallback.
+    // Support Cmd+Shift+K on macOS, Ctrl+Shift+K on Windows/Linux,
+    // and plain Cmd+K / Ctrl+K when not typing in an input or textarea.
     window.addEventListener('keydown', function(e) {
-      const isSafePaletteShortcut =
+      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+      const isInputFocused = activeTag === 'input' || activeTag === 'textarea' || (document.activeElement && document.activeElement.isContentEditable);
+
+      const isShiftCmdK =
         (e.metaKey || e.ctrlKey) &&
         e.shiftKey &&
         e.key.toLowerCase() === 'k';
 
-      if (isSafePaletteShortcut) {
+      const isPlainCmdK =
+        (e.metaKey || e.ctrlKey) &&
+        !e.shiftKey &&
+        e.key.toLowerCase() === 'k' &&
+        !isInputFocused;
+
+      if (isShiftCmdK || isPlainCmdK) {
         e.preventDefault();
         e.stopImmediatePropagation();
         if (backdrop.classList.contains('is-open')) {

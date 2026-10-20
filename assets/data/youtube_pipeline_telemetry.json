@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T20:38:39Z",
+  "generated_at": "2026-10-20T20:53:12Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -5431,6 +5431,40 @@
     },
     "activity_stream": [
       {
+        "timestamp": "2026-10-20T20:52:54Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 65611
+        }
+      },
+      {
+        "timestamp": "2026-10-20T20:52:54Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 65967
+        }
+      },
+      {
+        "timestamp": "2026-10-20T20:52:54Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 65868
+        }
+      },
+      {
+        "timestamp": "2026-10-20T20:40:49Z",
+        "stage": "sweeper",
+        "level": "warning",
+        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
+        "details": {}
+      },
+      {
         "timestamp": "2026-10-20T20:38:24Z",
         "stage": "scheduler",
         "level": "info",
@@ -5762,56 +5796,9 @@
           "filename": "VID_20261019_102821897.mp4",
           "target": "ramblin-amblin"
         }
-      },
-      {
-        "timestamp": "2026-10-20T19:21:28Z",
-        "stage": "scheduler",
-        "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
-        "details": {
-          "pid": 29049
-        }
-      },
-      {
-        "timestamp": "2026-10-20T19:21:27Z",
-        "stage": "autonomous",
-        "level": "info",
-        "message": "Autonomous intake triggered single-worker ingestion (PID 29049)",
-        "details": {
-          "pid": 29049
-        }
-      },
-      {
-        "timestamp": "2026-10-20T19:21:26Z",
-        "stage": "blocked",
-        "level": "warning",
-        "message": "Pipeline temporarily blocked on VID_20261018_102632795.mp4 due to upstream quota/rate limit: YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n. Resumes upon 2:00 AM CT cooldown reset.",
-        "details": {
-          "decision": "upstream_quota_blocked",
-          "confidence": 0.9995,
-          "probabilities": {
-            "upstream_quota_blocked": 0.9995,
-            "transient_network_retry": 0.0001,
-            "audio_codec_resample": 0.0001,
-            "credential_refresh": 0.0001,
-            "quarantine_operator_review": 0.0001
-          },
-          "diagnostic": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}"
-        }
-      },
-      {
-        "timestamp": "2026-10-20T19:21:26Z",
-        "stage": "warning",
-        "level": "warning",
-        "message": "Failed adding FJLpbN6nSck to playlist PLNtb969T2-l0: YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n",
-        "details": {
-          "video_id": "FJLpbN6nSck",
-          "playlist_id": "PLNtb969T2-l0",
-          "error": "YouTube API Error adding item to playlist PLNtb969T2-l0 (403): {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n    \"errors\": [\n      {\n        \"message\": \"The request cannot be completed because you have exceeded your \\u003ca href=\\\"/youtube/data/getting-started#quota\\\"\\u003equota\\u003c/a\\u003e.\",\n        \"domain\": \"youtube.quota\",\n        \"reason\": \"quotaExceeded\"\n      }\n    ]\n  }\n}\n"
-        }
       }
     ],
-    "polled_at": "2026-10-20T20:39:20Z"
+    "polled_at": "2026-10-20T20:53:34Z"
   },
   "assets": [
     {
@@ -9725,5 +9712,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-20T20:39:20Z"
+  "updated_at": "2026-10-20T20:53:34Z"
 }

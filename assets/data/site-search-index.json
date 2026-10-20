@@ -12,10 +12,45 @@ permalink: /assets/data/site-search-index.json
   },
   {
     "title": "Executive Resume (ATS & Vector Print)",
-    "url": "/resume.html",
+    "url": "/resume/",
     "badge": "Resume",
     "icon": "📄",
     "keywords": "resume executive cv positions history experience ats print vector canonical profile"
+  },
+  {
+    "title": "The Sovereign Verification Project (3-Part Series)",
+    "url": "/series/ai-competence/",
+    "badge": "Series",
+    "icon": "🧭",
+    "keywords": "the sovereign verification project ai competence high tension wires digital theremin meters vs yards trap dsp forensic acoustics 345kv audio dehum"
+  },
+  {
+    "title": "The Sound Above: 37-Episode Curriculum Hub",
+    "url": "/series/the-sound-above/",
+    "badge": "Curriculum",
+    "icon": "📺",
+    "keywords": "the sound above oral history rewatch series curriculum 37 episodes ugtastic chicago craftsmanship sergio pereira scna"
+  },
+  {
+    "title": "LinkedIn Profile Mapping & Export Tool",
+    "url": "/linkedin/",
+    "badge": "Tool",
+    "icon": "💼",
+    "keywords": "linkedin profile mapping export headline about summary featured projects experience skills copy text blocks"
+  },
+  {
+    "title": "Practice & Thinking Writing Hub",
+    "url": "/writing/",
+    "badge": "Writing",
+    "icon": "✍️",
+    "keywords": "writing practice thinking essays monographs systems engineering technical articles software craftsmanship"
+  },
+  {
+    "title": "Interactive Dehum Audio Forensics Lab",
+    "url": "/dehum/",
+    "badge": "Audio Lab",
+    "icon": "⚡",
+    "keywords": "interactive dehum audio forensics lab web audio api high tension wires 60hz notch filters spectrogram"
   },
   {
     "title": "4D System Cartography Framework",
@@ -25,7 +60,7 @@ permalink: /assets/data/site-search-index.json
     "keywords": "system cartography panoramic view 4d architecture topology failure modes stabilization modernization playbook"
   },
   {
-    "title": "Phalanx: Duel — Tabletop Rules to Multiplayer Engine",
+    "title": "Phalanx: Duel - Tabletop Rules to Multiplayer Engine",
     "url": "/case-studies/#phalanx-duel-engine",
     "badge": "Case Study",
     "icon": "⚔️",
@@ -133,7 +168,7 @@ permalink: /assets/data/site-search-index.json
     {% assign pos = site.data.resume.positions[pos_id] %}
     {% if pos and pos.title %}
       {% assign comp_name = pos.company.name | default: pos.company %}
-      {% assign title_str = comp_name | append: " — " | append: pos.title %}
+      {% assign title_str = comp_name | append: " : " | append: pos.title %}
       {% assign kw_str = "position experience " | append: comp_name | append: " " | append: pos.title | append: " " | append: pos.dates | append: " " | append: pos.summary | append: " " | append: pos.skills | join: " " %}
       {
         "title": {{ title_str | jsonify }},
