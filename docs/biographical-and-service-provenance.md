@@ -52,7 +52,7 @@ Before working in commercial software development, Mike Hall served in the Unite
 The lessons of military medical service directly inform Mike Hall's engineering leadership:
 1. **Orienteering over Blind Velocity**: Moving toward clear reference points, checking bearings against the terrain, and prioritizing clarity over momentum.
 2. **Situational Triage**: Diagnosing failure states calmly under pressure, isolating root causes, and stabilizing production systems.
-3. **The Medic Mindset**: Taking responsibility for the person behind you, ensuring apprentices and team members have the support and psychological safety to thrive.
+3. **Care for the Team**: Taking responsibility for the person next to you, ensuring team members have the support, clear context, and psychological safety to do their best work.
 
 ---
 
