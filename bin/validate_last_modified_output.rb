@@ -34,10 +34,15 @@ def post_output_path(relative_post_path)
       if fm.is_a?(Hash)
         if fm['permalink']
           perm = fm['permalink'].sub(%r{\A/}, '').sub(%r{/\z}, '')
-          dir_idx = File.join(SITE_DIR, perm, 'index.html')
-          return dir_idx if File.file?(dir_idx)
-          file_html = File.join(SITE_DIR, "#{perm}.html")
-          return file_html if File.file?(file_html)
+          if perm.end_with?('.html')
+            direct_html = File.join(SITE_DIR, perm)
+            return direct_html if File.file?(direct_html)
+          else
+            dir_idx = File.join(SITE_DIR, perm, 'index.html')
+            return dir_idx if File.file?(dir_idx)
+            file_html = File.join(SITE_DIR, "#{perm}.html")
+            return file_html if File.file?(file_html)
+          end
         end
         if fm['categories']
           cats = fm['categories'].is_a?(Array) ? fm['categories'] : [fm['categories']]
