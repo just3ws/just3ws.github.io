@@ -11,12 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - QUIET CRAFTSMANSHIP, PSYCHOLOGICAL SAFETY & PHALANX DUEL ERRATA EPISODE (2026-10-20):
-         Calibrated public technical positioning around quiet competence, psychological safety, and generous mentorship ("safe not scary, Zarathustra's child's voice"), while formalizing Phalanx Duel as a full Errata broadcast episode:
-         - Safety-First Tone & Quiet Competence Calibration (`_data/home.yml`, `about/index.html`):
+       - QUIET CRAFTSMANSHIP, PSYCHOLOGICAL SAFETY & TOP-LEVEL PAGES ALIGNMENT (2026-10-20):
+         Calibrated public technical positioning around quiet competence, psychological safety, and generous mentorship ("safe not scary, Zarathustra's child's voice"), while formalizing Phalanx Duel as an Errata broadcast episode and completing a holistic audit across all top-level surfaces:
+         - Safety-First Tone & Quiet Competence Calibration (`_data/home.yml`, `about/index.html`, `_data/resume/summary.yml`):
            - Recalibrated homepage hero lede, operating rhythm, and through-line away from intimidating, high-intensity crisis framing ("distributed failures, risky transactions, opaque coupling") toward calm, reassuring engineering stewardship ("quiet clarity, lowering operational stress, safe changes, psychological safety").
            - Reframed the 3-step operating rhythm around team empathy: *Stabilize* (lower operational stress, make daily production predictable), *Understand* (build a legible picture so no engineer carries the mental load alone), and *Improve* (ship small, reversible changes that leave code gentler than we found it).
-           - Added explicit core value in `about/index.html` celebrating psychological safety, genuine curiosity, and Zarathustra's child's voice: meeting legacy systems with wonder rather than judgment, removing fear from production.
+           - Added explicit core value in `about/index.html` celebrating psychological safety, genuine curiosity, and Zarathustra's child's voice: meeting legacy systems with wonder rather than judgment, removing fear from production. Cleaned up dangling HTML tags.
+           - Recalibrated canonical resume summary (`_data/resume/summary.yml`) around Staff Software Engineering for calm, safe change, unblocking squads, and lowering pager stress.
+         - Production Case Studies & Systems Proof Audit (`case-studies/index.html`, `_data/case_studies.yml`):
+           - Aligned title and headers around calm systems leadership, architectural legibility, operational predictability, and team enablement.
+           - Updated case study summaries, distinctive contributions, and outcomes to emphasize psychological safety, unblocking engineering squads, and replacing on-call ambiguity with calm, legible evidence.
+         - Writing & Secondary Top-Level Surfaces Harmonization (`writing.html`, `linkedin.html`, `series/the-sound-above/index.html`, `contact/index.html`):
+           - Updated writing header and description to focus on practical systems craftsmanship, lowering operational stress, and quiet technical stewardship.
+           - Verified LinkedIn profile mapping and export tooling for 100% parity with canonical ATS resume and CODEX rules (Approach A, exactly 2 independent projects).
          - Phalanx Duel Errata Episode & Long-Form Systems Essay (`_posts/2026-10-20-phalanx-duel-make-the-rules-legible-scmc-presentation-and-game-architecture.md`, `_data/episodes/errata-phalanx-duel.yml`):
            - Authored comprehensive Errata episode post tracing the full arc: Camp Tesomas July 2022 picnic table genesis, executable Ruby combat rules, server-authoritative TypeScript engine, Go CLI client, SCMC presentation, and testing the broadcast presentation pipeline for The Sound Above.
            - Integrated Zarathustra's Three Metamorphoses (Camel, Lion, Child) into software architecture: why tabletop games represent the child's voice, and how making rules legible removes defensive friction and fear from systems change.

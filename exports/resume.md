@@ -2,12 +2,12 @@
 Staff Software Engineer
 
 ## Summary
-I am a Staff Software Engineer rooted in the profession of software engineering. I work
-at multiple levels of software engineering, from code and runtime behavior through
-business and organizational boundaries. I work with and across teams of individual
-contributors to turn business objectives into clear technical decisions, safer change,
-and durable ownership. As a Staff Engineer, I use evidence to make complex production
-software easier to understand and help teams accomplish the work that matters.
+I am a Staff Software Engineer who helps engineering teams modernize critical production
+platforms with confidence, clarity, and ease. Working alongside individual contributors,
+engineering managers, and product partners, I turn complex business goals into gradual,
+reversible technical steps. My focus is lowering operational stress, removing hidden
+failure modes, and fostering the psychological and technical safety teams need to build
+their best work and succeed together.
 
 ## Skills
 - Cross-Team Technical Leadership
