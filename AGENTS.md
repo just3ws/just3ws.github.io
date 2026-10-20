@@ -11,6 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOUND ABOVE PILOT (EPISODE 00) SYNTHESIS: RAMBLIN' DEHUM RE-ATTEMPT & THE MIRAGE OF COMPETENCE (2026-10-19):
+         Synthesized the recent Ramblin' & Amblin' field monologue (`ramblin-amblin-ok-next-experiment.yml`) into the episode dossier and teleprompter script for Episode 00 ("The Mirage of Competence: AI Slop & Domain Boundaries"):
+         - Field Monologue Grounding & Physical Characterization (`_data/episodes/episode-00.yml`, `obs/teleprompter/episode-00.textream`):
+           - Ingested Mike's physical re-attempt on the trail under the 345kV conductors: deliberately returning beneath the high-tension wires and walking up the rise to test whether electromagnetic disruption would recur and whether the `fix_video.sh` dehum filter parameters were a brittle one-off or a reproducible, dynamic general-purpose tool.
+           - Grounded the narrative arc in the desync discovery: container metadata claiming 21 minutes of video vs 18 minutes of audio, an LLM asserting a 20% linear clock drift (`atempo=0.837`), and discovering via frame-level verification that speech was 1.0x all along (followed by 3.5 minutes of silent walking).
+           - Articulated the core cautionary tale across Acts 4 and 5: when frontier models reach far beyond accessible, verifiable human competence (acoustics, high-voltage induction, DSP), they create a seductive appearance of mastery (Watts' *Blindsight* / Chinese room). If an engineer throws the ball higher than they can verify and catch, it comes crashing down on their head. True craftsmanship requires empirical boundary testing and machining ephemeral chat output into deterministic, sovereign code.
+           - Linked `_data/transcripts/ramblin-amblin-ok-next-experiment.yml` into episode research attachments alongside the case study and Peter Watts' *Blindsight*.
+         - Teleprompter Compilation & Local Runtime:
+           - Recompiled native `obs/teleprompter/episode-00.textream` via `ruby bin/generate_sound_above_teleprompter.rb -e 0 --save-textream`.
+           - Synchronized pipeline telemetry (`_data/youtube_pipeline_telemetry.json`, `assets/data/youtube_pipeline_telemetry.json`) and installed site to `just3ws.localhost` (1,045 pages).
+         - Verification:
+           - 300/300 RSpec tests passing, fast validation passing across 497 Markdown files, zero em dashes across all edits.
+
        - MATT RUBY ARCHIVE DIARIZATION FIX & PUBLIC SURFACE RECALIBRATION (2026-10-19):
          Reconciled the ending turns of the Matt Ruby (creator of Vooza) interview via local `ztranscribe` pipeline and recalibrated public identity surfaces for authentic, understated trust:
          - Matt Ruby Interview Diarization & Audio Grounding (`_data/transcripts/interview-with-matt-ruby-creator-of-vooza-general.yml`, `_data/video_assets.yml`, `assets/subtitles/interview-with-matt-ruby-creator-of-vooza-general.vtt`):
