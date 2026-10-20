@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-10-20T19:16:56Z",
+    "generated_at": "2026-10-20T20:04:33Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -13,13 +13,13 @@
       "strategy_guide": "https://www.just3ws.com/reports/archetype-reader-profiles/"
     },
     "stats": {
-      "total_positions": 28,
+      "total_positions": 27,
       "total_archetypes": 5,
       "total_articles": 188,
       "total_interviews": 230,
       "total_transcripts_indexed": 230,
       "total_knowledge_graph_nodes": 474,
-      "total_technologies_tracked": 133
+      "total_technologies_tracked": 124
     }
   },
   "candidate_profile": {
@@ -428,54 +428,6 @@
       "related_interviews": [
         "interview-with-charley-baker-general",
         "igor-polevoy-general"
-      ]
-    },
-    "agent-tooling": {
-      "company": {
-        "name": "Local AI Orchestration & Developer Runtime",
-        "location": "Independent Project"
-      },
-      "title": "Principal Architect",
-      "type": "Project",
-      "start_date": "2026-01-01",
-      "end_date": null,
-      "date_precision": "year",
-      "id": "agent-tooling",
-      "summary": "Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.\n",
-      "public_summary": "Built local-first tools that help engineers and AI systems work with clear context boundaries, observable behavior, and human-reviewed change.",
-      "public_highlights": [
-        {
-          "text": "Built tools that make technical context reusable across sessions without treating generated output as authority."
-        },
-        {
-          "text": "Added observable diagnostics and bounded review steps to keep automated engineering work understandable and reversible."
-        }
-      ],
-      "highlights": [
-        {
-          "text": "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n"
-        },
-        {
-          "text": "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n"
-        },
-        {
-          "text": "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
-        }
-      ],
-      "skills": [
-        "Model Context Protocol (MCP)",
-        "Agentic Workflow Design",
-        "Claude Code",
-        "Anthropic API",
-        "LLM Tool Design",
-        "PostgreSQL",
-        "OpenTelemetry",
-        "OpenObserve",
-        "llama.cpp",
-        "whisper.cpp",
-        "Local Inference",
-        "PHI Scrubbing & Compliance",
-        "Ruby"
       ]
     },
     "bdi": {
@@ -1809,12 +1761,6 @@
       "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        },
-        {
           "company": "BenchPrep",
           "title": "Senior Software Developer",
           "start_date": "2017-03-01",
@@ -1869,19 +1815,13 @@
           "end_date": null
         }
       ],
-      "total_occurrences": 10
+      "total_occurrences": 9
     },
     "Ruby": {
       "skill": "Ruby",
       "first_seen_year": 2009,
       "last_seen_year": 2026,
       "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        },
         {
           "company": "BenchPrep",
           "title": "Senior Software Developer",
@@ -1931,62 +1871,6 @@
           "end_date": "2013-10-01"
         }
       ],
-      "total_occurrences": 9
-    },
-    "ASP.NET": {
-      "skill": "ASP.NET",
-      "first_seen_year": 2003,
-      "last_seen_year": 2009,
-      "roles_used": [
-        {
-          "company": "Business Decisions, Inc.",
-          "title": "Principal Developer",
-          "start_date": "2008-10-01",
-          "end_date": "2009-08-01"
-        },
-        {
-          "company": "BP",
-          "title": "Senior Software Developer",
-          "start_date": "2005-06-01",
-          "end_date": "2005-11-01"
-        },
-        {
-          "company": "Brightstar Corporation",
-          "title": "Senior .NET Developer",
-          "start_date": "2007-03-01",
-          "end_date": "2008-04-01"
-        },
-        {
-          "company": "Integrated Performance Solutions, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2003-11-01",
-          "end_date": "2004-07-01"
-        },
-        {
-          "company": "JPMorgan Chase & Co.",
-          "title": "Assistant Vice President, Application Developer",
-          "start_date": "2008-04-01",
-          "end_date": "2008-10-01"
-        },
-        {
-          "company": "Motorola",
-          "title": "Senior Software Developer",
-          "start_date": "2004-08-01",
-          "end_date": "2005-05-01"
-        },
-        {
-          "company": "Riverpoint Group",
-          "title": "Software Developer",
-          "start_date": "2004-07-01",
-          "end_date": "2004-08-01"
-        },
-        {
-          "company": "TicketsNow",
-          "title": "Senior .NET Developer",
-          "start_date": "2005-11-01",
-          "end_date": "2007-03-01"
-        }
-      ],
       "total_occurrences": 8
     },
     "C#": {
@@ -2029,6 +1913,62 @@
           "title": "Software Engineer",
           "start_date": "2009-08-01",
           "end_date": "2011-07-01"
+        },
+        {
+          "company": "Riverpoint Group",
+          "title": "Software Developer",
+          "start_date": "2004-07-01",
+          "end_date": "2004-08-01"
+        },
+        {
+          "company": "TicketsNow",
+          "title": "Senior .NET Developer",
+          "start_date": "2005-11-01",
+          "end_date": "2007-03-01"
+        }
+      ],
+      "total_occurrences": 8
+    },
+    "ASP.NET": {
+      "skill": "ASP.NET",
+      "first_seen_year": 2003,
+      "last_seen_year": 2009,
+      "roles_used": [
+        {
+          "company": "Business Decisions, Inc.",
+          "title": "Principal Developer",
+          "start_date": "2008-10-01",
+          "end_date": "2009-08-01"
+        },
+        {
+          "company": "BP",
+          "title": "Senior Software Developer",
+          "start_date": "2005-06-01",
+          "end_date": "2005-11-01"
+        },
+        {
+          "company": "Brightstar Corporation",
+          "title": "Senior .NET Developer",
+          "start_date": "2007-03-01",
+          "end_date": "2008-04-01"
+        },
+        {
+          "company": "Integrated Performance Solutions, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2003-11-01",
+          "end_date": "2004-07-01"
+        },
+        {
+          "company": "JPMorgan Chase & Co.",
+          "title": "Assistant Vice President, Application Developer",
+          "start_date": "2008-04-01",
+          "end_date": "2008-10-01"
+        },
+        {
+          "company": "Motorola",
+          "title": "Senior Software Developer",
+          "start_date": "2004-08-01",
+          "end_date": "2005-05-01"
         },
         {
           "company": "Riverpoint Group",
@@ -2177,11 +2117,17 @@
       ],
       "total_occurrences": 5
     },
-    "CSS": {
-      "skill": "CSS",
-      "first_seen_year": 2000,
-      "last_seen_year": 2004,
+    "JSON": {
+      "skill": "JSON",
+      "first_seen_year": 2003,
+      "last_seen_year": 2009,
       "roles_used": [
+        {
+          "company": "Business Decisions, Inc.",
+          "title": "Principal Developer",
+          "start_date": "2008-10-01",
+          "end_date": "2009-08-01"
+        },
         {
           "company": "Integrated Performance Solutions, Inc.",
           "title": "Programmer Analyst",
@@ -2189,22 +2135,16 @@
           "end_date": "2004-07-01"
         },
         {
-          "company": "New Labor Strategies, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2002-06-01",
-          "end_date": "2003-11-01"
+          "company": "JPMorgan Chase & Co.",
+          "title": "Assistant Vice President, Application Developer",
+          "start_date": "2008-04-01",
+          "end_date": "2008-10-01"
         },
         {
-          "company": "Riverpoint Group",
-          "title": "Software Developer",
-          "start_date": "2004-07-01",
-          "end_date": "2004-08-01"
-        },
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
+          "company": "TicketsNow",
+          "title": "Senior .NET Developer",
+          "start_date": "2005-11-01",
+          "end_date": "2007-03-01"
         }
       ],
       "total_occurrences": 4
@@ -2231,38 +2171,6 @@
           "title": "Senior Software Developer",
           "start_date": "2004-08-01",
           "end_date": "2005-05-01"
-        },
-        {
-          "company": "TicketsNow",
-          "title": "Senior .NET Developer",
-          "start_date": "2005-11-01",
-          "end_date": "2007-03-01"
-        }
-      ],
-      "total_occurrences": 4
-    },
-    "JSON": {
-      "skill": "JSON",
-      "first_seen_year": 2003,
-      "last_seen_year": 2009,
-      "roles_used": [
-        {
-          "company": "Business Decisions, Inc.",
-          "title": "Principal Developer",
-          "start_date": "2008-10-01",
-          "end_date": "2009-08-01"
-        },
-        {
-          "company": "Integrated Performance Solutions, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2003-11-01",
-          "end_date": "2004-07-01"
-        },
-        {
-          "company": "JPMorgan Chase & Co.",
-          "title": "Assistant Vice President, Application Developer",
-          "start_date": "2008-04-01",
-          "end_date": "2008-10-01"
         },
         {
           "company": "TicketsNow",
@@ -2305,83 +2213,37 @@
       ],
       "total_occurrences": 4
     },
-    "OpenTelemetry": {
-      "skill": "OpenTelemetry",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
+    "CSS": {
+      "skill": "CSS",
+      "first_seen_year": 2000,
+      "last_seen_year": 2004,
       "roles_used": [
         {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
+          "company": "Integrated Performance Solutions, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2003-11-01",
+          "end_date": "2004-07-01"
         },
         {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
+          "company": "New Labor Strategies, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2002-06-01",
+          "end_date": "2003-11-01"
         },
         {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
-          "start_date": "2021-01-01",
-          "end_date": null
+          "company": "Riverpoint Group",
+          "title": "Software Developer",
+          "start_date": "2004-07-01",
+          "end_date": "2004-08-01"
+        },
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
         }
       ],
-      "total_occurrences": 3
-    },
-    "NGINX": {
-      "skill": "NGINX",
-      "first_seen_year": 2009,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Obtiva",
-          "title": "Software Engineer",
-          "start_date": "2009-08-01",
-          "end_date": "2011-07-01"
-        },
-        {
-          "company": "Upcity",
-          "title": "Senior Software Developer",
-          "start_date": "2013-10-01",
-          "end_date": "2014-02-01"
-        },
-        {
-          "company": "Viewpoints",
-          "title": "Senior Software Developer",
-          "start_date": "2013-05-01",
-          "end_date": "2013-10-01"
-        }
-      ],
-      "total_occurrences": 3
-    },
-    "XML": {
-      "skill": "XML",
-      "first_seen_year": 2004,
-      "last_seen_year": 2008,
-      "roles_used": [
-        {
-          "company": "Brightstar Corporation",
-          "title": "Senior .NET Developer",
-          "start_date": "2007-03-01",
-          "end_date": "2008-04-01"
-        },
-        {
-          "company": "JPMorgan Chase & Co.",
-          "title": "Assistant Vice President, Application Developer",
-          "start_date": "2008-04-01",
-          "end_date": "2008-10-01"
-        },
-        {
-          "company": "Motorola",
-          "title": "Senior Software Developer",
-          "start_date": "2004-08-01",
-          "end_date": "2005-05-01"
-        }
-      ],
-      "total_occurrences": 3
+      "total_occurrences": 4
     },
     "Distributed Systems": {
       "skill": "Distributed Systems",
@@ -2461,6 +2323,32 @@
       ],
       "total_occurrences": 3
     },
+    "XML": {
+      "skill": "XML",
+      "first_seen_year": 2004,
+      "last_seen_year": 2008,
+      "roles_used": [
+        {
+          "company": "Brightstar Corporation",
+          "title": "Senior .NET Developer",
+          "start_date": "2007-03-01",
+          "end_date": "2008-04-01"
+        },
+        {
+          "company": "JPMorgan Chase & Co.",
+          "title": "Assistant Vice President, Application Developer",
+          "start_date": "2008-04-01",
+          "end_date": "2008-10-01"
+        },
+        {
+          "company": "Motorola",
+          "title": "Senior Software Developer",
+          "start_date": "2004-08-01",
+          "end_date": "2005-05-01"
+        }
+      ],
+      "total_occurrences": 3
+    },
     "Active Server Pages (ASP)": {
       "skill": "Active Server Pages (ASP)",
       "first_seen_year": 2000,
@@ -2487,6 +2375,132 @@
       ],
       "total_occurrences": 3
     },
+    "NGINX": {
+      "skill": "NGINX",
+      "first_seen_year": 2009,
+      "last_seen_year": 2014,
+      "roles_used": [
+        {
+          "company": "Obtiva",
+          "title": "Software Engineer",
+          "start_date": "2009-08-01",
+          "end_date": "2011-07-01"
+        },
+        {
+          "company": "Upcity",
+          "title": "Senior Software Developer",
+          "start_date": "2013-10-01",
+          "end_date": "2014-02-01"
+        },
+        {
+          "company": "Viewpoints",
+          "title": "Senior Software Developer",
+          "start_date": "2013-05-01",
+          "end_date": "2013-10-01"
+        }
+      ],
+      "total_occurrences": 3
+    },
+    "Visual SourceSafe": {
+      "skill": "Visual SourceSafe",
+      "first_seen_year": 2000,
+      "last_seen_year": 2001,
+      "roles_used": [
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        },
+        {
+          "company": "Trippe Manufacturing, Inc.",
+          "title": "Software Developer",
+          "start_date": "2001-10-01",
+          "end_date": "2001-12-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Microsoft Access": {
+      "skill": "Microsoft Access",
+      "first_seen_year": 2000,
+      "last_seen_year": 2001,
+      "roles_used": [
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        },
+        {
+          "company": "Trippe Manufacturing, Inc.",
+          "title": "Software Developer",
+          "start_date": "2001-10-01",
+          "end_date": "2001-12-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Resque": {
+      "skill": "Resque",
+      "first_seen_year": 2009,
+      "last_seen_year": 2013,
+      "roles_used": [
+        {
+          "company": "Obtiva",
+          "title": "Software Engineer",
+          "start_date": "2009-08-01",
+          "end_date": "2011-07-01"
+        },
+        {
+          "company": "Viewpoints",
+          "title": "Senior Software Developer",
+          "start_date": "2013-05-01",
+          "end_date": "2013-10-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Heroku": {
+      "skill": "Heroku",
+      "first_seen_year": 2014,
+      "last_seen_year": 2016,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        },
+        {
+          "company": "KloboMedia",
+          "title": "CTO",
+          "start_date": "2014-03-01",
+          "end_date": "2016-09-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Vagrant": {
+      "skill": "Vagrant",
+      "first_seen_year": 2013,
+      "last_seen_year": 2014,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        },
+        {
+          "company": "Upcity",
+          "title": "Senior Software Developer",
+          "start_date": "2013-10-01",
+          "end_date": "2014-02-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
     "Java": {
       "skill": "Java",
       "first_seen_year": 2000,
@@ -2497,6 +2511,26 @@
           "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
           "start_date": "2011-07-01",
           "end_date": "2013-05-01"
+        },
+        {
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "VBScript": {
+      "skill": "VBScript",
+      "first_seen_year": 2000,
+      "last_seen_year": 2003,
+      "roles_used": [
+        {
+          "company": "New Labor Strategies, Inc.",
+          "title": "Programmer Analyst",
+          "start_date": "2002-06-01",
+          "end_date": "2003-11-01"
         },
         {
           "company": "Sentinel Technologies, Inc.",
@@ -2527,26 +2561,6 @@
       ],
       "total_occurrences": 2
     },
-    "Secure API Design": {
-      "skill": "Secure API Design",
-      "first_seen_year": 2015,
-      "last_seen_year": 2018,
-      "roles_used": [
-        {
-          "company": "BenchPrep",
-          "title": "Senior Software Developer",
-          "start_date": "2017-03-01",
-          "end_date": "2018-02-01"
-        },
-        {
-          "company": "ReachLocal",
-          "title": "Senior Software Developer",
-          "start_date": "2015-03-01",
-          "end_date": "2016-11-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
     "Bash": {
       "skill": "Bash",
       "first_seen_year": 2011,
@@ -2563,246 +2577,6 @@
           "title": "Senior Software Developer",
           "start_date": "2013-10-01",
           "end_date": "2014-02-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Backend System Architecture": {
-      "skill": "Backend System Architecture",
-      "first_seen_year": 2017,
-      "last_seen_year": 2018,
-      "roles_used": [
-        {
-          "company": "ActiveCampaign",
-          "title": "Senior Software Developer",
-          "start_date": "2018-09-01",
-          "end_date": "2018-12-01"
-        },
-        {
-          "company": "BenchPrep",
-          "title": "Senior Software Developer",
-          "start_date": "2017-03-01",
-          "end_date": "2018-02-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Visual Basic .NET (VB.NET)": {
-      "skill": "Visual Basic .NET (VB.NET)",
-      "first_seen_year": 2005,
-      "last_seen_year": 2008,
-      "roles_used": [
-        {
-          "company": "BP",
-          "title": "Senior Software Developer",
-          "start_date": "2005-06-01",
-          "end_date": "2005-11-01"
-        },
-        {
-          "company": "JPMorgan Chase & Co.",
-          "title": "Assistant Vice President, Application Developer",
-          "start_date": "2008-04-01",
-          "end_date": "2008-10-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Legacy System Modernization": {
-      "skill": "Legacy System Modernization",
-      "first_seen_year": 2015,
-      "last_seen_year": 2018,
-      "roles_used": [
-        {
-          "company": "ActiveCampaign",
-          "title": "Senior Software Developer",
-          "start_date": "2018-09-01",
-          "end_date": "2018-12-01"
-        },
-        {
-          "company": "ReachLocal",
-          "title": "Senior Software Developer",
-          "start_date": "2015-03-01",
-          "end_date": "2016-11-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Microsoft BizTalk Server": {
-      "skill": "Microsoft BizTalk Server",
-      "first_seen_year": 2005,
-      "last_seen_year": 2008,
-      "roles_used": [
-        {
-          "company": "Brightstar Corporation",
-          "title": "Senior .NET Developer",
-          "start_date": "2007-03-01",
-          "end_date": "2008-04-01"
-        },
-        {
-          "company": "TicketsNow",
-          "title": "Senior .NET Developer",
-          "start_date": "2005-11-01",
-          "end_date": "2007-03-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Microsoft Access": {
-      "skill": "Microsoft Access",
-      "first_seen_year": 2000,
-      "last_seen_year": 2001,
-      "roles_used": [
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        },
-        {
-          "company": "Trippe Manufacturing, Inc.",
-          "title": "Software Developer",
-          "start_date": "2001-10-01",
-          "end_date": "2001-12-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "System Resilience": {
-      "skill": "System Resilience",
-      "first_seen_year": 2018,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
-        },
-        {
-          "company": "Tandem",
-          "title": "Principal Consultant",
-          "start_date": "2018-08-01",
-          "end_date": "2018-08-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "VBScript": {
-      "skill": "VBScript",
-      "first_seen_year": 2000,
-      "last_seen_year": 2003,
-      "roles_used": [
-        {
-          "company": "New Labor Strategies, Inc.",
-          "title": "Programmer Analyst",
-          "start_date": "2002-06-01",
-          "end_date": "2003-11-01"
-        },
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Heroku": {
-      "skill": "Heroku",
-      "first_seen_year": 2014,
-      "last_seen_year": 2016,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        },
-        {
-          "company": "KloboMedia",
-          "title": "CTO",
-          "start_date": "2014-03-01",
-          "end_date": "2016-09-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "CI/CD": {
-      "skill": "CI/CD",
-      "first_seen_year": 2019,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        },
-        {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Vagrant": {
-      "skill": "Vagrant",
-      "first_seen_year": 2013,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        },
-        {
-          "company": "Upcity",
-          "title": "Senior Software Developer",
-          "start_date": "2013-10-01",
-          "end_date": "2014-02-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Visual SourceSafe": {
-      "skill": "Visual SourceSafe",
-      "first_seen_year": 2000,
-      "last_seen_year": 2001,
-      "roles_used": [
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        },
-        {
-          "company": "Trippe Manufacturing, Inc.",
-          "title": "Software Developer",
-          "start_date": "2001-10-01",
-          "end_date": "2001-12-01"
-        }
-      ],
-      "total_occurrences": 2
-    },
-    "Local Inference": {
-      "skill": "Local Inference",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        },
-        {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
-          "start_date": "2021-01-01",
-          "end_date": null
         }
       ],
       "total_occurrences": 2
@@ -2827,22 +2601,82 @@
       ],
       "total_occurrences": 2
     },
-    "Resque": {
-      "skill": "Resque",
-      "first_seen_year": 2009,
-      "last_seen_year": 2013,
+    "Microsoft BizTalk Server": {
+      "skill": "Microsoft BizTalk Server",
+      "first_seen_year": 2005,
+      "last_seen_year": 2008,
       "roles_used": [
         {
-          "company": "Obtiva",
-          "title": "Software Engineer",
-          "start_date": "2009-08-01",
-          "end_date": "2011-07-01"
+          "company": "Brightstar Corporation",
+          "title": "Senior .NET Developer",
+          "start_date": "2007-03-01",
+          "end_date": "2008-04-01"
         },
         {
-          "company": "Viewpoints",
+          "company": "TicketsNow",
+          "title": "Senior .NET Developer",
+          "start_date": "2005-11-01",
+          "end_date": "2007-03-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Visual Basic .NET (VB.NET)": {
+      "skill": "Visual Basic .NET (VB.NET)",
+      "first_seen_year": 2005,
+      "last_seen_year": 2008,
+      "roles_used": [
+        {
+          "company": "BP",
           "title": "Senior Software Developer",
-          "start_date": "2013-05-01",
-          "end_date": "2013-10-01"
+          "start_date": "2005-06-01",
+          "end_date": "2005-11-01"
+        },
+        {
+          "company": "JPMorgan Chase & Co.",
+          "title": "Assistant Vice President, Application Developer",
+          "start_date": "2008-04-01",
+          "end_date": "2008-10-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "System Resilience": {
+      "skill": "System Resilience",
+      "first_seen_year": 2018,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
+        },
+        {
+          "company": "Tandem",
+          "title": "Principal Consultant",
+          "start_date": "2018-08-01",
+          "end_date": "2018-08-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Secure API Design": {
+      "skill": "Secure API Design",
+      "first_seen_year": 2015,
+      "last_seen_year": 2018,
+      "roles_used": [
+        {
+          "company": "BenchPrep",
+          "title": "Senior Software Developer",
+          "start_date": "2017-03-01",
+          "end_date": "2018-02-01"
+        },
+        {
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "2015-03-01",
+          "end_date": "2016-11-01"
         }
       ],
       "total_occurrences": 2
@@ -2866,6 +2700,198 @@
         }
       ],
       "total_occurrences": 2
+    },
+    "Legacy System Modernization": {
+      "skill": "Legacy System Modernization",
+      "first_seen_year": 2015,
+      "last_seen_year": 2018,
+      "roles_used": [
+        {
+          "company": "ActiveCampaign",
+          "title": "Senior Software Developer",
+          "start_date": "2018-09-01",
+          "end_date": "2018-12-01"
+        },
+        {
+          "company": "ReachLocal",
+          "title": "Senior Software Developer",
+          "start_date": "2015-03-01",
+          "end_date": "2016-11-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "Backend System Architecture": {
+      "skill": "Backend System Architecture",
+      "first_seen_year": 2017,
+      "last_seen_year": 2018,
+      "roles_used": [
+        {
+          "company": "ActiveCampaign",
+          "title": "Senior Software Developer",
+          "start_date": "2018-09-01",
+          "end_date": "2018-12-01"
+        },
+        {
+          "company": "BenchPrep",
+          "title": "Senior Software Developer",
+          "start_date": "2017-03-01",
+          "end_date": "2018-02-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "OpenTelemetry": {
+      "skill": "OpenTelemetry",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
+        },
+        {
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
+          "start_date": "2021-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "CI/CD": {
+      "skill": "CI/CD",
+      "first_seen_year": 2019,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        },
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
+        }
+      ],
+      "total_occurrences": 2
+    },
+    "System Design": {
+      "skill": "System Design",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
+          "start_date": "2021-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Federal Software Assessment": {
+      "skill": "Federal Software Assessment",
+      "first_seen_year": 2018,
+      "last_seen_year": 2018,
+      "roles_used": [
+        {
+          "company": "Tandem",
+          "title": "Principal Consultant",
+          "start_date": "2018-08-01",
+          "end_date": "2018-08-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Backend Architecture": {
+      "skill": "Backend Architecture",
+      "first_seen_year": 2019,
+      "last_seen_year": 2020,
+      "roles_used": [
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Deterministic Simulation": {
+      "skill": "Deterministic Simulation",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "System Observability": {
+      "skill": "System Observability",
+      "first_seen_year": 2019,
+      "last_seen_year": 2020,
+      "roles_used": [
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "System Verification": {
+      "skill": "System Verification",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Data Analytics & SQL": {
+      "skill": "Data Analytics & SQL",
+      "first_seen_year": 2019,
+      "last_seen_year": 2020,
+      "roles_used": [
+        {
+          "company": "SK Holdings, Inc.",
+          "title": "Senior Backend Developer",
+          "start_date": "2019-01-01",
+          "end_date": "2020-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "AI-Augmented Development": {
+      "skill": "AI-Augmented Development",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
     },
     "SendGrid Async Pipelines": {
       "skill": "SendGrid Async Pipelines",
@@ -2895,36 +2921,8 @@
       ],
       "total_occurrences": 1
     },
-    "System Design": {
-      "skill": "System Design",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "WWWorkRemote",
-          "title": "Principal Architect",
-          "start_date": "2021-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "JSP": {
-      "skill": "JSP",
-      "first_seen_year": 2000,
-      "last_seen_year": 2001,
-      "roles_used": [
-        {
-          "company": "Sentinel Technologies, Inc.",
-          "title": "Application Analyst",
-          "start_date": "2000-07-01",
-          "end_date": "2001-10-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Data Migration Strategy": {
-      "skill": "Data Migration Strategy",
+    "API Gateway Design": {
+      "skill": "API Gateway Design",
       "first_seen_year": 2015,
       "last_seen_year": 2016,
       "roles_used": [
@@ -2951,8 +2949,8 @@
       ],
       "total_occurrences": 1
     },
-    "API Gateway Design": {
-      "skill": "API Gateway Design",
+    "Data Migration Strategy": {
+      "skill": "Data Migration Strategy",
       "first_seen_year": 2015,
       "last_seen_year": 2016,
       "roles_used": [
@@ -2965,114 +2963,16 @@
       ],
       "total_occurrences": 1
     },
-    "AI-Augmented Development": {
-      "skill": "AI-Augmented Development",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
+    "JSP": {
+      "skill": "JSP",
+      "first_seen_year": 2000,
+      "last_seen_year": 2001,
       "roles_used": [
         {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "System Verification": {
-      "skill": "System Verification",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Deterministic Simulation": {
-      "skill": "Deterministic Simulation",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "WebSockets": {
-      "skill": "WebSockets",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Node.js": {
-      "skill": "Node.js",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "TypeScript": {
-      "skill": "TypeScript",
-      "first_seen_year": 2022,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Phalanx Duel",
-          "title": "Principal Architect",
-          "start_date": "2022-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "AWS": {
-      "skill": "AWS",
-      "first_seen_year": 2021,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "OneMain Financial",
-          "title": "Associate Director, Staff Engineer",
-          "start_date": "2021-01-01",
-          "end_date": "2026-02-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Windows 98": {
-      "skill": "Windows 98",
-      "first_seen_year": 1999,
-      "last_seen_year": 2000,
-      "roles_used": [
-        {
-          "company": "C.H. Robinson",
-          "title": "System Administrator",
-          "start_date": "1999-12-01",
-          "end_date": "2000-07-01"
+          "company": "Sentinel Technologies, Inc.",
+          "title": "Application Analyst",
+          "start_date": "2000-07-01",
+          "end_date": "2001-10-01"
         }
       ],
       "total_occurrences": 1
@@ -3093,6 +2993,20 @@
     },
     "Chrome Extensions (MV3)": {
       "skill": "Chrome Extensions (MV3)",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "WWWorkRemote",
+          "title": "Principal Architect",
+          "start_date": "2021-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Local Inference": {
+      "skill": "Local Inference",
       "first_seen_year": 2021,
       "last_seen_year": 2026,
       "roles_used": [
@@ -3427,58 +3341,114 @@
       ],
       "total_occurrences": 1
     },
-    "Federal Software Assessment": {
-      "skill": "Federal Software Assessment",
-      "first_seen_year": 2018,
-      "last_seen_year": 2018,
+    "WebSockets": {
+      "skill": "WebSockets",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
       "roles_used": [
         {
-          "company": "Tandem",
-          "title": "Principal Consultant",
-          "start_date": "2018-08-01",
-          "end_date": "2018-08-01"
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
         }
       ],
       "total_occurrences": 1
     },
-    "Backend Architecture": {
-      "skill": "Backend Architecture",
-      "first_seen_year": 2019,
-      "last_seen_year": 2020,
+    "Clojure": {
+      "skill": "Clojure",
+      "first_seen_year": 2011,
+      "last_seen_year": 2013,
       "roles_used": [
         {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
+          "company": "Groupon",
+          "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
+          "start_date": "2011-07-01",
+          "end_date": "2013-05-01"
         }
       ],
       "total_occurrences": 1
     },
-    "System Observability": {
-      "skill": "System Observability",
-      "first_seen_year": 2019,
-      "last_seen_year": 2020,
+    "Travis CI": {
+      "skill": "Travis CI",
+      "first_seen_year": 2014,
+      "last_seen_year": 2014,
       "roles_used": [
         {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
         }
       ],
       "total_occurrences": 1
     },
-    "Data Analytics & SQL": {
-      "skill": "Data Analytics & SQL",
-      "first_seen_year": 2019,
-      "last_seen_year": 2020,
+    "MongoDB": {
+      "skill": "MongoDB",
+      "first_seen_year": 2014,
+      "last_seen_year": 2014,
       "roles_used": [
         {
-          "company": "SK Holdings, Inc.",
-          "title": "Senior Backend Developer",
-          "start_date": "2019-01-01",
-          "end_date": "2020-12-01"
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Backbone.js": {
+      "skill": "Backbone.js",
+      "first_seen_year": 2014,
+      "last_seen_year": 2014,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "AWS S3": {
+      "skill": "AWS S3",
+      "first_seen_year": 2014,
+      "last_seen_year": 2014,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "ElasticSearch": {
+      "skill": "ElasticSearch",
+      "first_seen_year": 2014,
+      "last_seen_year": 2014,
+      "roles_used": [
+        {
+          "company": "Coderwall",
+          "title": "Open-Source Transition Lead",
+          "start_date": "2014-01-01",
+          "end_date": "2014-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Windows 98": {
+      "skill": "Windows 98",
+      "first_seen_year": 1999,
+      "last_seen_year": 2000,
+      "roles_used": [
+        {
+          "company": "C.H. Robinson",
+          "title": "System Administrator",
+          "start_date": "1999-12-01",
+          "end_date": "2000-07-01"
         }
       ],
       "total_occurrences": 1
@@ -3637,132 +3607,6 @@
       ],
       "total_occurrences": 1
     },
-    "PHI Scrubbing & Compliance": {
-      "skill": "PHI Scrubbing & Compliance",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "whisper.cpp": {
-      "skill": "whisper.cpp",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "llama.cpp": {
-      "skill": "llama.cpp",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "OpenObserve": {
-      "skill": "OpenObserve",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "LLM Tool Design": {
-      "skill": "LLM Tool Design",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Anthropic API": {
-      "skill": "Anthropic API",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Claude Code": {
-      "skill": "Claude Code",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Agentic Workflow Design": {
-      "skill": "Agentic Workflow Design",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Model Context Protocol (MCP)": {
-      "skill": "Model Context Protocol (MCP)",
-      "first_seen_year": 2026,
-      "last_seen_year": 2026,
-      "roles_used": [
-        {
-          "company": "Local AI Orchestration & Developer Runtime",
-          "title": "Principal Architect",
-          "start_date": "2026-01-01",
-          "end_date": null
-        }
-      ],
-      "total_occurrences": 1
-    },
     "Performance Optimization": {
       "skill": "Performance Optimization",
       "first_seen_year": 2018,
@@ -3815,6 +3659,48 @@
           "title": "Senior Software Developer",
           "start_date": "2018-09-01",
           "end_date": "2018-12-01"
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "Node.js": {
+      "skill": "Node.js",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "TypeScript": {
+      "skill": "TypeScript",
+      "first_seen_year": 2022,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "Phalanx Duel",
+          "title": "Principal Architect",
+          "start_date": "2022-01-01",
+          "end_date": null
+        }
+      ],
+      "total_occurrences": 1
+    },
+    "AWS": {
+      "skill": "AWS",
+      "first_seen_year": 2021,
+      "last_seen_year": 2026,
+      "roles_used": [
+        {
+          "company": "OneMain Financial",
+          "title": "Associate Director, Staff Engineer",
+          "start_date": "2021-01-01",
+          "end_date": "2026-02-01"
         }
       ],
       "total_occurrences": 1
@@ -4081,90 +3967,6 @@
           "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
           "start_date": "2011-07-01",
           "end_date": "2013-05-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Clojure": {
-      "skill": "Clojure",
-      "first_seen_year": 2011,
-      "last_seen_year": 2013,
-      "roles_used": [
-        {
-          "company": "Groupon",
-          "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
-          "start_date": "2011-07-01",
-          "end_date": "2013-05-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Travis CI": {
-      "skill": "Travis CI",
-      "first_seen_year": 2014,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "MongoDB": {
-      "skill": "MongoDB",
-      "first_seen_year": 2014,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "Backbone.js": {
-      "skill": "Backbone.js",
-      "first_seen_year": 2014,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "AWS S3": {
-      "skill": "AWS S3",
-      "first_seen_year": 2014,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
-        }
-      ],
-      "total_occurrences": 1
-    },
-    "ElasticSearch": {
-      "skill": "ElasticSearch",
-      "first_seen_year": 2014,
-      "last_seen_year": 2014,
-      "roles_used": [
-        {
-          "company": "Coderwall",
-          "title": "Open-Source Transition Lead",
-          "start_date": "2014-01-01",
-          "end_date": "2014-12-01"
         }
       ],
       "total_occurrences": 1

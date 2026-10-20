@@ -57,6 +57,11 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
 - **Role Calibration via Executive Briefs**: Use target executive pitch briefs (`exports/briefs/`) and cover letters (not resume title edits) to calibrate scope for each target role (Team Lead, Staff IC, or CTO/Director).
 - **30-Second Framing Strategy**: When asked why applying across role tiers, frame scope as scale-dependent: care is given to technical challenge, team leverage, and mission over title badges.
 
+### Omission & Boundary Policies (EMR-Bear & Independent Projects)
+
+- **EMR-Bear**: Permanently excluded from public resume and LinkedIn profiles per prevailing industry practice (Approach A: Omit from public marketing assets and resume surfaces; disclose transparently on formal post-offer background checks if specifically requested for employment gap verification). This prevents off-brand noise, third-party outreach friction, and non-canonical timeline confusion while maintaining 100% integrity on formal employment verifications.
+- **Independent Projects**: Only two core, long-term independent projects are featured on primary resume surfaces: `phalanx-duel` (deterministic state engines, ledger verification) and `technical-conversation-archive` (sovereign oral history preservation, on-device Whisper DSP). Transient experiments, ad-hoc tooling, and local developer runtimes are not broken out as standalone resume positions.
+
 These decisions are durable resume context. Do not reopen or hedge the title
 choice unless Mike explicitly asks to reconsider it.
 

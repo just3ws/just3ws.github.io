@@ -53,7 +53,7 @@ const renderMermaid = async (root = document) => {
       noteBorderColor: "#b45309",
       noteTextColor: "#1e232a",
       fontFamily: "Inter, system-ui, sans-serif",
-      fontSize: "16px"
+      fontSize: "13.5px"
     }
   });
 

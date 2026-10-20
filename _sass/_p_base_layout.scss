@@ -1009,7 +1009,7 @@ article {
 }
 
 .post {
-  max-width: 62rem;
+  max-width: min(56rem, 100%);
   width: 100%;
   margin: 0 auto;
 }
@@ -1026,8 +1026,49 @@ article {
   > p,
   > ul,
   > ol {
-    max-width: 100%;
-    line-height: 1.72;
+    max-width: 74ch;
+    margin-inline: auto;
+    line-height: 1.74;
+  }
+
+  > h2,
+  > h3,
+  > h4 {
+    max-width: 74ch;
+    margin-inline: auto;
+  }
+
+  > blockquote {
+    max-width: 74ch;
+    margin-inline: auto;
+  }
+}
+
+/* Fluid Data Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  th,
+  td {
+    padding: 0.75rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border, #e2e8f0);
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: 700;
+    color: var(--color-text-main, #1e232a);
+    background: var(--color-bg-subtle, #f8fafc);
+    border-bottom: 2px solid var(--color-border, #cbd5e1);
+  }
+
+  td {
+    color: var(--color-text, #334155);
   }
 }
 

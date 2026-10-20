@@ -137,8 +137,10 @@ To fund ongoing research, compute tokens, audio instrumentation, and archival pr
 ### Stream 1: Patreon Membership & Community Underwriting
 - **Primary Membership Hub**: [patreon.com/whoistechcmty](https://patreon.com/whoistechcmty) (WHOIS Tech Community)
 - **Secondary Developer Portal**: [github.com/sponsors/just3ws](https://github.com/sponsors/just3ws)
-- **The Historical Provenance**:
-  The archive originated in 2011 as UGtastic, documenting grassroots leaders across Chicago Alt.NET, SCNA, GOTO, and RailsConf. It later matured into WHOIS Tech Community:
+- **The Historical Provenance & Root Identity Consolidation**:
+  The archive originated in 2011 as UGtastic, documenting grassroots leaders across Chicago Alt.NET, SCNA, GOTO, and RailsConf. It later evolved into WHOIS Tech Community (`@whoistechcmty`), where dedicated community backers stepped forward to fund video cameras, microphones, and travel. That history is honored as an essential chapter of the story: real people providing real support during a complex era of independent production.
+  
+  Today, all secondary channels, including the legacy `@whoistechcmty` Patreon campaign and YouTube channel, consolidate under Mike's permanent root identity: **just3ws** (`just3ws.com`, continuously registered since October 4, 2000, from the dawn of the web when Mike coined the phrase "just three 'W's changed the world"). While platform handles like Patreon and YouTube retain `@whoistechcmty` for subscriber continuity, all engineering writing, case studies, and primary profiles resolve back to the sovereign `just3ws.com` core.
 
   ![Creating Interviews with Tech Community Leaders](/assets/images/ugtastic-branding/creating-interviews-with-tech-community-leaders-preview.png)
 
