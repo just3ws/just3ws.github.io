@@ -236,6 +236,26 @@ body_class: surface-editorial
             <td style="padding: 0.85rem 1rem; white-space: nowrap; font-family: monospace;">2026-10-20</td>
             <td style="padding: 0.85rem 1rem;"><code>just3ws/just3ws.github.io</code></td>
             <td style="padding: 0.85rem 1rem; font-family: monospace;">
+              <a href="https://github.com/just3ws/just3ws.github.io/commit/8a7f516d" target="_blank" rel="noopener">8a7f516d</a>
+            </td>
+            <td style="padding: 0.85rem 1rem;">
+              <strong>Quota Cooldown Guards &amp; Cloud Quarantine:</strong> Pauses intake during daily API quota cooldowns, enforces 5.0 GB minimum free SSD headroom floor, and offloads quarantined video assets directly to Google Drive <code>blocked/</code> to prevent local disk exhaustion.
+            </td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border, #eeebe3);">
+            <td style="padding: 0.85rem 1rem; white-space: nowrap; font-family: monospace;">2026-10-20</td>
+            <td style="padding: 0.85rem 1rem;"><code>just3ws/just3ws.github.io</code></td>
+            <td style="padding: 0.85rem 1rem; font-family: monospace;">
+              <a href="https://github.com/just3ws/just3ws.github.io/commit/ecaaa128" target="_blank" rel="noopener">ecaaa128</a>
+            </td>
+            <td style="padding: 0.85rem 1rem;">
+              <strong>Top-of-Funnel Ingress &amp; Ephemeral Master Release:</strong> Routes local phone drops directly into Google Drive pending storage, pulls strictly 1 file at a time to local NVMe SSD during active processing, and releases local working masters post-archival upon bit-for-bit cloud parity verification.
+            </td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--color-border, #eeebe3);">
+            <td style="padding: 0.85rem 1rem; white-space: nowrap; font-family: monospace;">2026-10-20</td>
+            <td style="padding: 0.85rem 1rem;"><code>just3ws/just3ws.github.io</code></td>
+            <td style="padding: 0.85rem 1rem; font-family: monospace;">
               <a href="https://github.com/just3ws/just3ws.github.io/commit/2447163a" target="_blank" rel="noopener">2447163a</a>
             </td>
             <td style="padding: 0.85rem 1rem;">
@@ -279,25 +299,26 @@ body_class: surface-editorial
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 1.75rem;">
       <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1.5rem;">
         <h3 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.5rem; color: #b91c1c;">
-          ❌ The CloudProvider Bottleneck
+          ❌ The False Dichotomy: Mobile Cloud Stalls vs Local SSD Starvation
         </h3>
         <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
-          Staged media inside macOS CloudStorage (<code>GoogleDrive-mike@just3ws.com/My Drive/Media Intake</code>) triggered synchronous FileProvider virtual mount deadlocks (<code>Errno::ETIMEDOUT</code>), blocking pipeline workers while phones struggled with multi-gigabyte cellular uploads.
+          Uploading directly from a phone to cloud storage chokes on slow mobile bandwidth. Conversely, parking multi-gigabyte resting videos on the local NVMe SSD chokes the finite 228 GB drive (falling to 6.3 GB free during daily YouTube API quota cooldowns).
         </p>
         <div style="font-size: 0.8rem; font-family: monospace; color: var(--color-text-muted, #525866);">
-          Phone &rarr; Internet &rarr; Drive &rarr; Mac Sync &rarr; YouTube
+          Phone &rarr; Slow Cellular Cloud &rarr; Stalled Ingest<br/>
+          or: Phone &rarr; All Videos Parked on Local NVMe &rarr; SSD Starvation
         </div>
       </div>
 
       <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-primary, #0f766e); border-radius: 8px; padding: 1.5rem;">
         <h3 style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.5rem; color: var(--color-primary, #0f766e);">
-          ✅ The Local NVMe Seam &amp; Dual AI Symbiosis
+          ✅ The Calibrated Seam: Fast Local Drop, Cloud Staging, Ephemeral NVMe Execution
         </h3>
         <p style="font-size: 0.88rem; line-height: 1.55; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
-          Direct peer-to-peer Wi-Fi (LocalSend / Syncthing) into fast local NVMe SSD (<code>~/.local/var/media_intake</code>); background compute nice'd to level 15; on-device private AI (<code>whisper.cpp</code>, <code>nomic-embed</code>) handles high-throughput pipelines while frontier models handle strategic reasoning.
+          Phone transfers directly to laptop via fast local link (LocalSend / USB). Ingest immediately routes media to Google Drive cold pending storage, keeping resting files off the primary SSD. Processing pulls strictly 1 file at a time (FIFO) to fast NVMe SSD, releasing the local working master upon bit-verified cloud archive mirroring.
         </p>
         <div style="font-size: 0.8rem; font-family: monospace; color: var(--color-primary, #0f766e);">
-          Phone &rarr; Local Wi-Fi &rarr; NVMe SSD &rarr; Async Cloud
+          Phone (Local Transfer) &rarr; Google Drive (Pending Sync) &rarr; 1-at-a-Time NVMe Stage &rarr; Bit-Verified Archive &rarr; Ephemeral Master Released
         </div>
       </div>
     </div>

@@ -92,11 +92,13 @@ The platform maximizes autonomy and financial sustainability by strictly dividin
 
 The platform's storage hygiene directly serves the media and knowledge pipeline:
 
-1. **Staging**: Incoming video/audio chunks land in `~/.local/state/zdots/ingest-sources` or `~/.local/var/media_intake`.
-2. **Local Transcription**: Metal-accelerated `whisper.cpp` generates timestamped VTT subtitles and full-text YAML transcripts.
-3. **Intellectual Yield Harvesting**: Core lessons, timeline events, and entity relationships are extracted and indexed into `~/my` and CareerOS datalake before raw files are touched.
-4. **Eviction of Intermediates**: Intermediate 16kHz WAV chunks and temporary render files are evicted post-distillation, restoring primary SSD headroom (+90MB to +1GB per video).
-5. **Cold-Storage Compression**: Historical session logs and transcripts are compressed in-place using `zstd`. A 247 MB rollout shrinks to ~28 MB (`.jsonl.zst`), achieving 85%+ compression ratios.
+1. **Top-of-Funnel Ingress & Cloud Decoupling**: Phone media drops over fast local transfer (LocalSend / USB into `~/Downloads`), and `--drop` immediately relocates it into Google Drive cold pending storage (`cloud_archive_path/<channel>/<target>/pending/`). This eliminates mobile cloud upload stalls while keeping resting multi-gigabyte assets off the primary SSD.
+2. **Single-Item On-Demand NVMe Staging**: Pipeline workers pull strictly 1 video at a time (FIFO) into fast local NVMe SSD (`~/.local/var/media_intake/.../processing/`) under POSIX nice 15 and macOS Darwin Background QoS (`taskpolicy -b`).
+3. **Local Transcription & DSP**: Metal-accelerated `whisper.cpp` and ffmpeg DSP filters run locally on the active working master.
+4. **Intellectual Yield Harvesting**: Core lessons, timeline events, and entity relationships are extracted and indexed into `~/my` and CareerOS datalake before raw files are touched.
+5. **Ephemeral Master Release & Cloud Quarantine**: Once bit-for-bit verified in Google Drive `processed/YYYY-MM/`, the multi-gigabyte working master on local NVMe SSD is released (`FileUtils.rm_f`), preserving only lightweight `.receipt.json` sidecars on local disk. If upstream YouTube API quotas enter daily cooldown, pending files quarantine to Google Drive `blocked/` rather than saturating local disk headroom.
+6. **Action 7 Intermediate Scratch Purge**: `zdots-hygiene` Action 7 continuously audits and purges intermediate WAV audio scratch files older than 2 days (`~/.local/state/just3ws/scratch/*/*.wav`).
+7. **Cold-Storage Compression**: Historical session logs and transcripts are compressed in-place using `zstd`. A 247 MB rollout shrinks to ~28 MB (`.jsonl.zst`), achieving 85%+ compression ratios.
 
 ---
 
