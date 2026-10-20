@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOVEREIGN VERIFICATION & THE METERS VS YARDS TRAP ARTICLE PUBLICATION (2026-10-20):
+         Synthesized physical field re-test findings, the dual-model divergence between code and generative prose, and the Mars Climate Orbiter unit-mismatch trap into a comprehensive systems craftsmanship essay ready for publication to `just3ws.com` (`_posts/2026-10-20-the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.md`):
+         - Essay Synthesis & Conceptual Framing:
+           - Contrasted deterministic code models (bounded by compilers, ASTs, and exit codes) against generative prose models (predicting plausible token continuations across ungrounded data gaps).
+           - Grounded the analysis in the 345kV field re-test under high-tension transmission lines: the hardware bottom mic isolation (`c0=c0|c1=c0`) and invariant 60Hz harmonic notch filters held durably, while the LLM's celebrated "clock crystal drift" (`atempo=0.837`) was revealed as pure hallucinated interpolation across silent walking footage.
+           - Established the Mars Climate Orbiter principle: when generative models speculatively bridge domain gaps without dimensional grounding, errors compound invisibly into structural systemic failure at scale.
+           - Formulated the Sovereign Verification Framework: Boundary Testing, Semantic Unit Preservation, Deterministic Machine Pinning, and Continuous Human Calibration.
+         - Localhost Verification:
+           - Jekyll site build passing across 1,046 pages and verified on `https://just3ws.localhost/2026/10/20/the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.html` (HTTP 200).
+         - Verification:
+           - Fast validation passing cleanly across 497 Markdown files, 302/302 RSpec tests passing, zero em dashes across all edits.
+
        - LOCAL-FIRST SSD MEDIA INTAKE & POLITE SCHEDULING SEAM (2026-10-20):
          Decoupled video ingestion from the macOS Google Drive CloudStorage FileProvider bottleneck, migrating active queues to fast local NVMe SSD (`~/.local/var/media_intake`) with polite OS-level scheduling and asynchronous cold-storage mirroring:
          - Background Scheduling Politeness (`bin/intake_drive_video.rb`, `bin/live_dashboard_streamer.rb`):
