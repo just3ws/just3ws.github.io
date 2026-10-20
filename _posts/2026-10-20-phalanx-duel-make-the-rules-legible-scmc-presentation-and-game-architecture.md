@@ -27,7 +27,7 @@ That rainy afternoon experiment became **Phalanx Duel**.
 
 Over the next four years, it grew from cards on a picnic table into an executable Ruby combat prototype, then into a server-authoritative TypeScript engine, a native Go command-line client, an automated container release pipeline, and a live production platform at [phalanxduel.com](https://phalanxduel.com).
 
-Along the way, it became something more than a game: it became an architecture laboratory. And when I began preparing the broadcast workflows, teleprompter rundowns, and streaming infrastructure for *The Sound Above*, Phalanx Duel was the working product, and Software Craftsmanship McHenry County (SCMC) was the community room where I proved the presentation system could work.
+Along the way, it became something more than a game: it became an architecture laboratory. And when I began preparing a presentation for Software Craftsmanship McHenry County (SCMC), Phalanx Duel was the working product, and building the presentation became an experiment in what could be built out using AI-augmented developer tooling.
 
 ---
 
@@ -97,15 +97,13 @@ The client is just a dumb terminal rendering a projection. The server and the en
 
 ---
 
-### The Presentation Question: Can I Build a Presentation for this System?
+### The SCMC Presentation: Building with AI-Augmented Tooling
 
-In late summer 2026, as I designed the multi-camera OBS broadcast studio and teleprompter workflow for *The Sound Above*, I confronted a practical question:
+In late summer 2026, when preparing a talk for Software Craftsmanship McHenry County (SCMC), I wanted to explore a direct question:
 
-*Can I build a presentation for this system?*
+*How much of a technical presentation can you build out using AI-augmented developer tooling?*
 
-Could the structured dossier manifests, the 6-act teleprompter scripts, the OpenTelemetry spans, and the live demonstration overlays hold together in front of real software practitioners?
-
-I needed a place to test the entire apparatus: the spoken cadence, the visual evidence, the technical slides, and the live terminal demos. Software Craftsmanship McHenry County was the natural home.
+I wanted to see how far modern tools could take us: drafting slides, structuring visual diagrams, generating synthetic bot-versus-bot demonstration videos, and building a companion web guide, all anchored directly against running code. At the time, I did not know about OBS; the focus was purely on exploring how AI tools could assist a solo developer in communicating deep systems architecture to a room of peers.
 
 On September 15, 2026, I walked into SCMC and delivered **Phalanx Duel: Make the Rules Legible**.
 
@@ -113,11 +111,10 @@ On September 15, 2026, I walked into SCMC and delivered **Phalanx Duel: Make the
 flowchart TD
     A["Tabletop Game (July 2022)"] --> B["Ruby Prototype (Executable Rules)"]
     B --> C["TypeScript Engine (Server Authority)"]
-    C --> D["SCMC Presentation (September 2026)"]
-    D --> E["OBS Broadcast Pipeline (The Sound Above)"]
-    E --> F["Quiet Enterprise Architecture"]
+    C --> D["SCMC Presentation & AI Tooling Experiment (September 2026)"]
+    D --> E["The Sound Above & UGtastic Curriculum"]
     classDef step fill:#f8fafc,stroke:#0f766e,color:#0f172a,stroke-width:1.5px;
-    class A,B,C,D,E,F step;
+    class A,B,C,D,E step;
 ```
 
 We walked through the journey:
@@ -131,29 +128,20 @@ The presentation worked because Phalanx Duel was real. It was not a slide deck a
 
 ---
 
-### Zarathustra's Child: Safe Not Scary, Competence is Quiet
+### The Meta Dimension: Capabilities and Hallucinations in AI Tooling
 
-Reflecting on Phalanx Duel and SCMC helped clarify something much deeper about software engineering and technical leadership:
+Building a presentation about Phalanx Duel using AI-augmented tooling turned out to be super meta, and genuinely fascinating.
 
-**Competence is quiet. Safe is better than scary.**
+It exposed both sides of generative tools in sharp relief:
+- **What the tools enable**: Rapid synthesis, boilerplate scaffolding, visual layout generation, and fast iteration across documentation and slide decks.
+- **Where the tools hallucinate**: Language models approximate rather than verify. Without strict human verification, they will invent narrative details with total fluency: imagining multi-camera broadcast studios before you even knew the software existed, or injecting philosophical treatises where straightforward engineering explanations belong.
 
-In Friedrich Nietzsche's *Thus Spoke Zarathustra*, the philosopher describes the three metamorphoses of the spirit:
-1. **The Camel**: The beast of burden that carries heavy loads, masters the existing rules, and trudges across the dry desert.
-2. **The Lion**: The rebel who battles the great dragon called "Thou Shalt." The Lion says "I will not!" and fights for autonomy, tearing down false idols and breaking bad patterns.
-3. **The Child**: A new beginning, a game, a wheel rolling out of itself, a first movement, a sacred "Yes."
+This meta experience reinforces the foundational lesson of Software Craftsmanship McHenry County, UGtastic, and *The Sound Above*: **ground truth matters**.
 
-Many experienced engineers get stuck in the Lion phase. After seeing bad architectures, broken migrations, and enterprise dysfunction, they become fierce critics. They adopt the intense vocabulary of combat: *auditing, war rooms, forensics, quarantines, fatal flaws, uncompromising truth*.
-
-To the engineer, that intensity feels like vigilance and integrity. But to teammates, engineering managers, and product partners, it can be intimidating and frightening. It raises the temperature in the room. People start to worry: *Will this person judge my code? Will they turn every pull request into an ideological battle? Will they make our team feel unsafe?*
-
-Tabletop games remind us of the Child's voice:
-- A game is an invitation to play, to explore, and to collaborate.
-- You sit across from someone not to conquer them, but to share a common space governed by clear, fair agreements.
-- When an engineer approaches a legacy system with the curiosity of a child, the fear disappears. Instead of declaring "this code is slop," the quiet engineer asks: *"What is this system trying to do? Isn't this interesting? How can we make this safe and simple together?"*
-
-Google's famous Project Aristotle study revealed that psychological safety: the shared belief that a team is safe for interpersonal risk-taking: is the single highest predictor of engineering performance.
-
-True Staff+ leadership is not about showcasing how much you know or how intense your standards are. It is about **lowering the collective anxiety of the team**. It is about making production changes so predictable, observable, and reversible that developers look forward to deploying.
+Whether you are building a two-player card duel on a picnic table or evaluating generative models in production, the core contract never changes:
+- Keep the business logic and game rules strictly deterministic.
+- Keep the server authoritative over state transitions.
+- Use generative tools for acceleration and assistance, but keep the boundary explicit and verified by human stewardship.
 
 ---
 

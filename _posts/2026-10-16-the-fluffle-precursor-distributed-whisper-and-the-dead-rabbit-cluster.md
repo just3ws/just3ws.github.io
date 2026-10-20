@@ -27,7 +27,7 @@ It is also the story of how imposter syndrome and cognitive overload caused me t
 
 ### The Pre-Whisper Wall: A Decade of Silent Hard Drives
 
-Between 2011 and 2015, I hauled 35 pounds of camera gear, wireless lavalier microphones, and laptops through conference hallways across North America. From SCNA to RailsConf and GOTO Chicago, I recorded over 200 technical interviews for UGtastic (first captured on the Internet Archive on April 14, 2012, prior to our 2017 transition to WHOIS Tech Community). I sat with language creators, framework maintainers, community organizers, and frontline practitioners.
+Between 2011 and 2015, I recorded over 200 technical interviews across North America for UGtastic (first captured on the Internet Archive on April 14, 2012, prior to our 2017 transition to WHOIS Tech Community). At SCNA 2011, the setup was as minimal as it gets: recording directly on the built-in microphone and camera of my 2010 MacBook Pro using Apple Photo Booth. The equipment varied over the years, usually settling on a stationary microphone after the SCNA 2011 series, as I sat with language creators, framework maintainers, community organizers, and frontline practitioners.
 
 When the camera stopped rolling, I hit an impassable operational wall: transcription.
 
@@ -151,9 +151,9 @@ Over the course of several weeks, the cluster hummed quietly in my basement. It 
 
 I was determined to work completely in the open and respect the creator. I drafted a clear copyright and licensing framework: all episode content remained the exclusive copyright of Jason Carpenter, while the derived transcriptions were published under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 license (CC BY-NC-ND 4.0).
 
-I sent an email to Jason at `DeadRabbitRadio@gmail.com`. I explained that I was a fan, that I was testing distributed transcription tools, that I had transcribed his catalog to make it searchable and accessible for deaf and hard-of-hearing listeners, and that I wanted to make sure he was comfortable with the project.
+I reached out to Jason directly on Discord. I explained that I was a fan, that I was testing distributed transcription tools across a cluster of Raspberry Pis, that I had transcribed his catalog to explore full-text search across daily episodes, and that I wanted to make sure he was comfortable with the project.
 
-Jason was exceptionally gracious. He replied with kindness, humor, and curiosity, expressing appreciation for the effort and giving his blessing to the fan-driven archive.
+Jason was exceptionally gracious. He responded with kindness, humor, and curiosity, expressing appreciation for the effort and giving his blessing to the fan-driven archive.
 
 I felt on top of the world. The technology worked. The creator was on board. The transcripts were live on GitHub.
 
@@ -177,7 +177,7 @@ At the exact same time, my professional responsibilities at work intensified dra
 
 My working memory became completely exhausted. Every evening when I looked at my computer, the mountain of broken podcast edge cases felt insurmountable. I began to tell myself that I was fooling myself, that building a real media pipeline was beyond my abilities, and that I was an imposter playing with toy scripts.
 
-The guilt was suffocating. Jason had been so generous and kind in his email, and I felt I had promised a polished, evergreen resource that I could no longer sustain. Instead of sending a simple, honest email saying, *"Jason, I am overwhelmed with work right now and need to pause this,"* I froze.
+The guilt was suffocating. Jason had been so generous and kind in our conversation, and I felt I had promised a polished, evergreen resource that I could no longer sustain. Instead of sending a simple, honest message saying, *"Jason, I am overwhelmed with work right now and need to pause this,"* I froze.
 
 I stopped updating the repository. I stopped responding. I ghosted Jason, not out of malice or apathy, but out of sheer, paralyzing embarrassment.
 

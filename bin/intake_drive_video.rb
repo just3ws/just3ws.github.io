@@ -461,6 +461,7 @@ class MediaIntakePipeline
       end
 
       total_processed = 0
+      processed_in_run = Set.new
 
       loop do
         if self.class.halted? || @halt_requested
@@ -474,7 +475,7 @@ class MediaIntakePipeline
         end
 
         # 2. Rescan pending candidates across all channels on each step (FIFO oldest first)
-        candidates = collect_pending_candidates(channel, target_filter)
+        candidates = collect_pending_candidates(channel, target_filter).reject { |c| processed_in_run.include?(c[:file_path]) }
         break if candidates.empty?
 
         # 3. Double-check concurrency guard before starting next file
@@ -487,6 +488,7 @@ class MediaIntakePipeline
         # 4. Pick single oldest candidate (FIFO)
         next_item = candidates.first
         file_path = next_item[:file_path]
+        processed_in_run << file_path
         target_name = next_item[:target_name]
         target_info = next_item[:target_info]
         ch_name = next_item[:channel]

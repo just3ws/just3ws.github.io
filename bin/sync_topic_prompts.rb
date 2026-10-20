@@ -38,10 +38,10 @@ RAMBLIN_TOPICS = [
     id: "carrying-the-camera-alone",
     title: "Carrying the Camera Alone: The Solitary Listener in Crowded Hallways",
     location_suggestion: "Metra platform or urban conference district walkway",
-    historical_anchor: "Hauling heavy camera bags, wireless lavaliers, tripods, and laptops alone through GOTO Chicago, SCNA, and RailsConf hallways from 2011 to 2015 to record over 200 technical interviews without an assistant or production crew.",
+    historical_anchor: "Recording over 200 technical interviews alone through GOTO Chicago, SCNA, and RailsConf hallways from 2011 to 2015 without an assistant or production crew, starting with the built-in mic and camera on a 2010 MacBook Pro at SCNA 2011 and moving to a stationary microphone setup.",
     core_inquiry: "What is the physical and emotional reality of being the sole documentarian at technical conferences, and why is listening often the loneliest job in the room?",
     talking_points: [
-      "The physical toll: hauling 35 pounds of recording equipment between crowded conference rooms on zero sleep.",
+      "The physical reality: traveling between crowded conference rooms and hallway tracks recording community interviews on minimal gear.",
       "The sharp contrast: being surrounded by 800 animated engineers while operating as a solitary, detached observer behind the lens.",
       "The discipline of active listening: suppressing your own ego to help the guest articulate what made their work meaningful.",
       "Why grassroots oral history matters more than commercial marketing: catching developers in their authentic, unvarnished state."

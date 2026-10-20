@@ -45,11 +45,11 @@ Conversations on the move: engineering observations, personal history, systems a
 
 - **ID**: `carrying-the-camera-alone`
 - **Location / Setting**: Metra platform or urban conference district walkway
-- **Historical Anchor**: Hauling heavy camera bags, wireless lavaliers, tripods, and laptops alone through GOTO Chicago, SCNA, and RailsConf hallways from 2011 to 2015 to record over 200 technical interviews without an assistant or production crew.
+- **Historical Anchor**: Recording over 200 technical interviews alone through GOTO Chicago, SCNA, and RailsConf hallways from 2011 to 2015 without an assistant or production crew, starting with the built-in mic and camera on a 2010 MacBook Pro at SCNA 2011 and moving to a stationary microphone setup.
 - **Core Inquiry**: What is the physical and emotional reality of being the sole documentarian at technical conferences, and why is listening often the loneliest job in the room?
 
 #### Talking Points & Narrative Arcs:
-1. The physical toll: hauling 35 pounds of recording equipment between crowded conference rooms on zero sleep.
+1. The physical toll: traveling between crowded conference rooms and hallway tracks recording community interviews on minimal gear.
 1. The sharp contrast: being surrounded by 800 animated engineers while operating as a solitary, detached observer behind the lens.
 1. The discipline of active listening: suppressing your own ego to help the guest articulate what made their work meaningful.
 1. Why grassroots oral history matters more than commercial marketing: catching developers in their authentic, unvarnished state.

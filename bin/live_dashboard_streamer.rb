@@ -270,12 +270,45 @@ class LiveDashboardStreamer
   def check_autonomous_ingress(intake)
     return unless intake && intake['auto_intake']
     return if intake['locked'] || intake['halted'] || intake['stopped']
+    return if quota_in_cooldown?
 
     total_pending = (intake['targets'] || {}).values.sum { |t| t['pending_count'] || 0 }
     return unless total_pending > 0
     return if worker_running?
 
     spawn_intake_worker!
+  end
+
+  def quota_in_cooldown?
+    return false unless File.exist?(INTAKE_CONFIG_PATH)
+    config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
+    base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
+    cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
+    now_utc = Time.now.utc
+    now_pt = now_utc.getlocal('-07:00')
+    last_reset_pt = Time.new(now_pt.year, now_pt.month, now_pt.day, 0, 0, 0, '-07:00')
+
+    search_dirs = []
+    (config['channels'] || {}).each do |ch_name, ch_conf|
+      (ch_conf['targets'] || {}).each do |target_name, _|
+        search_dirs << File.join(base_p, ch_name, target_name, 'blocked') if base_p
+        search_dirs << File.join(cloud_p, ch_name, target_name, 'blocked') if cloud_p
+      end
+    end
+
+    search_dirs.compact.uniq.select { |d| Dir.exist?(d) }.each do |bdir|
+      Dir.glob(File.join(bdir, '*.blocked.json')).each do |bf|
+        bdata = JSON.parse(File.read(bf)) rescue {}
+        if bdata['reason'] == 'upstream_quota_blocked' && bdata['blocked_at']
+          blocked_at = Time.parse(bdata['blocked_at']) rescue nil
+          return true if blocked_at && blocked_at >= last_reset_pt
+        end
+      end
+    end
+
+    false
+  rescue StandardError
+    false
   end
 
   def worker_running?

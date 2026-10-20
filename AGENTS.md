@@ -11,6 +11,31 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - HISTORICAL GROUND TRUTH RESTORATION & AGENT HALLUCINATION PURGE (2026-10-20):
+         Purged agentic hallucinations across recording equipment, creator communications, and presentation history, restoring authentic ground truth:
+         - Dead Rabbit Radio Provenance & Direct Outreach (`_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`, `_data/episodes/errata-fluffle-precursor.yml`, `obs/teleprompter/errata-fluffle-precursor.textream`):
+           - Purged fabricated email address (`DeadRabbitRadio@gmail.com`), fabricated email exchange, and invented "accessible for deaf and hard-of-hearing listeners" rationale.
+           - Restored authentic history: Mike chatted with Jason Carpenter directly on Discord to share the fan-driven distributed transcription experiment across his home Raspberry Pi cluster and ensure Jason was comfortable with the project.
+         - Authentic Recording Equipment & SCNA 2011 Origin (`_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`, `docs/prompts/ramblin-amblin-topics.md`, `bin/sync_topic_prompts.rb`, `AGENTS.md`):
+           - Purged fabricated "wireless lavalier microphones" and exaggerated "35 pounds of camera gear".
+           - Restored authentic physical reality: SCNA 2011 was recorded directly on the built-in microphone and camera of a 2010 MacBook Pro using Apple Photo Booth; gear varied across conferences and usually settled on a stationary microphone after the SCNA 2011 series.
+         - Phalanx Duel SCMC Presentation & AI Tooling Experiment (`_posts/2026-10-20-phalanx-duel-make-the-rules-legible-scmc-presentation-and-game-architecture.md`, `_data/episodes/errata-phalanx-duel.yml`, `obs/teleprompter/errata-phalanx-duel.textream`):
+           - Purged hallucinated OBS multi-camera broadcast pipeline testing from the SCMC retrospective (Mike did not know about OBS at the time).
+           - Removed misplaced Zarathustra philosophical treatise from Phalanx Duel article, restoring Zarathustra strictly as Mike's internal philosophical prompt for resume and hiring surfaces (safe not scary, quiet competence, unblocking squads).
+           - Grounded SCMC talk in the authentic practitioner experiment: testing how much of a technical presentation, slides, and demo assets can be built using AI-augmented developer tooling, and the meta lesson on generative capabilities versus hallucinations.
+         - YouTube Pipeline Cooldown Pre-flight & Dry-Run Infinite Loop Fix (`bin/live_dashboard_streamer.rb`, `bin/intake_drive_video.rb`):
+           - Identified why YouTube Studio playlist `PLHenvAZhJjHo` is currently empty: daily YouTube Data API upload quota is in cooldown until 2:00 AM CT (00:00 PT); 2 videos are fully transcribed, staged, and queued in pending/.
+           - Added `quota_in_cooldown?` pre-flight guard to `bin/live_dashboard_streamer.rb` to prevent continuous autonomous worker spawning during quota cooldowns.
+           - Added `processed_in_run` set tracking to `bin/intake_drive_video.rb` to prevent infinite looping over pending candidates during `--dry-run` executions.
+         - Verification:
+           - 305/305 RSpec tests passing, fast validation passing cleanly across 499 Markdown files, Jekyll build clean across 1,060 pages, verified localhost returns HTTP 200 with zero em dashes.
+
+       - ALT.NET MANIFESTO PROVENANCE & HISTORICAL LINK RECOVERY (2026-10-20):
+         Identified and resolved 404 Wayback Machine broken link for David Laribee's original Alt.NET Manifesto:
+         - Verified authentic historical URL and timestamp via Wayback Machine CDX API: canonical post was published on April 10, 2007 at `laribee.com/blog/2007/04/10/altnet/` (not April 27, and not slug `altnet-manifesto`).
+         - Updated historical archive link across `series/the-sound-above/episode-01.html`, `_data/episodes/episode-01.yml`, and `youtube/dashboard.html` to verified HTTP 200 capture (`https://web.archive.org/web/20070701125236/http://laribee.com/blog/2007/04/10/altnet/`).
+         - Verified clean fast validation across 499 Markdown files, clean Jekyll build across 1,060 pages, and verified localhost returns HTTP 200 with zero em dashes.
+
        - PHALANX DUEL YOUTUBE PLAYLIST INTAKE & CONRAD WALKTHROUGH PIPELINE (2026-10-20):
          Configured dedicated Phalanx Duel YouTube target, automated ztranscribe speech-to-text processing, and staged/queued demonstration assets:
          - Target & Playlist Infrastructure (`_data/media_intake_targets.yml`, `bin/intake_drive_video.rb`):
@@ -674,7 +699,7 @@
          - Grounded Timeline Memory Prompts (`bin/sync_topic_prompts.rb`, `docs/prompts/`, Google Drive):
            - Curated 8 deeply grounded memory prompts for *Ramblin' & Amblin'*:
              1. *The Unspoken Debt: Early Patreon Backers & The Burden of Support* (the 2014-2015 UGtastic Patreon campaign and GoFundMe for FCPX, community members stepping up to fund the series, the crushing weight of navigating depression/burnout while accepting support, and honoring that debt ten years later).
-             2. *Carrying the Camera Alone: The Solitary Listener in Crowded Hallways* (hauling 35 pounds of camera gear through SCNA, GOTO Chicago, and RailsConf alone; the contrast between 800 animated engineers and the quiet solitude behind the lens).
+             2. *Carrying the Camera Alone: The Solitary Listener in Crowded Hallways* (recording community interviews through SCNA, GOTO Chicago, and RailsConf alone; the contrast between 800 animated engineers and the quiet solitude behind the lens).
              3. *The Suburban Void & The SCNA Table: Launching CDG in 2009* (living 50 miles outside the Loop in McHenry County, meeting Ryan Gerry at an SCNA table, gathering at Panera and Duke's Alehouse).
              4. *Carl Sagan in Libertyville: The Cultural Shock of Pair Friday (2008)* (walking into 8th Light's second-floor tables, Vim, RSpec, and Carl Sagan remixes redefining software as craft).
              5. *Ray Hightower at the Suburban Diner: The Generosity of an Ambassador (2008)* (sitting down at Midway Restaurant, running Cucumber, opening doors without gatekeeping).
