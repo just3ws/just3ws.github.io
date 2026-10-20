@@ -11,6 +11,21 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - THE DIGITAL THEREMIN & ATTENTION BLEED ESSAY PUBLICATION (2026-10-20):
+         Synthesized Mike Hall's raw authorial reflection on the uncanny valley of generative AI, the mathematical coupling of latent diffusion tensors, and the digital theremin metaphor into a systems craftsmanship essay ready for publication to `just3ws.com` (`_posts/2026-10-20-the-digital-theremin-attention-bleed-and-the-uncanny-boundary.md`):
+         - Essay Synthesis & Conceptual Framing:
+           - Unpacked the mathematical anatomy of the uncanny valley: contrasting physical photography (where adjacent pixels share space solely by coincidence of line of sight from the observer, with zero causal or predictive awareness) against generative diffusion (where latent vectors calculate cross-attention, causing pixels to bleed into broadstroke compromises).
+           - Analyzed the identical mechanism in language models: autoregressive self-attention ($QK^T / \sqrt{d}$) creates universal mutual awareness, generating an over-lubricated velvet surface where nothing stubs its toe, contrasted with human writing defined by bodily friction, clipped cadence, and abrupt conceptual collisions.
+           - Formulated the Digital Theremin metaphor: operating in an invisible, continuous electromagnetic probability field without discrete keys, frets, or physical stops, requiring the human practitioner to supply the internal grounding and boundary tests that the model completely lacks.
+           - Grounded sovereign provenance in the low-trust panopticon: utilizing deterministic local Git trees, immutable checksums, and local NVMe storage to preserve verifiable human agency.
+         - Provenance & Datalake Anchoring:
+           - Created deterministic research artifact `_data/research/ramblin-amblin-ok-next-experiment.json` and added Prompt 22 (`the-frictionless-field-and-the-digital-theremin`) to `docs/prompts/ramblin-amblin-topics.md`.
+           - Recompiled CareerOS datalake (`career_datalake.json`, `career_datalake.jsonl`) and updated knowledge graph (`_data/knowledge_graph.json`, 474 nodes, 769 edges, 0 orphans).
+         - Localhost Verification:
+           - Jekyll site build passing across 1,047 pages and verified on `https://just3ws.localhost/2026/10/20/the-digital-theremin-attention-bleed-and-the-uncanny-boundary.html` (HTTP 200).
+         - Verification:
+           - Fast validation passing cleanly across 497 Markdown files, zero em dashes across all edits.
+
        - SOVEREIGN VERIFICATION & THE METERS VS YARDS TRAP ARTICLE PUBLICATION (2026-10-20):
          Synthesized physical field re-test findings, the dual-model divergence between code and generative prose, and the Mars Climate Orbiter unit-mismatch trap into a comprehensive systems craftsmanship essay ready for publication to `just3ws.com` (`_posts/2026-10-20-the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.md`):
          - Essay Synthesis & Conceptual Framing:
