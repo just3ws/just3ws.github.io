@@ -72,6 +72,8 @@ I did not have an expensive cloud cluster or a bank of high-end NVIDIA GPUs. Wha
 
 Running whisper.cpp on a single Raspberry Pi CPU is slow. Transcribing an hour of audio can take two to three hours of computation. If I wanted to transcribe over one thousand episodes without waiting eighteen months, I had to build a distributed pipeline.
 
+The boards ran headless over SSH, booting from USB thumbdrives. WiFi was disabled. A small local hub router served only the Pis and provided their upstream link, which isolated their traffic and let them route more efficiently over wired ethernet.
+
 Working alongside early ChatGPT to draft Ruby orchestration scripts, I designed a distributed architecture across five network nodes (`node01` through `node05`):
 
 ```
@@ -142,7 +144,7 @@ sleep 120
 
 Notice that final line: `sleep 120`.
 
-On a Raspberry Pi 4 running all four ARM cores at 100% load during speech recognition, thermal throttling was brutal. Without an active cooling fan, the SoC temperatures would spike into the mid-80s Celsius. The two-minute sleep between episodes allowed the heatsinks to cool back to baseline before ingesting the next audio file.
+The setup was as stock as I could keep it: only the included heatsinks and the official Raspberry Pi cases, with no added fans. Running all four ARM cores at full load during speech recognition generates sustained heat, so the two-minute sleep between episodes gave the boards time to cool before ingesting the next audio file.
 
 ---
 
