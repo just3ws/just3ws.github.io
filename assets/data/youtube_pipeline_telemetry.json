@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T20:53:12Z",
+  "generated_at": "2026-10-20T21:10:26Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -4370,6 +4370,93 @@
         "Errata",
         "Imposter Syndrome"
       ]
+    },
+    {
+      "episode": -2,
+      "errata_slug": "errata-phalanx-duel",
+      "series": "The Sound Above: Special Presentation",
+      "title": "Phalanx Duel: Make the Rules Legible",
+      "status": "ready",
+      "interviewee": "Mike Hall",
+      "conference": "Software Craftsmanship McHenry County",
+      "year": 2026,
+      "location": "Crystal Lake, IL",
+      "slug": "phalanx-duel-make-the-rules-legible",
+      "era_id": "the-ai-horizon",
+      "era_name": "The AI Horizon",
+      "narrative": {
+        "theme": "Deterministic Game Engines, Server Authority & Software Craftsmanship",
+        "tone": "Reflective, technical, practitioner-focused, and direct",
+        "topic": "Phalanx Duel: Make the Rules Legible",
+        "plot_arc": {
+          "inciting_incident": "A rainy week at Boy Scout Camp Tesomas in July 2022 leads to designing a 1v1 tactical card duel on standard 52-card playing cards with zero dice and no mid-game shuffle.",
+          "rising_action": "Prototyping combat rules in Ruby, translating tabletop formations into a deterministic, server-authoritative TypeScript engine, and releasing a Go CLI client.",
+          "climax": "Presenting the architecture at Software Craftsmanship McHenry County, demonstrating how replay fingerprints, role-safe projections, and action ledgers establish unambiguous ground truth.",
+          "resolution": "Proving that in an era of non-deterministic AI generation, legible rules and verifiable state boundaries are the foundation of trustworthy production systems."
+        },
+        "core_inquiry": "How do you build a system where the physical rules at a table, the network protocol, client projections, and operational ledgers all agree about what happened?",
+        "chicago_context": "Grounded in the McHenry County and Chicago software craftsmanship tradition of empirical testing, boundary visibility, and learning through deliberate, reproducible practice.",
+        "ai_era_parallel": "LLMs and generative agents cannot be trusted with hidden state or rules authority; they require bounded MCP interfaces, deterministic simulation engines, and cryptographic verification."
+      },
+      "teleprompter_script": {
+        "act_1": "Welcome to The Sound Above: Special Presentation. I am Mike Hall. Today we are talking about cards, state machines, and why making rules legible is the deepest responsibility of software craftsmanship. In July 2022, during a rainy week at Boy Scout Camp Tesomas in northern Wisconsin, I sat at a wooden picnic table with two standard 52-card decks and a notebook. I wanted to design a two-player tactical card duel that eliminated random dice rolls and mid-match shuffles entirely. Every outcome had to flow strictly from the cards visible on the table and the deliberate choices each player made. That rainy camp experiment became Phalanx Duel.",
+        "act_2": "To prove the rules worked, I started where many craftsmen start: with executable code. I wrote a Ruby prototype to test combat resolution, card suits, and damage movement. In Phalanx Duel, each player controls an eight-card formation arranged in two ranks across four columns. When an attack strikes a column, damage must chew through the front-rank vanguard and rear-rank flank before it can touch the player's Life Points. The rules were simple enough for two scouts to play on a soggy bench, yet precise enough to run identically in software. But a working prototype is only the beginning of systems engineering.",
+        "act_3": "The real challenge came when turning tabletop rules into a live, multiplayer architecture. In late 2022 and 2023, I rebuilt Phalanx Duel from the ground up as a server-authoritative TypeScript platform. Many game architectures make the mistake of trusting the client to resolve moves. In Phalanx Duel, the client never dictates state; it merely sends player intent over a WebSocket connection. The server ingests that intent, validates it against the current deterministic state, computes the next transition, and records the exact action in an immutable ledger. What a table verifies with physical cards is what the server enforces on every single turn.",
+        "act_4": "That brings us to a fundamental architectural lesson: determinism is necessary, but it is not sufficient. An engine can be 100 percent deterministic while executing completely flawed business logic. To bridge that gap, Phalanx Duel implements replay fingerprints, action verification hashes, and role-safe projections. The authoritative server maintains complete match state, including facedown cards. But when broadcasting updates, it projects only role-safe information: Player 1 sees their private hand, Player 2 sees theirs, and spectators receive a time-delayed broadcast. The protocol itself becomes an active guardian of the game's integrity.",
+        "act_5": "In September 2026, I brought these materials to Software Craftsmanship McHenry County for a live talk titled Make the Rules Legible. We looked at how OpenTelemetry traces bugs across the transport layer, and how Model Context Protocol tools allow AI agents to observe and play matches. But notice the boundary: the AI model is not the authority. The model is merely an actor submitting intent through a strict schema. The deterministic engine remains the sole arbiter of truth. When the rules are legible, neither a network packet nor a hallucinating language model can corrupt the shared reality.",
+        "act_6": "Today, Phalanx Duel runs live in production at phalanxduel.com with automated release pipelines, containerized deployments, and a competitive Glicko-2 ladder. But its true value is as an architecture laboratory. The lessons learned under that soggy Wisconsin pavilion: server authority, deterministic replay, visible boundaries, and zero-indirection state transitions: are the exact same disciplines needed to modernize enterprise monoliths and financial ledgers. Thank you for joining this special presentation. You can download the rules, inspect the engine, and play a match at just3ws.com. Keep your rules legible, your boundaries explicit, and your systems safe to change."
+      },
+      "human_marginalia": {
+        "host_recollections": [
+          "Sitting under the camp pavilion at Tesomas in July 2022 sketching formation combat while rain poured outside.",
+          "Running early Ruby combat scripts in the terminal to verify suit interactions and column defense math.",
+          "Presenting the slides and live demo at SCMC in September 2026 to local software craftsmen."
+        ],
+        "workshop_prompts": [
+          "Trace the path from physical tabletop cards to server-authoritative WebSocket state transitions.",
+          "Examine how role-safe projections prevent information leakage in distributed multi-agent systems.",
+          "Connect deterministic game replay directly to enterprise ledger auditability and safe modernization."
+        ]
+      },
+      "research_attachments": [
+        {
+          "id": "phalanx-duel-site",
+          "title": "Phalanx Duel Live Production Platform",
+          "url": "https://phalanxduel.com",
+          "kind": "production",
+          "takeaway": "Live multiplayer tactical card platform running version 1.5.0 with ranked ladder."
+        },
+        {
+          "id": "phalanx-duel-guide",
+          "title": "Phalanx Duel Presentation Guide & Quickstart",
+          "url": "/phalanx-duel/",
+          "kind": "presentation",
+          "takeaway": "SCMC presentation companion with downloadable two-page face-to-face quickstart PDF."
+        },
+        {
+          "id": "phalanx-duel-series-plan",
+          "title": "Phalanx Duel User-Group Series Plan",
+          "url": "/docs/phalanx-duel-user-group-series-plan.md",
+          "kind": "architecture",
+          "takeaway": "10-part architectural sequence mapping the game to systems laboratory principles."
+        },
+        {
+          "id": "phalanx-duel-github",
+          "title": "GitHub: phalanxduel Organization",
+          "url": "https://github.com/phalanxduel",
+          "kind": "code",
+          "takeaway": "Deterministic TypeScript engine monorepo, Go CLI client, and automated container release pipeline."
+        }
+      ],
+      "tags": [
+        "Software Craftsmanship",
+        "Phalanx Duel",
+        "State Machines",
+        "Deterministic Systems",
+        "SCMC",
+        "OpenTelemetry",
+        "Game Architecture"
+      ]
     }
   ],
   "media_intake": {
@@ -5431,6 +5518,47 @@
     },
     "activity_stream": [
       {
+        "timestamp": "2026-10-20T21:10:56Z",
+        "stage": "sweeper",
+        "level": "warning",
+        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
+        "details": {}
+      },
+      {
+        "timestamp": "2026-10-20T21:10:07Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 45918
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:10:07Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 46406
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:10:07Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 46399
+        }
+      },
+      {
+        "timestamp": "2026-10-20T20:55:53Z",
+        "stage": "sweeper",
+        "level": "warning",
+        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
+        "details": {}
+      },
+      {
         "timestamp": "2026-10-20T20:52:54Z",
         "stage": "scheduler",
         "level": "info",
@@ -5748,57 +5876,9 @@
           "url": "https://youtu.be/1RPDRTS3Atw",
           "duration_seconds": 335.11
         }
-      },
-      {
-        "timestamp": "2026-10-20T19:25:10Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Ramblin' & Amblin' (2026-10-19): Spoiler warning for another book\" (0.19s)",
-        "details": {
-          "filename": "VID_20261019_102821897.mp4",
-          "title": "Ramblin' & Amblin' (2026-10-19): Spoiler warning for another book",
-          "duration_seconds": 0.19
-        }
-      },
-      {
-        "timestamp": "2026-10-20T19:25:10Z",
-        "stage": "whisper",
-        "level": "info",
-        "message": "ztranscribe STT completed for VID_20261019_102821897.mp4 in 61.7s",
-        "details": {
-          "filename": "VID_20261019_102821897.mp4",
-          "duration_seconds": 61.7
-        }
-      },
-      {
-        "timestamp": "2026-10-20T19:25:06Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T19:24:08Z",
-        "stage": "dsp",
-        "level": "info",
-        "message": "Extracted 16kHz audio from VID_20261019_102821897.mp4 in 1.66s",
-        "details": {
-          "filename": "VID_20261019_102821897.mp4",
-          "duration_seconds": 1.66
-        }
-      },
-      {
-        "timestamp": "2026-10-20T19:24:07Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for VID_20261019_102821897.mp4 (Target: ramblin-amblin)",
-        "details": {
-          "filename": "VID_20261019_102821897.mp4",
-          "target": "ramblin-amblin"
-        }
       }
     ],
-    "polled_at": "2026-10-20T20:53:34Z"
+    "polled_at": "2026-10-20T21:13:46Z"
   },
   "assets": [
     {
@@ -9712,5 +9792,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-20T20:53:34Z"
+  "updated_at": "2026-10-20T21:13:46Z"
 }

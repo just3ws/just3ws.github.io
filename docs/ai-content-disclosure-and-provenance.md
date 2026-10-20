@@ -3,6 +3,9 @@ layout: minimal
 title: AI Content Disclosure and Provenance Policy
 description: How the public archive distinguishes organic writing, human-led AI assistance, exploratory synthesis, and evidence-preserving transcript work.
 permalink: /docs/ai-content-disclosure-and-provenance.html
+redirect_from:
+  - /ai-content-disclosure-and-provenance/
+  - /ai-content-disclosure-and-provenance.html
 robots: index,follow
 sitemap: true
 ---

@@ -5,6 +5,8 @@ date: 2026-10-16 14:00:00 -0500
 permalink: /ai/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster/
 redirect_from:
   - /2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html
+  - /ai/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html
+  - /2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster/
 ai_generated: true
 human_led: true
 source_kind: ai-augmented-human-led

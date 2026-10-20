@@ -11,30 +11,28 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - NAVIGATION GRAPH COHESION, LINKEDIN PROFILE MAPPING & COMMAND PALETTE (2026-10-20):
-         Coordinated navigation graph cohesion, eliminated localhost hover traps, established the LinkedIn profile mapping guide and live export tooling, and expanded Shift+Cmd+K command palette coverage:
-         - Responsive Navigation & Hover Trap Elimination (`_sass/_p_theme_modern.scss`, `_sass/_p_site_styles.scss`, `_includes/localhost-subnav.html`):
-           - Resolved horizontal navigation clipping on viewports between 890px and 1240px by adding fluid scaling rules and raising the tablet mobile collapse gate to 890px.
-           - Replaced CSS `:hover` triggers on `.lh-dropdown-menu` with explicit `.is-open` click toggles, preventing accidental mouse movements from obscuring page titles and breadcrumbs.
-           - Standardized all localhost subnav buttons to `<button type="button" class="lh-dropdown-btn">`.
-           - Expanded `📺 The Sound Above` subnav dropdown across all 6 movements, codas, prologue pilot, and production broadcast kits.
-         - Series Episode Wayfinding & Quick-Jump Selector (`_includes/series_wayfinding.html`, `_layouts/series_episode.html`, `series/the-sound-above/episode-01.html`):
-           - Created unified `_includes/series_wayfinding.html` component embedded at top and bottom of all episode pages.
-           - Integrated interactive `<select>` quick-jump dropdown grouped by historical movement across all 35 rewatch episodes, Ep 00, Errata, and closing Codas.
-           - Fixed broken Episode 01 next link to point to `/series/the-sound-above/episode-02/` and linked backward to Episode 00 (`/ai/2026/10/12/...`).
-           - Added canonical breadcrumbs (`Home / The Sound Above / Episode XX`).
-         - LinkedIn Profile Mapping Guide & Interactive Export Tooling (`docs/linkedin-profile-mapping-guide.md`, `linkedin.html`, `_data/linkedin/`):
-           - Authored comprehensive mapping guide (`docs/linkedin-profile-mapping-guide.md`) projecting primary presence portfolio into LinkedIn concepts (Headline, About, Featured, Projects, Experience, Skills).
-           - Enforced EMR-Bear Approach A (strictly omitted from LinkedIn) and 2-project rule (Phalanx Duel and Technical Conversation Archive, purging local AI runtime tooling).
-           - Upgraded `linkedin.html` interactive export tool: added copy blocks and live character-count validation for 220-char Headline, 2,600-char About section, Featured links, 2 Projects, Experience roles (<2000 chars), and Top 5 Pinned + 50 de-duplicated skills.
-           - Added pre-formatted LinkedIn overrides for SK Holdings (`_data/linkedin/sk-holdings.yml`) and ActiveCampaign (`_data/linkedin/activecampaign.yml`).
-         - Shift+Cmd+K Command Palette & Knowledge Graph Integration (`_includes/command-palette.html`, `assets/data/site-search-index.json`, `_data/navigation.yml`):
-           - Wired Sovereign Verification series, The Sound Above curriculum, LinkedIn export tool, Writing hub, SCMC archive, Chicago Monograph, and Interactive Dehum Lab into the default command palette and search index.
-           - Updated keydown listener to support both `Shift+Cmd+K` and plain `Cmd+K` / `Ctrl+K` when not focused on input elements.
-           - Fixed em dashes in search index to clean hyphens and colons.
-           - Rebuilt AST code graph (`graphify update .`) to 9,974 nodes and 12,973 edges.
+       - STAFF PRESENCE SIMPLIFICATION, LAYOUT RESTORATION & PHALANX DUEL BROADCAST EPISODE (2026-10-20):
+         Streamlined public technical identity for Staff Software Engineer positioning, resolved wonky layout spacing and floating header artifacts, repaired CI deployment link breakages, and formalized Phalanx Duel into a full OBS broadcast episode:
+         - Wonky Layout & Floating Header Artifact Resolution (`_sass/_p_theme_modern.scss`, `_sass/_p_home_refresh.scss`):
+           - Eliminated the floating island gap on `.site-header` by seating it flush at `top: 0` edge-to-edge with `width: 100%`, a subtle bottom border, and 12px background blur; stopped page content and dark card blocks from peeking awkwardly above the navigation pill during scrolling.
+           - Resolved `.leadership-hero` layout crunch by replacing artificial `min-height: 30rem; align-items: end;` with clean `align-items: start; min-height: auto;` and balanced padding, perfectly aligning the headline with the operating pattern card.
+           - Normalized section vertical margins from excessive `5.5rem` to `clamp(2rem, 4.5vw, 3.5rem)`, smoothing the visual rhythm between dark container blocks (`.leadership-method`) and surrounding prose.
+         - Staff Software Engineer Presence Simplification (`_data/navigation.yml`, `_data/home.yml`):
+           - Simplified primary navigation to 6 cohesive anchors: `Résumé` (direct canonical Staff Software Engineer ATS parse + tailored recruiter package dropdown), `Work`, `Writing`, `The Sound Above`, `Archive`, and `Contact`.
+           - Purged consulting "Engagements" from the primary header to eliminate contractor/agency role confusion for Staff/Principal hiring managers.
+           - Aligned homepage visitor paths and evaluation cards directly around Staff Engineer proof anchors: Résumé, Case Studies (Monolith Modernization, Database Archaeology, 4% Defect), and Architecture Laboratory (Phalanx Duel).
+           - Resolved duplicate "What I do" section headings by updating through-line to "Platform Modernization".
+         - CI Pipeline Link Repair & Fluffle Precursor Permalinks (`docs/ai-content-disclosure-and-provenance.md`, `series/ai-competence/index.html`, `_posts/2026-10-20-the-digital-theremin-attention-bleed-and-the-uncanny-boundary.md`, `_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`):
+           - Fixed root cause of failing GitHub Pages deployments: corrected internal links targeting `/ai-content-disclosure-and-provenance/` to `/docs/ai-content-disclosure-and-provenance.html`, and added bidirectional `redirect_from` aliases.
+           - Ensured Fluffle Precursor resolves cleanly across all permutations (`/ai/...`, `/2026/...`, trailing slash, and `.html`).
+           - Verified 100% HTML-Proofer pass across 1,047 files and 1,362 internal links with 0 failures.
+         - Phalanx Duel SCMC Presentation & Full OBS Broadcast Treatment (`_data/episodes/errata-phalanx-duel.yml`, `obs/teleprompter/errata-phalanx-duel.textream`, `bin/stage_episode_workflow.rb`, `phalanx-duel/index.html`, `_includes/series_wayfinding.html`, `_includes/command-palette.html`):
+           - Formalized the September 2026 SCMC presentation into a complete 6-act broadcast teleprompter rundown and native `.textream` document (`obs/teleprompter/errata-phalanx-duel.textream`).
+           - Traced authentic narrative arc: Boy Scout Camp Tesomas July 2022 genesis, Ruby combat prototype, server-authoritative TypeScript engine, Go CLI client, replay verification, role-safe projections, and bounded AI boundaries.
+           - Enhanced `bin/stage_episode_workflow.rb` to stage `errata-*` episodes; passed all 10 staging gates (em-dash-free, 77-char title, OBS overlay simulated, 50 API quota units).
+           - Integrated Phalanx Duel into `phalanx-duel/index.html`, series wayfinding quick-jump, localhost subnav, and command palette.
          - Verification:
-           - 305/305 RSpec tests passing, fast validation passing cleanly across 499 Markdown files, zero em dashes across all edits.
+           - 305/305 RSpec tests passing, Jekyll build clean across 1,056 pages, HTML-proofer passing with 0 link errors, zero em dashes across all edits, all localhost surfaces returning HTTP 200.
 
        - LOCAL DISK HYGIENE, QUOTA COOLDOWN PRE-FLIGHT GUARDS & CLOUD QUARANTINE (2026-10-20):
          Root-caused and resolved local NVMe SSD space exhaustion (~6.3 GB free on 228 GB drive), establishing deterministic pre-flight guards, cloud quarantine offloading, and storage hygiene integration:

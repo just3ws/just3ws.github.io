@@ -133,7 +133,7 @@ The only durable answer is **sovereign capture through deterministic tooling**:
 
 1. **Immutable Local Receipts**: Raw audio, video footage, and field transcripts must be grounded on local NVMe storage with explicit cryptographic checksums and timestamps.
 2. **Deterministic Version Control**: Thoughts, technical realizations, and architectural decisions must be committed to local Git trees, signed, and verified before being fed into or processed by external models.
-3. **Transparent Provenance Contracts**: As laid out in our [AI Content Disclosure and Provenance Policy](/ai-content-disclosure-and-provenance/), every artifact must clearly state who is responsible, what source material shaped it, where generative assistance began, and where human verification drew the line.
+3. **Transparent Provenance Contracts**: As laid out in our [AI Content Disclosure and Provenance Policy](/docs/ai-content-disclosure-and-provenance.html), every artifact must clearly state who is responsible, what source material shaped it, where generative assistance began, and where human verification drew the line.
 4. **Honoring the Physical Ground**: Returning to the trail, walking beneath the actual 345kV conductors, and testing whether the code holds in the dirt.
 
 We accept the reality of the technological panopticon, but we refuse to surrender our cognitive boundaries to its frictionless smoothing. By building our own deterministic frets, we can play the digital theremin without losing our grip on the ground beneath our feet.

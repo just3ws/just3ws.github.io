@@ -38,7 +38,7 @@ class StageEpisodeWorkflow
     if target == '--all'
       stage_all_episodes(json_mode: json_mode)
     else
-      ep_num = (target == 'errata-fluffle-precursor' || target == '-1') ? target : target.to_i
+      ep_num = (target.to_s.start_with?('errata-') || target == '-1' || target == '-2') ? target : target.to_i
       result = stage_single_episode(ep_num)
 
       if json_mode
@@ -54,6 +54,8 @@ class StageEpisodeWorkflow
   def stage_single_episode(ep_num)
     dossier_file = if ep_num.to_i == -1 || ep_num.to_s == 'errata-fluffle-precursor'
                      File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml')
+                   elsif ep_num.to_s.start_with?('errata-')
+                     File.join(EPISODES_DIR, "#{ep_num}.yml")
                    else
                      formatted = sprintf('%02d', ep_num.to_i)
                      File.join(EPISODES_DIR, "episode-#{formatted}.yml")
@@ -288,6 +290,8 @@ class StageEpisodeWorkflow
 
     textream_filename = if ep_num.to_i == -1 || ep_num.to_s == 'errata-fluffle-precursor'
                           'errata-fluffle-precursor.textream'
+                        elsif ep_num.to_s.start_with?('errata-')
+                          "#{ep_num}.textream"
                         else
                           slug_num = format('%02d', ep_num.to_i)
                           "episode-#{slug_num}.textream"
