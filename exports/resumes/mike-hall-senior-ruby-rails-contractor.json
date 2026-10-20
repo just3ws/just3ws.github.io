@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-20T16:58:32Z",
+    "generated_at": "2026-10-20T19:00:43Z",
     "archetype": "senior_ruby_rails_contractor",
     "slug": "mike-hall-senior-ruby-rails-contractor",
     "target_tier": "Senior / Lead IC / Ruby on Rails Infrastructure"
@@ -116,17 +116,6 @@
         "Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge graph, and semantic cross-links across the corpus, turning an unstructured media archive into navigable, individually indexed pages.\n",
         "Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.\n",
         "Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.\n"
-      ]
-    },
-    {
-      "id": "agent-tooling",
-      "title": "Principal Architect",
-      "dates": "January 2026 - Present",
-      "summary": "Built and operate three MCP (Model Context Protocol) servers that expose live system state as callable tools to any MCP client, alongside the Claude Code skills, context-isolated subagents, and commit-time checks that keep agent work bounded and reviewable.\n",
-      "highlights": [
-        "Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL knowledge suite that agents both query and write back to, so methodologies and lessons learned in one session are retrievable in the next rather than re-derived.\n",
-        "Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an agent diagnoses a running system from observed behavior instead of inferring from source.\n",
-        "Context as a Budgeted Resource: Designed context-isolated subagents that keep high-volume audit work out of the main conversation's context window, with per-client registration tooling and pre-commit hooks that reject any agent asset that isn't self-describing.\n"
       ]
     }
   ],

@@ -103,3 +103,12 @@ Following honorable discharge from the U.S. Army in May 1997, Mike Hall began hi
   - Transcribed game source code line-by-line from programming magazines to learn syntax, variable dimensioning (`Dim`), and control flow.
   - Built an early personal website hosted on Angelfire to experiment with web markup and layout.
   - Grounded in a simple, persistent motivation: wanting to work with computers and understand how systems fit together.
+
+---
+
+## Domain Provenance & Root Namespace: just3ws.com
+
+- **Registration Date**: October 4, 2000 (verified by continuous unbroken WHOIS registry records across 26 years).
+- **Etymology**: Coined during the dot-com era as an affectionate reference to the World Wide Web ("just three 'W's changed the world").
+- **Canonical Architecture**: Serves as the sovereign root namespace for all professional writing, systems cartography, and community archives. All secondary channels (including the legacy `@whoistechcmty` YouTube handle, UGtastic archives, and open-source tooling) resolve back to this primary identity core.
+

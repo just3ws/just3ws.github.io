@@ -11,6 +11,28 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ROLLING HORIZON SWEEPER, IDENTITY CONSOLIDATION & DIGITAL GARDEN DISCLOSURE (2026-10-20):
+         Resolved playlist ephemerality sweeper fallback, grounded root domain origin and identity consolidation, and recalibrated digital garden AI disclosures:
+         - YouTube Rolling Horizon Sweeper Fallback & Compliance Wire-up (`bin/youtube_sweeper.rb`, `bin/live_dashboard_streamer.rb`, `bin/lib/youtube_deduplicator.rb`):
+           - Root-caused why the "dragging window" (ephemerality rolling horizon) was not active on YouTube Studio playlist `PLNtb969T2-l0` (`Ramblin' & Amblin'`):
+             1. The scheduled 15-minute compliance sweeper in `bin/live_dashboard_streamer.rb` omitted `--sweep-ephemerality` from its execution arguments.
+             2. `bin/youtube_sweeper.rb` did not enable rolling ephemerality by default under `--sweep`.
+             3. During YouTube Data API quota cooldowns, `fetch_playlist_items_ytdlp` omitted `publishedAt` and `videoPublishedAt`, causing `plan_rolling_horizon_retirement` to default all item ages to 0 and retain all videos indefinitely.
+           - Enhanced `fetch_playlist_items_ytdlp` to extract ISO timestamps from title dates (`\b(\d{4}-\d{2}-\d{2})\b`) or cross-reference `@deduplicator.registered_assets`, correctly computing item ages and retirement horizons during quota cooldowns.
+           - Enabled `--sweep-ephemerality` by default under `--sweep` and wired it directly into `bin/live_dashboard_streamer.rb` scheduled compliance loop.
+           - Added `:registered_assets` reader to `YouTubeDeduplicator`.
+         - Sovereign Identity & Root Namespace Grounding (`about/index.html`, `docs/biographical-and-service-provenance.md`):
+           - Verified and documented 26 years of unbroken WHOIS ownership for `just3ws.com` (registered October 4, 2000).
+           - Preserved authentic origin phrase from the dawn of the dot-com era: "just three 'W's changed the world".
+           - Consolidated `just3ws.com` as the canonical root namespace for all independent engineering, writing, and archival work, resolving legacy handles (`@whoistechcmty`) and sub-platforms back to the sovereign core.
+         - Digital Garden AI Disclosure Calibration (`_layouts/post.html`, `docs/ai-content-disclosure-and-provenance.md`):
+           - Re-aligned disclosure banner with Mike Hall's explicit practitioner voice: acknowledging that claiming to have personally line-edited every word or guaranteed every claim is inaccurate, curating the digital garden where "parts of the garden grow faster than others, working through the process but there are no guarantees."
+         - Resume Project Consolidation & Layout Polish:
+           - Removed speculative agent tooling entries from resume configurations, retaining core projects (`phalanx-duel`, `technical-conversation-archive`).
+           - Rebalanced homepage retrospective table column widths and Post 1 measure.
+         - Verification:
+           - 302/302 RSpec tests passing, fast validation passing cleanly across 498 Markdown files, Jekyll build clean across 1,045 pages, zero em dashes across all edits.
+
        - DASHBOARD QUEUE RESTORATION, CI PIPELINE REPAIR & FLUID LAYOUT EXPANSION (2026-10-20):
          Restored live media intake visibility across dashboard and SwiftBar, repaired GitHub Actions CI gate failures, expanded browser layout measure, and synthesized the sovereign verification continuum into Part 1:
          - Dual-Queue Intake Search Foundation (`bin/live_dashboard_streamer.rb`, `bin/youtube_pipeline.rb`, `bin/intake_drive_video.rb`, `bin/youtube-swiftbar`):

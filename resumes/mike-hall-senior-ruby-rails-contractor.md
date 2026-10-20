@@ -184,26 +184,6 @@ material into a searchable knowledge graph.
   web archives, reconciling incomplete metadata across sources to restore provenance for
   recordings that would otherwise have been lost.
 
-### Principal Architect (Local AI Orchestration & Developer Runtime)
-**January 2026 - Present**
-
-Built and operate three MCP (Model Context Protocol) servers that expose live system
-state as callable tools to any MCP client, alongside the Claude Code skills,
-context-isolated subagents, and commit-time checks that keep agent work bounded and
-reviewable.
-
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
-
 ---
 
 ## Additional Experience

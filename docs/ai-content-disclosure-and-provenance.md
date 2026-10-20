@@ -2,6 +2,7 @@
 layout: minimal
 title: AI Content Disclosure and Provenance Policy
 description: How the public archive distinguishes organic writing, human-led AI assistance, exploratory synthesis, and evidence-preserving transcript work.
+permalink: /docs/ai-content-disclosure-and-provenance.html
 robots: index,follow
 sitemap: true
 ---
@@ -9,8 +10,10 @@ sitemap: true
 # AI Content Disclosure and Provenance Policy
 
 This public archive uses AI tools as research, drafting, and organizing assistants.
-Mike Hall is the human author, operator, and publisher of the articles that carry this disclosure.
-He supplies the intent, lived memories, source material, interpretation, corrections, and final approval.
+Mike Hall is the human operator and curator of the articles and materials that carry this disclosure.
+He supplies the intent, lived memories, source material, architectural direction, and active curation.
+
+To be clear: saying Mike personally line-edited every file or guarantees that he has read every word is not accurate. He is reviewing the process, working in and through the tool, and curating this digital garden with care. He verifies a good deal of what comes out, but parts of the garden grow faster than others, and there are no guarantees that every claim is an absolute factual statement.
 
 We are in a distinctly weird moment in computing. Using an AI assistant to warn readers about the epistemic limits and hallucination traps of AI carries an unmistakable irony: at this point, what is even entirely "pure" text anymore? This archive is an open experiment in learning in public. I am doing my best to apply rigorous safety protocols, contract tests, and physical ground truth, but it remains a continuous learning process. If you spot holes, ungrounded leaps, or opportunities for tighter boundaries, suggestions and corrections are genuinely welcome.
 

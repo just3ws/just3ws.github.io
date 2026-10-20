@@ -11,7 +11,7 @@ require 'yaml'
 require 'json'
 
 class YouTubeDeduplicator
-  attr_reader :video_assets_path, :receipts_dir
+  attr_reader :video_assets_path, :receipts_dir, :registered_assets
 
   def initialize(opts = {})
     root_dir = File.expand_path('../..', __dir__)

@@ -69,25 +69,20 @@ system signals to incident response and safer change.
   conversational agents with Rasa and a schema inference prototype; pioneered local LLM
   orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
-### Principal Architect at Local AI Orchestration & Developer Runtime
+### Senior Backend Developer at SK Holdings, Inc.
 
-**January 2026 - Present** | Independent Project
+**January 2019 - December 2020** | Chicago, IL
 
-**Target Focus:** Built telemetry-driven diagnosis MCP server exposing distributed
-traces and error budgets directly to AI agent runtimes.
+**Target Focus:** Standardized asynchronous Sidekiq error observability, queue latency
+metrics, and automated deployment alerts.
 
 **Key Outcomes:**
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
+- Search Infrastructure Modernization: Eliminated external cluster failure modes and
+  reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text
+  search and relational indices under live production traffic.
+- Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core
+  applications, sequencing database migrations to ensure zero downtime during platform
+  modernization.
 
 ### Principal Architect at Phalanx Duel
 
@@ -143,25 +138,19 @@ exploratory anomaly detection spikes in Hadoop and Clojure.
 
 ## Selected Production Projects
 
-### Principal Architect (Local AI Orchestration & Developer Runtime)
-**January 2026 - Present**
+### Principal Architect (Phalanx Duel)
+**January 2022 - Present**
 
-Built and operate three MCP (Model Context Protocol) servers that expose live system
-state as callable tools to any MCP client, alongside the Claude Code skills,
-context-isolated subagents, and commit-time checks that keep agent work bounded and
-reviewable.
+Designing and building a real-time tactical game platform as a current hands-on
+laboratory for deterministic systems, product architecture, and controlled AI-assisted
+engineering.
 
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
+- Designed a deterministic engine with replayable action logs and server-authoritative
+  state transitions, making complex outcomes reproducible and independently verifiable.
+- Built replay validation, adversarial coverage, and CI verification gates so state
+  transitions can be checked across the complete lifecycle.
+- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
+  checks, and human-reviewed outputs rather than treating model output as authority.
 
 ### Principal Engineer & Curator (Technical Conversation Archive)
 **January 2011 - Present**

@@ -735,7 +735,7 @@ class LiveDashboardStreamer
       next unless File.exist?(sweeper_script)
 
       begin
-        cmd = "#{RbConfig.ruby} #{sweeper_script} --sweep --retire-duplicates --unblock-expired --apply --quiet"
+        cmd = "#{RbConfig.ruby} #{sweeper_script} --sweep --sweep-ephemerality --retire-duplicates --unblock-expired --apply --quiet"
         out, status = Open3.capture2e(cmd)
         if status.success?
           log_activity('sweeper', 'Scheduled compliance sweeper verified playlists and queue health (0 warnings)', level: 'info')

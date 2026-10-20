@@ -69,25 +69,21 @@ handoff mechanisms through Geekfest@OMF and the OpenTelemetry Working Group.
   conversational agents with Rasa and a schema inference prototype; pioneered local LLM
   orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
-### Principal Architect at Local AI Orchestration & Developer Runtime
+### Senior Software Developer at ActiveCampaign
 
-**January 2026 - Present** | Independent Project
+**September 2018 - December 2018** | Chicago, IL
 
-**Target Focus:** Built context-isolated subagents, automated pre-commit verification
-gates, and telemetry-driven diagnostic tooling for AI developer runtimes.
+**Target Focus:** Improved change safety and team velocity by hardening the Ember.js
+test suite across core CRM workflows, unblocking safe refactoring of legacy PHP backend
+paths.
 
 **Key Outcomes:**
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
+- Legacy Query Modernization: Replaced ad-hoc global data access with structured,
+  cacheable query patterns in the PHP backend, enabling unit testability and sub-second
+  query execution.
+- Frontend Verification Gates: Hardened Ember.js automated test suites across core CRM
+  contact workflows, creating safety gates that enabled non-breaking legacy PHP
+  refactoring.
 
 ### Senior Backend Developer at SK Holdings, Inc.
 
@@ -139,26 +135,6 @@ in Ruby on Rails, agile delivery rhythms, and software craftsmanship.
 ---
 
 ## Selected Production Projects
-
-### Principal Architect (Local AI Orchestration & Developer Runtime)
-**January 2026 - Present**
-
-Built and operate three MCP (Model Context Protocol) servers that expose live system
-state as callable tools to any MCP client, alongside the Claude Code skills,
-context-isolated subagents, and commit-time checks that keep agent work bounded and
-reviewable.
-
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
 
 ### Principal Architect (Phalanx Duel)
 **January 2022 - Present**

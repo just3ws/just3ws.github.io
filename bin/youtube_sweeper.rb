@@ -584,10 +584,22 @@ class YouTubeSweeper
     entries = data['entries'] || []
     entries.compact.each_with_index.map do |entry, idx|
       v_id = entry['id']
+      title = entry['title'].to_s
+
+      # Resolve publication timestamp from title (YYYY-MM-DD) or registered assets
+      pub_date = nil
+      if title =~ /\b(\d{4}-\d{2}-\d{2})\b/
+        pub_date = "#{$1}T12:00:00Z"
+      elsif deduplicator && deduplicator.registered_assets
+        asset = deduplicator.registered_assets.find { |a| deduplicator.extract_youtube_id(a) == v_id }
+        pub_date = "#{asset['published_date']}T12:00:00Z" if asset && asset['published_date']
+      end
+
       {
         'id' => "ytdlp_#{playlist_id}_#{idx}_#{v_id}",
         'snippet' => {
-          'title' => entry['title'],
+          'title' => title,
+          'publishedAt' => pub_date,
           'resourceId' => {
             'kind' => 'youtube#video',
             'videoId' => v_id
@@ -595,7 +607,8 @@ class YouTubeSweeper
           'position' => idx
         },
         'contentDetails' => {
-          'videoId' => v_id
+          'videoId' => v_id,
+          'videoPublishedAt' => pub_date
         }
       }
     end
@@ -624,6 +637,7 @@ if __FILE__ == $PROGRAM_NAME
 
     opts.on("--sweep", "Reconcile playlists, unblock expired cooldowns, and deduplicate") do
       options[:mode] = :sweep
+      options[:sweep_ephemerality] = true
     end
 
     opts.on("--sweep-ephemerality", "Retire rolling-window expired videos to vault and mark private") do

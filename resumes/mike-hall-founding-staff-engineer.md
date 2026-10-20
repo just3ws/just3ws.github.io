@@ -124,49 +124,24 @@ media corpus.
   web archives, reconciling incomplete metadata across sources to restore provenance for
   recordings that would otherwise have been lost.
 
-### Principal Architect at Local AI Orchestration & Developer Runtime
+### Senior Backend Developer at SK Holdings, Inc.
 
-**January 2026 - Present** | Independent Project
+**January 2019 - December 2020** | Chicago, IL
 
-**Target Focus:** Built local-first MCP servers (ctx-mcp, o2-mcp) exposing database
-knowledge and OpenObserve distributed telemetry directly to autonomous agent runtimes.
+**Target Focus:** Engineered resilient asynchronous message processing and optimized
+MySQL indexing for search pipelines under heavy production load.
 
 **Key Outcomes:**
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
+- Search Infrastructure Modernization: Eliminated external cluster failure modes and
+  reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text
+  search and relational indices under live production traffic.
+- Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core
+  applications, sequencing database migrations to ensure zero downtime during platform
+  modernization.
 
 ---
 
 ## Selected Production Projects
-
-### Principal Architect (Local AI Orchestration & Developer Runtime)
-**January 2026 - Present**
-
-Built and operate three MCP (Model Context Protocol) servers that expose live system
-state as callable tools to any MCP client, alongside the Claude Code skills,
-context-isolated subagents, and commit-time checks that keep agent work bounded and
-reviewable.
-
-- Bidirectional Knowledge Server: Built ctx-mcp, an MCP server fronting a PostgreSQL
-  knowledge suite that agents both query and write back to, so methodologies and lessons
-  learned in one session are retrievable in the next rather than re-derived.
-- Telemetry-Driven Diagnosis: Built o2-mcp, exposing on-demand OpenObserve telemetry
-  (errors, slow spans, failed jobs, distributed traces) as agent-callable tools, so an
-  agent diagnoses a running system from observed behavior instead of inferring from
-  source.
-- Context as a Budgeted Resource: Designed context-isolated subagents that keep
-  high-volume audit work out of the main conversation's context window, with per-client
-  registration tooling and pre-commit hooks that reject any agent asset that isn't
-  self-describing.
 
 ### Principal Architect (Phalanx Duel)
 **January 2022 - Present**
@@ -181,6 +156,32 @@ engineering.
   transitions can be checked across the complete lifecycle.
 - Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
   checks, and human-reviewed outputs rather than treating model output as authority.
+
+### Principal Engineer & Curator (Technical Conversation Archive)
+**January 2011 - Present**
+
+Recorded, and later restored, an archive of 214 technical interviews with practitioners
+from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline
+to transcribe, structure, and cross-link a longitudinal record of primary-source
+material into a searchable knowledge graph.
+
+- Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that
+  transcribes, diarizes, and structures long-form interview audio entirely on-device,
+  keeping a large private media corpus off third-party inference services.
+- Schema-Validated Content Platform: Runs on a contract-validated data layer: every
+  interview, asset, and transcript is checked against an explicit schema at build time,
+  with referential-integrity checks that fail the build rather than publishing broken
+  data.
+- Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge
+  graph, and semantic cross-links across the corpus, turning an unstructured media
+  archive into navigable, individually indexed pages.
+- Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference,
+  Software Craftsmanship North America, RailsConf, and WindyCityRails, with
+  practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso,
+  and Micah Martin.
+- Digital Archaeology: Recovered and reconstructed material from defunct platforms and
+  web archives, reconciling incomplete metadata across sources to restore provenance for
+  recordings that would otherwise have been lost.
 
 ---
 

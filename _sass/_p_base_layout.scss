@@ -999,12 +999,19 @@ a, button, select, input, .nav-link, .era-btn, .web-btn, .tab-btn {
 article {
   max-width: var(--container-max-width, 84rem);
   width: 100%;
+  margin: 0 auto;
 }
 
-.page,
-.post {
+.page {
   max-width: var(--container-max-width, 84rem);
   width: 100%;
+  margin: 0 auto;
+}
+
+.post {
+  max-width: 62rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .prose, .transcript-turn-text, .short-quote-box, .woven-quote-box {
@@ -1012,10 +1019,16 @@ article {
   line-height: 1.68;
 }
 
-.post-body > p,
-.post-body > ul,
-.post-body > ol {
-  max-width: 78ch;
+.post-body {
+  max-width: 100%;
+  margin: 0 auto;
+
+  > p,
+  > ul,
+  > ol {
+    max-width: 100%;
+    line-height: 1.72;
+  }
 }
 
 h1 { font-size: clamp(2.1rem, 4vw, 3rem); line-height: 1.2; }
