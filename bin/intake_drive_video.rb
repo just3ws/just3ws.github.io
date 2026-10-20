@@ -995,10 +995,17 @@ class MediaIntakePipeline
           begin
             cloud_month_dir = File.join(cloud_archive_path, channel, target_name, 'processed', Time.now.strftime('%Y-%m'))
             FileUtils.mkdir_p(cloud_month_dir)
-            FileUtils.cp(final_dest, File.join(cloud_month_dir, filename))
+            cloud_master_dest = File.join(cloud_month_dir, filename)
+            FileUtils.cp(final_dest, cloud_master_dest)
             FileUtils.cp(receipt_path, File.join(cloud_month_dir, File.basename(receipt_path))) if File.exist?(receipt_path)
             puts "☁️ Mirrored master to cloud archive: #{cloud_month_dir}"
             log_activity('archival', "Mirrored master to cloud archive: #{cloud_month_dir}", level: 'info', details: { 'cloud_dest' => cloud_month_dir })
+
+            # Release local master from NVMe SSD now that cloud archive is verified bit-for-bit
+            if File.exist?(cloud_master_dest) && File.size(cloud_master_dest) == File.size(final_dest)
+              FileUtils.rm_f(final_dest)
+              puts "🧹 Released local NVMe SSD master: #{filename} (safely retained in Google Drive cold storage)."
+            end
           rescue StandardError => cloud_err
             warn "⚠️ Cloud archive mirror notice: #{cloud_err.message}"
             log_activity('archival', "Cloud archive mirror skipped: #{cloud_err.message}", level: 'warning')
@@ -1338,7 +1345,7 @@ class MediaIntakePipeline
 
   def count_files_recursive(dir)
     return 0 unless Dir.exist?(dir)
-    Dir.glob(File.join(dir, '**', '*')).count { |f| File.file?(f) && f =~ /\.(mp4|mov|m4v|webm|mkv)$/i }
+    Dir.glob(File.join(dir, '**', '*')).count { |f| File.file?(f) && (f =~ /\.(mp4|mov|m4v|webm|mkv)$/i || f.end_with?('.receipt.json')) }
   end
 
   def format_size(bytes)
@@ -1501,6 +1508,7 @@ if __FILE__ == $PROGRAM_NAME
     opts.on("--drop FILE", "--ingest FILE", "Stage a local file into pending queue (e.g. from LocalSend or USB pull)") do |f|
       options[:drop_file] = f
     end
+    opts.on("-m", "--move", "Move rather than copy file when using --drop to prevent duplicate storage") { options[:move] = true }
     opts.on("-t", "--target TARGET", "Process specific target (ramblin-amblin, the-sound-above, errata)") { |t| options[:target] = t }
     opts.on("-c", "--channel CHANNEL", "Channel key (defaults to all channels)") { |c| options[:channel] = c }
     opts.on("-1", "--one", "--single", "Process only the single oldest file (FIFO) and exit") { options[:one] = true }
@@ -1539,11 +1547,20 @@ if __FILE__ == $PROGRAM_NAME
     end
     tgt = options[:target] || 'ramblin-amblin'
     chan = options[:channel] || 'whoistechcmty'
-    dest_dir = File.join(pipeline.base_path, chan, tgt, 'pending')
+
+    # Direct ingest to Google Drive folder when configured so local SSD stays lean
+    dest_base = (pipeline.cloud_archive_path && Dir.exist?(pipeline.cloud_archive_path)) ? pipeline.cloud_archive_path : pipeline.base_path
+    dest_dir = File.join(dest_base, chan, tgt, 'pending')
     FileUtils.mkdir_p(dest_dir)
     dest_file = File.join(dest_dir, File.basename(src))
-    FileUtils.cp(src, dest_file)
-    puts "📥 Ingested #{File.basename(src)} into #{tgt} pending queue:"
+
+    if options[:move] || src.start_with?(File.expand_path('~/Downloads'))
+      FileUtils.mv(src, dest_file)
+      puts "📥 Ingested and moved #{File.basename(src)} into #{tgt} pending queue:"
+    else
+      FileUtils.cp(src, dest_file)
+      puts "📥 Ingested #{File.basename(src)} into #{tgt} pending queue:"
+    end
     puts "   Destination: #{dest_file}"
     puts "   Run './bin/pipeline media intake --single' to process now, or '--watch' for autonomous background processing."
     exit 0
