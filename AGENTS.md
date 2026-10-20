@@ -11,28 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - STAFF PRESENCE SIMPLIFICATION, LAYOUT RESTORATION & PHALANX DUEL BROADCAST EPISODE (2026-10-20):
-         Streamlined public technical identity for Staff Software Engineer positioning, resolved wonky layout spacing and floating header artifacts, repaired CI deployment link breakages, and formalized Phalanx Duel into a full OBS broadcast episode:
-         - Wonky Layout & Floating Header Artifact Resolution (`_sass/_p_theme_modern.scss`, `_sass/_p_home_refresh.scss`):
-           - Eliminated the floating island gap on `.site-header` by seating it flush at `top: 0` edge-to-edge with `width: 100%`, a subtle bottom border, and 12px background blur; stopped page content and dark card blocks from peeking awkwardly above the navigation pill during scrolling.
-           - Resolved `.leadership-hero` layout crunch by replacing artificial `min-height: 30rem; align-items: end;` with clean `align-items: start; min-height: auto;` and balanced padding, perfectly aligning the headline with the operating pattern card.
-           - Normalized section vertical margins from excessive `5.5rem` to `clamp(2rem, 4.5vw, 3.5rem)`, smoothing the visual rhythm between dark container blocks (`.leadership-method`) and surrounding prose.
-         - Staff Software Engineer Presence Simplification (`_data/navigation.yml`, `_data/home.yml`):
-           - Simplified primary navigation to 6 cohesive anchors: `Résumé` (direct canonical Staff Software Engineer ATS parse + tailored recruiter package dropdown), `Work`, `Writing`, `The Sound Above`, `Archive`, and `Contact`.
-           - Purged consulting "Engagements" from the primary header to eliminate contractor/agency role confusion for Staff/Principal hiring managers.
-           - Aligned homepage visitor paths and evaluation cards directly around Staff Engineer proof anchors: Résumé, Case Studies (Monolith Modernization, Database Archaeology, 4% Defect), and Architecture Laboratory (Phalanx Duel).
-           - Resolved duplicate "What I do" section headings by updating through-line to "Platform Modernization".
-         - CI Pipeline Link Repair & Fluffle Precursor Permalinks (`docs/ai-content-disclosure-and-provenance.md`, `series/ai-competence/index.html`, `_posts/2026-10-20-the-digital-theremin-attention-bleed-and-the-uncanny-boundary.md`, `_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`):
-           - Fixed root cause of failing GitHub Pages deployments: corrected internal links targeting `/ai-content-disclosure-and-provenance/` to `/docs/ai-content-disclosure-and-provenance.html`, and added bidirectional `redirect_from` aliases.
-           - Ensured Fluffle Precursor resolves cleanly across all permutations (`/ai/...`, `/2026/...`, trailing slash, and `.html`).
-           - Verified 100% HTML-Proofer pass across 1,047 files and 1,362 internal links with 0 failures.
-         - Phalanx Duel SCMC Presentation & Full OBS Broadcast Treatment (`_data/episodes/errata-phalanx-duel.yml`, `obs/teleprompter/errata-phalanx-duel.textream`, `bin/stage_episode_workflow.rb`, `phalanx-duel/index.html`, `_includes/series_wayfinding.html`, `_includes/command-palette.html`):
-           - Formalized the September 2026 SCMC presentation into a complete 6-act broadcast teleprompter rundown and native `.textream` document (`obs/teleprompter/errata-phalanx-duel.textream`).
-           - Traced authentic narrative arc: Boy Scout Camp Tesomas July 2022 genesis, Ruby combat prototype, server-authoritative TypeScript engine, Go CLI client, replay verification, role-safe projections, and bounded AI boundaries.
-           - Enhanced `bin/stage_episode_workflow.rb` to stage `errata-*` episodes; passed all 10 staging gates (em-dash-free, 77-char title, OBS overlay simulated, 50 API quota units).
-           - Integrated Phalanx Duel into `phalanx-duel/index.html`, series wayfinding quick-jump, localhost subnav, and command palette.
+       - QUIET CRAFTSMANSHIP, PSYCHOLOGICAL SAFETY & PHALANX DUEL ERRATA EPISODE (2026-10-20):
+         Calibrated public technical positioning around quiet competence, psychological safety, and generous mentorship ("safe not scary, Zarathustra's child's voice"), while formalizing Phalanx Duel as a full Errata broadcast episode:
+         - Safety-First Tone & Quiet Competence Calibration (`_data/home.yml`, `about/index.html`):
+           - Recalibrated homepage hero lede, operating rhythm, and through-line away from intimidating, high-intensity crisis framing ("distributed failures, risky transactions, opaque coupling") toward calm, reassuring engineering stewardship ("quiet clarity, lowering operational stress, safe changes, psychological safety").
+           - Reframed the 3-step operating rhythm around team empathy: *Stabilize* (lower operational stress, make daily production predictable), *Understand* (build a legible picture so no engineer carries the mental load alone), and *Improve* (ship small, reversible changes that leave code gentler than we found it).
+           - Added explicit core value in `about/index.html` celebrating psychological safety, genuine curiosity, and Zarathustra's child's voice: meeting legacy systems with wonder rather than judgment, removing fear from production.
+         - Phalanx Duel Errata Episode & Long-Form Systems Essay (`_posts/2026-10-20-phalanx-duel-make-the-rules-legible-scmc-presentation-and-game-architecture.md`, `_data/episodes/errata-phalanx-duel.yml`):
+           - Authored comprehensive Errata episode post tracing the full arc: Camp Tesomas July 2022 picnic table genesis, executable Ruby combat rules, server-authoritative TypeScript engine, Go CLI client, SCMC presentation, and testing the broadcast presentation pipeline for The Sound Above.
+           - Integrated Zarathustra's Three Metamorphoses (Camel, Lion, Child) into software architecture: why tabletop games represent the child's voice, and how making rules legible removes defensive friction and fear from systems change.
+           - Linked episode across primary navigation (`_data/navigation.yml`), `The Sound Above` curriculum index (`series/the-sound-above/index.html`), wayfinding dropdown (`_includes/series_wayfinding.html`), localhost subnav (`_includes/localhost-subnav.html`), and command palette (`_includes/command-palette.html`).
          - Verification:
-           - 305/305 RSpec tests passing, Jekyll build clean across 1,056 pages, HTML-proofer passing with 0 link errors, zero em dashes across all edits, all localhost surfaces returning HTTP 200.
+           - 305/305 RSpec tests passing, Jekyll build clean across 1,060 pages, HTML-Proofer passing 100% across 1,051 files and 1,363 internal links with 0 errors.
+           - All localhost surfaces returning HTTP 200, zero em dashes across all edits.
 
        - LOCAL DISK HYGIENE, QUOTA COOLDOWN PRE-FLIGHT GUARDS & CLOUD QUARANTINE (2026-10-20):
          Root-caused and resolved local NVMe SSD space exhaustion (~6.3 GB free on 228 GB drive), establishing deterministic pre-flight guards, cloud quarantine offloading, and storage hygiene integration:
