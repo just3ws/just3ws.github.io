@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T21:36:03Z",
+  "generated_at": "2026-10-20T21:50:24Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -4453,6 +4453,13 @@
           "url": "https://github.com/phalanxduel",
           "kind": "code",
           "takeaway": "Deterministic TypeScript engine monorepo, Go CLI client, and automated container release pipeline."
+        },
+        {
+          "id": "phalanx-duel-playlist",
+          "title": "YouTube Series Playlist: Phalanx Duel Architecture & Demos",
+          "url": "https://www.youtube.com/playlist?list=PLHenvAZhJjHo",
+          "kind": "playlist",
+          "takeaway": "Demonstrations, gameplay walkthroughs, and architectural reviews exploring Phalanx Duel from tabletop rules to deterministic multiplayer engine."
         }
       ],
       "tags": [
@@ -4471,8 +4478,8 @@
     "channel": "whoistechcmty",
     "halted": false,
     "stopped": false,
-    "locked": false,
-    "active_pid": null,
+    "locked": true,
+    "active_pid": "38703",
     "auto_intake": true,
     "self_healing_events": [],
     "targets": {
@@ -5521,357 +5528,616 @@
         "failed_items": [],
         "blocked_count": 0,
         "blocked_items": []
+      },
+      "phalanx-duel": {
+        "series_name": "Phalanx Duel",
+        "playlist_id": "PLHenvAZhJjHo",
+        "archetype": "game_architecture_and_demos",
+        "purpose": "Demonstrations, design retrospectives, architectural walkthroughs, and guest presentations exploring Phalanx Duel from tabletop rules to deterministic multiplayer engine.",
+        "intro_structure": "State the version and focus of the demonstration; introduce the game board setup and core mechanics.",
+        "outro_structure": "Connect the demonstration to deterministic systems design and provide links to the live platform and open source rules.",
+        "default_privacy": "unlisted",
+        "staged_count": 2,
+        "staged_items": [
+          {
+            "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
+            "size_bytes": 68591336
+          },
+          {
+            "filename": "phalanx-duel-make-the-rules-legible-demo.mp4",
+            "size_bytes": 18215988
+          }
+        ],
+        "pending_count": 2,
+        "pending_items": [
+          {
+            "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
+            "size_bytes": 68591336,
+            "queue_position": 1,
+            "ingress_at": "2026-10-20T21:47:56Z",
+            "meta_phase": "pending",
+            "current_step": "metadata_synthesis",
+            "substates": {
+              "audio_dsp": {
+                "status": "completed",
+                "started_at": "2026-10-20T21:46:33Z",
+                "completed_at": "2026-10-20T21:46:34Z",
+                "duration_seconds": 1.02,
+                "wav_path": "/Users/mike/.local/state/just3ws/scratch/phalanx-duel-early-walkthrough-conrad-hall.mp4/phalanx-duel-early-walkthrough-conrad-hall.mp4.16k.wav"
+              },
+              "transcription": {
+                "status": "completed",
+                "started_at": "2026-10-20T21:46:34Z",
+                "completed_at": "2026-10-20T21:47:20Z",
+                "duration_seconds": 46.12,
+                "text": "Hi, welcome to my recording. I am someone who worked on\nthis game, PhalanxDuel.com, and I just wanted to do a\nlittle demo, put it out there, you know? Maybe some people\nwill play, you know, why not?\nOver here it says, Phalanx Duel is a deterministic tactical\nbattle on a 4x2 grid. No luck, no boosters, just a\ngeometric consequence of your deployment. Red protects,\nblue attacks.\nExecute the briefing. Here is the Enter the Duel and the Ax\nis Briefing, which is kind of like a tutorial or like\ntelling you what you could do. Here are some like things I\ncan help you with like pairings and like Combat Lab,\nobviously, all these things you can click on them.\nI will not be going through, so if you want to, you can go\nthrough. Here are some little demos of like things that\nhappen.\nCommand console, which is where you can go, scroll down, or\nif you want to go up here, enter the duel, you'll be\nbrought down to there.\nHere is where you want to put your username. You'll pick\nwhat mode you want to do. LP, or core LP, is your life\npoints, and that's how many, you know, times you can be\nattacked without, you know, dying.\nSo, the grid, obviously, is changeable, as you can see here\n. I can change it, but I will just be doing 2x4 right now.\nThere are two different AIs currently. AI Easy, AI Medium.\nThere will be things added, maybe hard or difficulty or\nextreme, but that is for the future, so I'll full screen\nnow.\nI have input, my name is Sam. We'll do cumulative, and we\n'll go against AI Easy. As you can see, it is a 2x4 grid.\nHow the game works is, you take cards, you place them\nwherever you want.\nOnce you have placed your whole grid of cards, you can\nstart the dueling phase. So, currently, we're in\npreparation.\nAnother thing that you must need to know is, kings can only\ndestroy kings, queens can only destroy queens, and jokers\ncan only destroy jokers.\nBut, every card they can, like, kill, like, a king can kill\nitself, but it can kill a queen and a joker.\nA queen can kill itself, and a joker. A joker can kill\nitself, and anything below it.\nSame goes for all the other cards.\nBut they cannot hit up, unless they're numbered cards.\nThen, they're free to hit whatever they want, but they\ncannot kill it.\nAnother thing that is important, aces. Aces, although they\nhave 1 HP, as you can see here, they can only also be\ndestroyed by another ace.\nSo, they can be quite annoying, but in a game like Cum\nulative, they're pretty handy, actually.\nSo, we'll stack 2 kings here.\nWe'll do a queen here.\nQueen here.\nLet's do 6.\nLet's do 8.\nJoker.\n10.\nSee, you don't really have to be very, you know, strategic\nwhen it comes to this bot.\nWell, we'll do king attacks this.\nAnd you see, over here, on the side, it'll show the turns.\nTurn 1.\nKing attacked column 1, which is my king here.\nAttack this.\nThe A bot, set ace, attack column 1, which he attacked my\nking.\nAs you can see, the HP is right there.\nI'll attack again.\nI'll do some damage.\nI'll destroy some cards.\nAttack again.\nAnd you can keep going.\nAnd a thing you need to know is, once the card is destroyed\n, you must place another.\nYou cannot just leave something open, because, you know, it\n's not really good.\nSo, we'll attack again.\nAnd we'll just do one last attack.\nAnd there we go.\nWe win.\nFor cumulative, the way it works is, you take an attacker,\nit'll attack this card.\nBut let's say the attacker is a king.\nIt deals 10 damage.\nThat is, you know, 5 of clubs.\nSo, it took 5 damage, but there's still 5 more damage that\ncan be dealt.\nThere's a queen now behind it.\nSo, let's just say that 5 damage that was not used is\ncarried over and hits the queen.\nSo, now, she's at 6 HP.\nSo, that is how it works.\nThere's also an AI medium, which is much smarter than this\nbot.\nIt'll use higher level cards, and it'll have, like, a\nlittle bit of strategy.\nSo, we'll do a little bit of, you know, strategy.\nLet's see.\nNot a very good starting hand, but, I'm going to make what\n...\nOh, I see.\nOkay.\nYeah, this game, it's a little bit of luck, but it's also\nskill-based in some parts.\nBut, you know, it's a game.\nIt's fun.\nLet's see.\nWhere should I attack?\nLet's go here.\nAs you can see over here, hostile LP, life points, 3.\nI have 13.\nSo, clearly, I'm in the lead.\nAlthough, this game can change very quickly.\nI think I'm going to win, though, personally.\nLet's see.\nI, personally, I enjoy the strategy of just spamming down\none column.\nIt works a lot.\nYeah, there we go.\nWe won.\nYeah.\nAnd this is just a little demo of a game I have been\nworking on with my father.\nThere's a leaderboard currently, not many players.\nThat is my father.\nWe have PvP versus AI, easy versus AI, medium.\nLike I said earlier, or I might not have said, we are\nplanning on making different levels of AI bots, possibly.\nA hard bot and a maybe insane bot.\nThere are going to be many more things we're going to add.\nSo, this is just something that we're working on, you know,\njust like a skeleton of what we're trying to do.\nSo, I hope you play the game.\nCheck it out.\nIf you have any feedback, leave a little comment.\nAnd check it out.",
+                "vtt": "WEBVTT\n\n00:00:00.000 --> 00:00:04.420\n Hi, welcome to my recording. I am someone who worked on\n\n00:00:04.420 --> 00:00:09.020\n this game, PhalanxDuel.com, and I just wanted to do a\n\n00:00:09.020 --> 00:00:12.870\n little demo, put it out there, you know? Maybe some people\n\n00:00:12.870 --> 00:00:14.460\n will play, you know, why not?\n\n00:00:15.280 --> 00:00:19.050\n Over here it says, Phalanx Duel is a deterministic tactical\n\n00:00:19.050 --> 00:00:23.370\n battle on a 4x2 grid. No luck, no boosters, just a\n\n00:00:23.370 --> 00:00:28.200\n geometric consequence of your deployment. Red protects,\n\n00:00:28.200 --> 00:00:29.460\n blue attacks.\n\n00:00:30.000 --> 00:00:33.860\n Execute the briefing. Here is the Enter the Duel and the Ax\n\n00:00:33.860 --> 00:00:38.020\nis Briefing, which is kind of like a tutorial or like\n\n00:00:38.020 --> 00:00:42.410\n telling you what you could do. Here are some like things I\n\n00:00:42.410 --> 00:00:45.810\n can help you with like pairings and like Combat Lab,\n\n00:00:45.810 --> 00:00:49.540\n obviously, all these things you can click on them.\n\n00:00:50.220 --> 00:00:53.350\n I will not be going through, so if you want to, you can go\n\n00:00:53.350 --> 00:00:57.650\n through. Here are some little demos of like things that\n\n00:00:57.650 --> 00:00:58.540\n happen.\n\n00:01:00.140 --> 00:01:03.830\n Command console, which is where you can go, scroll down, or\n\n00:01:03.830 --> 00:01:06.280\n if you want to go up here, enter the duel, you'll be\n\n00:01:06.280 --> 00:01:07.660\n brought down to there.\n\n00:01:08.960 --> 00:01:11.650\n Here is where you want to put your username. You'll pick\n\n00:01:11.650 --> 00:01:15.320\n what mode you want to do. LP, or core LP, is your life\n\n00:01:15.320 --> 00:01:18.740\n points, and that's how many, you know, times you can be\n\n00:01:18.740 --> 00:01:21.360\n attacked without, you know, dying.\n\n00:01:21.740 --> 00:01:24.890\n So, the grid, obviously, is changeable, as you can see here\n\n00:01:24.890 --> 00:01:28.640\n. I can change it, but I will just be doing 2x4 right now.\n\n00:01:30.020 --> 00:01:33.680\n There are two different AIs currently. AI Easy, AI Medium.\n\n00:01:33.680 --> 00:01:38.950\n There will be things added, maybe hard or difficulty or\n\n00:01:38.950 --> 00:01:44.350\n extreme, but that is for the future, so I'll full screen\n\n00:01:44.350 --> 00:01:45.160\n now.\n\n00:01:46.160 --> 00:01:49.900\n I have input, my name is Sam. We'll do cumulative, and we\n\n00:01:49.900 --> 00:01:55.060\n'll go against AI Easy. As you can see, it is a 2x4 grid.\n\n00:01:55.640 --> 00:01:59.000\n How the game works is, you take cards, you place them\n\n00:01:59.000 --> 00:02:00.140\n wherever you want.\n\n00:02:01.240 --> 00:02:04.400\n Once you have placed your whole grid of cards, you can\n\n00:02:04.400 --> 00:02:07.310\n start the dueling phase. So, currently, we're in\n\n00:02:07.310 --> 00:02:08.040\n preparation.\n\n00:02:09.040 --> 00:02:13.100\n Another thing that you must need to know is, kings can only\n\n00:02:13.100 --> 00:02:17.630\n destroy kings, queens can only destroy queens, and jokers\n\n00:02:17.630 --> 00:02:19.780\n can only destroy jokers.\n\n00:02:20.460 --> 00:02:25.510\n But, every card they can, like, kill, like, a king can kill\n\n00:02:25.510 --> 00:02:29.280\n itself, but it can kill a queen and a joker.\n\n00:02:29.960 --> 00:02:32.990\n A queen can kill itself, and a joker. A joker can kill\n\n00:02:32.990 --> 00:02:34.980\n itself, and anything below it.\n\n00:02:35.460 --> 00:02:36.680\n Same goes for all the other cards.\n\n00:02:37.180 --> 00:02:40.340\n But they cannot hit up, unless they're numbered cards.\n\n00:02:40.460 --> 00:02:43.490\n Then, they're free to hit whatever they want, but they\n\n00:02:43.490 --> 00:02:44.520\n cannot kill it.\n\n00:02:45.660 --> 00:02:48.770\n Another thing that is important, aces. Aces, although they\n\n00:02:48.770 --> 00:02:52.110\n have 1 HP, as you can see here, they can only also be\n\n00:02:52.110 --> 00:02:54.340\n destroyed by another ace.\n\n00:02:54.980 --> 00:02:58.000\n So, they can be quite annoying, but in a game like Cum\n\n00:02:58.000 --> 00:03:00.900\nulative, they're pretty handy, actually.\n\n00:03:01.240 --> 00:03:02.720\n So, we'll stack 2 kings here.\n\n00:03:03.860 --> 00:03:04.720\n We'll do a queen here.\n\n00:03:05.460 --> 00:03:06.140\n Queen here.\n\n00:03:07.440 --> 00:03:08.440\n Let's do 6.\n\n00:03:08.880 --> 00:03:09.640\n Let's do 8.\n\n00:03:10.660 --> 00:03:11.100\n Joker.\n\n00:03:12.760 --> 00:03:13.160\n 10.\n\n00:03:14.020 --> 00:03:17.810\n See, you don't really have to be very, you know, strategic\n\n00:03:17.810 --> 00:03:20.020\n when it comes to this bot.\n\n00:03:20.580 --> 00:03:22.220\n Well, we'll do king attacks this.\n\n00:03:23.200 --> 00:03:29.200\n And you see, over here, on the side, it'll show the turns.\n\n00:03:29.580 --> 00:03:30.040\n Turn 1.\n\n00:03:30.500 --> 00:03:33.240\n King attacked column 1, which is my king here.\n\n00:03:33.700 --> 00:03:34.200\n Attack this.\n\n00:03:34.740 --> 00:03:38.330\n The A bot, set ace, attack column 1, which he attacked my\n\n00:03:38.330 --> 00:03:39.020\n king.\n\n00:03:39.240 --> 00:03:40.620\n As you can see, the HP is right there.\n\n00:03:41.560 --> 00:03:42.440\n I'll attack again.\n\n00:03:43.140 --> 00:03:44.240\n I'll do some damage.\n\n00:03:45.000 --> 00:03:46.160\n I'll destroy some cards.\n\n00:03:46.720 --> 00:03:47.260\n Attack again.\n\n00:03:48.720 --> 00:03:49.860\n And you can keep going.\n\n00:03:51.100 --> 00:03:54.500\n And a thing you need to know is, once the card is destroyed\n\n00:03:54.500 --> 00:03:56.960\n, you must place another.\n\n00:03:57.640 --> 00:04:00.940\n You cannot just leave something open, because, you know, it\n\n00:04:00.940 --> 00:04:02.360\n's not really good.\n\n00:04:03.020 --> 00:04:04.080\n So, we'll attack again.\n\n00:04:05.800 --> 00:04:07.240\n And we'll just do one last attack.\n\n00:04:07.420 --> 00:04:07.900\n And there we go.\n\n00:04:08.080 --> 00:04:08.420\n We win.\n\n00:04:09.720 --> 00:04:14.990\n For cumulative, the way it works is, you take an attacker,\n\n00:04:14.990 --> 00:04:17.380\n it'll attack this card.\n\n00:04:18.240 --> 00:04:19.960\n But let's say the attacker is a king.\n\n00:04:20.520 --> 00:04:21.500\n It deals 10 damage.\n\n00:04:22.200 --> 00:04:24.220\n That is, you know, 5 of clubs.\n\n00:04:24.880 --> 00:04:27.690\n So, it took 5 damage, but there's still 5 more damage that\n\n00:04:27.690 --> 00:04:28.620\n can be dealt.\n\n00:04:29.360 --> 00:04:30.920\n There's a queen now behind it.\n\n00:04:31.580 --> 00:04:34.700\n So, let's just say that 5 damage that was not used is\n\n00:04:34.700 --> 00:04:36.760\n carried over and hits the queen.\n\n00:04:37.140 --> 00:04:38.560\n So, now, she's at 6 HP.\n\n00:04:39.840 --> 00:04:41.060\n So, that is how it works.\n\n00:04:41.960 --> 00:04:46.330\n There's also an AI medium, which is much smarter than this\n\n00:04:46.330 --> 00:04:46.880\n bot.\n\n00:04:47.100 --> 00:04:49.100\n It'll use higher level cards, and it'll have, like, a\n\n00:04:49.100 --> 00:04:50.160\n little bit of strategy.\n\n00:04:50.500 --> 00:04:55.680\n So, we'll do a little bit of, you know, strategy.\n\n00:04:55.860 --> 00:04:56.260\n Let's see.\n\n00:04:57.720 --> 00:05:01.780\n Not a very good starting hand, but, I'm going to make what\n\n00:05:01.780 --> 00:05:02.880\n...\n\n00:05:02.880 --> 00:05:06.420\n Oh, I see.\n\n00:05:06.680 --> 00:05:06.940\n Okay.\n\n00:05:09.280 --> 00:05:12.270\n Yeah, this game, it's a little bit of luck, but it's also\n\n00:05:12.270 --> 00:05:15.080\n skill-based in some parts.\n\n00:05:15.080 --> 00:05:17.500\n But, you know, it's a game.\n\n00:05:17.700 --> 00:05:18.040\n It's fun.\n\n00:05:20.540 --> 00:05:21.220\n Let's see.\n\n00:05:21.320 --> 00:05:22.160\n Where should I attack?\n\n00:05:23.480 --> 00:05:24.340\n Let's go here.\n\n00:05:25.180 --> 00:05:29.280\n As you can see over here, hostile LP, life points, 3.\n\n00:05:29.720 --> 00:05:30.480\n I have 13.\n\n00:05:30.780 --> 00:05:32.260\n So, clearly, I'm in the lead.\n\n00:05:33.540 --> 00:05:35.520\n Although, this game can change very quickly.\n\n00:05:36.800 --> 00:05:38.940\n I think I'm going to win, though, personally.\n\n00:05:42.320 --> 00:05:43.040\n Let's see.\n\n00:05:45.080 --> 00:05:48.920\n I, personally, I enjoy the strategy of just spamming down\n\n00:05:48.920 --> 00:05:49.920\n one column.\n\n00:05:51.200 --> 00:05:52.260\n It works a lot.\n\n00:05:53.580 --> 00:05:54.640\n Yeah, there we go.\n\n00:05:54.780 --> 00:05:55.120\n We won.\n\n00:05:56.320 --> 00:05:56.880\n Yeah.\n\n00:05:57.620 --> 00:06:00.340\n And this is just a little demo of a game I have been\n\n00:06:00.340 --> 00:06:02.500\n working on with my father.\n\n00:06:03.460 --> 00:06:06.200\n There's a leaderboard currently, not many players.\n\n00:06:06.560 --> 00:06:07.980\n That is my father.\n\n00:06:08.640 --> 00:06:12.660\n We have PvP versus AI, easy versus AI, medium.\n\n00:06:14.040 --> 00:06:16.620\n Like I said earlier, or I might not have said, we are\n\n00:06:16.620 --> 00:06:21.120\n planning on making different levels of AI bots, possibly.\n\n00:06:21.660 --> 00:06:24.340\n A hard bot and a maybe insane bot.\n\n00:06:25.500 --> 00:06:27.900\n There are going to be many more things we're going to add.\n\n00:06:28.220 --> 00:06:31.250\n So, this is just something that we're working on, you know,\n\n00:06:31.250 --> 00:06:33.980\n just like a skeleton of what we're trying to do.\n\n00:06:35.300 --> 00:06:38.600\n So, I hope you play the game.\n\n00:06:38.700 --> 00:06:39.180\n Check it out.\n\n00:06:39.580 --> 00:06:41.780\n If you have any feedback, leave a little comment.\n\n00:06:43.060 --> 00:06:44.360\n And check it out."
+              },
+              "metadata_synthesis": {
+                "status": "in_progress",
+                "started_at": "2026-10-20T21:47:20Z",
+                "completed_at": "2026-10-20T21:47:27Z",
+                "duration_seconds": 0.14,
+                "title": "Phalanx Duel (2026-05-04)",
+                "privacy": "unlisted",
+                "tags": [
+                  "Phalanx Duel",
+                  "Game Architecture",
+                  "Software Craftsmanship",
+                  "Deterministic Systems",
+                  "Tabletop Games",
+                  "State Machines",
+                  "SCMC"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-20T21:47:20Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "completed"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "completed"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "in_progress"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "phalanx-duel-make-the-rules-legible-demo.mp4",
+            "size_bytes": 18215988,
+            "queue_position": 2,
+            "ingress_at": "2026-10-20T21:47:56Z",
+            "meta_phase": "pending",
+            "current_step": "audio_dsp",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "pending"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "pending"
+              }
+            ]
+          }
+        ],
+        "processing_count": 0,
+        "processing_items": [],
+        "processed_count": 0,
+        "recent_processed": [],
+        "failed_count": 0,
+        "failed_items": [],
+        "blocked_count": 0,
+        "blocked_items": []
       }
     },
     "activity_stream": [
       {
-        "timestamp": "2026-10-20T21:35:43Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:18Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38703)",
         "details": {
-          "pid": 66750
+          "pid": 38703
         }
       },
       {
-        "timestamp": "2026-10-20T21:35:43Z",
+        "timestamp": "2026-10-20T21:51:17Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 67706
+          "pid": 38698
         }
       },
       {
-        "timestamp": "2026-10-20T21:35:43Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:16Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38698)",
         "details": {
-          "pid": 67699
+          "pid": 38698
         }
       },
       {
-        "timestamp": "2026-10-20T21:26:00Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T21:22:21Z",
+        "timestamp": "2026-10-20T21:51:16Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 3124
+          "pid": 38648
         }
       },
       {
-        "timestamp": "2026-10-20T21:22:21Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:15Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38648)",
         "details": {
-          "pid": 3323
+          "pid": 38648
         }
       },
       {
-        "timestamp": "2026-10-20T21:22:21Z",
+        "timestamp": "2026-10-20T21:51:14Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 3316
+          "pid": 38551
         }
       },
       {
-        "timestamp": "2026-10-20T21:10:56Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T21:10:07Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:13Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38551)",
         "details": {
-          "pid": 45918
+          "pid": 38551
         }
       },
       {
-        "timestamp": "2026-10-20T21:10:07Z",
+        "timestamp": "2026-10-20T21:51:13Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 46406
+          "pid": 38546
         }
       },
       {
-        "timestamp": "2026-10-20T21:10:07Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:12Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38546)",
         "details": {
-          "pid": 46399
+          "pid": 38546
         }
       },
       {
-        "timestamp": "2026-10-20T20:55:53Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T20:52:54Z",
+        "timestamp": "2026-10-20T21:51:11Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 65611
+          "pid": 38541
         }
       },
       {
-        "timestamp": "2026-10-20T20:52:54Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:10Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 38541)",
         "details": {
-          "pid": 65967
+          "pid": 38541
         }
       },
       {
-        "timestamp": "2026-10-20T20:52:54Z",
+        "timestamp": "2026-10-20T21:51:09Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 65868
+          "pid": 37959
         }
       },
       {
-        "timestamp": "2026-10-20T20:40:49Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T20:38:24Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:09Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37959)",
         "details": {
-          "pid": 98007
+          "pid": 37959
         }
       },
       {
-        "timestamp": "2026-10-20T20:38:24Z",
+        "timestamp": "2026-10-20T21:51:08Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 98223
+          "pid": 37862
         }
       },
       {
-        "timestamp": "2026-10-20T20:38:23Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:07Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37862)",
         "details": {
-          "pid": 98198
+          "pid": 37862
         }
       },
       {
-        "timestamp": "2026-10-20T20:30:30Z",
+        "timestamp": "2026-10-20T21:51:06Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 60388
+          "pid": 37857
         }
       },
       {
-        "timestamp": "2026-10-20T20:30:30Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:06Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37857)",
         "details": {
-          "pid": 60947
+          "pid": 37857
         }
       },
       {
-        "timestamp": "2026-10-20T20:30:30Z",
+        "timestamp": "2026-10-20T21:51:05Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 60940
+          "pid": 37705
         }
       },
       {
-        "timestamp": "2026-10-20T20:25:46Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T20:10:43Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T20:02:55Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:04Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37705)",
         "details": {
-          "pid": 26859
+          "pid": 37705
         }
       },
       {
-        "timestamp": "2026-10-20T20:02:55Z",
+        "timestamp": "2026-10-20T21:51:03Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 27519
+          "pid": 37461
         }
       },
       {
-        "timestamp": "2026-10-20T20:02:54Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:02Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37461)",
         "details": {
-          "pid": 27251
+          "pid": 37461
         }
       },
       {
-        "timestamp": "2026-10-20T19:55:14Z",
-        "stage": "sweeper",
-        "level": "warning",
-        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-20T19:52:18Z",
+        "timestamp": "2026-10-20T21:51:02Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 76303
+          "pid": 37456
         }
       },
       {
-        "timestamp": "2026-10-20T19:52:18Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:51:01Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37456)",
         "details": {
-          "pid": 76356
+          "pid": 37456
         }
       },
       {
-        "timestamp": "2026-10-20T19:52:17Z",
+        "timestamp": "2026-10-20T21:51:00Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 76349
+          "pid": 37451
         }
       },
       {
-        "timestamp": "2026-10-20T19:46:25Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:50:59Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37451)",
         "details": {
-          "pid": 45921
+          "pid": 37451
         }
       },
       {
-        "timestamp": "2026-10-20T19:46:25Z",
+        "timestamp": "2026-10-20T21:50:59Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 46520
+          "pid": 37353
         }
       },
       {
-        "timestamp": "2026-10-20T19:46:24Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:50:58Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37353)",
         "details": {
-          "pid": 46254
+          "pid": 37353
         }
       },
       {
-        "timestamp": "2026-10-20T19:46:14Z",
+        "timestamp": "2026-10-20T21:50:57Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 45677
+          "pid": 37347
         }
       },
       {
-        "timestamp": "2026-10-20T19:46:14Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:50:56Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37347)",
         "details": {
-          "pid": 45783
+          "pid": 37347
         }
       },
       {
-        "timestamp": "2026-10-20T19:46:13Z",
+        "timestamp": "2026-10-20T21:50:55Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 45723
+          "pid": 37231
         }
       },
       {
-        "timestamp": "2026-10-20T19:45:28Z",
-        "stage": "scheduler",
+        "timestamp": "2026-10-20T21:50:55Z",
+        "stage": "autonomous",
         "level": "info",
-        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 37231)",
         "details": {
-          "pid": 42165
+          "pid": 37231
         }
       },
       {
-        "timestamp": "2026-10-20T19:45:28Z",
+        "timestamp": "2026-10-20T21:50:54Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 42218
+          "pid": 36671
         }
       },
       {
-        "timestamp": "2026-10-20T19:45:27Z",
+        "timestamp": "2026-10-20T21:50:53Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 36671)",
+        "details": {
+          "pid": 36671
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:52Z",
         "stage": "scheduler",
         "level": "info",
         "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
         "details": {
-          "pid": 42211
+          "pid": 36666
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:51Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 36666)",
+        "details": {
+          "pid": 36666
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:51Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 36661
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:50Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 36661)",
+        "details": {
+          "pid": 36661
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:49Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 36570
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:48Z",
+        "stage": "autonomous",
+        "level": "info",
+        "message": "Autonomous intake triggered single-worker ingestion (PID 36570)",
+        "details": {
+          "pid": 36570
+        }
+      },
+      {
+        "timestamp": "2026-10-20T21:50:48Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 36509
         }
       }
     ],
-    "polled_at": "2026-10-20T21:37:37Z"
+    "polled_at": "2026-10-20T21:51:18Z"
   },
   "assets": [
     {
@@ -9785,5 +10051,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-20T21:37:37Z"
+  "updated_at": "2026-10-20T21:51:18Z"
 }

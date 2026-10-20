@@ -202,4 +202,4 @@ Phalanx Duel started at a soggy camp table. It helped build the broadcast studio
 
 ---
 
-*Presentation materials, the two-page quickstart PDF, and the editable slide deck are available at [just3ws.com/phalanx-duel/](/phalanx-duel/). Play a live match at [phalanxduel.com](https://phalanxduel.com).*
+*Presentation materials, the two-page quickstart PDF, and the editable slide deck are available at [just3ws.com/phalanx-duel/](/phalanx-duel/). Watch demonstrations and gameplay on the [Phalanx Duel Series Playlist on YouTube](https://www.youtube.com/playlist?list=PLHenvAZhJjHo). Play a live match at [phalanxduel.com](https://phalanxduel.com).*

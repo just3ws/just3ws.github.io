@@ -11,6 +11,22 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - PHALANX DUEL YOUTUBE PLAYLIST INTAKE & CONRAD WALKTHROUGH PIPELINE (2026-10-20):
+         Configured dedicated Phalanx Duel YouTube target, automated ztranscribe speech-to-text processing, and staged/queued demonstration assets:
+         - Target & Playlist Infrastructure (`_data/media_intake_targets.yml`, `bin/intake_drive_video.rb`):
+           - Configured `phalanx-duel` intake target under channel `@whoistechcmty` with YouTube Studio playlist `PLHenvAZhJjHo`, category 28, and custom vocabulary whisper prompts for card rules and domain terms.
+           - Established Maildir queue directories (`staged`, `pending`, `processing`, `processed`, `failed`, `blocked`) across both local NVMe SSD (`~/.local/var/media_intake/whoistechcmty/phalanx-duel`) and Google Drive cloud archive (`My Drive/Media Intake/whoistechcmty/phalanx-duel`).
+           - Enhanced `bin/intake_drive_video.rb` to pass target-specific transcription prompts and support custom sidecar descriptions and tags.
+         - Asset Ingestion & Forensic Audio STT:
+           - Ingested Conrad Hall's early version gameplay walkthrough (`phalanx-duel-early-walkthrough-conrad-hall.mp4`, 68.5 MB) from `~/ai/inbox/conrad-phalanx-duel/0420.mp4`, generating complete transcripts (`.txt`, `.vtt`, `.srt`, `.json`, `.csv`) via local `ztranscribe` in 33.8s on Apple Silicon Metal.
+           - Ingested the programmatic SCMC presentation demo (`phalanx-duel-make-the-rules-legible-demo.mp4`, 18.2 MB) from `assets/downloads/phalanx-duel-demo.mp4`, verifying subtitles and generating complete transcripts in 14.2s.
+           - Authored companion YAML metadata sidecars with public context (Conrad Hall, 15 years old, high school sophomore taking AP Computer Science, co-developer).
+           - Staged and queued assets across local NVMe storage and Google Drive, verified via dry-run simulation and live dashboard telemetry.
+         - Cross-Surface Linking:
+           - Linked YouTube series playlist (`PLHenvAZhJjHo`) across `phalanx-duel/index.html`, `series/the-sound-above/index.html`, `_posts/2026-10-20-phalanx-duel-make-the-rules-legible-scmc-presentation-and-game-architecture.md`, and `_data/episodes/errata-phalanx-duel.yml`.
+         - Verification:
+           - 305/305 RSpec tests passing, fast validation passing across 499 Markdown files, Jekyll build clean across 1,060 pages, zero em dashes across all edits.
+
        - QUIET CRAFTSMANSHIP, PSYCHOLOGICAL SAFETY & TOP-LEVEL PAGES ALIGNMENT (2026-10-20):
          Calibrated public technical positioning around quiet competence, psychological safety, and generous mentorship ("safe not scary, Zarathustra's child's voice"), while formalizing Phalanx Duel as an Errata broadcast episode and completing a holistic audit across all top-level surfaces:
          - Safety-First Tone & Quiet Competence Calibration (`_data/home.yml`, `about/index.html`, `_data/resume/summary.yml`):

@@ -694,7 +694,7 @@ class MediaIntakePipeline
           tracker.start_step(:transcription)
           puts "🧠 Running local ztranscribe speech recognition from zdots on Apple Silicon..."
           t_whisper_start = Time.now
-          transcript_data = transcribe_audio(scratch_wav, scratch_prefix)
+          transcript_data = transcribe_audio(scratch_wav, scratch_prefix, target_info['transcribe_prompt'])
           duration_whisper = (Time.now.-(t_whisper_start)).round(2)
           tracker.complete_step(:transcription, 'text' => transcript_data[:text], 'vtt' => transcript_data[:vtt], 'duration_seconds' => duration_whisper)
           log_activity('whisper', "ztranscribe STT completed for #{filename} in #{duration_whisper}s", level: 'info', details: { 'filename' => filename, 'duration_seconds' => duration_whisper })
@@ -1145,6 +1145,12 @@ class MediaIntakePipeline
     if sidecar_data['title']
       title = sidecar_data['title']
     end
+    if sidecar_data['description']
+      description = sidecar_data['description']
+    end
+    if sidecar_data['tags']
+      tags.concat(Array(sidecar_data['tags']))
+    end
 
     # 3. Auto-title from speech if not resolved
     if title.nil? || title.empty?
@@ -1233,7 +1239,7 @@ class MediaIntakePipeline
   end
 
   # Transcribe using canonical zdots ztranscribe pipeline
-  def transcribe_audio(wav_path, output_prefix)
+  def transcribe_audio(wav_path, output_prefix, custom_prompt = nil)
     ztranscribe_bin = find_ztranscribe_binary
     raise "ztranscribe pipeline executable not found in PATH or zdots" unless ztranscribe_bin && !ztranscribe_bin.empty? && File.exist?(ztranscribe_bin)
 
@@ -1241,7 +1247,7 @@ class MediaIntakePipeline
     FileUtils.mkdir_p(out_dir)
     stem = File.basename(wav_path, '.*')
 
-    prompt = "UGtastic, Software Craftsmanship, Chicago Alt.NET, NUnit, NHibernate, StructureMap, Ruby, Rails, RSpec, Obtiva"
+    prompt = custom_prompt || "UGtastic, Software Craftsmanship, Chicago Alt.NET, NUnit, NHibernate, StructureMap, Ruby, Rails, RSpec, Obtiva"
 
     puts "🧠 Running canonical ztranscribe pipeline from zdots on Apple Silicon (nice 15, background QoS)..."
     cmd = "nice -n 15 #{ztranscribe_bin.shellescape} #{wav_path.shellescape} --out-dir #{out_dir.shellescape} --profile standard --prompt #{prompt.shellescape} 2>&1"
