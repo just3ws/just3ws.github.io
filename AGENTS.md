@@ -21,10 +21,13 @@
          - Ministerial Ordination Provenance:
            - Universal Life Church Monastery: Ordained October 9, 2013 by Brother Martin (Seattle, WA); Minister / Reverend Michael Daniel Hall.
            - Formal State Credentialing & Letter of Good Standing: Ordered September 1, 2017 (Order #1096919, Customer ID: 3849779, registered in Illinois).
+         - Post-Army Hardware Depot & Early Code Genesis (1997 to 1998):
+           - AeroTek Contract & GE Capital: Staged, repaired, and rolled out Compaq desktop workstations for GE Capital. Required to pursue CompTIA A+ certification as condition of employment. Flashed BIOS, diagnosed RMAs, installed RAM and expansion cards, imaged Windows 95 via PCMCIA network adapters, repalleted builds on loading docks, and deployed on-site bank installations.
+           - Enterprise Mainframe & Self-Taught Programming: Staged an enterprise mainframe under supervisor scrutiny (earning depot nickname "Rusty"), observed an on-site Visual Basic developer, and catalyzed self-taught software journey transcribing magazine game listings, wrestling with variable dimensioning (`Dim`), hosting on Angelfire, and wiring an early Windows for Workgroups 3.11 office network for a family friend ("I just wanted to work with computers").
          - Continuous SSA Work Record (1981 to 2025):
            - Ingested continuous four-decade earnings span from SSA statement (`~/ai/inbox/ssa/social-security-statement.pdf`): childhood odd jobs and paper routes (1981-1990), adolescent labor and service (1991-2000), dotcom and enterprise systems (2001-2005), and senior/staff engineering leadership (2006-2025).
          - Datalake & CI Integration:
-           - Ingested 4 new milestones into `bin/lib/ecosystem_datalake.rb` (`milestone-1994-army-ait-combat-medic`, `milestone-1997-regular-army-honorable-discharge`, `milestone-2013-ulc-ordination`, `milestone-2017-ulc-credentials`). Datalake timeline expanded to 108 events across SQLite3 FTS5 and DuckDB (2.51 MB).
+           - Ingested 5 new milestones into `bin/lib/ecosystem_datalake.rb` (`milestone-1994-army-ait-combat-medic`, `milestone-1997-regular-army-honorable-discharge`, `milestone-1997-aerotek-ge-capital`, `milestone-2013-ulc-ordination`, `milestone-2017-ulc-credentials`). Datalake timeline expanded to 109 events across SQLite3 FTS5 and DuckDB (2.51 MB).
            - Updated HTMLProofer options in `Rakefile` to ignore local-only operator dashboard fragments and API endpoints; resolved dashboard video asset links to canonical `/videos/{{ asset.id }}/`.
          - Verification:
            - 300/300 rspec tests passing cleanly across all suites.

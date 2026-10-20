@@ -73,3 +73,33 @@ Parallel to founding and organizing developer communities, Mike Hall holds legal
 
 ### C. Community Integration
 This ordination reflects an ongoing commitment to human-scale community stewardship. Whether facilitating technical user groups, mentoring software craftsmen, or officiating life milestones, the organizing philosophy remains the same: helping people connect, communicate, and navigate changing conditions together.
+
+---
+
+## 3. Technical Genesis and Hardware Depot Foundations (1997 to 1998)
+
+Following honorable discharge from the U.S. Army in May 1997, Mike Hall began his commercial computing work through warehouse hardware staging, repairs, and rollouts before returning to work for his father. This period bridged military operational discipline with hands-on computer assembly and self-taught programming.
+
+### A. Depot Staging and Enterprise Hardware (AeroTek / GE Capital)
+- **Role and Client Engagement**: Contract technician through AeroTek, staging, troubleshooting, and deploying business workstations primarily for client GE Capital.
+- **Contemporary Industry Titles (1997-1998)**:
+  - **PC Deployment Technician** (standard contemporary staffing requisition title)
+  - **Depot Staging and Configuration Technician**
+  - **Desktop Rollout Technician** / **Hardware Bench Technician**
+- **CompTIA A+ Certification**: Pursued CompTIA A+ certification as an explicit condition of employment.
+- **Hardware Staging Operations**:
+  - Processing pallets of computers, primarily Compaq business desktop systems.
+  - Flashing motherboard BIOS revisions, diagnosing component defects, and processing RMAs.
+  - Installing memory modules (RAM) and expansion cards.
+  - Imaging operating systems (Windows 95) across networked machines using PCMCIA network adapters.
+  - Repalleting tested machines and staging them at the loading docks for regional deployment.
+- **On-Site Deployments**: Participated in field deployment teams rolling out workstation hardware across regional bank branches and small corporate offices.
+
+### B. Enterprise Mainframe Exposure and Self-Taught Programming
+- **Mainframe Encounter**: Assisted with hardware staging for an enterprise mainframe passing through the depot facility, observing senior systems management. Eager to understand large-scale systems, Mike stayed as close to the hardware as possible despite supervisor ribbing (giving him the depot nickname "Rusty" because they claimed he wasn't sharp, a label he quietly absorbed at the time).
+- **Observing Professional Development**: Witnessed an on-site Visual Basic developer working directly with business systems, cementing an ambition to move from physical hardware staging into software engineering.
+- **Early Office Networking Precursor**: Prior to the AeroTek depot engagement, built an early multi-node Windows for Workgroups 3.11 office network for a family friend.
+- **Self-Directed Code Study**:
+  - Transcribed game source code line-by-line from programming magazines to learn syntax, variable dimensioning (`Dim`), and control flow.
+  - Built an early personal website hosted on Angelfire to experiment with web markup and layout.
+  - Grounded in a simple, persistent motivation: wanting to work with computers and understand how systems fit together.

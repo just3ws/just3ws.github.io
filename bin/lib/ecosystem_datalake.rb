@@ -324,6 +324,25 @@ class EcosystemDatalake
       }.to_json
     },
     {
+      'id' => 'milestone-1997-aerotek-ge-capital',
+      'event_date' => '1997-10-01',
+      'year' => 1997,
+      'era' => 'Post-Army Hardware Depot & The Bridge to Code (1997-1998)',
+      'initiative' => 'AeroTek / GE Capital / Self-Taught Genesis',
+      'repo_full_name' => 'just3ws/just3ws.github.io',
+      'event_type' => 'career_genesis_milestone',
+      'title' => 'Hardware Depot Staging (AeroTek / GE Capital), CompTIA A+, and Self-Taught Programming Genesis',
+      'description' => 'Following honorable discharge from the Army, Mike Hall works for contractor AeroTek staging, repairing, and rolling out business machines for GE Capital. Required to pursue CompTIA A+ certification as a condition of employment, he reflashes BIOSes, handles RMAs, installs RAM/expansion cards, and images Windows 95 on Compaq computers via PCMCIA network adapters, repalleting builds across warehouse loading docks and executing on-site bank rollouts. Encounters an enterprise mainframe (earning the depot nickname "Rusty") and observes an on-site Visual Basic developer, inspiring self-taught programming by transcribing magazine game listings, building an Angelfire website, wrestling with variable dimensioning ("Dim"), and building an early Windows for Workgroups 3.11 office network for a family friend.',
+      'details_json' => {
+        'contractor' => 'AeroTek',
+        'client' => 'GE Capital',
+        'hardware' => 'Compaq business PCs, PCMCIA network cards, enterprise mainframe',
+        'certification' => 'CompTIA A+ (condition of employment)',
+        'learning_path' => 'Magazine game source transcription, Angelfire web hosting, Windows for Workgroups 3.11 networking',
+        'key_insight' => 'I just wanted to work with computers.'
+      }.to_json
+    },
+    {
       'id' => 'milestone-2006-codeplex-frogsbrain',
       'event_date' => '2006-10-29',
       'year' => 2006,
