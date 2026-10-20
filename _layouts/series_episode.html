@@ -7,6 +7,8 @@ body_class: surface-editorial
 {% assign next = page.next_episode %}
 
 <article class="chicago-craftsmanship-page series-episode-page">
+  {% include breadcrumbs.html %}
+
   <div class="intel-hero">
     <div class="intel-hero-inner">
       <span class="intel-badge">The Sound Above · UGtastic Technical Rewatch Series · Episode {{ page.episode_number_formatted }}</span>
@@ -19,34 +21,40 @@ body_class: surface-editorial
 
   <div class="intel-container" style="max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem;">
 
-    <!-- Series wayfinding -->
-    <nav aria-label="Series navigation" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; font-size: 0.88rem; font-weight: 700;">
-      <div>
-        {% if prev %}
-          {% if prev.number == 1 %}
-            <a href="/series/the-sound-above/episode-01/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; Ep {{ prev.number }}: {{ prev.interviewee }}</a>
-          {% else %}
-            {% assign prev_fmt = prev.number | prepend: '00' | slice: -2, 2 %}
-            <a href="/series/the-sound-above/episode-{{ prev_fmt }}/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; Ep {{ prev.number }}: {{ prev.interviewee }}</a>
-          {% endif %}
-        {% else %}
-          <a href="/series/the-sound-above/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; Series Overview</a>
-        {% endif %}
-      </div>
+    {% assign current_num = ep.number %}
+    {% if prev %}
+      {% if prev.number == 1 %}
+        {% assign p_url = "/series/the-sound-above/episode-01/" %}
+      {% else %}
+        {% assign prev_fmt = prev.number | prepend: '00' | slice: -2, 2 %}
+        {% assign p_url = "/series/the-sound-above/episode-" | append: prev_fmt | append: "/" %}
+      {% endif %}
+      {% assign p_label = "Ep " | append: prev.number | append: ": " | append: prev.interviewee %}
+    {% else %}
+      {% assign p_url = "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" %}
+      {% assign p_label = "Ep 00: The Mirage of Competence" %}
+    {% endif %}
 
-      <div style="color: var(--color-text-muted, #525866);">
-        <a href="/series/the-sound-above/" style="color: inherit; text-decoration: none;">Episode {{ ep.number }} of {{ page.total_episodes }}</a> · {{ ep.era_name }}
-      </div>
+    {% if next %}
+      {% assign next_fmt = next.number | prepend: '00' | slice: -2, 2 %}
+      {% assign n_url = "/series/the-sound-above/episode-" | append: next_fmt | append: "/" %}
+      {% assign n_label = "Ep " | append: next.number | append: ": " | append: next.interviewee %}
+    {% else %}
+      {% assign n_url = "/series/the-sound-above/#series-codas" %}
+      {% assign n_label = "Series Codas" %}
+    {% endif %}
 
-      <div>
-        {% if next %}
-          {% assign next_fmt = next.number | prepend: '00' | slice: -2, 2 %}
-          <a href="/series/the-sound-above/episode-{{ next_fmt }}/" style="color: var(--color-primary, #0f766e); text-decoration: none;">Ep {{ next.number }}: {{ next.interviewee }} &rarr;</a>
-        {% else %}
-          <a href="/series/the-sound-above/#series-codas" style="color: var(--color-accent, #b45309); text-decoration: none;">Series Codas &rarr;</a>
-        {% endif %}
-      </div>
-    </nav>
+    <!-- Series wayfinding (Top) -->
+    {% include series_wayfinding.html
+      current_number=current_num
+      prev_url=p_url
+      prev_label=p_label
+      next_url=n_url
+      next_label=n_label
+      current_movement=ep.era_name
+      total_episodes=page.total_episodes
+      wayfinding_id="top"
+    %}
 
     <!-- Video Stage / Player Embed -->
     <div style="margin-bottom: 2.5rem; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18);">
@@ -149,6 +157,18 @@ body_class: surface-editorial
         </li>
       </ul>
     </section>
+
+    <!-- Series wayfinding (Bottom) -->
+    {% include series_wayfinding.html
+      current_number=current_num
+      prev_url=p_url
+      prev_label=p_label
+      next_url=n_url
+      next_label=n_label
+      current_movement=ep.era_name
+      total_episodes=page.total_episodes
+      wayfinding_id="bottom"
+    %}
 
   </div>
 </article>

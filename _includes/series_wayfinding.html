@@ -1,0 +1,52 @@
+<nav class="series-wayfinding-nav no-print" aria-label="Series episode wayfinding">
+  <div class="wayfinding-prev">
+    {% if include.prev_url %}
+      <a href="{{ include.prev_url }}" class="wayfinding-link" title="{{ include.prev_label }}">&larr; {{ include.prev_label }}</a>
+    {% else %}
+      <a href="/series/the-sound-above/" class="wayfinding-link">&larr; Series Overview</a>
+    {% endif %}
+  </div>
+
+  <div class="wayfinding-center">
+    <div class="wayfinding-meta">
+      <a href="/series/the-sound-above/" class="wayfinding-hub-link" title="Return to series overview">Episode {{ include.current_number }} of {{ include.total_episodes | default: 35 }}</a>
+      <span class="wayfinding-dot">&middot;</span>
+      <span class="wayfinding-era">{{ include.current_movement }}</span>
+    </div>
+
+    <div class="wayfinding-select-wrap">
+      <label for="series-episode-select-{{ include.wayfinding_id | default: 'top' }}" class="sr-only">Jump to episode</label>
+      <select id="series-episode-select-{{ include.wayfinding_id | default: 'top' }}" class="series-episode-select" onchange="if(this.value) window.location.href=this.value;">
+        <option value="">Jump to episode...</option>
+        <optgroup label="Prologue &amp; Pilot">
+          <option value="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/">Ep 00: The Mirage of Competence</option>
+          <option value="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html">Errata: The Fluffle Precursor</option>
+        </optgroup>
+        {% assign wayfinding_movements = site.data.sound_above_sequence.episodes | group_by: "era_name" %}
+        {% for m in wayfinding_movements %}
+          <optgroup label="Movement {{ forloop.index }}: {{ m.name }}">
+            {% for item in m.items %}
+              {% assign num_fmt = item.number | prepend: '00' | slice: -2, 2 %}
+              <option value="/series/the-sound-above/episode-{{ num_fmt }}/"{% if item.number == include.current_number %} selected{% endif %}>
+                Ep {{ item.number }}: {{ item.interviewee }} ({{ item.conference }})
+              </option>
+            {% endfor %}
+          </optgroup>
+        {% endfor %}
+        {% if site.data.sound_above_sequence.codas %}
+          <optgroup label="Closing Codas">
+            <option value="/series/the-sound-above/#series-codas">Series Codas (Ep 36 &amp; 37)</option>
+          </optgroup>
+        {% endif %}
+      </select>
+    </div>
+  </div>
+
+  <div class="wayfinding-next">
+    {% if include.next_url %}
+      <a href="{{ include.next_url }}" class="wayfinding-link" title="{{ include.next_label }}">{{ include.next_label }} &rarr;</a>
+    {% else %}
+      <a href="/series/the-sound-above/#series-codas" class="wayfinding-link">Series Codas &rarr;</a>
+    {% endif %}
+  </div>
+</nav>

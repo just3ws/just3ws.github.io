@@ -5,9 +5,14 @@ description: "Rewatch and commentary with Sergio Pereira on Chicago Alt.NET at S
 permalink: /series/the-sound-above/episode-01/
 image: "/obs/thumbnails/episode-01-sergio-pereira-720p.png"
 body_class: surface-editorial
+breadcrumb: "Episode 01"
+breadcrumb_parent_name: "The Sound Above"
+breadcrumb_parent_url: "/series/the-sound-above/"
 ---
 
 <article class="chicago-craftsmanship-page series-episode-page">
+  {% include breadcrumbs.html %}
+
   <div class="intel-hero">
     <div class="intel-hero-inner">
       <span class="intel-badge">The Sound Above · UGtastic Technical Rewatch Series · Episode 01</span>
@@ -20,12 +25,17 @@ body_class: surface-editorial
 
   <div class="intel-container" style="max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem;">
 
-    <!-- Series wayfinding -->
-    <nav aria-label="Series navigation" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; font-size: 0.88rem; font-weight: 700;">
-      <a href="/series/the-sound-above/" style="color: var(--color-primary, #0f766e); text-decoration: none;">&larr; All 37 Episodes</a>
-      <span style="color: var(--color-text-muted, #525866);">Episode 1 of 37 · Movement 1: The Chicago Workshop</span>
-      <a href="/series/the-sound-above/#movement-1" style="color: var(--color-primary, #0f766e); text-decoration: none;">Next: Episode 2, Ray Hightower &rarr;</a>
-    </nav>
+    <!-- Series wayfinding (Top) -->
+    {% include series_wayfinding.html
+      current_number=1
+      prev_url="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/"
+      prev_label="Ep 00: The Mirage of Competence"
+      next_url="/series/the-sound-above/episode-02/"
+      next_label="Ep 2: Ray Hightower"
+      current_movement="Movement 1: The Chicago Workshop"
+      total_episodes=35
+      wayfinding_id="top"
+    %}
 
     <!-- Video Stage / Player Embed -->
     <div style="margin-bottom: 2.5rem; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18);">
@@ -157,6 +167,18 @@ body_class: surface-editorial
         </li>
       </ul>
     </section>
+
+    <!-- Series wayfinding (Bottom) -->
+    {% include series_wayfinding.html
+      current_number=1
+      prev_url="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/"
+      prev_label="Ep 00: The Mirage of Competence"
+      next_url="/series/the-sound-above/episode-02/"
+      next_label="Ep 2: Ray Hightower"
+      current_movement="Movement 1: The Chicago Workshop"
+      total_episodes=35
+      wayfinding_id="bottom"
+    %}
 
   </div>
 </article>

@@ -32,10 +32,10 @@
     <div class="localhost-nav-links">
       <!-- Localhost Hub Dropdown: Dashboards & Cockpits -->
       <div class="lh-dropdown">
-        <a href="/dashboard/" class="lh-dropdown-btn{% if page.url contains '/dashboard/' or page.url contains '/youtube/dashboard/' or page.url contains '/dehum/dashboard' %} is-active{% endif %}" style="text-decoration: none;" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/dashboard/' or page.url contains '/youtube/dashboard/' or page.url contains '/dehum/dashboard' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
           <span>⚡ Dashboards</span>
           <span class="lh-caret">▾</span>
-        </a>
+        </button>
         <div class="lh-dropdown-menu" role="menu">
           <div class="lh-menu-header">Control Planes &amp; Cockpits</div>
           <a href="/dashboard/" class="lh-menu-item{% if page.url == '/dashboard/' or page.url == '/dashboard.html' %} is-active{% endif %}" role="menuitem">
@@ -72,25 +72,73 @@
 
       <!-- Rewatch Broadcast Direct Link -->
       <div class="lh-dropdown">
-        <a href="/series/the-sound-above/" class="lh-dropdown-btn{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" style="text-decoration: none;" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/series/the-sound-above/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
           <span>📺 The Sound Above</span>
           <span class="lh-caret">▾</span>
-        </a>
+        </button>
         <div class="lh-dropdown-menu" role="menu">
-          <div class="lh-menu-header">Rewatch Broadcast Kit</div>
-          <a href="/series/the-sound-above/" class="lh-menu-item" role="menuitem"><strong>All 37 Episodes</strong> (curriculum hub)</a>
-          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/episode-01/' %} is-active{% endif %}" role="menuitem"><strong>Episode 1:</strong> Sergio Pereira</a>
-          <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" class="lh-menu-item" role="menuitem"><strong>Episode 1 Transcript</strong> with chapters</a>
-          <a href="/youtube/dashboard/" class="lh-menu-item" role="menuitem"><strong>Operations Cockpit & BPMN</strong> 🚀</a>
-          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem"><strong>Teleprompter Rundown</strong> 🎙️</a>
-          <a href="/dehum/dashboard.html" class="lh-menu-item" role="menuitem"><strong>Errata Audio Workbench</strong> 🎛️</a>
-          <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" class="lh-menu-item" role="menuitem"><strong>YouTube Playlist</strong> ↗</a>
+          <div class="lh-menu-header">Rewatch Curriculum (37 Episodes)</div>
+          <a href="/series/the-sound-above/" class="lh-menu-item{% if page.url == '/series/the-sound-above/' %} is-active{% endif %}" role="menuitem">
+            <strong>All 37 Episodes Hub</strong> (syllabus &amp; jump)
+          </a>
+          <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/episode-01/' %} is-active{% endif %}" role="menuitem">
+            <strong>Episode 1:</strong> Sergio Pereira on Alt.NET
+          </a>
+          <a href="/series/the-sound-above/#movement-1" class="lh-menu-item" role="menuitem">
+            <strong>Movement 1:</strong> The Chicago Workshop (Ep 01–05)
+          </a>
+          <a href="/series/the-sound-above/#movement-2" class="lh-menu-item" role="menuitem">
+            <strong>Movement 2:</strong> The Craft Awakening (Ep 06–12)
+          </a>
+          <a href="/series/the-sound-above/#movement-3" class="lh-menu-item" role="menuitem">
+            <strong>Movement 3:</strong> Autonomy &amp; Apprenticeship (Ep 13–18)
+          </a>
+          <a href="/series/the-sound-above/#movement-4" class="lh-menu-item" role="menuitem">
+            <strong>Movement 4:</strong> The Chicago Renaissance (Ep 19–23)
+          </a>
+          <a href="/series/the-sound-above/#movement-5" class="lh-menu-item" role="menuitem">
+            <strong>Movement 5:</strong> Polyglot Pragmatism (Ep 24–28)
+          </a>
+          <a href="/series/the-sound-above/#movement-6" class="lh-menu-item" role="menuitem">
+            <strong>Movement 6:</strong> Systems Stewardship (Ep 29–35)
+          </a>
+          <a href="/series/the-sound-above/#series-codas" class="lh-menu-item" role="menuitem">
+            <strong>Series Codas:</strong> Synthesis &amp; Roundtable (Ep 36–37)
+          </a>
+          <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Prologue &amp; Broadcast Tools</div>
+          <a href="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" class="lh-menu-item" role="menuitem">
+            <strong>Errata Ep 00:</strong> The Mirage of Competence (case study)
+          </a>
+          <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" class="lh-menu-item" role="menuitem">
+            <strong>Errata Minus One:</strong> The Fluffle Precursor (article)
+          </a>
+          <a href="/youtube/dashboard/" class="lh-menu-item" role="menuitem">
+            <strong>Operations Cockpit &amp; BPMN</strong> 🚀
+          </a>
+          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem">
+            <strong>Broadcast Teleprompter</strong> 🎙️
+          </a>
+          <a href="/dehum/dashboard.html" class="lh-menu-item" role="menuitem">
+            <strong>Errata Audio Workbench</strong> 🎛️
+          </a>
+          <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" class="lh-menu-item" role="menuitem">
+            <strong>YouTube Playlist</strong> ↗
+          </a>
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Read Along Context</div>
-          <a href="/chicago-craftsmanship/" class="lh-menu-item" role="menuitem"><strong>Chicago History Monograph</strong></a>
-          <a href="/timeline/community/" class="lh-menu-item" role="menuitem"><strong>Community Timeline</strong></a>
-          <a href="/speakers/" class="lh-menu-item" role="menuitem"><strong>Speaker Directory</strong></a>
-          <a href="/interviews/" class="lh-menu-item" role="menuitem"><strong>Video Archive</strong> (201 items)</a>
+          <a href="/chicago-craftsmanship/" class="lh-menu-item" role="menuitem">
+            <strong>Chicago History Monograph</strong>
+          </a>
+          <a href="/timeline/community/" class="lh-menu-item" role="menuitem">
+            <strong>Community Timeline</strong>
+          </a>
+          <a href="/speakers/" class="lh-menu-item" role="menuitem">
+            <strong>Speaker Directory</strong>
+          </a>
+          <a href="/interviews/" class="lh-menu-item" role="menuitem">
+            <strong>Video Archive</strong> (201 items)
+          </a>
         </div>
       </div>
 
@@ -428,8 +476,6 @@
   transition: transform 0.15s ease;
 }
 
-.lh-dropdown:hover .lh-caret,
-.lh-dropdown:focus-within .lh-caret,
 .lh-dropdown.is-open .lh-caret {
   transform: rotate(180deg);
 }
@@ -464,8 +510,6 @@
   right: 0;
 }
 
-.lh-dropdown:hover .lh-dropdown-menu,
-.lh-dropdown:focus-within .lh-dropdown-menu,
 .lh-dropdown.is-open .lh-dropdown-menu {
   display: block;
 }
@@ -536,19 +580,17 @@
       if (!btn) return;
 
       btn.addEventListener("click", function(e) {
-        const isAnchor = btn.tagName.toLowerCase() === "a";
-        const clickedCaret = e.target.classList.contains("lh-caret");
-
-        if (!isAnchor || clickedCaret) {
-          e.preventDefault();
-          const isOpen = dd.classList.contains("is-open");
-          dropdowns.forEach(function(d) { d.classList.remove("is-open"); });
-          if (!isOpen) {
-            dd.classList.add("is-open");
-            btn.setAttribute("aria-expanded", "true");
-          } else {
-            btn.setAttribute("aria-expanded", "false");
-          }
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = dd.classList.contains("is-open");
+        dropdowns.forEach(function(d) {
+          d.classList.remove("is-open");
+          const b = d.querySelector(".lh-dropdown-btn");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+        if (!isOpen) {
+          dd.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
         }
       });
     });
