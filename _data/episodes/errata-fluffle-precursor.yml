@@ -24,12 +24,99 @@ narrative:
   chicago_context: Echoes the software craftsmanship ethos of building your own tools, working in the open, and learning through deliberate, unglamorous practice.
   ai_era_parallel: Moving beyond naive cloud generation toward local hardware sovereignty and deterministic pre-processing.
 teleprompter_script:
-  act_1: "Welcome to The Sound Above: Minus One. I am Mike Hall. On the aluminum lid of the MacBook Air sitting on my desk right now, directly beside the Apple logo, is a circular Dead Rabbit Radio sticker. Most people who see it assume it is ordinary podcast merch. To me, it is a permanent physical artifact of one of the most intense, ambitious, and humbling technical experiments I ever ran. It is the story of how five Raspberry Pis, over one thousand daily podcast episodes, early ChatGPT pairing, and an independent creator named Jason Carpenter taught me how to transcribe audio at scale. And it is the story of how imposter syndrome and cognitive overload caused me to freeze up and walk away, and why those painful lessons directly enabled the automated pipeline running on this machine today."
-  act_2: "To understand why this experiment happened, you have to go back to 2011 through 2015. Starting at SCNA 2011 with the built-in mic and camera on my 2010 MacBook Pro using Photo Booth, I recorded more than two hundred technical interviews across the country for UGtastic. When the recording finished, I hit an impassable wall: transcription. In 2013, human transcription services cost one to two dollars per minute. For a catalog of two hundred conversations, transcription was a four-figure impossibility for an unfunded grassroots project. Early cloud speech APIs produced phonetic gibberish on words like NHibernate, StructureMap, and NUnit. For nearly ten years, those tapes sat dormant on hard drives. The knowledge was trapped in digital amber."
-  act_3: "In late 2022 and early 2023, the world shifted. OpenAI open-sourced Whisper, and Georgi Gerganov released whisper.cpp. Suddenly, the marginal cost of transcription dropped to zero. You did not need a corporate cloud budget. You just needed electricity and CPU cycles. At the time, modern agentic coding tools did not exist. ChatGPT had just introduced GPT-4. I wanted to see if an engineer pairing with an LLM in a browser window could architect a distributed media pipeline from scratch. But I needed a massive dataset. I did not want to risk the precious UGtastic tapes on unverified tools. I needed a single, consistent speaker with hundreds of hours of contiguous audio. That is how I found Dead Rabbit Radio."
-  act_4: "Dead Rabbit Radio is a daily podcast hosted, researched, and produced entirely by Jason Carpenter, covering paranormal folklore, conspiracy theories, and historical oddities. Jason is the sole host. There was zero crosstalk, no volume jumps between mics, and Jason spoke with a rhythmic cadence and pacing remarkably similar to my own speaking voice. I had five Raspberry Pi single-board computers in my home lab: node01 through node05. I wrote bin/distribution in Ruby to bin-pack audio files across the nodes by total byte size. I wrote bin/distribute to deploy files via Net::SSH and rsync. And on each Pi, bin/transcribe ran whisper.cpp with a mandatory 120-second thermal cooldown between episodes so the stock, heatsink-only boards could cool between jobs."
-  act_5: "Over several weeks, the cluster hummed quietly in my basement. It chewed through the catalog, generating 2,034 distinct transcript files: text files and subtitle tracks for over one thousand episodes. I reached out to Jason Carpenter to ask his blessing, and he was exceptionally gracious, kind, and supportive. But then I hit the cliff. I tried to generalize the tool into a universal podcast aggregator. Immediately, broken RSS feeds, corrupted ID3 tags, and erratic audio formats wrecked my assumptions. At the exact same time, high-severity production incidents and intense Observability architecture at my day job overwhelmed my working memory. I told myself I was an imposter playing with toy scripts. I felt so embarrassed about being unable to sustain the pace that I froze. I stopped updating the repo. I ghosted Jason out of sheer shame, and for months I could not even bring myself to listen to the show."
-  act_6: "For a long time, I carried fluffle as a private regret. But craftsmanship teaches us to inspect our scars honestly. That experiment was not a failure; it was the essential skunkworks laboratory that made today possible. It taught me that raw audio must be normalized deterministically before running AI inference. It taught me the Maildir queue architecture that prevents file corruption. It taught me lexical priming to repair proper nouns. And it proved that local hardware sovereignty works. Today, five Raspberry Pis taking two hours per episode have been replaced by Apple Silicon running ztranscribe in ninety seconds. All 218 UGtastic interviews are transcribed and searchable. To Jason Carpenter: thank you for your stories, your generosity, and your craft. The sticker remains on this laptop, and the lessons live in every line of code this system runs today."
+  act_1: |
+    [SCENE: Cam on desk setup, MacBook visible]
+    So, this sticker.
+    [SHOW: Close-up of Dead Rabbit Radio sticker on MacBook lid]
+    Right there on the lid of the MacBook Air, next to the Apple logo.
+    Most people assume it's podcast merch. It's not.
+    It's a physical artifact of the most humbling technical experiment I ever ran.
+    [FREEFORM: Talk about where you are right now, what's on the desk, how it feels to be recording this]
+    This is The Sound Above: Minus One. I'm Mike Hall.
+    Tonight I'm going to walk you through what I built, what broke me, and what I learned.
+    Five Raspberry Pis. Over a thousand podcast episodes. Early ChatGPT, before there were proper tools.
+    And a podcaster named Jason Carpenter who was kinder to me than I deserved.
+    [PAUSE: let it breathe]
+    The lessons from that experiment are running on this machine right now.
+    That's the reason we're here.
+  act_2: |
+    [SCENE: Cut to archive footage or slide: SCNA 2011 photo if available]
+    To get why this experiment happened, you have to go back to 2011.
+    I was recording technical interviews for UGtastic. Started at SCNA 2011.
+    Built-in mic on a 2010 MacBook Pro. Apple Photo Booth. That's it.
+    [FREEFORM: Talk about what it was like recording at conferences - the ambient noise, hauling gear, the improvised setup]
+    Over the next few years I recorded more than two hundred conversations.
+    And when I was done, I hit a wall.
+    In 2013, human transcription cost one to two dollars a minute.
+    For two hundred-plus interviews, that's a four-figure bill for an unfunded grassroots project.
+    The cloud speech APIs were worse. They'd spit back phonetic gibberish.
+    NHibernate came back as "and hibernate." StructureMap as "structure map" with a space.
+    [SHOW: Example bad transcript snippet if you have one]
+    For ten years, those tapes sat on hard drives. Knowledge locked in digital amber.
+  act_3: |
+    [SCENE: Terminal or browser tab]
+    Then the world shifted. Late 2022, early 2023.
+    OpenAI open-sourced Whisper. Georgi Gerganov released whisper.cpp.
+    The marginal cost of transcription dropped to zero overnight.
+    [FREEFORM: Talk about what that moment felt like - the realization that the thing you'd been waiting a decade for was now just... free]
+    But I didn't want to risk the UGtastic tapes on unverified tools.
+    I needed a massive, clean dataset first. Something I could break things on.
+    I needed a single consistent speaker. Hundreds of hours. No crosstalk. No panel noise.
+    [PAUSE]
+    That's how I found Dead Rabbit Radio.
+    [SHOW: deadrabbitradio.com in browser]
+  act_4: |
+    [SCENE: Show the fluffle GitHub repo in browser or terminal]
+    [SHOW: github.com/just3ws/fluffle]
+    Dead Rabbit Radio. Jason Carpenter. Daily paranormal folklore. Solo host.
+    Zero crosstalk, no mic swaps, consistent cadence.
+    And honestly? His speaking rhythm is a lot like mine.
+    I had five Raspberry Pi boards in my home lab. node01 through node05.
+    [FREEFORM: Describe the physical setup - where the Pis sat, what the basement looked like, how janky the whole rig was]
+    I wrote bin/distribution in Ruby to bin-pack the audio files across nodes by byte size.
+    bin/distribute pushed files via Net::SSH and rsync.
+    On each Pi, bin/transcribe ran whisper.cpp with a mandatory 120-second thermal cooldown between jobs.
+    [SHOW: The actual bin/transcribe script open in terminal or editor]
+    No heatsinks. Just stock boards. Sixty seconds of compute, two minutes of cooling. Repeat.
+  act_5: |
+    [SCENE: Back on cam]
+    For several weeks that cluster just hummed in my basement.
+    It generated 2,034 distinct transcript files.
+    Text, subtitles. Over a thousand episodes.
+    I reached out to Jason on Discord to ask his blessing.
+    [FREEFORM: Talk about that conversation - how it felt to reach out, what Jason said, why it mattered to get that blessing before shipping anything]
+    He was genuinely gracious. Kind. Supportive. More than I expected.
+    And then I hit the cliff.
+    [PAUSE: this is the hard part, let it land]
+    I tried to turn fluffle into a universal podcast aggregator.
+    Immediately: broken RSS feeds. Corrupted ID3 tags. Erratic audio formats everywhere.
+    At the same time, high-severity production incidents at the day job.
+    Observability architecture work that was consuming everything I had.
+    [FREEFORM: Talk about what working memory exhaustion actually feels like - not as a clinical term, but as a lived thing. The tab-switching. The feeling of losing the thread.]
+    I told myself I was an imposter playing with toy scripts.
+    I froze. Stopped committing. Stopped responding to Jason on Discord.
+    For months I couldn't even bring myself to open the repo or listen to the show.
+  act_6: |
+    [SCENE: Show the running pipeline dashboard or ztranscribe output in terminal]
+    For a long time I carried fluffle as a private regret.
+    [FREEFORM: Talk about what changed - when you picked it back up, what you were able to see from a distance that you couldn't see up close]
+    But craftsmanship teaches you to inspect your scars honestly.
+    That experiment wasn't a failure. It was the essential skunkworks lab that made today possible.
+    It taught me: normalize audio deterministically before running inference.
+    It taught me Maildir queue architecture. It taught me lexical priming for proper nouns.
+    And it proved local hardware sovereignty works.
+    [SHOW: ztranscribe running on a UGtastic interview file, timing output visible]
+    Five Raspberry Pis taking two hours per episode.
+    Now it's Apple Silicon. Ninety seconds. All 218 UGtastic interviews: transcribed and searchable.
+    [PAUSE]
+    To Jason Carpenter: thank you. For the stories, the generosity, and the craft.
+    The sticker stays on the laptop.
+    The lessons are in every line of code this system runs today.
+    [SCENE: Outro card / Patreon link]
+    If you want to support the archive and the independent hosting behind it:
+    patreon.com/whoistechcmty
+    Next up: Episode Zero. Minus Zero. The Mirage of Competence.
+    Keep your feedback loops fast.
 human_stories:
   act_1: "Pointing to the circular Dead Rabbit Radio sticker on the aluminum MacBook Air casing as the catalyst for the episode."
   act_2: "Remembering recording community interviews through conference hallways, and the frustration of knowing the audio was trapped without searchable transcripts."

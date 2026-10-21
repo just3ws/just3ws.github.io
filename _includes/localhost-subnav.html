@@ -302,10 +302,10 @@
 }
 
 .localhost-nav-container {
-  max-width: 100%;
+  max-width: var(--container-max-width, 84rem);
   width: 100%;
-  margin: 0;
-  padding: 0 2rem;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 2.5vw, 2rem);
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;

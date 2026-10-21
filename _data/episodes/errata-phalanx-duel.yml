@@ -24,12 +24,92 @@ narrative:
   chicago_context: Grounded in the McHenry County and Chicago software craftsmanship tradition of empirical testing, boundary visibility, and learning through deliberate, reproducible practice.
   ai_era_parallel: LLMs and generative agents cannot be trusted with hidden state or rules authority; they require bounded MCP interfaces, deterministic simulation engines, and cryptographic verification.
 teleprompter_script:
-  act_1: "Welcome to The Sound Above: Special Presentation. I am Mike Hall. Today we are talking about cards, state machines, and why making rules legible is the deepest responsibility of software craftsmanship. In July 2022, during a rainy week at Boy Scout Camp Tesomas in northern Wisconsin, I sat at a wooden picnic table with two standard 52-card decks and a notebook. I wanted to design a two-player tactical card duel that eliminated random dice rolls and mid-match shuffles entirely. Every outcome had to flow strictly from the cards visible on the table and the deliberate choices each player made. That rainy camp experiment became Phalanx Duel."
-  act_2: "To prove the rules worked, I started where many craftsmen start: with executable code. I wrote a Ruby prototype to test combat resolution, card suits, and damage movement. In Phalanx Duel, each player controls an eight-card formation arranged in two ranks across four columns. When an attack strikes a column, damage must chew through the front-rank vanguard and rear-rank flank before it can touch the player's Life Points. The rules were simple enough for two scouts to play on a soggy bench, yet precise enough to run identically in software. But a working prototype is only the beginning of systems engineering."
-  act_3: "The real challenge came when turning tabletop rules into a live, multiplayer architecture. In late 2022 and 2023, I rebuilt Phalanx Duel from the ground up as a server-authoritative TypeScript platform. Many game architectures make the mistake of trusting the client to resolve moves. In Phalanx Duel, the client never dictates state; it merely sends player intent over a WebSocket connection. The server ingests that intent, validates it against the current deterministic state, computes the next transition, and records the exact action in an immutable ledger. What a table verifies with physical cards is what the server enforces on every single turn."
-  act_4: "That brings us to a fundamental architectural lesson: determinism is necessary, but it is not sufficient. An engine can be 100 percent deterministic while executing completely flawed business logic. To bridge that gap, Phalanx Duel implements replay fingerprints, action verification hashes, and role-safe projections. The authoritative server maintains complete match state, including facedown cards. But when broadcasting updates, it projects only role-safe information: Player 1 sees their private hand, Player 2 sees theirs, and spectators receive a time-delayed broadcast. The protocol itself becomes an active guardian of the game's integrity."
-  act_5: "In September 2026, I brought these materials to Software Craftsmanship McHenry County for a talk titled Make the Rules Legible. Building that presentation was an experiment in itself: I wanted to explore how much of a technical talk, slides, and demonstration assets could be built out using AI-augmented developer tooling. And the meta lesson was fascinating: generative AI tools dramatically accelerate drafting and visual scaffolding, but without human stewardship and deterministic boundaries, they can also hallucinate with total fluency. The model can suggest moves, but only an authoritative engine can verify the truth."
-  act_6: "Today, Phalanx Duel runs live in production at phalanxduel.com with automated release pipelines, containerized deployments, and a competitive Glicko-2 ladder. But its true value is as an architecture laboratory. The lessons learned under that Wisconsin pavilion: server authority, deterministic replay, visible boundaries, and zero-indirection state transitions: are the exact same disciplines celebrated across UGtastic and The Sound Above. Thank you for joining this special presentation. You can download the rules, inspect the engine, and play a match at phalanxduel.com. Keep your rules legible, your boundaries explicit, and your systems safe to change."
+  act_1: |
+    [SCENE: Cam on desk, cards visible if possible]
+    July 2022. Rainy week at Boy Scout Camp Tesomas, northern Wisconsin.
+    Wooden picnic table. Two standard 52-card decks. A notebook.
+    [FREEFORM: Set the scene physically - the rain on the pavilion roof, the mud, the scouts around you,
+    why you were thinking about card game design instead of whatever you were supposed to be doing]
+    I wanted to design a two-player tactical duel with zero dice and no mid-match shuffles.
+    Every outcome had to come strictly from the cards on the table
+    and the deliberate choices each player made.
+    That became Phalanx Duel.
+    [SHOW: The two-page quickstart PDF or the phalanxduel.com landing page]
+    This is The Sound Above: Special Presentation. I'm Mike Hall.
+    Today we're talking about cards, state machines, and why making rules legible
+    is the deepest responsibility of software craftsmanship.
+  act_2: |
+    [SCENE: Terminal open with Ruby script]
+    [DEMO: Show the Ruby combat prototype running - suit interactions, column defense math, damage propagation]
+    [SHOW: github.com/phalanxduel or the specific bin/ scripts in the repo]
+    To prove the rules worked, I started where craftsmen start: executable code.
+    In Phalanx Duel, each player controls an eight-card formation.
+    Two ranks across four columns.
+    When an attack hits a column, damage chews through the front-rank vanguard first,
+    then the rear-rank flank, before it can reach Life Points.
+    [FREEFORM: Walk through a sample combat turn in the terminal. Explain what the Ruby output means.
+    Show the suit interaction rules. Point out where edge cases showed up during early testing
+    and what that told you about the rules design.]
+    The rules were simple enough for two scouts on a soggy bench.
+    Precise enough to run identically in software.
+    A working prototype is only the beginning.
+  act_3: |
+    [SCENE: Show WebSocket diagram or TypeScript server code]
+    [DEMO: Show the TypeScript engine structure - the intent handler, the state machine, the action ledger]
+    The real challenge was turning tabletop rules into a live multiplayer architecture.
+    Many game architectures make the mistake of trusting the client to resolve moves.
+    In Phalanx Duel, the client never dictates state.
+    It sends player intent over a WebSocket connection.
+    The server validates that intent against current deterministic state,
+    computes the next transition,
+    and records the exact action in an immutable ledger.
+    [FREEFORM: Talk about why client-authority is the wrong model for anything where integrity matters.
+    Connect it to the same problem in production systems: hidden state, unverifiable transitions,
+    no ground truth for what actually happened.]
+    What a table verifies with physical cards is what the server enforces on every turn.
+    The boundary is the same. The discipline is the same.
+  act_4: |
+    [SCENE: Show role-safe projection diagram or the network protocol flow]
+    [SHOW: Slide or diagram - what Player 1 sees vs Player 2 sees vs Spectator sees]
+    Determinism is necessary but not sufficient.
+    An engine can be 100 percent deterministic while executing completely flawed logic.
+    To bridge that gap: replay fingerprints, action verification hashes, role-safe projections.
+    The authoritative server maintains complete match state, including facedown cards.
+    When broadcasting updates, it projects only what each role should see.
+    Player 1 gets their private hand. Player 2 gets theirs.
+    Spectators get a time-delayed broadcast.
+    [FREEFORM: Connect role-safe projections to information security in distributed production systems.
+    Talk about where you've seen the same problem in enterprise contexts: services that broadcast too much,
+    or clients that trust themselves to compute state they don't own.]
+    The protocol itself becomes an active guardian of the game's integrity.
+  act_5: |
+    [SCENE: Back on cam or show SCMC slides]
+    [FREEFORM: This act should be mostly improvised. Here are the anchors:]
+    In September 2026 I brought this to Software Craftsmanship McHenry County.
+    The talk: Make the Rules Legible.
+    [FREEFORM: Talk honestly about the experiment of building the whole presentation with AI tooling.
+    What accelerated. What completely fell apart. What the model got confidently wrong about your own talk.
+    The meta-lesson from using AI to build a presentation about AI's limits.
+    Don't script this - just tell it as it happened.]
+    The meta-lesson: generative tools accelerate scaffolding dramatically.
+    But without human stewardship and deterministic boundaries, they hallucinate fluently.
+    The model can suggest moves. Only an authoritative engine can verify the truth.
+    [PAUSE: let the irony land]
+  act_6: |
+    [SCENE: Browser - phalanxduel.com ranked ladder]
+    [SHOW: phalanxduel.com - the live ranked ladder, current match count if visible]
+    Phalanx Duel is live in production today.
+    Automated release pipelines. Containerized deployments. Glicko-2 ranked ladder.
+    [SHOW: YouTube playlist - youtube.com/playlist?list=PLHenvAZhJjHo]
+    [FREEFORM: Talk about Conrad Hall's walkthrough video - 15 years old, high school sophomore,
+    AP Computer Science, co-developer. What it means to watch a kid that age pick up
+    rules-as-code and run with it. Keep it brief, keep it genuine.]
+    Download the rules, inspect the engine, play a match: phalanxduel.com
+    The lessons from that Wisconsin picnic table:
+    server authority, deterministic replay, visible boundaries, zero-indirection state transitions.
+    Those are the same disciplines we're here to talk about across The Sound Above.
+    Keep your rules legible. Keep your boundaries explicit.
+    Keep your systems safe to change.
 human_marginalia:
   host_recollections:
     - "Sitting under the camp pavilion at Tesomas in July 2022 sketching formation combat while rain poured outside."

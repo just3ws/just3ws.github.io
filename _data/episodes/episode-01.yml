@@ -66,68 +66,98 @@ human_marginalia:
   - Analyze the shift from vendor toolchain dependence to open source autonomy.
   - Examine how grassroots open spaces foster durable engineering practices.
 teleprompter_script:
-  act_1: Welcome to The Sound Above. I am Mike Hall, and this is Episode 1 of our
-    technical rewatch series. Today we are going back to November 19, 2011, on-site
-    at Software Craftsmanship North America at the Swissotel in downtown Chicago.
-    My very first guest when we launched the UGtastic interview series was Sergio
-    Pereira, the organizer of Chicago Alt.NET. There is a reason I asked Sergio to
-    sit down first. Chicago Alt.NET was not the first user group I ever walked into
-    or attended. It was the first user group where I ever stood up and gave a presentation.
-  act_2: 'To understand why that room mattered, you have to remember what enterprise
-    .NET felt like in 2007 and 2008. Most corporate shops treated Microsoft''s default
-    box products as the law. If a tool or workflow did not ship inside Visual Studio
-    or MSDN, you were told not to touch it. On April 10, 2007, David Laribee published
-    the Alt.NET Manifesto, setting out four core tenets for developers who refused
-    to accept the default corporate box: First: You are the type of developer who
-    uses what works while keeping an eye out for a better way. Second: You reach outside
-    the mainstream to adopt the best of any community: Open Source, Agile, Java, Ruby,
-    and beyond. Third: You are not content with the status quo. Things can always
-    be better expressed, more elegant, simpler, more mutable, and higher quality.
-    Fourth: You know tools are great, but they only take you so far. It is the principles
-    and knowledge that really matter. That October, developers gathered in Austin
-    for the first Alt.NET Open Spaces, which Martin Fowler documented in his Bliki.
-    Sergio Pereira brought that exact spirit to Chicago. On the second Wednesday of
-    every month at 6:30 PM, right when commuters could catch the Metra back to the
-    suburbs, about 25 of us took the elevator up to Redpoint Technologies on the 84th
-    floor of the Sears Tower. On November 12, 2008, I stood up in that room and gave
-    my first presentation on NHaml alongside Adam Tybor presenting on the Spark view
-    engine.'
-  act_3: 'Here is the question that guides our rewatch today: How do working engineers
-    build practical autonomy inside corporate environments without waiting for vendor
-    permission? When ASP.NET MVC was released, it marked one of the biggest strategic
-    turns in Microsoft history. For nearly a decade, Redmond had insisted on WebForms,
-    complex page lifecycles, and viewstate, hiding the raw HTTP protocol behind corporate-approved
-    controls. The release of ASP.NET MVC was the direct victory of the Ruby community.
-    Frameworks like Rails, Sinatra, and Merb had proved to the entire industry that
-    convention over configuration, lightweight routing, and testable controllers were
-    vastly superior for web development. Microsoft''s pivot to MVC was a watershed
-    moment: it proved that when developers look outside the approved corporate checklist
-    and insist on better architecture, even the largest software vendor in the world
-    has to adapt. Alt.NET was never about hating .NET. As Sergio says right at the
-    start of this tape, we were developers who liked .NET, used it every day, and
-    wanted to bring continuous improvement, automated testing, NHibernate, StructureMap,
-    and IronRuby into our daily work.'
-  act_4: 'Let us roll the 2011 hallway conversation with Sergio Pereira. Listen to
-    how Sergio describes the charter of the group: not bringing in polished marketing
-    speakers, but encouraging regular team developers to take the talks they gave
-    at lunch with their coworkers and share them with a room of peers who wanted to
-    see a better way to build software.'
-  act_5: 'How does this connect to where we sit in 2026? In 2008, the default vendor
-    trap was drag-and-drop designer wizards that hid coupling and made unit testing
-    impossible. Today, the default vendor trap is black-box cloud AI generation that
-    produces thousands of lines of unverified code while hiding the domain boundaries
-    underneath. The lesson from Chicago Alt.NET is unchanged: tools are instruments,
-    not religions. You do not accept a workflow just because a vendor ships it as
-    the default. You keep your domain models clean, you run your own fast local verification
-    loops, and you judge every tool by whether it holds up under test.'
-  act_6: 'Thank you for joining Episode 1 of The Sound Above. You can read the full
-    interactive transcript with Sergio Pereira, along with links to David Laribee''s
-    2007 Manifesto, Martin Fowler''s Austin notes, Scott Guthrie''s early MVC previews,
-    and Jeremy Miller''s retrospectives, right on the Episode 1 page at just3ws.com.
-    To help support our independent compute and archive preservation, visit patreon.com/whoistechcmty.
-    In Episode 2, we sit down with Ray Hightower of ChicagoRuby to talk about grassroots
-    hospitality and opening doors across communities. Until next time: keep your feedback
-    loops fast, and your code humane.'
+  act_1: |
+    [SCENE: Cam on desk, SCNA 2011 photo queued]
+    This is The Sound Above. Episode 1.
+    I'm Mike Hall. Today we're going back to November 19, 2011.
+    On-site at Software Craftsmanship North America. The Swissotel. Downtown Chicago.
+    [FREEFORM: Talk about that building - the lobby, the elevator, the feeling of being at SCNA for the first time.
+    What you were carrying. Who you knew. Who you didn't know yet.]
+    My first interview for UGtastic was with Sergio Pereira.
+    Organizer of Chicago Alt.NET.
+    [PAUSE]
+    There's a reason Sergio was first.
+    Chicago Alt.NET wasn't the first user group I ever walked into.
+    It was the first user group where I ever stood up and gave a presentation.
+    [SHOW: SCNA 2011 photo if available, or the Swissotel exterior]
+  act_2: |
+    [SCENE: Slide or browser - show the Alt.NET Manifesto Wayback Machine link]
+    To understand why that room mattered, you have to remember what enterprise .NET felt like in 2007.
+    [FREEFORM: Paint the picture - the WebForms world. ViewState. The page lifecycle. How you felt
+    about the default Microsoft toolchain before Alt.NET. What people actually said to you about NHibernate.]
+    Most corporate shops treated MSDN as the law.
+    If a tool didn't ship inside Visual Studio, you weren't supposed to touch it.
+    On April 10, 2007, David Laribee published the Alt.NET Manifesto.
+    [SHOW: web.archive.org/web/20070701125236/http://laribee.com/blog/2007/04/10/altnet/]
+    Four tenets. Worth reading exactly as written:
+    One: You use what works while keeping an eye out for a better way.
+    Two: You reach outside the mainstream to adopt the best of any community.
+    Three: You are not content with the status quo.
+    Four: You know tools are great, but they only take you so far.
+    That October, developers gathered in Austin for the first Alt.NET Open Spaces.
+    Martin Fowler documented it in his Bliki.
+    [FREEFORM: Talk about Sergio specifically - when did you first encounter him, what was the energy
+    of the 84th-floor Sears Tower meetings, what it meant to have regular people giving talks to peers
+    instead of polished vendor speakers]
+    Second Wednesday of every month. 6:30 PM. 84th floor of the Sears Tower.
+    About 25 of us. Pizza we paid for ourselves.
+    November 12, 2008: I gave my first presentation. NHaml. Adam Tybor on Spark.
+  act_3: |
+    [SCENE: Cam]
+    Here's the question guiding the rewatch today:
+    How do working engineers build practical autonomy inside corporate environments
+    without waiting for vendor permission?
+    [FREEFORM: Talk about the twatio.com story - the Twitter debate with Sergio about retweeting Hanselman.
+    The argument about whether retweets reach unique audiences. Building the ASP.NET MVC app to settle it empirically.
+    Twatio later redirecting to ugtastic.com. That's the mindset in a nutshell: build a test.]
+    When ASP.NET MVC was released it was a watershed.
+    For nearly a decade Redmond had insisted on WebForms, page lifecycles, viewstate.
+    The MVC pivot was the direct victory of the Ruby community.
+    Rails. Sinatra. Merb. Convention over configuration, lightweight routing, testable controllers.
+    Microsoft had to adapt because developers kept pointing at something better and saying: look.
+    Alt.NET was never about hating .NET.
+    As Sergio says right at the start of this tape: we liked .NET, used it every day,
+    and wanted continuous improvement, automated testing, NHibernate, StructureMap, IronRuby in our daily work.
+  act_4: |
+    [SCENE: Switch to archive tape]
+    [REWATCH: youtube.com/watch?v=qOHdZKz1WFw - cue from 00:00]
+    Let's roll the 2011 hallway conversation with Sergio Pereira.
+    [GO OFF CAMERA - react as you watch, don't over-script this section]
+    [FREEFORM REACTION NOTES - things to watch for and react to:
+      - How Sergio describes the charter: not polished speakers, but people giving their lunch talks to a peer room
+      - The moment he talks about what people were actually arguing about (IoC, NHibernate)
+      - What the energy in that room felt like vs. a vendor conference
+      - What surprised you re-watching this now vs. how you remembered it
+      - Where Sergio's framing has aged well vs. where the landscape shifted completely]
+    [SCENE: Back to cam after rewatch segment ends]
+    [FREEFORM: Immediate reaction - what just stood out to you watching that back in 2026.
+    What sounds prescient. What sounds like it was ahead of its time and still is.]
+  act_5: |
+    [SCENE: Cam or terminal]
+    How does this connect to where we sit in 2026?
+    [FREEFORM: Talk through the parallel directly - no need to script this one hard.
+    The through-line is: default vendor trap then was drag-and-drop wizards hiding coupling.
+    Default vendor trap now is black-box cloud AI generation hiding domain boundaries.
+    The lesson is identical: tools are instruments, not religions.
+    You judge every tool by whether it holds up under test.
+    Fast local verification loops. Clean domain models. You own the output.]
+    In 2008, the trap was designer wizards that made unit testing impossible.
+    In 2026, the trap is code generation that produces thousands of lines you can't verify.
+    The Chicago Alt.NET lesson is unchanged.
+    [PAUSE]
+  act_6: |
+    [SCENE: Outro card with links]
+    Thanks for joining Episode 1 of The Sound Above.
+    Full interactive transcript with Sergio Pereira is on the Episode 1 page at just3ws.com.
+    Links there to David Laribee's 2007 Manifesto, Martin Fowler's Austin notes,
+    Scott Guthrie's early MVC previews, and Jeremy Miller's retrospectives.
+    [FREEFORM: Personal close - something about what it means to you to have this tape out in the world,
+    to have Sergio's voice preserved and searchable. Keep it short. Keep it honest.]
+    To support the independent compute and archive preservation:
+    patreon.com/whoistechcmty
+    In Episode 2 we sit down with Ray Hightower of ChicagoRuby.
+    Grassroots hospitality. Opening doors across communities.
+    Until next time: keep your feedback loops fast, and your code humane.
 research_attachments:
 - title: Sergio Pereira Interview Profile
   type: site_archive_page

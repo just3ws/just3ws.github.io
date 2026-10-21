@@ -4,7 +4,6 @@
 
 :root {
   --header-height: 4.5rem;
-  --container-max-width: 100%;
   --transition-speed: 0.2s;
   --radius-lg: 0.75rem;
   --radius-md: 0.5rem;
@@ -38,10 +37,10 @@ body {
 }
 
 .header-container, .main-container, .footer-container {
-  max-width: 100%;
+  max-width: var(--container-max-width, 84rem);
   width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 2.5vw, 2rem);
   box-sizing: border-box;
 }
 
@@ -52,6 +51,14 @@ body.page-resume {
   .main-container {
     max-width: 70rem;
     margin: 0 auto;
+  }
+}
+
+/* Local Operations Dashboards require full-width edge-to-edge canvas */
+body.page-youtube-dashboard {
+  .main-container {
+    max-width: 100%;
+    padding: 0 1rem;
   }
 }
 
@@ -226,13 +233,13 @@ body.page-resume {
 /* Subtle Resume Sub-Nav */
 .resume-subnav {
   margin: -2.5rem auto 3.5rem;
-  max-width: var(--container-max-width);
+  max-width: var(--container-max-width, 84rem);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   gap: 0.75rem 1.5rem;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 2.5vw, 2rem);
 
   .subnav-group {
     display: flex;

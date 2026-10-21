@@ -38,7 +38,7 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
 
       pages = JSON.parse(stdout)
       expect(pages.size).to eq(6)
-      expect(pages[0]).to include('Welcome to The Sound Above: Minus Zero')
+      expect(pages[0]).to include('The Sound Above: Minus Zero')
       expect(pages[0]).to include('345,000-volt transmission lines')
       expect(pages[0]).not_to include('ACT 1:')
       expect(pages[3]).not_to include('ACT 4:')
