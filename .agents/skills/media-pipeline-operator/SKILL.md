@@ -40,7 +40,11 @@ Queue directories are organized by channel and target playlist under:
 All media operations are routed through the unified `media` namespace:
 
 ```sh
-# Queue status and Concurrency Lock report
+# Live pipeline query, queues, worker state, and YouTube quota
+./bin/pipeline media query
+./bin/pipeline media query --compact
+./bin/pipeline media query --json
+./bin/pipeline media query --target phalanx-duel
 ./bin/pipeline media status
 ./bin/pipeline media intake --status
 
@@ -104,4 +108,12 @@ All media operations are routed through the unified `media` namespace:
 3. **Quota Exhaustion**:
    - YouTube Data API v3 enforces a 10,000 unit daily limit (resetting midnight PT).
    - Video upload costs 1,600 units; thumbnail update costs 50 units.
-   - Check quota headroom via `./bin/pipeline media youtube quota`.
+   - Check quota headroom via `./bin/pipeline media query --quota` or `./bin/pipeline media youtube quota`.
+
+---
+
+## 6. MCP Protocol Integration (`just3ws-site`)
+
+When interacting via AI coding agents or MCP clients:
+- **Tool `query_media_pipeline`**: Queries live intake queues, worker state, quota cooldown, and recent events. Arguments: `section` (`all`, `summary`, `queues`, `quota`, `worker`, `activity`), `target`, `format` (`text`, `json`).
+- **Resource `site://pipeline/status`**: Returns real-time JSON status payload with queue breakdown, worker lock, quota cooldown timer, and recent activity log.

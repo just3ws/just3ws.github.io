@@ -57,6 +57,20 @@ async function runSelfVerification() {
   });
   console.log(skillsResult.content[0].text);
 
+  // 5. Execute query_media_pipeline tool
+  console.log("\n🧪 Executing 'query_media_pipeline' via MCP...");
+  const pipelineResult = await client.callTool({
+    name: "query_media_pipeline",
+    arguments: { section: "summary" },
+  });
+  console.log("   Summary: " + pipelineResult.content[0].text);
+
+  // 6. Read site://pipeline/status resource
+  console.log("\n🧪 Reading 'site://pipeline/status' resource via MCP...");
+  const resourceResult = await client.readResource({ uri: "site://pipeline/status" });
+  const parsedStatus = JSON.parse(resourceResult.contents[0].text);
+  console.log(`   Health: ${parsedStatus.health}, Streamer: ${parsedStatus.streamer?.status}, Queues: ${JSON.stringify(parsedStatus.queue_summary)}`);
+
   await client.close();
   console.log("\n🎉 MCP Spec Self-Verification Suite completed successfully!");
 }

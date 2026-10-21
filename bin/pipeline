@@ -18,7 +18,7 @@ Usage: ./bin/pipeline <domain> <action> [options]
 
 Namespaces:
   media     Media intake, streaming telemetry, SwiftBar, and YouTube publishing.
-            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, status.
+            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, query, status.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   lake      Ecosystem datalake across GitHub orgs, git commits, artifacts, timeline.
@@ -74,11 +74,21 @@ run_media() {
         ruby bin/episode_workbench.rb "$@"
       fi
       ;;
-    youtube|ops|cockpit|status)
+    youtube|ops|cockpit)
       if [ $# -eq 0 ]; then
         ruby bin/youtube_pipeline.rb status
       else
         ruby bin/youtube_pipeline.rb "$@"
+      fi
+      ;;
+    query)
+      ruby bin/query_pipeline.rb "$@"
+      ;;
+    status)
+      if [ $# -eq 0 ]; then
+        ruby bin/query_pipeline.rb
+      else
+        ruby bin/query_pipeline.rb "$@"
       fi
       ;;
     teleprompter|prompter)
@@ -115,11 +125,11 @@ run_media() {
       ruby bin/analyze_ramblin_cadence.rb "$@"
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|status> [options]"
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|query|status> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, status" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, query, status" >&2
       exit 1
       ;;
   esac
@@ -398,6 +408,10 @@ case "$cmd" in
   sync-prompts|prompts)
     shift
     run_media sync-prompts "$@"
+    ;;
+  query|pipeline-status)
+    shift
+    run_media query "$@"
     ;;
   help|-h|--help)
     usage

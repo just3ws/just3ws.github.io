@@ -11,6 +11,23 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LIGHTWEIGHT MEDIA PIPELINE QUERY ENGINE VIA CLI & MCP (2026-10-21):
+         Established fast, unified CLI and MCP query capabilities for the media intake and YouTube publishing pipeline:
+         - Standalone Query Engine (`bin/query_pipeline.rb`):
+           - Implemented dual-mode inspection: probes live `live_dashboard_streamer.rb` (port 7025) via HTTP in <5ms, falling back gracefully to direct disk inspection across Maildir queues (`~/.local/var/media_intake` and Google Drive cloud archive), state locks, and YouTube quota telemetry if the daemon is offline.
+           - Supports output formats: human-readable terminal dashboard, `--compact` / `-c` (single-line status pulse), and `--json` / `-j` (pure structured JSON).
+           - Supports targeted filters: `--queues`, `--quota`, `--worker`, `--activity [N]`, and `--target <name>`.
+         - Unified Pipeline Router Integration (`bin/pipeline`):
+           - Added `query` action to `bin/pipeline media query` and flat alias `bin/pipeline query`.
+           - Updated `bin/pipeline media status` to output the comprehensive live intake queue, concurrency lock, worker state, and YouTube quota status.
+         - Repository MCP Server Integration (`bin/mcp_server.js`):
+           - Registered tool `query_media_pipeline`: allows AI agents and MCP clients to query live intake queues, worker state, quota cooldown, and recent events with section, format, and target arguments.
+           - Registered resource `site://pipeline/status`: returns real-time JSON status payload with queue breakdown, worker lock, quota cooldown timer, and recent activity log.
+           - Updated `bin/verify_mcp_spec.js` self-verification suite to assert tool and resource behavior over MCP stdio client.
+         - Testing & Verification:
+           - Authored `spec/youtube/query_pipeline_spec.rb` with 13 unit tests covering CLI flags, disk fallback, pipeline routing, zero em dashes, and MCP tool/resource contracts.
+           - 320/320 RSpec tests passing cleanly, fast validation passing across 499 Markdown files, zero em dashes across all edits.
+
        - PHALANX DUEL YOUTUBE PUBLISHING & MEDIA INTAKE ROBUSTNESS (2026-10-21):
          Resolved teleprompter director formatting, fixed media intake sidecar resolution, and published first Phalanx Duel video to YouTube:
          - Director Teleprompter Formatting & Spec Calibration:

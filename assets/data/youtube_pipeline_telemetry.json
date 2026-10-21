@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T12:58:20Z",
+  "generated_at": "2026-10-21T15:50:45Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -8,9 +8,9 @@
     "status": "authorized"
   },
   "metrics": {
-    "total_canonical_assets": 230,
+    "total_canonical_assets": 231,
     "total_interviews": 187,
-    "youtube_live_videos": 225,
+    "youtube_live_videos": 226,
     "staged_metadata_records": 214,
     "metadata_synced_count": 182,
     "metadata_pending_count": 32,
@@ -5656,7 +5656,7 @@
             "queue_position": 2,
             "ingress_at": "2026-10-20T21:47:56Z",
             "meta_phase": "blocked",
-            "current_step": "playlist_assignment",
+            "current_step": "archival",
             "substates": {
               "audio_dsp": {
                 "status": "completed",
@@ -5676,8 +5676,8 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-20T22:08:21Z",
-                "completed_at": "2026-10-21T13:02:09Z",
-                "duration_seconds": 0.2,
+                "completed_at": "2026-10-21T15:50:21Z",
+                "duration_seconds": 0.24,
                 "title": "Phalanx Duel: Make the Rules Legible (Automated Rules Engine & Combat Demo)",
                 "privacy": "unlisted",
                 "tags": [
@@ -5931,6 +5931,61 @@
       }
     },
     "activity_stream": [
+      {
+        "timestamp": "2026-10-21T15:50:21Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 15383
+        }
+      },
+      {
+        "timestamp": "2026-10-21T15:50:21Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 15596
+        }
+      },
+      {
+        "timestamp": "2026-10-21T15:50:21Z",
+        "stage": "metadata",
+        "level": "info",
+        "message": "Synthesized title: \"Phalanx Duel: Make the Rules Legible (Automated Rules Engine & Combat Demo)\" (0.24s)",
+        "details": {
+          "filename": "phalanx-duel-make-the-rules-legible-demo.mp4",
+          "title": "Phalanx Duel: Make the Rules Legible (Automated Rules Engine & Combat Demo)",
+          "duration_seconds": 0.24
+        }
+      },
+      {
+        "timestamp": "2026-10-21T15:50:21Z",
+        "stage": "idempotency",
+        "level": "info",
+        "message": "Skipped phalanx-duel-early-walkthrough-conrad-hall.mp4: already archived as CdYwA0SG34M",
+        "details": {
+          "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
+          "video_id": "CdYwA0SG34M"
+        }
+      },
+      {
+        "timestamp": "2026-10-21T15:50:21Z",
+        "stage": "scheduler",
+        "level": "info",
+        "message": "Applied background scheduling politeness (nice 15, macOS taskpolicy -b)",
+        "details": {
+          "pid": 15584
+        }
+      },
+      {
+        "timestamp": "2026-10-21T15:43:01Z",
+        "stage": "sweeper",
+        "level": "warning",
+        "message": "Scheduled compliance sweeper reconciled playlist/queue findings:  | 🧹 EXECUTING PLAYLIST SWEEP... | ",
+        "details": {}
+      },
       {
         "timestamp": "2026-10-21T13:03:20Z",
         "stage": "blocked",
@@ -6290,72 +6345,9 @@
         "details": {
           "pid": 36840
         }
-      },
-      {
-        "timestamp": "2026-10-21T12:44:54Z",
-        "stage": "triage",
-        "level": "info",
-        "message": "Classifier evaluated failure on phalanx-duel-early-walkthrough-conrad-hall.mp4: quarantine_operator_review (65%)",
-        "details": {
-          "decision": "quarantine_operator_review",
-          "confidence": 0.6488,
-          "probabilities": {
-            "upstream_quota_blocked": 0.0878,
-            "transient_network_retry": 0.0878,
-            "audio_codec_resample": 0.0878,
-            "credential_refresh": 0.0878,
-            "quarantine_operator_review": 0.6488
-          },
-          "diagnostic": "Failed to initialize YouTube upload session (400): {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request metadata specifies an invalid video description.\",\n    \"errors\": [\n      {\n        \"message\": \"The request metadata specifies an invalid video description.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"invalidDescription\",\n        \"location\": \"body.snippet.description\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}"
-        }
-      },
-      {
-        "timestamp": "2026-10-21T12:44:54Z",
-        "stage": "error",
-        "level": "error",
-        "message": "Failed processing phalanx-duel-early-walkthrough-conrad-hall.mp4: Failed to initialize YouTube upload session (400): {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request metadata specifies an invalid video description.\",\n    \"errors\": [\n      {\n        \"message\": \"The request metadata specifies an invalid video description.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"invalidDescription\",\n        \"location\": \"body.snippet.description\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}\n",
-        "details": {
-          "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
-          "error": "Failed to initialize YouTube upload session (400): {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request metadata specifies an invalid video description.\",\n    \"errors\": [\n      {\n        \"message\": \"The request metadata specifies an invalid video description.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"invalidDescription\",\n        \"location\": \"body.snippet.description\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}\n"
-        }
-      },
-      {
-        "timestamp": "2026-10-21T12:44:50Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Upload attempt 2 retrying after error: Failed to initialize YouTube upload session (400): {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request metadata specifies an invalid video description.\",\n    \"errors\": [\n      {\n        \"message\": \"The request metadata specifies an invalid video description.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"invalidDescription\",\n        \"location\": \"body.snippet.description\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}\n",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-21T12:44:48Z",
-        "stage": "self_healing",
-        "level": "warning",
-        "message": "Upload attempt 1 retrying after error: Failed to initialize YouTube upload session (400): {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request metadata specifies an invalid video description.\",\n    \"errors\": [\n      {\n        \"message\": \"The request metadata specifies an invalid video description.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"invalidDescription\",\n        \"location\": \"body.snippet.description\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}\n",
-        "details": {}
-      },
-      {
-        "timestamp": "2026-10-21T12:44:47Z",
-        "stage": "metadata",
-        "level": "info",
-        "message": "Synthesized title: \"Phalanx Duel (2026-05-04)\" (0.16s)",
-        "details": {
-          "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
-          "title": "Phalanx Duel (2026-05-04)",
-          "duration_seconds": 0.16
-        }
-      },
-      {
-        "timestamp": "2026-10-21T12:44:47Z",
-        "stage": "lock",
-        "level": "info",
-        "message": "Acquired concurrency lock for phalanx-duel-early-walkthrough-conrad-hall.mp4 (Target: phalanx-duel)",
-        "details": {
-          "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
-          "target": "phalanx-duel"
-        }
       }
     ],
-    "polled_at": "2026-10-21T15:28:40Z"
+    "polled_at": "2026-10-21T15:56:13Z"
   },
   "assets": [
     {
@@ -10267,7 +10259,24 @@
       "tags_count": 5,
       "has_em_dash": false,
       "title_length": 34
+    },
+    {
+      "id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
+      "transcript_id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
+      "youtube_video_id": "CdYwA0SG34M",
+      "title": "Phalanx Duel: Early Version Walkthrough with Conrad Hall",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 8,
+      "has_em_dash": false,
+      "title_length": 56
     }
   ],
-  "updated_at": "2026-10-21T15:28:40Z"
+  "updated_at": "2026-10-21T15:56:13Z"
 }

@@ -111,6 +111,31 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           },
         },
       },
+      {
+        name: "query_media_pipeline",
+        description: "Lightweight tool: Queries the live media intake queue, YouTube publishing status, worker lock, quota cooldown, and recent events.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            section: {
+              type: "string",
+              description: "Optional section to query: 'all', 'summary', 'queues', 'quota', 'worker', 'activity'.",
+              enum: ["all", "summary", "queues", "quota", "worker", "activity"],
+              default: "all",
+            },
+            target: {
+              type: "string",
+              description: "Optional specific target filter (e.g. 'phalanx-duel', 'ramblin-amblin', 'the-sound-above', 'errata').",
+            },
+            format: {
+              type: "string",
+              description: "Output format: 'text' (human readable summary) or 'json' (raw structured data).",
+              enum: ["text", "json"],
+              default: "text",
+            },
+          },
+        },
+      },
     ],
   };
 });
@@ -166,6 +191,26 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
 
+    if (name === "query_media_pipeline") {
+      const argsList = [];
+      if (args && args.format === "json") argsList.push("--json");
+      if (args && args.section === "queues") argsList.push("--queues");
+      if (args && args.section === "quota") argsList.push("--quota");
+      if (args && args.section === "worker") argsList.push("--worker");
+      if (args && args.section === "activity") argsList.push("--activity");
+      if (args && args.section === "summary") argsList.push("--compact");
+      if (args && args.target) argsList.push(`--target "${args.target}"`);
+
+      const cmd = `ruby bin/query_pipeline.rb ${argsList.join(" ")}`.trim();
+      const output = execSync(cmd, {
+        cwd: ROOT_DIR,
+        encoding: "utf-8",
+      });
+      return {
+        content: [{ type: "text", text: output.trim() }],
+      };
+    }
+
     throw new Error(`Unknown tool: ${name}`);
   } catch (error) {
     return {
@@ -199,6 +244,12 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => {
         description: "Real-time verification metrics for archive transcripts, video assets, and speakers.",
         mimeType: "application/json",
       },
+      {
+        uri: "site://pipeline/status",
+        name: "Live Media Pipeline Status",
+        description: "Real-time queue counts, worker lock state, quota cooldown status, and recent activity.",
+        mimeType: "application/json",
+      },
     ],
   };
 });
@@ -230,6 +281,16 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
     const content = fs.existsSync(validatorPath) ? fs.readFileSync(validatorPath, "utf-8") : "{}";
     return {
       contents: [{ uri, mimeType: "text/plain", text: content }],
+    };
+  }
+
+  if (uri === "site://audit/status" || uri === "site://pipeline/status") {
+    const output = execSync("ruby bin/query_pipeline.rb --json", {
+      cwd: ROOT_DIR,
+      encoding: "utf-8",
+    });
+    return {
+      contents: [{ uri, mimeType: "application/json", text: output.trim() }],
     };
   }
 
