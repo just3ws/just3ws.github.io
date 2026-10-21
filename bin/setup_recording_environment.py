@@ -136,6 +136,20 @@ RECORDING_EXTENSIONS = [
         "type": "cws_crx",
         "ext_id": "cppjkneekbjaeellbfkmgnhonkkjfpdn",
         "description": "Single-click clean session reset before takes"
+    },
+    {
+        "id": "hister",
+        "name": "Hister",
+        "type": "cws_crx",
+        "ext_id": "cciilamhchpmbdnniabclekddabkifhb",
+        "description": "Companion full-text browsing history indexer for hister.localhost"
+    },
+    {
+        "id": "read-aloud",
+        "name": "Read Aloud Voice Reader",
+        "type": "cws_crx",
+        "ext_id": "hdhinadidafjejdhmfkjgnolgimiaplp",
+        "description": "Select text and play aloud via text to speech"
     }
 ]
 

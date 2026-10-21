@@ -287,6 +287,8 @@ When presenting web archives, transcripts, and telemetry dashboards (including t
      - `stylus`: Userstyle engine hosting the craftsman broadcast theme.
      - `localcdn`: Local library emulation preventing third-party CDN tracking.
      - `chromium-web-store`: Native Web Store installer and update helper.
+     - `hister`: Companion full-text browsing history indexer for hister.localhost.
+     - `read-aloud`: Text-to-speech voice reader for selected passages and transcripts.
    - **Security & Clutter Exclusion**:
      - LastPass, Complexity, and DeArrow are strictly prohibited and quarantined from all catalogs, profiles, and automated installers.
 
