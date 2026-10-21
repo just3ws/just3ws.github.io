@@ -175,6 +175,26 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(meta[:description]).to include("Reflecting on high latency network links")
     end
 
+    it 'prioritizes structured YAML sidecars over raw text transcripts' do
+      Dir.mktmpdir do |tmp_dir|
+        video = File.join(tmp_dir, 'test-video.mp4')
+        txt = File.join(tmp_dir, 'test-video.txt')
+        yml = File.join(tmp_dir, 'test-video.yml')
+        FileUtils.touch([video, txt, yml])
+
+        sidecar = pipeline.find_sidecar(video)
+        expect(sidecar).to eq(yml)
+      end
+    end
+
+    it 'sanitizes angle brackets and bounds YouTube descriptions to 5000 characters' do
+      long_text = "Testing <script>tag</script> and angle brackets: " + ("word " * 1200)
+      meta = pipeline.synthesize_metadata("/dummy/path/test.mp4", "phalanx-duel", {}, { text: "", vtt: "" }, { 'description' => long_text })
+      expect(meta[:description]).not_to include('<')
+      expect(meta[:description]).not_to include('>')
+      expect(meta[:description].length).to be <= 5000
+    end
+
     it 'discovers ztranscribe binary from zdots platform' do
       skip 'ztranscribe binary is local macOS platform only' if ENV['CI'] || pipeline.find_ztranscribe_binary.nil?
       ztranscribe_bin = pipeline.find_ztranscribe_binary

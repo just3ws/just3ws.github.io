@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T12:33:26Z",
+  "generated_at": "2026-10-21T12:35:03Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -5533,7 +5533,7 @@
             "size_bytes": 68591336,
             "queue_position": 1,
             "ingress_at": "2026-10-20T21:47:56Z",
-            "meta_phase": "pending",
+            "meta_phase": "quarantined",
             "current_step": "archival",
             "substates": {
               "audio_dsp": {
@@ -5554,9 +5554,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-20T21:47:20Z",
-                "completed_at": "2026-10-21T12:34:45Z",
-                "duration_seconds": 0.13,
-                "title": "Phalanx Duel (2026-05-04)",
+                "completed_at": "2026-10-21T12:58:02Z",
+                "duration_seconds": 0.21,
+                "title": "Phalanx Duel: Early Version Walkthrough with Conrad Hall",
                 "privacy": "unlisted",
                 "tags": [
                   "Phalanx Duel",
@@ -5565,14 +5565,30 @@
                   "Deterministic Systems",
                   "Tabletop Games",
                   "State Machines",
-                  "SCMC"
+                  "SCMC",
+                  "Conrad Hall"
                 ]
               },
               "youtube_upload": {
-                "status": "pending",
-                "started_at": null,
+                "status": "failed",
+                "started_at": "2026-10-21T12:44:48Z",
                 "completed_at": null,
-                "duration_seconds": null
+                "duration_seconds": null,
+                "progress_percent": 0.0,
+                "bytes_uploaded": 0,
+                "total_bytes": 68591336,
+                "failed_at": "2026-10-21T12:44:54Z",
+                "error": "Failed to initialize YouTube upload session (400): {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"The request metadata specifies an invalid video description.\",\n    \"errors\": [\n      {\n        \"message\": \"The request metadata specifies an invalid video description.\",\n        \"domain\": \"youtube.video\",\n        \"reason\": \"invalidDescription\",\n        \"location\": \"body.snippet.description\",\n        \"locationType\": \"other\"\n      }\n    ]\n  }\n}\n",
+                "backtrace": [
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/lib/youtube_client.rb:294:in 'YouTubeClient#upload_video'",
+                  "bin/intake_drive_video.rb:776:in 'block in MediaIntakePipeline#process_file'",
+                  "bin/intake_drive_video.rb:774:in 'Integer#times'",
+                  "bin/intake_drive_video.rb:774:in 'MediaIntakePipeline#process_file'",
+                  "bin/intake_drive_video.rb:500:in 'block in MediaIntakePipeline#run'",
+                  "bin/intake_drive_video.rb:466:in 'Kernel#loop'",
+                  "bin/intake_drive_video.rb:466:in 'MediaIntakePipeline#run'",
+                  "bin/intake_drive_video.rb:1613:in '<main>'"
+                ]
               },
               "playlist_assignment": {
                 "status": "pending",
@@ -5618,7 +5634,7 @@
               {
                 "id": "youtube_upload",
                 "label": "Upload",
-                "status": "pending"
+                "status": "failed"
               },
               {
                 "id": "playlist_assignment",
@@ -5668,9 +5684,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-20T22:08:21Z",
-                "completed_at": "2026-10-21T12:34:45Z",
-                "duration_seconds": 0.1,
-                "title": "Phalanx Duel (2026-10-20)",
+                "completed_at": "2026-10-21T12:58:02Z",
+                "duration_seconds": 0.12,
+                "title": "Phalanx Duel: Make the Rules Legible (Automated Rules Engine & Combat Demo)",
                 "privacy": "unlisted",
                 "tags": [
                   "Phalanx Duel",
@@ -5768,7 +5784,7 @@
       }
     },
     "activity_stream": [],
-    "polled_at": "2026-10-21T12:34:46Z"
+    "polled_at": "2026-10-21T12:58:02Z"
   },
   "assets": [
     {
@@ -9682,5 +9698,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-21T12:34:46Z"
+  "updated_at": "2026-10-21T12:58:02Z"
 }

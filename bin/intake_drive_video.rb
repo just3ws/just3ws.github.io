@@ -1183,6 +1183,12 @@ class MediaIntakePipeline
       description = parts.join("\n\n").strip
     end
 
+    # YouTube API v3 description sanitization: strictly <= 5000 characters and no angle brackets
+    description = description.to_s.gsub(/[<>]/, '')
+    if description.length > 5000
+      description = description[0...4990].strip + "\n..."
+    end
+
     privacy = sidecar_data['privacy'] || target_info['default_privacy'] || 'unlisted'
 
     classifier = PipelineClassifier.new
@@ -1329,7 +1335,7 @@ class MediaIntakePipeline
 
   def find_sidecar(video_path)
     base = video_path.sub(/\.[^.]+$/, '')
-    ['.txt', '.yml', '.yaml'].map { |ext| base + ext }.find { |p| File.exist?(p) }
+    ['.yml', '.yaml', '.txt'].map { |ext| base + ext }.find { |p| File.exist?(p) }
   end
 
   def parse_sidecar(sidecar_path)
