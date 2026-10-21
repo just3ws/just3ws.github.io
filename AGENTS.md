@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-20
+     CURRENT FOCUS - last updated 2026-10-21
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - PHALANX DUEL YOUTUBE PUBLISHING & MEDIA INTAKE ROBUSTNESS (2026-10-21):
+         Resolved teleprompter director formatting, fixed media intake sidecar resolution, and published first Phalanx Duel video to YouTube:
+         - Director Teleprompter Formatting & Spec Calibration:
+           - Restructured teleprompter scripts across Episode 00, 01, Fluffle Precursor, and Phalanx Duel into `[SCENE]`, `[FREEFORM]`, `[PAUSE]`, and `[SHOW]` director-cue formats for live broadcast readability and ad-lib anchoring.
+           - Synchronized `teleprompter_script` blocks across episode YMLs and updated `spec/youtube/textream_teleprompter_spec.rb` characterization tests.
+         - Fluid Layout Measure & Home Page Calibration:
+           - Recalibrated home hero lede to direct technical framing (opaque coupling, distributed failures, risky transactional workflows) and tightened operating rhythm summaries.
+           - Refactored container max widths to use `var(--container-max-width, 84rem)` with `clamp()` padding, while enabling edge-to-edge full width for local operations dashboards.
+         - Media Intake Sidecar Discovery & YouTube Description Guard:
+           - Identified root cause of YouTube 400 `invalidDescription` upload error on Phalanx Duel demo videos: `find_sidecar` checked `.txt` before `.yml`, inadvertently picking up raw transcription text and causing fallback description generation to exceed YouTube's 5,000 character limit.
+           - Fixed `find_sidecar` in `bin/intake_drive_video.rb` to prioritize structured `.yml` and `.yaml` sidecars before `.txt` fallbacks.
+           - Added YouTube API v3 description sanitization to strip angle brackets and bound descriptions to 5,000 characters.
+           - Added unit tests in `spec/youtube/media_intake_pipeline_spec.rb` verifying sidecar discovery precedence and description bounds.
+         - Phalanx Duel Asset Publication:
+           - Published Conrad Hall's Phalanx Duel early version walkthrough (`CdYwA0SG34M`) to YouTube playlist `PLHenvAZhJjHo`, generated interactive transcript (`_data/transcripts/phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall.yml`), registered asset in `_data/video_assets.yml`, and mirrored master to Google Drive cloud archive while releasing local NVMe SSD bytes.
+           - Successfully uploaded SCMC demonstration demo video (`eH6VQa2Od3E`) to YouTube, safely quarantined to Google Drive cloud archive pending playlist item quota reset.
+         - Verification:
+           - 307/307 RSpec tests passing, fast validation passing cleanly across 499 Markdown files, zero em dashes across all edits.
+
        - HISTORICAL GROUND TRUTH RESTORATION & AGENT HALLUCINATION PURGE (2026-10-20):
          Purged agentic hallucinations across recording equipment, creator communications, and presentation history, restoring authentic ground truth:
          - Dead Rabbit Radio Provenance & Direct Outreach (`_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md`, `_data/episodes/errata-fluffle-precursor.yml`, `obs/teleprompter/errata-fluffle-precursor.textream`):
