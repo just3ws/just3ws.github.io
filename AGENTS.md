@@ -11,6 +11,24 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - TONE AUDIT & FIRST-PERSON VOICE RESTORATION (2026-10-21):
+         Audited primary public hiring surfaces for tone and person-perspective
+         consistency; committed and pushed as ae1acac3:
+         - `_data/home.yml`: Visitor path card 2 title rewritten to visitor's voice.
+         - `about/index.html`: Removed year-count framing ("two decades") per CODEX.md;
+           replaced with technology-shift framing.
+         - `_data/case_studies.yml`: Purged third-person "Mike conceived/He recovered"
+           throughout, restored first-person throughout.
+         - `_data/portfolio.yml`: Chicago Code Camp card rewritten to telegraphic
+           professional framing from casual self-deprecating prose.
+         - `index.html`: Page title and meta description updated to canonical
+           "Staff Software Engineer" title per CODEX.md.
+         - 320/320 RSpec passing, fast validation passing, zero em dashes.
+         - Pipeline state: quota_cooldown_blocked (YouTube quota exhausted).
+           Two Phalanx Duel videos (Conrad Hall walkthrough + SCMC demo) are
+           staged and pending in local Maildir queue. Both will process
+           automatically after quota reset at 2:00 AM CT. No action needed.
+
        - LIGHTWEIGHT MEDIA PIPELINE QUERY ENGINE VIA CLI & MCP (2026-10-21):
          Established fast, unified CLI and MCP query capabilities for the media intake and YouTube publishing pipeline:
          - Standalone Query Engine (`bin/query_pipeline.rb`):
