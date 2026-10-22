@@ -119,10 +119,13 @@ class YouTubeClient
     video = get_video(video_id)
     return false unless video
 
+    desc = video.dig("snippet", "description").to_s.gsub(/[<>]/, '')
+    desc = desc[0...4990].strip + "\n..." if desc.length > 5000
+
     payload = {
       "snippet" => {
-        "title" => video.dig("snippet", "title"),
-        "description" => video.dig("snippet", "description"),
+        "title" => video.dig("snippet", "title").to_s[0...100],
+        "description" => desc,
         "categoryId" => video.dig("snippet", "categoryId") || "28"
       },
       "status" => (video["status"] || {}).merge("privacyStatus" => privacy_status)

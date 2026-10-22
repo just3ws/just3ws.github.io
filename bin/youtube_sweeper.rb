@@ -151,14 +151,34 @@ class YouTubeSweeper
 
           # Update companion state and move to pending
           companion_state = File.join(blocked_dir, "#{fn}.state.json")
-          if File.exist?(companion_state)
-            state_data = JSON.parse(File.read(companion_state)) rescue nil
+          companion_cloud_state = cloud_target_dir ? File.join(cloud_target_dir, 'blocked', "#{fn}.state.json") : nil
+
+          [companion_state, companion_cloud_state].compact.uniq.each do |c_state|
+            next unless File.exist?(c_state)
+            state_data = JSON.parse(File.read(c_state)) rescue nil
             if state_data
               state_data['file_path'] = dest if dest
               state_data['meta_phase'] = 'pending' if state_data['meta_phase'] == 'blocked'
-              File.write(companion_state, JSON.pretty_generate(state_data)) rescue nil
+              File.write(c_state, JSON.pretty_generate(state_data)) rescue nil
             end
-            FileUtils.mv(companion_state, File.join(pending_dir, "#{fn}.state.json")) rescue nil
+            c_dest_dir = (c_state == companion_cloud_state && cloud_target_dir) ? File.join(cloud_target_dir, 'pending') : pending_dir
+            FileUtils.mkdir_p(c_dest_dir)
+            FileUtils.mv(c_state, File.join(c_dest_dir, File.basename(c_state))) rescue nil
+          end
+
+          # Move associated sidecars (YAML, captions, transcripts) back to pending
+          stem = File.basename(fn, '.*')
+          Dir.glob(File.join(blocked_dir, "#{stem}.*")).each do |companion|
+            next if companion.end_with?('.blocked.json') || companion.end_with?('.error.log') || companion.end_with?('.state.json')
+            FileUtils.mv(companion, File.join(pending_dir, File.basename(companion))) rescue nil
+          end
+          if cloud_target_dir
+            Dir.glob(File.join(cloud_target_dir, 'blocked', "#{stem}.*")).each do |companion|
+              next if companion.end_with?('.blocked.json') || companion.end_with?('.error.log') || companion.end_with?('.state.json')
+              cloud_pending = File.join(cloud_target_dir, 'pending')
+              FileUtils.mkdir_p(cloud_pending)
+              FileUtils.mv(companion, File.join(cloud_pending, File.basename(companion))) rescue nil
+            end
           end
 
           FileUtils.rm_f(bf)
@@ -364,7 +384,8 @@ class YouTubeSweeper
     live = options[:apply]
 
     report[:playlists].each do |pl|
-      next if pl[:removable_item_ids].empty? && pl[:missing_canonicals].empty? && (!options[:retire_duplicates] || pl[:redundant_video_ids].empty?)
+      has_ephemerality_work = options[:sweep_ephemerality] && pl[:ephemerality_plan]&.fetch(:retired, [])&.any?
+      next if pl[:removable_item_ids].empty? && pl[:missing_canonicals].empty? && (!options[:retire_duplicates] || pl[:redundant_video_ids].empty?) && !has_ephemerality_work
 
       puts "\n--- Playlist: #{pl[:title]} (#{pl[:id]}) ---"
 
@@ -624,7 +645,7 @@ class YouTubeSweeper
 
     begin
       loop do
-        url = "#{YouTubeClient::API_BASE}/playlistItems?part=snippet,contentDetails&playlistId=#{playlist_id}&maxResults=50"
+        url = "#{YouTubeClient::API_BASE}/playlistItems?part=snippet,contentDetails,status&playlistId=#{playlist_id}&maxResults=50"
         url += "&pageToken=#{page_token}" if page_token
         uri = URI(url)
         res = client.send(:make_request, uri)

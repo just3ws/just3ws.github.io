@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 require 'tempfile'
+require 'time'
 require 'yaml'
 require_relative '../../bin/lib/youtube_deduplicator'
 

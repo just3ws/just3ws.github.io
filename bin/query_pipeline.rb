@@ -179,17 +179,18 @@ class PipelineQuery
       }
     end
 
+    cooldown_active = quota_cooldown_active?
     health = if stopped
       'stopped'
     elsif halted
       'halted'
     elsif total_failed > 0
       'degraded_quarantine'
-    elsif total_blocked > 0
+    elsif total_blocked > 0 && cooldown_active
       'quota_cooldown_blocked'
     elsif total_processing > 0
       'processing'
-    elsif total_pending > 0
+    elsif total_pending > 0 || total_blocked > 0
       'pending'
     else
       'idle_ready'
@@ -326,7 +327,7 @@ class PipelineQuery
     needed = metrics['quota_needed_for_pending'] || 0
     pct = metrics['quota_budget_percentage'] || ((needed.to_f / daily_budget.to_f) * 100.0).round(1)
 
-    in_cooldown = health == 'quota_cooldown_blocked' || quota_cooldown_active?
+    in_cooldown = quota_cooldown_active?
 
     now_utc = Time.now.utc
     now_pt = now_utc.getlocal('-07:00')
@@ -492,6 +493,8 @@ class PipelineQueryPresenter
     quota_status_str = "#{quota['units_needed']} / #{quota['daily_limit']} units (#{quota['budget_percentage']}%)"
     if quota['in_cooldown']
       quota_status_str += " [COOLDOWN ACTIVE: resets in #{quota['time_to_reset']} at #{quota['next_reset']}]"
+    else
+      quota_status_str += ' [API READY]'
     end
     lines << format('YouTube Quota:     %s', quota_status_str)
     lines << format('Queue Summary:     %d staged, %d pending, %d processing, %d processed, %d blocked',

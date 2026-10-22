@@ -94,6 +94,7 @@ RSpec.describe 'YouTube Operations Dashboard Queue Interface & Integration' do
       expect(dashboard_content).to include('function inspectFunnelStep(')
       expect(dashboard_content).to include('function sanitizeDiagnostic(')
       expect(dashboard_content).to include('function updateQuotaCountdown(')
+      expect(dashboard_content).to include('async function refreshDashboardTelemetry(')
     end
   end
 

@@ -203,9 +203,12 @@ class YouTubeDeduplicator
   # items: array of playlist items (with snippet.publishedAt, contentDetails.videoId)
   # policy: hash containing :window_days, :carry_tail_count, :mode
   # now: Time object for age calculations (default Time.now)
-  def plan_rolling_horizon_retirement(items, policy = {}, now = Time.now)
+  def plan_rolling_horizon_retirement(items, policy = {}, now = nil)
     return { active: [], retired: [], anchor: nil } if items.nil? || items.empty?
 
+    # Support `now:` as a keyword inside the policy hash (used by tests and callers
+    # that pass all options as a flat keyword hash, e.g. plan_rolling_horizon_retirement(items, now: t)).
+    now ||= policy.delete(:now) || Time.now
     window_days = policy[:window_days] || 3
     carry_tail_count = policy[:carry_tail_count] || 2
     window_seconds = window_days * 86_400

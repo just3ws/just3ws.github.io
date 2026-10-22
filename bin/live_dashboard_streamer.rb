@@ -181,17 +181,18 @@ class LiveDashboardStreamer
     total_failed = targets.values.sum { |t| t['failed_count'] || 0 }
     total_blocked = targets.values.sum { |t| t['blocked_count'] || 0 }
 
+    cooldown_active = quota_in_cooldown?
     health_status = if state['stopped']
       'stopped'
     elsif state['halted']
       'halted'
     elsif total_failed > 0
       'degraded_quarantine'
-    elsif total_blocked > 0
+    elsif total_blocked > 0 && cooldown_active
       'quota_cooldown_blocked'
     elsif total_processing > 0
       'processing'
-    elsif total_pending > 0
+    elsif total_pending > 0 || total_blocked > 0
       'pending'
     else
       'idle_ready'
@@ -698,21 +699,77 @@ class LiveDashboardStreamer
     if target && filename
       config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
       base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
-      src_failed = File.join(base_p, 'whoistechcmty', target, 'failed', filename)
-      src_blocked = File.join(base_p, 'whoistechcmty', target, 'blocked', filename)
-      src = File.exist?(src_failed) ? src_failed : (File.exist?(src_blocked) ? src_blocked : nil)
-      dst = File.join(base_p, 'whoistechcmty', target, 'pending', filename)
-      if src && File.exist?(src)
-        FileUtils.mv(src, dst)
-        Dir.glob("#{src}.*").each do |companion|
-          next if companion.end_with?('.error.log') || companion.end_with?('.blocked.json')
-          companion_dst = File.join(base_p, 'whoistechcmty', target, 'pending', File.basename(companion))
-          FileUtils.mv(companion, companion_dst) rescue nil
+      cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
+      channel = 'whoistechcmty'
+
+      if base_p
+        failed_dir = File.join(base_p, channel, target, 'failed')
+        blocked_dir = File.join(base_p, channel, target, 'blocked')
+        pending_dir = File.join(base_p, channel, target, 'pending')
+        cloud_target_dir = cloud_p ? File.join(cloud_p, channel, target) : nil
+
+        src_failed = File.join(failed_dir, filename)
+        src_blocked = File.join(blocked_dir, filename)
+        blocked_manifest = File.join(blocked_dir, "#{filename}.blocked.json")
+
+        bdata = JSON.parse(File.read(blocked_manifest)) rescue {} if File.exist?(blocked_manifest)
+        cloud_file = (bdata && bdata['cloud_path']) || (cloud_target_dir ? File.join(cloud_target_dir, 'blocked', filename) : nil)
+
+        dest = nil
+        found = false
+
+        if File.exist?(src_failed)
+          dest = File.join(pending_dir, filename)
+          FileUtils.mv(src_failed, dest)
+          found = true
+        elsif File.exist?(src_blocked)
+          dest = File.join(pending_dir, filename)
+          FileUtils.mv(src_blocked, dest)
+          found = true
+        elsif cloud_file && File.exist?(cloud_file) && cloud_target_dir
+          cloud_pending = File.join(cloud_target_dir, 'pending')
+          FileUtils.mkdir_p(cloud_pending)
+          dest = File.join(cloud_pending, filename)
+          FileUtils.mv(cloud_file, dest)
+          found = true
         end
-        FileUtils.rm_f("#{src}.error.log")
-        FileUtils.rm_f("#{src}.blocked.json")
-        broadcast_state!
-        return respond_json(client, { status: "retried", file: filename, target: target })
+
+        if found
+          stem = File.basename(filename, '.*')
+          [failed_dir, blocked_dir].each do |dir|
+            next unless Dir.exist?(dir)
+            Dir.glob(File.join(dir, "#{stem}.*")).each do |companion|
+              next if companion.end_with?('.error.log') || companion.end_with?('.blocked.json')
+              if companion.end_with?('.state.json')
+                state_data = JSON.parse(File.read(companion)) rescue nil
+                if state_data
+                  state_data['file_path'] = dest if dest
+                  state_data['meta_phase'] = 'pending'
+                  File.write(companion, JSON.pretty_generate(state_data)) rescue nil
+                end
+              end
+              FileUtils.mv(companion, File.join(pending_dir, File.basename(companion))) rescue nil
+            end
+          end
+
+          if cloud_target_dir
+            cloud_companion = File.join(cloud_target_dir, 'blocked', "#{filename}.state.json")
+            if File.exist?(cloud_companion)
+              state_data = JSON.parse(File.read(cloud_companion)) rescue nil
+              if state_data
+                state_data['file_path'] = dest if dest
+                state_data['meta_phase'] = 'pending'
+                File.write(cloud_companion, JSON.pretty_generate(state_data)) rescue nil
+              end
+              FileUtils.mv(cloud_companion, File.join(cloud_target_dir, 'pending', "#{filename}.state.json")) rescue nil
+            end
+          end
+
+          FileUtils.rm_f(File.join(failed_dir, "#{filename}.error.log"))
+          FileUtils.rm_f(File.join(blocked_dir, "#{filename}.blocked.json"))
+          broadcast_state!
+          return respond_json(client, { status: "retried", file: filename, target: target })
+        end
       end
     end
     respond_json(client, { error: "File not found in failed or blocked" }, status: "400 Bad Request")
@@ -803,22 +860,23 @@ class LiveDashboardStreamer
 
   def run_compliance_sweeper
     sweeper_script = File.join(ROOT_DIR, 'bin', 'youtube_sweeper.rb')
+    sleep 5
     loop do
-      sleep 900 # Run compliance sweep and cooldown unblocking every 15 minutes
-      next unless File.exist?(sweeper_script)
-
-      begin
-        cmd = "#{RbConfig.ruby} #{sweeper_script} --sweep --sweep-ephemerality --retire-duplicates --unblock-expired --apply --quiet"
-        out, status = Open3.capture2e(cmd)
-        if status.success?
-          log_activity('sweeper', 'Scheduled compliance sweeper verified playlists and queue health (0 warnings)', level: 'info')
-        else
-          log_activity('sweeper', "Scheduled compliance sweeper reconciled playlist/queue findings: #{out.lines.first(3).map(&:strip).join(' | ')}", level: 'warning')
+      if File.exist?(sweeper_script)
+        begin
+          cmd = "#{RbConfig.ruby} #{sweeper_script} --sweep --sweep-ephemerality --retire-duplicates --unblock-expired --apply --quiet"
+          out, status = Open3.capture2e(cmd)
+          if status.success?
+            log_activity('sweeper', 'Scheduled compliance sweeper verified playlists and queue health (0 warnings)', level: 'info')
+          else
+            log_activity('sweeper', "Scheduled compliance sweeper reconciled playlist/queue findings: #{out.lines.first(3).map(&:strip).join(' | ')}", level: 'warning')
+          end
+          broadcast_state!
+        rescue StandardError => e
+          warn "⚠️ Scheduled sweeper error: #{e.message}"
         end
-        broadcast_state!
-      rescue StandardError => e
-        warn "⚠️ Scheduled sweeper error: #{e.message}"
       end
+      sleep 900 # Run compliance sweep and cooldown unblocking every 15 minutes
     end
   end
 
