@@ -66,9 +66,9 @@ RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
       expect(File.executable?(swiftbar_shim)).to be true
     end
 
-    it 'executes tracked bin/youtube-swiftbar' do
+    it 'executes tracked swiftbar binary' do
       content = File.read(swiftbar_shim)
-      expect(content).to include('exec "/Users/mike/github.com/just3ws/just3ws.github.io/bin/youtube-swiftbar"')
+      expect(content).to match(%r{exec "(/Users/mike/github.com/just3ws/(media-pipeline/bin/media-pipeline-swiftbar|just3ws.github.io/bin/youtube-swiftbar))"})
     end
 
     it 'contains zero em dashes' do
