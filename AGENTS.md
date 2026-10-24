@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-21
+     CURRENT FOCUS - last updated 2026-10-24
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,33 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - STANDALONE MEDIA-PIPELINE EXTRACTION & RAILS MIGRATION (2026-10-24):
+         Completely extracted and migrated the media intake and YouTube publishing pipeline
+         from this static Jekyll repository into an independent Rails 8 microservice (`media-pipeline`):
+         - Clean System Boundaries & Legacy Daemon Removal:
+           - Booted out, disabled, and permanently removed fragile launchd daemon (`com.just3ws.ramblin-pipeline`)
+             that failed on unescaped filenames with spaces, quotes, and symbols.
+           - Established dedicated service repo at `github.com/just3ws/media-pipeline` running on high port 32000
+             under Nginx reverse proxy at `https://media-pipeline.localhost` with HTTP/2 and TLS via mkcert.
+           - Configured launchd autostart daemon (`com.just3ws.media-pipeline.plist`) with `RunAtLoad` and `KeepAlive`
+             logging directly to `~/.local/state/just3ws/media_pipeline_server.log`.
+         - Data Migration & Quota Resolution:
+           - Migrated all 239 legacy assets and cataloged 96 active video assets into SQLite3 (WAL mode).
+           - Resolved quota-blocked asset #198 (`ZEbqaLmCGe0`), successfully assigning it to UGtastic Marginalia.
+           - Current pipeline queue state: 94 processed, 2 pending, 0 blocked, 0 failed.
+         - Modern Rails Architecture & Tooling:
+           - Solid Queue (background jobs), Solid Cache, and Solid Cable (ActionCable websockets).
+           - OpenTelemetry SDK and OTLP exporter streaming to zdots `otelcol-contrib` (port 4318), Jaeger (16686),
+             and OpenObserve (5080).
+           - Structured JSON logging via Lograge with trace and span correlation, annotated by Marginalia SQL tags.
+           - Unified namespaced CLI suite (`mp`, `mp-status`, `mp-scan`, `mp-sync`, `mp-backup`, `mp-mcp`, `mp-swiftbar`, `mp-verify`).
+           - Strongly-typed GraphQL API (`/graphql`) with interactive GraphiQL IDE (`/graphiql`) and exported SDL (`docs/schema.graphql`).
+           - Dual licensing: GNU AGPLv3 for software source code, CC BY-NC-SA 4.0 for documentation, schemas, and architecture.
+         - Cross-Repository Verification:
+           - `media-pipeline`: 56/56 RSpec specs passing in 1.35s, 0 Brakeman warnings, clean Mandoc lint, zero em dashes.
+           - `just3ws.github.io`: 320/320 RSpec specs passing, fast validation passing cleanly across 499 Markdown files,
+             user SwiftBar shim updated to execute `media-pipeline-swiftbar`.
+
        - TONE AUDIT & FIRST-PERSON VOICE RESTORATION (2026-10-21):
          Audited primary public hiring surfaces for tone and person-perspective
          consistency; committed and pushed as ae1acac3:
