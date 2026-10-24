@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T18:47:42Z",
+  "generated_at": "2026-10-24T01:37:25Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -8,9 +8,9 @@
     "status": "authorized"
   },
   "metrics": {
-    "total_canonical_assets": 231,
+    "total_canonical_assets": 239,
     "total_interviews": 187,
-    "youtube_live_videos": 226,
+    "youtube_live_videos": 234,
     "staged_metadata_records": 214,
     "metadata_synced_count": 182,
     "metadata_pending_count": 32,
@@ -4326,7 +4326,7 @@
         "ai_era_parallel": "Moving beyond naive cloud generation toward local hardware sovereignty and deterministic pre-processing."
       },
       "teleprompter_script": {
-        "act_1": "[SCENE: Cam on desk setup, MacBook visible]\nSo, this sticker.\n[SHOW: Close-up of Dead Rabbit Radio sticker on MacBook lid]\nRight there on the lid of the MacBook Air, next to the Apple logo.\nMost people assume it's podcast merch. It's not.\nIt's a physical artifact of the most humbling technical experiment I ever ran.\n[FREEFORM: Talk about where you are right now, what's on the desk, how it feels to be recording this]\nThis is The Sound Above: Minus One. I'm Mike Hall.\nTonight I'm going to walk you through what I built, what broke me, and what I learned.\nFive Raspberry Pis. Over a thousand podcast episodes. Early ChatGPT, before there were proper tools.\nAnd a podcaster named Jason Carpenter who was kinder to me than I deserved.\n[PAUSE: let it breathe]\nThe lessons from that experiment are running on this machine right now.\nThat's the reason we're here.\n",
+        "act_1": "[SCENE: Cam on desk setup, MacBook visible]\nSo, this sticker.\n[SHOW: Close-up of Dead Rabbit Radio sticker on MacBook lid]\nRight there on the lid of the MacBook Air, next to the Apple logo.\nMost people assume it's podcast merch. It's not.\nIt's a physical artifact of the most humbling technical experiment I ever ran.\n[FREEFORM: Talk about where you are right now, what's on the desk, how it feels to be recording this]\nThis is The Sound Above: Minus One. I'm Mike Hall.\nTonight I'm going to walk you through what I built, how it went from idea to 1,000+ transcriptions, and why I ghosted it, and what I learned.\nFive Raspberry Pis. Over a thousand podcast episodes. Early ChatGPT, before there were proper tools.\nAnd a podcaster named Jason Carpenter who was open to the idea.\n[PAUSE: let it breathe]\nThe lessons from that experiment are running on this machine right now.\nThat's the reason we're here.\n",
         "act_2": "[SCENE: Cut to archive footage or slide: SCNA 2011 photo if available]\nTo get why this experiment happened, you have to go back to 2011.\nI was recording technical interviews for UGtastic. Started at SCNA 2011.\nBuilt-in mic on a 2010 MacBook Pro. Apple Photo Booth. That's it.\n[FREEFORM: Talk about what it was like recording at conferences - the ambient noise, hauling gear, the improvised setup]\nOver the next few years I recorded more than two hundred conversations.\nAnd when I was done, I hit a wall.\nIn 2013, human transcription cost one to two dollars a minute.\nFor two hundred-plus interviews, that's a four-figure bill for an unfunded grassroots project.\nThe cloud speech APIs were worse. They'd spit back phonetic gibberish.\nNHibernate came back as \"and hibernate.\" StructureMap as \"structure map\" with a space.\n[SHOW: Example bad transcript snippet if you have one]\nFor ten years, those tapes sat on hard drives. Knowledge locked in digital amber.\n",
         "act_3": "[SCENE: Terminal or browser tab]\nThen the world shifted. Late 2022, early 2023.\nOpenAI open-sourced Whisper. Georgi Gerganov released whisper.cpp.\nThe marginal cost of transcription dropped to zero overnight.\n[FREEFORM: Talk about what that moment felt like - the realization that the thing you'd been waiting a decade for was now just... free]\nBut I didn't want to risk the UGtastic tapes on unverified tools.\nI needed a massive, clean dataset first. Something I could break things on.\nI needed a single consistent speaker. Hundreds of hours. No crosstalk. No panel noise.\n[PAUSE]\nThat's how I found Dead Rabbit Radio.\n[SHOW: deadrabbitradio.com in browser]\n",
         "act_4": "[SCENE: Show the fluffle GitHub repo in browser or terminal]\n[SHOW: github.com/just3ws/fluffle]\nDead Rabbit Radio. Jason Carpenter. Daily paranormal folklore. Solo host.\nZero crosstalk, no mic swaps, consistent cadence.\nAnd honestly? His speaking rhythm is a lot like mine.\nI had five Raspberry Pi boards in my home lab. node01 through node05.\n[FREEFORM: Describe the physical setup - where the Pis sat, what the basement looked like, how janky the whole rig was]\nI wrote bin/distribution in Ruby to bin-pack the audio files across nodes by byte size.\nbin/distribute pushed files via Net::SSH and rsync.\nOn each Pi, bin/transcribe ran whisper.cpp with a mandatory 120-second thermal cooldown between jobs.\n[SHOW: The actual bin/transcribe script open in terminal or editor]\nNo heatsinks. Just stock boards. Sixty seconds of compute, two minutes of cooling. Repeat.\n",
@@ -4491,8 +4491,117 @@
         "default_privacy": "unlisted",
         "staged_count": 0,
         "staged_items": [],
-        "pending_count": 0,
-        "pending_items": [],
+        "pending_count": 18,
+        "pending_items": [
+          {
+            "filename": "VID_20261022_120814166.mp4",
+            "size_bytes": 1256832270,
+            "queue_position": 1,
+            "ingress_at": "2026-10-22T20:28:55Z"
+          },
+          {
+            "filename": "VID_20261022_120641257.mp4",
+            "size_bytes": 206290270,
+            "queue_position": 2,
+            "ingress_at": "2026-10-22T20:29:12Z"
+          },
+          {
+            "filename": "VID_20261022_120620291.mp4",
+            "size_bytes": 40868779,
+            "queue_position": 3,
+            "ingress_at": "2026-10-22T20:29:15Z"
+          },
+          {
+            "filename": "VID_20261022_115144387.mp4",
+            "size_bytes": 1335529341,
+            "queue_position": 4,
+            "ingress_at": "2026-10-22T20:29:16Z"
+          },
+          {
+            "filename": "VID_20261022_114426268.mp4",
+            "size_bytes": 1067916104,
+            "queue_position": 5,
+            "ingress_at": "2026-10-22T20:29:31Z"
+          },
+          {
+            "filename": "VID_20261022_113919233.mp4",
+            "size_bytes": 704302420,
+            "queue_position": 6,
+            "ingress_at": "2026-10-22T20:29:44Z"
+          },
+          {
+            "filename": "VID_20261022_113218280.mp4",
+            "size_bytes": 930067204,
+            "queue_position": 7,
+            "ingress_at": "2026-10-22T20:29:53Z"
+          },
+          {
+            "filename": "VID_20261022_111656115.mp4",
+            "size_bytes": 1180031884,
+            "queue_position": 8,
+            "ingress_at": "2026-10-22T20:30:05Z"
+          },
+          {
+            "filename": "VID_20261022_111247936.mp4",
+            "size_bytes": 471806273,
+            "queue_position": 9,
+            "ingress_at": "2026-10-22T20:30:20Z"
+          },
+          {
+            "filename": "VID_20261022_110035299.mp4",
+            "size_bytes": 775048114,
+            "queue_position": 10,
+            "ingress_at": "2026-10-22T20:30:27Z"
+          },
+          {
+            "filename": "VID_20261022_105426308.mp4",
+            "size_bytes": 887536067,
+            "queue_position": 11,
+            "ingress_at": "2026-10-22T20:30:37Z"
+          },
+          {
+            "filename": "VID_20261022_105246955.mp4",
+            "size_bytes": 211402460,
+            "queue_position": 12,
+            "ingress_at": "2026-10-22T20:30:49Z"
+          },
+          {
+            "filename": "VID_20261022_105022546.mp4",
+            "size_bytes": 110966818,
+            "queue_position": 13,
+            "ingress_at": "2026-10-22T20:30:52Z"
+          },
+          {
+            "filename": "VID_20261022_103119159.mp4",
+            "size_bytes": 2843984086,
+            "queue_position": 14,
+            "ingress_at": "2026-10-22T20:30:54Z"
+          },
+          {
+            "filename": "VID_20261021_093632834.mp4",
+            "size_bytes": 3668925580,
+            "queue_position": 15,
+            "ingress_at": "2026-10-22T20:31:35Z"
+          },
+          {
+            "filename": "VID_20261021_093456555.mp4",
+            "size_bytes": 136391543,
+            "queue_position": 16,
+            "ingress_at": "2026-10-22T20:32:49Z"
+          },
+          {
+            "filename": "VID_20261021_093114693.mp4",
+            "size_bytes": 376100685,
+            "queue_position": 17,
+            "ingress_at": "2026-10-22T20:32:54Z"
+          },
+          {
+            "filename": "VID_20261021_092920616.mp4",
+            "size_bytes": 216373200,
+            "queue_position": 18,
+            "ingress_at": "2026-10-22T20:33:04Z"
+          }
+        ],
         "processing_count": 0,
         "processing_items": [],
         "processed_count": 14,
@@ -4678,25 +4787,32 @@
             "size_bytes": 18215988
           }
         ],
-        "pending_count": 2,
-        "pending_items": [
-          {
-            "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
-            "size_bytes": 68591336,
-            "queue_position": 1,
-            "ingress_at": "2026-10-20T21:47:56Z"
-          },
+        "pending_count": 0,
+        "pending_items": [],
+        "processing_count": 0,
+        "processing_items": [],
+        "processed_count": 2,
+        "recent_processed": [
           {
             "filename": "phalanx-duel-make-the-rules-legible-demo.mp4",
             "size_bytes": 18215988,
-            "queue_position": 2,
-            "ingress_at": "2026-10-20T21:47:56Z"
-          }
-        ],
-        "processing_count": 0,
-        "processing_items": [],
-        "processed_count": 1,
-        "recent_processed": [
+            "archived_at": "2026-10-22T09:17:35Z",
+            "archive_path": "processed/2026-10/phalanx-duel-make-the-rules-legible-demo.mp4",
+            "video_id": "eH6VQa2Od3E",
+            "youtube_url": "https://youtu.be/eH6VQa2Od3E",
+            "title": "Phalanx Duel: Make the Rules Legible (Automated Rules Engine & Combat Demo)",
+            "playlist_id": "PLHenvAZhJjHo",
+            "privacy": "unlisted",
+            "performance_metrics": {
+              "duration_total_seconds": 3.88,
+              "duration_audio_extract_seconds": 0.46,
+              "duration_transcription_seconds": 20.98,
+              "duration_metadata_seconds": 0.18,
+              "duration_upload_seconds": 69.3,
+              "duration_captions_seconds": 1.03,
+              "upload_throughput_mb_s": 0.25
+            }
+          },
           {
             "filename": "phalanx-duel-early-walkthrough-conrad-hall.mp4",
             "size_bytes": 68591336,
@@ -4718,6 +4834,38 @@
             }
           }
         ],
+        "failed_count": 0,
+        "failed_items": []
+      },
+      "marginalia": {
+        "series_name": "UGtastic Marginalia",
+        "playlist_id": "PLCun5kLIQkSQ",
+        "archetype": "historical_marginalia",
+        "purpose": "Historical UGtastic channel artifacts that provide institutional context for the project\nbut do not fit the main series archetypes. This includes early channel update videos,\ncommunity pronunciation guides, working notes, and documentary footage spanning the\nfounding era of UGtastic (2012 onward). These materials are the connective tissue\nbetween the archived interview record and the living engineering community that\nproduced it.\n",
+        "intro_structure": "State the era, channel context, and what the clip documents; place it in the broader UGtastic timeline.",
+        "outro_structure": "Connect the historical artifact to the active engineering community and current just3ws.com archive.",
+        "default_privacy": "public",
+        "staged_count": 0,
+        "staged_items": [],
+        "pending_count": 2,
+        "pending_items": [
+          {
+            "filename": "WHOIS Tech Community - 197 - WHOIS Tech Community - 197 - UGtastic Update #2.mp4",
+            "size_bytes": 31155668,
+            "queue_position": 1,
+            "ingress_at": "2026-10-22T10:02:38Z"
+          },
+          {
+            "filename": "How to say UGtastic.mp4",
+            "size_bytes": 333875,
+            "queue_position": 2,
+            "ingress_at": "2026-10-22T10:02:38Z"
+          }
+        ],
+        "processing_count": 0,
+        "processing_items": [],
+        "processed_count": 0,
+        "recent_processed": [],
         "failed_count": 0,
         "failed_items": []
       }
@@ -7464,6 +7612,40 @@
       "title_length": 65
     },
     {
+      "id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
+      "transcript_id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
+      "youtube_video_id": "CdYwA0SG34M",
+      "title": "Phalanx Duel: Early Version Walkthrough with Conrad Hall",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 8,
+      "has_em_dash": false,
+      "title_length": 56
+    },
+    {
+      "id": "phalanx-duel-phalanx-duel-make-the-rules-legible-automated-rules-engine-combat-d",
+      "transcript_id": "phalanx-duel-phalanx-duel-make-the-rules-legible-automated-rules-engine-combat-d",
+      "youtube_video_id": "eH6VQa2Od3E",
+      "title": "Phalanx Duel: Make the Rules Legible (Automated Rules Engine & Combat Demo)",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 7,
+      "has_em_dash": false,
+      "title_length": 75
+    },
+    {
       "id": "rafael-fran-a-2014-ruby-hero-railsconf-2014",
       "transcript_id": "rafael-fran-a-2014-ruby-hero-railsconf-2014",
       "youtube_video_id": "Ywnm69g5kS8",
@@ -7479,6 +7661,23 @@
       "tags_count": 5,
       "has_em_dash": false,
       "title_length": 69
+    },
+    {
+      "id": "ramblin-amblin-all-right-this-ones-going-to-be-a",
+      "transcript_id": "ramblin-amblin-all-right-this-ones-going-to-be-a",
+      "youtube_video_id": "WvzWI38I_-c",
+      "title": "Ramblin' & Amblin' (2026-10-18): All right, this one's going to be a",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 68
     },
     {
       "id": "ramblin-amblin-around-when-facebook-and-twitter-started-shutting-off",
@@ -7498,6 +7697,23 @@
       "title_length": 86
     },
     {
+      "id": "ramblin-amblin-back-to-talking-about-the-first-couple-videos",
+      "transcript_id": "ramblin-amblin-back-to-talking-about-the-first-couple-videos",
+      "youtube_video_id": "ZxUvsTWawrw",
+      "title": "Ramblin' & Amblin' (2026-10-18): Back to talking about the first couple videos",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 78
+    },
+    {
       "id": "ramblin-amblin-blindsight-by-peter-watts-is-a-book-that",
       "transcript_id": "ramblin-amblin-blindsight-by-peter-watts-is-a-book-that",
       "youtube_video_id": "jHDlgO92bvU",
@@ -7513,6 +7729,23 @@
       "tags_count": 6,
       "has_em_dash": false,
       "title_length": 73
+    },
+    {
+      "id": "ramblin-amblin-here",
+      "transcript_id": "ramblin-amblin-here",
+      "youtube_video_id": "tN8ptEHkj9U",
+      "title": "Ramblin' & Amblin' (2026-10-17): Here",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 37
     },
     {
       "id": "ramblin-amblin-i-guess-i-cant-switch-apps-while-im",
@@ -7547,6 +7780,23 @@
       "tags_count": 6,
       "has_em_dash": false,
       "title_length": 68
+    },
+    {
+      "id": "ramblin-amblin-i-just-let-a-hiker-pass-and-also",
+      "transcript_id": "ramblin-amblin-i-just-let-a-hiker-pass-and-also",
+      "youtube_video_id": "z2E0vWVdBPQ",
+      "title": "Ramblin' & Amblin' (2026-10-18): I just let a hiker pass and also",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 65
     },
     {
       "id": "ramblin-amblin-ogilvie-lost-and-found",
@@ -7700,6 +7950,57 @@
       "tags_count": 6,
       "has_em_dash": false,
       "title_length": 78
+    },
+    {
+      "id": "ramblin-amblin-spoiler-warning-for-another-book",
+      "transcript_id": "ramblin-amblin-spoiler-warning-for-another-book",
+      "youtube_video_id": "1RPDRTS3Atw",
+      "title": "Ramblin' & Amblin' (2026-10-19): Spoiler warning for another book",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 65
+    },
+    {
+      "id": "ramblin-amblin-straight-to-it-ive-got-adhd-not-like",
+      "transcript_id": "ramblin-amblin-straight-to-it-ive-got-adhd-not-like",
+      "youtube_video_id": "iCMed_2O8DQ",
+      "title": "Ramblin' & Amblin' (2026-10-17): Straight to it I've got ADHD not like",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 70
+    },
+    {
+      "id": "ramblin-amblin-the-advantages-of-being-somebody-who-struggled-a",
+      "transcript_id": "ramblin-amblin-the-advantages-of-being-somebody-who-struggled-a",
+      "youtube_video_id": "FJLpbN6nSck",
+      "title": "Ramblin' & Amblin' (2026-10-18): The advantages of being somebody who struggled a",
+      "speaker": "Mike Hall",
+      "event": "Archival Event",
+      "conference": "Independent / General",
+      "conference_year": null,
+      "duration": "00:00",
+      "metadata_status": "local_only",
+      "caption_status": "missing",
+      "chapters_count": 1,
+      "tags_count": 6,
+      "has_em_dash": false,
+      "title_length": 81
     },
     {
       "id": "ramblin-amblin-the-other-video-that-ill-be-making-is",
@@ -8635,23 +8936,6 @@
       "tags_count": 5,
       "has_em_dash": false,
       "title_length": 34
-    },
-    {
-      "id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
-      "transcript_id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
-      "youtube_video_id": "CdYwA0SG34M",
-      "title": "Phalanx Duel: Early Version Walkthrough with Conrad Hall",
-      "speaker": "Mike Hall",
-      "event": "Archival Event",
-      "conference": "Independent / General",
-      "conference_year": null,
-      "duration": "00:00",
-      "metadata_status": "local_only",
-      "caption_status": "missing",
-      "chapters_count": 1,
-      "tags_count": 8,
-      "has_em_dash": false,
-      "title_length": 56
     }
   ]
 }
