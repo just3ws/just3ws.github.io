@@ -24,6 +24,7 @@ class PipelineQuery
   INTAKE_CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
   TELEMETRY_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
   DEFAULT_PORT = (ENV['LIVE_STREAM_PORT'] || 7025).to_i
+  RAILS_PORT = (ENV['MEDIA_PIPELINE_PORT'] || 32000).to_i
 
   attr_reader :port, :state_dir
 
@@ -33,6 +34,11 @@ class PipelineQuery
   end
 
   def fetch_status
+    if @port == DEFAULT_PORT
+      rails_status = fetch_rails_status
+      return build_payload_from_rails(rails_status) if rails_status
+    end
+
     live_status = fetch_http_status
     live_telemetry = fetch_http_telemetry
 
@@ -41,6 +47,125 @@ class PipelineQuery
     else
       build_payload_from_disk
     end
+  end
+
+  private
+
+  def fetch_rails_status
+    uri = URI("http://127.0.0.1:#{RAILS_PORT}/api/status")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.open_timeout = 0.5
+    http.read_timeout = 0.8
+    res = http.get(uri.request_uri)
+    return JSON.parse(res.body) if res.is_a?(Net::HTTPSuccess)
+
+    nil
+  rescue StandardError
+    nil
+  end
+
+  def build_payload_from_rails(data)
+    queues = data['queues'] || {}
+    pending_count = queues['pending'].to_i
+    processing_count = queues['processing'].to_i
+    processed_count = queues['processed'].to_i
+    blocked_count = queues['blocked'].to_i
+    failed_count = queues['failed'].to_i
+
+    queue_summary = {
+      'staged' => 0,
+      'pending' => pending_count,
+      'processing' => processing_count,
+      'processed' => processed_count,
+      'quarantined' => failed_count,
+      'failed' => failed_count,
+      'blocked' => blocked_count
+    }
+
+    quota = data['quota'] || {}
+    daily_budget = quota['daily_budget'] || 10_000
+    in_cooldown = quota['in_cooldown'] || false
+    cost_per_video = quota.dig('costs', 'video_upload') || 1600
+    needed = pending_count * cost_per_video
+    pct = ((needed.to_f / daily_budget.to_f) * 100.0).round(1)
+
+    quota_data = {
+      'daily_limit' => daily_budget,
+      'units_needed' => needed,
+      'budget_percentage' => pct,
+      'in_cooldown' => in_cooldown,
+      'next_reset' => '02:00 CT (00:00 PT)',
+      'time_to_reset' => in_cooldown ? 'until 02:00 CT' : '0h 0m',
+      'reset_timestamp' => quota['resets_at'] || Time.now.utc.iso8601
+    }
+
+    worker_state = if in_cooldown
+                     'COOLDOWN_BLOCKED'
+                   elsif processing_count.positive?
+                     'PROCESSING (in-flight)'
+                   else
+                     'IDLE'
+                   end
+
+    targets_formatted = {}
+    (data['targets'] || []).each do |t|
+      slug = t['slug']
+
+      targets_formatted[slug] = {
+        'series_name' => t['series_name'] || slug,
+        'playlist_id' => t['playlist_id'],
+        'default_privacy' => 'unlisted',
+        'staged_count' => 0,
+        'staged_items' => [],
+        'pending_count' => 0,
+        'pending_items' => [],
+        'processing_count' => 0,
+        'processing_items' => [],
+        'processed_count' => t['asset_count'] || 0,
+        'failed_count' => 0,
+        'failed_items' => [],
+        'blocked_count' => 0,
+        'blocked_items' => []
+      }
+    end
+
+    recent_activity = (data['recent_events'] || []).map do |ev|
+      "[#{ev['updated_at']&.slice(11, 8)}] [#{ev['status']&.upcase}] #{ev['filename']} (target: #{ev['target']})"
+    end
+
+    health = if in_cooldown
+               'quota_blocked'
+             elsif failed_count.positive?
+               'degraded'
+             elsif processing_count.positive?
+               'processing'
+             elsif pending_count.positive?
+               'pending'
+             else
+               'ready'
+             end
+
+    {
+      'status' => 'ok',
+      'source' => 'media_pipeline_rails',
+      'health' => health,
+      'streamer' => {
+        'status' => 'online',
+        'port' => data['port'] || 32000,
+        'connected_clients' => 1,
+        'server_time' => data['timestamp'] || Time.now.utc.iso8601
+      },
+      'worker' => {
+        'active_pid' => nil,
+        'is_locked' => processing_count.positive?,
+        'auto_intake_enabled' => true,
+        'state' => worker_state
+      },
+      'quota' => quota_data,
+      'queue_summary' => queue_summary,
+      'targets' => targets_formatted,
+      'recent_activity' => recent_activity.first(5)
+    }
   end
 
   private
