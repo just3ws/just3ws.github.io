@@ -11,6 +11,23 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - JOB DETAIL DIAGNOSTICS MODAL, REQUEUE CONTROLS & DEVELOPER CONNECTION METADATA (2026-10-25):
+         Enhanced Cockpit swimlane cards with forensic diagnostic modal, failure requeue actions, and developer connection metadata:
+         - Interactive Job Diagnostics Modal:
+           - Built accessible modal dialog in `app/views/dashboard/_tab_queue.html.erb` displaying filename, target series, file size, updated timestamp, 9 BPMN subprocess stages, error diagnostics with collapsible call stack, and full lifecycle event history table.
+           - Built client-side controller in `_scripts.html.erb` with `openJobDetailModal(id)` and `closeJobDetailModal()`.
+         - Single & Bulk Requeue Operations:
+           - Added individual `🔄 Re-queue to Pending` action on failed quarantine cards and modal footer.
+           - Added bulk `🔄 Requeue All` action in Failed Quarantine swimlane header.
+           - Implemented `requeue` and `requeue_all_failed` in `OperationsController` resetting asset status to pending and re-triggering intake queue scanning.
+           - Implemented `spec/requests/operations_spec.rb` verifying all operations endpoints; verified 108/108 RSpec tests passing in `media-pipeline`.
+         - Structured Developer & Project Connection Metadata:
+           - Embedded structured documentation and connection metadata in root HTML layouts (`_layouts/base.html`, `application.html.erb`) detailing Mike Hall's systems engineering focus, key open-source projects (Phalanx Duel, WWWorkRemote, The Sound Above & UGtastic, PVL, Media Pipeline), and direct contact channels.
+           - Updated `llms.txt` with current project links, opportunities to connect, and zero em dashes.
+         - Verification:
+           - `media-pipeline`: 108/108 RSpec tests passing, clean Brakeman (0 warnings), clean RuboCop, clean ERB Lint, clean Mandoc, zero em dashes. Committed as `2608af2` and pushed to `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, fast validation passing cleanly across 499 Markdown files, zero em dashes.
+
        - MEDIA PIPELINE CONTINUOUS CONVEYOR, SWIFTBAR RESTORATION, TELEPROMPTER STUDIO & CLEAN DELEGATION (2026-10-25):
          Completed end-to-end 4-step functional parity and boundary clean-up across Rails microservice and static site:
          - Step 1: Continuous Queue Conveyor & Query Bridge:
