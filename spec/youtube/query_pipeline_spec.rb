@@ -109,6 +109,8 @@ RSpec.describe 'Pipeline Query Engine & MCP Integration' do
 
   describe 'MCP Server Integration (bin/mcp_server.js)' do
     it 'exposes query_media_pipeline tool and site://pipeline/status resource' do
+      skip 'Node MCP SDK not available' unless system('node -e "require(\"@modelcontextprotocol/sdk/client/index.js\")" >/dev/null 2>&1')
+
       node_script = <<~NODE
         const { Client } = require("@modelcontextprotocol/sdk/client/index.js");
         const { StdioClientTransport } = require("@modelcontextprotocol/sdk/client/stdio.js");
