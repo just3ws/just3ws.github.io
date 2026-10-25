@@ -11,6 +11,34 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LAUNCHD TOOLING, STRUCTURED LTSV WIDE LOGS, BIGINT STORAGE & DEVTOOLS MCP (2026-10-25):
+         Completed end-to-end operational hardening across launchd, structured logging, database constraints, and Chrome DevTools:
+         - Launchd Lifecycle Tooling & Recovery Diagnostics:
+           - Authored canonical version-controlled plist in `media-pipeline/config/com.just3ws.media-pipeline.plist`.
+           - Built `bin/mp-service` (`mp service` / `mp svc`) CLI controller providing status, restart, start, stop, logs, doctor, install, and uninstall.
+           - Implemented 9-point self-healing `doctor` verification and delegated `bin/pipeline doctor` / `bin/pipeline media service` from static site.
+         - Pure Structured LTSV Wide Logging & Query Noise Elimination:
+           - Configured Lograge in `media-pipeline` with pure column-1 tab-separated LTSV records including ISO-8601 UTC timestamps, durations, allocations, and OpenTelemetry trace/span IDs.
+           - Added `around_perform` LTSV wide logging to `ApplicationJob` tracking job executions, monotonic duration, status, and trace correlation.
+           - Silenced verbose Active Record query logging and Ahoy debug visit notices, eliminating hundreds of lines per minute and preventing disk bloat.
+         - BigInt File Size & Counter Cache Migrations:
+           - Migrated `file_size_bytes` on `media_assets` from 4-byte integer (2.14 GB limit) to `bigint` (9 Exabytes), eliminating `ActiveModel::RangeError` on large video files.
+           - Added `media_assets_count` counter cache to `media_targets` and updated `DashboardController` with eager loading, eliminating Bullet warnings.
+         - Sandboxing & Idempotent Conveyor Execution:
+           - Added `Errno::EPERM` / `Errno::EACCES` permission guards in `YoutubeQuotaService` and `ScanIntakeQueuesJob` to prevent macOS CloudStorage sandbox crashes.
+           - Staged assets into canonical local NVMe ingress (`~/.local/var/media_intake/whoistechcmty/ramblin-amblin/pending/`).
+           - Added idempotency guard to `ProcessMediaAssetJob` preventing re-processing of already-uploaded assets.
+           - Verified Asset 269 uploaded to YouTube (`LmHffM5VG80`), processed masters reaching 263, and quarantine count at 0.
+         - Chrome DevTools MCP & Static Endpoint:
+           - Registered `chrome-devtools` MCP server globally (`~/.gemini/config/mcp_config.json`) and across both repositories (`mcp.json`, `.agents/mcp_config.json`).
+           - Built `bin/mp-devtools` (`mp devtools`) providing test, launch, audit, and config commands.
+           - Added `public/.well-known/appspecific/com.chrome.devtools.json` returning 200 OK to prevent ActionController routing errors.
+           - Installed `vips-8.18.7` and tracked `brew "vips"` across shared `Brewfile.common` and `media-pipeline/Brewfile`.
+         - Verification:
+           - `zdots`: 472/472 Bats tests passing, `zdots-watch-check.state` rc=0, SwiftBar displays `🧪 Test Suite: green`. Committed as `23ac894` on `main`.
+           - `media-pipeline`: 108/108 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Mandoc, zero em dashes. Committed as `268bf47` on `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 499 Markdown files passing fast validation cleanly, zero em dashes.
+
        - ZDOTS INTEGRATION, LOG ROTATION, SWIFTBAR GREEN & PIPELINE STABILIZATION (2026-10-25):
          Closed platform loose ends across zdots, media-pipeline microservice, and static site:
          - Unified Log Management & Disk Safety:
