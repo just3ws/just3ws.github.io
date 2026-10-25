@@ -21,20 +21,26 @@
              under Nginx reverse proxy at `https://media-pipeline.localhost` with HTTP/2 and TLS via mkcert.
            - Configured launchd autostart daemon (`com.just3ws.media-pipeline.plist`) with `RunAtLoad` and `KeepAlive`
              logging directly to `~/.local/state/just3ws/media_pipeline_server.log`.
-         - Data Migration & Quota Resolution:
-           - Migrated all 239 legacy assets and cataloged 96 active video assets into SQLite3 (WAL mode).
-           - Resolved quota-blocked asset #198 (`ZEbqaLmCGe0`), successfully assigning it to UGtastic Marginalia.
-           - Current pipeline queue state: 94 processed, 2 pending, 0 blocked, 0 failed.
+         - PostgreSQL Migration & Single-Item WIP Concurrency:
+           - Migrated Active Record database adapter to PostgreSQL (`media_pipeline_development` and `test`).
+           - Enforced strict single-item WIP limits (`limits_concurrency to: 1`, `threads: 1` on `media_processing` queue).
+           - Added 10 GB disk headroom safety floor and safe stream chunking in `ProcessMediaAssetJob` to eliminate disk starvation.
+           - Ingested 256 canonical archive assets with full-text transcripts from `just3ws.github.io`.
          - Modern Rails Architecture & Tooling:
-           - Solid Queue (background jobs), Solid Cache, and Solid Cable (ActionCable websockets).
+           - Solid Queue (background jobs), Solid Cache, and Solid Cable (ActionCable websockets) backed by PostgreSQL.
+           - Integrated Ahoy visits and events cross-correlated with OpenTelemetry `trace_id` and `span_id`.
+           - Mounted PgHero (`/pghero`) for database query profiling and Mission Control Jobs (`/jobs`) for job orchestration.
+           - Added Chartkick interactive visual analytics for catalog distribution, remote sync state, and recording timeline.
            - OpenTelemetry SDK and OTLP exporter streaming to zdots `otelcol-contrib` (port 4318), Jaeger (16686),
              and OpenObserve (5080).
            - Structured JSON logging via Lograge with trace and span correlation, annotated by Marginalia SQL tags.
            - Unified namespaced CLI suite (`mp`, `mp-status`, `mp-scan`, `mp-sync`, `mp-backup`, `mp-mcp`, `mp-swiftbar`, `mp-verify`).
            - Strongly-typed GraphQL API (`/graphql`) with interactive GraphiQL IDE (`/graphiql`) and exported SDL (`docs/schema.graphql`).
+           - Specialized operational agent skills in `.agents/skills/`: `media-pipeline-operator`, `media-metadata-curator`, `media-pipeline-auditor`.
            - Dual licensing: GNU AGPLv3 for software source code, CC BY-NC-SA 4.0 for documentation, schemas, and architecture.
          - Cross-Repository Verification:
-           - `media-pipeline`: 56/56 RSpec specs passing in 1.35s, 0 Brakeman warnings, clean Mandoc lint, zero em dashes.
+           - `media-pipeline`: 76/76 RSpec specs passing, 0 Brakeman warnings, clean Mandoc lint, clean ERB/Prettier, zero em dashes.
+           - `media-pipeline` GitHub Actions CI: 100% green across Static Analysis/Linters and RSpec/PostgreSQL service container.
            - `just3ws.github.io`: 320/320 RSpec specs passing, fast validation passing cleanly across 499 Markdown files,
              user SwiftBar shim updated to execute `media-pipeline-swiftbar`.
 
