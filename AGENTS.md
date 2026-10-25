@@ -11,6 +11,28 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - FULL DISK ACCESS, CORRUPT FILE QUARANTINE LEDGER & AUTONOMOUS QUEUE (2026-10-25):
+         Resolved launchd macOS CloudStorage TCC boundary, built automated corrupt file quarantine ledger, and verified autonomous conveyor operation:
+         - Full Disk Access & Direct Ruby Launch:
+           - Granted Full Disk Access to Ruby binary at `~/.local/share/mise/installs/ruby/4.0.6/bin/ruby`.
+           - Updated `com.just3ws.media-pipeline.plist` to execute the granted Ruby binary directly instead of the mise shim.
+           - `mp service doctor` passed with 0 errors and 0 warnings, confirming zero `Errno::EPERM` or CloudStorage permission faults since restart.
+         - Automated Zero-Byte & Corrupt Intake File Quarantine:
+           - Created `IntakeQuarantineService` (`app/services/intake_quarantine_service.rb`) to sweep intake queues for settled (> 30 min) zero-byte or unreadable files.
+           - Quarantined `VID_20261023_104209299.mp4` (0 bytes) out of `pending/` to sibling `corrupt/` folder on Google Drive.
+           - Recorded in append-only LTSV ledger `~/.local/state/just3ws/media_intake_corrupt.ltsv` with ISO-8601 timestamps, reasons, and file sizes.
+           - Built `bin/mp-corrupt` CLI tool (`mp corrupt`) displaying formatted table of quarantined items.
+           - Added clickable alert item to SwiftBar (`⚠️ Corrupt Intake Files: 1`) opening ledger directly.
+         - Conveyor Throughput & Test Parity:
+           - Processed masters count reached 269 (6 new videos published). Asset 270 actively uploading to YouTube.
+           - Updated `ScanIntakeQueuesJob` to sweep corrupt files prior to WIP evaluation and skip cloud ffprobe stalls.
+           - Added sidecar `.state.json` cleanup on mirror and release.
+           - Authored comprehensive DAG plan artifact `plan_backlog_drain.md` for lighter-weight models.
+         - Verification:
+           - `media-pipeline`: 111/111 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Mandoc, zero em dashes. Committed as `f55f2aa` on `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 499 Markdown files passing fast validation cleanly, zero em dashes.
+           - `zdots`: 472/472 Bats tests passing, doctor rc=0.
+
        - LAUNCHD TOOLING, STRUCTURED LTSV WIDE LOGS, BIGINT STORAGE & DEVTOOLS MCP (2026-10-25):
          Completed end-to-end operational hardening across launchd, structured logging, database constraints, and Chrome DevTools:
          - Launchd Lifecycle Tooling & Recovery Diagnostics:
