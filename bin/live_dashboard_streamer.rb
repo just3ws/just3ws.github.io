@@ -4,11 +4,13 @@
 # ---
 # name: live_dashboard_streamer.rb
 # domain: media
-# role: Real-time SSE & Telemetry Daemon for Operations Cockpit
+# role: Real-time SSE & Telemetry Daemon for Operations Cockpit (Legacy Fallback)
 # description: Near-realtime broadcast updates for Google Drive queues, BPMN step transitions, and pipeline telemetry
 # ports: 127.0.0.1:7025 (or proxied via nginx /api/live/events)
 # endpoints: /events (SSE), /telemetry.json (REST), /status (Health)
 # usage: bin/pipeline media stream
+# migration: Migrated to Rails 8 microservice at https://media-pipeline.localhost (port 32000).
+#   Active live SSE stream runs at http://127.0.0.1:32000/live_stream.
 # ---
 
 require 'socket'

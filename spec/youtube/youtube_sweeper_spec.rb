@@ -75,6 +75,7 @@ RSpec.describe YouTubeSweeper do
 
   describe '#discover_playlists' do
     it 'returns target playlists from API or targets configuration' do
+      allow(sweeper).to receive(:client).and_return(double('YoutubeClient', get_channel_playlists: []))
       playlists = sweeper.discover_playlists
       expect(playlists).to be_an(Array)
       if playlists.any?

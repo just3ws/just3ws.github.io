@@ -47,11 +47,31 @@ run_media() {
         ruby bin/intake_drive_video.rb "$@"
       fi
       ;;
+    scan)
+      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
+        echo "Triggering intake scan on media-pipeline service (port 32000)..."
+        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/scan | jq .
+      else
+        ruby bin/intake_drive_video.rb --scan
+      fi
+      ;;
     stream|live-stream)
-      ruby bin/live_dashboard_streamer.rb "$@"
+      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
+        echo "media-pipeline microservice is active at https://media-pipeline.localhost"
+        echo "Tailing live SSE telemetry stream (Ctrl-C to stop)..."
+        curl -N -s http://127.0.0.1:32000/live_stream
+      else
+        ruby bin/live_dashboard_streamer.rb "$@"
+      fi
       ;;
     swiftbar|bar)
-      ruby bin/youtube-swiftbar "$@"
+      if [ -x "$HOME/.swiftbar/media-pipeline.30s.sh" ]; then
+        "$HOME/.swiftbar/media-pipeline.30s.sh" "$@"
+      elif [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/media-pipeline-swiftbar ]; then
+        /Users/mike/github.com/just3ws/media-pipeline/bin/media-pipeline-swiftbar "$@"
+      else
+        ruby bin/youtube-swiftbar "$@"
+      fi
       ;;
     stage|rehearse)
       if [ $# -eq 0 ]; then
@@ -104,13 +124,28 @@ run_media() {
       fi
       ;;
     halt|pause)
-      ruby bin/intake_drive_video.rb --halt
+      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
+        echo "Pausing media_processing queue via media-pipeline (port 32000)..."
+        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/pause | jq .
+      else
+        ruby bin/intake_drive_video.rb --halt
+      fi
       ;;
     stop)
-      ruby bin/intake_drive_video.rb --stop
+      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
+        echo "Pausing media_processing queue via media-pipeline (port 32000)..."
+        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/pause | jq .
+      else
+        ruby bin/intake_drive_video.rb --stop
+      fi
       ;;
     resume)
-      ruby bin/intake_drive_video.rb --resume
+      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
+        echo "Resuming media_processing queue via media-pipeline (port 32000)..."
+        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/resume | jq .
+      else
+        ruby bin/intake_drive_video.rb --resume
+      fi
       ;;
     sync-prompts|prompts)
       ruby bin/sync_topic_prompts.rb "$@"

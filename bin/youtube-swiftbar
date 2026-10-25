@@ -4,10 +4,12 @@
 # ---
 # name: youtube-swiftbar
 # domain: media
-# purpose: macOS SwiftBar menu bar monitor for media intake and publishing pipeline
+# purpose: macOS SwiftBar menu bar monitor for media intake and publishing pipeline (Legacy Fallback)
 # usage: bin/pipeline swiftbar OR ~/.swiftbar/youtube-pipeline.30s.sh
 # description: Emits real-time menu bar state, queue metrics across all 3 playlists,
 #   subsystem health (SSE, whisper.cpp, API quota), and one-click operator actions.
+# migration: Migrated to media-pipeline/bin/media-pipeline-swiftbar.
+#   Active menu bar link: ~/.swiftbar/media-pipeline.30s.sh -> media-pipeline/bin/media-pipeline-swiftbar.
 # ---
 
 require 'json'

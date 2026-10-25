@@ -53,7 +53,7 @@ RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
       stdout, stderr, status = Open3.capture3(pipeline_runner, 'swiftbar')
       expect(status.success?).to be true
       expect(stderr).to be_empty
-      expect(stdout.lines.first).to match(/^🎬/)
+      expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥)/)
     end
   end
 

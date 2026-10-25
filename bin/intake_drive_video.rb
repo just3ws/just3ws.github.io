@@ -4,13 +4,15 @@
 # ---
 # name: intake_drive_video.rb
 # domain: media
-# role: Media Intake & YouTube Publishing Pipeline Orchestrator
+# role: Media Intake & YouTube Publishing Pipeline Orchestrator (Legacy Fallback)
 # description: Autonomous media ingestion from Google Drive queues to YouTube Data API v3
 # lifecycle: staged/ -> pending/ -> processing/ -> processed/ (or failed/)
 # concurrency: serialized (1 file across all channels to safeguard Apple Silicon Neural Engine)
 # order: strict oldest-first FIFO by filesystem ingress age
 # controls: graceful halt (finish active task), immediate stop (abort and restore to pending)
 # usage: bin/pipeline media intake [--watch] [-1] [--halt] [--stop] [--resume]
+# migration: Migrated to Rails 8 microservice at https://media-pipeline.localhost (port 32000).
+#   SolidQueue manages concurrency and worker execution under PostgreSQL 18.
 # ---
 
 require 'json'
@@ -500,8 +502,8 @@ class MediaIntakePipeline
         success = process_file(file_path, target_name, target_info, ch_name)
         total_processed += 1 if success
 
-        # If user requested single file execution, exit after one
-        break if options[:one] || options[:single]
+        # If user requested single file execution or dry-run, exit after one
+        break if options[:one] || options[:single] || options[:dry_run]
       end
 
       if total_processed.zero? && candidates_empty?(channel, target_filter)
@@ -664,7 +666,12 @@ class MediaIntakePipeline
       end
 
       # 3. Audio Extraction via ffmpeg stream
-      if tracker.can_skip_audio_dsp?
+      if options[:dry_run]
+        puts "🔍 [Dry Run] Simulating audio extraction and transcription for #{filename}"
+        duration_dsp = 0.05
+        duration_whisper = 0.05
+        transcript_data = { text: "Simulated speech transcript for #{filename}", vtt: "" }
+      elsif tracker.can_skip_audio_dsp?
         duration_dsp = tracker.step_data(:audio_dsp)['duration_seconds'] || 0.0
         puts "⏭️ [Substate: audio_dsp] Step already completed (#{duration_dsp}s). Reusing scratch audio: #{File.basename(scratch_wav)}"
       else
@@ -684,8 +691,8 @@ class MediaIntakePipeline
       end
 
       # 4. Local Transcription via zdots ztranscribe
-      transcript_data = { text: "", vtt: "" }
-      if target_info['auto_title_from_speech'] || target_info['transcribe_with_whisper']
+      transcript_data ||= { text: "", vtt: "" }
+      if !options[:dry_run] && (target_info['auto_title_from_speech'] || target_info['transcribe_with_whisper'])
         if tracker.can_skip_transcription?
           stt_info = tracker.step_data(:transcription)
           transcript_data[:text] = stt_info['text'] || (File.read("#{scratch_prefix}.txt") rescue "")
