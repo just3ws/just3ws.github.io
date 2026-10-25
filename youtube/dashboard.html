@@ -12,6 +12,32 @@ body_class: page-youtube-dashboard
 
 <div class="yt-cockpit-container" style="max-width: 100%; width: 100%; box-sizing: border-box; margin: 0; padding: 1.5rem 2rem 4rem; font-family: var(--font-sans-ui, system-ui, -apple-system, sans-serif); color: var(--color-text-main, #1e232a);">
 
+  <!-- Microservice Migration Launch Bridge Banner -->
+  <aside style="background: linear-gradient(135deg, #0f172a, #1e293b); border: 2px solid #3b82f6; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; color: #ffffff; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; box-shadow: 0 4px 14px rgba(0,0,0,0.12);" aria-label="Microservice Migration Notice">
+    <div>
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem;">
+        <span style="background: #3b82f6; color: #ffffff; font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em;">
+          STANDALONE MICROSERVICE ACTIVE
+        </span>
+        <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 600;">Port 32000 (TLS)</span>
+      </div>
+      <h2 style="font-size: 1.25rem; font-weight: 800; color: #f8fafc; margin: 0 0 0.35rem 0;">
+        Media Pipeline operations have moved to the dedicated Rails 8 Cockpit
+      </h2>
+      <p style="font-size: 0.88rem; color: #cbd5e1; margin: 0; max-width: 48rem; line-height: 1.45;">
+        Continuous video ingestion, Whisper speech-to-text, YouTube publishing, spatial cartography, and Solid Queue job management now execute in the standalone microservice at <strong style="color: #60a5fa;">https://media-pipeline.localhost/</strong>.
+      </p>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+      <a href="https://media-pipeline.localhost/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #2563eb; color: #ffffff; font-size: 0.95rem; font-weight: 700; text-decoration: none; padding: 0.65rem 1.25rem; border-radius: 6px; box-shadow: 0 2px 4px rgba(37,99,235,0.3);">
+        🚀 Open Operations Cockpit ↗
+      </a>
+      <a href="https://media-pipeline.localhost/jobs" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.4rem; background: #334155; color: #f8fafc; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 0.65rem 1rem; border-radius: 6px; border: 1px solid #475569;">
+        Mission Control Jobs ↗
+      </a>
+    </div>
+  </aside>
+
   <!-- Cockpit HUD Header -->
   <header style="margin-bottom: 2rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.5rem;">
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem;">
