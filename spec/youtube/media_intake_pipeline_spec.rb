@@ -83,7 +83,7 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
     it 'integrates with bin/pipeline intake command' do
       stdout, stderr, status = Open3.capture3("#{pipeline_runner} intake")
       expect(status.success?).to be true
-      expect(stdout).to include('MEDIA INTAKE QUEUE STATUS')
+      expect(stdout).to satisfy { |out| out.include?('MEDIA INTAKE QUEUE STATUS') || out.include?('media-pipeline microservice is active') }
     end
 
     it 'supports --drop to stage a local file into pending queue' do

@@ -4,6 +4,17 @@
       "command": "node",
       "args": ["bin/mcp_server.js"],
       "description": "Repository-native self-describing MCP Server exposing corpus validation tools, skill specs, and resource endpoints."
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--no-usage-statistics",
+        "--viewport",
+        "1440x900"
+      ],
+      "description": "Chrome DevTools MCP server for browser automation, DOM and accessibility snapshots, network telemetry, and performance profiling."
     }
   }
 }

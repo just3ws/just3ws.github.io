@@ -150,6 +150,29 @@ run_media() {
         ruby bin/intake_drive_video.rb --resume
       fi
       ;;
+    service|svc)
+      if [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service ]; then
+        /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service "$@"
+      else
+        echo "media-pipeline service tool not found at /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service" >&2
+        exit 1
+      fi
+      ;;
+    restart|doctor)
+      if [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service ]; then
+        /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service "$action" "$@"
+      else
+        echo "media-pipeline service tool not found at /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service" >&2
+        exit 1
+      fi
+      ;;
+    logs)
+      if [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service ]; then
+        /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service logs "$@"
+      else
+        tail -n 25 ~/.local/state/just3ws/media_pipeline_server.log
+      fi
+      ;;
     sync-prompts|prompts)
       ruby bin/sync_topic_prompts.rb "$@"
       ;;
@@ -163,11 +186,11 @@ run_media() {
       ruby bin/analyze_ramblin_cadence.rb "$@"
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|query|status> [options]"
+      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|query|status|service|restart|logs|doctor> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, query, status" >&2
+      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, query, status, service, restart, logs, doctor" >&2
       exit 1
       ;;
   esac
@@ -450,6 +473,14 @@ case "$cmd" in
   query|pipeline-status)
     shift
     run_media query "$@"
+    ;;
+  service|svc)
+    shift
+    run_media service "$@"
+    ;;
+  doctor|media-doctor)
+    shift
+    run_media doctor "$@"
     ;;
   help|-h|--help)
     usage

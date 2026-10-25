@@ -13,6 +13,17 @@
         "bin/ugtastic_mcp_server.rb"
       ],
       "description": "Model Context Protocol (MCP) interface exposing 207 historical developer interviews, 402-node knowledge graph, and search capabilities over the UGtastic oral history canon."
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--no-usage-statistics",
+        "--viewport",
+        "1440x900"
+      ],
+      "description": "Chrome DevTools MCP server for browser automation, DOM and accessibility snapshots, network telemetry, and performance profiling."
     }
   }
 }

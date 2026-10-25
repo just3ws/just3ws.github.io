@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T14:20:57Z",
+  "generated_at": "2026-10-25T15:30:05Z",
   "channel": {
     "name": "UGtastic / WHOIS Tech Community",
     "handle": "@whoistechcmty",
@@ -4493,7 +4493,7 @@
         "default_privacy": "unlisted",
         "staged_count": 0,
         "staged_items": [],
-        "pending_count": 18,
+        "pending_count": 28,
         "pending_items": [
           {
             "filename": "VID_20261022_120814166.mp4",
@@ -4506,8 +4506,8 @@
               "audio_dsp": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:30:13Z",
-                "completed_at": "2026-10-24T00:34:18Z",
-                "duration_seconds": 245.05,
+                "completed_at": "2026-10-25T04:53:37Z",
+                "duration_seconds": 0.86,
                 "wav_path": "/Users/mike/.local/state/just3ws/scratch/VID_20261022_120814166.mp4/VID_20261022_120814166.mp4.16k.wav"
               },
               "transcription": {
@@ -4521,9 +4521,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:35:11Z",
-                "completed_at": "2026-10-24T14:29:05Z",
-                "duration_seconds": 0.22,
-                "title": "Ramblin' & Amblin' (2026-10-22): The first superhero was Spectre-Man",
+                "completed_at": "2026-10-25T11:43:12Z",
+                "duration_seconds": 0.15,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_120814166",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -4619,8 +4619,8 @@
               "audio_dsp": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:35:11Z",
-                "completed_at": "2026-10-24T00:35:56Z",
-                "duration_seconds": 45.54,
+                "completed_at": "2026-10-25T04:54:23Z",
+                "duration_seconds": 45.94,
                 "wav_path": "/Users/mike/.local/state/just3ws/scratch/VID_20261022_120641257.mp4/VID_20261022_120641257.mp4.16k.wav"
               },
               "transcription": {
@@ -4634,9 +4634,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:36:05Z",
-                "completed_at": "2026-10-24T14:29:05Z",
-                "duration_seconds": 0.1,
-                "title": "Ramblin' & Amblin' (2026-10-22): First album, a cassette I ever bought with",
+                "completed_at": "2026-10-25T11:43:12Z",
+                "duration_seconds": 0.12,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_120641257",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -4732,8 +4732,8 @@
               "audio_dsp": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:36:05Z",
-                "completed_at": "2026-10-24T00:36:25Z",
-                "duration_seconds": 19.42,
+                "completed_at": "2026-10-25T04:54:23Z",
+                "duration_seconds": 0.18,
                 "wav_path": "/Users/mike/.local/state/just3ws/scratch/VID_20261022_120620291.mp4/VID_20261022_120620291.mp4.16k.wav"
               },
               "transcription": {
@@ -4747,9 +4747,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:36:29Z",
-                "completed_at": "2026-10-24T14:29:05Z",
-                "duration_seconds": 0.14,
-                "title": "Ramblin' & Amblin' (2026-10-22): I don't know how many people forget what",
+                "completed_at": "2026-10-25T11:43:12Z",
+                "duration_seconds": 0.13,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_120620291",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -4839,15 +4839,25 @@
             "size_bytes": 1335529341,
             "queue_position": 4,
             "ingress_at": "2026-10-22T20:29:16Z",
-            "meta_phase": "pending",
+            "meta_phase": "quarantined",
             "current_step": "archival",
             "substates": {
               "audio_dsp": {
-                "status": "completed",
+                "status": "failed",
                 "started_at": "2026-10-24T00:36:29Z",
                 "completed_at": "2026-10-24T00:40:51Z",
                 "duration_seconds": 261.43,
-                "wav_path": "/Users/mike/.local/state/just3ws/scratch/VID_20261022_115144387.mp4/VID_20261022_115144387.mp4.16k.wav"
+                "wav_path": "/Users/mike/.local/state/just3ws/scratch/VID_20261022_115144387.mp4/VID_20261022_115144387.mp4.16k.wav",
+                "failed_at": "2026-10-25T11:42:06Z",
+                "error": "ffmpeg failed to extract audio from /Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/whoistechcmty/ramblin-amblin/pending/VID_20261022_115144387.mp4",
+                "backtrace": [
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:1248:in 'MediaIntakePipeline#extract_audio'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:676:in 'MediaIntakePipeline#process_file'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:502:in 'block in MediaIntakePipeline#run'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:468:in 'Kernel#loop'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:468:in 'MediaIntakePipeline#run'",
+                  "/Users/mike/github.com/just3ws/just3ws.github.io/bin/intake_drive_video.rb:1621:in '<main>'"
+                ]
               },
               "transcription": {
                 "status": "completed",
@@ -4860,9 +4870,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:41:42Z",
-                "completed_at": "2026-10-24T14:29:05Z",
+                "completed_at": "2026-10-25T11:43:12Z",
                 "duration_seconds": 0.14,
-                "title": "Ramblin' & Amblin' (2026-10-22): In early 2000s, I'm not early 2000s, I",
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_115144387",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -4908,7 +4918,7 @@
               {
                 "id": "audio_dsp",
                 "label": "DSP",
-                "status": "completed"
+                "status": "failed"
               },
               {
                 "id": "transcription",
@@ -4956,7 +4966,7 @@
             "current_step": "archival",
             "substates": {
               "audio_dsp": {
-                "status": "completed",
+                "status": "in_progress",
                 "started_at": "2026-10-24T00:41:42Z",
                 "completed_at": "2026-10-24T00:45:15Z",
                 "duration_seconds": 212.55,
@@ -4973,9 +4983,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:45:55Z",
-                "completed_at": "2026-10-24T14:29:05Z",
-                "duration_seconds": 0.14,
-                "title": "Ramblin' & Amblin' (2026-10-22): Another thing is proximity",
+                "completed_at": "2026-10-25T11:43:12Z",
+                "duration_seconds": 0.12,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_114426268",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5021,7 +5031,7 @@
               {
                 "id": "audio_dsp",
                 "label": "DSP",
-                "status": "completed"
+                "status": "in_progress"
               },
               {
                 "id": "transcription",
@@ -5086,9 +5096,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:48:49Z",
-                "completed_at": "2026-10-24T14:29:06Z",
+                "completed_at": "2026-10-25T11:43:13Z",
                 "duration_seconds": 0.14,
-                "title": "Ramblin' & Amblin' (2026-10-22): An example of people who have lived a",
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_113919233",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5199,9 +5209,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:52:34Z",
-                "completed_at": "2026-10-24T14:29:06Z",
-                "duration_seconds": 0.14,
-                "title": "Ramblin' & Amblin' (2026-10-22): A true believer in the, that everybody that",
+                "completed_at": "2026-10-25T11:43:13Z",
+                "duration_seconds": 0.13,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_113218280",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5312,9 +5322,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:57:13Z",
-                "completed_at": "2026-10-24T14:29:06Z",
-                "duration_seconds": 0.12,
-                "title": "Ramblin' & Amblin' (2026-10-22): I've also been a remote first person for",
+                "completed_at": "2026-10-25T11:43:13Z",
+                "duration_seconds": 0.14,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_111656115",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5425,9 +5435,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T00:59:09Z",
-                "completed_at": "2026-10-24T14:29:06Z",
-                "duration_seconds": 0.09,
-                "title": "Ramblin' & Amblin' (2026-10-22): I accept that I'm speaking on behalf of",
+                "completed_at": "2026-10-25T11:43:13Z",
+                "duration_seconds": 0.11,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_111247936",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5538,9 +5548,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:02:24Z",
-                "completed_at": "2026-10-24T14:29:06Z",
-                "duration_seconds": 0.1,
-                "title": "Ramblin' & Amblin' (2026-10-22): Okay",
+                "completed_at": "2026-10-25T11:43:13Z",
+                "duration_seconds": 0.12,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_110035299",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5651,9 +5661,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:05:55Z",
-                "completed_at": "2026-10-24T14:29:06Z",
-                "duration_seconds": 0.1,
-                "title": "Ramblin' & Amblin' (2026-10-22): Another AI tip here is I taught mine",
+                "completed_at": "2026-10-25T11:43:13Z",
+                "duration_seconds": 0.15,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_105426308",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5764,9 +5774,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:06:54Z",
-                "completed_at": "2026-10-24T14:29:06Z",
-                "duration_seconds": 0.15,
-                "title": "Ramblin' & Amblin' (2026-10-22): A little AI tip here for fun",
+                "completed_at": "2026-10-25T11:43:14Z",
+                "duration_seconds": 0.45,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_105246955",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5877,9 +5887,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:07:27Z",
-                "completed_at": "2026-10-24T14:29:07Z",
-                "duration_seconds": 0.11,
-                "title": "Ramblin' & Amblin' (2026-10-22): If you are one of those people that",
+                "completed_at": "2026-10-25T11:43:14Z",
+                "duration_seconds": 0.26,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_105022546",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -5990,9 +6000,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:18:51Z",
-                "completed_at": "2026-10-24T14:29:07Z",
-                "duration_seconds": 0.12,
-                "title": "Ramblin' & Amblin' (2026-10-22): This message comes approved by somebody, the only",
+                "completed_at": "2026-10-25T11:43:15Z",
+                "duration_seconds": 0.19,
+                "title": "Ramblin' & Amblin' (2026-10-22): Simulated speech transcript for VID_20261022_103119159",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -6103,9 +6113,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:33:30Z",
-                "completed_at": "2026-10-24T14:29:07Z",
-                "duration_seconds": 0.1,
-                "title": "Ramblin' & Amblin' (2026-10-21): This role of staff engineer is not well",
+                "completed_at": "2026-10-25T11:43:15Z",
+                "duration_seconds": 0.2,
+                "title": "Ramblin' & Amblin' (2026-10-21): Simulated speech transcript for VID_20261021_093632834",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -6216,9 +6226,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:34:10Z",
-                "completed_at": "2026-10-24T14:29:07Z",
-                "duration_seconds": 0.12,
-                "title": "Ramblin' & Amblin' (2026-10-21): Hard not to be a little angry in",
+                "completed_at": "2026-10-25T11:43:15Z",
+                "duration_seconds": 0.16,
+                "title": "Ramblin' & Amblin' (2026-10-21): Simulated speech transcript for VID_20261021_093456555",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -6329,9 +6339,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:35:53Z",
-                "completed_at": "2026-10-24T14:29:07Z",
-                "duration_seconds": 0.09,
-                "title": "Ramblin' & Amblin' (2026-10-21): Starting with the face up here, and I'm",
+                "completed_at": "2026-10-25T11:43:15Z",
+                "duration_seconds": 0.17,
+                "title": "Ramblin' & Amblin' (2026-10-21): Simulated speech transcript for VID_20261021_093114693",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -6442,9 +6452,9 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-24T01:36:58Z",
-                "completed_at": "2026-10-24T14:29:07Z",
+                "completed_at": "2026-10-25T11:43:16Z",
                 "duration_seconds": 0.14,
-                "title": "Ramblin' & Amblin' (2026-10-21): Specifically recording this one from the top-down position",
+                "title": "Ramblin' & Amblin' (2026-10-21): Simulated speech transcript for VID_20261021_092920616",
                 "privacy": "unlisted",
                 "tags": [
                   "Software Craftsmanship",
@@ -6528,12 +6538,1162 @@
                 "status": "in_progress"
               }
             ]
+          },
+          {
+            "filename": "VID_20261023_115119649.mp4",
+            "size_bytes": 2007644830,
+            "queue_position": 19,
+            "ingress_at": "2026-10-24T13:52:35Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "in_progress",
+                "started_at": "2026-10-24T20:42:18Z",
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:16Z",
+                "completed_at": "2026-10-25T11:43:16Z",
+                "duration_seconds": 0.26,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_115119649",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:16Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "in_progress"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_113157853.mp4",
+            "size_bytes": 1494691871,
+            "queue_position": 20,
+            "ingress_at": "2026-10-24T13:52:52Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:16Z",
+                "completed_at": "2026-10-25T11:43:18Z",
+                "duration_seconds": 2.12,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_113157853",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:18Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_110619912.mp4",
+            "size_bytes": 3203284000,
+            "queue_position": 21,
+            "ingress_at": "2026-10-24T13:53:10Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:18Z",
+                "completed_at": "2026-10-25T11:43:33Z",
+                "duration_seconds": 14.73,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_110619912",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:33Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_104849313.mp4",
+            "size_bytes": 2643728627,
+            "queue_position": 22,
+            "ingress_at": "2026-10-24T13:53:49Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:33Z",
+                "completed_at": "2026-10-25T11:43:42Z",
+                "duration_seconds": 8.58,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_104849313",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:42Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_104209299.mp4",
+            "size_bytes": 0,
+            "queue_position": 23,
+            "ingress_at": "2026-10-24T13:54:22Z",
+            "meta_phase": "pending",
+            "current_step": "audio_dsp",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "pending"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "pending"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_102850299.mp4",
+            "size_bytes": 1991325303,
+            "queue_position": 24,
+            "ingress_at": "2026-10-24T13:54:35Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:42Z",
+                "completed_at": "2026-10-25T11:43:44Z",
+                "duration_seconds": 2.04,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_102850299",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:44Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_102144669.mp4",
+            "size_bytes": 1011880057,
+            "queue_position": 25,
+            "ingress_at": "2026-10-24T13:55:00Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:44Z",
+                "completed_at": "2026-10-25T11:43:54Z",
+                "duration_seconds": 10.02,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_102144669",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:54Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261023_100558732.mp4",
+            "size_bytes": 2372380313,
+            "queue_position": 26,
+            "ingress_at": "2026-10-24T13:55:12Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:54Z",
+                "completed_at": "2026-10-25T11:43:56Z",
+                "duration_seconds": 2.52,
+                "title": "Ramblin' & Amblin' (2026-10-23): Simulated speech transcript for VID_20261023_100558732",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:43:56Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261024_113306234.mp4",
+            "size_bytes": 2556696416,
+            "queue_position": 27,
+            "ingress_at": "2026-10-24T17:03:38Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:43:56Z",
+                "completed_at": "2026-10-25T11:44:10Z",
+                "duration_seconds": 14.1,
+                "title": "Ramblin' & Amblin' (2026-10-24): Simulated speech transcript for VID_20261024_113306234",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:44:10Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
+          },
+          {
+            "filename": "VID_20261024_111726135.mp4",
+            "size_bytes": 2317767367,
+            "queue_position": 28,
+            "ingress_at": "2026-10-24T17:04:13Z",
+            "meta_phase": "pending",
+            "current_step": "archival",
+            "substates": {
+              "audio_dsp": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "transcription": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "metadata_synthesis": {
+                "status": "completed",
+                "started_at": "2026-10-25T11:44:11Z",
+                "completed_at": "2026-10-25T11:44:13Z",
+                "duration_seconds": 2.89,
+                "title": "Ramblin' & Amblin' (2026-10-24): Simulated speech transcript for VID_20261024_111726135",
+                "privacy": "unlisted",
+                "tags": [
+                  "Software Craftsmanship",
+                  "Ramblin and Amblin",
+                  "Field Notes",
+                  "Engineering Philosophy",
+                  "Chicago Tech",
+                  "Ramblin' & Amblin'"
+                ]
+              },
+              "youtube_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "playlist_assignment": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "captions_upload": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "datalake_sync": {
+                "status": "pending",
+                "started_at": null,
+                "completed_at": null,
+                "duration_seconds": null
+              },
+              "archival": {
+                "status": "in_progress",
+                "started_at": "2026-10-25T11:44:13Z",
+                "completed_at": null,
+                "duration_seconds": null
+              }
+            },
+            "summary_badges": [
+              {
+                "id": "audio_dsp",
+                "label": "DSP",
+                "status": "pending"
+              },
+              {
+                "id": "transcription",
+                "label": "STT",
+                "status": "pending"
+              },
+              {
+                "id": "metadata_synthesis",
+                "label": "Meta",
+                "status": "completed"
+              },
+              {
+                "id": "youtube_upload",
+                "label": "Upload",
+                "status": "pending"
+              },
+              {
+                "id": "playlist_assignment",
+                "label": "Playlist",
+                "status": "pending"
+              },
+              {
+                "id": "captions_upload",
+                "label": "Captions",
+                "status": "pending"
+              },
+              {
+                "id": "datalake_sync",
+                "label": "Datalake",
+                "status": "pending"
+              },
+              {
+                "id": "archival",
+                "label": "Archive",
+                "status": "in_progress"
+              }
+            ]
           }
         ],
         "processing_count": 0,
         "processing_items": [],
-        "processed_count": 14,
+        "processed_count": 19,
         "recent_processed": [
+          {
+            "filename": "VID_20261022_113218280.mp4",
+            "size_bytes": 930067204,
+            "archived_at": "2026-10-25T12:53:13Z",
+            "archive_path": "processed/2026-10/VID_20261022_113218280.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {}
+          },
+          {
+            "filename": "VID_20261022_113919233.mp4",
+            "size_bytes": 704302420,
+            "archived_at": "2026-10-25T12:13:33Z",
+            "archive_path": "processed/2026-10/VID_20261022_113919233.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {}
+          },
+          {
+            "filename": "VID_20261022_120641257.mp4",
+            "size_bytes": 206290270,
+            "archived_at": "2026-10-25T11:44:21Z",
+            "archive_path": "processed/2026-10/VID_20261022_120641257.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {}
+          },
+          {
+            "filename": "VID_20261022_120620291.mp4",
+            "size_bytes": 40868779,
+            "archived_at": "2026-10-25T11:22:34Z",
+            "archive_path": "processed/2026-10/VID_20261022_120620291.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {}
+          },
+          {
+            "filename": "VID_20261022_120814166.mp4",
+            "size_bytes": 1256832270,
+            "archived_at": "2026-10-25T11:03:57Z",
+            "archive_path": "processed/2026-10/VID_20261022_120814166.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLNtb969T2-l0",
+            "privacy": "unlisted",
+            "performance_metrics": {}
+          },
           {
             "filename": "VID_20261017_163906958.mp4",
             "size_bytes": 535547937,
@@ -6552,106 +7712,6 @@
               "duration_upload_seconds": 1068.61,
               "duration_captions_seconds": 0.52,
               "upload_throughput_mb_s": 0.48
-            }
-          },
-          {
-            "filename": "VID_20261017_161728409.mp4",
-            "size_bytes": 2368136554,
-            "archived_at": "2026-10-17T21:35:31Z",
-            "archive_path": "processed/2026-10/VID_20261017_161728409.mp4",
-            "video_id": "533FSvfDIUE",
-            "youtube_url": "https://youtu.be/533FSvfDIUE",
-            "title": "Ramblin' & Amblin' (2026-10-17): Around when Facebook and Twitter started shutting off",
-            "playlist_id": "PLNtb969T2-l0",
-            "privacy": "unlisted",
-            "performance_metrics": {
-              "duration_total_seconds": 439.41,
-              "duration_audio_extract_seconds": 436.79,
-              "duration_transcription_seconds": 74.8,
-              "duration_metadata_seconds": 0.06,
-              "duration_upload_seconds": 4924.1,
-              "duration_captions_seconds": 0.51,
-              "upload_throughput_mb_s": 0.46
-            }
-          },
-          {
-            "filename": "VID_20261017_103810539.mp4",
-            "size_bytes": 1543883120,
-            "archived_at": "2026-10-17T16:40:47Z",
-            "archive_path": "processed/2026-10/VID_20261017_103810539.mp4",
-            "video_id": "RNu430nMKgg",
-            "youtube_url": "https://youtu.be/RNu430nMKgg",
-            "title": "Ramblin' & Amblin' (2026-10-17): I just hope Scott, I think his name",
-            "playlist_id": "PLNtb969T2-l0",
-            "privacy": "unlisted",
-            "performance_metrics": {
-              "duration_total_seconds": 0.75,
-              "duration_audio_extract_seconds": 287.22,
-              "duration_transcription_seconds": 53.53,
-              "duration_metadata_seconds": 0.08,
-              "duration_upload_seconds": 3893.86,
-              "duration_captions_seconds": 0.0,
-              "upload_throughput_mb_s": 0.38
-            }
-          },
-          {
-            "filename": "VID_20261017_102753387.mp4",
-            "size_bytes": 261253161,
-            "archived_at": "2026-10-17T16:36:58Z",
-            "archive_path": "processed/2026-10/VID_20261017_102753387.mp4",
-            "video_id": "fej808b1VRg",
-            "youtube_url": "https://youtu.be/fej808b1VRg",
-            "title": "Ramblin' & Amblin' (2026-10-17): When I started doing UGtastic, the way I",
-            "playlist_id": "PLNtb969T2-l0",
-            "privacy": "unlisted",
-            "performance_metrics": {
-              "duration_total_seconds": 0.69,
-              "duration_audio_extract_seconds": 56.5,
-              "duration_transcription_seconds": 10.46,
-              "duration_metadata_seconds": 0.06,
-              "duration_upload_seconds": 451.98,
-              "duration_captions_seconds": 0.0,
-              "upload_throughput_mb_s": 0.55
-            }
-          },
-          {
-            "filename": "VID_20261017_101902286.mp4",
-            "size_bytes": 92207211,
-            "archived_at": "2026-10-17T16:34:59Z",
-            "archive_path": "processed/2026-10/VID_20261017_101902286.mp4",
-            "video_id": "12yuw3lfZ7s",
-            "youtube_url": "https://youtu.be/12yuw3lfZ7s",
-            "title": "Ramblin' & Amblin' (2026-10-17): The other video that I'll be making is",
-            "playlist_id": "PLNtb969T2-l0",
-            "privacy": "unlisted",
-            "performance_metrics": {
-              "duration_total_seconds": 0.87,
-              "duration_audio_extract_seconds": 27.09,
-              "duration_transcription_seconds": 4.78,
-              "duration_metadata_seconds": 0.06,
-              "duration_upload_seconds": 157.77,
-              "duration_captions_seconds": 0.0,
-              "upload_throughput_mb_s": 0.56
-            }
-          },
-          {
-            "filename": "VID_20261017_094828700.mp4",
-            "size_bytes": 657386804,
-            "archived_at": "2026-10-17T16:34:08Z",
-            "archive_path": "processed/2026-10/VID_20261017_094828700.mp4",
-            "video_id": "V-2uR4xIxaQ",
-            "youtube_url": "https://youtu.be/V-2uR4xIxaQ",
-            "title": "Ramblin' & Amblin' (2026-10-17): I guess I can't switch apps while I'm",
-            "playlist_id": "PLNtb969T2-l0",
-            "privacy": "unlisted",
-            "performance_metrics": {
-              "duration_total_seconds": 1.35,
-              "duration_audio_extract_seconds": 137.04,
-              "duration_transcription_seconds": 23.43,
-              "duration_metadata_seconds": 0.14,
-              "duration_upload_seconds": 1201.51,
-              "duration_captions_seconds": 0.0,
-              "upload_throughput_mb_s": 0.52
             }
           }
         ],
@@ -6695,8 +7755,21 @@
         "pending_items": [],
         "processing_count": 0,
         "processing_items": [],
-        "processed_count": 0,
-        "recent_processed": [],
+        "processed_count": 1,
+        "recent_processed": [
+          {
+            "filename": "errata-smoke-exercise.mp4",
+            "size_bytes": 32682,
+            "archived_at": "2026-10-25T03:23:50Z",
+            "archive_path": "processed/2026-10/errata-smoke-exercise.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLKPAHha6I990",
+            "privacy": "unlisted",
+            "performance_metrics": {}
+          }
+        ],
         "failed_count": 0,
         "failed_items": [],
         "blocked_count": 0,
@@ -6783,55 +7856,21 @@
         "default_privacy": "public",
         "staged_count": 0,
         "staged_items": [],
-        "pending_count": 0,
-        "pending_items": [],
-        "processing_count": 0,
-        "processing_items": [],
-        "processed_count": 2,
-        "recent_processed": [
-          {
-            "filename": "WHOIS Tech Community - 197 - WHOIS Tech Community - 197 - UGtastic Update #2.mp4",
-            "size_bytes": 31155668,
-            "archived_at": "2026-10-24T13:10:58Z",
-            "archive_path": "processed/2026-10/WHOIS Tech Community - 197 - WHOIS Tech Community - 197 - UGtastic Update #2.mp4",
-            "video_id": null,
-            "youtube_url": null,
-            "title": null,
-            "playlist_id": "PLCun5kLIQkSQ",
-            "privacy": "public",
-            "performance_metrics": {}
-          },
-          {
-            "filename": "How to say UGtastic.mp4",
-            "size_bytes": 333875,
-            "archived_at": "2026-10-24T13:10:03Z",
-            "archive_path": "processed/2026-10/How to say UGtastic.mp4",
-            "video_id": null,
-            "youtube_url": null,
-            "title": null,
-            "playlist_id": "PLCun5kLIQkSQ",
-            "privacy": "public",
-            "performance_metrics": {}
-          }
-        ],
-        "failed_count": 0,
-        "failed_items": [],
-        "blocked_count": 1,
-        "blocked_items": [
+        "pending_count": 1,
+        "pending_items": [
           {
             "filename": "WHOIS Tech Community - 198 - WHOIS Tech Community - 198 - UGtastic Update #1.mp4",
             "size_bytes": 16615394,
-            "blocked_at": "2026-10-22T10:04:15Z",
-            "diagnostic": "The request cannot be completed because you have exceeded your quota.",
-            "cooldown_resets_at": "2:00 AM CT (00:00 PT)",
+            "queue_position": 1,
+            "ingress_at": "2026-10-22T10:02:37Z",
             "meta_phase": "blocked",
-            "current_step": "playlist_assignment",
+            "current_step": "archival",
             "substates": {
               "audio_dsp": {
                 "status": "completed",
                 "started_at": "2026-10-22T10:02:45Z",
-                "completed_at": "2026-10-22T10:02:46Z",
-                "duration_seconds": 1.0,
+                "completed_at": "2026-10-25T04:53:36Z",
+                "duration_seconds": 0.52,
                 "wav_path": "/Users/mike/.local/state/just3ws/scratch/WHOIS Tech Community - 198 - WHOIS Tech Community - 198 - UGtastic Update #1.mp4/WHOIS Tech Community - 198 - WHOIS Tech Community - 198 - UGtastic Update #1.mp4.16k.wav"
               },
               "transcription": {
@@ -6843,8 +7882,8 @@
               "metadata_synthesis": {
                 "status": "completed",
                 "started_at": "2026-10-22T10:02:46Z",
-                "completed_at": "2026-10-22T10:02:46Z",
-                "duration_seconds": 0.19,
+                "completed_at": "2026-10-25T15:30:45Z",
+                "duration_seconds": 0.18,
                 "title": "UGtastic Update #1 (WHOIS Tech Community - 198)",
                 "privacy": "public",
                 "tags": [
@@ -6893,8 +7932,8 @@
                 "duration_seconds": null
               },
               "archival": {
-                "status": "pending",
-                "started_at": null,
+                "status": "in_progress",
+                "started_at": "2026-10-25T04:53:36Z",
                 "completed_at": null,
                 "duration_seconds": null
               }
@@ -6938,15 +7977,48 @@
               {
                 "id": "archival",
                 "label": "Archive",
-                "status": "pending"
+                "status": "in_progress"
               }
             ]
           }
-        ]
+        ],
+        "processing_count": 0,
+        "processing_items": [],
+        "processed_count": 2,
+        "recent_processed": [
+          {
+            "filename": "WHOIS Tech Community - 197 - WHOIS Tech Community - 197 - UGtastic Update #2.mp4",
+            "size_bytes": 31155668,
+            "archived_at": "2026-10-24T13:10:58Z",
+            "archive_path": "processed/2026-10/WHOIS Tech Community - 197 - WHOIS Tech Community - 197 - UGtastic Update #2.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLCun5kLIQkSQ",
+            "privacy": "public",
+            "performance_metrics": {}
+          },
+          {
+            "filename": "How to say UGtastic.mp4",
+            "size_bytes": 333875,
+            "archived_at": "2026-10-24T13:10:03Z",
+            "archive_path": "processed/2026-10/How to say UGtastic.mp4",
+            "video_id": null,
+            "youtube_url": null,
+            "title": null,
+            "playlist_id": "PLCun5kLIQkSQ",
+            "privacy": "public",
+            "performance_metrics": {}
+          }
+        ],
+        "failed_count": 0,
+        "failed_items": [],
+        "blocked_count": 0,
+        "blocked_items": []
       }
     },
     "activity_stream": [],
-    "polled_at": "2026-10-24T14:29:08Z"
+    "polled_at": "2026-10-25T15:30:46Z"
   },
   "assets": [
     {
@@ -11013,5 +12085,5 @@
       "title_length": 34
     }
   ],
-  "updated_at": "2026-10-24T14:29:08Z"
+  "updated_at": "2026-10-25T15:30:46Z"
 }
