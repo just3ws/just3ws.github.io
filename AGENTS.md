@@ -11,6 +11,24 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - ZDOTS INTEGRATION, LOG ROTATION, SWIFTBAR GREEN & PIPELINE STABILIZATION (2026-10-25):
+         Closed platform loose ends across zdots, media-pipeline microservice, and static site:
+         - Unified Log Management & Disk Safety:
+           - Integrated `media-pipeline` into `~/.config/zsh/lib/svc-registry.bash` (`com.just3ws.media-pipeline`, port 32000, log `~/.local/state/just3ws/media_pipeline_server.log`).
+           - Added `com.just3ws.${SERVICE}.plist` support to `~/.config/zsh/bin/log-rotate`.
+           - Executed safe log rotation on `media-pipeline`, compressing and truncating active log from 124 MB down to 2 MB, reclaiming 122 MB of host disk.
+           - Verified `zdots-logs list` and `zdots-logs check` actively monitor `media-pipeline` with automated size threshold warnings.
+         - Platform Check Suite 100% Green:
+           - Resolved all 3 failing nightly tests: moved `--help` above Colima socket probe in `docker-reclaim`, lazy-imported `duckdb` in `zdots-lake`, cast timestamps to `TIMESTAMPTZ` in `warehouse.sql` to eliminate 6-hour timezone skew in `deploy_lead_lag`, and adjusted `platform_e2e.bats` assertion for `zdots-ruby-bump`.
+           - Updated `zdots-watch-check.state` to `rc=0`; verified SwiftBar displays `🧪 Test Suite: green`. Committed as `a7925f9` on `zdots` `main`.
+         - Quarantined Assets & Requeue Fixes:
+           - Fixed JavaScript syntax error (unmatched closing brace) in `app/views/dashboard/_scripts.html.erb`.
+           - Upgraded `ProcessMediaAssetJob#stage_working_file` with pure 1 MB user-space chunk streaming, 120 retry attempts (6-minute tolerance per segment), and non-destructive partial byte retention.
+           - Requeued quarantined assets; failed count dropped from 8 to 0, conveyor processing assets sequentially. Committed as `526f0a2` on `media-pipeline` `main`.
+         - Clean Repository Boundaries:
+           - Delegated `bin/pipeline` `intake` and `drive-intake` directly to `media-pipeline` microservice.
+           - Verified 499 Markdown files passing fast validation, zero em dashes. Committed as `d59e79b3` on `master`.
+
        - JOB DETAIL DIAGNOSTICS MODAL, REQUEUE CONTROLS & DEVELOPER CONNECTION METADATA (2026-10-25):
          Enhanced Cockpit swimlane cards with forensic diagnostic modal, failure requeue actions, and developer connection metadata:
          - Interactive Job Diagnostics Modal:
