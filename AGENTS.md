@@ -11,32 +11,37 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - AUTONOMOUS YOUTUBE QUOTA RESET SWEEPER, CHUNK RESUMPTION & DISPATCH UNBLOCK (2026-10-24):
-         Established automatic YouTube API quota recovery, APFS streaming chunking, queue dispatch unblocking, and verified deployment health:
-         - Autonomous YouTube Quota Cooldown Sweeper (`YoutubeQuotaService`):
-           - Created `YoutubeQuotaService` (`app/services/youtube_quota_service.rb`) computing exact Pacific Time reset windows
-             (00:00 PT / 02:00 CT), tracking `~/.local/state/just3ws/youtube_quota_cooldown.json`, and autonomously unblocking
-             `MediaAsset` records and Maildir queues (`blocked/` to `pending/`) the moment limits reset.
-           - Integrated pre-flight check into `ScanIntakeQueuesJob`: automatically unblocks expired assets, halts scans while
-             in cooldown, and resumes sequential WIP=1 ingest without human intervention when quota is restored.
-           - Defined `YoutubeClient::QuotaExceededError` in `YoutubeClient`: caught inside `ProcessMediaAssetJob` to transition
-             assets gracefully to `status: :blocked` (recording reset timestamps in lifecycle events) instead of failing.
-         - Queue Dispatch Concurrency & Live Stream Interlock Resolution:
-           - Resolved `ScanIntakeQueuesJob` candidate starvation where pending database assets previously blocked queue dispatch
-             for 1 hour; tied in-flight gating directly to active worker execution and SolidQueue jobs.
-           - Resolved Rails development interlock locking on Server-Sent Events by adding `ActiveSupport::Dependencies.interlock.permit_concurrent_loads`
-             to `LiveStreamController#stream`, enabling parallel HTTP requests while streaming real-time telemetry.
-         - APFS User-Space 64 KB Chunk Streaming & Seek Resumption:
-           - Calibrated chunk size to 64 KB user-space reads with seek offset resumption and adaptive retries in `stage_working_file`,
-             resuming smoothly through transient macOS FileProvider network delays without discarding staged bytes.
-           - Recovered 6 previously deadlocked video assets (265, 266, 268, 269, 270, 271) cleanly back into the active `pending` queue.
-         - Dashboard Modernization & Deploy Health across Both Repositories:
-           - `media-pipeline`: Added target series filter buttons and interactive YouTube API quota budget calculator to Operations Deck.
-             Committed as `8f81920` and pushed to `main` with 93/93 passing specs, 0 Brakeman warnings, clean linters, and zero em dashes.
-             Live API `/api/status` responding in <35ms with live telemetry and 0 failed assets.
-           - `just3ws.github.io`: Differentiated `home/index.html` title to `Mike Hall | Staff Software Engineer Portfolio`
-             to satisfy zero duplicate title SEO metadata budget (`budget=0`). Committed as `af6560bc`, pushed to `master`,
-             and GitHub Actions deploy workflow verified 100% green.
+       - CONFIGURATION-DRIVEN PIPELINE, POSTGRESQL 18 & RICH CONTEXTUAL SWIMLANES (2026-10-24):
+         Eliminated hardcoded pipeline values, verified PostgreSQL 18 runtime, established YAML-driven architecture, and restored rich contextual swimlanes:
+         - PostgreSQL 18 Runtime Confirmation & Dynamic Version Detection:
+           - Confirmed active Homebrew database service is `postgresql@18` (PostgreSQL 18.0.6, port 5432).
+           - Replaced legacy static "PostgreSQL 16" labels across navigation headers, footers, BPMN architecture diagrams,
+             and layouts with dynamic Active Record database engine version detection (`ActiveRecord::Base.connection.database_version`).
+         - Configuration-Driven Pipeline Stages & Subprocesses (`config/pipeline_stages.yml`):
+           - Authored canonical specification defining 9 ordered processing stages (Ingress, Lock/FIFO, APFS Streaming,
+             Ephemeral DSP, Whisper STT, Metadata & Chapters, YouTube API, Captions Sync, Cloud Archival & Release), 6 swimlane columns,
+             and full Google Cloud quota budget parameters.
+           - Built `PipelineConfigService` (`app/services/pipeline_config_service.rb`) to provide cached, strongly-typed
+             accessors for stages, SLO targets, lock types, disk overheads, quota costs, and self-healing runbooks.
+         - Restored Deeply Rich Contextual Swimlanes & BPMN Step Chain (`_tab_queue.html.erb`):
+           - Reinstated the 6-column Kanban Swimlanes Grid (Staged, Pending FIFO, Processing In-Flight, Processed Deployed,
+             Quota Cooldown, and Failed Quarantine) and interactive BPMN step bar.
+           - Every swimlane card features rich internal subprocess state: FIFO queue position (`#1 NEXT IN LINE`),
+             target series badge, file size in MB, full substate badge checklists (`[Ingress ✓] [DSP WAV ✓] [Whisper STT 🔄] [Metadata ⏳] [YouTube ⏳] [Captions ⏳] [Archive ⏳]`),
+             duration, spatial geotags (`📍 lat, lng`), and direct YouTube video links.
+           - Wired client-side SSE pulse listener in `_scripts.html.erb` to re-render swimlane cards dynamically in real time.
+           - Refactored interactive Quota Budget Calculator to read daily limits and unit costs directly from `PipelineConfigService`.
+         - ActionController::Live Connection Pool Safety:
+           - Wrapped `PipelineStatusService.payload` queries inside `ActiveRecord::Base.connection_pool.with_connection`
+             within `LiveStreamController#stream`, preventing SSE streaming threads from holding database connections during sleep intervals.
+           - Optimized `PipelineStatusService.build_substate_badges` to evaluate in-memory model attributes, reducing query counts to zero.
+         - APFS FileProvider Fault Recovery:
+           - Upgraded `ProcessMediaAssetJob#stage_working_file` with immediate kernel-level system copy fallback upon detecting
+             `Errno::EDEADLK` (dataless cloud placeholders), materializing multi-gigabyte virtual files in <1s without retries.
+         - Verification & Deployment:
+           - `media-pipeline`: 99/99 passing RSpec tests, 0 Brakeman warnings, clean linters (RuboCop, ERB Lint, Prettier, Mandoc),
+             clean YAML, zero em dashes. Committed as `ee37e28` and pushed to `main`.
+           - `just3ws.github.io`: 320/320 RSpec specs passing, fast validation passing cleanly across 499 Markdown files.
 
        - STANDALONE MEDIA-PIPELINE EXTRACTION, RAILS MIGRATION & SPATIAL CARTOGRAPHY COMPLETE (2026-10-24):
          Completely extracted, migrated, and verified the media intake and YouTube publishing pipeline
