@@ -11,39 +11,32 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - FAITHFUL 9-TAB DASHBOARD ADAPTATION & SOLID QUEUE DAEMON STABILITY (2026-10-24):
-         Completed the faithful adaptation of the legacy 9-tab operations cockpit into the standalone
-         Rails 8 `media-pipeline` microservice and resolved PostgreSQL daemon stability:
-         - Complete 9-Tab Operations Cockpit (`app/views/dashboard/`):
-           - Tab 1 (`queue`): Live ingress Maildir HUD, strict 1-item WIP limit indicator, worker lock status,
-             and recent execution telemetry with direct redress links.
-           - Tab 2 (`teleprompter`): Broadcast Teleprompter Studio with interactive smooth auto-scrolling,
-             Spacebar play/pause, speed/font controls, mirror flip mode for beam-splitter glass, and director cues.
-           - Tab 3 (`status`): Archive & Sync Catalog with instant client-side search across 256 assets,
-             filtering by series target and sync state, with direct edit and inspection links.
-           - Tab 4 (`audit`): Content Quality & Compliance Audit checking YouTube API bounds (titles <= 100,
-             descriptions <= 5,000), zero em dash compliance, caption parity, and actionable fix links.
-           - Tab 5 (`live`): Livestreaming & Scheduling Cockpit with channel handle `@whoistechcmty`,
-             OBS RTMP configuration, and a 4-point pre-flight verification checklist.
-           - Tab 6 (`workshop`): Episode Studio & Workshop with rundown templates, YouTube chapter markers
-             generator from transcript timestamps, metadata version evolution history, and state events.
-           - Tab 7 (`analytics`): Visual analytics via Chartkick (series distribution, sync states, recording
-             timeline) and full-text transcript search across 256 assets via PostgreSQL.
-           - Tab 8 (`bpmn`): Interactive BPMN 2.0 SVG workflow diagram across 4 swimlanes and 12 steps,
-             with step introspection (service tasks, SLI/SLO latency, invariants) and execution simulator.
-           - Tab 9 (`architecture`): Panoramic View 4-dimensional system cartography (Structural, Behavioral,
-             Telemetry, Governance) documenting microservice boundaries and contracts.
-         - Unix Socket Connection & Daemon Stability:
-           - Root caused Solid Queue supervisor connection issues on macOS: PostgreSQL listens on Unix domain
-             socket (`/tmp/.s.PGSQL.5432`), not TCP port 5432. Configured `DB_HOST` to nil on local macOS,
-             eliminating connection segfaults in background threads while retaining TCP for CI containers.
-           - Added universal top navigation header in `layouts/application.html.erb` providing immediate
-             wayfinding between Cockpit, Media Assets, Mission Control Jobs (`/jobs`), PgHero, and GraphiQL.
-           - Verified all HTTPS endpoints (`/`, `/jobs`, `/pghero`, `/media_assets`, `/api/status`) return
-             clean HTTP 200 over TLS via Nginx at `https://media-pipeline.localhost`.
-         - Cross-Repository Verification:
-           - `media-pipeline`: 76/76 RSpec specs passing, 0 Brakeman warnings, clean Mandoc, clean ERB Lint,
-             clean Prettier, zero em dashes. Committed as `c58933c` and pushed to `main`.
+       - STANDALONE MEDIA-PIPELINE EXTRACTION, RAILS MIGRATION & SPATIAL CARTOGRAPHY COMPLETE (2026-10-24):
+         Completely extracted, migrated, and verified the media intake and YouTube publishing pipeline
+         into an independent, robust Rails 8 microservice (`media-pipeline`) backed by PostgreSQL 16:
+         - Complete Standalone Microservice Architecture:
+           - Booted out, disabled, and permanently removed fragile launchd daemon (`com.just3ws.ramblin-pipeline`).
+           - Established dedicated service repo at `github.com/just3ws/media-pipeline` running on port 32000
+             under Nginx TLS reverse proxy at `https://media-pipeline.localhost` with HTTP/2 via mkcert.
+           - Configured launchd autostart daemon (`com.just3ws.media-pipeline.plist`) with `RunAtLoad` and `KeepAlive`
+             logging directly to `~/.local/state/just3ws/media_pipeline_server.log`.
+         - PostgreSQL Multi-Database Architecture & Strict 1-Item WIP Limits:
+           - Multi-database PostgreSQL setup separating app data (`media_pipeline_development`) from Solid Queue
+             (`media_pipeline_development_queue`) with zero connection cross-talk.
+           - Hard single-item concurrency semaphore (`limits_concurrency to: 1`, `threads: 1` on `media_processing`).
+           - Enforced 10 GB disk headroom safety floor before any ingest, with complete scratch cleanup in ensure blocks.
+           - User-space 4 MB chunk streaming avoiding macOS FileProvider `fcopyfile` APFS deadlocks on virtual files.
+         - 10-Tab Operations Cockpit & Spatial Cartography (`app/views/dashboard/`):
+           - Full 10 tabs active: Live Ingress, Teleprompter, Catalog, Quality Audit, Live Studio, Workshop,
+             Analytics, Spatial Cartography, BPMN 2.0 SVG Workflow, and 4D Panoramic System Cartography.
+           - Integrated Leaflet.js Spatial History Map tracing recording locations and spoken topics over time across
+             250 backfilled historical assets with full-text transcript search.
+           - Added `TranscriptEnrichmentService` for YouTube-compliant chapter generation and takeaways.
+           - Resolved Mission Control Jobs `/jobs/failed` routing with automatic redirect to `/jobs/failed/jobs`.
+         - Cross-System Verification & CI:
+           - `media-pipeline`: 86/86 RSpec specs passing, 0 Brakeman warnings, clean Mandoc, clean ERB Lint,
+             clean Prettier, zero em dashes. Committed as `6da6868` and pushed to `main` (GitHub Actions CI 100% green).
+           - `~/.swiftbar/media-pipeline.30s.sh`: canonical SwiftBar symlink verified executing in <50ms with live telemetry.
            - `just3ws.github.io`: 320/320 RSpec specs passing, fast validation passing cleanly across 499 Markdown files.
 
        - STANDALONE MEDIA-PIPELINE EXTRACTION & RAILS MIGRATION (2026-10-24):
