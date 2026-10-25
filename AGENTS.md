@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-24
+     CURRENT FOCUS - last updated 2026-10-25
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - MEDIA PIPELINE CONTINUOUS CONVEYOR, SWIFTBAR RESTORATION, TELEPROMPTER STUDIO & CLEAN DELEGATION (2026-10-25):
+         Completed end-to-end 4-step functional parity and boundary clean-up across Rails microservice and static site:
+         - Step 1: Continuous Queue Conveyor & Query Bridge:
+           - Chained ScanIntakeQueuesJob after asset processing in ProcessMediaAssetJob, eliminating idle conveyor gaps.
+           - Bridged just3ws.github.io/bin/query_pipeline.rb to query Rails endpoint (http://127.0.0.1:32000/api/status) first with graceful local disk fallback.
+         - Step 2: Full SwiftBar Capability Restoration:
+           - Rebuilt media-pipeline/bin/media-pipeline-swiftbar with hierarchical series menus (candidates, file sizes in MB, FIFO index, failures).
+           - Added dynamic YouTube quota headroom percentage and one-click operations (Process Next FIFO, Pause Queue, Resume Queue, Open Ingress in Finder, Open Lateral Sites).
+           - Added pause and resume actions to OperationsController backed by SolidQueue::Queue.
+         - Step 3: Broadcast Teleprompter Studio & Textream Parity:
+           - Built SoundAboveCurriculumService loading 35 curriculum episodes, Minus One, Minus Zero, and database assets into Operations Cockpit.
+           - Implemented interactive 6-Act Production Rundowns with live broadcast cues ([SCENE], [FREEFORM], [PAUSE], [SHOW]), auto-scrolling viewport, mirror flip, and font adjustments.
+           - Added one-click textream:// protocol launcher and .textream multi-page JSON download.
+         - Step 4: System Boundary Cleanup & Legacy Delegation:
+           - Updated bin/pipeline media to delegate status, scan, live stream tailing, pause, and resume directly to Rails microservice (port 32000).
+           - Annotated legacy scripts (intake_drive_video.rb, live_dashboard_streamer.rb, youtube-swiftbar) with clear deprecation and migration notices.
+           - Resolved APFS FileProvider materialization fault via system cat copy; verified asset processing reaching 260 processed masters.
+           - Verified 320/320 RSpec tests passing, fast validation passing across 499 Markdown files, zero em dashes.
+
        - CONFIGURATION-DRIVEN PIPELINE, POSTGRESQL 18 & RICH CONTEXTUAL SWIMLANES (2026-10-24):
          Eliminated hardcoded pipeline values, verified PostgreSQL 18 runtime, established YAML-driven architecture, and restored rich contextual swimlanes:
          - PostgreSQL 18 Runtime Confirmation & Dynamic Version Detection:
