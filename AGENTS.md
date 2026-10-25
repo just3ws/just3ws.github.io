@@ -11,8 +11,8 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - AUTONOMOUS YOUTUBE QUOTA RESET SWEEPER & APFS CHUNK STREAMING RECOVERY (2026-10-24):
-         Established automatic YouTube API quota recovery, APFS streaming chunking, and verified deployment health:
+       - AUTONOMOUS YOUTUBE QUOTA RESET SWEEPER, CHUNK RESUMPTION & DISPATCH UNBLOCK (2026-10-24):
+         Established automatic YouTube API quota recovery, APFS streaming chunking, queue dispatch unblocking, and verified deployment health:
          - Autonomous YouTube Quota Cooldown Sweeper (`YoutubeQuotaService`):
            - Created `YoutubeQuotaService` (`app/services/youtube_quota_service.rb`) computing exact Pacific Time reset windows
              (00:00 PT / 02:00 CT), tracking `~/.local/state/just3ws/youtube_quota_cooldown.json`, and autonomously unblocking
@@ -21,18 +21,22 @@
              in cooldown, and resumes sequential WIP=1 ingest without human intervention when quota is restored.
            - Defined `YoutubeClient::QuotaExceededError` in `YoutubeClient`: caught inside `ProcessMediaAssetJob` to transition
              assets gracefully to `status: :blocked` (recording reset timestamps in lifecycle events) instead of failing.
-         - APFS User-Space 64 KB Chunk Streaming & Dataless Recovery:
-           - Diagnosed macOS APFS FileProvider `Errno::EDEADLK` deadlock on dataless Google Drive placeholders caused by oversized
-             4 MB buffer read requests.
-           - Calibrated chunk size to 64 KB user-space reads with automatic system `cat` fallback in `stage_working_file`,
-             successfully staging multi-gigabyte virtual video files with zero stalls.
+         - Queue Dispatch Concurrency & Live Stream Interlock Resolution:
+           - Resolved `ScanIntakeQueuesJob` candidate starvation where pending database assets previously blocked queue dispatch
+             for 1 hour; tied in-flight gating directly to active worker execution and SolidQueue jobs.
+           - Resolved Rails development interlock locking on Server-Sent Events by adding `ActiveSupport::Dependencies.interlock.permit_concurrent_loads`
+             to `LiveStreamController#stream`, enabling parallel HTTP requests while streaming real-time telemetry.
+         - APFS User-Space 64 KB Chunk Streaming & Seek Resumption:
+           - Calibrated chunk size to 64 KB user-space reads with seek offset resumption and adaptive retries in `stage_working_file`,
+             resuming smoothly through transient macOS FileProvider network delays without discarding staged bytes.
            - Recovered 6 previously deadlocked video assets (265, 266, 268, 269, 270, 271) cleanly back into the active `pending` queue.
-         - Deploy Health & Verification across Both Repositories:
+         - Dashboard Modernization & Deploy Health across Both Repositories:
+           - `media-pipeline`: Added target series filter buttons and interactive YouTube API quota budget calculator to Operations Deck.
+             Committed as `8f81920` and pushed to `main` with 93/93 passing specs, 0 Brakeman warnings, clean linters, and zero em dashes.
+             Live API `/api/status` responding in <35ms with live telemetry and 0 failed assets.
            - `just3ws.github.io`: Differentiated `home/index.html` title to `Mike Hall | Staff Software Engineer Portfolio`
              to satisfy zero duplicate title SEO metadata budget (`budget=0`). Committed as `af6560bc`, pushed to `master`,
-             and GitHub Actions deploy workflow verified 100% green (run `4016014...`).
-           - `media-pipeline`: 93/93 RSpec specs passing, 0 Brakeman warnings, clean linters, zero em dashes. Committed as `3c9d5c0`
-             and pushed to `main`. Live API `/api/status` responding in <50ms with live telemetry and 0 failed assets.
+             and GitHub Actions deploy workflow verified 100% green.
 
        - STANDALONE MEDIA-PIPELINE EXTRACTION, RAILS MIGRATION & SPATIAL CARTOGRAPHY COMPLETE (2026-10-24):
          Completely extracted, migrated, and verified the media intake and YouTube publishing pipeline
