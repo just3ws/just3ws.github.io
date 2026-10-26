@@ -11,8 +11,8 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - PROCESS HEALTH & OPERATIONS ADMIN, AHOY SOVEREIGN ANALYTICS, PGHERO CLEANUP & LSP/GRAPHIFY (2026-10-26):
-         Deployed full process health supervision deck, sovereign Ahoy analytics dashboard, PgHero index cleanup, and developer toolchain intelligence:
+       - PROCESS HEALTH, AHOY ANALYTICS, PGHERO TUNING, LSP/GRAPHIFY & RECURRING MAINTENANCE (2026-10-26):
+         Deployed full process health supervision deck, sovereign Ahoy analytics dashboard, PgHero index cleanup, developer toolchain intelligence, and autonomous operational maintenance:
          - Process Health & Operational Deck (`/admin/operations`):
            - Built `OperationsHealthService` aggregating host runtime stats (PID, Memory RSS MB, NVMe/Drive disk usage), 5 platform daemons, Solid Queue concurrency, and throughput.
            - Built `Admin::OperationsController` and view with operator lifecycle controls (`🔄 Scan Ingress Queues`, `⏸️ Pause / ▶️ Resume Queue`, `🧹 Sweep Corrupt Files`, `🗜️ Rotate Active Log`, `🩺 Run Service Doctor`).
@@ -24,11 +24,15 @@
            - Removed 3 redundant single-column indexes covered by composite indexes on `media_asset_chunks`, `media_asset_events`, and `media_asset_versions` (`20261026133259`).
            - PgHero primary verified with 0 duplicate indexes, 0 missing indexes, 0 slow queries, 99.9999% table cache hit rate, and 99.9998% index cache hit rate.
            - Resolved Bullet N+1 query in `MediaSearchService` by eager-loading `media_asset: :media_target`.
+         - Autonomous Recurring Maintenance & Desktop Observability:
+           - Built `MaintenanceVacuumJob` running weekly `VACUUM ANALYZE` on `media_asset_chunks` (pgvector), `media_assets`, `media_asset_events`, `media_asset_versions`, `ahoy_events`, and `ahoy_visits`. Registered in `config/recurring.yml`.
+           - Updated `bin/media-pipeline-swiftbar` adding direct deep links to Operations Health (`/admin/operations`), Ahoy Analytics (`/ahoy`), PgHero (`/pghero`), and Solid Queue Jobs (`/jobs`).
+           - Added desktop alert notifications via `osascript` in `YoutubeQuotaService` on quota cooldown and `IntakeQuarantineService` on corrupt intake files.
          - Toolchain Intelligence (LSP & Graphify):
            - Installed and bundled `ruby-lsp` (0.26.11) and `ruby-lsp-rails` (0.4.8) for Neovim / Antigravity editor support.
            - Graphified `media-pipeline` extracting 801 nodes, 913 edges, 150 communities into `graphify-out/graph.json` and registered into global knowledge graph (`~/.graphify/global-graph.json`).
          - Verification:
-           - `media-pipeline`: 147/147 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `6fcd21b` on `main`.
+           - `media-pipeline`: 151/151 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `63bc8d4` on `main`.
            - `just3ws.github.io`: 320/320 RSpec tests passing, 508 Markdown files passing fast validation cleanly, zero em dashes.
 
        - LOCAL PGVECTOR SEMANTIC SEARCH, RUBYLLM RAG & YOUTUBE VISIBILITY CONTROLS (2026-10-26):
