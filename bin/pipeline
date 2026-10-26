@@ -39,11 +39,19 @@ USAGE
 run_media() {
   action="${1:-status}"
   shift || true
+  eval "$(ruby -ryaml -e '
+    cfg = YAML.load_file("_data/media_intake_targets.yml") rescue {}
+    puts "MP_WORKDIR=\"#{File.expand_path(ENV["MEDIA_PIPELINE_WORKDIR"] || cfg["service_working_directory"] || "~/github.com/just3ws/media-pipeline")}\""
+    puts "MP_PUBLIC_URL=\"#{ENV["MEDIA_PIPELINE_PUBLIC_URL"] || cfg["service_url"] || "https://media-pipeline.localhost"}\""
+    puts "MP_INTERNAL_URL=\"#{ENV["MEDIA_PIPELINE_INTERNAL_URL"] || cfg["service_internal_url"] || "http://127.0.0.1:32000"}\""
+    puts "MP_PORT=\"#{ENV["MEDIA_PIPELINE_PORT"] || cfg["service_port"] || 32000}\""
+    puts "MP_STATE_DIR=\"#{File.expand_path(ENV["MEDIA_PIPELINE_STATE_DIR"] || cfg["state_dir"] || "~/.local/state/just3ws")}\""
+  ')"
   case "$action" in
     intake|drive-intake)
-      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
-        echo "media-pipeline microservice is active at https://media-pipeline.localhost"
-        curl -s http://127.0.0.1:32000/api/status | jq .
+      if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
+        echo "media-pipeline microservice is active at $MP_PUBLIC_URL"
+        curl -s "$MP_INTERNAL_URL/api/status" | jq .
       elif [ $# -eq 0 ]; then
         ruby bin/intake_drive_video.rb --status
       else
@@ -51,18 +59,18 @@ run_media() {
       fi
       ;;
     scan)
-      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
-        echo "Triggering intake scan on media-pipeline service (port 32000)..."
-        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/scan | jq .
+      if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
+        echo "Triggering intake scan on media-pipeline service (port $MP_PORT)..."
+        curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/scan" | jq .
       else
         ruby bin/intake_drive_video.rb --scan
       fi
       ;;
     stream|live-stream)
-      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
-        echo "media-pipeline microservice is active at https://media-pipeline.localhost"
+      if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
+        echo "media-pipeline microservice is active at $MP_PUBLIC_URL"
         echo "Tailing live SSE telemetry stream (Ctrl-C to stop)..."
-        curl -N -s http://127.0.0.1:32000/live_stream
+        curl -N -s "$MP_INTERNAL_URL/live_stream"
       else
         ruby bin/live_dashboard_streamer.rb "$@"
       fi
@@ -70,8 +78,8 @@ run_media() {
     swiftbar|bar)
       if [ -x "$HOME/.swiftbar/media-pipeline.30s.sh" ]; then
         "$HOME/.swiftbar/media-pipeline.30s.sh" "$@"
-      elif [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/media-pipeline-swiftbar ]; then
-        /Users/mike/github.com/just3ws/media-pipeline/bin/media-pipeline-swiftbar "$@"
+      elif [ -x "$MP_WORKDIR/bin/media-pipeline-swiftbar" ]; then
+        "$MP_WORKDIR/bin/media-pipeline-swiftbar" "$@"
       else
         ruby bin/youtube-swiftbar "$@"
       fi
@@ -127,50 +135,50 @@ run_media() {
       fi
       ;;
     halt|pause)
-      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
-        echo "Pausing media_processing queue via media-pipeline (port 32000)..."
-        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/pause | jq .
+      if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
+        echo "Pausing media_processing queue via media-pipeline (port $MP_PORT)..."
+        curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/pause" | jq .
       else
         ruby bin/intake_drive_video.rb --halt
       fi
       ;;
     stop)
-      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
-        echo "Pausing media_processing queue via media-pipeline (port 32000)..."
-        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/pause | jq .
+      if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
+        echo "Pausing media_processing queue via media-pipeline (port $MP_PORT)..."
+        curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/pause" | jq .
       else
         ruby bin/intake_drive_video.rb --stop
       fi
       ;;
     resume)
-      if curl -s --max-time 1 http://127.0.0.1:32000/up >/dev/null 2>&1; then
-        echo "Resuming media_processing queue via media-pipeline (port 32000)..."
-        curl -s -H "Accept: application/json" -X POST http://127.0.0.1:32000/operations/resume | jq .
+      if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
+        echo "Resuming media_processing queue via media-pipeline (port $MP_PORT)..."
+        curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/resume" | jq .
       else
         ruby bin/intake_drive_video.rb --resume
       fi
       ;;
     service|svc)
-      if [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service ]; then
-        /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service "$@"
+      if [ -x "$MP_WORKDIR/bin/mp-service" ]; then
+        "$MP_WORKDIR/bin/mp-service" "$@"
       else
-        echo "media-pipeline service tool not found at /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service" >&2
+        echo "media-pipeline service tool not found at $MP_WORKDIR/bin/mp-service" >&2
         exit 1
       fi
       ;;
     restart|doctor)
-      if [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service ]; then
-        /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service "$action" "$@"
+      if [ -x "$MP_WORKDIR/bin/mp-service" ]; then
+        "$MP_WORKDIR/bin/mp-service" "$action" "$@"
       else
-        echo "media-pipeline service tool not found at /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service" >&2
+        echo "media-pipeline service tool not found at $MP_WORKDIR/bin/mp-service" >&2
         exit 1
       fi
       ;;
     logs)
-      if [ -x /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service ]; then
-        /Users/mike/github.com/just3ws/media-pipeline/bin/mp-service logs "$@"
+      if [ -x "$MP_WORKDIR/bin/mp-service" ]; then
+        "$MP_WORKDIR/bin/mp-service" logs "$@"
       else
-        tail -n 25 ~/.local/state/just3ws/media_pipeline_server.log
+        tail -n 25 "$MP_STATE_DIR/media_pipeline_server.log"
       fi
       ;;
     sync-prompts|prompts)

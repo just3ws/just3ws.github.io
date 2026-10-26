@@ -60,10 +60,15 @@ Options:
   process.exit(0);
 }
 
+const HOME_DIR = process.env.HOME || '/Users/mike';
 const DEFAULT_DESKTOP_RESUMES_DIR = process.env.DESKTOP_RESUMES_DIR ||
-  path.join(process.env.HOME || '/Users/mike', 'Desktop', 'resumes');
+  path.join(HOME_DIR, 'Desktop', 'resumes');
+const DEFAULT_AI_RESUMES_DIR = process.env.AI_RESUMES_DIR ||
+  path.join(HOME_DIR, 'ai', 'resumes');
 const DESKTOP_RESUMES_DIR = customDestDir ? path.resolve(customDestDir) : DEFAULT_DESKTOP_RESUMES_DIR;
-const LEGACY_DESKTOP_DIR = path.join(process.env.HOME || '/Users/mike', 'Desktop');
+const EXPORT_DIRS = customDestDir ? [DESKTOP_RESUMES_DIR] : [DESKTOP_RESUMES_DIR, DEFAULT_AI_RESUMES_DIR];
+const LEGACY_DESKTOP_DIR = path.join(HOME_DIR, 'Desktop');
+const LOCAL_SITE_BASE_URL = process.env.JUST3WS_SITE_URL || 'https://just3ws.localhost';
 
 const RESUME_TARGETS = [
   {
@@ -122,7 +127,7 @@ async function generatePDFs() {
   const context = await browser.newContext();
 
   // Ensure directories exist (mkdir -p)
-  [EXPORTS_SRC_DIR, EXPORTS_DIST_DIR, EXPORTS_RESUMES_SRC, EXPORTS_RESUMES_DIST, DESKTOP_RESUMES_DIR].forEach(dir => {
+  [EXPORTS_SRC_DIR, EXPORTS_DIST_DIR, EXPORTS_RESUMES_SRC, EXPORTS_RESUMES_DIST, ...EXPORT_DIRS].forEach(dir => {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   });
 
@@ -134,7 +139,7 @@ async function generatePDFs() {
       console.log(`🌐 Loading ATS import template from ${atsUrl}...`);
       await page.goto(atsUrl, { waitUntil: 'load', timeout: 15000 });
     } else {
-      const localUrl = `https://just3ws.localhost${target.path}`;
+      const localUrl = `${LOCAL_SITE_BASE_URL}${target.path}`;
       const fileUrl = `file://${path.join(SITE_DIR, target.path, 'index.html')}`;
 
       try {
@@ -188,17 +193,18 @@ async function generatePDFs() {
       }
     }
 
-    // Copy to Desktop/resumes with human-friendly title
+    // Copy to configured export directories (Desktop/resumes and ~/ai/resumes) with human-friendly title
     if (target.desktopFriendlyName) {
-      const desktopDest = path.join(DESKTOP_RESUMES_DIR, target.desktopFriendlyName);
-      fs.copyFileSync(pdfPathSrc, desktopDest);
-      console.log(`   - Desktop Resumes (PDF): ${desktopDest}`);
+      for (const exportDir of EXPORT_DIRS) {
+        const exportDest = path.join(exportDir, target.desktopFriendlyName);
+        fs.copyFileSync(pdfPathSrc, exportDest);
+        console.log(`   - Exported Resume (PDF): ${exportDest}`);
 
-      // If accompanied by a dedicated plaintext ATS file, copy to Desktop/resumes as well
-      if (target.textSrc && target.desktopTextFriendlyName && fs.existsSync(target.textSrc)) {
-        const textDest = path.join(DESKTOP_RESUMES_DIR, target.desktopTextFriendlyName);
-        fs.copyFileSync(target.textSrc, textDest);
-        console.log(`   - Desktop Resumes (TXT): ${textDest}`);
+        if (target.textSrc && target.desktopTextFriendlyName && fs.existsSync(target.textSrc)) {
+          const textDest = path.join(exportDir, target.desktopTextFriendlyName);
+          fs.copyFileSync(target.textSrc, textDest);
+          console.log(`   - Exported Resume (TXT): ${textDest}`);
+        }
       }
 
       // Clean up legacy loose file on Desktop root if present to keep desktop tidy

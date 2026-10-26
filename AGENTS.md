@@ -11,20 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - STORAGE ROOT CONSOLIDATION (`$HOME/ai/media-pipeline`), GOOGLE DRIVE HYGIENE & GHA SIMPLIFICATION (2026-10-26):
-         Consolidated media pipeline storage roots under `$HOME/ai/media-pipeline` and `My Drive/media-pipeline` behind centralized configuration, cleaned Google Drive queues, eliminated `launchd` `Errno::EPERM` log noise, and simplified GitHub Actions workflows:
-         - Configurable `$HOME/ai/media-pipeline` Storage Topology:
-           - Migrated local NVMe working storage from `~/.local/var/media_intake` to `/Users/mike/ai/media-pipeline` and renamed Google Drive root from `My Drive/Media Intake` to `My Drive/media-pipeline`.
-           - Centralized `storage.local_root` (`~/ai/media-pipeline`) and `storage.cloud_root_pattern` (`~/Library/CloudStorage/GoogleDrive-*/My Drive/media-pipeline`) in `config/pipeline_stages.yml` and `PipelineConfigService` (`local_base`, `cloud_base`, `search_bases`).
-           - Updated `PipelineConfigService.cloud_base` to verify directory readability (`Dir.children`) and silently omit macOS CloudStorage paths when `com.apple.macl` raises `Errno::EPERM` inside `launchd` background workers.
-           - Updated `_data/media_intake_targets.yml` (`base_path: "~/ai/media-pipeline"`, `drive_path: "media-pipeline/whoistechcmty/..."`), all `MediaAsset` and `MediaTarget` database records, and all CLI/documentation references across both repositories.
+       - STORAGE ROOT CONSOLIDATION (`$HOME/ai/media-pipeline`), CENTRALIZED CONFIGURATION, GOOGLE DRIVE HYGIENE & GHA SIMPLIFICATION (2026-10-26):
+         Consolidated media pipeline storage roots under `$HOME/ai/media-pipeline` (`My Drive/ai/media-pipeline`) behind centralized configuration, eliminated hardcoded working directories/paths/ports across all services, cleaned Google Drive queues, eliminated `launchd` `Errno::EPERM` log noise, and simplified GitHub Actions workflows:
+         - Configurable Two-Tier `$HOME/ai/media-pipeline` Storage & Centralized Configuration (`PipelineConfigService`):
+           - Configured `storage.local_root: "~/ai/media-pipeline"` as the 1-item active local APFS working directory (`0` `launchd` `Errno::EPERM` faults) paired with `storage.cloud_root_pattern: "~/Library/CloudStorage/GoogleDrive-*/My Drive/media-pipeline"` as the 0-byte streaming cloud archive and queue root (avoiding mirroring 35+ GB of archives onto the 228 GB SSD).
+           - Reclaimed 20.8 GB of local NVMe SSD space from orphaned `Google/DriveFS/canceled_uploads` copies of 9 already-published videos, restoring 21 GB of free disk headroom.
+           - Centralized all working directories (`pipeline.working_directory`, `pipeline.site_root`), storage roots (`storage.local_root`, `storage.cloud_root_pattern`, `storage.state_dir`, `storage.sidecars_dir`, `storage.corrupt_ledger`, `storage.server_log`), network endpoints and ports (`network.port`, `network.llm_port`, `network.embed_port`, `network.postgres_port`, `network.otel_port`, `network.host`, `network.public_url`, `network.site_url`), and launchd daemon identifiers (`daemons.*`) in `config/pipeline_stages.yml` and `PipelineConfigService` (plus `_data/media_intake_targets.yml` in `just3ws.github.io`), removing hardcoded paths and ports across models, jobs, services, controllers, views, initializers, and CLI tools.
+           - Updated `bin/generate_pdf_resume.js` to sync generated PDF and TXT resumes to both `~/Desktop/resumes/` and `~/ai/resumes/`.
          - Google Drive Queue Hygiene:
            - Removed 14 duplicate `.mp4` videos (~9.6 GB) and 30 legacy `.state.json`/`.error.log` sidecars from `ramblin-amblin/pending/` that were already published and archived in `processed/2026-10/`.
            - Moved 2 unarchived processed videos into `ramblin-amblin/processed/2026-10/` and consolidated `phalanx-duel/_archive/` into `phalanx-duel/processed/2026-10/`.
          - Lightweight GitHub Actions Publication Gate (`rake publish_check`):
            - Added `rake publish_check` (`validate:fast`, `build:committed`, `validate:publish_safety`) to `Rakefile` and simplified `.github/workflows/deploy.yml` and `.github/workflows/validate.yml` to run as fast (`~1m15s`) sanity and publication checks while keeping full heavyweight verification (`./bin/pipeline verify`) local.
          - Verification:
-           - `media-pipeline`: 154/154 RSpec tests passing with zero deprecation warnings, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes.
+           - `media-pipeline`: 156/156 RSpec tests passing with zero deprecation warnings, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes.
            - `just3ws.github.io`: 320/320 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes.
 
        - RESUME SURFACE ARCHITECTURE, CHRONOLOGICAL PROJECT INTEGRATION & TYPOGRAPHY STANDARDIZATION (2026-10-26):
