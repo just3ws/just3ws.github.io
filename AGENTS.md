@@ -11,6 +11,28 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - TELEPROMPTER PARITY, CLOUD STAGING, SCAN CONCURRENCY & AUTONOMOUS DRAIN (2026-10-26):
+         Restored broadcast teleprompter parity, solved macOS CloudStorage APFS dataless permission boundary, eliminated scan race conditions, and drained backlog assets:
+         - Broadcast Teleprompter Studio Parity (1:1+ Enhanced):
+           - Restored per-act `🎙️ Read in Textream` protocol links (`textream://read?text=...`) directly to every Act card.
+           - Added in-place script editing with quick cue insertion buttons (`+ [SCENE]`, `+ [PAUSE]`, `+ [SHOW]`, `+ [FREEFORM]`).
+           - Synchronized live teleprompter scrolling viewport in real time as acts are edited.
+           - Added `localStorage` draft auto-saving with visual indicator pill and `🔄 Reset All Defaults` button.
+           - Restored Episode 1 Historical Document & Provenance banner for the Alt.NET Manifesto & Convention Over Configuration.
+         - Cloud Staging Engine & Autonomous Intake:
+           - Built `CloudStagingService` and `bin/mp-sync-drive` CLI controller supporting `--limit N`, `--dry-run`, and automated queue triggering.
+           - Added `POST /admin/operations/stage_drive` (`📥 Stage Drive Candidate`) button to operations cockpit.
+           - Optimized `ScanIntakeQueuesJob` candidate sorting to rank candidates by age and storage tier before testing stability, reducing scan latency from 275s to 5.1s.
+           - Added strict concurrency locking (`limits_concurrency to: 1, key: -> { "scan_intake_queues_global" }`) on `ScanIntakeQueuesJob` preventing concurrent scan races.
+           - Added duplicate record deduplication guard on `ProcessMediaAssetJob` cancelling and cleaning duplicate asset records.
+         - Autonomous Publishing & Catalog Expansion:
+           - Processed and published **Asset 280** (`VID_20261021_092920616.mp4`, 206 MB, YouTube ID `z_YNc4EIqUg`).
+           - Processed and published **Asset 281** (`VID_20261021_093114693.mp4`, 358.7 MB, YouTube ID `VwejIhLMY5o`).
+           - Total processed catalog reached **273** masters.
+         - Verification:
+           - `media-pipeline`: 153/153 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `01b77a9` on `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 508 Markdown files passing fast validation cleanly, zero em dashes. Committed as `19a01171` on `master`.
+
        - PROCESS HEALTH, AHOY ANALYTICS, PGHERO TUNING, LSP/GRAPHIFY & RECURRING MAINTENANCE (2026-10-26):
          Deployed full process health supervision deck, sovereign Ahoy analytics dashboard, PgHero index cleanup, developer toolchain intelligence, and autonomous operational maintenance:
          - Process Health & Operational Deck (`/admin/operations`):
