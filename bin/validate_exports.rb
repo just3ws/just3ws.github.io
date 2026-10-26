@@ -124,6 +124,22 @@ def validate_pdf_export
     if File.size(path) < 10_000
       errors << "#{path} is smaller than expected (< 10KB)"
     end
+
+    begin
+      require 'pdf-reader'
+      reader = PDF::Reader.new(path)
+      extracted = reader.pages.map(&:text).join("\n")
+      %w[Mike\ Hall Professional\ Summary Core\ Skills Experience just3ws\ (Independent) OneMain\ Financial].each do |expected|
+        errors << "#{path} PDF text extraction missing '#{expected}'" unless extracted.include?(expected)
+      end
+      if extracted.include?('|mike@just3ws.com') || extracted.include?('(847|')
+        errors << "#{path} PDF text extraction has baseline-interleaved contact separators"
+      end
+    rescue LoadError
+      # pdf-reader optional if running outside bundle
+    rescue StandardError => e
+      errors << "#{path} PDF text extraction failed: #{e.message}"
+    end
   end
 
   if errors.empty?

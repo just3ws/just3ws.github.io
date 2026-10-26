@@ -9,12 +9,7 @@
       <h1>{{ profile.name }}</h1>
       <p class="title">{{ a.title }}</p>
       <p class="contact-line">
-        {%- if profile.location %}<span>{{ profile.location.display }}</span> | {% endif -%}
-        <a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a>
-        | <a href="tel:{{ profile.contact.phone_tel }}">{{ profile.contact.phone }}</a>
-        | <a href="{{ profile.contact.website.url }}">{{ profile.contact.website.display }}</a>
-        | <a href="{{ profile.contact.linkedin.url }}">{{ linkedin_display }}</a>
-        | <a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a>
+        {% if profile.location %}<span>{{ profile.location.display }}</span> | {% endif %}<a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a> | <a href="tel:{{ profile.contact.phone_tel }}">{{ profile.contact.phone }}</a> | <a href="{{ profile.contact.website.url }}">{{ profile.contact.website.display }}</a> | <a href="{{ profile.contact.linkedin.url }}">{{ linkedin_display }}</a> | <a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a>
       </p>
 
       {% assign availability = site.data.engagements.availability %}

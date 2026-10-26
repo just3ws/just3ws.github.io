@@ -82,6 +82,9 @@ body.resume {
       color: var(--resume-muted);
 
       a {
+        display: inline !important;
+        min-height: 0 !important;
+        vertical-align: baseline !important;
         color: var(--resume-ink);
         text-decoration: none;
 
@@ -90,6 +93,15 @@ body.resume {
         }
       }
     }
+  }
+
+  p a,
+  li a,
+  h3 a,
+  .position-title a {
+    display: inline !important;
+    min-height: 0 !important;
+    vertical-align: baseline !important;
   }
 
   .resume-summary {
@@ -389,10 +401,21 @@ body.resume {
       margin: 0 !important;
 
       a {
+        display: inline !important;
+        min-height: 0 !important;
+        vertical-align: baseline !important;
         color: #000000 !important;
         text-decoration: none !important;
       }
     }
+  }
+
+  a {
+    display: inline !important;
+    min-height: 0 !important;
+    vertical-align: baseline !important;
+    color: #000000 !important;
+    text-decoration: none !important;
   }
 
   section,
