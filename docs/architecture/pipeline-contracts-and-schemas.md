@@ -225,6 +225,15 @@ targets:
     default_privacy: string         # unlisted | public | private
     category_id: string             # YouTube Category ID (27 = Education, 28 = Science & Tech)
     default_tags: list[string]      # Canonical keyword tags applied to video
+    ephemerality:
+      enabled: boolean              # Enable rolling-horizon ephemerality & vault archival
+      mode: string                  # anchor_gravitational_tail
+      window_days: integer          # Active public window in days (default: 3)
+      carry_tail_count: integer     # Max active unpinned videos in primary playlist (default: 2)
+      active_privacy: string        # Privacy while in active window (public)
+      retired_privacy: string       # Privacy when rolled into sovereign vault (private)
+      vault_playlist_id: string     # Sovereign archive playlist ID (PLYCKmHMYvC7s)
+      evergreen_exemption: boolean  # Assets marked evergreen: true stay permanently public in primary playlist
     transcription:
       engine: string                # ztranscribe (canonical)
       model: string                 # large-v3-turbo | base.en | medium.en

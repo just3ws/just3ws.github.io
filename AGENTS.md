@@ -11,6 +11,19 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - EVERGREEN PINNING & EPHEMERALITY EXEMPTION CONTRACT (2026-10-26):
+         Restored and upgraded the Evergreen Pinning (`evergreen: true`) contract from `YouTubeDeduplicator#plan_rolling_horizon_retirement` (`bin/lib/youtube_deduplicator.rb`) into a first-class capability across `media-pipeline` and all canonical architecture specs:
+         - Root Cause of Spec Omission:
+           - `original_pipeline_spec.md`, `system_purpose_spec.md` (Tenet 4), and `migration_parity_matrix.md` (Row #17) originally audited `bin/intake_drive_video.rb` and `bin/live_dashboard_streamer.rb` while omitting `bin/lib/youtube_deduplicator.rb` and `bin/youtube_sweeper.rb`, where the `evergreen: true` / `pinned: true` rolling-horizon exemption was implemented.
+           - Updated `system_purpose_spec.md`, `migration_parity_matrix.md` (Row #35), `original_pipeline_spec.md`, and `docs/architecture/pipeline-contracts-and-schemas.md` to document the Evergreen Pinning & Exemption Contract.
+         - First-Class Evergreen Pinning in `media-pipeline`:
+           - Added `evergreen: boolean, default: false, null: false` with index to `media_assets` (`20261026153000_add_evergreen_to_media_assets.rb`).
+           - Updated `EphemeralityService.reconcile!` to exempt `evergreen` assets from rolling-horizon vault retirement without consuming one of the `CARRY_TAIL_COUNT` (2) rolling window slots, and to automatically restore any missing evergreen assets back into the active series playlist (`PLNtb969T2-l0`) as `public`.
+           - Added `MediaAsset#toggle_evergreen!` and `POST /media_assets/:id/toggle_evergreen` with a 1-click `[🌲 Pin as Evergreen]` / `[🌲 Evergreen Pinned ✓ (Click to Unpin)]` button on `/media_assets/:id`, checkbox on `/media_assets/:id/edit`, badge on `/media_assets`, GraphQL `evergreen` field on `MediaAssetType`, `--evergreen` / `--no-evergreen` flags in `bin/mp-metadata`, and `_data/video_assets.yml` synchronization in `SiteSyncService`.
+         - Verification:
+           - `media-pipeline`: 162/162 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, zero em dashes.
+           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes.
+
        - NIST SP 800-53 CONFIGURATION VALIDATION, DEHUM DSP INTEGRATION & LINKEDIN/ATS PROFILE WORKBENCH (2026-10-26):
          Enforced NIST SP 800-53 / SP 800-128 configuration-driven validation across `media-pipeline`, integrated the `dehum` high-voltage audio DSP restoration pipeline across configuration and resume surfaces, and upgraded `/linkedin/` into a full LinkedIn Profile & Universal ATS Application Helper:
          - NIST SP 800-53 (`CM-2`, `CM-3`, `CM-6`, `CM-7`, `CM-8`) & SP 800-128 Configuration Governance (`PipelineConfigService`):
