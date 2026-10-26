@@ -11,6 +11,26 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - PROCESS HEALTH & OPERATIONS ADMIN, AHOY SOVEREIGN ANALYTICS, PGHERO CLEANUP & LSP/GRAPHIFY (2026-10-26):
+         Deployed full process health supervision deck, sovereign Ahoy analytics dashboard, PgHero index cleanup, and developer toolchain intelligence:
+         - Process Health & Operational Deck (`/admin/operations`):
+           - Built `OperationsHealthService` aggregating host runtime stats (PID, Memory RSS MB, NVMe/Drive disk usage), 5 platform daemons, Solid Queue concurrency, and throughput.
+           - Built `Admin::OperationsController` and view with operator lifecycle controls (`🔄 Scan Ingress Queues`, `⏸️ Pause / ▶️ Resume Queue`, `🧹 Sweep Corrupt Files`, `🗜️ Rotate Active Log`, `🩺 Run Service Doctor`).
+           - Added `Process Health` navigation link to cockpit header alongside PgHero, Ahoy Analytics, and Mission Control.
+         - Sovereign Ahoy Analytics Dashboard (`/ahoy`):
+           - Built dedicated first-party Ahoy analytics dashboard with 30-day visits and events timeline charts, browser, OS, and device breakdowns, top referrers, and live event stream.
+           - Added `/analytics` alias redirecting directly to `/ahoy`.
+         - PgHero Duplicate Index Cleanup & Bullet Query Tuning:
+           - Removed 3 redundant single-column indexes covered by composite indexes on `media_asset_chunks`, `media_asset_events`, and `media_asset_versions` (`20261026133259`).
+           - PgHero primary verified with 0 duplicate indexes, 0 missing indexes, 0 slow queries, 99.9999% table cache hit rate, and 99.9998% index cache hit rate.
+           - Resolved Bullet N+1 query in `MediaSearchService` by eager-loading `media_asset: :media_target`.
+         - Toolchain Intelligence (LSP & Graphify):
+           - Installed and bundled `ruby-lsp` (0.26.11) and `ruby-lsp-rails` (0.4.8) for Neovim / Antigravity editor support.
+           - Graphified `media-pipeline` extracting 801 nodes, 913 edges, 150 communities into `graphify-out/graph.json` and registered into global knowledge graph (`~/.graphify/global-graph.json`).
+         - Verification:
+           - `media-pipeline`: 147/147 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `6fcd21b` on `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 508 Markdown files passing fast validation cleanly, zero em dashes.
+
        - LOCAL PGVECTOR SEMANTIC SEARCH, RUBYLLM RAG & YOUTUBE VISIBILITY CONTROLS (2026-10-26):
          Integrated local vector embeddings and AI intelligence using pgvector and RubyLLM connected to local zdots Metal GPU inference servers, paired with YouTube visibility lifecycle controls:
          - Local pgvector 768-dim Embeddings & Hybrid Search:
