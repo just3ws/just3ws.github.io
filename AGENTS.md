@@ -11,6 +11,27 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SPEECH HOOK TITLES, DIGITAL EPHEMERALITY WITH SOVEREIGN ARCHIVING & RETROACTIVE ENRICHMENT (2026-10-25):
+         Audited media intake against original architecture contracts (`docs/architecture/pipeline-contracts-and-schemas.md` and `docs/bpmn/media-intake-pipeline.bpmn`), restored 1:1+ functional parity, enriched all published assets, and executed ephemerality horizon sweep:
+         - Canonical Speech Hook Extraction & Title Synthesis:
+           - Built `VideoMetadataExtractor.extract_hook_from_text` and camera date fallback to parse recording timestamps directly from `VID_YYYYMMDD_HHMMSS` filenames.
+           - Resolved ztranscribe nested output directory mismatch (`out_dir/<stem>/<stem>.txt`), restoring Whisper transcript capture.
+           - Formatted canonical titles as `#{series_name} (#{date_str}): #{hook}` and rich structured descriptions with spoken overviews.
+         - Digital Ephemerality with Sovereign Archiving (`EphemeralityService`):
+           - Implemented rolling-horizon policy: active videos publish as `public` directly to channel and series playlist (`PLNtb969T2-l0`).
+           - Added automatic reconciliation keeping newest 2 videos within 3-day window public, while rolling older videos into sovereign vault playlist (`PLYCKmHMYvC7s`) marked `private`.
+           - Executed live reconciliation on YouTube: active series playlist trimmed from 34 to exactly 2 active public videos, vault updated.
+         - Retroactive Asset Enrichment & Caption Upload:
+           - Created `RetroactiveEnrichmentService` and batch-enriched all 8 assets uploaded today (278, 277, 276, 275, 274, 273, 270, 269).
+           - Generated full Whisper transcripts and WebVTT captions on Metal GPU, uploaded captions to YouTube, and updated YouTube video titles and descriptions.
+         - Canonical Static Site Knowledge System Bridge (`SiteSyncService`):
+           - Connected Rails asset completion to write structured transcript dossiers to `_data/transcripts/<slug>.yml`.
+           - Appended canonical entries to `_data/video_assets.yml` preserving YAML schema integrity.
+         - Verification:
+           - `media-pipeline`: 115/115 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `45eb5e7` on `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 499 Markdown files passing fast validation cleanly, zero em dashes.
+           - `zdots`: 472/472 Bats tests passing, doctor rc=0.
+
        - FULL DISK ACCESS, CORRUPT FILE QUARANTINE LEDGER & AUTONOMOUS QUEUE (2026-10-25):
          Resolved launchd macOS CloudStorage TCC boundary, built automated corrupt file quarantine ledger, and verified autonomous conveyor operation:
          - Full Disk Access & Direct Ruby Launch:

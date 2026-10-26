@@ -1,0 +1,76 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, Ramblin' & Amblin'
+turns:
+- speaker: M1
+  text: |-
+    Okay. I've also found telling the AI to leverage DuckDB and
+    SQLite locally to build a strongly typed data lake and
+    while this is obviously no replacement for persistent
+    memory what it does is it gives you a foundation for
+    being able to to store domain data that's relevant to you
+    not just cache but you can start to build up a historical
+    knowledge base of the different resources that you
+    encounter so that way you can start to push the AI to
+    leverage that versus always hitting APIs or like for
+    example you know if you're on GitHub GitHub has
+    it's the GitHub client which allows for connecting a read-
+    only token to be able to run commands through GH API and
+    then you can say okay SQLite and DuckDB data lake based off
+    the GitHub history for this repo and you know the
+    the schema for uh for our GitHub is is is is well
+    documented and uh you can start storing some of that old
+    data maybe you know stuff that uh is already inert like uh
+    old PRs um
+    uh common history things like that you start building that
+    out in your local database and uh instead of making calls
+    and and wasting uh API uh limits rate limits on calls
+    upstream to GitHub you build that data locally and uh what
+    you end up with is a portable uh history that um
+    that um um lets you uh own your data a little bit more and
+    not have to uh be dependent on the uh network connection
+    for all your work and uh you can then connect to that
+    database either through your uh console you this is the
+    other part is that you build a interface uh to be able to
+    connect to that schema and generate in uh schema definition
+    document
+    document and erd and a d relationship document so that way
+    you can reason with it and then you can connect to it
+    through your database tool and now you have a browsable
+    data store that you can um like I use the uh dweaver um you
+    can connect to that uh SQLite database and and browse and
+    look through your history and then ask better questions
+    about hey you know like I see uh I'm missing an association
+    here between the
+    common history and common history and pr resolution um
+    maybe there's a um
+    um opportunity for for streamlining that relationship I don
+    't know I'm just making up stuff here um
+    um and then you're talking about modeling and updating your
+    local data store uh with the uh with the API and and and AI
+    instead of just fetching
+    fetching and fetch
+    ing and fetching and fetching the same data over and over
+    again you build out your local repository
+    and the uh and you tell the ad to build the tools to um
+    process its its queries through that and uh ensure that it
+    stays up to date
+    and uh and uh that you have uh tools to be able to access
+    this and you just describe your environment your
+    environment is going to be different
+    I'm like I know that sounds super vague but that's really
+    where you start um because these tools will know your
+    system better and what is available to you and make
+    recommendations based off of what it knows the most about
+    your environment so
+    I'm trying to be super uh specific aside from duck db sql
+    ite database I mean if you want to do um uh postgres or mysq
+    l or pongo I don't whatever um the point is just having some
+    place that you can reason with this data that it's not
+    always live calls over the uh over the network and burning
+    up your rate limits and leaving
+    leaving you with really nothing uh uh to take away at the
+    end of the day at least you have some data all right thanks
+    bye
