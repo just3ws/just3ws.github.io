@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-25
+     CURRENT FOCUS - last updated 2026-10-26
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,44 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - LOCAL PGVECTOR SEMANTIC SEARCH, RUBYLLM RAG & YOUTUBE VISIBILITY CONTROLS (2026-10-26):
+         Integrated local vector embeddings and AI intelligence using pgvector and RubyLLM connected to local zdots Metal GPU inference servers, paired with YouTube visibility lifecycle controls:
+         - Local pgvector 768-dim Embeddings & Hybrid Search:
+           - Enabled PostgreSQL 18 `vector` extension (`pgvector`) with HNSW cosine distance indexing (`vector_cosine_ops`) and PostgreSQL `tsvector` with GIN indexing.
+           - Built `EmbeddingService` leveraging local zdots embedding daemon on port 11501 (`nomic-embed-text-v2-moe.Q8_0.gguf`, 768 dimensions), returning vectors in milliseconds on Apple Silicon Metal GPU with zero network round-trips.
+           - Built `TranscriptChunkerService` parsing WebVTT cues into sliding, timestamp-accurate segments (`MediaAssetChunk`) preserving start and end seconds for exact playback deep linking (`?t=XXs`).
+           - Built `MediaSearchService` implementing hybrid search combining lexical full-text search with vector semantic search via Reciprocal Rank Fusion (RRF).
+           - Built `AssetVectorIndexService` and backfilled 240 assets and 3,316 chunks across the catalog.
+         - Local Sovereign Conversational Intelligence & RAG:
+           - Built `MediaIntelligenceService` leveraging `RubyLLM` connected to local Metal GPU llama-server on port 11500 (LLaMA 3.1 8B).
+           - Formulates answers strictly grounded in retrieved transcript passages with exact timestamped citations.
+           - Enforces clean output with zero em dashes and strictly canonical ecosystem entity naming (SCMC is Software Craftsmanship McHenry County).
+         - YouTube Visibility Lifecycle & Upstream Toolbar:
+           - Added 1-click Visibility Toggle Pills (`[🌍 Public]`, `[🔗 Unlisted]`, `[🔒 Private]`) on `/media_assets/:id` with instant local persistence and upstream YouTube API sync (`videos.update`).
+           - Added YouTube operations toolbar (`🔄 Refresh Remote Stats`, `📝 Sync WebVTT Captions`, `📋 Sync Playlist`, `🚀 Propagate Metadata`, `🔍 Validate Sync`).
+         - Operations Cockpit Intelligence UI (Tab 7):
+           - Upgraded Analytics & Intelligence tab with interactive Mode Switcher ("Hybrid Search" vs "Ask Local AI") and target series filter.
+           - Asynchronously renders semantic matches with relevance scores, timestamp jump buttons, and cited passages.
+         - Verification:
+           - `media-pipeline`: 140/140 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `503779f` on `main`.
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 499 Markdown files passing fast validation cleanly, zero em dashes.
+           - `zdots`: 472/472 Bats tests passing, doctor rc=0.
+
+       - COCKPIT LOCAL RECORD NAVIGATION & STATE-AWARE PRE-FLIGHT ADMIN (2026-10-26):
+         Audited system specification, established forensic migration parity matrix, and added deep link navigation and state-aware admin editing across all cockpit surfaces:
+         - Spec & Migration Parity Documents:
+           - Authored `system_purpose_spec.md` defining autonomous conveyor architecture, maildir topology, and non-negotiables.
+           - Authored `migration_parity_matrix.md` performing point-by-point audit of original implementation vs Rails microservice across 32 capabilities.
+         - Cockpit Record Navigation & Deep Linking:
+           - Added clickable links to local asset records (`/media_assets/:id`) and target playlists across all swimlane cards, execution tables, and modals.
+           - Added asset status badges and target badges across asset show and edit views.
+         - State-Aware Pre-Flight Editing & Conflict Avoidance:
+           - Built state-aware banner in `/media_assets/:id/edit` warning against race conditions when assets are in-flight (`processing`).
+           - Added explicit operator choice: `Save Local Record Only` vs `Save & Push to YouTube Now`.
+           - Protected pre-flight metadata on uningested assets so conveyor respects operator overrides as canonical truths.
+         - Verification:
+           - `media-pipeline`: Committed as `44a36f3` on `main`.
+           - `just3ws.github.io`: Committed as `91943894` on `master`.
        - SPEECH HOOK TITLES, DIGITAL EPHEMERALITY WITH SOVEREIGN ARCHIVING & RETROACTIVE ENRICHMENT (2026-10-25):
          Audited media intake against original architecture contracts (`docs/architecture/pipeline-contracts-and-schemas.md` and `docs/bpmn/media-intake-pipeline.bpmn`), restored 1:1+ functional parity, enriched all published assets, and executed ephemerality horizon sweep:
          - Canonical Speech Hook Extraction & Title Synthesis:
