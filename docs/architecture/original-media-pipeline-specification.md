@@ -16,7 +16,7 @@ The original media pipeline was engineered as an autonomous local system platfor
 The original pipeline mapped Google Drive folders to a modified Maildir-style queue hierarchy across each channel and series track:
 
 ```
-Media Intake/whoistechcmty/<target_slug>/
+media-pipeline/whoistechcmty/<target_slug>/
 ├── staged/          # Manual hold directory: safe backup that avoids autonomous intake
 ├── pending/         # Active FIFO ingress queue: scanned by daemon and worker
 ├── processing/      # In-flight lock directory: exactly one active video across all channels

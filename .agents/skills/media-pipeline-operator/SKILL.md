@@ -23,7 +23,7 @@ The media intake pipeline operates on a zero-disk-waste cloud streaming architec
 ## 2. The 5-State Maildir Directory Lifecycle
 
 Queue directories are organized by channel and target playlist under:
-`~/Google Drive/My Drive/Media Intake/<channel>/<target>/`
+`~/ai/media-pipeline/<channel>/<target>/` and `~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline/<channel>/<target>/`
 
 | Directory | State Purpose | Operator Action |
 | :--- | :--- | :--- |
@@ -114,7 +114,7 @@ mp swiftbar
 
 2. **Quarantined in `failed/`**:
    - View the diagnostic error log:
-     `cat "Media Intake/<channel>/<target>/failed/<filename>.error.log"`
+     `cat ~/ai/media-pipeline/<channel>/<target>/failed/<filename>.error.log`
    - Address the root cause (e.g., token expiration, corrupt container), then move back to `pending/`.
 
 3. **Quota Exhaustion**:

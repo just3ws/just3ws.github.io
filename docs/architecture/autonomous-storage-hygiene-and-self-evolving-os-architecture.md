@@ -93,7 +93,7 @@ The platform maximizes autonomy and financial sustainability by strictly dividin
 The platform's storage hygiene directly serves the media and knowledge pipeline:
 
 1. **Top-of-Funnel Ingress & Cloud Decoupling**: Phone media drops over fast local transfer (LocalSend / USB into `~/Downloads`), and `--drop` immediately relocates it into Google Drive cold pending storage (`cloud_archive_path/<channel>/<target>/pending/`). This eliminates mobile cloud upload stalls while keeping resting multi-gigabyte assets off the primary SSD.
-2. **Single-Item On-Demand NVMe Staging**: Pipeline workers pull strictly 1 video at a time (FIFO) into fast local NVMe SSD (`~/.local/var/media_intake/.../processing/`) under POSIX nice 15 and macOS Darwin Background QoS (`taskpolicy -b`).
+2. **Single-Item On-Demand NVMe Staging**: Pipeline workers pull strictly 1 video at a time (FIFO) into fast local NVMe SSD (`~/ai/media-pipeline/.../processing/`) under POSIX nice 15 and macOS Darwin Background QoS (`taskpolicy -b`).
 3. **Local Transcription & DSP**: Metal-accelerated `whisper.cpp` and ffmpeg DSP filters run locally on the active working master.
 4. **Intellectual Yield Harvesting**: Core lessons, timeline events, and entity relationships are extracted and indexed into `~/my` and CareerOS datalake before raw files are touched.
 5. **Ephemeral Master Release & Cloud Quarantine**: Once bit-for-bit verified in Google Drive `processed/YYYY-MM/`, the multi-gigabyte working master on local NVMe SSD is released (`FileUtils.rm_f`), preserving only lightweight `.receipt.json` sidecars on local disk. If upstream YouTube API quotas enter daily cooldown, pending files quarantine to Google Drive `blocked/` rather than saturating local disk headroom.

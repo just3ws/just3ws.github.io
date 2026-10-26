@@ -294,7 +294,7 @@ class YouTubeDeduplicator
   end
 
   def load_receipt_video_ids
-    default_dir = "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake"
+    default_dir = "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline"
     dir = @receipts_dir || (Dir.exist?(default_dir) ? default_dir : nil)
     return [] unless dir && Dir.exist?(dir)
 

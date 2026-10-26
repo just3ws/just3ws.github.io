@@ -21,7 +21,7 @@ The entire media pipeline is engineered around six non-negotiable architectural 
 ### Tenet 1: Zero Permanent Local Disk Footprint (Zero Disk Waste)
 
 - High-definition video files consume 1 GB to 4 GB per recording. On a 256 GB internal Apple Silicon SSD, retaining raw footage locally would quickly exhaust host disk space.
-- Raw video resides strictly in Google Drive cloud storage (`CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/Media Intake/`).
+- Raw video resides strictly in Google Drive cloud storage (`CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline/`) and local NVMe staging (`~/ai/media-pipeline/`).
 - Local scratch audio generated during processing (`/tmp/intake_scratch_*` or `~/.local/state/just3ws/scratch/`) is temporary and strictly evicted immediately after transcription completes.
 - Master video files are mirrored into year-month cloud archives (`processed/YYYY-MM/`) and evicted from local SSD staging upon verification.
 

@@ -296,7 +296,7 @@ body_class: page-youtube-dashboard
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; font-size: 0.8rem; color: #475569;" id="introspect-step-content">
           <div>
             <strong>Service Task:</strong> <code>bin/live_dashboard_streamer.rb</code><br>
-            <strong>Watch Path:</strong> <code>Media Intake/whoistechcmty/*/pending/</code><br>
+            <strong>Watch Path:</strong> <code>media-pipeline/whoistechcmty/*/pending/</code><br>
             <strong>Polling Interval:</strong> 1.5s directory scan
           </div>
           <div>
@@ -2110,7 +2110,7 @@ body_class: page-youtube-dashboard
     slug: "ramblin-amblin"
     channel_id: "UCxxxxxxxx"
     channel_name: "@whoistechcmty"
-    drive_path: "Media Intake/whoistechcmty/ramblin-amblin"
+    drive_path: "media-pipeline/whoistechcmty/ramblin-amblin"
     playlist_id: "PLxxxxxxxxxxxx"
     default_privacy: "unlisted"
     category_id: "27"
@@ -2507,7 +2507,7 @@ teleprompter_script:
       badge: 'State: Active / Polling 1.5s',
       badgeColor: '#15803d',
       badgeBg: '#dcfce7',
-      col1: '<strong>Service Task:</strong> <code>bin/live_dashboard_streamer.rb</code><br><strong>Watch Target:</strong> <code>Media Intake/whoistechcmty/*/pending/</code><br><strong>Transport:</strong> SSE EventStream (port 7025)',
+      col1: '<strong>Service Task:</strong> <code>bin/live_dashboard_streamer.rb</code><br><strong>Watch Target:</strong> <code>media-pipeline/whoistechcmty/*/pending/</code><br><strong>Transport:</strong> SSE EventStream (port 7025)',
       col2: '<strong>SLI Latency:</strong> &lt; 1500ms from Drive sync to SSE event<br><strong>Lock Status:</strong> Unlocked (read-only)<br><strong>Storage:</strong> 0 bytes local disk footprint',
       col3: '<strong>Self-Healing Runbook:</strong><br>Client automatically falls back to 3s REST sync polling if SSE socket drops.'
     },

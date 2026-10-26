@@ -174,7 +174,7 @@ class MediaIntakePipeline
   end
 
   def base_path
-    @base_path ||= File.expand_path(config['base_path'] || '~/.local/var/media_intake')
+    @base_path ||= File.expand_path(config['base_path'] || '~/ai/media-pipeline')
   end
 
   def cloud_archive_path
