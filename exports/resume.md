@@ -45,6 +45,11 @@ distributed OpenTelemetry observability.
   via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM,
   OpenTelemetry distributed tracing, Ahoy analytics, and PgHero query tuning across 270+
   processed video masters.
+- Forensic Audio DSP Restoration & Sovereign Verification (dehum): Engineered a
+  deterministic 5-stage FFmpeg audio restoration and clock-drift synchronization
+  pipeline (atempo, adeclick, highpass, afftdn, and 8-harmonic 60 Hz notch cascade)
+  eliminating electromagnetic interference and corona discharge crackle recorded under
+  345,000-volt transmission lines while preserving lossless video streams.
 - Technical Conversation Archive & Knowledge Graph: Built and curated a
   contract-validated oral history platform preserving 218 technical interviews with
   Software Craftsmanship, Ruby, and JVM practitioners, enforcing build-time schema
@@ -61,8 +66,9 @@ distributed OpenTelemetry observability.
   scraped text before local LLM evaluation.
 
 **Skills:** Ruby on Rails, PostgreSQL, pgvector, Solid Queue, RubyLLM, Local-First AI
-Inference, Whisper & Speech-to-Text, OpenTelemetry, TypeScript, Node.js, WebSockets,
-Deterministic Simulation, Prompt Injection Defense, Chrome Extensions (MV3), CI/CD
+Inference, Whisper & Speech-to-Text, FFmpeg & Audio DSP, OpenTelemetry, TypeScript,
+Node.js, WebSockets, Deterministic Simulation, Prompt Injection Defense, Chrome
+Extensions (MV3), CI/CD
 
 ### Associate Director, Staff Engineer at OneMain Financial
 **January 2021 - February 2026** | Remote

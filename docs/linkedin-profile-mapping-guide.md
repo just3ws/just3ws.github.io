@@ -22,17 +22,36 @@ It reflects the evolution of the system:
 
 LinkedIn's headline is the single most indexed search field. It must clearly anchor technical domain authority without ambiguous management titles or buzzwords.
 
-### Primary Recommended Headline (Staff Positioning)
+### Option A: Primary Recommended Headline (Canonical Staff Positioning)
 ```text
-Staff Software Engineer | Platform Architecture, Production Systems & Reliability | OpenTelemetry & Legacy Modernization | just3ws.com
+Staff Software Engineer | Platform Architecture, Production Systems & Reliability | Ruby on Rails, PostgreSQL, pgvector & OpenTelemetry | just3ws.com
 ```
-*Length: 133 / 220 characters.*
+*Length: 149 / 220 characters.*
 
-### Alternative Headline (Principal Systems Architect Positioning)
+### Option B: Staff Systems Architect & Legacy Modernization
 ```text
-Principal Software Engineer | Systems Architecture, Production Reliability & Observability | Distributed Systems & Incident Leadership | just3ws.com
+Staff Software Engineer & Systems Architect | Legacy Modernization, Distributed Systems & Zero-Downtime Migrations | Ruby on Rails, PostgreSQL & TypeScript
 ```
-*Length: 147 / 220 characters.*
+
+### Option C: Senior / Lead Ruby on Rails Infrastructure
+```text
+Senior / Lead Software Engineer | Ruby on Rails (2.x-8.x), PostgreSQL, pgvector, Solid Queue & Sidekiq | High-Throughput Production Systems & Reliability
+```
+
+### Option D: Staff Platform & Developer Enablement Lead
+```text
+Staff Platform & Enablement Engineer | Developer Productivity, CI/CD Verification Gates, OpenTelemetry & High-Severity Incident Leadership | just3ws.com
+```
+
+### Option E: Founding Staff Engineer (0-to-1 Product & Local AI Systems)
+```text
+Founding Staff Software Engineer | 0-to-1 Full-Stack Architecture, Local-First AI & RAG (pgvector, RubyLLM), TypeScript & Ruby on Rails 8 | just3ws.com
+```
+
+### Option F: Staff Observability & Resilience Architect
+```text
+Staff Observability & Resilience Architect | OpenTelemetry Working Group Founder, Distributed Tracing & High-Severity Production Incident Triage
+```
 
 ---
 
@@ -106,6 +125,22 @@ Each entry is mapped from `_data/resume/positions/*.yml`. LinkedIn limits positi
 - **EMR-Bear:** Omit completely from public LinkedIn profile (Approach A).
 - **agent-tooling:** Omit completely from LinkedIn experience.
 - **OneMain Financial:** Lead with acquisitions platform architecture, session state integrity, OTel leadership, and incident response.
+
+### 0. just3ws (Independent) (Staff Software Engineer)
+- **Title:** Staff Software Engineer
+- **Company:** just3ws (Independent)
+- **Dates:** Feb 2026 to Present
+- **Location:** Chicago, IL
+- **Description:**
+```text
+Architecting and operating production software platforms across Ruby on Rails 8, PostgreSQL 18 (pgvector), TypeScript, and local Metal GPU AI inference runtimes, combining deterministic state engines, autonomous media pipelines, forensic audio DSP restoration, and distributed OpenTelemetry observability.
+
+• Autonomous Media Pipeline & Local AI RAG Microservice: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) media ingestion and publishing platform with on-device Metal GPU Whisper transcription, hybrid lexical and vector semantic search via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM, OpenTelemetry distributed tracing, Ahoy analytics, and NIST SP 800-53 configuration validation across 270+ processed video masters.
+• Forensic Audio DSP Restoration & Sovereign Verification (dehum): Engineered a deterministic 5-stage FFmpeg audio restoration and clock-drift synchronization pipeline (atempo, adeclick, highpass, afftdn, and 8-harmonic 60 Hz notch cascade) eliminating electromagnetic interference and corona discharge crackle recorded under 345,000-volt high-tension transmission lines while preserving lossless video streams.
+• Technical Conversation Archive & Knowledge Graph: Built and curated a contract-validated oral history platform preserving 218 technical interviews with Software Craftsmanship, Ruby, and JVM practitioners, enforcing build-time schema verification, speaker diarization, and semantic knowledge graph cross-linking across 500+ indexed pages.
+• Deterministic State Engine & Verification Platform (Phalanx Duel): Engineered a server-authoritative real-time tactical game platform in TypeScript, Node.js, PostgreSQL, and WebSockets featuring a pure deterministic rules engine, append-only replayable action ledger, OpenTelemetry trace propagation, and property-based CI verification gates.
+• Multi-Source Ingestion & Prompt-Injection Defense (WWWorkRemote): Designed a Rails 8 and pgvector semantic matching platform with a Manifest V3 Chrome extension across 16 ATS adapters and a 4-stage prompt-injection guardrails pipeline screening untrusted scraped text before local LLM evaluation.
+```
 
 ### 1. OneMain Financial (Staff Software Engineer)
 - **Title:** Staff Software Engineer

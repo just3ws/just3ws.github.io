@@ -1,157 +1,832 @@
 ---
 layout: minimal
-title: LinkedIn Profile Mapping & Export
-description: Authoritative pre-formatted text blocks and portfolio mapping for LinkedIn profiles.
+title: LinkedIn & Application Profile Helper
+description: Interactive copy-paste workbench for updating LinkedIn and filling out ATS job applications from canonical resume sources.
 permalink: /linkedin/
-breadcrumb: LinkedIn Export
+breadcrumb: Profile & ATS Helper
 ---
 
+<style>
+  .linkedin-export-page {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+    color: var(--color-text, #1e293b);
+  }
+  .helper-sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border, #cbd5e1);
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    margin-bottom: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  }
+  .helper-nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+  .helper-nav-links a {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-heading, #0f172a);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    background: var(--color-bg-subtle, #f1f5f9);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+  .helper-nav-links a:hover {
+    border-color: var(--color-primary, #0f766e);
+    color: var(--color-primary, #0f766e);
+  }
+  .helper-progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .helper-progress-bar {
+    width: 7rem;
+    height: 0.5rem;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .helper-progress-fill {
+    height: 100%;
+    background: var(--color-primary, #0f766e);
+    width: 0%;
+    transition: width 0.2s ease;
+  }
+  .linkedin-card {
+    background: #ffffff;
+    border: 1px solid var(--color-border, #cbd5e1);
+    border-radius: 10px;
+    padding: 1.25rem 1.35rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    transition: border-color 0.15s ease;
+  }
+  .linkedin-card.card-completed {
+    border-color: #10b981;
+    background: #f8fafc;
+  }
+  .linkedin-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .linkedin-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.6rem 0 0.4rem;
+  }
+  .linkedin-limit-note {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted, #64748b);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+  .linkedin-copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.32rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0f172a;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+  .linkedin-copy-btn:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+  }
+  .linkedin-copy-btn.primary-btn {
+    background: var(--color-primary, #0f766e);
+    color: #ffffff;
+    border-color: var(--color-primary, #0f766e);
+  }
+  .linkedin-copy-btn.primary-btn:hover {
+    background: #115e59;
+  }
+  .linkedin-copy-btn.copied {
+    background: #059669 !important;
+    color: #ffffff !important;
+    border-color: #059669 !important;
+  }
+  .linkedin-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #0f172a;
+    resize: vertical;
+    min-height: 7.5rem;
+  }
+  .linkedin-textarea-over {
+    border-color: #dc2626 !important;
+    background: #fef2f2 !important;
+  }
+  .quickfill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+  }
+  .quickfill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+  }
+  .quickfill-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #64748b;
+    display: block;
+  }
+  .quickfill-value {
+    font-size: 0.83rem;
+    font-weight: 700;
+    color: #0f172a;
+    word-break: break-all;
+  }
+  .field-chip-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.65rem 0;
+    padding: 0.55rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+  }
+  .done-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0f766e;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+  }
+  .skill-copy-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.55rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+  .skill-copy-pill:hover {
+    background: #e2e8f0;
+    border-color: #0f766e;
+    color: #0f766e;
+  }
+  .filter-pill-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .filter-pill-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 999px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #334155;
+    cursor: pointer;
+  }
+  .filter-pill-btn.active {
+    background: #0f766e;
+    color: #ffffff;
+    border-color: #0f766e;
+  }
+</style>
+
 <article class="page linkedin-export-page">
-  <header class="home-header">
-    <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e); margin-bottom: 0.5rem;">
-      Professional Presence Tooling
+  <header class="home-header" style="margin-bottom: 1.25rem;">
+    <div style="font-size: 0.82rem; font-weight: 800; color: var(--color-primary, #0f766e); margin-bottom: 0.35rem;">
+      LinkedIn Update &amp; Universal ATS Application Workbench
     </div>
-    <h1 style="font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; color: var(--color-heading, #0f172a); margin-bottom: 0.5rem;">
-      LinkedIn Profile Mapping &amp; Export
+    <h1 style="font-size: clamp(1.85rem, 3.5vw, 2.5rem); font-weight: 900; color: var(--color-heading, #0f172a); margin-bottom: 0.5rem;">
+      LinkedIn &amp; Application Profile Helper
     </h1>
-    <p style="font-size: 1.1rem; color: var(--color-text-muted, #525866); max-width: 52rem; margin: 0 0 1rem;">
-      Pre-formatted, character-bounded copy blocks for Headline, About, Featured, Projects, Experience, and Skills sections mapped directly from canonical resume sources.
+    <p style="font-size: 1.02rem; color: var(--color-text-muted, #525866); max-width: 58rem; margin: 0 0 0.75rem;">
+      One-click copy-paste workbench for updating every LinkedIn profile section and filling out ATS job applications (Workday, Greenhouse, Lever, Ashby, iCims). Every field is synchronized with canonical resume sources (`_data/resume/`) and verified against character limits.
     </p>
-    <div style="font-size: 0.88rem;">
-      📖 Detailed Architecture: <a href="/docs/linkedin-profile-mapping-guide/" style="color: var(--color-primary, #0f766e); font-weight: 700;">LinkedIn Profile Mapping Guide</a>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.86rem;">
+      <span>📖 Guide: <a href="/docs/linkedin-profile-mapping-guide/" style="color: var(--color-primary, #0f766e); font-weight: 700;">LinkedIn Profile Mapping Guide</a></span>
+      <span>📄 Live Resume: <a href="/resume/" style="color: var(--color-primary, #0f766e); font-weight: 700;">/resume/</a></span>
+      <span>🎧 Dehum Case Study: <a href="/dehum/" style="color: var(--color-primary, #0f766e); font-weight: 700;">/dehum/</a></span>
     </div>
   </header>
 
-  <!-- 1. Headline Section -->
-  <section class="linkedin-card" style="margin-bottom: 2rem;">
+  <!-- Sticky Navigation & Checklist Progress Bar -->
+  <nav class="helper-sticky-nav" aria-label="Profile Helper Sections">
+    <div class="helper-nav-links">
+      <a href="#sec-quickfill">0. Quick-Fill &amp; PDFs</a>
+      <a href="#sec-headlines">1. Headlines (6)</a>
+      <a href="#sec-about">2. About &amp; Pitches</a>
+      <a href="#sec-featured">3. Featured (5)</a>
+      <a href="#sec-projects">4. Projects (5)</a>
+      <a href="#sec-experience">5. Experience (25)</a>
+      <a href="#sec-orgs">6. Organizations (3)</a>
+      <a href="#sec-skills">7. Skills</a>
+    </div>
+    <div class="helper-progress-wrap">
+      <span id="checklist-progress-label">0 / 0 Done</span>
+      <div class="helper-progress-bar">
+        <div id="checklist-progress-fill" class="helper-progress-fill"></div>
+      </div>
+      <button class="linkedin-copy-btn" onclick="resetHelperChecklist()" title="Clear saved checkmarks">Reset</button>
+    </div>
+  </nav>
+
+  <!-- 0. Universal Application & Contact Quick-Fill + Resume Downloads -->
+  <section id="sec-quickfill" class="linkedin-card" data-check-id="sec-quickfill">
     <div class="linkedin-card-header">
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">1. LinkedIn Headline (220-Character Limit)</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        0. Universal ATS Quick-Fill &amp; Vector Resume Downloads
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-quickfill"> Mark Section Done
+      </label>
     </div>
-    <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: 0.25rem 0 0.75rem;">
-      Primary recommended headline targeted for Staff Software Engineer roles across platform architecture, reliability, and observability.
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 0.75rem;">
+      Click any button to copy contact fields, links, or role metadata directly into LinkedIn, Workday, Greenhouse, Lever, or Ashby forms.
     </p>
-    <div class="linkedin-card-actions">
-      <span class="linkedin-limit-note" data-count-for="headline-textarea">0 / 220 characters</span>
-      <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'headline-textarea')">Copy Headline</button>
+
+    <div class="quickfill-grid">
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Full Name</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.name }}</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.name }}')">Copy</button>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">First / Last Name</span>
+          <span class="quickfill-value">Mike / Hall</span>
+        </div>
+        <div style="display: flex; gap: 0.25rem;">
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Mike')">First</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Hall')">Last</button>
+        </div>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Email Address</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.contact.email }}</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.contact.email }}')">Copy</button>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Phone Number</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.contact.phone }}</span>
+        </div>
+        <div style="display: flex; gap: 0.25rem;">
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.contact.phone }}')">Formatted</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, '8478773825')">Digits</button>
+        </div>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Location (City, State)</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.location.display }}</span>
+        </div>
+        <div style="display: flex; gap: 0.25rem;">
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.location.display }}')">Full</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Chicago')">City</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'IL')">IL</button>
+        </div>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">LinkedIn Profile URL</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.contact.linkedin.url }}</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.contact.linkedin.url }}')">Copy</button>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">GitHub Profile URL</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.contact.github.url }}</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.contact.github.url }}')">Copy</button>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Portfolio / Website URL</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.contact.website.url }}</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.contact.website.url }}')">Copy</button>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Interactive Resume URL</span>
+          <span class="quickfill-value">https://www.just3ws.com/resume/</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://www.just3ws.com/resume/')">Copy</button>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Current Title &amp; Company</span>
+          <span class="quickfill-value">Staff Software Engineer @ just3ws</span>
+        </div>
+        <div style="display: flex; gap: 0.25rem;">
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Staff Software Engineer')">Title</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'just3ws (Independent)')">Company</button>
+        </div>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Experience &amp; Authorization</span>
+          <span class="quickfill-value">25+ Yrs | US Citizen (No Sponsorship)</span>
+        </div>
+        <div style="display: flex; gap: 0.25rem;">
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, '25')">25</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Authorized to work in the United States for any employer without visa sponsorship.')">Auth</button>
+        </div>
+      </div>
+
+      <div class="quickfill-item">
+        <div>
+          <span class="quickfill-label">Calendly Scheduling URL</span>
+          <span class="quickfill-value">{{ site.data.resume.profile.contact.calendly.url }}</span>
+        </div>
+        <button class="linkedin-copy-btn" onclick="copyRawText(this, '{{ site.data.resume.profile.contact.calendly.url }}')">Copy</button>
+      </div>
     </div>
-    <textarea id="headline-textarea" class="linkedin-textarea" data-limit="220" style="min-height: 4rem;" readonly>Staff Software Engineer | Platform Architecture, Production Systems & Reliability | OpenTelemetry & Legacy Modernization | just3ws.com</textarea>
+
+    <!-- Calibrated Resume PDF & Plain-Text Downloads -->
+    <div style="margin-top: 1.15rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+      <div style="font-size: 0.84rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">
+        📁 Calibrated Resume Exports (Also synced locally to <code>~/Desktop/resumes/</code> and <code>~/ai/resumes/</code>)
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 0.6rem;">
+        <div style="padding: 0.6rem 0.75rem; border: 1px solid #0f766e; border-radius: 8px; background: #f0fdfa; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <strong style="font-size: 0.82rem; color: #0f172a; display: block;">Canonical Staff Software Engineer</strong>
+            <span style="font-size: 0.73rem; color: #475569;">Primary All-Around Staff / Principal IC</span>
+          </div>
+          <div style="display: flex; gap: 0.3rem;">
+            <a href="/exports/resume.pdf" download class="linkedin-copy-btn primary-btn" style="text-decoration: none;">PDF</a>
+            <a href="/resume.txt" download class="linkedin-copy-btn" style="text-decoration: none;">TXT</a>
+            <a href="/resume.md" download class="linkedin-copy-btn" style="text-decoration: none;">MD</a>
+          </div>
+        </div>
+
+        {% for pair in site.data.resume.archetypes %}
+          {% assign arch = pair[1] %}
+          <div style="padding: 0.6rem 0.75rem; border: 1px solid #cbd5e1; border-radius: 8px; background: #ffffff; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <strong style="font-size: 0.82rem; color: #0f172a; display: block;">{{ arch.short_label }}: {{ arch.title | truncate: 36 }}</strong>
+              <span style="font-size: 0.72rem; color: #64748b;">{{ arch.target_tier }}</span>
+            </div>
+            <div style="display: flex; gap: 0.3rem;">
+              <a href="/exports/{{ arch.file_slug }}-resume.pdf" download class="linkedin-copy-btn" style="text-decoration: none;">PDF</a>
+              <a href="/resumes/{{ arch.file_slug }}.txt" download class="linkedin-copy-btn" style="text-decoration: none;">TXT</a>
+              <a href="/resumes/{{ arch.file_slug }}.md" download class="linkedin-copy-btn" style="text-decoration: none;">MD</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </section>
 
-  <!-- 2. About / Summary Section -->
-  <section class="linkedin-card" style="margin-bottom: 2rem;">
+  <!-- 1. Headline Options Section -->
+  <section id="sec-headlines" class="linkedin-card" data-check-id="sec-headlines">
     <div class="linkedin-card-header">
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">2. LinkedIn About / Summary (2,600-Character Limit)</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        1. LinkedIn Headline Options (220-Character Limit)
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-headlines"> Mark Section Done
+      </label>
     </div>
-    <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: 0.25rem 0 0.75rem;">
-      Three-level scan: 15-second value proposition, core operating competencies, and sovereign portfolio proof.
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 0.9rem;">
+      Six calibrated headline options aligned with your primary Staff/Principal resume and role archetypes. Option A is the recommended all-around LinkedIn headline.
     </p>
-    <div class="linkedin-card-actions">
-      <span class="linkedin-limit-note" data-count-for="about-textarea">0 / 2600 characters</span>
-      <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'about-textarea')">Copy About Section</button>
+
+    <div style="display: grid; gap: 1rem;">
+      <div>
+        <div class="linkedin-card-actions">
+          <strong style="font-size: 0.86rem; color: #0f766e;">Option A (Recommended Canonical Staff Software Engineer)</strong>
+          <div>
+            <span class="linkedin-limit-note" data-count-for="headline-opt-a">0 / 220 characters</span>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'headline-opt-a')">Copy Headline A</button>
+          </div>
+        </div>
+        <textarea id="headline-opt-a" class="linkedin-textarea" data-limit="220" style="min-height: 3.5rem;" readonly>Staff Software Engineer | Platform Architecture, Production Systems & Reliability | Ruby on Rails, PostgreSQL, pgvector & OpenTelemetry | just3ws.com</textarea>
+      </div>
+
+      <div>
+        <div class="linkedin-card-actions">
+          <strong style="font-size: 0.86rem; color: #0f172a;">Option B (Staff Systems Architect &amp; Legacy Modernization)</strong>
+          <div>
+            <span class="linkedin-limit-note" data-count-for="headline-opt-b">0 / 220 characters</span>
+            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'headline-opt-b')">Copy Headline B</button>
+          </div>
+        </div>
+        <textarea id="headline-opt-b" class="linkedin-textarea" data-limit="220" style="min-height: 3.5rem;" readonly>Staff Software Engineer & Systems Architect | Legacy Modernization, Distributed Systems & Zero-Downtime Migrations | Ruby on Rails, PostgreSQL & TypeScript</textarea>
+      </div>
+
+      <div>
+        <div class="linkedin-card-actions">
+          <strong style="font-size: 0.86rem; color: #0f172a;">Option C (Senior / Lead Ruby on Rails Infrastructure)</strong>
+          <div>
+            <span class="linkedin-limit-note" data-count-for="headline-opt-c">0 / 220 characters</span>
+            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'headline-opt-c')">Copy Headline C</button>
+          </div>
+        </div>
+        <textarea id="headline-opt-c" class="linkedin-textarea" data-limit="220" style="min-height: 3.5rem;" readonly>Senior / Lead Software Engineer | Ruby on Rails (2.x-8.x), PostgreSQL, pgvector, Solid Queue & Sidekiq | High-Throughput Production Systems & Reliability</textarea>
+      </div>
+
+      <div>
+        <div class="linkedin-card-actions">
+          <strong style="font-size: 0.86rem; color: #0f172a;">Option D (Staff Platform &amp; Developer Enablement Lead)</strong>
+          <div>
+            <span class="linkedin-limit-note" data-count-for="headline-opt-d">0 / 220 characters</span>
+            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'headline-opt-d')">Copy Headline D</button>
+          </div>
+        </div>
+        <textarea id="headline-opt-d" class="linkedin-textarea" data-limit="220" style="min-height: 3.5rem;" readonly>Staff Platform & Enablement Engineer | Developer Productivity, CI/CD Verification Gates, OpenTelemetry & High-Severity Incident Leadership | just3ws.com</textarea>
+      </div>
+
+      <div>
+        <div class="linkedin-card-actions">
+          <strong style="font-size: 0.86rem; color: #0f172a;">Option E (Founding Staff Engineer: 0-to-1 Product &amp; Local AI Systems)</strong>
+          <div>
+            <span class="linkedin-limit-note" data-count-for="headline-opt-e">0 / 220 characters</span>
+            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'headline-opt-e')">Copy Headline E</button>
+          </div>
+        </div>
+        <textarea id="headline-opt-e" class="linkedin-textarea" data-limit="220" style="min-height: 3.5rem;" readonly>Founding Staff Software Engineer | 0-to-1 Full-Stack Architecture, Local-First AI & RAG (pgvector, RubyLLM), TypeScript & Ruby on Rails 8 | just3ws.com</textarea>
+      </div>
+
+      <div>
+        <div class="linkedin-card-actions">
+          <strong style="font-size: 0.86rem; color: #0f172a;">Option F (Staff Observability &amp; Resilience Architect)</strong>
+          <div>
+            <span class="linkedin-limit-note" data-count-for="headline-opt-f">0 / 220 characters</span>
+            <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'headline-opt-f')">Copy Headline F</button>
+          </div>
+        </div>
+        <textarea id="headline-opt-f" class="linkedin-textarea" data-limit="220" style="min-height: 3.5rem;" readonly>Staff Observability & Resilience Architect | OpenTelemetry Working Group Founder, Distributed Tracing & High-Severity Production Incident Triage</textarea>
+      </div>
     </div>
-    <textarea id="about-textarea" class="linkedin-textarea" data-limit="2600" style="min-height: 16rem;" readonly>I make complex software systems easier to understand and safer to change.
+  </section>
 
-I am a Staff Software Engineer rooted in the discipline of software engineering. I work across multiple levels of system architecture: from low-level runtime behavior and telemetry through distributed asynchronous workflows and cross-team organizational boundaries.
+  <!-- 2. About / Summary & Cover Note Pitch Options -->
+  <section id="sec-about" class="linkedin-card" data-check-id="sec-about">
+    <div class="linkedin-card-header">
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        2. LinkedIn About (2,600-Char Limit) &amp; ATS Cover Pitches
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-about"> Mark Section Done
+      </label>
+    </div>
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 0.75rem;">
+      Updated with your current `just3ws (Independent)` systems (`media-pipeline`, `dehum` high-voltage DSP restoration, `The Sound Above`, `Phalanx Duel`, and `WWWorkRemote`) alongside `OneMain Financial`.
+    </p>
 
-I stay close to the code while helping engineering teams agree on what the system actually does, who owns it, and how to change it safely under live customer load.
+    <div class="linkedin-card-actions">
+      <strong style="font-size: 0.88rem; color: #0f766e;">Primary LinkedIn About / Summary Block</strong>
+      <div>
+        <span class="linkedin-limit-note" data-count-for="about-textarea">0 / 2600 characters</span>
+        <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'about-textarea')">Copy LinkedIn About</button>
+      </div>
+    </div>
+    <textarea id="about-textarea" class="linkedin-textarea" data-limit="2600" style="min-height: 18rem;" readonly>I make complex software systems easier to understand and safer to change.
+
+I am a Staff Software Engineer rooted in hands-on software engineering across production web platforms, distributed systems, legacy modernization, observability, and local-first AI architectures. I work across multiple levels of system design: from runtime behavior, query plans, and signal processing through background pipelines and cross-team boundaries.
+
+I stay close to the code while helping teams agree on what the system actually does, who owns it, and how to change it safely under live customer load.
 
 What I Do:
-• Platform Architecture & Legacy Modernization: Reconstructing undocumented execution flows, untangling multi-step state machines, and executing zero-downtime database and framework migrations.
-• Production Reliability & Incident Response: Serving as final escalation lead for high-severity production failures, diagnosing live system pathology, and turning outages into permanent organizational and operational safeguards.
-• Systems Observability: Founding and scaling OpenTelemetry working groups, defining metric and trace semantics across polyglot microservices, and aligning telemetry with actual business transactions.
-• Sovereign Verification & Systems Tooling: Building deterministic, offline-capable developer runtimes, UNIX pipeline tooling, and local-first evaluation harnesses that hold non-deterministic systems accountable.
+• Platform Architecture & Modernization: Reconstructing undocumented execution flows, untangling multi-step state machines, and executing zero-downtime Ruby on Rails, PostgreSQL, and service migrations.
+• Production Reliability & Incident Response: Serving as final escalation lead for high-severity production failures, diagnosing live pathology, and turning outages into permanent safeguards.
+• Systems Observability: Founding and scaling OpenTelemetry working groups, defining trace and metric semantics across polyglot services, and aligning telemetry with customer workflows.
+• Sovereign AI, Media & Deterministic Systems: Building production Rails 8 and PostgreSQL 18 (pgvector) platforms, hybrid vector/lexical search, deterministic TypeScript state engines, and FFmpeg audio DSP pipelines.
 
-Selected Work & Proof:
-1. OneMain Financial (Staff Software Engineer): Led acquisitions platform architecture, resolved multi-step session state integrity failures, founded the enterprise OpenTelemetry Working Group, and modernized core Rails services under continuous production load.
-2. The Sovereign Verification Project: A 3-part forensic systems investigation analyzing DSP audio restoration, dual-model generative divergence, and domain boundaries under 345,000-volt high-tension transmission lines (just3ws.com/series/ai-competence/).
-3. The Sound Above: A 37-episode technical rewatch series examining twenty years of Software Craftsmanship history, community building, and engineering stewardship (just3ws.com/series/the-sound-above/).
-4. Phalanx Duel: A tactical rules engine and zero-indirection state machine built in Go, TypeScript, and SwiftUI (just3ws.com/phalanx-duel/).
+Selected Work & Production Proof:
+1. OneMain Financial (Staff Software Engineer): Led Acquisitions platform architecture, delivered instant loan disbursement in minutes, resolved silent session state corruptions, founded the OpenTelemetry Working Group, and consolidated attrition-impacted teams into a high-performing enablement unit.
+2. Autonomous Media Pipeline & Local AI RAG: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) platform with Metal GPU Whisper transcription, hybrid RRF semantic search, local LLaMA 3.1 RAG synthesis via RubyLLM, and NIST SP 800-53 configuration governance across 270+ video masters.
+3. Forensic Audio DSP & Sovereign Verification (dehum): Engineered a deterministic 5-stage FFmpeg audio restoration and clock-drift sync pipeline eliminating 60 Hz EMI hum and corona discharge crackle under 345,000-volt transmission lines (just3ws.com/dehum/).
+4. Phalanx Duel & Technical Archive: Built a deterministic TypeScript tactical state engine (just3ws.com/phalanx-duel/) and an oral history knowledge graph preserving 218 interviews (just3ws.com/series/the-sound-above/).
 
-Full Resume & Technical Deep Dives: https://just3ws.com
-Direct Contact: mike@just3ws.com</textarea>
+Resume & Case Studies: https://www.just3ws.com/resume/
+Contact: mike@just3ws.com</textarea>
+
+    <!-- Compact ATS Cover Notes / Elevator Pitches by Archetype -->
+    <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+      <h3 style="font-size: 1rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem;">
+        ATS Application "Cover Note / Why Me" Snippets (By Role Archetype)
+      </h3>
+      <p style="font-size: 0.84rem; color: #64748b; margin: 0 0 0.75rem;">
+        Ready-to-paste 1-paragraph summaries for "Tell us about yourself", "Why this role?", or "Additional Information" fields on job applications.
+      </p>
+
+      <div style="display: grid; gap: 0.85rem;">
+        {% for pair in site.data.resume.archetypes %}
+          {% assign arch = pair[1] %}
+          <div>
+            <div class="linkedin-card-actions">
+              <strong style="font-size: 0.84rem; color: #0f172a;">{{ arch.short_label }}: {{ arch.title }}</strong>
+              <div>
+                <span class="linkedin-limit-note" data-count-for="pitch-{{ arch.id }}">0 / 1000 characters</span>
+                <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'pitch-{{ arch.id }}')">Copy Pitch</button>
+              </div>
+            </div>
+            <textarea id="pitch-{{ arch.id }}" class="linkedin-textarea" data-limit="1000" style="min-height: 5.5rem;" readonly>{{ arch.summary }} Recent hands-on proof includes leading Acquisitions platform modernization and founding the OpenTelemetry Working Group at OneMain Financial, plus architecting production Rails 8, PostgreSQL 18 (pgvector), Solid Queue, and TypeScript platforms at just3ws.com. Full interactive resume and case studies: https://www.just3ws.com/resume/</textarea>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
   </section>
 
-  <!-- 3. Featured Section Links -->
-  <section class="linkedin-card" style="margin-bottom: 2rem;">
+  <!-- 3. Featured Portfolio Links Section -->
+  <section id="sec-featured" class="linkedin-card" data-check-id="sec-featured">
     <div class="linkedin-card-header">
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">3. Featured Portfolio Links</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        3. Featured Portfolio Links (5 Canonical Surfaces)
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-featured"> Mark Section Done
+      </label>
     </div>
-    <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: 0.25rem 0 1rem;">
-      Pin these four URLs to the Featured section of your LinkedIn profile.
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 1rem;">
+      Pin these five links to the Featured section of your LinkedIn profile (`Add profile section -> Recommended -> Add featured -> Add a link`). Each card gives you 1-click copy buttons for the URL, Title, and Description.
     </p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-      <div style="border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem; background: var(--color-bg-subtle, #faf8f5);">
-        <strong style="color: var(--color-heading, #0f172a);">1. Canonical ATS Resume</strong>
-        <p style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin: 0.35rem 0;">https://just3ws.com/resume/</p>
-        <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://just3ws.com/resume/')">Copy Link</button>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+      <!-- Featured 1 -->
+      <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem; background: #f8fafc;">
+        <strong style="color: #0f172a; font-size: 0.95rem;">1. Canonical Interactive &amp; ATS Resume</strong>
+        <p style="font-size: 0.8rem; color: #0f766e; font-family: monospace; margin: 0.3rem 0;">https://www.just3ws.com/resume/</p>
+        <p style="font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.75rem;">
+          Complete chronological career history, core systems architecture competencies, verified production outcomes, and vector PDF / plain-text exports.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          <button class="linkedin-copy-btn primary-btn" onclick="copyRawText(this, 'https://www.just3ws.com/resume/')">Copy URL</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Mike Hall: Staff Software Engineer (Interactive Resume & Systems History)')">Copy Title</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Complete chronological career history, core systems architecture competencies, verified production outcomes, and vector PDF and plain-text exports.')">Copy Description</button>
+        </div>
       </div>
 
-      <div style="border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem; background: var(--color-bg-subtle, #faf8f5);">
-        <strong style="color: var(--color-heading, #0f172a);">2. Sovereign Verification Series</strong>
-        <p style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin: 0.35rem 0;">https://just3ws.com/series/ai-competence/</p>
-        <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://just3ws.com/series/ai-competence/')">Copy Link</button>
+      <!-- Featured 2: Dehum -->
+      <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem; background: #f8fafc;">
+        <strong style="color: #0f172a; font-size: 0.95rem;">2. High-Voltage Audio DSP &amp; Sovereign Verification (dehum)</strong>
+        <p style="font-size: 0.8rem; color: #0f766e; font-family: monospace; margin: 0.3rem 0;">https://www.just3ws.com/dehum/</p>
+        <p style="font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.75rem;">
+          Forensic audio DSP restoration and linear clock-drift synchronization pipeline eliminating 60 Hz EMI and corona discharge crackle beneath 345,000-volt transmission lines.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          <button class="linkedin-copy-btn primary-btn" onclick="copyRawText(this, 'https://www.just3ws.com/dehum/')">Copy URL</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Under the High-Tension Wires: Deterministic Audio DSP Restoration & Sovereign Verification (dehum)')">Copy Title</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Forensic 5-stage FFmpeg audio DSP restoration and linear clock-drift synchronization pipeline eliminating 60 Hz electromagnetic interference and corona discharge crackle recorded under 345,000-volt transmission lines.')">Copy Description</button>
+        </div>
       </div>
 
-      <div style="border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem; background: var(--color-bg-subtle, #faf8f5);">
-        <strong style="color: var(--color-heading, #0f172a);">3. The Sound Above Rewatch</strong>
-        <p style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin: 0.35rem 0;">https://just3ws.com/series/the-sound-above/</p>
-        <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://just3ws.com/series/the-sound-above/')">Copy Link</button>
+      <!-- Featured 3: Sovereign Verification Series -->
+      <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem; background: #f8fafc;">
+        <strong style="color: #0f172a; font-size: 0.95rem;">3. The Sovereign Verification Series</strong>
+        <p style="font-size: 0.8rem; color: #0f766e; font-family: monospace; margin: 0.3rem 0;">https://www.just3ws.com/series/ai-competence/</p>
+        <p style="font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.75rem;">
+          A 3-part architectural investigation analyzing DSP audio restoration, dual-model generative divergence, and deterministic verification harnesses.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          <button class="linkedin-copy-btn primary-btn" onclick="copyRawText(this, 'https://www.just3ws.com/series/ai-competence/')">Copy URL</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'The Sovereign Verification Project: AI Competence, Forensics & Deterministic Tooling')">Copy Title</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'A 3-part architectural investigation analyzing DSP audio restoration, dual-model generative divergence, and deterministic verification harnesses under 345,000-volt transmission lines.')">Copy Description</button>
+        </div>
       </div>
 
-      <div style="border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem; background: var(--color-bg-subtle, #faf8f5);">
-        <strong style="color: var(--color-heading, #0f172a);">4. 4D Cartography Case Studies</strong>
-        <p style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin: 0.35rem 0;">https://just3ws.com/case-studies/</p>
-        <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://just3ws.com/case-studies/')">Copy Link</button>
+      <!-- Featured 4: The Sound Above -->
+      <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem; background: #f8fafc;">
+        <strong style="color: #0f172a; font-size: 0.95rem;">4. The Sound Above Technical Rewatch</strong>
+        <p style="font-size: 0.8rem; color: #0f766e; font-family: monospace; margin: 0.3rem 0;">https://www.just3ws.com/series/the-sound-above/</p>
+        <p style="font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.75rem;">
+          Curated oral history series across 218 developer interviews examining software craftsmanship, testing, and architectural stewardship from 2006 to 2026.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          <button class="linkedin-copy-btn primary-btn" onclick="copyRawText(this, 'https://www.just3ws.com/series/the-sound-above/')">Copy URL</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'The Sound Above: Oral History & Software Craftsmanship Rewatch Series')">Copy Title</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Curated oral history series across 218 developer interviews examining software craftsmanship, automated testing, and architectural stewardship from 2006 to 2026.')">Copy Description</button>
+        </div>
+      </div>
+
+      <!-- Featured 5: 4D System Cartography Case Studies -->
+      <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 1rem; background: #f8fafc;">
+        <strong style="color: #0f172a; font-size: 0.95rem;">5. 4D System Cartography Case Studies</strong>
+        <p style="font-size: 0.8rem; color: #0f766e; font-family: monospace; margin: 0.3rem 0;">https://www.just3ws.com/case-studies/</p>
+        <p style="font-size: 0.82rem; color: #475569; margin: 0.35rem 0 0.75rem;">
+          Production case studies in legacy modernization, distributed state machine repair, OpenTelemetry rollout, and high-severity incident leadership.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+          <button class="linkedin-copy-btn primary-btn" onclick="copyRawText(this, 'https://www.just3ws.com/case-studies/')">Copy URL</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, '4D System Cartography: Case Studies in Production Modernization & Reliability')">Copy Title</button>
+          <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Production case studies in legacy modernization, distributed state machine repair, OpenTelemetry rollout, and high-severity incident leadership.')">Copy Description</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Projects Section -->
-  <section class="linkedin-card" style="margin-bottom: 2rem;">
+  <!-- 4. Projects & Open Source Engineering Section -->
+  <section id="sec-projects" class="linkedin-card" data-check-id="sec-projects">
     <div class="linkedin-card-header">
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">4. Projects Section (2 Independent Projects)</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        4. Projects Section (5 Production Systems &amp; Open Source Tools)
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-projects"> Mark Section Done
+      </label>
     </div>
-    <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: 0.25rem 0 1rem;">
-      Per CODEX rules, strictly two independent projects are presented.
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 1rem;">
+      Copyable entries for LinkedIn's Projects section (`Add profile section -> Additional -> Add projects`) or ATS project portfolios, associated with `Staff Software Engineer at just3ws (Independent)`.
     </p>
 
-    <div style="margin-bottom: 1.5rem;">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem;">
-        <h3 style="font-size: 1.05rem; font-weight: 800; margin: 0;">Phalanx Duel: Tactical Rules Engine &amp; State Machine</h3>
-        <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'project-phalanx-textarea')">Copy Project 1</button>
+    <div style="display: grid; gap: 1.25rem;">
+      <!-- Project 1: dehum -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1.02rem; font-weight: 800; margin: 0; color: #0f172a;">
+            1. dehum: High-Voltage Audio DSP Restoration &amp; Clock-Drift Synchronization
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'dehum: High-Voltage Audio DSP Restoration & Clock-Drift Sync')">Copy Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://www.just3ws.com/dehum/')">Copy URL</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'project-dehum-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <span class="linkedin-limit-note" data-count-for="project-dehum-textarea">0 / 2000 characters</span>
+        <textarea id="project-dehum-textarea" class="linkedin-textarea" data-limit="2000" style="min-height: 5.5rem;" readonly>Deterministic 5-stage FFmpeg audio DSP restoration and linear clock-drift synchronization tool built to eliminate 60 Hz electromagnetic interference (EMI) and corona discharge crackle recorded directly beneath 345,000-volt high-tension transmission lines. Combines linear drift compensation (atempo), autoregressive impulse declicking (adeclick), sub-fundamental rumble filtering (highpass), FFT spectral noise reduction (afftdn), and an 8-harmonic 60 Hz notch cascade while copying the H.264 video stream losslessly without re-encoding.
+
+Project Cockpit & Case Study: https://www.just3ws.com/dehum/
+Source Repository: https://github.com/just3ws/dehum</textarea>
       </div>
-      <textarea id="project-phalanx-textarea" class="linkedin-textarea" style="min-height: 5rem;" readonly>A deterministic, multiplayer tactical rules engine that translates physical board game mechanics into zero-indirection software architecture. Built with an immutable state machine, strict event sourcing, WebSocket synchronization, and OpenTelemetry instrumentation in Go, TypeScript, and SwiftUI.
 
-Project URL: https://just3ws.com/phalanx-duel/</textarea>
-    </div>
+      <!-- Project 2: media-pipeline -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1.02rem; font-weight: 800; margin: 0; color: #0f172a;">
+            2. media-pipeline: Autonomous Media &amp; Local AI RAG Microservice
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'media-pipeline: Autonomous Media & Local AI RAG Microservice')">Copy Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://github.com/just3ws/media-pipeline')">Copy URL</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'project-mp-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <span class="linkedin-limit-note" data-count-for="project-mp-textarea">0 / 2000 characters</span>
+        <textarea id="project-mp-textarea" class="linkedin-textarea" data-limit="2000" style="min-height: 5.5rem;" readonly>Autonomous media ingestion, speech-to-text transcription, vector indexing, and YouTube publishing microservice built with Ruby on Rails 8, Solid Queue, and PostgreSQL 18 (pgvector). Features on-device Apple Silicon Metal GPU Whisper transcription, hybrid lexical and 768-dimensional vector semantic search via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM, OpenTelemetry distributed tracing, Ahoy analytics, PgHero query tuning, and NIST SP 800-53 configuration validation across 270+ processed video masters.
 
-    <div>
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem;">
-        <h3 style="font-size: 1.05rem; font-weight: 800; margin: 0;">Technical Conversation Archive &amp; The Sound Above</h3>
-        <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'project-archive-textarea')">Copy Project 2</button>
+Source Repository: https://github.com/just3ws/media-pipeline</textarea>
       </div>
-      <textarea id="project-archive-textarea" class="linkedin-textarea" style="min-height: 5rem;" readonly>A sovereign archival platform and 37-episode technical rewatch series spanning 218 transcribed developer dialogues recorded between 2006 and 2026. Features speech-to-text forensic transcription, an open SQLite/DuckDB datalake, interactive transcripts, and contemporary systems leadership commentary bridging historical craftsmanship with AI-era software architecture.
 
-Project URL: https://just3ws.com/series/the-sound-above/</textarea>
+      <!-- Project 3: Phalanx Duel -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1.02rem; font-weight: 800; margin: 0; color: #0f172a;">
+            3. Phalanx Duel: Deterministic Tactical Rules Engine &amp; State Machine
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Phalanx Duel: Deterministic Tactical Rules Engine & State Machine')">Copy Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://www.just3ws.com/phalanx-duel/')">Copy URL</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'project-phalanx-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <span class="linkedin-limit-note" data-count-for="project-phalanx-textarea">0 / 2000 characters</span>
+        <textarea id="project-phalanx-textarea" class="linkedin-textarea" data-limit="2000" style="min-height: 5.5rem;" readonly>Server-authoritative multiplayer tactical card and grid game platform engineered in TypeScript, Node.js, PostgreSQL, and WebSockets. Features a pure deterministic rules engine with zero hidden state, an append-only replayable action ledger, JSON Schema contract validation, OpenTelemetry trace propagation, and property-based CI verification gates across the complete match lifecycle.
+
+Project Overview: https://www.just3ws.com/phalanx-duel/
+Source Organization: https://github.com/phalanxduel</textarea>
+      </div>
+
+      <!-- Project 4: Technical Conversation Archive -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1.02rem; font-weight: 800; margin: 0; color: #0f172a;">
+            4. Technical Conversation Archive &amp; The Sound Above Rewatch Series
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Technical Conversation Archive & The Sound Above Rewatch Series')">Copy Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://www.just3ws.com/series/the-sound-above/')">Copy URL</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'project-archive-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <span class="linkedin-limit-note" data-count-for="project-archive-textarea">0 / 2000 characters</span>
+        <textarea id="project-archive-textarea" class="linkedin-textarea" data-limit="2000" style="min-height: 5.5rem;" readonly>Contract-validated oral history platform and 37-episode technical rewatch series preserving 218 developer interviews recorded between 2006 and 2026 with Software Craftsmanship, Ruby, and JVM practitioners. Features speech-to-text forensic transcription, speaker diarization, an open SQLite FTS5 and DuckDB analytical datalake, and semantic knowledge graph cross-linking across 500+ indexed pages.
+
+Series URL: https://www.just3ws.com/series/the-sound-above/</textarea>
+      </div>
+
+      <!-- Project 5: WWWorkRemote -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1.02rem; font-weight: 800; margin: 0; color: #0f172a;">
+            5. WWWorkRemote: Multi-Source Job Ingestion &amp; Prompt-Injection Defense
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'WWWorkRemote: Multi-Source Ingestion & Prompt-Injection Defense')">Copy Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'https://github.com/wwworkremote')">Copy URL</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'project-wwr-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <span class="linkedin-limit-note" data-count-for="project-wwr-textarea">0 / 2000 characters</span>
+        <textarea id="project-wwr-textarea" class="linkedin-textarea" data-limit="2000" style="min-height: 5.5rem;" readonly>Multi-source job ingestion and semantic matching platform built with Ruby on Rails 8 and PostgreSQL (pgvector), paired with a Manifest V3 Chrome extension featuring 16 site-specific ATS DOM adapters and a 4-stage prompt-injection defense pipeline that sanitizes untrusted web text before local LLM evaluation.
+
+Source Organization: https://github.com/wwworkremote</textarea>
+      </div>
     </div>
   </section>
 
-  <!-- 5. Experience Section (Positions) -->
-  <section class="linkedin-roles-section" style="margin-bottom: 2rem;">
-    <div class="linkedin-card-header" style="margin-bottom: 1rem;">
-      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">5. Experience Section (Positions)</h2>
+  <!-- 5. Experience Section (All 25 Chronological Positions) -->
+  <section id="sec-experience" class="linkedin-roles-section" style="margin-bottom: 2rem;">
+    <div class="linkedin-card-header" style="margin-bottom: 0.5rem;">
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        5. Complete Chronological Experience (All 25 Roles: 1999 to Present)
+      </h2>
     </div>
-    <p style="font-size: 0.9rem; color: var(--color-text-muted, #525866); margin: -0.5rem 0 1.25rem;">
-      Each role is pre-formatted with bullet points and checked against LinkedIn's 2,000-character experience limit.
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0 0 1rem;">
+      Every role includes 1-click copy buttons for <strong>Title</strong>, <strong>Company</strong>, <strong>Location</strong>, <strong>Start Date</strong>, <strong>End Date</strong>, <strong>Full Description (&le; 2,000 chars)</strong>, <strong>Short Summary</strong>, and <strong>Skills CSV</strong>, plus a persistent <strong>Mark Done</strong> checkbox so you can step through LinkedIn or Workday without losing your place.
     </p>
+
+    <div class="filter-pill-bar">
+      <button type="button" class="filter-pill-btn active" onclick="filterExperienceCards('all', this)">All Roles (25)</button>
+      <button type="button" class="filter-pill-btn" onclick="filterExperienceCards('primary', this)">Detailed Resume Roles (11: 2009-Present)</button>
+      <button type="button" class="filter-pill-btn" onclick="filterExperienceCards('earlier', this)">Earlier Career Roles (14: 1999-2014)</button>
+      <input type="search" id="role-search-input" placeholder="Filter by company, title, or skill..." oninput="searchExperienceCards(this.value)" style="margin-left: auto; padding: 0.35rem 0.75rem; font-size: 0.82rem; border: 1px solid #cbd5e1; border-radius: 6px; min-width: 220px;">
+    </div>
 
     {%- assign all_skills = "" | split: "" -%}
+    {%- assign primary_ids = site.data.resume.timeline.items -%}
 
     <div class="linkedin-roles">
+      {% assign role_counter = 0 %}
       {% for item in site.data.resume.timeline.history %}
-        {%- comment -%} Policy exclusion check {%- endcomment -%}
-        {% if item == "emr-bear" or item == "agent-tooling" %}
+        {%- comment -%} Policy exclusion check: skip standalone project duplicates already consolidated into just3ws {%- endcomment -%}
+        {% if item == "emr-bear" or item == "agent-tooling" or item == "phalanx-duel" or item == "wwworkremote" or item == "technical-conversation-archive" %}
           {% continue %}
         {% endif %}
 
@@ -162,31 +837,76 @@ Project URL: https://just3ws.com/series/the-sound-above/</textarea>
         {% endif %}
 
         {% if position %}
-          {%- comment -%} Collect skills {%- endcomment -%}
+          {% assign role_counter = role_counter | plus: 1 %}
+          {% assign is_primary = false %}
+          {% if primary_ids contains item %}
+            {% assign is_primary = true %}
+          {% endif %}
+
           {%- if position.skills -%}
             {%- for skill in position.skills -%}
               {%- assign all_skills = all_skills | push: skill -%}
             {%- endfor -%}
           {%- endif -%}
 
-          {% assign pos_summary = position.summary | default: position.description | default: position.public_summary %}
-          {% assign pos_highlights = position.highlights | default: position.achievements.highlights | default: position.public_highlights %}
+          {% assign pos_company = position.company.name | default: position.company %}
+          {% assign pos_location = position.company.location | default: "Chicago, IL" %}
+          {% assign pos_start = position.start_date | human_date %}
+          {% assign pos_end = position.end_date | human_date %}
+          {% assign pos_summary = position.public_summary | default: position.summary | default: position.description %}
+          {% assign pos_highlights = position.public_highlights | default: position.highlights | default: position.achievements.highlights %}
+          {% assign pos_skills_csv = "" %}
+          {% if position.skills %}
+            {% assign pos_skills_csv = position.skills | join: ", " %}
+          {% endif %}
 
-          <div class="linkedin-card" style="margin-bottom: 1.5rem;">
+          <div class="linkedin-card experience-role-card" data-check-id="role-{{ item }}" data-tier="{% if is_primary %}primary{% else %}earlier{% endif %}" data-search="{{ position.title | downcase }} {{ pos_company | downcase }} {{ pos_location | downcase }} {{ pos_skills_csv | downcase }}">
             <div class="linkedin-card-header">
-              <h3 style="font-size: 1.1rem; font-weight: 800; margin: 0;">{{ position.title }} : {{ position.company.name | default: position.company }}</h3>
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px; margin-right: 0.4rem; {% if is_primary %}background: #ccfbf1; color: #115e59;{% else %}background: #f1f5f9; color: #475569;{% endif %}">
+                  #{{ role_counter }} &middot; {% if is_primary %}Primary Detailed Role{% else %}Earlier Career Role{% endif %}
+                </span>
+                <h3 style="font-size: 1.12rem; font-weight: 800; margin: 0.25rem 0 0; display: inline-block; color: #0f172a;">
+                  {{ position.title }} &middot; <span style="color: #0f766e;">{{ pos_company }}</span>
+                </h3>
+              </div>
+              <label class="done-toggle-label">
+                <input type="checkbox" class="helper-done-checkbox" data-check-key="role-{{ item }}"> Mark Updated
+              </label>
             </div>
-            <div class="linkedin-meta">
-              <span class="linkedin-dates">{{ position.start_date | human_date }} to {{ position.end_date | human_date }}</span>
-              {% if position.company.location %}
-                <span class="linkedin-location">&middot; {{ position.company.location }}</span>
+
+            <div class="linkedin-meta" style="font-size: 0.85rem; color: #475569; font-weight: 600; margin-bottom: 0.5rem;">
+              <span>📅 {{ pos_start }} to {{ pos_end }}</span>
+              <span> &middot; 📍 {{ pos_location }}</span>
+              {% if position.type %}
+                <span> &middot; 💼 {{ position.type }}</span>
               {% endif %}
             </div>
-            <div class="linkedin-card-actions">
-              <span class="linkedin-limit-note" data-count-for="textarea-{{ forloop.index }}">Original: 0 / 2000 characters</span>
-              <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'textarea-{{ forloop.index }}')">Copy Experience</button>
+
+            <!-- 1-Click Field Copy Bar for LinkedIn & ATS Forms -->
+            <div class="field-chip-bar">
+              <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ position.title | jsonify | escape }})">Copy Title</button>
+              <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ pos_company | jsonify | escape }})">Copy Company</button>
+              <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ pos_location | jsonify | escape }})">Copy Location</button>
+              <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ pos_start | jsonify | escape }})">Start: {{ pos_start }}</button>
+              <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ pos_end | jsonify | escape }})">End: {{ pos_end }}</button>
+              {% if pos_summary %}
+                <button type="button" class="linkedin-copy-btn" onclick="copyToClipboard(this, 'summary-only-{{ role_counter }}')">Copy 1-Paragraph Summary</button>
+              {% endif %}
+              {% if pos_skills_csv != "" %}
+                <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ pos_skills_csv | jsonify | escape }})">Copy Skills CSV ({{ position.skills.size }})</button>
+              {% endif %}
             </div>
-            <textarea id="textarea-{{ forloop.index }}" class="linkedin-textarea" data-short-target="textarea-{{ forloop.index }}-short" data-limit="2000" readonly>{%- if linkedin_entry and linkedin_entry.text -%}
+
+            {% if pos_summary %}
+              <textarea id="summary-only-{{ role_counter }}" style="display: none;" readonly>{{ pos_summary | strip }}</textarea>
+            {% endif %}
+
+            <div class="linkedin-card-actions">
+              <span class="linkedin-limit-note" data-count-for="textarea-{{ role_counter }}">0 / 2000 characters</span>
+              <button type="button" class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'textarea-{{ role_counter }}')">Copy Full Experience Block</button>
+            </div>
+            <textarea id="textarea-{{ role_counter }}" class="linkedin-textarea" data-limit="2000" readonly>{%- if linkedin_entry and linkedin_entry.text -%}
 {{ linkedin_entry.text | strip }}
 {%- else -%}
 {%- if pos_summary -%}
@@ -201,9 +921,10 @@ Project URL: https://just3ws.com/series/the-sound-above/</textarea>
 {%- endif -%}</textarea>
 
             {% if position.skills %}
-              <div class="linkedin-skills" style="margin-top: 0.75rem;">
+              <div class="linkedin-skills" style="margin-top: 0.65rem; display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center;">
+                <span style="font-size: 0.74rem; font-weight: 700; color: #64748b; margin-right: 0.25rem;">Click skill to copy:</span>
                 {% for skill in position.skills %}
-                  <span class="tag">{{ skill }}</span>
+                  <button type="button" class="skill-copy-pill" onclick="copyRawText(this, {{ skill | jsonify | escape }})" title="Click to copy '{{ skill }}'">{{ skill }}</button>
                 {% endfor %}
               </div>
             {% endif %}
@@ -213,42 +934,126 @@ Project URL: https://just3ws.com/series/the-sound-above/</textarea>
     </div>
   </section>
 
-  <!-- 6. Skills Section -->
-  <section class="linkedin-card linkedin-all-skills" style="margin-bottom: 2rem;">
+  <!-- 6. Organizations & Community Leadership Section -->
+  <section id="sec-orgs" class="linkedin-card" data-check-id="sec-orgs">
     <div class="linkedin-card-header">
-      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">6. Skills &amp; Endorsements (Top 5 Pinned &amp; De-Duplicated Set)</h2>
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        6. Organizations, Volunteering &amp; Community Stewardship
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-orgs"> Mark Section Done
+      </label>
+    </div>
+    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 1rem;">
+      Copyable entries for LinkedIn's Organizations or Volunteering sections (`Add profile section -> Additional -> Add organizations`).
+    </p>
+
+    <div style="display: grid; gap: 1rem;">
+      <!-- Org 1: SCMC -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1rem; font-weight: 800; margin: 0; color: #0f172a;">
+            1. Software Craftsmanship McHenry County (SCMC) &middot; Co-Founder &amp; Organizer (Oct 2009 - Present)
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Software Craftsmanship McHenry County (SCMC)')">Copy Org Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Co-Founder & Organizer')">Copy Role</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'org-scmc-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <textarea id="org-scmc-textarea" class="linkedin-textarea" style="min-height: 4.5rem;" readonly>Co-founded Software Craftsmanship McHenry County (SCMC) in late 2009 with Ryan Gerry and Jim Suchy following the inaugural Software Craftsmanship North America (SCNA) conference, hosted at Follett Software Company in McHenry, IL. Facilitated hands-on coding dojos, TDD katas, pair programming workshops, and architectural discussions for regional software practitioners.</textarea>
+      </div>
+
+      <!-- Org 2: UGtastic / Chicago Software Craftsmanship -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1rem; font-weight: 800; margin: 0; color: #0f172a;">
+            2. UGtastic &amp; Chicago Software Craftsmanship Oral History Archive &middot; Producer &amp; Host (2006 - Present)
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'UGtastic Technical Conversation Archive')">Copy Org Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Founder, Producer & Host')">Copy Role</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'org-ugtastic-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <textarea id="org-ugtastic-textarea" class="linkedin-textarea" style="min-height: 4.5rem;" readonly>Recorded, produced, and preserved 218 in-depth technical interviews with software engineering pioneers, open-source maintainers, and conference speakers across WindyCityRails, SCNA, and Chicago user groups, culminating in The Sound Above 37-episode rewatch series at https://www.just3ws.com/series/the-sound-above/.</textarea>
+      </div>
+
+      <!-- Org 3: OneMain OpenTelemetry Working Group & Geekfest -->
+      <div style="padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">
+        <div class="linkedin-card-header">
+          <h3 style="font-size: 1rem; font-weight: 800; margin: 0; color: #0f172a;">
+            3. Enterprise OpenTelemetry Working Group &amp; Geekfest@OMF &middot; Founder &amp; Lead (2022 - 2026)
+          </h3>
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Enterprise OpenTelemetry Working Group & Geekfest@OMF')">Copy Name</button>
+            <button class="linkedin-copy-btn" onclick="copyRawText(this, 'Founder & Technical Lead')">Copy Role</button>
+            <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'org-otel-textarea')">Copy Description</button>
+          </div>
+        </div>
+        <textarea id="org-otel-textarea" class="linkedin-textarea" style="min-height: 4.5rem;" readonly>Founded and led the cross-functional OpenTelemetry Working Group and Geekfest internal engineering community at OneMain Financial, establishing distributed tracing conventions, training platform and cybersecurity engineers, and mentoring developers across product lanes.</textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Skills & Endorsements Section -->
+  <section id="sec-skills" class="linkedin-card linkedin-all-skills" data-check-id="sec-skills">
+    <div class="linkedin-card-header">
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0; color: var(--color-heading, #0f172a);">
+        7. Skills &amp; Endorsements (Top 5 Pinned &amp; De-Duplicated Set)
+      </h2>
+      <label class="done-toggle-label">
+        <input type="checkbox" class="helper-done-checkbox" data-check-key="sec-skills"> Mark Section Done
+      </label>
     </div>
 
-    <div style="margin-bottom: 1.5rem;">
-      <h3 style="font-size: 1rem; font-weight: 800; color: var(--color-primary, #0f766e); margin-bottom: 0.5rem;">Top 5 Pinned Skills for Recruiter Scanning</h3>
+    <div style="margin-bottom: 1.25rem;">
+      <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--color-primary, #0f766e); margin-bottom: 0.45rem;">
+        Top 5 Pinned Skills for Recruiter Scanning (Click any pill to copy)
+      </h3>
       <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
-        <span class="tag" style="background: rgba(15, 118, 110, 0.1); border-color: rgba(15, 118, 110, 0.3); font-weight: 700; color: var(--color-primary, #0f766e);">1. Platform Architecture</span>
-        <span class="tag" style="background: rgba(15, 118, 110, 0.1); border-color: rgba(15, 118, 110, 0.3); font-weight: 700; color: var(--color-primary, #0f766e);">2. Distributed Systems</span>
-        <span class="tag" style="background: rgba(15, 118, 110, 0.1); border-color: rgba(15, 118, 110, 0.3); font-weight: 700; color: var(--color-primary, #0f766e);">3. Observability &amp; OpenTelemetry</span>
-        <span class="tag" style="background: rgba(15, 118, 110, 0.1); border-color: rgba(15, 118, 110, 0.3); font-weight: 700; color: var(--color-primary, #0f766e);">4. Production Systems &amp; Reliability</span>
-        <span class="tag" style="background: rgba(15, 118, 110, 0.1); border-color: rgba(15, 118, 110, 0.3); font-weight: 700; color: var(--color-primary, #0f766e);">5. Ruby on Rails</span>
+        <button type="button" class="skill-copy-pill" style="background: #f0fdfa; border-color: #0f766e; font-weight: 800; color: #0f766e;" onclick="copyRawText(this, 'Platform Architecture')">1. Platform Architecture</button>
+        <button type="button" class="skill-copy-pill" style="background: #f0fdfa; border-color: #0f766e; font-weight: 800; color: #0f766e;" onclick="copyRawText(this, 'Distributed Systems')">2. Distributed Systems</button>
+        <button type="button" class="skill-copy-pill" style="background: #f0fdfa; border-color: #0f766e; font-weight: 800; color: #0f766e;" onclick="copyRawText(this, 'OpenTelemetry')">3. OpenTelemetry</button>
+        <button type="button" class="skill-copy-pill" style="background: #f0fdfa; border-color: #0f766e; font-weight: 800; color: #0f766e;" onclick="copyRawText(this, 'Ruby on Rails')">4. Ruby on Rails</button>
+        <button type="button" class="skill-copy-pill" style="background: #f0fdfa; border-color: #0f766e; font-weight: 800; color: #0f766e;" onclick="copyRawText(this, 'PostgreSQL')">5. PostgreSQL</button>
       </div>
     </div>
 
-    <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0 0 0.75rem;">
-      Complete newline-separated de-duplicated skills list for fast entry into LinkedIn's skill search box.
-    </p>
-    <div class="linkedin-card-actions">
-      <span class="linkedin-limit-note" id="all-skills-count">0 skills</span>
-      <button class="linkedin-copy-btn" onclick="copyToClipboard(this, 'all-skills-textarea')">Copy All Skills</button>
-    </div>
     {%- assign unique_skills = all_skills | uniq | sort -%}
     {%- assign newline = "
 " -%}
-    <textarea id="all-skills-textarea" class="linkedin-textarea linkedin-textarea-skills" style="min-height: 10rem;" readonly>{{ unique_skills | join: newline }}</textarea>
+    {%- assign skills_csv = unique_skills | join: ", " -%}
+
+    <div style="margin-bottom: 1rem;">
+      <div style="font-size: 0.84rem; font-weight: 700; color: #475569; margin-bottom: 0.45rem;">
+        Click any individual skill below to copy it into LinkedIn's "Add Skill" modal or Workday's skill tag input:
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+        {% for skill in unique_skills %}
+          <button type="button" class="skill-copy-pill" onclick="copyRawText(this, {{ skill | jsonify | escape }})">{{ skill }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="linkedin-card-actions">
+      <span class="linkedin-limit-note" id="all-skills-count">{{ unique_skills.size }} de-duplicated skills</span>
+      <div style="display: flex; gap: 0.4rem;">
+        <button type="button" class="linkedin-copy-btn" onclick="copyRawText(this, {{ skills_csv | jsonify | escape }})">Copy All Skills (Comma-Separated CSV)</button>
+        <button type="button" class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'all-skills-textarea')">Copy All Skills (Newline List)</button>
+      </div>
+    </div>
+    <textarea id="all-skills-textarea" class="linkedin-textarea linkedin-textarea-skills" style="min-height: 9rem;" readonly>{{ unique_skills | join: newline }}</textarea>
   </section>
 </article>
 
 <script>
+var HELPER_STORAGE_KEY = "just3ws_linkedin_helper_done_v1";
+
 function copyToClipboard(button, textareaId) {
   var textarea = document.getElementById(textareaId);
   if (!textarea) return;
-  var text = textarea.value.replace(/\n/g, "\r\n");
+  var text = textarea.value;
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(function() {
@@ -283,23 +1088,24 @@ function fallbackCopy(text, button) {
   temp.select();
   temp.setSelectionRange(0, 99999);
   try {
-    document.execCommand('copy');
+    document.execCommand("copy");
     showCopied(button);
   } catch (err) {
-    console.error('Copy failed:', err);
+    console.error("Copy failed:", err);
   }
   document.body.removeChild(temp);
   window.getSelection().removeAllRanges();
 }
 
 function showCopied(button) {
-  var originalText = button.textContent;
-  button.textContent = 'Copied';
-  button.classList.add('copied');
+  var originalText = button.getAttribute("data-orig-text") || button.textContent;
+  button.setAttribute("data-orig-text", originalText);
+  button.textContent = "✓ Copied";
+  button.classList.add("copied");
   setTimeout(function() {
     button.textContent = originalText;
-    button.classList.remove('copied');
-  }, 900);
+    button.classList.remove("copied");
+  }, 1000);
 }
 
 function updateCharacterCounters() {
@@ -329,5 +1135,87 @@ function updateCharacterCounters() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", updateCharacterCounters);
+function filterExperienceCards(tier, btn) {
+  document.querySelectorAll(".filter-pill-btn").forEach(function(b) { b.classList.remove("active"); });
+  if (btn) btn.classList.add("active");
+  var cards = document.querySelectorAll(".experience-role-card");
+  cards.forEach(function(card) {
+    if (tier === "all" || card.getAttribute("data-tier") === tier) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
+function searchExperienceCards(query) {
+  var q = (query || "").toLowerCase().trim();
+  var cards = document.querySelectorAll(".experience-role-card");
+  cards.forEach(function(card) {
+    var hay = card.getAttribute("data-search") || "";
+    card.style.display = (!q || hay.indexOf(q) !== -1) ? "" : "none";
+  });
+}
+
+function loadHelperChecklist() {
+  var saved = {};
+  try {
+    saved = JSON.parse(localStorage.getItem(HELPER_STORAGE_KEY) || "{}");
+  } catch (e) {
+    saved = {};
+  }
+  var checkboxes = document.querySelectorAll(".helper-done-checkbox");
+  var total = checkboxes.length;
+  var doneCount = 0;
+  checkboxes.forEach(function(cb) {
+    var key = cb.getAttribute("data-check-key");
+    var isDone = !!saved[key];
+    cb.checked = isDone;
+    if (isDone) doneCount++;
+    var parentCard = cb.closest(".linkedin-card");
+    if (parentCard) {
+      parentCard.classList.toggle("card-completed", isDone);
+    }
+  });
+  var label = document.getElementById("checklist-progress-label");
+  var fill = document.getElementById("checklist-progress-fill");
+  if (label) label.textContent = doneCount + " / " + total + " Done";
+  if (fill) fill.style.width = (total > 0 ? Math.round((doneCount / total) * 100) : 0) + "%";
+}
+
+function bindHelperChecklist() {
+  document.querySelectorAll(".helper-done-checkbox").forEach(function(cb) {
+    cb.addEventListener("change", function() {
+      var saved = {};
+      try {
+        saved = JSON.parse(localStorage.getItem(HELPER_STORAGE_KEY) || "{}");
+      } catch (e) {
+        saved = {};
+      }
+      var key = cb.getAttribute("data-check-key");
+      if (cb.checked) {
+        saved[key] = true;
+      } else {
+        delete saved[key];
+      }
+      try {
+        localStorage.setItem(HELPER_STORAGE_KEY, JSON.stringify(saved));
+      } catch (e) {}
+      loadHelperChecklist();
+    });
+  });
+}
+
+function resetHelperChecklist() {
+  try {
+    localStorage.removeItem(HELPER_STORAGE_KEY);
+  } catch (e) {}
+  loadHelperChecklist();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  updateCharacterCounters();
+  bindHelperChecklist();
+  loadHelperChecklist();
+});
 </script>

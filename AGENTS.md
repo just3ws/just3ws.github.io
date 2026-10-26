@@ -11,6 +11,30 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - NIST SP 800-53 CONFIGURATION VALIDATION, DEHUM DSP INTEGRATION & LINKEDIN/ATS PROFILE WORKBENCH (2026-10-26):
+         Enforced NIST SP 800-53 / SP 800-128 configuration-driven validation across `media-pipeline`, integrated the `dehum` high-voltage audio DSP restoration pipeline across configuration and resume surfaces, and upgraded `/linkedin/` into a full LinkedIn Profile & Universal ATS Application Helper:
+         - NIST SP 800-53 (`CM-2`, `CM-3`, `CM-6`, `CM-7`, `CM-8`) & SP 800-128 Configuration Governance (`PipelineConfigService`):
+           - Added `PipelineConfigService.validate!`, `PipelineConfigService.safe_anchored_path?`, and `PipelineConfigService.audit_report` enforcing declarative baseline settings, load-time fail-fast validation, canonical path anchoring (`>= 3` depth under `$HOME` or `/tmp` preventing root/home traversal), and non-privileged port bounds (`1024..65535`).
+           - Wired `PipelineConfigService.validate!` into `bin/mp-service doctor`.
+           - Configured `pipeline.dehum_root` (`~/github.com/just3ws/dehum`), `storage.dehum_archive_dir` (`~/ai/dehum`), and `binaries.dehum` in `config/pipeline_stages.yml` and `PipelineConfigService`.
+         - `dehum` Forensic Audio DSP Restoration Carried Forward:
+           - Added `Forensic Audio DSP Restoration & Sovereign Verification (dehum)` (`atempo`, `adeclick`, `highpass`, `afftdn`, and 8-harmonic 60 Hz notch cascade under 345,000-volt transmission lines) and `FFmpeg & Audio DSP` to `_data/resume/positions/just3ws.yml`, `_data/resume/archetypes.yml`, `_data/linkedin/just3ws.yml`, and all 7 vector PDF and plain-text resume exports.
+         - LinkedIn & Universal Application Profile Helper (`/linkedin/`, `linkedin.html`):
+           - Upgraded `/linkedin/` into an 8-section interactive copy-paste workbench for LinkedIn updates and ATS applications (Workday, Greenhouse, Lever, Ashby, iCims) with `localStorage` checklist progress tracking:
+             - Section 0: Universal ATS Quick-Fill (1-click copy buttons for Name, Email, Phone, Location, URLs, Title, Company, Experience, Authorization) + direct downloads for all 7 vector PDFs, TXT, and MD resumes.
+             - Section 1: 6 Calibrated LinkedIn Headline Options (`<= 220` chars).
+             - Section 2: Primary LinkedIn About (`<= 2,600` chars) + 5 Archetype ATS Cover Note / Pitch snippets.
+             - Section 3: 5 Featured Portfolio Links (Resume, `dehum`, Sovereign Verification, `The Sound Above`, `4D Cartography Case Studies`) with URL, Title, and Description copy buttons.
+             - Section 4: 5 Production Projects (`dehum`, `media-pipeline`, `Phalanx Duel`, `Technical Conversation Archive`, `WWWorkRemote`).
+             - Section 5: Complete Chronological Experience across all 25 roles (`1999 - Present`) with field-level 1-click copy buttons (`Copy Title`, `Copy Company`, `Copy Location`, `Start`, `End`, `1-Paragraph Summary`, `Skills CSV`, `Full Experience Block <= 2000 chars`) and filter/search controls.
+             - Section 6: Organizations & Community Leadership (`SCMC: Software Craftsmanship McHenry County`, `UGtastic`, `OpenTelemetry Working Group & Geekfest@OMF`).
+             - Section 7: Top 5 Pinned Skills, click-to-copy individual skill pills, and CSV/newline bulk copy.
+         - Autonomous Conveyor Progress:
+           - Processed and published **Asset 283** (`VID_20261021_093456555.mp4`, YouTube ID `E_e9P0A4X0s`) and synchronized `_data/video_assets.yml` (251 site video assets).
+         - Verification:
+           - `media-pipeline`: 158/158 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes (`488ec02` on `main`).
+           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing lint, 1,070 HTML pages passing HTML-Proofer, 91.7% composite ATS benchmark score, zero em dashes.
+
        - STORAGE ROOT CONSOLIDATION (`$HOME/ai/media-pipeline`), CENTRALIZED CONFIGURATION, GOOGLE DRIVE HYGIENE & GHA SIMPLIFICATION (2026-10-26):
          Consolidated media pipeline storage roots under `$HOME/ai/media-pipeline` (`My Drive/ai/media-pipeline`) behind centralized configuration, eliminated hardcoded working directories/paths/ports across all services, cleaned Google Drive queues, eliminated `launchd` `Errno::EPERM` log noise, and simplified GitHub Actions workflows:
          - Configurable Two-Tier `$HOME/ai/media-pipeline` Storage & Centralized Configuration (`PipelineConfigService`):
