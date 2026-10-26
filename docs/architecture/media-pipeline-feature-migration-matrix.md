@@ -38,6 +38,8 @@ Every feature is evaluated against the 1:1+ architectural contract: **The new sy
 | **26** | **Broadcast Teleprompter Studio** | HTML teleprompter with episode dossiers and `textream://` protocol launcher. | Dedicated Operations Cockpit tab with 6-Act production rundowns, live broadcast cue chips, teleprompter glass mirror mode, and `.textream` downloads. | **1:1 Parity** | Production studio ready for live streaming. |
 | **27** | **Spatial Cartography & Asset History** | Static listings without geographical mapping. | Interactive Leaflet.js Spatial Cartography map plotting recording locations, elevation, topics, and full-text search across 250+ assets. | **1:1+ Enhanced** | 4-dimensional temporal-spatial visualization of field notes. |
 | **28** | **Service Lifecycle & Process Supervision** | Ad-hoc terminal running or brittle launchd script. | Hardened launchd daemon (`com.just3ws.media-pipeline.plist`) with `bin/mp-service` controller (`mp service status/restart/doctor/logs`). | **1:1+ Enhanced** | 9-point self-healing automated doctor diagnostic and unified zdots log rotation. |
+| **29** | **Operations Cockpit Record Navigation** | Plain terminal output or static text list; required manual URL navigation to edit items. | Direct clickable navigation links to local asset records (`/media_assets/:id`), edit screens (`/media_assets/:id/edit`), and series playlists across all swimlanes and execution tables. | **1:1+ Enhanced** | Preserved across live SSE telemetry updates and execution filters. |
+| **30** | **State-Aware Admin & Pre-Flight Control** | CLI flags only; could not inspect or pre-set metadata on uningested files in web UI. | Full state-aware management interface with lifecycle banners, substate progress badges, race-condition warnings during active STT processing, and explicit operator choice (`Save Local Record Only` vs `Save & Push to YouTube Now`). | **1:1+ Enhanced** | Pipeline respects manual pre-flight titles, descriptions, and tags as canonical overrides. |
 
 ---
 
@@ -63,7 +65,7 @@ Every feature is evaluated against the 1:1+ architectural contract: **The new sy
 
 ## 3. Operational Sign-Off & Verification
 
-- **Tests Passing**: 115/115 RSpec tests in `media-pipeline`, 320/320 RSpec tests in `just3ws.github.io`, 472/472 Bats tests in `zdots`.
+- **Tests Passing**: 127/127 RSpec tests in `media-pipeline`, 320/320 RSpec tests in `just3ws.github.io`, 472/472 Bats tests in `zdots`.
 - **Static Analysis & Security**: 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean MDL, clean Mandoc.
 - **Em-Dash Free**: Zero em dashes across all code, configuration, database records, and documentation.
-- **Parity Conclusion**: Baseline 1:1 functional parity has been fully restored and exceeded (1:1+) across all 28 operational domains.
+- **Parity Conclusion**: Baseline 1:1 functional parity has been fully restored and exceeded (1:1+) across all 30 operational domains.

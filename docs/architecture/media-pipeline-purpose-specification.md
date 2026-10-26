@@ -52,6 +52,13 @@ The entire media pipeline is engineered around six non-negotiable architectural 
 - The pipeline exposes real-time telemetry via Server-Sent Events (SSE), OpenTelemetry traces/spans, LTSV wide logs, and macOS SwiftBar status.
 - Every subprocess execution emits structured events, records performance latencies against formal Service Level Objectives (SLOs), and provides one-click quarantine diagnostics and requeue controls.
 
+### Tenet 7: State-Aware Lifecycle Administration & Pre-Flight Control
+
+- The operator can inspect any local record at inception (e.g. while in `pending` or `processing`).
+- When an asset is `pending`, the operator can set pre-flight titles, descriptions, and tags which will be respected as canonical overrides when the worker begins processing.
+- The administration interface displays the active pipeline state and subprocess progress to prevent race conditions during active processing.
+- Once published, the operator has an explicit choice: save edits locally only, or push them directly to YouTube via `videos.update` without video re-upload.
+
 ---
 
 ## 3. System Context & Component Topology
