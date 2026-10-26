@@ -1,7 +1,7 @@
 ---
 id: TASK-403
 title: "Restore 5-Second Multi-Sample Ingress Stability Verification Guard"
-status: Pending
+status: Completed
 category: media
 created_date: '2026-10-26 02:41'
 type: bug
@@ -32,8 +32,8 @@ Closes Gap 2 by restoring the robust 5-second multi-sample stability verificatio
 
 ## Execution Plan
 <!-- SECTION:PLAN:BEGIN -->
-- [ ] Step 1: Update `ScanIntakeQueuesJob#stable_file?` with 3s + 2s multi-sample verification.
-- [ ] Step 2: Ensure test environment bypasses or stubs the sleep duration to keep RSpec test runs fast.
-- [ ] Step 3: Write characterization specs in `spec/jobs/scan_intake_queues_job_spec.rb` verifying active uploads are rejected and settled files are accepted.
-- [ ] Step 4: Verify test suite and fast validation pass cleanly.
+- [x] Step 1: Update `ScanIntakeQueuesJob#stable_file?` with 3s + 2s multi-sample verification.
+- [x] Step 2: Ensure test environment bypasses or stubs the sleep duration to keep RSpec test runs fast.
+- [x] Step 3: Write characterization specs in `spec/jobs/scan_intake_queues_job_spec.rb` verifying active uploads are rejected and settled files are accepted.
+- [x] Step 4: Verify test suite and fast validation pass cleanly.
 <!-- SECTION:PLAN:END -->

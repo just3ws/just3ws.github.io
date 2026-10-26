@@ -1,7 +1,7 @@
 ---
 id: TASK-404
 title: "Implement Substate Resumption and Skip for Whisper STT and Audio DSP on Requeue"
-status: Pending
+status: Completed
 category: media
 created_date: '2026-10-26 02:41'
 type: performance
@@ -29,9 +29,9 @@ Closes Gap 3 by restoring granular substate resumption in `ProcessMediaAssetJob`
 
 ## Execution Plan
 <!-- SECTION:PLAN:BEGIN -->
-- [ ] Step 1: Add substate resumption guards in `ProcessMediaAssetJob#perform` checking `asset.transcript_text.present?`.
-- [ ] Step 2: Reuse existing scratch WAV if already extracted.
-- [ ] Step 3: Record `transcription_reused` event in asset lifecycle history.
-- [ ] Step 4: Write unit specs verifying Whisper STT is skipped when transcripts exist.
-- [ ] Step 5: Verify test suite and fast validation pass cleanly.
+- [x] Step 1: Add substate resumption guards in `ProcessMediaAssetJob#perform` checking `asset.transcript_text.present?`.
+- [x] Step 2: Reuse existing scratch WAV if already extracted.
+- [x] Step 3: Record `transcription_reused` event in asset lifecycle history.
+- [x] Step 4: Write unit specs verifying Whisper STT is skipped when transcripts exist.
+- [x] Step 5: Verify test suite and fast validation pass cleanly.
 <!-- SECTION:PLAN:END -->

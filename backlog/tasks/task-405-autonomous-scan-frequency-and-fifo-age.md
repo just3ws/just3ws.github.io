@@ -1,7 +1,7 @@
 ---
 id: TASK-405
 title: "Tune Autonomous Scan Frequency and Chronological FIFO Age Resolution"
-status: Pending
+status: Completed
 category: media
 created_date: '2026-10-26 02:41'
 type: feature
@@ -28,8 +28,8 @@ Closes Gaps 4 and 5 by tuning Solid Queue recurring polling frequency and restor
 
 ## Execution Plan
 <!-- SECTION:PLAN:BEGIN -->
-- [ ] Step 1: Update `config/recurring.yml` to set `scan_intake_queues` to `every 1 minute` in development.
-- [ ] Step 2: Implement multi-tiered timestamp resolution in `ScanIntakeQueuesJob#file_age_timestamp`.
-- [ ] Step 3: Write specs verifying candidates are ordered chronologically by recording date.
-- [ ] Step 4: Verify test suite and fast validation pass cleanly.
+- [x] Step 1: Update `config/recurring.yml` to set `scan_intake_queues` to `every 1 minute` in development.
+- [x] Step 2: Implement multi-tiered timestamp resolution in `ScanIntakeQueuesJob#file_age_timestamp`.
+- [x] Step 3: Write specs verifying candidates are ordered chronologically by recording date.
+- [x] Step 4: Verify test suite and fast validation pass cleanly.
 <!-- SECTION:PLAN:END -->

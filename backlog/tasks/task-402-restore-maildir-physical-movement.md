@@ -1,7 +1,7 @@
 ---
 id: TASK-402
 title: "Restore Ingress Maildir Physical File Movement and Companion Error Logging"
-status: In Progress
+status: Completed
 category: media
 created_date: '2026-10-26 02:41'
 type: feature
@@ -36,10 +36,10 @@ Closes Gap 1 by restoring 1:1 physical Maildir filesystem synchronization to the
 
 ## Execution Plan
 <!-- SECTION:PLAN:BEGIN -->
-- [ ] Step 1: Implement physical Maildir directory helpers (`target_dir_for`, `move_file_safely`) in `ProcessMediaAssetJob`.
-- [ ] Step 2: Move video to `processing/` upon processing start and update `asset.file_path`.
-- [ ] Step 3: Move video to `failed/` on rescue and write companion `<filename>.error.log`.
-- [ ] Step 4: Move video to `blocked/` on quota block and write companion `<filename>.blocked.json`.
-- [ ] Step 5: Update `OperationsController#requeue` and `requeue_all_failed` to relocate files from `failed/` back to `pending/`.
-- [ ] Step 6: Write unit and request specs in `media-pipeline` verifying physical file movement and error log generation.
+- [x] Step 1: Implement physical Maildir directory helpers (`target_dir_for`, `move_file_safely`) in `ProcessMediaAssetJob`.
+- [x] Step 2: Move video to `processing/` upon processing start and update `asset.file_path`.
+- [x] Step 3: Move video to `failed/` on rescue and write companion `<filename>.error.log`.
+- [x] Step 4: Move video to `blocked/` on quota block and write companion `<filename>.blocked.json`.
+- [x] Step 5: Update `OperationsController#requeue` and `requeue_all_failed` to relocate files from `failed/` back to `pending/`.
+- [x] Step 6: Write unit and request specs in `media-pipeline` verifying physical file movement and error log generation.
 <!-- SECTION:PLAN:END -->
