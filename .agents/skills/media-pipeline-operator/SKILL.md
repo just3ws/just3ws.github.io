@@ -35,60 +35,72 @@ Queue directories are organized by channel and target playlist under:
 
 ---
 
-## 3. Operational CLI Grammar (`bin/pipeline media`)
+## 3. Operational CLI Grammar (`bin/pipeline media` & `mp`)
 
-All media operations are routed through the unified `media` namespace:
+All media operations are routed through the unified `media` namespace or the dedicated `mp` microservice tool suite:
 
 ```sh
-# Live pipeline query, queues, worker state, and YouTube quota
+# 1. Pipeline Status & Ingress Queries
 ./bin/pipeline media query
-./bin/pipeline media query --compact
-./bin/pipeline media query --json
-./bin/pipeline media query --target phalanx-duel
 ./bin/pipeline media status
-./bin/pipeline media intake --status
+mp status
+mp status --compact
+mp status --json
 
-# Process the single oldest pending file (FIFO) and exit
+# 2. Service Supervision & Health Diagnostics
+mp service status
+mp service restart
+mp service doctor
+mp service logs -f
+
+# 3. Process FIFO Candidates & Ingress Scanning
+mp scan
 ./bin/pipeline media intake --one
 
-# Continuous autonomous watcher (polls every 30s)
-./bin/pipeline media intake --watch
+# 4. Quarantined & Corrupt Intake Inspections
+mp corrupt
 
-# Non-destructive simulation without moving or uploading files
-./bin/pipeline media intake --dry-run
+# 5. Offline Metadata Editing & YouTube API Sync (Zero Re-upload)
+mp metadata show <id>
+mp metadata edit <id>
+mp metadata push <id>
 
-# Start near-realtime Server-Sent Events (SSE) telemetry streamer (port 7025)
-./bin/pipeline media stream
+# 6. Remote Browser Automation & DevTools MCP
+mp devtools test
+mp devtools audit https://media-pipeline.localhost
 
-# Emit SwiftBar pulse and status breakdown
+# 7. SwiftBar Pulse & Lateral References
 ./bin/pipeline media swiftbar
-
-# Full 37-episode pre-broadcast staging harness
-./bin/pipeline media stage --all
-
-# Patreon compute funding status and patron credits
-./bin/pipeline media patreon status
+mp swiftbar
 ```
 
 ---
 
 ## 4. Real-Time Telemetry & Observability Surfaces
 
-1. **Localhost Subnav Processor Pulse**:
-   - Every page on `https://www.just3ws.localhost/` displays `#lh-processor-pulse`.
-   - Green dot: Processor Idle (FIFO Ready).
-   - Amber dot: Pending files queued for FIFO ingestion.
-   - Electric Blue dot: Actively ingesting video (with glowing pulse).
-   - Red dot: Quarantined failure in `failed/`.
-   - Clicking the badge jumps directly to the BPMN Workflow Monitor.
+1. **Operations Cockpit (Port 32000)**:
+   - Location: `https://media-pipeline.localhost/`
+   - Real-time SSE swimlanes, substate inspection modal, 1-click single and bulk requeue, and spatial cartography.
 
-2. **macOS SwiftBar Menu Bar Monitor**:
-   - Installed at `~/.swiftbar/youtube-pipeline.30s.sh` delegating to `bin/youtube-swiftbar`.
-   - Emits `🎬 Ready`, `🎬 X pending`, or `🎬⚡ Ingesting` with 30-second refresh.
+2. **Process Health & Supervision Deck**:
+   - Location: `https://media-pipeline.localhost/admin/operations`
+   - Real-time host runtime metrics (PID, memory RSS, NVMe storage), daemon status, Solid Queue concurrency, and operational controls (Scan, Pause/Resume, Sweep Corrupt, Rotate Logs, Service Doctor).
 
-3. **Operations Cockpit & Interactive BPMN Monitor**:
-   - Location: `https://www.just3ws.localhost/youtube/dashboard/#tab-bpmn`
-   - Interactive SVG canvas with active task highlighting and SLO latency tracking.
+3. **Sovereign Ahoy Analytics**:
+   - Location: `https://media-pipeline.localhost/ahoy` (or `/analytics`)
+   - First-party cookie-less dashboard displaying 30-day visit and event volumes, technology breakdowns, and live event stream.
+
+4. **Database Performance & Health**:
+   - Location: `https://media-pipeline.localhost/pghero`
+   - Live query metrics, table/index cache hit rates (99.999%+), missing/duplicate index checks.
+
+5. **Local AI Hybrid Vector Search & Conversational RAG**:
+   - Location: `https://media-pipeline.localhost/#tab-analytics`
+   - Powered by PostgreSQL 18 `pgvector` and local Apple Silicon Metal GPU inference (`http://127.0.0.1:11500/v1` for LLaMA 3.1 8B and `http://127.0.0.1:11501/v1` for Nomic Embed 768-dim).
+
+6. **macOS SwiftBar Menu Bar Monitor**:
+   - Installed at `~/.swiftbar/media-pipeline.30s.sh` delegating to `bin/media-pipeline-swiftbar`.
+   - Displays real-time pending counts, series submenus, candidate file sizes, and one-click operational triggers.
 
 ---
 

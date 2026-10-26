@@ -59,6 +59,18 @@ The entire media pipeline is engineered around six non-negotiable architectural 
 - The administration interface displays the active pipeline state and subprocess progress to prevent race conditions during active processing.
 - Once published, the operator has an explicit choice: save edits locally only, or push them directly to YouTube via `videos.update` without video re-upload.
 
+### Tenet 8: Local Sovereign AI & pgvector Search
+
+- All embeddings and language models execute 100% locally on Apple Silicon Metal GPUs with zero external API calls, latency, or subscription fees.
+- Transcripts are parsed into timestamp-preserving chunks indexed with PostgreSQL 18 `pgvector` (768-dim nomic-embed) and `tsvector` full-text search.
+- Hybrid search is unified via Reciprocal Rank Fusion (RRF), while local conversational RAG answers questions grounded strictly in transcript evidence with exact playback jump links.
+
+### Tenet 9: Sovereign Operations Health & First-Party Analytics
+
+- The operator supervises runtime health, memory RSS, disk capacity, and background worker concurrency via a dedicated Process Health deck (`/admin/operations`).
+- Ahoy sovereign analytics (`/ahoy`) records user engagement locally with zero external tracking pixels or third-party cookies.
+- Automated recurring jobs (`MaintenanceVacuumJob`) execute weekly PostgreSQL database optimization (`VACUUM ANALYZE`) on vector and analytics tables without operator intervention.
+
 ---
 
 ## 3. System Context & Component Topology
@@ -81,6 +93,7 @@ graph TD
         STT["⚡ ztranscribe + whisper-cpp (Metal GPU)"]:::zdots
         Synthesizer["📝 Metadata & Speech Hook Synthesizer"]:::engine
         SidecarExport["💾 Persistent YAML Sidecar (~/.local/state/just3ws/sidecars)"]:::engine
+        VectorIndexing["🧠 pgvector Indexing (Nomic Embed 768-dim)"]:::zdots
     end
 
     Ingress --> Conveyor
@@ -89,6 +102,7 @@ graph TD
     DSP --> STT
     STT --> Synthesizer
     Synthesizer --> SidecarExport
+    STT --> VectorIndexing
 
     subgraph "External & Downstream Publication"
         YouTube["▶️ YouTube Data API v3 (Video, Captions, Playlists)"]:::cloud
@@ -102,12 +116,18 @@ graph TD
 
     subgraph "Operator Cockpit Surfaces"
         Cockpit["📊 Operations Cockpit (127.0.0.1:32000)"]:::ui
+        OpsAdmin["🩺 Process Health & Supervisor (/admin/operations)"]:::ui
+        AnalyticsDeck["📈 Ahoy Sovereign Analytics (/ahoy)"]:::ui
+        LocalRAG["💬 Local AI RAG & Hybrid Search (/api/ask)"]:::ui
         SwiftBar["🍏 macOS SwiftBar Telemetry Shim"]:::ui
-        CLI["🛠️ CLI Tools (bin/mp, bin/mp-metadata)"]:::ui
+        CLI["🛠️ CLI Tools (bin/mp, bin/mp-service, bin/mp-metadata)"]:::ui
     end
 
     Conveyor -.-> Cockpit
     Conveyor -.-> SwiftBar
+    Conveyor -.-> OpsAdmin
+    Conveyor -.-> AnalyticsDeck
+    VectorIndexing -.-> LocalRAG
     CLI -.-> Conveyor
 ```
 

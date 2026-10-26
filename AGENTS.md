@@ -32,8 +32,9 @@
            - Installed and bundled `ruby-lsp` (0.26.11) and `ruby-lsp-rails` (0.4.8) for Neovim / Antigravity editor support.
            - Graphified `media-pipeline` extracting 801 nodes, 913 edges, 150 communities into `graphify-out/graph.json` and registered into global knowledge graph (`~/.graphify/global-graph.json`).
          - Verification:
-           - `media-pipeline`: 151/151 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `63bc8d4` on `main`.
+           - `media-pipeline`: 151/151 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Prettier, clean Mandoc, zero em dashes. Committed as `dc11dda` on `main`.
            - `just3ws.github.io`: 320/320 RSpec tests passing, 508 Markdown files passing fast validation cleanly, zero em dashes.
+           - Contracts, Schemas & Mandoc: All 7 manpages passing mandoc -Tlint -Werror with 0 errors; OpenAPI 3.1 schema and ERD Mermaid diagrams synchronized with pgvector and Ahoy models; 27 workspace skills validated standard compliant.
 
        - LOCAL PGVECTOR SEMANTIC SEARCH, RUBYLLM RAG & YOUTUBE VISIBILITY CONTROLS (2026-10-26):
          Integrated local vector embeddings and AI intelligence using pgvector and RubyLLM connected to local zdots Metal GPU inference servers, paired with YouTube visibility lifecycle controls:
