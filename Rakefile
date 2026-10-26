@@ -10,6 +10,9 @@ task ci: ['validate:fast', 'test', 'build', 'validate']
 desc 'Verify committed artifacts with ordered validation and no regeneration'
 task verify: ['validate:fast', 'test', 'build:committed', 'validate']
 
+desc 'Run lightweight sanity check and production build for GitHub Actions publication'
+task publish_check: ['validate:fast', 'build:committed', 'validate:publish_safety']
+
 desc 'Audit the canonical archive relationship graph and refresh code knowledge graph'
 task :knowledge_graph do
   sh 'ruby ./bin/generate_knowledge_graph.rb'
@@ -220,6 +223,14 @@ namespace :validate do
     :vale,
     :semantic_output,
     :resume_claims
+  ]
+
+  desc 'Run bare-minimum public boundary safety checks on built _site'
+  task :publish_safety => [
+    :surface_exposure,
+    :public_positioning,
+    :'audit:public_surface',
+    :public_index_mode
   ]
 
   desc 'Run rendered-site, resume, SEO, and link checks'

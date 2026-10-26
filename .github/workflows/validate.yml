@@ -15,28 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-      - name: Install Node dependencies
-        run: npm ci
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '4.0.6'
           bundler-cache: true
-      - name: Run CI gate
-        run: ./bin/pipeline verify
-      - name: Upload failure diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: validation-failure-logs
-          path: |
-            tmp/seo-metadata-report.json
-            tmp/schema-coverage-report.json
-          if-no-files-found: warn
+      - name: Build and verify public boundary safety
+        run: bundle exec rake publish_check
