@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-10-22T21:08:42Z",
+    "generated_at": "2026-10-26T15:35:56Z",
     "archetype": "founding_staff_fullstack",
     "slug": "mike-hall-founding-staff-engineer",
     "target_tier": "Early-Stage / High Agency / 0-to-1 Product & AI Engineering"
@@ -15,60 +15,46 @@
     "linkedin": "https://www.linkedin.com/in/just3ws/",
     "github": "https://github.com/just3ws"
   },
-  "summary": "Hands-on Founding Staff Engineer who translates product ambiguity into robust, production-ready software. Combines full-stack web development (Rails, PostgreSQL, modern JS/TypeScript) with practical local-first AI engineering (pgvector embeddings, local LLM orchestration, prompt injection defense, and browser automation).",
+  "summary": "Hands-on Founding Staff Engineer who translates product ambiguity into robust, production-ready software. Combines full-stack web development (Rails 8, PostgreSQL, modern TypeScript/Node.js) with practical local-first AI engineering (pgvector embeddings, local LLM orchestration, prompt injection defense, and browser automation).",
   "core_skills": [
     "0-to-1 Full-Stack Architecture & Rapid Prototyping",
-    "Local-First AI Orchestration (llama.cpp, whisper.cpp, Claude API)",
-    "Vector Embeddings & Semantic Search (PostgreSQL pgvector)",
+    "Local-First AI Orchestration (llama.cpp, whisper.cpp, RubyLLM, Claude API)",
+    "Vector Embeddings & Hybrid Semantic Search (PostgreSQL pgvector)",
     "Prompt Injection Defense & Multi-Stage Guardrails",
-    "AI Agent Workflows & MCP Server Integration (Python, Node.js)",
+    "AI Agent Workflows & MCP Server Integration (Ruby, Python, Node.js)",
     "Automated Schema Inference & Dynamic JSON Pipelines",
-    "Ruby on Rails, Node.js, WebSockets & Real-Time Sync",
+    "Ruby on Rails, TypeScript, Node.js, WebSockets & Real-Time Sync",
     "High Agency, Autonomous Problem Solving"
   ],
   "experience": [
+    {
+      "id": "just3ws",
+      "title": "Staff Software Engineer",
+      "company": "just3ws (Independent)",
+      "location": "Chicago, IL",
+      "dates": "February 2026 - Present",
+      "focus": "Built sovereign full-stack and AI platforms: a Rails 8 and PostgreSQL 18 (pgvector) autonomous media pipeline with Whisper STT and local LLaMA 3.1 RAG synthesis, a deterministic TypeScript/Node.js tactical game engine (Phalanx Duel) with replayable action ledgers, and a multi-source job intelligence platform (WWWorkRemote) with a 4-stage prompt-injection defense pipeline.",
+      "highlights": [
+        "Autonomous Media Pipeline & Local AI RAG Microservice: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) media ingestion and publishing platform with on-device Metal GPU Whisper transcription, hybrid lexical and vector semantic search via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM, OpenTelemetry distributed tracing, Ahoy analytics, and PgHero query tuning across 270+ processed video masters.",
+        "Technical Conversation Archive & Knowledge Graph: Built and curated a contract-validated oral history platform preserving 218 technical interviews with Software Craftsmanship, Ruby, and JVM practitioners, enforcing build-time schema verification, speaker diarization, and semantic knowledge graph cross-linking across 500+ indexed pages.",
+        "Deterministic State Engine & Verification Platform (Phalanx Duel): Engineered a server-authoritative real-time tactical game platform in TypeScript, Node.js, PostgreSQL, and WebSockets featuring a pure deterministic rules engine, append-only replayable action ledger, OpenTelemetry trace propagation, and property-based CI verification gates across the complete state lifecycle.",
+        "Multi-Source Ingestion & Prompt-Injection Defense (WWWorkRemote): Designed a Rails 8 and pgvector semantic matching platform with a Manifest V3 Chrome extension across 16 ATS adapters and a 4-stage prompt-injection guardrails pipeline screening untrusted scraped text before local LLM evaluation."
+      ]
+    },
     {
       "id": "onemain",
       "title": "Associate Director, Staff Engineer",
       "company": "OneMain Financial",
       "location": "Remote",
       "dates": "January 2021 - February 2026",
-      "focus": "Built practical AI prototypes with a hackathon team, introduced local-first workflows through Geekfest@OMF, and helped establish safer ways to apply emerging tools to platform work.",
+      "focus": "Built practical AI prototypes with a hackathon team, introduced local-first workflows through Geekfest@OMF, and helped establish safer ways to apply emerging tools to enterprise platform work.",
       "highlights": [
-        "Originations IC Delivery & Instant Disbursement: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping an instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.\n",
-        "Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team; mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels with a tracking initiative; architected an automated 5-phase PII remediation deletion engine across 30+ tables.\n",
-        "Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical session-cookie overflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.\n",
-        "Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.\n",
-        "Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.\n",
-        "Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and a schema inference prototype; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.\n"
-      ]
-    },
-    {
-      "id": "phalanx-duel",
-      "title": "Principal Architect",
-      "company": "Phalanx Duel",
-      "location": "Independent Project",
-      "dates": "January 2022 - Present",
-      "focus": "Built a server-authoritative deterministic game platform in TypeScript and Node.js: pure rules engine, append-only action ledger, WebSocket real-time sync, and property-based Truth Gate verification gates across the full state lifecycle.",
-      "highlights": [
-        "Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.\n",
-        "Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.\n",
-        "Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.\n"
-      ]
-    },
-    {
-      "id": "technical-conversation-archive",
-      "title": "Principal Engineer & Curator",
-      "company": "Technical Conversation Archive",
-      "location": "Independent Project",
-      "dates": "January 2011 - Present",
-      "focus": "Built local-only Whisper transcription pipeline, semantic taxonomy cross-linking, and build-time schema enforcement gates for a multi-decade tech interview media corpus.",
-      "highlights": [
-        "Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that transcribes, diarizes, and structures long-form interview audio entirely on-device, keeping a large private media corpus off third-party inference services.\n",
-        "Schema-Validated Content Platform: Runs on a contract-validated data layer: every interview, asset, and transcript is checked against an explicit schema at build time, with referential-integrity checks that fail the build rather than publishing broken data.\n",
-        "Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge graph, and semantic cross-links across the corpus, turning an unstructured media archive into navigable, individually indexed pages.\n",
-        "Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.\n",
-        "Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.\n"
+        "Originations IC Delivery & Instant Disbursement: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping an instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.",
+        "Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team; mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels with a tracking initiative; architected an automated 5-phase PII remediation deletion engine across 30+ tables.",
+        "Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical session-cookie overflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.",
+        "Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.",
+        "Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.",
+        "Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and a schema inference prototype; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF."
       ]
     },
     {
@@ -79,91 +65,124 @@
       "dates": "January 2019 - December 2020",
       "focus": "Engineered resilient asynchronous message processing and optimized MySQL indexing for search pipelines under heavy production load.",
       "highlights": [
-        "Search Infrastructure Modernization: Eliminated external cluster failure modes and reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text search and relational indices under live production traffic.\n",
-        "Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core applications, sequencing database migrations to ensure zero downtime during platform modernization.\n"
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "id": "phalanx-duel",
-      "title": "Principal Architect",
-      "dates": "January 2022 - Present",
-      "summary": "Designing and building a real-time tactical game platform as a current hands-on laboratory for deterministic systems, product architecture, and controlled AI-assisted engineering.\n",
-      "highlights": [
-        "Designed a deterministic engine with replayable action logs and server-authoritative state transitions, making complex outcomes reproducible and independently verifiable.\n",
-        "Built replay validation, adversarial coverage, and CI verification gates so state transitions can be checked across the complete lifecycle.\n",
-        "Uses controlled agent workflows with bounded tasks, acceptance criteria, automated checks, and human-reviewed outputs rather than treating model output as authority.\n"
+        "Search Infrastructure Modernization: Eliminated external cluster failure modes and reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text search and relational indices under live production traffic.",
+        "Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core applications, sequencing database migrations to ensure zero downtime during platform modernization."
       ]
     },
     {
-      "id": "technical-conversation-archive",
-      "title": "Principal Engineer & Curator",
-      "dates": "January 2011 - Present",
-      "summary": "Recorded, and later restored, an archive of 214 technical interviews with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline to transcribe, structure, and cross-link a longitudinal record of primary-source material into a searchable knowledge graph.\n",
+      "id": "klobomedia",
+      "title": "CTO",
+      "company": "KloboMedia",
+      "location": "Remote",
+      "dates": "March 2014 - September 2016",
+      "focus": "Founded and architected a high-throughput social analytics platform in Rails, PostgreSQL JSONB, and Sidekiq Enterprise integrating Twitter, Facebook, and Instagram APIs.",
       "highlights": [
-        "Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that transcribes, diarizes, and structures long-form interview audio entirely on-device, keeping a large private media corpus off third-party inference services.\n",
-        "Schema-Validated Content Platform: Runs on a contract-validated data layer: every interview, asset, and transcript is checked against an explicit schema at build time, with referential-integrity checks that fail the build rather than publishing broken data.\n",
-        "Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge graph, and semantic cross-links across the corpus, turning an unstructured media archive into navigable, individually indexed pages.\n",
-        "Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.\n",
-        "Digital Archaeology: Recovered and reconstructed material from defunct platforms and web archives, reconciling incomplete metadata across sources to restore provenance for recordings that would otherwise have been lost.\n"
+        "Architected a social analytics platform integrating Twitter, Facebook, and Instagram APIs, delivering unified audience engagement metrics.",
+        "Designed an asynchronous ingestion pipeline using Sidekiq Enterprise and Redis, processing real-time social streams under burst traffic.",
+        "Implemented a PostgreSQL JSONB document storage architecture, allowing fast schema evolution across heterogeneous third-party API payloads.",
+        "Automated multi-cloud deployment pipelines across Heroku and AWS, establishing reproducible staging and production infrastructure."
       ]
-    }
-  ],
-  "additional_experience": [
+    },
     {
       "id": "coderwall",
       "title": "Open-Source Transition Lead",
       "company": "Coderwall",
+      "location": "Remote",
       "dates": "January 2014 - December 2014",
-      "summary": "Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase."
-    },
-    {
-      "id": "reachlocal",
-      "title": "Senior Software Developer",
-      "company": "ReachLocal",
-      "dates": "March 2015 - November 2016",
-      "summary": "Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform."
-    },
-    {
-      "id": "sk-holdings",
-      "title": "Senior Backend Developer",
-      "company": "SK Holdings, Inc.",
-      "dates": "January 2019 - December 2020",
-      "summary": "Led backend stability, performance, and modernization for high-traffic Rails products, improving full-text search, campaign delivery pipelines, and data layer reliability while systems remained under production load."
+      "focus": "Led open-source transition, security hardening, and MongoDB-to-PostgreSQL migration for a Y Combinator-backed developer network.",
+      "highlights": [
+        "Open-Source Transition & Security Hardening: Led open-source transition for a YC-backed developer network (856 GitHub stars, 304 forks), closing critical SQL injection, XSS, and Symbol DoS vulnerabilities before public release.",
+        "Proprietary Service Decoupling: Extracted proprietary billing engines and scoring algorithms into isolated backend services with clean API stubs, safeguarding business logic.",
+        "Database Migration & Sidekiq Modernization: Executed two-phase database migration from MongoDB to PostgreSQL and converted legacy Resque jobs to Sidekiq, cutting operational costs."
+      ]
     },
     {
       "id": "groupon",
       "title": "Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)",
       "company": "Groupon",
+      "location": "Chicago, IL",
       "dates": "July 2011 - May 2013",
-      "summary": "Owned core backend systems for fraud and taxonomy, leading global engineering enablement during hyper-growth."
+      "focus": "Built centralized merchant taxonomy services in Java/MySQL, fraud detection analytics in Vertica/Clojure, and global engineering onboarding during hypergrowth.",
+      "highlights": [
+        "Centralized Taxonomy Service: Implemented merchant taxonomy service in Java and MySQL, eliminating categorization drift across distributed product teams during hypergrowth.",
+        "Analytical Fraud Detection: Built analytical fraud detection queries in Vertica and conducted exploratory spikes on Hadoop and Clojure for transaction anomaly scoring.",
+        "Merchant Analytics Pipelines: Built high-throughput merchant analytics tools in Ruby and CouchDB, surfacing market insights for global sales operations.",
+        "Global Engineering Enablement: Redesigned technical onboarding curricula, standardizing engineering practices and shortening time-to-first-commit for 100+ global engineering hires."
+      ]
+    }
+  ],
+  "additional_experience": [
+    {
+      "id": "activecampaign",
+      "title": "Senior Software Developer",
+      "company": "ActiveCampaign",
+      "location": "Chicago, IL",
+      "dates": "September 2018 - December 2018",
+      "summary": "Short-term senior contract on the Contacts team of a large-scale PHP/MySQL CRM platform. Focused on testability, performance, and change safety inside a tightly coupled legacy backend while extending the Ember.js frontend test suite."
+    },
+    {
+      "id": "tandem",
+      "title": "Principal Consultant",
+      "company": "Tandem",
+      "location": "Chicago, IL",
+      "dates": "August 2018 - August 2018",
+      "summary": "Conducted an on-site architectural and operational assessment for an at-risk federal software program (DoD MEPS), delivering viability analysis and risk mitigation recommendations directly to executive leadership."
+    },
+    {
+      "id": "benchprep",
+      "title": "Senior Software Developer",
+      "company": "BenchPrep",
+      "location": "Chicago, IL",
+      "dates": "March 2017 - February 2018",
+      "summary": "Owned enterprise assessment workflows, leading correctness and platform security in a high-concurrency environment."
+    },
+    {
+      "id": "reachlocal",
+      "title": "Senior Software Developer",
+      "company": "ReachLocal",
+      "location": "Remote",
+      "dates": "March 2015 - November 2016",
+      "summary": "Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform."
+    },
+    {
+      "id": "upcity",
+      "title": "Senior Software Developer",
+      "company": "Upcity",
+      "location": "Remote",
+      "dates": "October 2013 - February 2014",
+      "summary": "Owned payment integrations and local development infrastructure, leading system modernization for an SOA-based marketing platform."
+    },
+    {
+      "id": "viewpoints",
+      "title": "Senior Software Developer",
+      "company": "Viewpoints",
+      "location": "Chicago, IL",
+      "dates": "May 2013 - October 2013",
+      "summary": "Owned core business system development, leading AWS deployment modernization and CI implementation."
+    },
+    {
+      "id": "obtiva",
+      "title": "Software Engineer",
+      "company": "Obtiva",
+      "location": "Chicago, IL",
+      "dates": "August 2009 - July 2011",
+      "summary": "Delivered backend systems and services as a consultant across multiple clients, including Sears, Leapfrog Online, and Groupon, supporting early-stage scaling and data-driven operations in high-growth environments."
     },
     {
       "id": "ticketsnow",
       "title": "Senior .NET Developer",
       "company": "TicketsNow",
+      "location": "Crystal Lake, IL",
       "dates": "November 2005 - March 2007",
       "summary": "Owned real-time inventory systems, leading transactional integrity and iterative delivery for revenue-critical operations."
     }
   ],
-  "earlier_experience": {
-    "title": "Earlier Experience",
-    "dates": "Selected earlier experience",
-    "summary": "Built and operated enterprise integrations, transactional systems, and early web products across consulting and product organizations, establishing the production discipline and community-centered craftsmanship that inform my leadership today.",
-    "items": [
-      {
-        "label": "Revenue-critical commerce",
-        "summary": "Designed real-time inventory, locking, and fulfillment services for a high-volume ticket marketplace later acquired by a major industry operator."
-      },
-      {
-        "label": "Consulting and software craftsmanship",
-        "summary": "Delivered systems across client environments while mentoring engineers, adopting Ruby and Rails, and helping build Chicago's craftsmanship community."
-      },
-      {
-        "label": "Enterprise and operational systems",
-        "summary": "Built integration and operational software across large organizations, grounded in .NET, SQL, messaging, production support, and direct user needs."
-      }
-    ]
-  }
+  "leadership": [
+    "Established enterprise-wide OpenTelemetry standards and transitioned ownership after adoption stabilized across teams",
+    "Realigned Acquisition engineering responsibilities around business ownership, then founded and technically led an enablement team to sustain platform risk and remediation work",
+    "Built Communities of Practice to prevent architectural drift and align cross-team decisions",
+    "Built and ran global engineering onboarding and training at Groupon during hypergrowth, improving ramp time and retention",
+    "Founded Software Craftsmanship McHenry County (2009) with Ryan Gerry and Jim Suchy, building a community that still meets with 820+ members",
+    "Founded WHOIS Tech Community (UGtastic), interviewing industry leaders and shaping software craftsmanship discourse"
+  ]
 }

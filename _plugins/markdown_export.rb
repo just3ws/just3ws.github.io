@@ -62,20 +62,21 @@ module Jekyll
       resume = site.data['resume']
       return "" unless resume
 
+      profile = resume['profile'] || {}
       output = []
-      output << "# #{site.config['author']['name']}"
-      output << resume.dig('profile', 'title')
+      output << "# #{site.config.dig('author', 'name') || profile['name']}"
+      output << profile['title'].to_s
       output << ""
 
       if resume['summary']
-        output << "## Summary"
+        output << "## Professional Summary"
         output << resume['summary']['text']
         output << ""
       end
 
       skills = resume.dig('ats', 'skills')
       if skills && !skills.empty?
-        output << "## Skills"
+        output << "## Core Skills"
         skills.each do |skill|
           output << "- #{skill}"
         end
@@ -83,9 +84,7 @@ module Jekyll
       end
 
       ats = resume['ats'] || {}
-      public_entries = Array(ats['positions']).map { |entry| entry['id'] }
-      public_entries += Array(ats.dig('selected_projects', 'items')).map { |entry| entry['id'] }
-      public_entries = public_entries.compact.uniq
+      public_entries = Array(ats['positions']).map { |entry| entry['id'] }.compact.uniq
       if public_entries.any?
         output << "## Experience"
         output << ""
@@ -94,28 +93,24 @@ module Jekyll
           next unless position
 
           company = position.dig('company', 'name')
+          location = position.dig('company', 'location')
           title = position['title']
-          is_recent = position['start_date'].to_s >= '2018-01-01'
+          start_date = DateDisplay.human(position['start_date'])
+          end_date = DateDisplay.human(position['end_date'])
 
           output << "### #{title} at #{company}"
-          if is_recent
-            start_date = DateDisplay.human(position['start_date'])
-            end_date = DateDisplay.human(position['end_date'])
-            output << "**#{start_date} - #{end_date}**"
-          else
-            output << "**Selected project**" if position['type'].to_s.casecmp('project').zero?
-          end
+          output << "**#{start_date} - #{end_date}**#{location ? " | #{location}" : ""}"
           output << ""
-          summary = position['public_summary'] || position['summary'] || position['description']
-          output << summary if summary
+          summary = position['summary'] || position['public_summary'] || position['description']
+          output << summary.to_s.strip if summary
           output << ""
 
-          highlights = position['public_highlights'] || position['highlights']
+          highlights = position['highlights'] || position['public_highlights']
           if highlights && !highlights.empty?
             output << "**Key Outcomes:**"
             highlights.each do |h|
               text = h.is_a?(Hash) ? h['text'] : h
-              output << "- #{text}" if text
+              output << "- #{text.to_s.strip}" if text
             end
             output << ""
           end
@@ -125,6 +120,34 @@ module Jekyll
             output << ""
           end
         end
+      end
+
+      add_items = Array(ats.dig('additional_experience', 'items'))
+      if add_items.any?
+        output << "## #{ats.dig('additional_experience', 'title') || 'Earlier Career Experience'}"
+        output << ""
+        add_items.each do |item|
+          position = site.data.dig('resume', 'positions', item['id'])
+          next unless position
+
+          company = position.dig('company', 'name')
+          location = position.dig('company', 'location')
+          start_date = DateDisplay.human(position['start_date'])
+          end_date = DateDisplay.human(position['end_date'])
+          summary_text = (item['summary'] || position['summary']).to_s.strip
+          output << "- **#{position['title']}**, #{company} (#{start_date} - #{end_date}#{location ? ", #{location}" : ""}): #{summary_text}"
+        end
+        output << ""
+      end
+
+      leadership = resume['leadership']
+      if leadership && Array(leadership['items']).any?
+        output << "## #{leadership['title'] || 'Technical Leadership & Community'}"
+        output << ""
+        Array(leadership['items']).each do |item|
+          output << "- #{item}"
+        end
+        output << ""
       end
 
       wrap_markdown(output).join("\n")
@@ -159,32 +182,33 @@ module Jekyll
       output << "# Complete Career Timeline"
       output << ""
 
-      timeline = site.data.dig('resume', 'timeline')
-      if timeline
-        timeline.each do |position_id|
-          position = site.data.dig('resume', 'positions', position_id)
-          next unless position
+      history_ids = Array(site.data.dig('resume', 'timeline', 'history'))
+      history_ids.each do |position_id|
+        position = site.data.dig('resume', 'positions', position_id)
+        next unless position
 
-          company = position.dig('company', 'name')
-          title = position['title']
-          start_date = DateDisplay.human(position['start_date'])
-          end_date = DateDisplay.human(position['end_date'])
+        company = position.dig('company', 'name')
+        location = position.dig('company', 'location')
+        title = position['title']
+        start_date = DateDisplay.human(position['start_date'])
+        end_date = DateDisplay.human(position['end_date'])
 
-          output << "## #{title}"
-          output << "**#{company}** | #{start_date} — #{end_date}"
+        output << "## #{title}"
+        output << "**#{company}**#{location ? " | #{location}" : ""} | #{start_date} - #{end_date}"
+        output << ""
+        summary = position['summary'] || position['description']
+        output << summary.to_s.strip if summary
+
+        if position['highlights'] && !position['highlights'].empty?
           output << ""
-          output << position['description'] if position['description']
-
-          if position['highlights']
-            output << ""
-            output << "**Highlights:**"
-            position['highlights'].each do |h|
-              output << "- #{h['text']}" if h['text']
-            end
+          output << "**Highlights:**"
+          position['highlights'].each do |h|
+            text = h.is_a?(Hash) ? h['text'] : h
+            output << "- #{text.to_s.strip}" if text
           end
-
-          output << ""
         end
+
+        output << ""
       end
 
       wrap_markdown(output).join("\n")
@@ -201,7 +225,6 @@ module Jekyll
   end
 
   Jekyll::Hooks.register :site, :post_write do |site|
-    # Copy raw archetype resume exports to _site/exports/resumes/ and _site/resumes/
     src_resumes_dir = File.join(site.source, 'exports', 'resumes')
     if Dir.exist?(src_resumes_dir)
       dest_exports_dir = File.join(site.dest, 'exports', 'resumes')

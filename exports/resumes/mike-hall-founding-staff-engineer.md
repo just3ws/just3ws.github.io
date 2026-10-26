@@ -1,216 +1,99 @@
 # Mike Hall
 
 **Founding Staff Engineer (0-to-1 Product & AI Systems)**
-Chicago, IL
-
-- Email: [mike@just3ws.com](mailto:mike@just3ws.com)
-- Phone: [(847) 877-3825](tel:+18478773825)
-- Website: [just3ws.com](https://www.just3ws.com)
-- LinkedIn: [linkedin.com/in/just3ws/](https://www.linkedin.com/in/just3ws/)
-- GitHub: [github.com/just3ws](https://github.com/just3ws)
-
----
+Chicago, IL | [mike@just3ws.com](mailto:mike@just3ws.com) | (847) 877-3825 | [just3ws.com](https://www.just3ws.com) | [linkedin.com/in/just3ws/](https://www.linkedin.com/in/just3ws/) | [github.com/just3ws](https://github.com/just3ws)
 
 ## Professional Summary
 
-Hands-on Founding Staff Engineer who translates product ambiguity into robust,
-production-ready software. Combines full-stack web development (Rails, PostgreSQL,
-modern JS/TypeScript) with practical local-first AI engineering (pgvector embeddings,
-local LLM orchestration, prompt injection defense, and browser automation).
+Hands-on Founding Staff Engineer who translates product ambiguity into robust, production-ready software. Combines full-stack web development (Rails 8, PostgreSQL, modern TypeScript/Node.js) with practical local-first AI engineering (pgvector embeddings, local LLM orchestration, prompt injection defense, and browser automation).
 
----
+## Core Skills
 
-## Core Competencies & Skills
+0-to-1 Full-Stack Architecture & Rapid Prototyping, Local-First AI Orchestration (llama.cpp, whisper.cpp, RubyLLM, Claude API), Vector Embeddings & Hybrid Semantic Search (PostgreSQL pgvector), Prompt Injection Defense & Multi-Stage Guardrails, AI Agent Workflows & MCP Server Integration (Ruby, Python, Node.js), Automated Schema Inference & Dynamic JSON Pipelines, Ruby on Rails, TypeScript, Node.js, WebSockets & Real-Time Sync, High Agency, Autonomous Problem Solving
 
-0-to-1 Full-Stack Architecture & Rapid Prototyping, Local-First AI Orchestration
-(llama.cpp, whisper.cpp, Claude API), Vector Embeddings & Semantic Search (PostgreSQL
-pgvector), Prompt Injection Defense & Multi-Stage Guardrails, AI Agent Workflows & MCP
-Server Integration (Python, Node.js), Automated Schema Inference & Dynamic JSON
-Pipelines, Ruby on Rails, Node.js, WebSockets & Real-Time Sync, High Agency, Autonomous
-Problem Solving
+## Experience
 
----
+### Staff Software Engineer
+**just3ws (Independent)** | Chicago, IL | February 2026 - Present
 
-## Experience & Leadership
-
-### Associate Director, Staff Engineer at OneMain Financial
-
-**January 2021 - February 2026** | Remote
-
-**Target Focus:** Built practical AI prototypes with a hackathon team, introduced
-local-first workflows through Geekfest@OMF, and helped establish safer ways to apply
-emerging tools to platform work.
+Built sovereign full-stack and AI platforms: a Rails 8 and PostgreSQL 18 (pgvector) autonomous media pipeline with Whisper STT and local LLaMA 3.1 RAG synthesis, a deterministic TypeScript/Node.js tactical game engine (Phalanx Duel) with replayable action ledgers, and a multi-source job intelligence platform (WWWorkRemote) with a 4-stage prompt-injection defense pipeline.
 
 **Key Outcomes:**
-- Originations IC Delivery & Instant Disbursement: Led the Originations Verification
-  squad through consecutive Exceeds Expectations ratings, architecting and shipping an
-  instant loan disbursement pipeline (funding to debit cards in minutes). Appointed
-  Software Architect for the Acquisition Lane, later converting to Associate Director,
-  Staff Engineer.
-- Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane
-  enablement team; mapped the loan acquisition and origination pipeline end-to-end from
-  visit to booked loan (desktop browser to mainframe and back again at each step) and
-  the Affiliate API at the same depth, identifying seven distinct lending funnels with a
-  tracking initiative; architected an automated 5-phase PII remediation deletion engine
-  across 30+ tables.
-- Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a
-  critical session-cookie overflow defect that caused 4% silent traffic loss of digital
-  loan applications during e-signing; architected zero-downtime blue/green migration to
-  DynamoDB session store with zero incidents.
-- Enterprise Trace & Operational Alignment: Architected distributed telemetry across
-  Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered
-  directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with
-  end-to-end distributed tracing.
-- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the
-  enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and
-  partnered with SRE leads to transition ongoing operational facilitation, establishing
-  a durable community of practice.
-- Applied AI & Innovation Leadership: Placed in two corporate hackathons building
-  conversational agents with Rasa and a schema inference prototype; pioneered local LLM
-  orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
+- Autonomous Media Pipeline & Local AI RAG Microservice: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) media ingestion and publishing platform with on-device Metal GPU Whisper transcription, hybrid lexical and vector semantic search via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM, OpenTelemetry distributed tracing, Ahoy analytics, and PgHero query tuning across 270+ processed video masters.
+- Technical Conversation Archive & Knowledge Graph: Built and curated a contract-validated oral history platform preserving 218 technical interviews with Software Craftsmanship, Ruby, and JVM practitioners, enforcing build-time schema verification, speaker diarization, and semantic knowledge graph cross-linking across 500+ indexed pages.
+- Deterministic State Engine & Verification Platform (Phalanx Duel): Engineered a server-authoritative real-time tactical game platform in TypeScript, Node.js, PostgreSQL, and WebSockets featuring a pure deterministic rules engine, append-only replayable action ledger, OpenTelemetry trace propagation, and property-based CI verification gates across the complete state lifecycle.
+- Multi-Source Ingestion & Prompt-Injection Defense (WWWorkRemote): Designed a Rails 8 and pgvector semantic matching platform with a Manifest V3 Chrome extension across 16 ATS adapters and a 4-stage prompt-injection guardrails pipeline screening untrusted scraped text before local LLM evaluation.
 
-### Principal Architect at Phalanx Duel
+### Associate Director, Staff Engineer
+**OneMain Financial** | Remote | January 2021 - February 2026
 
-**January 2022 - Present** | Independent Project
-
-**Target Focus:** Built a server-authoritative deterministic game platform in TypeScript
-and Node.js: pure rules engine, append-only action ledger, WebSocket real-time sync, and
-property-based Truth Gate verification gates across the full state lifecycle.
+Built practical AI prototypes with a hackathon team, introduced local-first workflows through Geekfest@OMF, and helped establish safer ways to apply emerging tools to enterprise platform work.
 
 **Key Outcomes:**
-- Designed a deterministic engine with replayable action logs and server-authoritative
-  state transitions, making complex outcomes reproducible and independently verifiable.
-- Built replay validation, adversarial coverage, and CI verification gates so state
-  transitions can be checked across the complete lifecycle.
-- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
-  checks, and human-reviewed outputs rather than treating model output as authority.
+- Originations IC Delivery & Instant Disbursement: Led the Originations Verification squad through consecutive Exceeds Expectations ratings, architecting and shipping an instant loan disbursement pipeline (funding to debit cards in minutes). Appointed Software Architect for the Acquisition Lane, later converting to Associate Director, Staff Engineer.
+- Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team; mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels with a tracking initiative; architected an automated 5-phase PII remediation deletion engine across 30+ tables.
+- Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical session-cookie overflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
+- Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
+- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
+- Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and a schema inference prototype; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
-### Principal Engineer & Curator at Technical Conversation Archive
+### Senior Backend Developer
+**SK Holdings, Inc.** | Chicago, IL | January 2019 - December 2020
 
-**January 2011 - Present** | Independent Project
-
-**Target Focus:** Built local-only Whisper transcription pipeline, semantic taxonomy
-cross-linking, and build-time schema enforcement gates for a multi-decade tech interview
-media corpus.
+Engineered resilient asynchronous message processing and optimized MySQL indexing for search pipelines under heavy production load.
 
 **Key Outcomes:**
-- Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that
-  transcribes, diarizes, and structures long-form interview audio entirely on-device,
-  keeping a large private media corpus off third-party inference services.
-- Schema-Validated Content Platform: Runs on a contract-validated data layer: every
-  interview, asset, and transcript is checked against an explicit schema at build time,
-  with referential-integrity checks that fail the build rather than publishing broken
-  data.
-- Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge
-  graph, and semantic cross-links across the corpus, turning an unstructured media
-  archive into navigable, individually indexed pages.
-- Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference,
-  Software Craftsmanship North America, RailsConf, and WindyCityRails, with
-  practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso,
-  and Micah Martin.
-- Digital Archaeology: Recovered and reconstructed material from defunct platforms and
-  web archives, reconciling incomplete metadata across sources to restore provenance for
-  recordings that would otherwise have been lost.
+- Search Infrastructure Modernization: Eliminated external cluster failure modes and reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text search and relational indices under live production traffic.
+- Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core applications, sequencing database migrations to ensure zero downtime during platform modernization.
 
-### Senior Backend Developer at SK Holdings, Inc.
+### CTO
+**KloboMedia** | Remote | March 2014 - September 2016
 
-**January 2019 - December 2020** | Chicago, IL
-
-**Target Focus:** Engineered resilient asynchronous message processing and optimized
-MySQL indexing for search pipelines under heavy production load.
+Founded and architected a high-throughput social analytics platform in Rails, PostgreSQL JSONB, and Sidekiq Enterprise integrating Twitter, Facebook, and Instagram APIs.
 
 **Key Outcomes:**
-- Search Infrastructure Modernization: Eliminated external cluster failure modes and
-  reduced operating footprint by migrating legacy Sphinx to optimized MySQL full-text
-  search and relational indices under live production traffic.
-- Zero-Downtime Rails Upgrades: Led Ruby and Rails framework upgrades across core
-  applications, sequencing database migrations to ensure zero downtime during platform
-  modernization.
+- Architected a social analytics platform integrating Twitter, Facebook, and Instagram APIs, delivering unified audience engagement metrics.
+- Designed an asynchronous ingestion pipeline using Sidekiq Enterprise and Redis, processing real-time social streams under burst traffic.
+- Implemented a PostgreSQL JSONB document storage architecture, allowing fast schema evolution across heterogeneous third-party API payloads.
+- Automated multi-cloud deployment pipelines across Heroku and AWS, establishing reproducible staging and production infrastructure.
 
----
+### Open-Source Transition Lead
+**Coderwall** | Remote | January 2014 - December 2014
 
-## Selected Production Projects
+Led open-source transition, security hardening, and MongoDB-to-PostgreSQL migration for a Y Combinator-backed developer network.
 
-### Principal Architect (Phalanx Duel)
-**January 2022 - Present**
+**Key Outcomes:**
+- Open-Source Transition & Security Hardening: Led open-source transition for a YC-backed developer network (856 GitHub stars, 304 forks), closing critical SQL injection, XSS, and Symbol DoS vulnerabilities before public release.
+- Proprietary Service Decoupling: Extracted proprietary billing engines and scoring algorithms into isolated backend services with clean API stubs, safeguarding business logic.
+- Database Migration & Sidekiq Modernization: Executed two-phase database migration from MongoDB to PostgreSQL and converted legacy Resque jobs to Sidekiq, cutting operational costs.
 
-Designing and building a real-time tactical game platform as a current hands-on
-laboratory for deterministic systems, product architecture, and controlled AI-assisted
-engineering.
+### Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)
+**Groupon** | Chicago, IL | July 2011 - May 2013
 
-- Designed a deterministic engine with replayable action logs and server-authoritative
-  state transitions, making complex outcomes reproducible and independently verifiable.
-- Built replay validation, adversarial coverage, and CI verification gates so state
-  transitions can be checked across the complete lifecycle.
-- Uses controlled agent workflows with bounded tasks, acceptance criteria, automated
-  checks, and human-reviewed outputs rather than treating model output as authority.
+Built centralized merchant taxonomy services in Java/MySQL, fraud detection analytics in Vertica/Clojure, and global engineering onboarding during hypergrowth.
 
-### Principal Engineer & Curator (Technical Conversation Archive)
-**January 2011 - Present**
+**Key Outcomes:**
+- Centralized Taxonomy Service: Implemented merchant taxonomy service in Java and MySQL, eliminating categorization drift across distributed product teams during hypergrowth.
+- Analytical Fraud Detection: Built analytical fraud detection queries in Vertica and conducted exploratory spikes on Hadoop and Clojure for transaction anomaly scoring.
+- Merchant Analytics Pipelines: Built high-throughput merchant analytics tools in Ruby and CouchDB, surfacing market insights for global sales operations.
+- Global Engineering Enablement: Redesigned technical onboarding curricula, standardizing engineering practices and shortening time-to-first-commit for 100+ global engineering hires.
 
-Recorded, and later restored, an archive of 214 technical interviews with practitioners
-from the Ruby, JVM, and Software Craftsmanship movements, using a local-only AI pipeline
-to transcribe, structure, and cross-link a longitudinal record of primary-source
-material into a searchable knowledge graph.
+## Earlier Career Experience
 
-- Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that
-  transcribes, diarizes, and structures long-form interview audio entirely on-device,
-  keeping a large private media corpus off third-party inference services.
-- Schema-Validated Content Platform: Runs on a contract-validated data layer: every
-  interview, asset, and transcript is checked against an explicit schema at build time,
-  with referential-integrity checks that fail the build rather than publishing broken
-  data.
-- Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge
-  graph, and semantic cross-links across the corpus, turning an unstructured media
-  archive into navigable, individually indexed pages.
-- Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference,
-  Software Craftsmanship North America, RailsConf, and WindyCityRails, with
-  practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso,
-  and Micah Martin.
-- Digital Archaeology: Recovered and reconstructed material from defunct platforms and
-  web archives, reconciling incomplete metadata across sources to restore provenance for
-  recordings that would otherwise have been lost.
+- **Senior Software Developer** | **ActiveCampaign** | Chicago, IL | September 2018 - December 2018: Short-term senior contract on the Contacts team of a large-scale PHP/MySQL CRM platform. Focused on testability, performance, and change safety inside a tightly coupled legacy backend while extending the Ember.js frontend test suite.
+- **Principal Consultant** | **Tandem** | Chicago, IL | August 2018 - August 2018: Conducted an on-site architectural and operational assessment for an at-risk federal software program (DoD MEPS), delivering viability analysis and risk mitigation recommendations directly to executive leadership.
+- **Senior Software Developer** | **BenchPrep** | Chicago, IL | March 2017 - February 2018: Owned enterprise assessment workflows, leading correctness and platform security in a high-concurrency environment.
+- **Senior Software Developer** | **ReachLocal** | Remote | March 2015 - November 2016: Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
+- **Senior Software Developer** | **Upcity** | Remote | October 2013 - February 2014: Owned payment integrations and local development infrastructure, leading system modernization for an SOA-based marketing platform.
+- **Senior Software Developer** | **Viewpoints** | Chicago, IL | May 2013 - October 2013: Owned core business system development, leading AWS deployment modernization and CI implementation.
+- **Software Engineer** | **Obtiva** | Chicago, IL | August 2009 - July 2011: Delivered backend systems and services as a consultant across multiple clients, including Sears, Leapfrog Online, and Groupon, supporting early-stage scaling and data-driven operations in high-growth environments.
+- **Senior .NET Developer** | **TicketsNow** | Crystal Lake, IL | November 2005 - March 2007: Owned real-time inventory systems, leading transactional integrity and iterative delivery for revenue-critical operations.
 
----
+## Technical Leadership
 
-## Additional Experience
-
-- **Open-Source Transition Lead**, Coderwall (January 2014 - December 2014): Hired as a
-  contractor by the founder to lead the open-source transition of the Coderwall
-  developer reputation platform, a Y Combinator-backed professional network for software
-  engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary
-  service extraction, infrastructure modernization, and community leadership as the top
-  contributor to the open-source codebase.
-- **Senior Software Developer**, ReachLocal (March 2015 - November 2016): Owned API
-  design and modernization strategy, leading incremental legacy migration for a
-  high-volume digital marketing platform.
-- **Senior Backend Developer**, SK Holdings, Inc. (January 2019 - December 2020): Led
-  backend stability, performance, and modernization for high-traffic Rails products,
-  improving full-text search, campaign delivery pipelines, and data layer reliability
-  while systems remained under production load.
-- **Software Engineer & Technical Onboarding Lead (Fraud & Taxonomy Systems)**, Groupon
-  (July 2011 - May 2013): Owned core backend systems for fraud and taxonomy, leading
-  global engineering enablement during hyper-growth.
-- **Senior .NET Developer**, TicketsNow (November 2005 - March 2007): Owned real-time
-  inventory systems, leading transactional integrity and iterative delivery for
-  revenue-critical operations.
-
----
-
-## Earlier Experience
-
-**Selected earlier experience**
-
-Built and operated enterprise integrations, transactional systems, and early web
-products across consulting and product organizations, establishing the production
-discipline and community-centered craftsmanship that inform my leadership today.
-
-- **Revenue-critical commerce**: Designed real-time inventory, locking, and fulfillment
-  services for a high-volume ticket marketplace later acquired by a major industry
-  operator.
-- **Consulting and software craftsmanship**: Delivered systems across client
-  environments while mentoring engineers, adopting Ruby and Rails, and helping build
-  Chicago's craftsmanship community.
-- **Enterprise and operational systems**: Built integration and operational software
-  across large organizations, grounded in .NET, SQL, messaging, production support, and
-  direct user needs.
+- Established enterprise-wide OpenTelemetry standards and transitioned ownership after adoption stabilized across teams
+- Realigned Acquisition engineering responsibilities around business ownership, then founded and technically led an enablement team to sustain platform risk and remediation work
+- Built Communities of Practice to prevent architectural drift and align cross-team decisions
+- Built and ran global engineering onboarding and training at Groupon during hypergrowth, improving ramp time and retention
+- Founded Software Craftsmanship McHenry County (2009) with Ryan Gerry and Jim Suchy, building a community that still meets with 820+ members
+- Founded WHOIS Tech Community (UGtastic), interviewing industry leaders and shaping software craftsmanship discourse

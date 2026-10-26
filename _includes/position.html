@@ -1,14 +1,15 @@
+{% assign pos_id = include.position_id | default: include.position.id %}
 <article class="position position-ats">
   <header class="position-header">
     <h3 class="position-title">
-      {%- if include.position.id %}
-      <a href="/resume/positions/{{ include.position.id }}/" style="color: inherit; text-decoration: none;">{{ include.position.title }}</a>
+      {%- if pos_id %}
+      <a href="/resume/positions/{{ pos_id }}/">{{ include.position.title }}</a>
       {%- else %}
       {{ include.position.title }}
       {%- endif %}
     </h3>
     <p class="position-meta">
-      <span class="position-company">{{ include.position.company.name }}</span>
+      <strong class="position-company">{{ include.position.company.name }}</strong>
       {%- if include.position.company.location %} | <span>{{ include.position.company.location }}</span>{%- endif %}
       <span class="position-dates"> | <time>{{ include.position.start_date | human_date }}</time> - <time>{{ include.position.end_date | human_date }}</time></span>
     </p>
@@ -19,7 +20,7 @@
     {%- assign display_summary = include.position.public_summary -%}
   {%- endif -%}
   {%- if display_summary %}
-  <p>{{ display_summary }}</p>
+  <p class="position-summary">{{ display_summary }}</p>
   {%- endif %}
 
   {%- assign display_highlights = include.position.highlights -%}
@@ -29,12 +30,16 @@
   {%- if display_highlights %}
   <ul class="achievement-highlights">
     {%- for highlight in display_highlights %}
+    {%- assign h_text = highlight.text | default: highlight -%}
     <li>
-      {%- if highlight.text %}
-        {{ highlight.text }}
-      {%- else %}
-        {{ highlight }}
-      {%- endif %}
+      {%- if h_text contains ": " -%}
+        {%- assign h_parts = h_text | split: ": " -%}
+        {%- assign h_lead = h_parts | first -%}
+        {%- assign h_rest = h_text | remove_first: h_lead | remove_first: ": " -%}
+        <strong>{{ h_lead }}:</strong> {{ h_rest }}
+      {%- else -%}
+        {{ h_text }}
+      {%- endif -%}
     </li>
     {%- endfor %}
   </ul>

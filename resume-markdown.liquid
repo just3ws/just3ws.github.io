@@ -5,76 +5,51 @@ sitemap: true
 ---
 {% assign profile = site.data.resume.profile %}
 {% assign ats = site.data.resume.ats %}
+{% assign leadership = site.data.resume.leadership %}
 {% assign linkedin_display = profile.contact.linkedin.url | replace_first: "https://www.", "" | replace_first: "https://", "" | replace_first: "http://", "" %}
 # {{ profile.name }}
 
 **{{ profile.title }}**
-{% if profile.location %}
-{{ profile.location.display }}
-{% endif %}
+{{ profile.location.display }} | [{{ profile.contact.email }}](mailto:{{ profile.contact.email }}) | {{ profile.contact.phone }} | [{{ profile.contact.website.display }}]({{ profile.contact.website.url }}) | [{{ linkedin_display }}]({{ profile.contact.linkedin.url }}) | [{{ profile.contact.github.display }}]({{ profile.contact.github.url }})
 
-- Email: [{{ profile.contact.email }}](mailto:{{ profile.contact.email }})
-- Phone: [{{ profile.contact.phone }}](tel:{{ profile.contact.phone_tel }})
-- Website: [{{ profile.contact.website.display }}]({{ profile.contact.website.url }})
-- LinkedIn: [{{ linkedin_display }}]({{ profile.contact.linkedin.url }})
-- GitHub: [{{ profile.contact.github.display }}]({{ profile.contact.github.url }})
-
----
-
-## {{ site.data.resume.summary.title }}
+## Professional Summary
 
 {{ site.data.resume.summary.text }}
 
----
-
 ## Core Skills
 
-{{ ats.skills | join: ", " }}
+{% for category_item in site.data.resume.skills.categories %}
+- **{{ category_item.name }}:** {{ category_item.items | join: ", " }}
+{% endfor %}
 
----
 ## Experience
 {% for entry in ats.positions %}
 {% assign position = site.data.resume.positions[entry.id] %}
 {% if position and entry %}
-### {{ position.title }} at {{ position.company.name }}
+### {{ position.title }}
+**{{ position.company.name }}**{% if position.company.location %} | {{ position.company.location }}{% endif %} | {{ position.start_date | human_date }} - {{ position.end_date | human_date }}
 
-**{{ position.start_date | human_date }} - {{ position.end_date | human_date }}**{% if position.company.location %} | {{ position.company.location }}{% endif %}
-
-{% if position.context %}
-**Context:** {{ position.context }}
-
-**Action:** {{ position.action }}
-
-**Impact:** {{ position.impact }}
-{% elsif entry.summary %}
-{{ entry.summary }}
-{% endif %}
+{{ position.summary }}
 
 {% if position.highlights %}
 **Key Outcomes:**
 {% for achievement in position.highlights %}
-- {% if achievement.text %}{{ achievement.text }}{% if achievement.label %} [{{ achievement.label }}]{% endif %}{% else %}{{ achievement }}{% endif %}
+- {% if achievement.text %}{{ achievement.text }}{% else %}{{ achievement }}{% endif %}
 {% endfor %}
 {% endif %}
 
 {% endif %}
 {% endfor %}
-
----
 
 ## {{ ats.additional_experience.title }}
 {% for item in ats.additional_experience.items %}
 {% assign position = site.data.resume.positions[item.id] %}
-- **{{ position.title }}**, {{ position.company.name }} ({{ position.start_date | human_date }} - {{ position.end_date | human_date }}{% if position.company.location %}, {{ position.company.location }}{% endif %}): {{ position.summary | default: item.summary }}
+- **{{ position.title }}** | **{{ position.company.name }}**{% if position.company.location %} | {{ position.company.location }}{% endif %} | {{ position.start_date | human_date }} - {{ position.end_date | human_date }}: {{ item.summary | default: position.summary }}
 {% endfor %}
 
----
-
-## {{ ats.earlier_experience.title }}
-
-**{{ ats.earlier_experience.dates }}**
-
-{{ ats.earlier_experience.summary }}
-{% for item in ats.earlier_experience.items %}
-- **{{ item.label }}**: {{ item.summary }}
+{% if leadership and leadership.items.size > 0 %}
+## {{ leadership.title | default: "Technical Leadership & Community" }}
+{% for leader_item in leadership.items %}
+- {{ leader_item }}
 {% endfor %}
+{% endif %}

@@ -62,8 +62,8 @@ def validate_txt_export
   content = File.read(path)
   errors = []
   
-  errors << "resume.txt missing Name" unless content.include?("MIKE HALL")
-  errors << "resume.txt missing EXPERIENCE section" unless content.include?("EXPERIENCE")
+  errors << "resume.txt missing Name" unless content =~ /\bMike Hall\b/i
+  errors << "resume.txt missing Experience section" unless content =~ /\bExperience\b/i
   errors << "resume.txt missing OneMain Financial" unless content.include?("OneMain Financial")
   errors << "resume.txt missing profile title" unless content.include?(PROFILE_TITLE)
   has_context_action_impact = content.include?("Context:") && content.include?("Action:") && content.include?("Impact:")

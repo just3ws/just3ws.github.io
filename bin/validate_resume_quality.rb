@@ -45,9 +45,9 @@ class ResumeQualityValidator
   ].freeze
 
   REQUIRED_ATS_SECTIONS = [
-    'PROFESSIONAL SUMMARY',
-    'CORE SKILLS',
-    'EXPERIENCE'
+    'Professional Summary',
+    'Core Skills',
+    'Experience'
   ].freeze
 
   EXPECTED_PRINCIPAL_COMPETENCIES = [
@@ -225,9 +225,9 @@ class ResumeQualityValidator
         @errors << "#{filename}: ATS parser failed to extract standard contact information"
       end
 
-      # Check required standard sections
+      # Check required standard sections (case-insensitive)
       REQUIRED_ATS_SECTIONS.each do |sec|
-        unless content.include?(sec)
+        unless content =~ /\b#{Regexp.escape(sec)}\b/i
           @errors << "#{filename}: ATS parser missing standard section header '#{sec}'"
         end
       end

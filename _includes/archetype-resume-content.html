@@ -1,24 +1,25 @@
-{% comment %}
-  Archetype resume content: renders using the same HTML structure and CSS
-  classes as the main resume (ats-content.html), pulling archetype-specific
-  data from site.data.resume.archetypes[page.archetype_key].
-{% endcomment %}
 {% assign a = site.data.resume.archetypes[page.archetype_key] %}
 {% assign profile = site.data.resume.profile %}
-{% assign earlier = site.data.resume.ats.earlier_experience %}
+{% assign leadership = site.data.resume.leadership %}
+{% assign linkedin_display = profile.contact.linkedin.url | replace_first: "https://www.", "" | replace_first: "https://", "" | replace_first: "http://", "" %}
 
 <article class="ats-resume-content">
-
-  {% comment %} ── Header / Intro ──────────────────────────────────────────── {% endcomment %}
   <div class="resume-intro">
-    {% comment %} Reuse the shared profile header (name, contact, quick actions) {% endcomment %}
     <header class="resume-header">
       <h1>{{ profile.name }}</h1>
       <p class="title">{{ a.title }}</p>
+      <p class="contact-line">
+        {%- if profile.location %}<span>{{ profile.location.display }}</span> | {% endif -%}
+        <a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a>
+        | <a href="tel:{{ profile.contact.phone_tel }}">{{ profile.contact.phone }}</a>
+        | <a href="{{ profile.contact.website.url }}">{{ profile.contact.website.display }}</a>
+        | <a href="{{ profile.contact.linkedin.url }}">{{ linkedin_display }}</a>
+        | <a href="{{ profile.contact.github.url }}">{{ profile.contact.github.display }}</a>
+      </p>
 
       {% assign availability = site.data.engagements.availability %}
       {% if availability %}
-      <div class="availability-status-pill no-print" style="margin-top: 0.5rem; margin-bottom: 0.75rem;">
+      <div class="availability-status-pill no-print" style="margin-top: 0.65rem; margin-bottom: 0.5rem;">
         <a href="/engagements/" style="display: inline-flex; align-items: center; gap: 0.45rem; background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; font-size: 0.8125rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 9999px; text-decoration: none;">
           <span style="display: inline-block; width: 0.5rem; height: 0.5rem; background-color: #22c55e; border-radius: 50%;"></span>
           <span>{{ availability.badge | default: "Accepting Advisory & Staff/Lead Engagements" }} &rarr;</span>
@@ -26,44 +27,13 @@
       </div>
       {% endif %}
 
-      {% assign linkedin_display = profile.contact.linkedin.url | replace_first: "https://www.", "" | replace_first: "https://", "" | replace_first: "http://", "" %}
-      <ul class="contact-info no-print">
-        {%- if profile.location %}
-        <li class="contact-item">
-          <span class="contact-label">Location</span>
-          <span class="contact-value">{{ profile.location.display }}</span>
-        </li>
-        {%- endif %}
-        <li class="contact-item">
-          <span class="contact-label">Email</span>
-          <a href="mailto:{{ profile.contact.email }}" class="contact-value">{{ profile.contact.email }}</a>
-        </li>
-        <li class="contact-item">
-          <span class="contact-label">Phone</span>
-          <a href="tel:{{ profile.contact.phone_tel }}" class="contact-value">{{ profile.contact.phone }}</a>
-        </li>
-        <li class="contact-item">
-          <span class="contact-label">Web</span>
-          <a href="{{ profile.contact.website.url }}" class="contact-value">{{ profile.contact.website.display }}</a>
-        </li>
-        <li class="contact-item">
-          <span class="contact-label">LinkedIn</span>
-          <a href="{{ profile.contact.linkedin.url }}" class="contact-value">{{ linkedin_display }}</a>
-        </li>
-        <li class="contact-item">
-          <span class="contact-label">GitHub</span>
-          <a href="{{ profile.contact.github.url }}" class="contact-value">{{ profile.contact.github.display }}</a>
-        </li>
-      </ul>
-
-      <div class="print-contact-line print-only" style="display: none;">
-        {{ profile.location.display }} &bull; {{ profile.contact.email }} &bull; {{ profile.contact.phone }} &bull; {{ profile.contact.website.display }} &bull; {{ linkedin_display }} &bull; {{ profile.contact.github.display }}
-      </div>
-
-      <div class="resume-quick-actions no-print" style="margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem;">
+      <div class="resume-quick-actions no-print" style="margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem;">
         <a href="/exports/{{ a.file_slug }}-resume.pdf" download="Mike-Hall-{{ a.short_label | slugify }}-Resume.pdf" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-accent, #2563eb); color: #ffffff; border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           PDF Resume ({{ a.short_label }})
+        </a>
+        <a href="/history/" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-bg-card, #f1f5f9); color: var(--color-text, #1e293b); border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
+          Full Career Timeline &rarr;
         </a>
         <a href="/case-studies/" class="btn-resume-action" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.85rem; background: var(--color-bg-card, #f1f5f9); color: var(--color-text, #1e293b); border: 1px solid var(--color-border, #cbd5e1); border-radius: 0.375rem; font-weight: 600; text-decoration: none;">
           Case Studies &rarr;
@@ -74,46 +44,39 @@
       </div>
     </header>
 
-    <div class="resume-positioning">
-      <section id="summary" class="resume-summary">
-        <h2>Professional Summary</h2>
-        <p>{{ a.summary }}</p>
-      </section>
-
-      <div class="resume-focus-index">
-        <p class="resume-focus-label">Target focus</p>
-        <ul>
-          {% for skill in a.core_skills limit: 5 %}
-            <li><span aria-hidden="true">0{{ forloop.index }}</span>{{ skill }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+    <section id="summary" class="resume-summary">
+      <h2>Professional Summary</h2>
+      <p>{{ a.summary }}</p>
+    </section>
   </div>
 
-  {% comment %} ── Experience ───────────────────────────────────────────────── {% endcomment %}
+  <section id="skills">
+    <h2>Core Skills</h2>
+    <p>{{ a.core_skills | join: ", " }}</p>
+  </section>
+
   <section id="experience">
-    <div class="experience-header">
-      <h2>Experience &amp; Leadership</h2>
-    </div>
+    <h2>Experience</h2>
     <div class="experience-content">
       {% for entry in a.featured_positions %}
         {% assign position = site.data.resume.positions[entry.id] %}
         {% if position %}
           <article class="position position-ats">
             <header class="position-header">
-              <h3 class="position-title">{{ position.title }}</h3>
+              <h3 class="position-title">
+                <a href="/resume/positions/{{ entry.id }}/">{{ position.title }}</a>
+              </h3>
               <p class="position-meta">
-                <span class="position-company">{{ position.company.name }}</span>
+                <strong class="position-company">{{ position.company.name }}</strong>
                 {%- if position.company.location %} | <span>{{ position.company.location }}</span>{%- endif %}
                 <span class="position-dates"> | <time>{{ position.start_date | human_date }}</time> - <time>{{ position.end_date | human_date }}</time></span>
               </p>
             </header>
 
             {%- if entry.focus %}
-            <p><strong>Target Focus:</strong> {{ entry.focus }}</p>
+            <p class="position-summary">{{ entry.focus }}</p>
             {%- elsif position.summary %}
-            <p>{{ position.summary }}</p>
+            <p class="position-summary">{{ position.summary }}</p>
             {%- endif %}
 
             {%- if position.highlights %}
@@ -139,54 +102,17 @@
     </div>
   </section>
 
-  {% comment %} ── Selected Projects ────────────────────────────────────────── {% endcomment %}
-  {% if a.selected_projects and a.selected_projects.size > 0 %}
-  <section id="selected-projects">
-    <div class="experience-header">
-      <h2>Selected Production Projects</h2>
-    </div>
-    <div class="experience-content">
-      {% for proj_entry in a.selected_projects %}
-        {% assign project = site.data.resume.positions[proj_entry.id] %}
-        {% if project %}
-          {% include project.html project=project %}
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  {% comment %} ── Core Skills ──────────────────────────────────────────────── {% endcomment %}
-  <section id="skills">
-    <h2>Core Skills &amp; Competencies</h2>
-    <div class="skills-dashboard">
-      {% assign skill_chunks = a.core_skills | in_groups_of: 4 %}
-      {% for chunk in skill_chunks %}
-        <div class="skills-category">
-          <h3 class="category-name">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</h3>
-          <ul class="skills-list">
-            {% for skill in chunk %}
-              {% if skill %}
-              <li>{{ skill }}</li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
-      {% endfor %}
-    </div>
-  </section>
-
-  {% comment %} ── Additional Experience ────────────────────────────────────── {% endcomment %}
   {% if a.additional_experience and a.additional_experience.size > 0 %}
   <section id="additional-experience">
-    <h2>Additional Experience</h2>
+    <h2>Earlier Career Experience</h2>
     <ul class="ats-supporting-list">
       {% for add_entry in a.additional_experience %}
         {% assign add_pos = site.data.resume.positions[add_entry.id] %}
         {% if add_pos %}
         <li>
-          <strong>{{ add_pos.title }}, {{ add_pos.company.name }}</strong>
-          <span class="ats-supporting-meta"> | {{ add_pos.start_date | human_date }} - {{ add_pos.end_date | human_date }}{% if add_pos.company.location %} | {{ add_pos.company.location }}{% endif %}</span>:
+          <strong>{{ add_pos.title }}</strong> | <strong>{{ add_pos.company.name }}</strong>
+          {%- if add_pos.company.location %} | {{ add_pos.company.location }}{%- endif %}
+          | <time>{{ add_pos.start_date | human_date }}</time> - <time>{{ add_pos.end_date | human_date }}</time>:
           {{ add_pos.summary }}
         </li>
         {% endif %}
@@ -195,18 +121,14 @@
   </section>
   {% endif %}
 
-  {% comment %} ── Earlier Experience ───────────────────────────────────────── {% endcomment %}
-  {% if earlier %}
-  <section id="earlier-experience">
-    <h2>{{ earlier.title }}</h2>
-    <p class="section-meta">{{ earlier.dates }}</p>
-    <p>{{ earlier.summary }}</p>
+  {% if leadership and leadership.items.size > 0 %}
+  <section id="leadership">
+    <h2>{{ leadership.title | default: "Technical Leadership & Community" }}</h2>
     <ul class="ats-supporting-list">
-      {% for item in earlier.items %}
-        <li><strong>{{ item.label }}</strong>: {{ item.summary }}</li>
+      {% for leader_item in leadership.items %}
+        <li>{{ leader_item }}</li>
       {% endfor %}
     </ul>
   </section>
   {% endif %}
-
 </article>

@@ -11,6 +11,18 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - RESUME SURFACE ARCHITECTURE, CHRONOLOGICAL PROJECT INTEGRATION & TYPOGRAPHY STANDARDIZATION (2026-10-26):
+         Updated resume surfaces (`/resume/`, `/resume.html`, `/resume.md`, `/resume.txt`, `/exports/resume.pdf`, and `/resumes/*`) for single-column linear layout, chronological history depth, and clean typography:
+         - Chronological Systems & Project Integration:
+           - Added `just3ws (Independent)` (`_data/resume/positions/just3ws.yml`) integrating the `media-pipeline` Rails 8 / `pgvector` / `RubyLLM` / `Solid Queue` microservice, `just3ws.com` knowledge graph, `Phalanx Duel` deterministic TypeScript state engine, and `WWWorkRemote` ingestion pipeline directly into the chronological `Experience` timeline.
+           - Expanded detailed `Experience` timeline across 11 positions (`2009 - Present`) and `Earlier Career Experience` with full dates and locations across 14 positions (`1999 - 2014`).
+         - Single-Column Linear Layout & Natural Casing:
+           - Standardized all HTML, print CSS (`_sass/_p_resume.scss`), Markdown, plain-text, and PDF exports to single-column linear flow (`Header -> Professional Summary -> Core Skills -> Experience -> Earlier Career Experience -> Technical Leadership`).
+           - Removed `text-transform: uppercase`, `.upcase` transforms, `letter-spacing` overrides, ASCII underline banners, and multi-column skill grids across all templates and generators.
+           - Updated `bin/generate_pdf_resume.js` to support Chrome channel fallback and verified all 7 vector PDF exports.
+         - Verification:
+           - `just3ws.github.io`: 320/320 RSpec tests passing, 508 Markdown files passing fast validation, 1009 HTML pages passing semantic validation, 71/71 attested resume metrics verified, all JSON/TXT/MD/PDF exports validated cleanly, zero em dashes.
+
        - TELEPROMPTER PARITY, CLOUD STAGING, SCAN CONCURRENCY & AUTONOMOUS DRAIN (2026-10-26):
          Restored broadcast teleprompter parity, solved macOS CloudStorage APFS dataless permission boundary, eliminated scan race conditions, and drained backlog assets:
          - Broadcast Teleprompter Studio Parity (1:1+ Enhanced):

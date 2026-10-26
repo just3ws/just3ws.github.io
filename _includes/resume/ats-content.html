@@ -1,58 +1,32 @@
 {% assign ats = site.data.resume.ats %}
+{% assign leadership = site.data.resume.leadership %}
 <article class="ats-resume-content">
   {% include resume/intro.html %}
 
-  <section id="experience">
-    <div class="experience-header">
-      <h2>Experience</h2>
-    </div>
+  <section id="skills">
+    <h2>{{ site.data.resume.skills.title | default: "Core Skills" }}</h2>
+    <ul class="ats-supporting-list">
+      {% for category_item in site.data.resume.skills.categories %}
+        <li>
+          <strong>{{ category_item.name }}:</strong> {{ category_item.items | join: ", " }}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 
+  <section id="experience">
+    <h2>Experience</h2>
     <div class="experience-content">
       {% for position_item in ats.positions %}
         {% assign position_data = site.data.resume.positions[position_item.id] %}
         {% if position_data %}
-          {% include position.html position=position_data public_surface=true %}
+          {% include position.html position=position_data position_id=position_item.id %}
         {% endif %}
       {% endfor %}
     </div>
   </section>
 
-  <style>
-    .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-  </style>
-
-  {% if ats.selected_projects and ats.selected_projects.items.size > 0 %}
-  <section id="selected-projects">
-    <div class="experience-header">
-      <h2>{{ ats.selected_projects.title }}</h2>
-    </div>
-
-    <div class="experience-content">
-      {% for project_item in ats.selected_projects.items %}
-        {% assign project_data = site.data.resume.positions[project_item.id] %}
-        {% if project_data %}
-          <!-- DEBUG: {{ project_data.title }} -->
-          {% include project.html project=project_data public_surface=true %}
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  <section id="skills">
-    <h2>{{ site.data.resume.skills.title | default: "Core Skills" }}</h2>
-    <div class="skills-dashboard">
-      {% for category_item in site.data.resume.skills.categories %}
-        {% include skills.html category=category_item %}
-      {% endfor %}
-    </div>
-  </section>
-
+  {% if ats.additional_experience and ats.additional_experience.items.size > 0 %}
   <section id="additional-experience">
     <h2>{{ ats.additional_experience.title }}</h2>
     <ul class="ats-supporting-list">
@@ -60,22 +34,25 @@
         {% assign add_position = site.data.resume.positions[add_entry.id] %}
         {% if add_position %}
           <li>
-            <strong>{{ add_position.title }}, {{ add_position.company.name }}</strong>
-            : {{ add_entry.summary | default: add_position.public_summary | default: add_position.summary }}
+            <strong>{{ add_position.title }}</strong> | <strong>{{ add_position.company.name }}</strong>
+            {%- if add_position.company.location %} | {{ add_position.company.location }}{%- endif %}
+            | <time>{{ add_position.start_date | human_date }}</time> - <time>{{ add_position.end_date | human_date }}</time>:
+            {{ add_entry.summary | default: add_position.summary }}
           </li>
         {% endif %}
       {% endfor %}
     </ul>
   </section>
+  {% endif %}
 
-  <section id="earlier-experience">
-    <h2>{{ ats.earlier_experience.title }}</h2>
-    <p class="section-meta">{{ ats.earlier_experience.dates }}</p>
-    <p>{{ ats.earlier_experience.summary }}</p>
+  {% if leadership and leadership.items.size > 0 %}
+  <section id="leadership">
+    <h2>{{ leadership.title | default: "Technical Leadership & Community" }}</h2>
     <ul class="ats-supporting-list">
-      {% for earlier_item in ats.earlier_experience.items %}
-        <li><strong>{{ earlier_item.label }}</strong>: {{ earlier_item.summary }}</li>
+      {% for leader_item in leadership.items %}
+        <li>{{ leader_item }}</li>
       {% endfor %}
     </ul>
   </section>
+  {% endif %}
 </article>

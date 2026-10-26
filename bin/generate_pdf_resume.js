@@ -113,7 +113,12 @@ async function generatePDFs() {
   console.log('📄 Launching Google Chrome for PDF generation...');
   // Prefer Playwright's pinned browser so PDF output stays reproducible across
   // local Chrome upgrades and avoids coupling generation to a GUI install.
-  const browser = await chromium.launch({ headless: true });
+  let browser;
+  try {
+    browser = await chromium.launch({ headless: true });
+  } catch (_err) {
+    browser = await chromium.launch({ channel: 'chrome', headless: true });
+  }
   const context = await browser.newContext();
 
   // Ensure directories exist (mkdir -p)

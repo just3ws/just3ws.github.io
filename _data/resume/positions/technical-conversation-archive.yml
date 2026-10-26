@@ -1,8 +1,8 @@
 ---
 company:
   name: Technical Conversation Archive
-  location: Independent Project
-title: Principal Engineer & Curator
+  location: Chicago, IL
+title: Staff Software Engineer & Curator
 type: Project
 start_date: "2011-01-01"
 end_date:
@@ -10,49 +10,51 @@ date_precision: year
 id: technical-conversation-archive
 
 summary: >
-  Recorded, and later restored, an archive of 214 technical interviews with
-  practitioners from the Ruby, JVM, and Software Craftsmanship movements, using
-  a local-only AI pipeline to transcribe, structure, and cross-link a longitudinal record
-  of primary-source material into a searchable knowledge graph.
+  Recorded, and later restored, an archive of 218 technical interviews and 270+ video masters
+  with practitioners from the Ruby, JVM, and Software Craftsmanship movements, using a
+  local-only AI pipeline and Rails 8 media microservice to transcribe, index with pgvector,
+  and cross-link primary-source material into a searchable knowledge graph.
 
 public_summary: >-
-  Restored and published an oral history archive of 214 technical interviews
-  with Software Craftsmanship practitioners, backed by an on-device AI transcription pipeline
-  and contract-validated knowledge graph.
+  Restored and published an oral history archive of 218 technical interviews and 270+
+  video masters with Software Craftsmanship practitioners, backed by a Rails 8 and
+  pgvector media pipeline, on-device Whisper transcription, and contract-validated knowledge graph.
 
 public_highlights:
   - text: >-
-      Built a local-first Whisper and LLM pipeline that structures long-form audio
-      entirely on-device with zero external inference egress.
+      Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) media pipeline with
+      on-device Whisper transcription, hybrid semantic search, and local LLM RAG synthesis.
   - text: >-
       Enforced build-time schema contracts and referential integrity checks across
       all media assets, transcripts, and semantic taxonomy graphs.
 
 highlights:
   - text: >
+      Autonomous Media Pipeline & Hybrid Search: Architected a Rails 8, Solid Queue, and
+      PostgreSQL 18 (pgvector) microservice that ingests raw recordings, runs on-device
+      Whisper transcription and speaker diarization, indexes 768-dimensional embeddings
+      for hybrid RRF search, and orchestrates YouTube publishing with zero disk waste.
+
+  - text: >
       Local-Only AI Restoration Pipeline: Built a Whisper and local-LLM pipeline that
       transcribes, diarizes, and structures long-form interview audio entirely on-device,
       keeping a large private media corpus off third-party inference services.
 
   - text: >
-      Schema-Validated Content Platform: Runs on a contract-validated data layer: every
+      Schema-Validated Content Platform: Built a contract-validated data layer where every
       interview, asset, and transcript is checked against an explicit schema at build time,
       with referential-integrity checks that fail the build rather than publishing broken data.
 
   - text: >
-      Semantic Cross-Linking & Taxonomy Generation: Generates a topic taxonomy, knowledge
+      Semantic Cross-Linking & Taxonomy Generation: Engineered a topic taxonomy, knowledge
       graph, and semantic cross-links across the corpus, turning an unstructured media archive
       into navigable, individually indexed pages.
 
   - text: >
-      Primary-Source Capture: Conducted the original interviews on-site at GOTO Conference,
-      Software Craftsmanship North America, RailsConf, and WindyCityRails, with practitioners
-      including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso, and Micah Martin.
-
-  - text: >
-      Digital Archaeology: Recovered and reconstructed material from defunct platforms and
-      web archives, reconciling incomplete metadata across sources to restore provenance for
-      recordings that would otherwise have been lost.
+      Primary-Source Capture & Digital Archaeology: Conducted the original interviews on-site
+      at GOTO Conference, Software Craftsmanship North America, RailsConf, and WindyCityRails
+      with practitioners including Dave Thomas, Stuart Halloway, Corey Haines, Sandro Mancuso,
+      and Micah Martin, and recovered archival recordings across defunct platforms.
 
 skills:
   - Local-First AI Inference

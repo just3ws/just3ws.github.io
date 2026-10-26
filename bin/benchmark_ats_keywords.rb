@@ -191,9 +191,9 @@ class ATSBenchmarkEngine
     # 1. ATS Section Header Extraction
     sections_found = {
       contact_info: (content =~ /MIKE HALL/i && content =~ /@/ && content =~ /\(\d{3}\)/) ? true : false,
-      summary: content.include?("PROFESSIONAL SUMMARY"),
-      core_skills: content.include?("CORE SKILLS"),
-      experience: content.include?("EXPERIENCE"),
+      summary: (content =~ /\bProfessional Summary\b/i) ? true : false,
+      core_skills: (content =~ /\bCore Skills\b/i) ? true : false,
+      experience: (content =~ /\bExperience\b/i) ? true : false,
       highlights: content.include?("Key Outcomes:") || content.include?("Originations IC Delivery")
     }
 
