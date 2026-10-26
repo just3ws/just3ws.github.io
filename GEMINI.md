@@ -16,6 +16,10 @@ Before changing this repository:
 
 Do not treat this repository as an isolated Jekyll checkout. Its installed localhost site is part of Mike's local system and is a required verification surface for user-facing changes.
 
+### Non-Negotiable Canonical Entity Naming & Ecosystem Ground Truth
+
+- **SCMC** is strictly **Software Craftsmanship McHenry County**. It is NEVER "Software Craftsmanship Movement", "Software Craftsmanship Meetup", "Software Craftsmanship Midwest", "Supply Chain Management", or anything else. Mike Hall co-founded SCMC in late 2009 with Ryan Gerry and Jim Suchy (following the October 2009 SCNA table meeting with Ryan Gerry that launched CDG in McHenry County libraries, Panera Bread, and Duke's Alehouse), hosted at Follett Software Company in McHenry, IL.
+
 ---
 
 ## The Ponytail Principle: Reducing Premature Technical Debt

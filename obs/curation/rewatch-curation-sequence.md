@@ -402,10 +402,10 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 #### Episode 31: Robert 'Uncle Bob' Martin: The 'A' Word: Architecture, Clean Boundaries & Suburban Craftsmanship
 - **Interviewee**: Robert 'Uncle Bob' Martin
 - **Conference / Date**: SCMC 2011 (Follett Keynote) (2011)
-- **Location**: River Grove, IL
+- **Location**: McHenry, IL
 - **Slug**: `robert-martin-the-a-word-architecture-scmc-2011`
 - **The Sound Above Inquiry**: What was the foundational architectural message Uncle Bob delivered at the Follett campus? Why must database and framework decisions be deferred boundaries rather than core identities?
-- **Chicago Context**: Presented at the Chicago Software Craftsmanship Community meeting hosted at Follett in 2011, establishing the clean architecture canon in the Midwest.
+- **Chicago Context**: Presented at the Software Craftsmanship McHenry County (SCMC) meeting hosted at Follett Software Company in McHenry, IL in 2011, establishing the clean architecture canon in the Midwest.
 - **AI Era Parallel**: LLMs want to couple everything directly to the prompt. Disciplined architects preserve boundaries, keeping models peripheral and business logic sovereign.
 - **Companion Video**: Uncle Bob Martin: 2011 SCMC Keynote (Follett)
 - **Status**: planned
