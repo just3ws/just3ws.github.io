@@ -18,7 +18,7 @@ Usage: ./bin/pipeline <domain> <action> [options]
 
 Namespaces:
   media     Media intake, streaming telemetry, SwiftBar, and YouTube publishing.
-            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, query, status, service, doctor.
+            Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, query, status, inventory, assets, corrupt, metadata, service, doctor.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   lake      Ecosystem datalake across GitHub orgs, git commits, artifacts, timeline.
@@ -116,10 +116,44 @@ run_media() {
       ruby bin/query_pipeline.rb "$@"
       ;;
     status)
-      if [ $# -eq 0 ]; then
+      if [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" status "$@"
+      elif [ $# -eq 0 ]; then
         ruby bin/query_pipeline.rb
       else
         ruby bin/query_pipeline.rb "$@"
+      fi
+      ;;
+    inventory|manifest)
+      if [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" inventory "$@"
+      else
+        echo "media-pipeline CLI not found at $MP_WORKDIR/bin/mp" >&2
+        exit 1
+      fi
+      ;;
+    assets)
+      if [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" assets "$@"
+      else
+        echo "media-pipeline CLI not found at $MP_WORKDIR/bin/mp" >&2
+        exit 1
+      fi
+      ;;
+    corrupt)
+      if [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" corrupt "$@"
+      else
+        echo "media-pipeline CLI not found at $MP_WORKDIR/bin/mp" >&2
+        exit 1
+      fi
+      ;;
+    metadata)
+      if [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" metadata "$@"
+      else
+        echo "media-pipeline CLI not found at $MP_WORKDIR/bin/mp" >&2
+        exit 1
       fi
       ;;
     teleprompter|prompter)
@@ -194,11 +228,11 @@ run_media() {
       ruby bin/analyze_ramblin_cadence.rb "$@"
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|query|status|service|restart|logs|doctor> [options]"
+      echo "Usage: ./bin/pipeline media <status|inventory|assets|scan|corrupt|metadata|intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|dedupe|sweep|cadence|halt|stop|resume|query|service|restart|logs|doctor> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, query, status, service, restart, logs, doctor" >&2
+      echo "Available: status, inventory, assets, scan, corrupt, metadata, intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, dedupe, sweep, cadence, halt, stop, resume, query, service, restart, logs, doctor" >&2
       exit 1
       ;;
   esac
