@@ -11,6 +11,25 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - BPMN 2.0 OPERATING PROCESS DIAGRAM & MOBILE STAGING AIRLOCK (2026-10-27):
+         Migrated the BPMN 2.0 operating process visualization on the media-pipeline dashboard to accurately diagram the two-lane decoupled architecture, aligned the interactive step inspector with all 15 operational stages, and added mobile upload discovery across parent and unassigned staging roots:
+         - BPMN 2.0 Architectural Diagram Migration (`_tab_bpmn.html.erb`):
+           - Replaced legacy 12-step single-lane diagram with a responsive 4-lane BPMN 2.0 workflow canvas:
+             - Lane 1: Ingress, Staging Airlock & Admission Gate (Drop, Staged Airlock, ffprobe Container Check with Quarantine Branch, Pending Ingress, and WIP 1 Admission Gate).
+             - Lane 2: Quota-Free Enrichment (Partitioned Staging `tmp/staging/enrich/<id>/`, 16kHz WAV extraction, Apple Metal Whisper STT, Metadata synthesis with Kent Beck rules and 0 em dashes, Cadence & Archetype classification, pgvector chunking, and cloud buffer promotion to `enriched/` with 0 local SSD bytes).
+             - Lane 3: Quota Supervision & Autonomous Dispatch (`PublishDispatchJob`, `YoutubeQuotaService.can_afford?(:publish)` with 2,050 units floor, proactive cooldown decision gateway, and `media_publish` WIP 1 concurrency semaphore).
+             - Lane 4: Quota-Gated Publishing, Ephemerality Sweep & Sovereign Archive (Resumable 1,600 units upload + 400 units WebVTT captions upload, playlist insert, rolling-horizon ephemerality sweep, sovereign cloud archive rename to `processed/YYYY-MM/`, SSD eviction, and Jekyll site sync).
+         - Interactive BPMN Inspector & Simulation (`_scripts.html.erb`):
+           - Aligned `bpmnSteps` catalog across all 15 nodes with explicit service tasks, SLI latencies, quota costs, invariants, and self-healing runbooks.
+           - Updated `simulateBpmnExecution()` stepping sequentially through all 15 nodes with live visual active highlights.
+         - Mobile & Unassigned Staging Discovery:
+           - Extended `PipelineInventoryService` and `PipelineStatusService` to scan parent channel staging directories (`whoistechcmty/staged/` and channel root `staged/`) for direct mobile uploads before series assignment.
+           - Added `["STAGED_AIRLOCK", "NEEDS_TARGET"]` badges to surface unassigned mobile uploads immediately in the Operations Cockpit.
+         - Verification:
+           - `media-pipeline`: 190/190 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Mandoc, zero em dashes (`105df9a` on `main`).
+           - Service running cleanly under launchd PID 21388, health endpoint `/up` responding `200 OK`.
+           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes.
+
        - SYSTEM INVENTORY ENGINE, SOURCE AUDIT, TSV EXPORTS & CORRUPT RETRY WORKFLOW (2026-10-27):
          Built unified catalog inventory manifest, source folder cross-reference audit, first-class TSV exports, and corrupt file repair/retry workflows across `media-pipeline`:
          - System Inventory Engine (`PipelineInventoryService`):
