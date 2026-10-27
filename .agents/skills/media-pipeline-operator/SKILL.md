@@ -23,7 +23,11 @@ The media intake pipeline operates on a zero-disk-waste cloud streaming architec
 ## 2. The 5-State Maildir Directory Lifecycle
 
 Queue directories are organized by channel and target playlist under:
-`~/ai/media-pipeline/<channel>/<target>/` and `~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline/<channel>/<target>/`
+- Local NVMe: `~/ai/media-pipeline/<channel>/<target>/`
+- Cloud Google Drive: `~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline/<channel>/<target>/`
+
+Canonical channel: strictly `whoistechcmty`.
+Canonical target series: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`.
 
 | Directory | State Purpose | Operator Action |
 | :--- | :--- | :--- |

@@ -11,6 +11,27 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - STORAGE CONVENTIONS ENFORCEMENT & DOCTOR DIAGNOSTICS (2026-10-27):
+         Hardened storage hierarchy conventions across `media-pipeline` and `just3ws.github.io`, added characterization test coverage, and wired storage health into `bin/mp-service doctor`:
+         - Storage Conventions Characterization Test (`spec/services/storage_conventions_spec.rb`):
+           - Added automated specification in `media-pipeline` asserting:
+             - Channel root invariant strictly equals `whoistechcmty`.
+             - Local baseline root equals `~/ai/media-pipeline`.
+             - Cloud root pattern strictly targets `ai/media-pipeline`.
+             - Physical `staged/` and `pending/` directories exist across all 5 target series (`the-sound-above`, `errata`, `ramblin-amblin`, `phalanx-duel`, `marginalia`).
+         - Configuration Governance & Diagnostic Reporting (`PipelineConfigService`):
+           - Defined `PipelineConfigService::REQUIRED_QUEUES` (`staged`, `pending`, `processing`, `processed`, `failed`, `corrupt`, `blocked`).
+           - Added `storage_conventions_report` inspecting both local NVMe and Google Drive cloud trees.
+           - Enforced channel root (`whoistechcmty`) and cloud root `ai/media-pipeline` namespace anchoring in `validate!`.
+         - Doctor Preflight Diagnostics (`bin/mp-service doctor`):
+           - Added Section 10: Storage Conventions & Intake Roots Inspection.
+           - Verifies local and cloud roots on the physical filesystem and checks `staged [OK]` and `pending [OK]` across all 5 series targets.
+         - Ground Truth Invariants:
+           - Documented non-negotiable storage conventions in `GEMINI.md` and `.agents/skills/media-pipeline-operator/SKILL.md`.
+         - Verification:
+           - `media-pipeline`: 197/197 RSpec tests passing, 0 Brakeman warnings, clean linters (`cb10928` on `main`).
+           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes.
+
        - BPMN 2.0 OPERATING PROCESS DIAGRAM & MOBILE STAGING AIRLOCK (2026-10-27):
          Migrated the BPMN 2.0 operating process visualization on the media-pipeline dashboard to accurately diagram the two-lane decoupled architecture, aligned the interactive step inspector with all 15 operational stages, and added mobile upload discovery across parent and unassigned staging roots:
          - BPMN 2.0 Architectural Diagram Migration (`_tab_bpmn.html.erb`):

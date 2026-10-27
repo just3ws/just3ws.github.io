@@ -19,6 +19,13 @@ Do not treat this repository as an isolated Jekyll checkout. Its installed local
 ### Non-Negotiable Canonical Entity Naming & Ecosystem Ground Truth
 
 - **SCMC** is strictly **Software Craftsmanship McHenry County**. It is NEVER "Software Craftsmanship Movement", "Software Craftsmanship Meetup", "Software Craftsmanship Midwest", "Supply Chain Management", or anything else. Mike Hall co-founded SCMC in late 2009 with Ryan Gerry and Jim Suchy (following the October 2009 SCNA table meeting with Ryan Gerry that launched CDG in McHenry County libraries, Panera Bread, and Duke's Alehouse), hosted at Follett Software Company in McHenry, IL.
+- **Media Pipeline Storage Hierarchy & Conventions**:
+  - Channel Root: strictly `whoistechcmty`.
+  - Local NVMe Base: `~/ai/media-pipeline/whoistechcmty/<series_slug>/<lifecycle_dir>/`.
+  - Cloud Base Pattern: `~/Library/CloudStorage/GoogleDrive-*/My Drive/ai/media-pipeline/whoistechcmty/<series_slug>/<lifecycle_dir>/`.
+  - Target Series Slugs: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`.
+  - Lifecycle Queues: `staged/`, `pending/`, `processing/`, `processed/`, `failed/`, `corrupt/`, `blocked/`.
+  - Invariant: Mobile phone and desktop uploads into Google Drive land in `My Drive/ai/media-pipeline/whoistechcmty/<target>/staged/`. The cloud path MUST target the `ai/` namespace.
 
 ---
 
