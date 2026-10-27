@@ -11,6 +11,17 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - MEDIA PIPELINE CONSOLIDATION & JUST3WS CLI ROUTING (2026-10-27):
+         Consolidated all media pipeline operations under the `media-pipeline` microservice (`media-pipeline.localhost:32000`) and cleared legacy technical debt in `just3ws.github.io`:
+         - CLI Delegation Routing (`bin/pipeline media` in `just3ws.github.io`):
+           - Updated `run_media()` in `bin/pipeline` to delegate `status`, `inventory`, `manifest`, `assets`, `corrupt`, `metadata`, `service`, and `doctor` directly to `~/github.com/just3ws/media-pipeline/bin/mp` and `bin/mp-service`.
+           - Single source of truth: `media-pipeline` is the sole engine for media intake, audio DSP, Whisper transcription, and YouTube publishing. `just3ws.github.io` consumes canonical output (`_data/video_assets.yml`, `_data/transcripts/`).
+         - Cloud Root Consolidation:
+           - Removed legacy `My Drive/media-pipeline` paths across `_data/media_intake_targets.yml`, `bin/youtube-swiftbar`, `bin/lib/youtube_deduplicator.rb`, and architecture specs, establishing strictly `My Drive/ai/media-pipeline`.
+         - Verification:
+           - `media-pipeline`: 197/197 RSpec tests passing, 0 Brakeman warnings, clean linters (`cb10928` on `main`).
+           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes (`6f45cb5c` on `master`).
+
        - STORAGE CONVENTIONS ENFORCEMENT & DOCTOR DIAGNOSTICS (2026-10-27):
          Hardened storage hierarchy conventions across `media-pipeline` and `just3ws.github.io`, added characterization test coverage, and wired storage health into `bin/mp-service doctor`:
          - Storage Conventions Characterization Test (`spec/services/storage_conventions_spec.rb`):
