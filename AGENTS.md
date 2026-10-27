@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-26
+     CURRENT FOCUS - last updated 2026-10-27
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,48 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SYSTEM INVENTORY ENGINE, SOURCE AUDIT, TSV EXPORTS & CORRUPT RETRY WORKFLOW (2026-10-27):
+         Built unified catalog inventory manifest, source folder cross-reference audit, first-class TSV exports, and corrupt file repair/retry workflows across `media-pipeline`:
+         - System Inventory Engine (`PipelineInventoryService`):
+           - Implemented `PipelineInventoryService` (`app/services/pipeline_inventory_service.rb`) assembling a single source of truth across all 281 database `MediaAsset` records and physical filesystem queues (`staged`, `pending`, `corrupt`, and `processed` archive) across local NVMe and Google Drive cloud tiers.
+           - Generates structured `InventoryItem` records with ID, filename, original filename, status (`processed`, `pending`, `staged`, `processing`, `blocked`, `failed`, `unregistered_processed`), target series, byte size, duration, YouTube Video ID, YouTube URL, title, file path, error messages, and publication timestamps.
+         - Source Directory Audit & Collision Detection (`PipelineInventoryService.audit_source`):
+           - Implemented cross-referencing of external directories/files against system knowledge.
+           - Classifies source videos into 6 categories: `UNSEEN` (needs upload), `IN_PIPELINE` (queued in staged/pending), `PROCESSED` (live on YouTube with direct URL), `COLLISION` (filename matches existing asset but byte size differs; warns to rename before uploading), `ERRORED` (previously failed or quarantined), and `POTENTIAL_RENAME` (byte size matches an existing asset under different name).
+         - First-Class TSV Support (`PipelineInventoryService.manifest_to_tsv`, `audit_to_tsv`):
+           - Added clean tab-separated values export for both the catalog manifest and source audits via `--tsv` / `-t` flags and `.tsv` file extension auto-detection.
+         - Corrupt File Repair & Re-Evaluation (`bin/mp-inventory retry <FILE_OR_ID>`):
+           - Built `retry` subcommand to re-evaluate repaired or re-uploaded video files.
+           - Validates container readability via `IntakeQuarantineService.corrupt_reason` and `ffprobe`.
+           - Atomically moves repaired physical files back to `pending/` via `asset.restore_to_pending!`.
+           - Clears `error_message` and `error_context`, updates `file_size_bytes`, logs a `re-evaluated` event in `media_asset_events`, and immediately enqueues `EnrichMediaAssetJob`.
+           - Added `human_size` helper to `MediaAsset` model.
+         - CLI & Manpage Alignment:
+           - Created `bin/mp-inventory` supporting `manifest`, `check`, and `retry` subcommands.
+           - Updated `bin/mp` dispatcher listing `inventory` under commands.
+           - Updated `docs/man/mp.1` documenting `mp-inventory` synopsis, subcommands, and examples (`mandoc -Tlint -Werror` clean).
+         - Verification:
+           - `media-pipeline`: 190/190 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, clean Mandoc, zero em dashes (`51ae5bd`, `690ad08`, `49111db` on `main`).
+           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes.
+
+       - ENRICH-PUBLISH LANE PARTITION & PROACTIVE YOUTUBE QUOTA LEDGER (2026-10-27):
+         Decoupled pre-YouTube enrichment (Whisper transcription, metadata generation, and pgvector embeddings) from YouTube publishing across `media-pipeline`:
+         - Enrich vs Publish Lane Partition Specification (`docs/enrich-publish-partition-specification.md`):
+           - Authored comprehensive specification defining two-lane decoupled architecture.
+         - Two-Lane Decoupled Architecture (`EnrichMediaAssetJob` & `PublishMediaAssetJob`):
+           - `EnrichMediaAssetJob`: Quota-free local Metal GPU Whisper transcription and vector indexing; moves cloud master from `pending/` to `enriched/` buffer (0 local bytes).
+           - `PublishMediaAssetJob`: Quota-gated resumable video upload, captions upload, playlist insertion, and ephemerality sweep.
+           - `PublishDispatchJob`: Supervises `MediaAsset.publish_ready` in FIFO order, dispatching executions when quota headroom exists and no publish job is in flight.
+           - `ProcessMediaAssetJob`: Compatibility shim routing legacy and GraphQL callers seamlessly to the appropriate lane job.
+         - Proactive YouTube Quota Units Ledger (`YoutubeQuotaService`):
+           - Added daily units ledger tracking Pacific Time spend against the 10,000 units/day budget.
+           - Added proactive `can_afford?(:publish)` checks (2,050 units threshold) preventing HTTP 403 quota exhaustion errors.
+         - Multi-Lane Supervision:
+           - SwiftBar dynamic menu pill (`⚡ P:<pending> E:<enriched>`) and quota units remaining.
+           - Operations Cockpit multi-lane queue swimlanes, counts, and `Publish Next Enriched` action button.
+         - Verification:
+           - `media-pipeline`: 183/183 RSpec tests passing, 0 Brakeman warnings, clean RuboCop, clean ERB Lint, zero em dashes (`7b3c603`).
+
        - EVERGREEN PINNING, SCHEDULED EPHEMERALITY SWEEP, PLAYLIST DEDUPLICATION, CLASSIFIER TRIAGE & CADENCE ANALYZER (2026-10-26):
          Audited all companion domain scripts omitted by the initial 3-file specification (`bin/lib/youtube_deduplicator.rb`, `bin/youtube_sweeper.rb`, `bin/lib/pipeline_classifier.rb`, and `bin/analyze_ramblin_cadence.rb`) and ported every missing capability into `media-pipeline`:
          - Root Cause of Spec Omissions:
