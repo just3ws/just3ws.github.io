@@ -456,7 +456,7 @@ Stored in `~/.local/state/just3ws/jobs/<filename>.state.json` and mirrored as a 
 {
   "version": "1.0",
   "filename": "VID_20261015_095414134.mp4",
-  "file_path": "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline/whoistechcmty/ramblin-amblin/processing/VID_20261015_095414134.mp4",
+  "file_path": "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline/whoistechcmty/ramblin-amblin/processing/VID_20261015_095414134.mp4",
   "created_at": "2026-10-16T18:42:16Z",
   "updated_at": "2026-10-16T18:44:37Z",
   "meta_phase": "processing",

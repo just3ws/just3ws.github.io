@@ -22,7 +22,7 @@ CONFIG_PATH = File.join(ROOT_DIR, '_data', 'media_intake_targets.yml')
 TELEMETRY_PATH = File.join(ROOT_DIR, '_data', 'youtube_pipeline_telemetry.json')
 
 # Resolve Media Intake base path (SSD local queue preferred, Google Drive fallback)
-FALLBACK_CLOUD_BASE = File.expand_path('~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline')
+FALLBACK_CLOUD_BASE = File.expand_path('~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline')
 intake_config = (File.exist?(CONFIG_PATH) ? YAML.safe_load(File.read(CONFIG_PATH)) : {}) rescue {}
 configured_base = intake_config['base_path'] ? File.expand_path(intake_config['base_path']) : nil
 cloud_base = intake_config['cloud_archive_path'] ? File.expand_path(intake_config['cloud_archive_path']) : FALLBACK_CLOUD_BASE

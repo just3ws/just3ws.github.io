@@ -94,7 +94,7 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(stdout).to include('Ingested')
       expect(stdout).to include('pending queue')
       staged_target = File.join(File.expand_path('~/ai/media-pipeline'), 'whoistechcmty', 'ramblin-amblin', 'pending', File.basename(test_file))
-      cloud_target = File.join(File.expand_path('/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/media-pipeline'), 'whoistechcmty', 'ramblin-amblin', 'pending', File.basename(test_file))
+      cloud_target = File.join(File.expand_path('/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline'), 'whoistechcmty', 'ramblin-amblin', 'pending', File.basename(test_file))
       expect(File.exist?(staged_target) || File.exist?(cloud_target)).to be true
       FileUtils.rm_f(staged_target)
       FileUtils.rm_f(cloud_target)
