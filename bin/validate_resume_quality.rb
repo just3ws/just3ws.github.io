@@ -14,6 +14,7 @@
 require 'yaml'
 require 'json'
 require 'fileutils'
+require 'pathname'
 
 ROOT_DIR = File.expand_path('..', __dir__)
 RESUME_POSITIONS_DIR = File.join(ROOT_DIR, '_data', 'resume', 'positions')
@@ -86,6 +87,7 @@ class ResumeQualityValidator
     validate_macro_narrative
     validate_canonical_positions
     validate_ats_text_exports
+    validate_ats_pdf_exports
     validate_json_exports
     validate_schema_org_json_ld
     validate_zero_em_dashes
@@ -232,6 +234,14 @@ class ResumeQualityValidator
         end
       end
 
+      if filename == 'ats-import-resume.txt'
+        ['Earlier Career Experience', 'Technical Leadership'].each do |sec|
+          unless content.match?(/\b#{Regexp.escape(sec)}\b/i)
+            @errors << "#{filename}: ATS import export missing section '#{sec}'"
+          end
+        end
+      end
+
       # Check Principal competencies in primary resume
       if filename.include?('principal')
         EXPECTED_PRINCIPAL_COMPETENCIES.each do |comp|
@@ -245,25 +255,91 @@ class ResumeQualityValidator
     puts "   ✓ #{txt_files.size} plain text exports passed ATS section and keyword extraction"
   end
 
+  def validate_ats_pdf_exports
+    puts "\n4. Emulating ATS text extraction from PDF exports..."
+    pdf_files = Dir.glob(File.join(EXPORTS_DIR, '*.pdf')) + Dir.glob(File.join(ROOT_DIR, 'exports', '*.pdf'))
+    pdf_files.uniq!
+    if pdf_files.empty?
+      @errors << "No PDF resume exports found under exports/ or exports/resumes/"
+      return
+    end
+
+    pdf_files.each do |pdf_path|
+      filename = Pathname.new(pdf_path).relative_path_from(Pathname.new(ROOT_DIR)).to_s
+      begin
+        require 'pdf-reader'
+        reader = PDF::Reader.new(pdf_path)
+        text = reader.pages.map(&:text).join("\n")
+        first_page = reader.pages.first&.text.to_s
+        if text.strip.empty?
+          @errors << "#{filename}: PDF contains no extractable text"
+          next
+        end
+
+        %w[Mike\ Hall Professional\ Summary Core\ Skills Experience].each do |term|
+          @errors << "#{filename}: PDF text extraction missing '#{term}'" unless text.match?(/#{Regexp.escape(term)}/i)
+        end
+        unless first_page.match?(/Mike\s+Hall/i) && first_page.match?(/mike@just3ws\.com/i) && first_page.match?(/\(847\)\s*877-3825/)
+          @errors << "#{filename}: first page does not expose name, email, and phone in extractable text"
+        end
+        if text.index(/Mike\s+Hall/i).nil? || text.index(/Professional\s+Summary/i).nil? ||
+           text.index(/Mike\s+Hall/i) > text.index(/Professional\s+Summary/i)
+          @errors << "#{filename}: extracted text does not place the name before the summary"
+        end
+      rescue LoadError => e
+        @errors << "#{filename}: PDF text extraction requires the pdf-reader gem (#{e.message})"
+      rescue StandardError => e
+        @errors << "#{filename}: PDF text extraction failed: #{e.message}"
+      end
+    end
+
+    puts "   ✓ #{pdf_files.size} PDF exports passed text extraction and first-page checks"
+  end
+
   def validate_json_exports
-    puts "\n4. Validating Structured JSON Resume Exports (exports/resumes/*.json)..."
+    puts "\n5. Validating Internal Structured Resume Exports (exports/resumes/*.json)..."
     json_files = Dir.glob(File.join(EXPORTS_DIR, '*.json'))
     json_files.each do |json_path|
       filename = File.basename(json_path)
       begin
         data = JSON.parse(File.read(json_path))
-        unless (data['profile'] || data['basics']) && (data['positions'] || data['experience'])
-          @errors << "#{filename}: JSON schema missing required profile/basics or positions/experience root keys"
+        unless data.is_a?(Hash)
+          @errors << "#{filename}: root value must be a JSON object"
+          next
+        end
+        basics = data['basics']
+        experience = data['experience']
+        @errors << "#{filename}: missing basics object" unless basics.is_a?(Hash)
+        if basics.is_a?(Hash)
+          %w[name title email phone location].each do |field|
+            @errors << "#{filename}: basics.#{field} must be a non-empty string" unless basics[field].is_a?(String) && !basics[field].strip.empty?
+          end
+        end
+        @errors << "#{filename}: summary must be a non-empty string" unless data['summary'].is_a?(String) && !data['summary'].strip.empty?
+        unless data['core_skills'].is_a?(Array) && data['core_skills'].all? { |skill| skill.is_a?(String) && !skill.strip.empty? }
+          @errors << "#{filename}: core_skills must be an array of non-empty strings"
+        end
+        unless experience.is_a?(Array) && !experience.empty?
+          @errors << "#{filename}: experience must be a non-empty array"
+        else
+          experience.each_with_index do |position, index|
+            %w[id title company dates].each do |field|
+              @errors << "#{filename}: experience[#{index}].#{field} must be a non-empty string" unless position.is_a?(Hash) && position[field].is_a?(String) && !position[field].strip.empty?
+            end
+            unless position.is_a?(Hash) && position['highlights'].is_a?(Array) && position['highlights'].all? { |highlight| highlight.is_a?(String) && !highlight.strip.empty? }
+              @errors << "#{filename}: experience[#{index}].highlights must be an array of non-empty strings"
+            end
+          end
         end
       rescue JSON::ParserError => e
         @errors << "#{filename}: Invalid JSON syntax - #{e.message}"
       end
     end
-    puts "   ✓ #{json_files.size} JSON exports validated against structural schema"
+    puts "   ✓ #{json_files.size} JSON exports validated against the repository's internal export contract"
   end
 
   def validate_schema_org_json_ld
-    puts "\n5. Validating Schema.org Linked Data in Rendered HTML (_site/index.html)..."
+    puts "\n6. Validating Schema.org Linked Data in Rendered HTML (_site/index.html)..."
     unless File.exist?(SITE_INDEX_PATH)
       @warnings << "_site/index.html not found, skipping live JSON-LD extraction (run after build)"
       return
@@ -296,7 +372,7 @@ class ResumeQualityValidator
   end
 
   def validate_zero_em_dashes
-    puts "\n6. Validating 'no-em-dashes' Writing Rule Across All Surfaces..."
+    puts "\n7. Validating 'no-em-dashes' Writing Rule Across All Surfaces..."
     prose_files = Dir.glob(File.join(RESUME_POSITIONS_DIR, '*.yml')) +
                   Dir.glob(File.join(EXPORTS_DIR, '*.txt')) +
                   Dir.glob(File.join(TAILORED_DIR, '*.md'))
@@ -317,7 +393,7 @@ class ResumeQualityValidator
   end
 
   def validate_datalake_parity
-    puts "\n7. Validating Full-Corpus Career Datalake Index Parity..."
+    puts "\n8. Validating Full-Corpus Career Datalake Index Parity..."
     unless File.exist?(DATALAKE_PATH)
       @errors << "Career datalake file missing at #{DATALAKE_PATH}"
       return

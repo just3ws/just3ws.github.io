@@ -34,11 +34,12 @@ Implemented in `bin/validate_resume_quality.rb` and executed as part of the mast
 | :--- | :--- | :--- |
 | **1. Macro Narrative Alignment** | Audits `_data/resume/summary.yml` and `_data/resume/profile.yml`. | Fails if summary text is missing/empty, lacks software-engineering scope, contains generic commodity phrases, or if profile title drifts. |
 | **2. Canonical Positions & Causality** | Scans all YAML files in `_data/resume/positions/*.yml`. | Fails if summary is missing, if passive phrases (`responsible for`, `helped to`) are present, or if AI buzzwords (`tapestry`, `multifaceted`) are detected. Tracks structural outcome causality ratio. |
-| **3. ATS Ingestion Emulation** | Simulates standard ATS ingestion engines across `exports/resumes/*.txt`. | Fails if contact info (name, email, phone, location) or required section headers (`PROFESSIONAL SUMMARY`, `CORE SKILLS`, `EXPERIENCE`) fail to parse. |
-| **4. Structured JSON Schema** | Validates `exports/resumes/*.json` against JSON Resume schema. | Fails if `basics`/`profile` or `experience`/`positions` root keys are missing or malformed. |
-| **5. Schema.org Linked Data** | Extracts `<script type="application/ld+json">` from rendered `_site/index.html`. | Fails if Googlebot-compatible `Person` or `Occupation` schema graph is invalid or missing. |
-| **6. Strict Zero-Em-Dash Rule** | Scans all 38 YAML position records, Markdown resumes, and text exports. | Fails on any Unicode em dash or double-hyphen (`--`), enforcing `no-em-dashes`. |
-| **7. Career Datalake Parity** | Compares canonical positions with `career_datalake.json` index. | Fails on any highlight drift, missing position ID, or stale delivery evidence. |
+| **3. ATS Text Ingestion Emulation** | Checks `exports/resumes/*.txt`, including the ATS import resume's contact fields and section headings. | Fails if name, email, phone, standard sections, or ATS import sections are missing. |
+| **4. ATS PDF Text Extraction** | Extracts every PDF in `exports/` and `exports/resumes/` with `pdf-reader`. | Fails if a PDF has no text, lacks core headings, or omits name, email, or phone from its first page. |
+| **5. Internal JSON Export Contract** | Validates the generated `exports/resumes/*.json` structure. These files use a repository-specific format, not JSON Resume schema v1. | Fails if basics, summary, skills, experience fields, or highlights are missing or malformed. |
+| **6. Schema.org Linked Data** | Extracts `<script type="application/ld+json">` from rendered `_site/index.html`. | Fails if Googlebot-compatible `Person` or `Occupation` schema graph is invalid or missing. |
+| **7. Strict Zero-Em-Dash Rule** | Scans position records, Markdown resumes, and text exports. | Fails on any Unicode em dash or double-hyphen (`--`), enforcing `no-em-dashes`. |
+| **8. Career Datalake Parity** | Compares canonical positions with `career_datalake.json` index. | Fails on any highlight drift, missing position ID, or stale delivery evidence. |
 
 ---
 

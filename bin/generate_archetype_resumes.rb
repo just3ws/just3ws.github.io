@@ -389,6 +389,7 @@ ats_document_html = <<~HTML
       font-size: 9pt;
       line-height: 1.4;
       color: #111111;
+      margin-bottom: 1pt;
     }
     .contact-line a {
       color: #000000;
@@ -439,14 +440,14 @@ ats_document_html = <<~HTML
   <header class="candidate-header">
     <h1 class="candidate-name">#{profile['name']}</h1>
     <p class="candidate-title">#{profile['title']}</p>
-    <p class="contact-line">
-      #{profile.dig('location', 'display')} |
-      <a href="mailto:#{profile['contact']['email']}">#{profile['contact']['email']}</a> |
-      #{profile['contact']['phone']} |
-      #{profile['contact']['website']['url']} |
-      #{profile['contact']['linkedin']['url']} |
-      #{profile['contact']['github']['url']}
-    </p>
+    <address>
+      <p class="contact-line">Location: #{profile.dig('location', 'display')}</p>
+      <p class="contact-line">Email: <a href="mailto:#{profile['contact']['email']}">#{profile['contact']['email']}</a></p>
+      <p class="contact-line">Phone: #{profile['contact']['phone']}</p>
+      <p class="contact-line">Website: <a href="#{profile['contact']['website']['url']}">#{profile['contact']['website']['url']}</a></p>
+      <p class="contact-line">LinkedIn: <a href="#{profile['contact']['linkedin']['url']}">#{profile['contact']['linkedin']['url']}</a></p>
+      <p class="contact-line">GitHub: <a href="#{profile['contact']['github']['url']}">#{profile['contact']['github']['url']}</a></p>
+    </address>
   </header>
 
   <section>
