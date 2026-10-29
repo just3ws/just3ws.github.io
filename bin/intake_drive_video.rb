@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+abort 'This legacy media intake worker is retired. Use the media-pipeline service.' if __FILE__ == $PROGRAM_NAME
+
 # ---
 # name: intake_drive_video.rb
 # domain: media

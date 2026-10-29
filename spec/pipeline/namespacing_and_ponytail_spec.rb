@@ -3,6 +3,9 @@
 require 'spec_helper'
 require 'open3'
 require 'yaml'
+require 'tmpdir'
+require 'fileutils'
+require 'rbconfig'
 
 RSpec.describe 'Pipeline Namespacing, Ponytail Discipline & Staged Queues' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
@@ -103,6 +106,39 @@ RSpec.describe 'Pipeline Namespacing, Ponytail Discipline & Staged Queues' do
       expect(status.success?).to be true
       expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥)/)
     end
+
+    it 'fails closed instead of invoking legacy media workers when the service is unavailable' do
+      Dir.mktmpdir('pipeline-router') do |tmp_dir|
+        fake_bin = File.join(tmp_dir, 'bin')
+        FileUtils.mkdir_p(fake_bin)
+        File.write(File.join(fake_bin, 'curl'), "#!/bin/sh\nexit 7\n")
+        ruby_shim = File.join(fake_bin, 'ruby')
+        File.write(ruby_shim, <<~SH)
+          #!/bin/sh
+          case "${1:-}" in
+            bin/intake_drive_video.rb|bin/live_dashboard_streamer.rb)
+              echo "$*" >> "$LEGACY_CALL_MARKER"
+              exit 98
+              ;;
+          esac
+          exec "$REAL_RUBY" "$@"
+        SH
+        FileUtils.chmod(0o755, [File.join(fake_bin, 'curl'), ruby_shim])
+
+        env = {
+          'PATH' => "#{fake_bin}:#{ENV.fetch('PATH')}",
+          'REAL_RUBY' => RbConfig.ruby,
+          'LEGACY_CALL_MARKER' => File.join(tmp_dir, 'legacy-called')
+        }
+        %w[intake scan stream halt stop resume].each do |action|
+          _stdout, stderr, status = Open3.capture3(env, pipeline_runner, 'media', action, chdir: root_dir)
+          expect(status.success?).to be false
+          expect(stderr).to include('media-pipeline service is unavailable')
+        end
+
+        expect(File.exist?(env.fetch('LEGACY_CALL_MARKER'))).to be false
+      end
+    end
   end
 
   describe 'Staged Ingress Directory State' do
@@ -121,38 +157,19 @@ RSpec.describe 'Pipeline Namespacing, Ponytail Discipline & Staged Queues' do
       expect(content).not_to include("\u2014")
     end
 
-    it 'scans staged directory in swiftbar output' do
-      stdout, _stderr, status = Open3.capture3(File.join(root_dir, 'bin', 'youtube-swiftbar'))
-      expect(status.success?).to be true
-      expect(stdout).to include('Staged:')
+    it 'delegates queue monitoring to the media-pipeline SwiftBar plugin' do
+      source = File.read(File.join(root_dir, 'bin', 'youtube-swiftbar'))
+      expect(source).to include('just3ws-media-pipeline-swiftbar')
+      expect(source).not_to include('Staged:')
     end
   end
 
   describe 'Cross-Channel Concurrency Lock & FIFO Queue Serialization' do
-    let(:intake_script) { File.join(root_dir, 'bin', 'intake_drive_video.rb') }
-
     it 'documents cross-channel 1-at-a-time serialization and FIFO in docs/bpmn/README.md' do
       content = File.read(bpmn_readme)
       expect(content).to include('One Video at a Time Across All Channels')
       expect(content).to include('Oldest-First FIFO Discipline')
       expect(content).not_to include("\u2014")
-    end
-
-    it 'contains active_processing_files and collect_pending_candidates in bin/intake_drive_video.rb' do
-      content = File.read(intake_script)
-      expect(content).to include('def active_processing_files')
-      expect(content).to include('def collect_pending_candidates')
-      expect(content).to include('def file_age_timestamp')
-      expect(content).to include('candidates.sort_by')
-      expect(content).to include('Concurrency Lock:')
-      expect(content).not_to include("\u2014")
-    end
-
-    it 'reports Concurrency Lock status cleanly' do
-      stdout, stderr, status = Open3.capture3('ruby', intake_script, '--status')
-      expect(status.success?).to be true
-      expect(stderr).to be_empty
-      expect(stdout).to match(/Concurrency Lock: (idle|\d+ active video)/)
     end
   end
 

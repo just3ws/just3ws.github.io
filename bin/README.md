@@ -82,9 +82,9 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 - `deploy_status`: Check deployment status.
 
 ### 2. Media Intake & YouTube Publishing
-- `intake_drive_video.rb`: Zero-disk-waste cloud streaming intake from Google Drive.
-- `live_dashboard_streamer.rb`: Near-realtime SSE streamer on `127.0.0.1:7025`.
-- `youtube-swiftbar`: macOS SwiftBar menu bar status emitter.
+- `intake_drive_video.rb` and `live_dashboard_streamer.rb`: retired execution entrypoints; processing and streaming belong to media-pipeline.
+- `just3ws-site-swiftbar`: site and media-pipeline dependency health menu.
+- `youtube-swiftbar`: compatibility entrypoint to `media-pipeline/bin/just3ws-media-pipeline-swiftbar`.
 - `youtube_pipeline.rb`: Unified operational overview CLI.
 - `stage_episode_workflow.rb`: 37-episode staging and rehearsal harness.
 - `patreon_pipeline.rb`: Patreon API v2 compute funding and attribution.

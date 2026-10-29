@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+abort 'This legacy media streamer is retired. Use the media-pipeline service.' if __FILE__ == $PROGRAM_NAME
+
 # ---
 # name: live_dashboard_streamer.rb
 # domain: media

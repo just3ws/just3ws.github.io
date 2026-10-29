@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-27
+     CURRENT FOCUS - last updated 2026-10-28
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,16 +11,20 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
-       - MEDIA PIPELINE CONSOLIDATION & JUST3WS CLI ROUTING (2026-10-27):
-         Consolidated all media pipeline operations under the `media-pipeline` microservice (`media-pipeline.localhost:32000`) and cleared legacy technical debt in `just3ws.github.io`:
-         - CLI Delegation Routing (`bin/pipeline media` in `just3ws.github.io`):
-           - Updated `run_media()` in `bin/pipeline` to delegate `status`, `inventory`, `manifest`, `assets`, `corrupt`, `metadata`, `service`, and `doctor` directly to `~/github.com/just3ws/media-pipeline/bin/mp` and `bin/mp-service`.
-           - Single source of truth: `media-pipeline` is the sole engine for media intake, audio DSP, Whisper transcription, and YouTube publishing. `just3ws.github.io` consumes canonical output (`_data/video_assets.yml`, `_data/transcripts/`).
-         - Cloud Root Consolidation:
-           - Removed legacy `My Drive/media-pipeline` paths across `_data/media_intake_targets.yml`, `bin/youtube-swiftbar`, `bin/lib/youtube_deduplicator.rb`, and architecture specs, establishing strictly `My Drive/ai/media-pipeline`.
-         - Verification:
-           - `media-pipeline`: 197/197 RSpec tests passing, 0 Brakeman warnings, clean linters (`cb10928` on `main`).
-           - `just3ws.github.io`: 322/322 RSpec tests passing, 508 Markdown files passing fast validation, zero em dashes (`6f45cb5c` on `master`).
+       - APPLICATION-OWNED SWIFTBAR HEALTH (2026-10-28):
+         Split the menu-bar integrations by application responsibility while keeping the pipeline view aware of its site dependency:
+         - `bin/just3ws-site-swiftbar` reports just3ws and The Sound Above health plus media-pipeline dependency health.
+         - `media-pipeline/bin/just3ws-media-pipeline-swiftbar` owns queue, quota, and publication operations and reports site-context lookup health.
+         - `bin/youtube-swiftbar` remains a compatibility entrypoint to the canonical media-pipeline plugin.
+         - Verification: 52 focused boundary/media intake/SwiftBar specs pass; `rake validate:fast` passes; both local SwiftBar plugins report site and pipeline READY.
+
+       - MEDIA PIPELINE EXTRACTION BOUNDARY HARDENING (2026-10-28):
+         Retired live execution of the duplicate site-side intake worker and streamer:
+         - `bin/pipeline media` now fails closed when the Rails microservice is unavailable instead of invoking legacy intake, streaming, or control implementations.
+         - Direct execution of `bin/intake_drive_video.rb` and `bin/live_dashboard_streamer.rb` now reports that the legacy tools are retired.
+         - Replaced the intake CLI spec that wrote a dummy video into the real pending queue with a fail-closed assertion; added router coverage for service-down behavior.
+         - The Rails media-pipeline service remains the sole processing and publishing engine; this repository owns recording scripts and consumes canonical site data.
+         - Verification: affected RSpec specs pass (45 examples, 0 failures); Ruby and shell syntax checks and `git diff --check` pass.
 
        - STORAGE CONVENTIONS ENFORCEMENT & DOCTOR DIAGNOSTICS (2026-10-27):
          Hardened storage hierarchy conventions across `media-pipeline` and `just3ws.github.io`, added characterization test coverage, and wired storage health into `bin/mp-service doctor`:

@@ -15,66 +15,30 @@ RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
   let(:command_palette) { File.join(root_dir, '_includes', 'command-palette.html') }
   let(:dashboard_html) { File.join(root_dir, 'dashboard.html') }
 
-  describe 'SwiftBar Script (bin/youtube-swiftbar)' do
-    it 'exists and is executable' do
-      expect(File.exist?(swiftbar_script)).to be true
+  describe 'SwiftBar application plugins' do
+    let(:site_plugin) { File.join(root_dir, 'bin', 'just3ws-site-swiftbar') }
+
+    it 'provides a named, executable site health plugin' do
+      expect(File.executable?(site_plugin)).to be true
+      stdout, stderr, status = Open3.capture3(
+        { 'JUST3WS_SITE_URL' => 'http://127.0.0.1:1', 'MEDIA_PIPELINE_INTERNAL_URL' => 'http://127.0.0.1:1' },
+        site_plugin
+      )
+      expect(status.success?).to be true
+      expect(stderr).to be_empty
+      expect(stdout).to include('just3ws Site')
+      expect(stdout).to include('The Sound Above: UNAVAILABLE')
+      expect(stdout).to include('Pipeline API: UNAVAILABLE')
+    end
+
+    it 'keeps the legacy site plugin as a compatibility entrypoint to media-pipeline' do
+      content = File.read(swiftbar_script)
+      expect(content).to include('just3ws-media-pipeline-swiftbar')
       expect(File.executable?(swiftbar_script)).to be true
     end
 
-    it 'contains zero em dashes across script source' do
-      content = File.read(swiftbar_script)
-      expect(content).not_to include("\u2014")
-      expect(content).not_to match(/\s--\s/)
-    end
-
-    it 'executes cleanly and emits valid SwiftBar dialect' do
-      stdout, stderr, status = Open3.capture3(swiftbar_script)
-      expect(status.success?).to be true
-      expect(stderr).to be_empty
-
-      lines = stdout.lines.map(&:strip)
-      expect(lines.first).to match(/^🎬/)
-      expect(lines).to include('---')
-      expect(stdout).to include('Media Intake & YouTube Publishing Pipeline')
-      expect(stdout).to include('Ingress Queues:')
-      expect(stdout).to include('Ramblin')
-      expect(stdout).to include('The Sound Above')
-      expect(stdout).to include('Errata')
-      expect(stdout).to include('Subsystems & SLO Health')
-      expect(stdout).to include('Localhost Dashboards & Views')
-      expect(stdout).to include('href=https://www.just3ws.localhost/youtube/dashboard/')
-      expect(stdout).to include('href=https://www.just3ws.localhost/youtube/dashboard/#tab-bpmn')
-      expect(stdout).to include('href=https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter')
-      expect(stdout).to include('href=https://www.just3ws.localhost/dehum/dashboard.html')
-      expect(stdout).to include('refresh=true')
-    end
-
-    it 'is callable via bin/pipeline swiftbar' do
-      stdout, stderr, status = Open3.capture3(pipeline_runner, 'swiftbar')
-      expect(status.success?).to be true
-      expect(stderr).to be_empty
-      expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥)/)
-    end
-  end
-
-  describe 'SwiftBar User Shim (~/.swiftbar/youtube-pipeline.30s.sh)' do
-    before do
-      skip 'SwiftBar user shim is local macOS platform only' if ENV['CI'] || !File.exist?(swiftbar_shim)
-    end
-    it 'exists and is executable' do
-      expect(File.exist?(swiftbar_shim)).to be true
-      expect(File.executable?(swiftbar_shim)).to be true
-    end
-
-    it 'executes tracked swiftbar binary' do
-      content = File.read(swiftbar_shim)
-      expect(content).to match(%r{exec "(/Users/mike/github.com/just3ws/(media-pipeline/bin/media-pipeline-swiftbar|just3ws.github.io/bin/youtube-swiftbar))"})
-    end
-
-    it 'contains zero em dashes' do
-      content = File.read(swiftbar_shim)
-      expect(content).not_to include("\u2014")
-      expect(content).not_to match(/\s--\s/)
+    it 'contains no em dash in the canonical site plugin' do
+      expect(File.read(site_plugin)).not_to include("\u2014")
     end
   end
 

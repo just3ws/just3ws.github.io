@@ -52,10 +52,9 @@ run_media() {
       if curl -s --max-time 1 "$MP_INTERNAL_URL/up" >/dev/null 2>&1; then
         echo "media-pipeline microservice is active at $MP_PUBLIC_URL"
         curl -s "$MP_INTERNAL_URL/api/status" | jq .
-      elif [ $# -eq 0 ]; then
-        ruby bin/intake_drive_video.rb --status
       else
-        ruby bin/intake_drive_video.rb "$@"
+        echo "media-pipeline service is unavailable; legacy media intake is disabled" >&2
+        exit 1
       fi
       ;;
     scan)
@@ -63,7 +62,8 @@ run_media() {
         echo "Triggering intake scan on media-pipeline service (port $MP_PORT)..."
         curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/scan" | jq .
       else
-        ruby bin/intake_drive_video.rb --scan
+        echo "media-pipeline service is unavailable; legacy media intake is disabled" >&2
+        exit 1
       fi
       ;;
     stream|live-stream)
@@ -72,16 +72,18 @@ run_media() {
         echo "Tailing live SSE telemetry stream (Ctrl-C to stop)..."
         curl -N -s "$MP_INTERNAL_URL/live_stream"
       else
-        ruby bin/live_dashboard_streamer.rb "$@"
+        echo "media-pipeline service is unavailable; legacy media streamer is disabled" >&2
+        exit 1
       fi
       ;;
     swiftbar|bar)
       if [ -x "$HOME/.swiftbar/media-pipeline.30s.sh" ]; then
         "$HOME/.swiftbar/media-pipeline.30s.sh" "$@"
-      elif [ -x "$MP_WORKDIR/bin/media-pipeline-swiftbar" ]; then
-        "$MP_WORKDIR/bin/media-pipeline-swiftbar" "$@"
+      elif [ -x "$MP_WORKDIR/bin/just3ws-media-pipeline-swiftbar" ]; then
+        "$MP_WORKDIR/bin/just3ws-media-pipeline-swiftbar" "$@"
       else
-        ruby bin/youtube-swiftbar "$@"
+        echo "Media Pipeline SwiftBar plugin is unavailable at $MP_WORKDIR/bin/just3ws-media-pipeline-swiftbar" >&2
+        exit 1
       fi
       ;;
     stage|rehearse)
@@ -173,7 +175,8 @@ run_media() {
         echo "Pausing media_processing queue via media-pipeline (port $MP_PORT)..."
         curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/pause" | jq .
       else
-        ruby bin/intake_drive_video.rb --halt
+        echo "media-pipeline service is unavailable; legacy media controls are disabled" >&2
+        exit 1
       fi
       ;;
     stop)
@@ -181,7 +184,8 @@ run_media() {
         echo "Pausing media_processing queue via media-pipeline (port $MP_PORT)..."
         curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/pause" | jq .
       else
-        ruby bin/intake_drive_video.rb --stop
+        echo "media-pipeline service is unavailable; legacy media controls are disabled" >&2
+        exit 1
       fi
       ;;
     resume)
@@ -189,7 +193,8 @@ run_media() {
         echo "Resuming media_processing queue via media-pipeline (port $MP_PORT)..."
         curl -s -H "Accept: application/json" -X POST "$MP_INTERNAL_URL/operations/resume" | jq .
       else
-        ruby bin/intake_drive_video.rb --resume
+        echo "media-pipeline service is unavailable; legacy media controls are disabled" >&2
+        exit 1
       fi
       ;;
     service|svc)

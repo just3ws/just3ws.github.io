@@ -63,49 +63,10 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(content).not_to match(/\s-\s/)
     end
 
-    it 'executes --status command cleanly' do
-      stdout, stderr, status = Open3.capture3("ruby #{cli_path} --status")
-      expect(status.success?).to be true
-      expect(stdout).to include('MEDIA INTAKE QUEUE STATUS')
-      expect(stdout).to include('whoistechcmty')
-      expect(stdout).to include('ramblin-amblin')
-      expect(stdout).to include('the-sound-above')
-      expect(stdout).to include('errata')
-      expect(stdout).to include('[pending]')
-    end
-
-    it 'executes --dry-run cleanly when queue is empty or in progress' do
-      stdout, stderr, status = Open3.capture3("ruby #{cli_path} --dry-run")
-      expect(status.success?).to be true
-      expect(stdout).to match(/(Intake queue is clear|Active processing in progress|Another worker|\[Dry Run\])/)
-    end
-
-    it 'integrates with bin/pipeline intake command' do
-      stdout, stderr, status = Open3.capture3("#{pipeline_runner} intake")
-      expect(status.success?).to be true
-      expect(stdout).to satisfy { |out| out.include?('MEDIA INTAKE QUEUE STATUS') || out.include?('media-pipeline microservice is active') }
-    end
-
-    it 'supports --drop to stage a local file into pending queue' do
-      test_file = File.join(Dir.tmpdir, "test_intake_#{Time.now.to_i}.mp4")
-      File.write(test_file, 'dummy content')
-      stdout, stderr, status = Open3.capture3("ruby #{cli_path} --drop #{test_file} --target ramblin-amblin")
-      expect(status.success?).to be true
-      expect(stdout).to include('Ingested')
-      expect(stdout).to include('pending queue')
-      staged_target = File.join(File.expand_path('~/ai/media-pipeline'), 'whoistechcmty', 'ramblin-amblin', 'pending', File.basename(test_file))
-      cloud_target = File.join(File.expand_path('/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline'), 'whoistechcmty', 'ramblin-amblin', 'pending', File.basename(test_file))
-      expect(File.exist?(staged_target) || File.exist?(cloud_target)).to be true
-      FileUtils.rm_f(staged_target)
-      FileUtils.rm_f(cloud_target)
-      FileUtils.rm_f(test_file)
-    end
-
-    it 'applies scheduling politeness (nice priority >= 15)' do
-      require_relative '../../bin/intake_drive_video'
-      expect { MediaIntakePipeline.apply_process_politeness! }.not_to raise_error
-      prio = Process.getpriority(Process::PRIO_PROCESS, 0)
-      expect(prio).to be >= 10
+    it 'rejects direct legacy CLI execution without touching intake queues' do
+      stdout, stderr, status = Open3.capture3('ruby', cli_path, '--drop', '/dev/null', '--target', 'ramblin-amblin')
+      expect(status.success?).to be false
+      expect(stderr).to include('legacy media intake worker is retired')
     end
 
     it 'inspects available disk space and enforces the 5.0GB safety floor' do
@@ -249,6 +210,12 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(File.executable?(streamer_path)).to be true
     end
 
+    it 'rejects direct legacy streamer execution' do
+      _stdout, stderr, status = Open3.capture3('ruby', streamer_path)
+      expect(status.success?).to be false
+      expect(stderr).to include('legacy media streamer is retired')
+    end
+
     it 'contains zero em dashes across streamer source code' do
       content = File.read(streamer_path)
       expect(content).not_to include("\u2014")
@@ -260,6 +227,7 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       Dir.mktmpdir do |tmp_state|
         require_relative '../../bin/live_dashboard_streamer'
         streamer = LiveDashboardStreamer.new(7099, tmp_state)
+        allow(streamer).to receive(:mirror_public_telemetry)
         state = streamer.compile_current_state
         expect(state).to be_a(Hash)
         expect(state).to have_key('media_intake')

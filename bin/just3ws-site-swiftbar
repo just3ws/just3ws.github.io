@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "open3"
+require "uri"
+
+SITE_URL = ENV.fetch("JUST3WS_SITE_URL", "https://www.just3ws.localhost").sub(%r{/$}, "")
+PIPELINE_URL = ENV.fetch("MEDIA_PIPELINE_INTERNAL_URL", "http://127.0.0.1:32000").sub(%r{/$}, "")
+
+def check(url)
+  started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  output, _error, status = Open3.capture3(
+    "curl", "--silent", "--show-error", "--head", "--max-time", "2", "--output", "/dev/null",
+    "--write-out", "%{http_code}", url
+  )
+  elapsed = ((Process.clock_gettime(Process::CLOCK_MONOTONIC) - started) * 1000).round
+  [status.success? && output.to_i.between?(200, 299), elapsed]
+rescue StandardError
+  [false, nil]
+end
+
+def state(label, result)
+  ready, latency = result
+  detail = ready ? "READY (#{latency} ms)" : "UNAVAILABLE"
+  color = ready ? "#16a34a" : "#ef4444"
+  puts "#{label}: #{detail} | color=#{color}"
+end
+
+site = check("#{SITE_URL}/")
+series = check("#{SITE_URL}/series/the-sound-above/")
+pipeline = check("#{PIPELINE_URL}/up")
+puts "🌐 just3ws | color=#{site[0] && series[0] ? '#16a34a' : '#ef4444'}"
+puts "---"
+puts "just3ws Site | href=#{SITE_URL}"
+state("Site", site)
+state("The Sound Above", series)
+puts "---"
+puts "Media Pipeline Dependency"
+state("Pipeline API", pipeline)
+puts "---"
+puts "Open Site | href=#{SITE_URL}"
+puts "Open The Sound Above | href=#{SITE_URL}/series/the-sound-above/"
+puts "Open Media Pipeline | href=#{ENV.fetch('MEDIA_PIPELINE_PUBLIC_URL', 'https://media-pipeline.localhost')}"
+puts "---"
+puts "Refresh | refresh=true"
