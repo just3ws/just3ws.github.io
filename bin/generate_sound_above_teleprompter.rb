@@ -61,21 +61,7 @@ def resolve_episode(ep_num)
     return matched if matched
   end
 
-  # Default fallback for unmanifested index
-  {
-    'number' => ep_num,
-    'era_name' => 'The Sound Above',
-    'title' => "The Sound Above: Episode #{ep_num}",
-    'interviewee' => 'Chicago Craftsmanship Practitioner',
-    'conference' => 'SCNA (2011-2015)',
-    'location' => 'Chicago, IL',
-    'year' => 2011,
-    'slug' => "episode-#{slug_num}",
-    'chicago_context' => 'Grassroots practitioner discussions and hallway exchanges.',
-    'sound_above_inquiry' => 'What influences shaped the movement outside corporate architectures?',
-    'ai_era_parallel' => 'Reclaiming craftsmanship and local verification in the automated code era.',
-    'resolved_youtube_id' => ''
-  }
+  nil
 end
 
 # Construct standardized 6-act rundown
@@ -232,6 +218,11 @@ if options[:all_episodes]
 end
 
 episode = resolve_episode(options[:episode])
+unless episode
+  warn "Episode '#{options[:episode]}' was not found in episode dossiers or the sequence manifest."
+  exit 1
+end
+
 rundown = build_rundown(episode)
 textream_pages = build_textream_pages(rundown)
 

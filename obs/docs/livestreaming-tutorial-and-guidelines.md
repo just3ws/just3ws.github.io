@@ -67,6 +67,7 @@ On macOS Golden Gate (Darwin 27), audio routing is fully digital:
 
 - **Mandatory Headphones**: Always wear headphones or in-ear monitors. If interview audio plays through your physical laptop speakers, your open microphone will capture room echo.
 - **Isolated App Audio**: ScreenCaptureKit (`sck_audio_capture`) taps the Chromium process directly. It will never capture system alert chimes, Slack dings, or email notifications.
+- **Global Desktop Audio**: Keep the global desktop source disabled in the rewatch collection. Enabling it alongside Chromium ScreenCaptureKit can duplicate interview playback and include system notifications in the program mix.
 - **Spacebar Control**: Pausing playback in Chromium instantly silences the video audio stream, giving you a clean stage to comment without audio overlap.
 - **Vocal Processing**: Your microphone channel already includes RNNoise neural suppression (filters keyboard typing), vocal compression (evens speech dynamics), and a safety brickwall limiter at -1.5 dB.
 
@@ -118,7 +119,7 @@ When the stream ends:
    - Track 1 contains your full broadcast composite.
    - Track 2 contains your clean, isolated microphone vocal track.
    - Track 3 contains the isolated interview audio.
-   - Track 4 contains guest audio.
+   - Track 4 is reserved and remains silent until a guest application's ScreenCaptureKit source is explicitly configured and routed.
 3. **Editorial Content Studio Integration**:
    - Use [`studio/index.html`](file:///Users/mike/github.com/just3ws/just3ws.github.io/studio/index.html) to extract vertical YouTube Shorts, Reels, and quotable soundbites.
    - Feed Track 2 into local Whisper (`whisper-ctl`) to produce transcripts of your live commentary.

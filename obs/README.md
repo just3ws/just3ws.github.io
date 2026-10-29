@@ -99,7 +99,7 @@ The scene collection (`ugtastic-sound-above.json`) provides eight dedicated prod
 | **03. Reaction - Video Focus** | Chromium browser window (80% canvas) + Host Camera PiP (lower right) + Now Watching HUD | Mic/Aux + Chromium Video Audio | Watching UGtastic interviews, pausing, and commenting |
 | **04. Split Screen - Video & Research** | Side-by-side: Chromium video on left, `just3ws.localhost` on right, centered host cam | Mic/Aux + Chromium Video Audio | Comparing interview moments directly against transcripts and timeline |
 | **05. Workbench - Code & Terminal** | Full terminal/editor window capture + Host Camera PiP (lower right) | Mic/Aux | Live code analysis, git archaeology, and zdots tool demos |
-| **06. Guest & Co-Host Discussion** | Two-up side-by-side camera boxes + shared screen inset | Mic/Aux + Guest Audio | Joint retrospectives with Chicago tech veterans |
+| **06. Guest & Co-Host Discussion** | Two-up side-by-side camera boxes + shared screen inset | Mic/Aux; add guest app audio per session | Joint retrospectives with Chicago tech veterans |
 | **07. Intermission / BRB** | Clean pause card: "Holding the Thread" with current topic | Muted | Stepping away from the workbench during long streams |
 | **08. Outro & Next Stream** | Closing credits, quote card, and digital archive links | Mic/Aux | Wrapping up the broadcast and previewing the next episode |
 
@@ -113,12 +113,12 @@ This project is tailored specifically for macOS Golden Gate (Darwin 27) running 
 - **True 1080p Unscaled Canvas**: Base canvas and output resolution are set to 1920x1080 at 60 fps. Eliminates downscaling blur, guaranteeing that terminal code, small font sizes, and browser text remain perfectly legible to viewers.
 - **macOS Golden Gate Native Sound Capture**: Leverages Golden Gate's built-in ScreenCaptureKit and CoreAudio output capture architecture. Eliminates the need for legacy virtual audio drivers (BlackHole, Soundflower, Loopback) entirely:
   - **Isolated App Audio**: Captures Chromium video sound directly via `sck_audio_capture` without catching Slack dings or notification sounds.
-  - **Desktop Audio**: Native `coreaudio_output_capture` routes system audio cleanly at 48,000 Hz.
-- **Multitrack Master Recording**: Advanced recording mode (`RecTracks=15`) captures 4 separate synchronized audio tracks into high-quality hybrid MOV files:
-  - **Track 1**: Stream composite mix (Host Mic + Chromium Video Audio + Overlays)
+  - **Desktop Audio**: The global `coreaudio_output_capture` device is disabled in the base profile to prevent duplicate Chromium audio and system notification capture.
+- **Multitrack Master Recording**: Advanced recording mode (`RecTracks=15`) selects four synchronized tracks in hybrid MOV files. The base rewatch setup populates Tracks 1-3; Track 4 is reserved:
+  - **Track 1**: Program mix (Host Mic + Chromium Video Audio)
   - **Track 2**: Host microphone isolated (Pristine speech for podcasting and Whisper transcripts)
   - **Track 3**: Chromium video audio isolated (Reference interview audio)
-  - **Track 4**: Guest / Discord / Zoom isolated (Remote co-host voice)
+  - **Track 4**: Reserved; configure and verify guest application audio per dialogue session
 
 ---
 

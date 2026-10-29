@@ -32,10 +32,21 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     expect(mic).not_to be_nil, "Expected AuxAudioDevice1 in OBS scenes"
     expect(mic["id"]).to eq("coreaudio_input_capture")
     expect(mic["filters"].size).to be >= 3
+    expect(mic["mixers"]).to eq(3)
 
     desktop_audio = data["DesktopAudioDevice1"]
     expect(desktop_audio).not_to be_nil, "Expected DesktopAudioDevice1 in OBS scenes"
     expect(desktop_audio["id"]).to eq("coreaudio_output_capture")
+    expect(desktop_audio["mixers"]).to eq(0)
+    expect(desktop_audio["enabled"]).to be(false)
+
+    chromium_audio = data["sources"].find { |source| source["id"] == "sck_audio_capture" }
+    expect(chromium_audio).not_to be_nil
+    expect(chromium_audio["mixers"]).to eq(5)
+    guest_track_sources = data["sources"].select do |source|
+      source["id"] == "sck_audio_capture" && (source["mixers"].to_i & 8).positive?
+    end
+    expect(guest_track_sources).to be_empty
   end
 
   it "verifies basic.ini configures 1080p60 and Apple VideoToolbox hardware acceleration" do
@@ -48,6 +59,7 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     expect(ini_content).to match(/OutputCY=1080/)
     expect(ini_content).to match(/FPSCommon=60/)
     expect(ini_content).to match(/videotoolbox|apple_h264|vt_h264/)
+    expect(ini_content).to include('DesktopAudioDevice1=disabled')
   end
 
   it "verifies overlay state matches craftsmanship design tokens" do

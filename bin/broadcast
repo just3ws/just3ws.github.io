@@ -140,14 +140,15 @@ def cue_rewatch(episode_num, overrides = {})
     exit 1
   end
 
-  ep = seq["episodes"].find { |e| e["number"].to_i == episode_num.to_i }
+  requested_number = Integer(episode_num.to_s, 10) rescue nil
+  ep = seq["episodes"].find { |e| e["number"].to_i == requested_number } if requested_number
   if ep.nil?
-    dossier_path = if episode_num.to_i == -1 || episode_num.to_s == "errata-fluffle-precursor"
+    dossier_path = if requested_number == -1 || episode_num.to_s == "errata-fluffle-precursor"
                      File.join(ROOT_DIR, "_data", "episodes", "errata-fluffle-precursor.yml")
-                   else
-                     File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", episode_num.to_i))
+                   elsif requested_number
+                     File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", requested_number))
                    end
-    if File.exist?(dossier_path)
+    if dossier_path && File.exist?(dossier_path)
       require "yaml"
       dossier = YAML.safe_load(File.read(dossier_path)) rescue nil
       if dossier

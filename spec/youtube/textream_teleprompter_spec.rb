@@ -45,6 +45,12 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
       expect(pages[3]).not_to include('YouTube ID:')
     end
 
+    it 'rejects an unknown episode instead of generating fabricated fallback content' do
+      _stdout, stderr, status = Open3.capture3('ruby', generator_script, '-e', '999', '-t')
+      expect(status.success?).to be false
+      expect(stderr).to include("Episode '999' was not found")
+    end
+
     it 'generates valid textream://read deep link URLs with only spoken words' do
       stdout, stderr, status = Open3.capture3('ruby', generator_script, '-e', '1', '-u')
       expect(status.success?).to be true

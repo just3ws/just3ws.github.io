@@ -18,8 +18,8 @@ OBS Studio on macOS Golden Gate natively provides two distinct capture methods:
 
 ### Method B: System Desktop Audio Capture (`coreaudio_output_capture`)
 - Taps default CoreAudio system output directly without external loopback cables.
-- Configured via `DesktopAudioDevice1=default` in the OBS profile.
-- Ideal when demonstrating terminal audio cues, system audio examples, or secondary browser sounds.
+- Select it with `DesktopAudioDevice1=default` in the OBS profile when a session intentionally needs system output.
+- Optional for sessions that intentionally include system output. The base rewatch scene collection disables it because Chromium is already captured by ScreenCaptureKit; enabling both can double the interview audio and include notification sounds in the program mix.
 
 Both methods operate with hardware-locked 48,000 Hz sample rate synchronization, eliminating audio drift, sample rate mismatch crackling, and buffer underruns.
 
@@ -71,8 +71,8 @@ The OBS Profile (`The Sound Above`) is configured with **Advanced Multi-Track Re
 +---------+------------------------------+----------+---------------------+
 | Track # | Name & Content               | Bitrate  | Intended Destination|
 +---------+------------------------------+----------+---------------------+
-| Track 1 | Composite Stream Mix         | 160 kbps | Live YouTube Stream |
-|         | (Host Mic + Chromium + Over) |          | & Quick Preview     |
+| Track 1 | Program Mix                  | 160 kbps | Recording / Preview |
+|         | (Host Mic + Chromium)        |          |                     |
 +---------+------------------------------+----------+---------------------+
 | Track 2 | Host Vocal Solo              | 320 kbps | Studio Shorts Prep, |
 |         | (Clean Microphone Only)      | AAC      | Whisper Transcripts |
@@ -80,14 +80,14 @@ The OBS Profile (`The Sound Above`) is configured with **Advanced Multi-Track Re
 | Track 3 | Browser Video Audio Solo     | 320 kbps | Original Interview  |
 |         | (Chromium Playback Only)     | AAC      | Reference Track     |
 +---------+------------------------------+----------+---------------------+
-| Track 4 | Guest / Remote Comms Solo    | 320 kbps | Discord / Zoom      |
-|         | (Remote Participant Only)    | AAC      | Isolated Track      |
+| Track 4 | Reserved, currently unassigned | 320 kbps | Configure per dialogue session |
+|         | No guest application source is included in the base profile. | AAC | Do not assume guest isolation |
 +---------+------------------------------+----------+---------------------+
 ```
 
 ### Why This Saves Hours in Post-Production
 
-When a stream concludes, the recorded `.mov` file contains all four tracks neatly synchronized:
+The recorded `.mov` file selects four tracks. The base rewatch setup populates Tracks 1-3; Track 4 remains silent until a guest app is explicitly configured:
 1. **Podcast Release**: Import Track 2 directly into an audio editor to master an isolated audio podcast episode without the video noise.
 2. **YouTube Shorts Extraction**: Cut vertical reaction clips using the Editorial Content Studio (`/studio/`) without having your voice permanently baked into the interview audio at an uneditable volume.
 3. **Automated Retranscription**: Feed Track 2 directly into local Whisper (`whisper-ctl`) to produce clean transcripts of your own commentary.

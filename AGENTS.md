@@ -11,6 +11,14 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOUND ABOVE RECORDING WORKFLOW HARDENING (2026-10-28):
+         Corrected the OBS rewatch audio contract and episode cue resolution:
+         - Disabled global Desktop Audio in production and staging profiles to avoid duplicate Chromium playback and system sounds.
+         - Enforced host mic routing on Tracks 1 and 2, Chromium on Tracks 1 and 3, and documented Track 4 as reserved until guest audio is configured.
+         - Teleprompter generation now rejects unknown episode identifiers instead of inventing fallback metadata; broadcast cueing resolves the Minus One semantic slug without coercing it to episode zero.
+         - The pipeline router status spec now isolates its unavailable-service branch from the local media-pipeline database.
+         - Verification: full site `rake verify` passes in an isolated copy (317 examples, 0 failures, 1 expected pending); OBS validator passes 49 assertions.
+
        - APPLICATION-OWNED SWIFTBAR HEALTH (2026-10-28):
          Split the menu-bar integrations by application responsibility while keeping the pipeline view aware of its site dependency:
          - `bin/just3ws-site-swiftbar` reports just3ws and The Sound Above health plus media-pipeline dependency health.

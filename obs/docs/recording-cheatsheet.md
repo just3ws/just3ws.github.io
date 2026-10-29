@@ -82,20 +82,22 @@ open -a OBS
 ## 5. Audio Routing & Multi-Track Isolation
 
 Native macOS Golden Gate routing:
-* **Track 1**: Full Program Composite (Master mix for live stream / recording playback).
+* **Track 1**: Program mix (host microphone plus Chromium ScreenCaptureKit audio). Global Desktop Audio is disabled to prevent duplicate interview playback and system notification capture.
 * **Track 2**: Isolated Host Microphone (`AuxAudioDevice1` with RNNoise + Compressor + Limiter).
 * **Track 3**: Isolated Interview Video Audio (`sck_audio_capture` tapping Chromium directly).
-* **Track 4**: Isolated Guest / Communications Audio (Zoom / Discord / Teams).
+* **Track 4**: Reserved and currently unassigned. For dialogue recordings, explicitly add and route the guest application audio before recording.
 
 > [!TIP]
 > Pausing the interview in Chromium immediately silences Track 3 via spacebar control.
 > System notification alerts and Slack chimes are never routed into Chromium audio capture.
 
+In OBS Advanced Audio Properties, keep the global `Desktop Audio` source disabled for the rewatch collection. Enable it only when a recording intentionally needs system-wide output.
+
 ---
 
 ## 6. Pre-Flight Run Checklist (T-5 Minutes)
 
-1. [ ] **Headphones plugged in** and default audio output selected.
+1. [ ] **Headphones plugged in** and default audio output selected; global Desktop Audio remains disabled for the rewatch setup.
 2. [ ] **Mic check**: Speak into mic; verify green-to-yellow level bounce on `Mic/Aux` (~-12 dB to -6 dB).
 3. [ ] **Video check**: Play a test second in Chromium; verify bounce on `Video Application Audio (Chromium)` meter.
 4. [ ] **Episode cued**: `bin/broadcast --episode <N>` executed; check interviewee name in OBS preview.

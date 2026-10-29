@@ -132,10 +132,22 @@ class ObsSetupValidator
         fail('AuxAudioDevice1 is missing or improperly configured')
       end
 
+      if data.dig('AuxAudioDevice1', 'mixers') == 3
+        pass('Host microphone is routed to the composite and isolated vocal tracks')
+      else
+        fail('Host microphone must be routed to Tracks 1 and 2 only (mixers=3)')
+      end
+
       if data['DesktopAudioDevice1']
         pass('DesktopAudioDevice1 (macOS Desktop Audio) is configured for Golden Gate')
       else
         warn('DesktopAudioDevice1 not configured in root of scene collection')
+      end
+
+      if data.dig('DesktopAudioDevice1', 'mixers') == 0 && data.dig('DesktopAudioDevice1', 'enabled') == false
+        pass('Global desktop audio is disabled to prevent duplicate Chromium and system audio')
+      else
+        fail('Global desktop audio must be disabled with no assigned tracks in the rewatch collection')
       end
 
       # Check ScreenCaptureKit Audio source in sources
@@ -143,8 +155,22 @@ class ObsSetupValidator
       sck_source = sources.find { |s| s['id'] == 'sck_audio_capture' }
       if sck_source
         pass("ScreenCaptureKit Application Audio capture configured for '#{sck_source['name']}'")
+        if sck_source['mixers'] == 5
+          pass('Chromium audio is routed to the composite and isolated interview tracks')
+        else
+          fail('Chromium audio must be routed to Tracks 1 and 3 only (mixers=5)')
+        end
       else
         fail('No ScreenCaptureKit audio source (sck_audio_capture) found in scene sources')
+      end
+
+      guest_audio_sources = sources.select do |source|
+        source['id'] == 'sck_audio_capture' && (source['mixers'].to_i & 8).positive?
+      end
+      if guest_audio_sources.empty?
+        pass('Track 4 is reserved and unassigned; dialogue sessions require explicit guest app routing')
+      else
+        pass('A ScreenCaptureKit guest audio source is assigned to Track 4')
       end
 
       # Check Workbench Terminal window capture binding
@@ -213,10 +239,10 @@ class ObsSetupValidator
       fail('Multi-track recording (RecTracks=15) is not enabled')
     end
 
-    if ini_content.include?('DesktopAudioDevice1=default')
-      pass('macOS Golden Gate native desktop audio capture configured')
+    if ini_content.include?('DesktopAudioDevice1=disabled')
+      pass('Global desktop audio is disabled in the recording profile')
     else
-      warn('DesktopAudioDevice1 is not set to default')
+      fail('DesktopAudioDevice1 must be disabled to prevent duplicate Chromium audio and system sounds')
     end
 
     # Secret check

@@ -3,6 +3,7 @@
 require 'spec_helper'
 require 'open3'
 require 'json'
+require 'tmpdir'
 
 RSpec.describe 'Pipeline Query Engine & MCP Integration' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
@@ -95,9 +96,14 @@ RSpec.describe 'Pipeline Query Engine & MCP Integration' do
     end
 
     it 'routes bin/pipeline media status' do
-      stdout, stderr, status = Open3.capture3(pipeline_runner, 'media', 'status', '--compact')
-      expect(status.success?).to be true
-      expect(stdout).to match(/^\[HEALTH:\s+[^\]]+\]/)
+      Dir.mktmpdir('missing-media-pipeline') do |workdir|
+        stdout, _stderr, status = Open3.capture3(
+          { 'MEDIA_PIPELINE_WORKDIR' => workdir },
+          pipeline_runner, 'media', 'status', '--compact'
+        )
+        expect(status.success?).to be true
+        expect(stdout).to match(/^\[HEALTH:\s+[^\]]+\]/)
+      end
     end
 
     it 'routes bin/pipeline query' do
