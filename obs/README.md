@@ -96,7 +96,7 @@ The scene collection (`ugtastic-sound-above.json`) provides eight dedicated prod
 | :--- | :--- | :--- | :--- |
 | **01. Starting Soon** | Ambient slate background, pre-stream title, episode card, animated pulse | Off / Bumper | Pre-stream countdown and audience arrival |
 | **02. Monologue / Full Camera** | Host camera full screen with Lower-Third overlay | Mic/Aux only | Opening thesis, historical context, and concluding takeaways |
-| **03. Reaction - Video Focus** | Chromium browser window (80% canvas) + Host Camera PiP (lower right) + Now Watching HUD | Mic/Aux + Chromium Video Audio | Watching UGtastic interviews, pausing, and commenting |
+| **03. Reaction - Video Focus** | Full-frame Chromium interview + 480x270 Host Camera inset (lower right) + Now Watching HUD | Mic/Aux + Chromium Video Audio | Watching UGtastic interviews, pausing, and commenting |
 | **04. Split Screen - Video & Research** | Side-by-side: Chromium video on left, `just3ws.localhost` on right, centered host cam | Mic/Aux + Chromium Video Audio | Comparing interview moments directly against transcripts and timeline |
 | **05. Workbench - Code & Terminal** | Full terminal/editor window capture + Host Camera PiP (lower right) | Mic/Aux | Live code analysis, git archaeology, and zdots tool demos |
 | **06. Guest & Co-Host Discussion** | Two-up side-by-side camera boxes + shared screen inset | Mic/Aux; add guest app audio per session | Joint retrospectives with Chicago tech veterans |
@@ -114,7 +114,7 @@ This project is tailored specifically for macOS Golden Gate (Darwin 27) running 
 - **macOS Golden Gate Native Sound Capture**: Leverages Golden Gate's built-in ScreenCaptureKit and CoreAudio output capture architecture. Eliminates the need for legacy virtual audio drivers (BlackHole, Soundflower, Loopback) entirely:
   - **Isolated App Audio**: Captures Chromium video sound directly via `sck_audio_capture` without catching Slack dings or notification sounds.
   - **Desktop Audio**: The global `coreaudio_output_capture` device is disabled in the base profile to prevent duplicate Chromium audio and system notification capture.
-- **Multitrack Master Recording**: Advanced recording mode (`RecTracks=15`) selects four synchronized tracks in hybrid MOV files. The base rewatch setup populates Tracks 1-3; Track 4 is reserved:
+- **Continuous Multitrack Master Recording**: Advanced recording mode (`RecTracks=15`) records four synchronized tracks into a single hybrid MOV per session. Automatic 15-minute and 2 GB splits are disabled, and the program mix uses 320 kbps AAC to preserve the full mix for editing. The base rewatch setup populates Tracks 1-3; Track 4 is reserved:
   - **Track 1**: Program mix (Host Mic + Chromium Video Audio)
   - **Track 2**: Host microphone isolated (Pristine speech for podcasting and Whisper transcripts)
   - **Track 3**: Chromium video audio isolated (Reference interview audio)

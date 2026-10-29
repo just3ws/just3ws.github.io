@@ -32,7 +32,7 @@ When reacting to an interview video while cross-referencing archival data:
 | |   Height: 512px         | |   Height: 512px             | |
 | +-------------------------+ +-----------------------------+ |
 |               +-------------------------+                   |
-|               |  Host Camera (Inset)    |                   |
+|               |  Host Camera inset     |                   |
 |               |  Width: 400px           |                   |
 |               +-------------------------+                   |
 | [==================== Lower Third HUD ====================] |

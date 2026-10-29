@@ -146,6 +146,10 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
       expect(content).to include('Export .textream')
       expect(content).to include('textream://read?text=')
       expect(content).to include('Read in Textream')
+      expect(content).to include('Recording Day Launchpad')
+      expect(content).to include('cueLiveEpisodeInObs')
+      expect(content).to include('openLiveTeleprompter')
+      expect(content).to include('live-cue-feedback')
       expect(content).not_to include("\u2014")
     end
   end

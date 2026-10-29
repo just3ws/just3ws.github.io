@@ -181,6 +181,15 @@ class ObsSetupValidator
         fail("Workbench Terminal source missing or owner_name is not 'iTerm2'")
       end
 
+      reaction_scene = sources.find { |source| source['name'] == '03. Reaction - Video Focus' }
+      reaction_camera = reaction_scene&.dig('settings', 'items')&.find { |item| item['name'] == 'Host Camera' }
+      if reaction_camera&.dig('pos') == { 'x' => 1380.0, 'y' => 750.0 } &&
+          reaction_camera&.dig('bounds') == { 'x' => 480.0, 'y' => 270.0 }
+        pass('Reaction camera inset is 16:9 and inset from the canvas edges')
+      else
+        fail('Reaction camera inset must be 480x270 at x=1380, y=750 on the 1920x1080 canvas')
+      end
+
     rescue JSON::ParserError => e
       fail("JSON syntax error in scene collection: #{e.message}")
     end
@@ -237,6 +246,18 @@ class ObsSetupValidator
       pass('Multi-track recording enabled for 4 independent synchronized audio tracks')
     else
       fail('Multi-track recording (RecTracks=15) is not enabled')
+    end
+
+    if ini_content.include?('Track1Bitrate=320')
+      pass('Program mix recording bitrate is 320 kbps AAC')
+    else
+      fail('Program mix recording bitrate must be 320 kbps AAC')
+    end
+
+    if ini_content.include?('RecSplitFileTime=0') && ini_content.include?('RecSplitFileSize=0')
+      pass('Automatic time and size splits are disabled for single-session masters')
+    else
+      fail('Recording time and size splits must be disabled for single-session masters')
     end
 
     if ini_content.include?('DesktopAudioDevice1=disabled')

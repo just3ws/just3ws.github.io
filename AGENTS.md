@@ -11,6 +11,14 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOUND ABOVE OBS RECORDING LAUNCHPAD (2026-10-28):
+         Improved OBS recording defaults and the local recording-day workflow:
+         - Production and staging profiles disable automatic time/size splits and record the program audio mix at 320 kbps AAC.
+         - Reaction scene uses a 480x270 host inset with safe canvas margins; the interview remains the primary frame.
+         - YouTube dashboard adds selected-episode cueing, matching teleprompter navigation, an audio/preview/storage checklist, and visible cue error reporting.
+         - OBS installer refuses to overwrite configs while OBS is running; preflight contracts cover the profile and scene layout.
+         - Focused specs: 27 examples pass; Jekyll builds 1,083 pages. Installed OBS sync remains pending while OBS is open.
+
        - SOUND ABOVE RECORDING WORKFLOW HARDENING (2026-10-28):
          Corrected the OBS rewatch audio contract and episode cue resolution:
          - Disabled global Desktop Audio in production and staging profiles to avoid duplicate Chromium playback and system sounds.

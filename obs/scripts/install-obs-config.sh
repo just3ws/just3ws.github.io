@@ -56,6 +56,13 @@ if [[ "${DRY_RUN}" == "true" ]]; then
 fi
 echo "=================================================================="
 
+# Do not write profile or scene files while OBS may rewrite them on exit.
+if [[ "${DRY_RUN}" == "false" ]] && pgrep -x OBS >/dev/null 2>&1; then
+  echo "❌ OBS Studio is running. Close OBS before installing this configuration."
+  echo "   Re-run this installer after OBS has fully exited."
+  exit 1
+fi
+
 # 1. Verify OBS Installation
 if [[ ! -d "/Applications/OBS.app" ]]; then
   echo "❌ Error: /Applications/OBS.app not found."
@@ -164,7 +171,7 @@ else
   echo "✅ Installation Complete!"
   echo "------------------------------------------------------------------"
   echo "To activate in OBS Studio & iTerm2:"
-  echo " 1. If OBS is running, restart OBS Studio or switch from the menus:"
+  echo " 1. Launch OBS Studio after the installer completes, then select:"
   echo "    - Profile Menu -> Select 'The Sound Above - Staging' (for testing/sandbox)"
   echo "    - Profile Menu -> Select 'The Sound Above' (for production broadcast)"
   echo "    - Scene Collection Menu -> Select 'The Sound Above - UGtastic Rewatch'"

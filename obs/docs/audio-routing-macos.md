@@ -63,7 +63,7 @@ The default scene collection applies a studio-grade filter chain to `Mic/Aux` to
 
 ## 4. Multi-Track Master Recording Architecture
 
-The OBS Profile (`The Sound Above`) is configured with **Advanced Multi-Track Recording** (`RecTracks=15`, capturing 4 independent audio tracks simultaneously):
+The OBS Profile (`The Sound Above`) is configured with **Advanced Multi-Track Recording** (`RecTracks=15`, capturing 4 independent audio tracks simultaneously). Automatic duration and size splitting are disabled so a session stays one edit-ready hybrid MOV. All four recording tracks use 320 kbps AAC, including the program mix:
 
 ```
 +-------------------------------------------------------------------------+

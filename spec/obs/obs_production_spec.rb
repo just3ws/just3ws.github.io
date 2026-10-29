@@ -47,6 +47,11 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
       source["id"] == "sck_audio_capture" && (source["mixers"].to_i & 8).positive?
     end
     expect(guest_track_sources).to be_empty
+
+    reaction = data["sources"].find { |source| source["name"] == "03. Reaction - Video Focus" }
+    camera = reaction.dig("settings", "items").find { |item| item["name"] == "Host Camera" }
+    expect(camera["pos"]).to eq({ "x" => 1380.0, "y" => 750.0 })
+    expect(camera["bounds"]).to eq({ "x" => 480.0, "y" => 270.0 })
   end
 
   it "verifies basic.ini configures 1080p60 and Apple VideoToolbox hardware acceleration" do
@@ -60,6 +65,14 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     expect(ini_content).to match(/FPSCommon=60/)
     expect(ini_content).to match(/videotoolbox|apple_h264|vt_h264/)
     expect(ini_content).to include('DesktopAudioDevice1=disabled')
+    expect(ini_content).to match(/Track1Bitrate=320/)
+    expect(ini_content).to match(/RecSplitFileTime=0/)
+    expect(ini_content).to match(/RecSplitFileSize=0/)
+
+    staging_ini = File.read(File.expand_path('../../obs/profiles/The Sound Above - Staging/basic.ini', __dir__))
+    expect(staging_ini).to match(/Track1Bitrate=320/)
+    expect(staging_ini).to match(/RecSplitFileTime=0/)
+    expect(staging_ini).to match(/RecSplitFileSize=0/)
   end
 
   it "verifies overlay state matches craftsmanship design tokens" do
@@ -74,5 +87,11 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     css = File.read(theme_css_file)
     expect(css).to include("--teal-craftsman: #0f766e;")
     expect(css).to include("--amber-accent: #b45309;")
+  end
+
+  it "prevents the installer from overwriting OBS files while OBS is running" do
+    installer = File.read(File.expand_path('../../obs/scripts/install-obs-config.sh', __dir__))
+    expect(installer).to include('pgrep -x OBS')
+    expect(installer).to include('Close OBS before installing this configuration')
   end
 end

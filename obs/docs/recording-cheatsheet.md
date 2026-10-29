@@ -13,7 +13,7 @@ From the project root (`~/github.com/just3ws/just3ws.github.io`):
 bundle exec rake validate:obs
 ./obs/scripts/test-audio-routing.sh
 
-# 2. Sync project configuration to OBS Studio (if repo updated)
+# 2. Sync project configuration to OBS Studio (OBS must be closed)
 ./obs/scripts/install-obs-config.sh
 
 # 3. Cue the broadcast archetype & content:
@@ -50,7 +50,7 @@ open -a OBS
 
 ## 3. Window & Desktop Ergonomics (1920x1080 1:1 Canvas)
 
-* **Canvas & Output**: Locked to **1920x1080 @ 60fps** (Apple Silicon VideoToolbox H264 hardware encoding).
+* **Canvas & Output**: Locked to **1920x1080 @ 60fps** (Apple Silicon VideoToolbox H264 hardware encoding). Full-frame interview playback remains unobstructed by the host inset; the reaction inset is 480x270 at the lower right with a 60 px edge margin.
 * **Headphones / IEMs**: **Mandatory**. Prevents room echo into the open microphone.
 * **Chromium Browser (Video Player)**:
   * Open target interview (YouTube / Vimeo / local file).
