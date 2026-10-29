@@ -11,6 +11,10 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - MEDIA PIPELINE SOURCE HYDRATION AND CATALOG SYNC (2026-10-29):
+         - The media-pipeline now separates operator-held staged recordings from automatic processing with a verified hydration step.
+         - The site catalog and transcript indexes include the latest Ramblin' & Amblin' publication sync and preserve transcript completeness signals for editorial review.
+         - Site validation: focused media, transcript, and schema specs pass; `rake validate:fast` passes.
        - SOUND ABOVE RECORDING PLAYBOOK (2026-10-29):
          Canonicalized recording preparation across the dashboard, CLI, man pages, and operator skill:
          - `docs/recording-playbook.md` is the published canonical procedure for install safety, local preflight, test capture, recording, YouTube live checks, recovery, and media-pipeline handoff.
