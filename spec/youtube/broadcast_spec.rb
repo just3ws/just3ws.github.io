@@ -10,6 +10,21 @@ require 'tmpdir'
 RSpec.describe 'Broadcast episode resolution' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
 
+  it 'exposes recording preflight and playbook through help and playbook options' do
+    stdout, stderr, status = Open3.capture3('ruby', File.join(root_dir, 'bin/broadcast'), '--help')
+    expect(status.success?).to be(true), stderr
+    expect(stdout).to include('--preflight')
+    expect(stdout).to include('--playbook')
+    expect(stdout).to include('does not start OBS or a stream')
+
+    playbook, playbook_stderr, playbook_status = Open3.capture3(
+      'ruby', File.join(root_dir, 'bin/broadcast'), '--playbook'
+    )
+    expect(playbook_status.success?).to be(true), playbook_stderr
+    expect(playbook).to include('# The Sound Above Recording Playbook')
+    expect(playbook).to include('Session close checklist')
+  end
+
   it 'resolves the semantic Minus One slug to its dossier instead of episode zero' do
     Dir.mktmpdir('broadcast-spec') do |sandbox|
       FileUtils.mkdir_p(File.join(sandbox, 'bin'))

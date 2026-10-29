@@ -2,99 +2,82 @@
 name: oral-history-broadcaster
 aliases:
   - technical-rewatch-broadcaster
-description: Directs, validates, cues, and audits live video broadcasts across all three archetypes (The Sound Above interview rewatches, Errata solo readings and demos, and The Room invited peer dialogues).
+description: Prepare, cue, and operate OBS recording or YouTube live sessions for The Sound Above, Errata, and The Room.
 ---
 
-# Technical Rewatch & Broadcast Director Skill
+# Oral History Broadcaster
 
-Use this skill when preparing, curating, validating, or directing livestreams for Mike Hall (Staff Software Engineer, UGtastic Creator, and SCMC Co-Founder).
-This covers the entire tri-archetype broadcast architecture:
-1. **The Sound Above**: UGtastic interview rewatch series across 37 numbered curriculum broadcasts (35 curated practitioner interviews plus 2 closing codas: Coda 1 Host Demonstration and Coda 2 Community Roundtable).
-2. **Errata**: Solo broadcasts including the series pilot ("The Mirage of Competence: AI Slop & Domain Boundaries", Episode 00), book readings, concept breakdowns, live terminal workbench demonstrations, physical memorabilia showcases, and behind the scenes engineering walkthroughs.
-3. **The Room**: Invited peer dialogues, collegial pair programming, and community roundtables.
+Use this skill when preparing or operating a recording session for the site's three broadcast formats. For the operator checklist, read [`docs/recording-playbook.md`](../../../docs/recording-playbook.md).
 
----
+## System boundary
 
-## 🎯 Core Responsibilities
+- `just3ws.github.io` owns episode dossiers, teleprompter documents, OBS scene/profile templates, overlays, and the recording workflow.
+- `media-pipeline` owns reviewed media intake, enrichment, YouTube publication, and post-publication lifecycle. Use `.agents/skills/media-pipeline-operator/SKILL.md` only after an operator explicitly hands off a recording.
+- Broadcast cueing changes local overlay metadata. It does not launch OBS, start recording, start streaming, upload, or publish.
+- Do not initiate a YouTube live session or publication unless the user explicitly asks.
 
-1. **Episode Workbench & Semantic Dossier Management (`bin/episode_workbench.rb`)**:
-   - Inspect episode dossiers and narrative anatomy:
-     `bin/episode_workbench.rb show <N>`
-   - List the complete 37-episode curriculum and pilot:
-     `bin/episode_workbench.rb list`
-   - Compile modular 6-act teleprompter scripts with host recollections:
-     `bin/episode_workbench.rb compile <N> [--markdown|--json]`
-   - Workshop episode framing with custom prompts:
-     `bin/episode_workbench.rb workshop <N> --prompt "..."`
+## Recording preparation
 
-2. **Staging & Pre-Broadcast Verification Harness (`bin/stage_episode_workflow.rb`)**:
-   - Non-destructively exercise and verify the complete publishing pipeline before going live:
-     `bin/stage_episode_workflow.rb <N>`
-     `bin/stage_episode_workflow.rb --all`
-   - Verifies 7 discrete pipeline gates:
-     * Dossier schema and zero em-dash compliance
-     * YouTube title length (under 100 chars) and description character budget
-     * Transcript and WebVTT caption parity
-     * OBS overlay state and scene cues
-     * 6-act teleprompter compilation with marginalia
-     * YouTube Data API quota safety
-     * Patreon patron credit formatting
+1. Read the playbook: `bin/broadcast --playbook`.
+2. Run local checks: `bin/broadcast --preflight`.
+3. Inspect the current overlay state: `bin/broadcast --status`.
+4. Choose a curated item: `bin/broadcast --list`.
+5. Cue an interview with `bin/broadcast --rewatch <N>`, or cue Errata or Dialogue with the documented CLI flags.
+6. Verify the cue with `bin/broadcast --status`, then use the local dashboard at `/youtube/dashboard/#tab-live` to open the matching teleprompter.
+7. In OBS, verify the selected profile and scene collection, capture-window bindings, preview composition, mic meter, Chromium application-audio meter, recording destination, and available disk space.
 
-3. **Textream Teleprompter Integration (`bin/generate_sound_above_teleprompter.rb`)**:
-   - Compile native Textream JSON documents (`obs/teleprompter/episode-XX.textream`) for on-device speech recognition word tracking and prompter glass mirroring in `/Applications/Textream.app`:
-     `bin/pipeline media textream <N> --open`
-     `bin/pipeline media textream --all`
-   - Generate instant speech-tracking deep links:
-     `bin/pipeline media textream <N> -u`
-   - Integrated with the YouTube Operations Cockpit teleprompter studio (`https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter`) with direct 1-click launch and `.textream` export.
+The local dashboard cue control calls the existing loopback endpoint and displays success or failure. The dashboard checkboxes are manual reminders. They do not inspect OBS or persist their state.
 
-4. **Patreon Archive Integration & Patron Credits (`bin/patreon_pipeline.rb`)**:
-   - Track monthly recurring compute funding for Whisper and AI model tokens:
-     `bin/patreon_pipeline.rb status`
-   - Format closing credit acknowledgments for Act 6 teleprompter and YouTube descriptions:
-     `bin/patreon_pipeline.rb credits`
-   - Sync live members from Patreon API v2:
-     `bin/patreon_pipeline.rb sync`
+## Current OBS contract
 
-5. **Unified Broadcast Orchestration (`bin/broadcast`)**:
-   - Inspect active live state and overlay HUD configuration:
-     `bin/broadcast --status`
-   - List complete sequence and Errata entries:
-     `bin/broadcast --list`
-   - Cue technical interview rewatches (Episodes 1 to 37):
-     `bin/broadcast --rewatch <N>`
-   - Cue pre-curated or custom Errata solo broadcasts:
-     `bin/broadcast --cue <ID>`
-   - Cue invited peer dialogues and roundtables:
-     `bin/broadcast --dialogue --guest <NAME> --subtitle <ROLE> --title <TOPIC> --prompt <QUESTION>`
+- Canvas and output: 1920x1080 at 60 fps, Rec. 709 SDR, Apple VideoToolbox H.264.
+- Scene 03: Chromium interview full-frame, host camera inset 480x270 at x=1380, y=750, and Now Watching HUD.
+- Audio Track 1: host mic plus Chromium program mix.
+- Audio Track 2: isolated host mic.
+- Audio Track 3: isolated Chromium interview audio.
+- Audio Track 4: reserved and unassigned until guest audio is explicitly configured.
+- Global Desktop Audio is disabled in the rewatch setup to prevent duplicate Chromium audio and system notifications.
+- Recording format: hybrid MOV, with automatic time and size splitting disabled. The operator must check and monitor free disk space.
+- Recording mix bitrate: 320 kbps AAC. Verify the resulting file and tracks with a short local test before the first real session.
 
-5. **Automated Production & Contract Verification**:
-   - Run automated contract assertions before any broadcast:
-     `bin/broadcast --validate` or `bundle exec rake validate:obs`
-   - Verify all 8 production scenes exist and match the contract in `obs/scenes/ugtastic-sound-above.json`:
-     `01. Starting Soon`, `02. Monologue / Full Camera`, `03. Reaction - Video Focus`, `04. Split Screen - Video & Research`, `05. Workbench - Code & Terminal`, `06. Guest & Co-Host Discussion`, `07. Intermission / BRB`, `08. Outro & Next Stream`.
-   - Verify hardware encoding settings: Apple Silicon VideoToolbox (`com.apple.videotoolbox.videoencoder.ave.avc`), 1080p60 unscaled canvas, and 48 kHz CoreAudio clock.
+Do not assume that repository settings are active in OBS. The running preview and meters are authoritative. The local validator checks repository contracts and environment prerequisites; it does not confirm actual meter activity, the active YouTube bitrate, stream health, privacy, or selected scene.
 
-6. **Audio Routing Verification (macOS Golden Gate)**:
-   - Audit macOS CoreAudio and ScreenCaptureKit permissions:
-     `./obs/scripts/test-audio-routing.sh`
-   - Verify 4-track isolated master recording architecture:
-     Track 1: Composite Stream Mix.
-     Track 2: Host Microphone Isolated (with RNNoise suppression and compressor).
-     Track 3: Browser Video Audio Isolated (`sck_audio_capture` from Orion).
-     Track 4: Remote Guest Audio Isolated.
+## Template installation and runtime safety
 
-7. **Narrative & Historical Framing**:
-   - **For Rewatches**: Frame the Chicago room (2005 to 2015). Who inspired the interviewee before the keynote? Connect craftsmanship disciplines to modern AI system orchestration.
-   - **For Errata**: Ground concepts in primary literature (Beck, Hickey, Hunt & Thomas, Hoover). Demonstrate live on the terminal workbench with sub-second feedback loops.
-   - **For Dialogues**: Structure peer inquiry around shared craftsmanship lineage, deliberate practice, and modern engineering challenges.
+- Close OBS before installing updated templates. `obs/scripts/install-obs-config.sh` refuses to write while the OBS process is running.
+- Review `obs/scripts/install-obs-config.sh --dry-run` before installation. The installer backs up scene/profile files, preserves an existing `service.json`, and also syncs the Chromium recording environment.
+- Never overwrite or hand-edit OBS Application Support files while OBS is open.
+- After installation, reopen OBS and inspect the selected scene and profile. Make a short local test recording before using a new layout for a live session.
 
----
+## Local recording procedure
 
-## 🛑 Guardrails & Boundaries
+- Wear headphones to prevent interview playback from entering the mic acoustically.
+- Confirm the mic is clear and does not clip. Confirm Chromium audio starts and stops with playback.
+- Start **Recording** for a recording-only session. Do not start **Streaming**.
+- For a live session, confirm the scheduled event, title, visibility, audience, and playlist in YouTube Live Control Room. Keep stream keys and private control data off-screen.
+- Confirm streaming H.264, CBR, a 2-second keyframe interval, audio settings, and a bitrate that the connection can sustain. Use current YouTube guidance rather than treating a repository profile as live verification.
+- Start local recording before starting the stream. Monitor OBS dropped frames, encoder lag, and remaining disk space.
+- Stop streaming and recording deliberately. Wait for the MOV to finalize before quitting OBS or moving the file.
+- Inspect picture, sync, and expected audio tracks. Keep the source until any explicitly staged handoff is verified.
 
-- **Zero Em Dashes**: Never use em dashes (`\u2014`), double hyphens (`--`), or spaced hyphens (` - `) in prose, overlays, or metadata. Use colons, commas, semicolons, or distinct sentences instead.
-- **Zero Secrets**: Never commit or broadcast stream keys, OAuth refresh tokens, or private credentials.
-- **True Title Compliance**: Maintain **Staff Software Engineer** as Mike Hall's canonical title.
-- **Hardware Portability**: Ensure all paths in OBS configurations use dynamic project roots rather than static assumptions.
-- **Media Ingestion & Publishing**: Refer to `.agents/skills/media-pipeline-operator/SKILL.md` for the zero-disk-waste cloud intake pipeline, Concurrency Lock, FIFO queues, and YouTube publication details.
+## Safe checks and commands
+
+```sh
+bin/broadcast --help
+bin/broadcast --playbook
+bin/broadcast --preflight
+bin/broadcast --status
+bin/broadcast --list
+bin/broadcast --rewatch 1
+./obs/scripts/install-obs-config.sh --dry-run
+./obs/scripts/test-audio-routing.sh
+```
+
+`test-audio-routing.sh` reports CoreAudio device details and prior OBS permission-log hints. It does not prove current source routing or meter levels. Check those in OBS.
+
+## Content integrity
+
+- Keep spoken scripts grounded in the presenter's actual experience. Use `.agents/skills/technical-scriptwriter/SKILL.md` when drafting or editing spoken copy.
+- Preserve canonical names: SCMC means Software Craftsmanship McHenry County; The Sound Above is the rewatch series; The Room is invited peer dialogue.
+- Do not invent historical details, guest participation, recording permissions, or publication status.
+- Do not add em dashes to scripts, overlays, documentation, or metadata.

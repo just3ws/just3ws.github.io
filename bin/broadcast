@@ -287,6 +287,9 @@ opt_parser = OptionParser.new do |opts|
   opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts, behind the scenes)"
   opts.separator "  3. --dialogue      The Room (invited guest conversations and peer inquiry)"
   opts.separator ""
+  opts.separator "Recording prep: bin/broadcast --playbook, then bin/broadcast --preflight"
+  opts.separator "Cueing updates local overlay metadata. It does not start OBS or a stream."
+  opts.separator ""
   opts.on("-r", "--rewatch EPISODE", "Cue rewatch episode (-1, 0, 1 to 37)") do |ep|
     options[:archetype] = "rewatch"
     options[:episode] = ep.to_s =~ /^-?\d+$/ ? ep.to_i : ep.to_s
@@ -363,8 +366,16 @@ opt_parser = OptionParser.new do |opts|
     options[:list] = true
   end
 
-  opts.on("--validate", "Execute automated OBS setup and contract validation suite") do
+  opts.on("--preflight", "Run read-only OBS configuration and environment checks") do
     options[:validate] = true
+  end
+
+  opts.on("--validate", "Alias for --preflight") do
+    options[:validate] = true
+  end
+
+  opts.on("--playbook", "Print docs/recording-playbook.md and exit") do
+    options[:playbook] = true
   end
 
   opts.on("--man", "Display comprehensive broadcast operations manual") do
@@ -386,6 +397,17 @@ if options[:man]
   else
     puts "Manual page available at man/man1/broadcast.1"
   end
+  exit 0
+end
+
+if options[:playbook]
+  playbook_path = File.join(ROOT_DIR, "docs", "recording-playbook.md")
+  unless File.file?(playbook_path)
+    warn "Recording playbook not found: #{playbook_path}"
+    exit 1
+  end
+  playbook = File.read(playbook_path).sub(/\A---\s*\n.*?\n---\s*\n/m, "")
+  puts playbook
   exit 0
 end
 

@@ -4,6 +4,8 @@
 
 This document provides the end-to-end operational tutorial, technical runbook, and broadcast guidelines for hosting "The Sound Above" livestream using OBS Studio on macOS Golden Gate.
 
+The authoritative technical sequence is [the recording playbook](recording-playbook.md), also available with `bin/broadcast --playbook`. This document supplements it with episode framing and presentation guidance. Do not use older command examples in other documents when they conflict with the playbook or `bin/broadcast --help`.
+
 ---
 
 ## 1. Pre-Flight Preparation (T-30 Minutes)
@@ -15,16 +17,18 @@ Verify all contracts, scenes, profiles, overlays, and environment prerequisites:
 ```bash
 bundle exec rake validate:obs
 ```
-Assert that all 35 contract assertions pass cleanly before proceeding.
+Review all reported errors and warnings. A passing repository check does not replace preview, meter, disk-space, or YouTube Live Control Room checks.
 
 ### Step 2: Install or Synchronize Configuration
 If you have pulled new commits or modified scenes:
 ```bash
+./obs/scripts/install-obs-config.sh --dry-run
 ./obs/scripts/install-obs-config.sh
 ```
+Close OBS before installing. The installer exits without writing if OBS is running.
 
 ### Step 3: Run the Audio Diagnostic
-Confirm that macOS CoreAudio is locked at 48,000 Hz and permissions are active:
+Inspect CoreAudio device details and prior OBS permission-log hints:
 ```bash
 ./obs/scripts/test-audio-routing.sh
 ```
@@ -33,9 +37,10 @@ Confirm that macOS CoreAudio is locked at 48,000 Hz and permissions are active:
 Select your target episode from `obs/curation/sequence-manifest.json`:
 ```bash
 # Example: Cue Episode 1 (Sergio Pereira):
-./obs/scripts/update-overlay-state.sh --episode 1
+bin/broadcast --rewatch 1
+bin/broadcast --status
 ```
-Verify that `obs/overlays/overlay-state.json` updates with the interviewee name, event, era, and Sound Above prompt.
+The preferred cue command is `bin/broadcast --rewatch 1`. Verify the interviewee, event, era, and prompt with `bin/broadcast --status` and in the OBS preview. Cueing updates overlay metadata only.
 
 ---
 
@@ -69,7 +74,7 @@ On macOS Golden Gate (Darwin 27), audio routing is fully digital:
 - **Isolated App Audio**: ScreenCaptureKit (`sck_audio_capture`) taps the Chromium process directly. It will never capture system alert chimes, Slack dings, or email notifications.
 - **Global Desktop Audio**: Keep the global desktop source disabled in the rewatch collection. Enabling it alongside Chromium ScreenCaptureKit can duplicate interview playback and include system notifications in the program mix.
 - **Spacebar Control**: Pausing playback in Chromium instantly silences the video audio stream, giving you a clean stage to comment without audio overlap.
-- **Vocal Processing**: Your microphone channel already includes RNNoise neural suppression (filters keyboard typing), vocal compression (evens speech dynamics), and a safety brickwall limiter at -1.5 dB.
+- **Vocal Processing**: The microphone template includes RNNoise suppression, compression, and a limiter at -1.5 dB. Listen to a test recording; filters cannot replace mic placement or gain checks.
 
 ---
 

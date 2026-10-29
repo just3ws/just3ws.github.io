@@ -6,6 +6,8 @@ A high-density operational reference for live broadcasting and local recording w
 
 ## 1. Quick-Start Command Sequence (Terminal)
 
+For the complete preparation, recording, streaming, and recovery sequence, run `bin/broadcast --playbook` or read [recording-playbook.md](recording-playbook.md).
+
 From the project root (`~/github.com/just3ws/just3ws.github.io`):
 
 ```bash
@@ -18,13 +20,13 @@ bundle exec rake validate:obs
 
 # 3. Cue the broadcast archetype & content:
 # Archetype 1: Rewatch ("The Sound Above")
-bin/broadcast --episode 1
+bin/broadcast --rewatch 1
 
 # Archetype 2: Errata ("Solo Broadcast")
 bin/broadcast --errata --mode concept --title "The Blink Test"
 
 # Archetype 3: Dialogue ("The Room")
-bin/broadcast --dialogue --guest "Corey Haines" --topic "Simple Design"
+bin/broadcast --dialogue --guest "Corey Haines" --title "Simple Design"
 
 # 4. Open OBS Studio & launch iTerm2 profile
 open -a OBS
@@ -72,7 +74,7 @@ open -a OBS
 * **Auto-Hide**: Fades out automatically after **10 to 12 seconds** to keep screen unobscured.
 * **How to Refresh / Bring Back Lower Third**:
   * Option A: In OBS Sources list, select `Overlay: Lower Third` -> click **Refresh cache of current page**.
-  * Option B: In terminal, run `bin/broadcast --episode <N>` (re-triggers state update).
+  * Option B: In terminal, run `bin/broadcast --rewatch <N>` to cue the episode again.
   * Option C (Persistent Display): If you want it visible permanently during testing, append `?autohide=0` in the Browser Source URL properties in OBS.
 * **Why Scene 02 Only Has Lower Third**:
   * Monologue/Full Camera is intentionally uncluttered: it only renders the lower third, whereas Scene 03 adds the `Now Watching HUD` card in the upper-right corner.
@@ -100,7 +102,7 @@ In OBS Advanced Audio Properties, keep the global `Desktop Audio` source disable
 1. [ ] **Headphones plugged in** and default audio output selected; global Desktop Audio remains disabled for the rewatch setup.
 2. [ ] **Mic check**: Speak into mic; verify green-to-yellow level bounce on `Mic/Aux` (~-12 dB to -6 dB).
 3. [ ] **Video check**: Play a test second in Chromium; verify bounce on `Video Application Audio (Chromium)` meter.
-4. [ ] **Episode cued**: `bin/broadcast --episode <N>` executed; check interviewee name in OBS preview.
+4. [ ] **Episode cued**: `bin/broadcast --rewatch <N>` executed; check interviewee name in OBS preview.
 5. [ ] **Window capture attached**: Verify Chromium in Scene 03 and iTerm2 in Scene 05.
 6. [ ] **Start in Scene 01 or 02**: Click Scene `01. Starting Soon` or `02. Monologue`.
 7. [ ] **Textream prompter ready**: Launch `bin/pipeline media textream <ep> --open` or click "Launch in Textream" on localhost dashboard.

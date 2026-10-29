@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-28
+     CURRENT FOCUS - last updated 2026-10-29
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,14 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOUND ABOVE RECORDING PLAYBOOK (2026-10-29):
+         Canonicalized recording preparation across the dashboard, CLI, man pages, and operator skill:
+         - `docs/recording-playbook.md` is the published canonical procedure for install safety, local preflight, test capture, recording, YouTube live checks, recovery, and media-pipeline handoff.
+         - `bin/broadcast --playbook` prints the playbook; `--preflight` aliases the existing local validator.
+         - Existing cheatsheet and tutorial command examples now follow the actual CLI. The legacy broadcast runbook points to the canonical OBS playbook.
+         - `oral-history-broadcaster` now states current scene/audio contracts and the recording-to-publication boundary.
+         - Checks: 20 focused RSpec examples, `validate:fast`, `mandoc -Tlint -Werror`, Ruby and shell syntax, and Jekyll build (1,084 pages).
+         - Installed OBS parity checks report stale scene/profile files; OBS is open, so the guarded installer has not been run.
        - SOUND ABOVE OBS RECORDING LAUNCHPAD (2026-10-28):
          Improved OBS recording defaults and the local recording-day workflow:
          - Production and staging profiles disable automatic time/size splits and record the program audio mix at 320 kbps AAC.
@@ -1937,7 +1945,7 @@ a hold, not an invitation to invent a smoother explanation.
 19. `public-surface-auditor` ✓ - Audit the rendered public boundary for privacy, provenance, quarantine, and internal topology leaks before publication.
 20. `tmi-auditor` ✓ - Audit public-facing content for oversharing, discrimination-vector signals, and PII/PHI exposure.
 21. `canonical-surface-steward` ✓ - Keep canonical identity, shorthand, agents, skills, documentation, CLI help, validators, and generated surfaces synchronized.
-22: `oral-history-broadcaster` / `technical-rewatch-broadcaster` ✓ - Direct, validate, cue, and audit live UGtastic technical rewatch broadcasts, OBS Studio production scene contracts, dynamic HTML overlays, and commentary arcs across the UGtastic and Chicago Software Craftsmanship corpus.
+22: `oral-history-broadcaster` / `technical-rewatch-broadcaster` ✓ - Prepare and operate local OBS recording and YouTube live sessions, cue overlay metadata, verify current scene/audio contracts, and hand reviewed recordings to media-pipeline through its operator workflow.
 23. `patreon-integrator` ✓ - Connect to Patreon API v2, manage campaign tiers, track recurring compute funding, and format closing credit attributions for The Sound Above broadcasts.
 24. `ponytail` ✓ - Audit code, designs, and architectural proposals against premature technical debt, cutting speculative abstractions and enforcing explicit "# ponytail:" markers.
 25. `media-pipeline-operator` ✓ - Operate, monitor, and audit the zero-disk-waste media intake and YouTube publishing pipeline across all channels and playlists, managing Maildir queues, Concurrency Locks, FIFO order, SSE telemetry, SwiftBar status, and BPMN SLO compliance.

@@ -1,4 +1,4 @@
-.TH OBS-LIVESTREAM 1 2026-10-26 "just3ws" "User Commands"
+.TH OBS-LIVESTREAM 1 2026-10-28 "just3ws" "User Commands"
 .SH NAME
 obs-livestream \- manage, validate, and broadcast UGtastic oral history rewatch livestreams
 .SH SYNOPSIS
@@ -15,11 +15,15 @@ obs-livestream \- manage, validate, and broadcast UGtastic oral history rewatch 
 .br
 .B obs/scripts/test-audio-routing.sh
 [\fB\-\-help\fR]
+.br
+.B bin/broadcast --playbook
+.br
+.B bin/broadcast --preflight
 .SH DESCRIPTION
 .B obs-livestream
 is the automation and configuration suite for the "The Sound Above" oral history rewatch stream. Hosted by Mike Hall (UGtastic Creator), the series reviews over 200 UGtastic interviews (2010\[en]2015), early Chicago software craftsmanship history, and the evolution of developer identity as the industry transitions into the AI era.
 .PP
-The toolchain provides declarative OBS Studio 32 scene collections, Apple Silicon M4 hardware-accelerated encoding profiles, native macOS Golden Gate digital sound capture, interactive HTML/CSS/JS browser overlays, and automated contract testing.
+The toolchain provides declarative OBS Studio 33 scene collections, Apple Silicon VideoToolbox hardware encoding profiles, native macOS ScreenCaptureKit and CoreAudio capture, interactive browser overlays, a recording-day dashboard, and automated local contract checks.
 .SH PRODUCTION SCENES
 The scene collection defines eight purpose-built broadcast scenes:
 .TP
@@ -30,7 +34,7 @@ Ambient slate title screen with live episode card, quote carousel, and animated 
 Full-screen host camera with lower-third HUD for framing historical context and opening thesis.
 .TP
 .B 03. Reaction \- Video Focus
-Large-format Chromium browser window capture (80% canvas) paired with host camera picture-in-picture in the lower right, Now Watching HUD, and isolated application audio.
+Full-frame Chromium interview with a 480x270 host camera inset at the lower right, Now Watching HUD, and isolated application audio.
 .TP
 .B 04. Split Screen \- Video & Research
 Side-by-side comparison: Chromium video playback on the left, secondary research browser or terminal on the right showing transcripts or timeline data on just3ws.localhost.
@@ -53,10 +57,10 @@ OBS on macOS Golden Gate (Darwin 27) utilizes native ScreenCaptureKit and CoreAu
 Taps the digital PCM stream of the Chromium browser directly. Completely isolates video playback while automatically filtering out Mail chimes, Slack dings, terminal bells, and Spotify.
 .IP \(bu 2
 .B Desktop Audio (\fIcoreaudio_output_capture\fR):
-Taps default system output at a locked 48,000 Hz sample rate without requiring third-party virtual audio loopback drivers (Soundflower and BlackHole are obsolete).
+Configured but disabled in the rewatch scene collection to prevent duplicate Chromium playback and system notification sounds. Enable only for a deliberately designed session that needs system-wide audio.
 .IP \(bu 2
 .B 4-Track Master Recording:
-Advanced recording captures four independent, synchronized audio tracks simultaneously into hybrid MOV containers: Track 1 (Composite Stream Mix), Track 2 (Host Mic Isolated), Track 3 (Chromium Video Isolated), Track 4 (Guest Isolated).
+Advanced recording captures four synchronized tracks in one hybrid MOV per session. Automatic time and size splitting are disabled. Track 1 is the host mic plus Chromium program mix at 320 kbps AAC; Track 2 is the isolated host mic; Track 3 is isolated Chromium audio; Track 4 is reserved and unassigned.
 .SH OVERLAYS
 Browser overlays in \fIobs/overlays/\fR poll \fIobs/overlays/overlay-state.json\fR every 2.5 seconds:
 .TP
@@ -71,10 +75,13 @@ Pre-stream title card with animated pulse and rotating quotes from craftsmanship
 .SH FILES
 .TP
 .I obs/scenes/ugtastic-sound-above.json
-Declarative OBS Studio 32 scene collection.
+Declarative OBS Studio 33 scene collection.
+.TP
+.I docs/recording-playbook.md
+Canonical preparation, local test, recording, streaming, recovery, and close procedure.
 .TP
 .I obs/profiles/The Sound Above/basic.ini
-Hardware-tuned OBS profile for Apple Silicon M4.
+OBS profile for Apple Silicon VideoToolbox capture and multitrack recording.
 .TP
 .I obs/overlays/overlay-state.json
 Live state synchronized to browser sources.
@@ -101,7 +108,15 @@ bundle exec rake validate:obs
 ruby bin/validate_obs_setup.rb --live
 
 # Synchronize repo configuration to OBS Studio:
+# OBS must be closed before installation.
+\&./obs/scripts/install-obs-config.sh --dry-run
 \&./obs/scripts/install-obs-config.sh
+
+# Print the end-to-end recording and streaming playbook:
+bin/broadcast --playbook
+
+# Run local repository and environment preflight checks:
+bin/broadcast --preflight
 
 # Run audio diagnostic and sample rate check:
 \&./obs/scripts/test-audio-routing.sh

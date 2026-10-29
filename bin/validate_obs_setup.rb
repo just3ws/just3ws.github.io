@@ -53,8 +53,9 @@ class ObsSetupValidator
     test-audio-routing.sh
   ].freeze
 
-  def initialize(live_mode: false)
+  def initialize(live_mode: false, app_support_obs: APP_SUPPORT_OBS)
     @live_mode = live_mode
+    @app_support_obs = app_support_obs
     @errors = []
     @warnings = []
     @passes = 0
@@ -464,8 +465,8 @@ class ObsSetupValidator
 
   def validate_installed_state
     puts "\n8. Validating Installed State in ~/Library/Application Support/..."
-    installed_scene = File.join(APP_SUPPORT_OBS, 'basic', 'scenes', 'The Sound Above - UGtastic Rewatch.json')
-    installed_profile = File.join(APP_SUPPORT_OBS, 'basic', 'profiles', 'The Sound Above', 'basic.ini')
+    installed_scene = File.join(@app_support_obs, 'basic', 'scenes', 'The Sound Above - UGtastic Rewatch.json')
+    installed_profile = File.join(@app_support_obs, 'basic', 'profiles', 'The Sound Above', 'basic.ini')
     iterm2_profile_repo = File.join(OBS_DIR, 'iterm2', 'the-sound-above.json')
     iterm2_support = File.expand_path('~/Library/Application Support/iTerm2')
     iterm2_installed_profile = File.join(iterm2_support, 'DynamicProfiles', 'the-sound-above.json')
@@ -478,14 +479,45 @@ class ObsSetupValidator
 
     if File.file?(installed_scene)
       pass("Scene collection installed in OBS: 'The Sound Above - UGtastic Rewatch.json'")
+      begin
+        repo_scene_data = JSON.parse(File.read(File.join(OBS_DIR, 'scenes', 'ugtastic-sound-above.json')))
+        installed_scene_data = JSON.parse(File.read(installed_scene))
+        repo_reaction = repo_scene_data['sources'].find { |source| source['name'] == '03. Reaction - Video Focus' }
+        installed_reaction = installed_scene_data['sources'].find { |source| source['name'] == '03. Reaction - Video Focus' }
+        repo_chromium_audio = repo_scene_data['sources'].find { |source| source['id'] == 'sck_audio_capture' }
+        installed_chromium_audio = installed_scene_data['sources'].find { |source| source['id'] == 'sck_audio_capture' }
+        repo_camera = repo_reaction&.dig('settings', 'items')&.find { |item| item['name'] == 'Host Camera' }
+        installed_camera = installed_reaction&.dig('settings', 'items')&.find { |item| item['name'] == 'Host Camera' }
+        audio_matches = installed_scene_data.dig('DesktopAudioDevice1', 'enabled') == false &&
+          installed_scene_data.dig('DesktopAudioDevice1', 'mixers') == 0 &&
+          installed_scene_data.dig('AuxAudioDevice1', 'mixers') == repo_scene_data.dig('AuxAudioDevice1', 'mixers') &&
+          installed_chromium_audio&.dig('mixers') == repo_chromium_audio&.dig('mixers')
+        camera_matches = installed_camera&.dig('pos') == repo_camera&.dig('pos') &&
+          installed_camera&.dig('bounds') == repo_camera&.dig('bounds')
+        if audio_matches && camera_matches
+          pass('Installed scene matches the repository audio and reaction-layout contracts')
+        else
+          fail('Installed scene is out of date. Close OBS, run obs/scripts/install-obs-config.sh, then reopen OBS')
+        end
+      rescue JSON::ParserError => e
+        fail("Installed scene collection is invalid JSON: #{e.message}")
+      end
     else
       fail("Scene collection not installed in OBS Application Support. Run: ./obs/scripts/install-obs-config.sh")
     end
 
     if File.file?(installed_profile)
       pass("Profile installed in OBS: 'The Sound Above'")
+      validate_installed_profile('The Sound Above')
     else
       fail("Profile not installed in OBS Application Support. Run: ./obs/scripts/install-obs-config.sh")
+    end
+
+    staging_profile = File.join(@app_support_obs, 'basic', 'profiles', 'The Sound Above - Staging', 'basic.ini')
+    if File.file?(staging_profile)
+      validate_installed_profile('The Sound Above - Staging')
+    else
+      fail("Staging profile not installed in OBS Application Support. Run: ./obs/scripts/install-obs-config.sh")
     end
 
     if Dir.exist?(iterm2_support)
@@ -494,6 +526,24 @@ class ObsSetupValidator
       else
         warn("iTerm2 Dynamic Profile not yet copied to #{iterm2_installed_profile}")
       end
+    end
+  end
+
+  def validate_installed_profile(profile_name)
+    profile_path = File.join(@app_support_obs, 'basic', 'profiles', profile_name, 'basic.ini')
+    profile_lines = File.readlines(profile_path, chomp: true).map(&:strip)
+    required_settings = %w[
+      DesktopAudioDevice1=disabled
+      Track1Bitrate=320
+      RecSplitFileTime=0
+      RecSplitFileSize=0
+    ]
+    missing_settings = required_settings - profile_lines
+
+    if missing_settings.empty?
+      pass("Installed profile '#{profile_name}' matches recording and audio-routing contracts")
+    else
+      fail("Installed profile '#{profile_name}' is out of date. Close OBS and run obs/scripts/install-obs-config.sh")
     end
   end
 

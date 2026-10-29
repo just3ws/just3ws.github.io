@@ -49,7 +49,7 @@ This rewatch series investigates how these foundational disciplines directly inf
 obs/
 ├── README.md                         # Master documentation and operator runbook
 ├── scenes/
-│   └── ugtastic-sound-above.json     # Complete OBS 32.2 Scene Collection (8 calibrated scenes)
+│   └── ugtastic-sound-above.json     # OBS Studio 33 scene collection (8 production scenes)
 ├── profiles/
 │   └── The Sound Above/
 │       ├── basic.ini                 # Apple Silicon M4 hardware encoder & 4-track audio profile
@@ -75,6 +75,7 @@ obs/
 │   └── test-audio-routing.sh         # Audio diagnostic tool for CoreAudio and ScreenCaptureKit
 ├── docs/
 │   ├── recording-cheatsheet.md       # Operator cheatsheet, pre-flight checklist & quick reference
+│   ├── recording-playbook.md          # Pointer to the published canonical playbook in docs/
 │   ├── reaction-and-coding-setup.md  # Display scaling, Chromium browser, and window ergonomics
 │   ├── livestreaming-tutorial-and-guidelines.md # Operational tutorial and broadcast guidance
 │   ├── data-structures-and-schemas.md# JSON schema definitions and state contracts
@@ -109,7 +110,7 @@ The scene collection (`ugtastic-sound-above.json`) provides eight dedicated prod
 
 This project is tailored specifically for macOS Golden Gate (Darwin 27) running on Apple Silicon (Apple M4, 10 cores, 16GB RAM):
 
-- **Zero-CPU Video Encoding**: Utilizes `apple_h264` (Apple VT H264 Hardware Encoder), routing video compression directly to the Apple M4 media engine. The machine runs completely silent and cool without dropping frames.
+- **Hardware Video Encoding**: Uses Apple's VideoToolbox H.264 encoder on Apple Silicon. Check OBS rendering, encoder lag, and dropped-frame indicators during a test capture because performance depends on the active sources and machine load.
 - **True 1080p Unscaled Canvas**: Base canvas and output resolution are set to 1920x1080 at 60 fps. Eliminates downscaling blur, guaranteeing that terminal code, small font sizes, and browser text remain perfectly legible to viewers.
 - **macOS Golden Gate Native Sound Capture**: Leverages Golden Gate's built-in ScreenCaptureKit and CoreAudio output capture architecture. Eliminates the need for legacy virtual audio drivers (BlackHole, Soundflower, Loopback) entirely:
   - **Isolated App Audio**: Captures Chromium video sound directly via `sck_audio_capture` without catching Slack dings or notification sounds.
@@ -124,41 +125,34 @@ This project is tailored specifically for macOS Golden Gate (Darwin 27) running 
 
 ## 5. Live Stream Operator Runbook
 
-Follow this step-by-step checklist before and during each stream:
+The canonical recording-day workflow, including installation safety, preflight, local test capture, YouTube live checks, and recovery, is in [the repository recording playbook](../docs/recording-playbook.md). Print it from the CLI with `bin/broadcast --playbook`.
 
-### Step 1: Install or Sync Configuration
-If running for the first time or updating scenes:
+Use these entry points, then follow the canonical playbook:
+
+### Install or Update OBS Templates
+
+Close OBS, inspect the installer plan, then install:
+
 ```bash
+./obs/scripts/install-obs-config.sh --dry-run
 ./obs/scripts/install-obs-config.sh
 ```
 
-### Step 2: Cue the Target Episode
-Select an episode from `obs/curation/sequence-manifest.json` (for example, Episode 1: Sergio Pereira):
-```bash
-./obs/scripts/update-overlay-state.sh --episode 1
-```
-All HTML overlays (`lower-third.html`, `now-watching.html`, `stream-starting.html`) update automatically via JSON polling within 2.5 seconds.
+### Check and Cue the Session
 
-### Step 3: Run the Audio Diagnostic
-Verify microphone permissions and audio device sample rates:
 ```bash
-./obs/scripts/test-audio-routing.sh
+bin/broadcast --preflight
+bin/broadcast --status
+bin/broadcast --list
+bin/broadcast --rewatch 1
+bin/broadcast --status
 ```
 
-### Step 4: Window Management on macOS
-1. Open **Chromium** browser and navigate to the cued UGtastic interview video (or local video archive file).
-2. Open a secondary browser window pointing to `https://just3ws.localhost/timeline/community/` and `https://just3ws.localhost/interviews/` for instant lookup.
-3. Open **Terminal** (Ghostty, iTerm2, or macOS Terminal) with font size set to at least 18pt.
-4. Launch **OBS Studio**, select Profile: `The Sound Above` and Scene Collection: `The Sound Above - UGtastic Rewatch`.
-5. Put on **headphones or IEMs** to prevent video audio from leaking into your microphone.
+The cue updates local overlay metadata only. It does not select an OBS scene or start a recording or stream. The dashboard is at `https://www.just3ws.localhost/youtube/dashboard/#tab-live`.
 
-### Step 5: Going Live
-1. Select Scene: **01. Starting Soon**.
-2. Click **Start Streaming** and **Start Recording** in OBS.
-3. After 3 to 5 minutes, transition cleanly to Scene: **02. Monologue / Full Camera** to introduce the historical era and context.
-4. Transition to Scene: **03. Reaction - Video Focus** and press `Spacebar` in Chromium to play the interview.
-5. Pause at key inflection points to reflect, comment, or switch to Scene: **04. Split Screen** and Scene: **05. Workbench**.
-6. When concluding, switch to Scene: **08. Outro & Next Stream** to share archive links and sign off.
+### Preview, Record, and Stream
+
+Verify the selected profile and scene collection, bind the capture windows, check the preview and audio meters, and confirm the recording destination and free space. For recording-only work, start **Recording** and leave **Streaming** stopped. For YouTube live, verify event privacy and stream health in Live Control Room, then start local recording and streaming deliberately. Follow the full checklist in the linked repository recording playbook.
 
 ---
 
@@ -169,7 +163,7 @@ The overlay engine dynamically adapts across three distinct broadcast archetypes
 ### Archetype 1: Oral History Rewatch ("The Sound Above")
 ```bash
 # Cue Episode 1 from the sequence manifest
-./obs/scripts/update-overlay-state.sh --rewatch --episode 1
+bin/broadcast --rewatch 1
 
 # Manual override for a rewatch interview
 ./obs/scripts/update-overlay-state.sh --rewatch --guest "Uncle Bob Martin" --conference "SCMC 2011" --year "2011" --prompt "Professionalism vs Speed: The 2011 SCMC Keynote"
@@ -205,7 +199,8 @@ file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third
 
 ## 7. Companion Documentation & Playbooks
 
-- **[Broadcast Operations Playbook](../docs/runbooks/broadcast-operations-playbook.md)**: Sequential pre-flight, live switching, and teardown runbook for all three broadcast archetypes.
+- **[Recording Playbook](../docs/recording-playbook.md)**: Canonical OBS preparation, test capture, recording, streaming, recovery, and close workflow.
+- **[Broadcast Operations Overview](../docs/runbooks/broadcast-operations-playbook.md)**: Archetype overview and links to the canonical recording procedure.
 - **[Curation Sequence Guide](curation/rewatch-curation-sequence.md)**: Full 37-episode roadmap across six movements.
 - **[Reaction and Coding Setup](docs/reaction-and-coding-setup.md)**: Window scaling, Retina ergonomics, and privacy boundaries.
 - **[macOS Audio Routing](docs/audio-routing-macos.md)**: ScreenCaptureKit audio setup, vocal processing, and multitrack recording.

@@ -14,7 +14,7 @@ All declarative data in this project is bounded by JSON Schema draft 2020-12 def
 | :--- | :--- | :--- |
 | `obs/schemas/overlay-state.schema.json` | `obs/overlays/overlay-state.json` | Real-time browser source HUD state |
 | `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Curated 37-episode historical roadmap |
-| `obs/schemas/obs-scene-collection.schema.json` | `obs/scenes/ugtastic-sound-above.json` | OBS Studio 32 production scene contract |
+| `obs/schemas/obs-scene-collection.schema.json` | `obs/scenes/ugtastic-sound-above.json` | OBS Studio 33 production scene contract |
 
 ---
 

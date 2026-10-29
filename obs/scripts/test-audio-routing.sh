@@ -10,8 +10,8 @@ show_help() {
 Usage: obs/scripts/test-audio-routing.sh [options]
 
 Description:
-  Audits the macOS CoreAudio clock, input/output device status,
-  ScreenCaptureKit permissions, and 4-track audio routing for OBS Studio.
+  Reports macOS CoreAudio device details, prior OBS permission-log hints,
+  and the expected four-track routing map. It cannot inspect live OBS meters.
 
 Options:
   -h, --help       Show this help message and exit

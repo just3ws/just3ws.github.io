@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 require 'json'
+require 'fileutils'
+require 'stringio'
+require 'tmpdir'
 require 'yaml'
+require_relative '../../bin/validate_obs_setup'
 
 RSpec.describe "OBS Studio Production Artifacts & Contracts" do
   let(:scenes_file) { File.expand_path("../../obs/scenes/ugtastic-sound-above.json", __dir__) }
@@ -93,5 +97,43 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     installer = File.read(File.expand_path('../../obs/scripts/install-obs-config.sh', __dir__))
     expect(installer).to include('pgrep -x OBS')
     expect(installer).to include('Close OBS before installing this configuration')
+  end
+
+  it 'reports stale installed scene and profile templates during preflight' do
+    Dir.mktmpdir('obs-installed-contract') do |temporary_home|
+      support = File.join(temporary_home, 'obs-studio', 'basic')
+      scenes_dir = File.join(support, 'scenes')
+      profiles_dir = File.join(support, 'profiles')
+      FileUtils.mkdir_p(scenes_dir)
+      FileUtils.mkdir_p(profiles_dir)
+
+      scene = JSON.parse(File.read(scenes_file))
+      reaction = scene['sources'].find { |source| source['name'] == '03. Reaction - Video Focus' }
+      camera = reaction.dig('settings', 'items').find { |item| item['name'] == 'Host Camera' }
+      camera['pos'] = { 'x' => 1420.0, 'y' => 740.0 }
+      File.write(File.join(scenes_dir, 'The Sound Above - UGtastic Rewatch.json'), JSON.pretty_generate(scene))
+
+      %w[The\ Sound\ Above The\ Sound\ Above\ -\ Staging].each do |profile_name|
+        profile_dir = File.join(profiles_dir, profile_name)
+        FileUtils.mkdir_p(profile_dir)
+        profile = File.read(basic_ini_file)
+                      .sub('Track1Bitrate=320', 'Track1Bitrate=160')
+                      .sub('RecSplitFileTime=0', 'RecSplitFileTime=15')
+        File.write(File.join(profile_dir, 'basic.ini'), profile)
+      end
+
+      validator = ObsSetupValidator.new(app_support_obs: File.join(temporary_home, 'obs-studio'))
+      previous_stdout = $stdout
+      $stdout = StringIO.new
+      validator.send(:validate_installed_state)
+      errors = validator.instance_variable_get(:@errors)
+      $stdout = previous_stdout
+
+      expect(errors).to include(a_string_including('Installed scene is out of date'))
+      expect(errors).to include(a_string_including("Installed profile 'The Sound Above' is out of date"))
+      expect(errors).to include(a_string_including("Installed profile 'The Sound Above - Staging' is out of date"))
+    ensure
+      $stdout = previous_stdout if previous_stdout
+    end
   end
 end

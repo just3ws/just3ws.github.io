@@ -1,4 +1,4 @@
-.TH BROADCAST 1 2026-10-26 "just3ws" "User Commands"
+.TH BROADCAST 1 2026-10-28 "just3ws" "User Commands"
 .SH NAME
 broadcast \- direct, configure, and automate live video broadcasts across all three production archetypes
 .SH SYNOPSIS
@@ -17,6 +17,8 @@ broadcast \- direct, configure, and automate live video broadcasts across all th
 [\fB\-\-conference\fR \fICONF\fR]
 [\fB\-\-status\fR]
 [\fB\-\-list\fR]
+[\fB\-\-preflight\fR]
+[\fB\-\-playbook\fR]
 [\fB\-\-validate\fR]
 [\fB\-\-man\fR]
 [\fB\-\-help\fR]
@@ -26,6 +28,8 @@ is the unified broadcast director and orchestration engine for Mike Hall.
 It manages live state across three distinct production archetypes, synchronizing HUD overlays in OBS Studio, YouTube scheduled metadata, and multi-track audio recording targets.
 .PP
 Every broadcast operates under strict craftsmanship constraints: zero em dashes, 1080p60 unscaled canvas resolution, Apple Silicon hardware encoding, and isolated application audio capture on macOS Golden Gate.
+.PP
+Use \fB--playbook\fR for the complete preparation, local test, recording, streaming, recovery, and close sequence. Cue commands update local overlay metadata only. They do not launch OBS or start recording or streaming.
 .SH BROADCAST ARCHETYPES
 .TP
 .B 1. Rewatch (\-\-rewatch <N>)
@@ -109,8 +113,14 @@ Inspect active broadcast archetype, host, topic, and live overlay values.
 .B \-\-list
 Display the complete 37-episode rewatch catalog and pre-curated Errata entries.
 .TP
+.B \-\-preflight
+Run read-only OBS repository-contract, installed scene/profile parity, and local environment checks. This does not start a capture or contact YouTube.
+.TP
+.B \-\-playbook
+Print \fIdocs/recording-playbook.md\fR and exit.
+.TP
 .B \-\-validate
-Run the automated OBS Studio setup, scene collection, and hardware contract test suite.
+Alias for \fB--preflight\fR.
 .TP
 .B \-\-man
 Display this manual page.
@@ -130,13 +140,13 @@ When \fBbroadcast\fR updates the live state in \fIobs/overlays/overlay-state.jso
 .SH AUDIO ARCHITECTURE (MACOS GOLDEN GATE)
 OBS Studio operates with 4-track isolated master recording:
 .IP \(bu 2
-\fBTrack 1\fR: Composite stream mix (Mic + Application Audio + Overlays).
+\fBTrack 1\fR: Composite program mix (Mic + Chromium application audio).
 .IP \(bu 2
 \fBTrack 2\fR: Host microphone isolated with RNNoise suppression and compressor.
 .IP \(bu 2
-\fBTrack 3\fR: Browser video playback isolated via ScreenCaptureKit (\fIsck_audio_capture\fR).
+\fBTrack 3\fR: Chromium video playback isolated via ScreenCaptureKit (\fIsck_audio_capture\fR).
 .IP \(bu 2
-\fBTrack 4\fR: Remote guest audio isolated for post-production balancing.
+\fBTrack 4\fR: Reserved and unassigned until guest application audio is configured.
 .SH EXAMPLES
 .nf
 # Check active broadcast status:
@@ -163,7 +173,10 @@ bin/broadcast --dialogue \\
   --title "Deliberate Practice in the Age of AI"
 
 # Verify all OBS and audio contracts:
-bin/broadcast --validate
+bin/broadcast --preflight
+
+# Print the recording-day playbook:
+bin/broadcast --playbook
 .fi
 .SH FILES
 .TP
@@ -180,7 +193,7 @@ Curated catalog for Errata readings, concepts, and artifacts.
 Live state polled by OBS browser sources.
 .TP
 .I obs/scenes/ugtastic-sound-above.json
-Declarative OBS Studio 32 scene collection contract.
+Declarative OBS Studio 33 scene collection contract.
 .SH SEE ALSO
 .BR obs-livestream (1),
 .BR just3ws-youtube (1),

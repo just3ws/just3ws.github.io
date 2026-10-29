@@ -845,7 +845,8 @@ body_class: page-youtube-dashboard
           </select>
           <button type="button" onclick="cueLiveEpisodeInObs()" style="background: #0f766e; color: white; border: 0; border-radius: 0.375rem; padding: 0.5rem 0.8rem; font-weight: 700; cursor: pointer;">Cue overlays</button>
           <button type="button" onclick="openLiveTeleprompter()" style="background: #ffffff; color: #0f766e; border: 1px solid #0f766e; border-radius: 0.375rem; padding: 0.5rem 0.8rem; font-weight: 700; cursor: pointer;">Open teleprompter</button>
-          <button type="button" onclick="copyCliCommand('bin/broadcast --validate', this)" style="background: #faf8f5; color: #334155; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.5rem 0.8rem; font-weight: 700; cursor: pointer;">Copy preflight</button>
+          <button type="button" onclick="copyCliCommand('bin/broadcast --preflight', this)" style="background: #faf8f5; color: #334155; border: 1px solid #cbd5e1; border-radius: 0.375rem; padding: 0.5rem 0.8rem; font-weight: 700; cursor: pointer;">Copy preflight</button>
+          <a href="/youtube/recording-playbook/" style="color: #0f766e; font-size: 0.8rem; font-weight: 700;">Open recording playbook</a>
         </div>
       </div>
       <div id="live-cue-feedback" role="status" aria-live="polite" style="margin-top: 0.75rem; color: #64748b; font-size: 0.8rem;">Ready. Cueing changes local overlay metadata only.</div>

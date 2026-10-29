@@ -530,4 +530,4 @@ Each rewatch stream is calibrated for a 60 to 90 minute broadcast:
 2. **Local Archive Cross-Referencing**:
    - Keep `https://just3ws.localhost/timeline/community/` and `https://just3ws.localhost/interviews/` open in a second browser window for instant lookup.
 3. **Updating Stream Overlays**:
-   - Run `obs/scripts/update-overlay-state.sh --episode N` before each stream. All browser overlays automatically update via JSON polling.
+   - Run `bin/broadcast --rewatch N` before each session and verify with `bin/broadcast --status`. Browser overlays update through local JSON polling.
