@@ -1,0 +1,274 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, Ramblin' & Amblin'
+turns:
+- speaker: M1
+  text: |-
+    Panoramic View was about mapping the start of an
+    interaction with the system through to the ultimate culmin
+    ation of the experience, in this case it was a user
+    experience, going through a full-blown application
+    lifecycle. It was too big for any one team to entirely own this, so we
+    even had multiple teams that were responsible for this
+    expressing interest in getting a loan, I want to get an
+    offer, I'm going to have a credit check, I want to go
+    through my loan application. These are all things that every company does that deals
+    with this stuff, there's nothing magical in this, but like
+    most companies, there's been lots of turnover, lots of
+    change, and a new person is in the seat, doesn't matter how
+    good the organization is, you've got a new person in the
+    seat, there's been a lot of attrition and knowledge, I'm
+    that person, it bothers me. I'm working with our QA person, Dana, Dana is great, Dana
+    knows everything about the system, so I work with Dana to
+    say, hey, can you walk me through an end-to-end flow of a
+    customer, as much in a, like what is the most common flow
+    that you could think of, that covers as much a
+    functionality as you're familiar with.
+- speaker: M1
+  text: |-
+    different permutations, like what is our primary flow, so
+    she does that, she says, I can do that, so she gets the
+    environment set up, and it actually takes a few attempts,
+    before she's able to fully get an end-to-end flow going,
+    because the system was just that complicated, but in the
+    process,
+    what I discovered is that, by working with her, this is pre
+    -open telemetry, pre-AI, recording a video of her doing this
+    process, one, was critical, because I could always come
+    back and capture whatever might have been missed in the
+    moment,
+    but the process being that, when she would start an
+    interaction, we would go step-by-step, and I would say,
+    okay, what's the first screen you're going to go to, and
+    she'd open that screen, and then I would,
+    I had a recording her heart file, so these I bundled up a
+    bit, I had a recording her heart file, in our browser, then
+    I had certain logs, that I was able to get access to, in
+    our system,
+    and I even had to convince people to give me access, and
+    they didn't want to, you know, it was like, not everybody's
+    going to be cooperative all the time, and why? I don't know
+    , they're in Alaska somewhere, so they didn't want to help,
+    but that's me just grumbling,
+    not everybody's going to see the value in this, and it is
+    incredibly valuable, because later is where I saw the true
+    value, so I've got Dana, she's set up,
+    the testing environment, because you can't do this in
+    production, and, you know, we couldn't, um, she sets up the
+    environment, and we start with screen one, what is the
+    first screen that you would do,
+    and I, again, had her recording her heart file, in her
+    browser, I had, um, every step, what she would do, is I
+    would go, and I would pull the logs,
+    for, uh, anything that was involved in that interaction,
+    that would capture the values she entered in each form,
+    and the, um, request and response, um, payloads, for each
+    request and response, as she moved step by step by step,
+    but,
+    by
+    doing this, I was able to correlate what was in the
+    customer's browser, what transition, what, what, what calls
+    are made,
+    over our firewalls, into our network, into our, um, um,
+    servers,
+    mapping out, you know, exactly which servers were involved
+    in request, what cache hits, what, uh, SQL queries,
+    where did we make a call from one system to another, one,
+    did we, uh, cross a boundary that I couldn't track,
+    at the time, later on, I was able to, uh, get past all of
+    this stuff, but this is the first shot,
+    but I was able to get through, let's see, browser, NGINX,
+    rails,
+    and then another, you know, enterprise, um, integration
+    layer,
+    and then at the time, it was, that's as far as I could go,
+    but by capturing this, I had a down and up
+    flow, like, like a sine and cosine, it was just, you start,
+    and you go down, and you go up, and you go down,
+    you go up, you go down, you go up, across the flow, and, um
+    , from the beginning to the end,
+    what I was able to show was just the complexity of, of, of
+    the, um, the sequence, but
+    by showing what database tables were involved, by showing
+    where the, um, reading and writing of
+    certain identifiers, um, certain places where a, um, a
+    customer was, let's say, updated a certain way,
+    was very valuable information, and it was really, an
+    analyst from analytics team took, uh, the recording,
+    he was, he's part of the, uh, original exercise, he was on
+    the call, and he took what I, what I had,
+    and took all the screenshots, and put them into a mirror
+    board, and that mirror board, and, and then, uh, derived
+    the, um, uh, some information about certain SQL queries
+    that they were trying to, uh, um, understand,
+    uh, for analytics purposes, and this became a document that
+    would get shared around the organization,
+    um, to the point where, um, I got trained on it by somebody
+    who didn't know who I was,
+    or, or, or didn't know that I was the one that had done the
+    mapping, um, and, yes, it was, you know,
+    it was published, and I got to really see the value of, of
+    that. I, I'm very grateful, uh, for, uh, for, uh, Harold for
+    doing that, but, um, but, uh, Howard,
+    damn it, Howard, Howard, I want to give credit where credit
+    is due, this is a, uh, me out in the forest
+    trying to remember things, so, sorry about that, Howard. Um, the, uh, um, the, the value in understanding the system
+    was so tremendous,
+    and that being able to visualize it and reason with it, uh,
+    graphically and in sequence in a timeline,
+    uh, manner, um, was, let me realize that this, this was
+    actually an incredibly valuable exercise
+    of just going across the system and, and documenting
+    reality, and then
+    that is what led to, um, the tracker, um, uh, process where
+    I, I was identifying and building
+    a harness around the analytics for that entry point, that,
+    that first, that would allow me
+    to build out more of those flows, where, okay, so, with,
+    with that, um, first run, it was just,
+    can, can I do this, can I work with somebody inside of the
+    organization to do an end-to-end
+    flow and capture as much context as possible, yes, and how
+    much context could I capture even
+    manually, pre-AI, pre, uh, open telemetry, a tremendous
+    amount.
+- speaker: M1
+  text: |-
+    Um, is it a lot of work, yes, is it incredibly valuable,
+    yes, but there's more than one flow,
+    there is many, and that's why the harness was the second
+    step, so the first step was being
+    able to even do the thing, you know, some people like to
+    call it steel thread, I'm, uh, I am
+    the seal thread, but that's okay, they don't, they don't
+    need to understand, but that's, I'm
+    sure they're doing better than I am. Um, the, uh, point is,
+    is that first you go across, and
+    then you now have one mapped flow, now you can see, okay,
+    well, where, where does the next
+    one intersect, like, I have a theory that flow A is
+    completely isolated from flow B, but then
+    you find out that 80% of the code for flow B intersects, or
+    uses the same controller, or
+    that almost all flows, um, intersect, and then diverge, and
+    then re-intersect on a couple
+    critical sections of code, um, so there's, there's
+    revealing the coupling of your system, or a
+    place where, uh, there's a surprise, and we have to figure
+    out what that surprise is. So again, sit down with a person who understands the system
+    , have them walk you through a flow
+    while you've got the system running, and you're able to get
+    all these logs and these insights,
+    at the very least, at the end, you have a recording where
+    you've captured identifiers, you've
+    captured, um, the mapping across layers, so, like, there'll
+    be a place where, um, a request
+    would start up top, and it would have ID 1, ID 1, ID 1, and
+    then hit a new system, and that
+    system wouldn't carry the identifier from the, it wouldn't,
+    um, propagate it, is, is, is the
+    word, wouldn't propagate the ID, so you had to do a manual,
+    um, mapping, you had to keep
+    track of, of the IDs on the recaller side, um, you know,
+    like, it was, it was tricky, and
+    then when OpenTelemetry became, uh, available, you can see,
+    um, why that I was so passionate
+    to, uh, pivot the GeekFest into, uh, GeekFested OMF into
+    the OpenTelemetry working group. All of this was what I thought was just normal expectations
+    for an architect that becomes a
+    system administrator, I mean, a staff engineer, um, to me,
+    this was just part of the job, um,
+    but I know from the response I got from people that it was,
+    in fact, um, above and beyond.
+- speaker: M1
+  text: |-
+    Um, five years, five years, I was, uh, exceeds expectations
+    , uh, except, well, four years,
+    I was exceed expectations, four different managers, okay,
+    five years, four different managers,
+    uh, the manager who gave me meets, uh, the next year
+    apologized to me and said, I didn't realize
+    everything you're doing and everything you're dealing with,
+    and then they gave me exceeds. So, a little asterisk in there, five years exceeds. Ultimately, this OpenTelemetry initiative has me on stage
+    at a, uh, at an ELT session where I'm
+    getting to see how valuable what I did is because, man, so
+    many people want to take credit for it,
+    that it is amazing. When you do something that's rad in a
+    place that is not rad,
+    you get really, like, popular, but, like, they're not used
+    to it, so they don't know how to behave either.
+- speaker: M1
+  text: |-
+    Um, and, uh, they don't understand what it took to do what
+    you did, but they do understand that they
+    want that, um, that, uh, association. They want it to be
+    the one. They will do things like
+    get assigned to the initiative late, not understand
+    anything. Take everything that you were doing and say,
+    "Yeah, well, but we'll just do it our way."
+    And it's fine, they can go do it their way, um, and it, and
+    nobody likes it.
+- speaker: M1
+  text: |-
+    And then when you run your way quietly through somebody
+    else, they like it, so you realize
+    it's your mouth that they didn't like it coming from. Um,
+    the, uh, this is me standing on a stage. The Open Symmetry Initiative Working Group has now been
+    staffed. It's got executive level, um, C-level support.
+- speaker: M1
+  text: |-
+    C-level support, oops, hi. It's got C-level support. You're on a stage, and the only
+    reason you're on a stage is because
+    the person who was, uh, the new director, the new director,
+    uh, he said, "Well, you know, um,
+    you know, you should do the hands-on track, uh, and that'll
+    be in the hallway, you know, hall,
+    you know, your hallway, I'm off, I'll, I'll, I will fucking
+    wreck you." Um, uh,
+    needless to say out of that conversation, I was on the
+    stage. And, uh, you know, am I a crazy guy?
+- speaker: M1
+  text: |-
+    Yes. And am I, um, uh, tired of, uh, doing something cool and
+    then being a team player? No. No.
+- speaker: M1
+  text: |-
+    I know that it's... I know how little I know. And I do actually feel bad for them. Not because, um, I'm great, but I don't think of what I do
+    is, like, special.
+- speaker: M1
+  text: I'm not. It isn't. It isn't. It isn't.
+- speaker: M1
+  text: |-
+    But, when you're in
+    a place where everybody is kind of
+    beat down into mediocrity, and that is what is rewarded,
+    when you're the lunatic out
+    trying to be positive and putting things together, but if
+    you're like me,
+    you don't have a whole lot of patience for those people
+    that don't have ideas, but their jobs,
+    their roles, their positions are in jeopardy, they're going
+    to be irrational. And there's some
+    people that just don't know how to be team players, and
+    they know how to be managers,
+    they know how to be bureaucrats, they know how to, um, run
+    a team, but, um,
+    to, to change things, to, to say, okay, here, here is, is a
+    way that things can be better,
+    and here's why everybody rises with this. Everybody's team
+    gets more visibility, everybody gets to
+    make, uh, the executives happy because we have less outages
+    , because we are able to
+    be less fire drills, um, and our fire drills are more
+    meaningful. Um,
+    I began calls with these folks, and, um,
+    the power dynamic would be weird, because I was an IC who
+    had been promoted up,
+    and I'll talk about this in the next call, next call, next,
+    uh, video here in a sec.
+- speaker: M1
+  text: |-
+    All right,
+    thanks, bye.
