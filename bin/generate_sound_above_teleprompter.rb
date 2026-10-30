@@ -49,7 +49,8 @@ def resolve_episode(ep_num)
       'sound_above_inquiry' => narrative['core_inquiry'] || 'What records were playing in the room when this technical movement formed?',
       'ai_era_parallel' => narrative['ai_era_parallel'] || 'Maintaining cognitive control and deterministic verification over system boundaries.',
       'resolved_youtube_id' => dossier['resolved_youtube_id'] || dossier['youtube_video_id'] || '',
-      'teleprompter_script' => dossier['teleprompter_script'] || {}
+      'teleprompter_script' => dossier['teleprompter_script'] || {},
+      'textream_filename' => dossier['errata_slug'] ? "#{dossier['errata_slug']}.textream" : nil
     }
   end
 
@@ -70,12 +71,12 @@ def build_rundown(episode)
   next_ep_num = ep_num.is_a?(Numeric) && ep_num >= 37 ? 0 : (ep_num.is_a?(Numeric) ? ep_num + 1 : 0)
   custom = episode['teleprompter_script'] || {}
 
-  act1 = custom['act_1'] || "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{episode['era_name']}. Before code synthesis models and automated agents, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{episode['interviewee']} from #{episode['conference']}."
-  act2 = custom['act_2'] || episode['chicago_context'].to_s
-  act3 = custom['act_3'] || "#{episode['sound_above_inquiry']} What principles guided #{episode['interviewee']} when this conversation was recorded? How do those lessons inform the software systems we design today?"
-  act4 = custom['act_4'] || "Roll archive footage (YouTube ID: #{episode['resolved_youtube_id'] || episode['youtube_video_id'] || 'archive'}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
-  act5 = custom['act_5'] || "#{episode['ai_era_parallel']} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us examine the terminal contracts directly."
-  act6 = custom['act_6'] || "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. In our next broadcast, we explore Episode #{next_ep_num}. Until next time, keep your feedback loops fast and your code humane."
+  act1 = custom['act_1'] || "Hi, I am Mike Hall. Today I am revisiting the conversation with #{episode['interviewee']}. Here is what brought me back to it."
+  act2 = custom['act_2'] || "This conversation was recorded at #{episode['conference']} in #{episode['year']}. #{episode['chicago_context']}"
+  act3 = custom['act_3'] || "The question I want to follow is: #{episode['sound_above_inquiry']}"
+  act4 = custom['act_4'] || "Let us watch the original conversation. I will pause where I want to look more closely."
+  act5 = custom['act_5'] || "Here is what stood out to me. I will show the source and explain what I think it supports."
+  act6 = custom['act_6'] || "That is what I took from this conversation. The recording and transcript are linked from just3ws.com."
 
   {
     episode_number: ep_num,
@@ -84,53 +85,54 @@ def build_rundown(episode)
     interviewee: episode['interviewee'],
     conference: episode['conference'],
     location: episode['location'],
+    textream_filename: episode['textream_filename'],
     acts: [
       {
         act_number: 1,
-        name: 'Cold Open & Personal Grounding',
+        name: 'Start with the moment',
         scene_target: '01. Starting Soon -> 02. Monologue / Full Camera',
-        timing: '00:00 - 03:00',
-        host_lead: 'Welcome to The Sound Above. I am Mike Hall.',
+        timing: 'Flexible',
+        host_lead: 'What brought you back to this recording?',
         teleprompter_script: act1
       },
       {
         act_number: 2,
-        name: 'Setting the Historical Scene',
+        name: 'Set the context',
         scene_target: '02. Monologue / Full Camera',
-        timing: '03:00 - 08:00',
-        host_lead: "Let us return to #{episode['year']} in #{episode['location']}.",
+        timing: 'Flexible',
+        host_lead: 'What context helps the viewer follow this conversation?',
         teleprompter_script: act2
       },
       {
         act_number: 3,
-        name: 'The Core Inquiry: The Sound Above',
+        name: 'Name the question',
         scene_target: '02. Monologue / Full Camera -> 04. Split Screen',
-        timing: '08:00 - 14:00',
-        host_lead: 'The question that guides our rewatch today:',
+        timing: 'Flexible',
+        host_lead: 'What are you curious about in this recording?',
         teleprompter_script: act3
       },
       {
         act_number: 4,
-        name: 'Hallway Rewatch & Video Reaction',
+        name: 'Watch the source',
         scene_target: '03. Reaction - Video Focus',
-        timing: '14:00 - 28:00',
-        host_lead: 'Let us roll the archive tape.',
+        timing: 'Flexible',
+        host_lead: 'Show the part of the source you want to discuss.',
         teleprompter_script: act4
       },
       {
         act_number: 5,
-        name: 'The AI-Era Parallel & Terminal Workbench',
+        name: 'Follow the evidence',
         scene_target: '05. Workbench - Code & Terminal',
-        timing: '28:00 - 40:00',
-        host_lead: 'How does this lesson apply to software engineering in 2026?',
+        timing: 'Flexible',
+        host_lead: 'What does the source support, and what remains your interpretation?',
         teleprompter_script: act5
       },
       {
         act_number: 6,
-        name: 'Community Coda, Outro & Next Stream',
+        name: 'Close with what changed',
         scene_target: '08. Outro & Next Stream',
-        timing: '40:00 - 45:00',
-        host_lead: 'Thank you for listening to the sound above.',
+        timing: 'Flexible',
+        host_lead: 'What did you learn, and where can viewers find the source?',
         teleprompter_script: act6
       }
     ]
@@ -227,7 +229,7 @@ rundown = build_rundown(episode)
 textream_pages = build_textream_pages(rundown)
 
 # Save .textream file if requested or if opening
-target_slug = if rundown[:episode_number].is_a?(String)
+target_slug = rundown[:textream_filename] || if rundown[:episode_number].is_a?(String)
                 "#{rundown[:episode_number]}.textream"
               else
                 format('episode-%02d.textream', rundown[:episode_number].to_i)
@@ -286,7 +288,7 @@ else
   puts "Interviewee: #{rundown[:interviewee]}"
   puts "Conference:  #{rundown[:conference]} (#{rundown[:location]})"
   puts "Era:         #{rundown[:era]}"
-  puts "Textream:    obs/teleprompter/episode-#{format('%02d', rundown[:episode_number])}.textream"
+  puts "Textream:    #{File.join('obs', 'teleprompter', target_slug)}"
   puts '------------------------------------------------------------------'
   rundown[:acts].each do |act|
     puts ''

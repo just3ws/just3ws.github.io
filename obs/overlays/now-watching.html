@@ -13,20 +13,29 @@
 
     .now-watching-card {
       position: absolute;
-      top: 40px;
-      right: 50px;
-      width: 440px;
-      padding: 16px 20px;
+      left: 52px;
+      bottom: 58px;
+      width: 390px;
+      padding: 13px 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       border-left: 4px solid var(--teal-craftsman);
-      background: rgba(255, 255, 255, 0.96);
-      border-top: 1px solid rgba(227, 223, 215, 0.9);
-      border-right: 1px solid rgba(227, 223, 215, 0.9);
-      border-bottom: 1px solid rgba(227, 223, 215, 0.9);
-      box-shadow: 0 16px 40px rgba(45, 35, 20, 0.08), 0 4px 12px rgba(45, 35, 20, 0.04);
-      animation: fade-in 0.4s ease-out;
+      background: rgba(255, 255, 255, 0.88);
+      border-top: 1px solid rgba(227, 223, 215, 0.72);
+      border-right: 1px solid rgba(227, 223, 215, 0.72);
+      border-bottom: 1px solid rgba(227, 223, 215, 0.72);
+      box-shadow: 0 4px 14px rgba(45, 35, 20, 0.07);
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      animation: fade-in 0.35s ease-out;
+    }
+
+    .now-watching-card.dismissed {
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
     }
 
     @keyframes fade-in {
@@ -105,9 +114,28 @@
 
   <script src="js/overlay-controller.js"></script>
   <script>
+    const nowWatchingCard = document.querySelector(".now-watching-card");
+    const params = new URLSearchParams(window.location.search);
+    const autohideParam = params.get("autohide");
+    let hideTimer = null;
+
+    function scheduleAutoHide() {
+      if (hideTimer) clearTimeout(hideTimer);
+      nowWatchingCard.classList.remove("dismissed");
+      if (autohideParam === "0") return;
+
+      const parsedSeconds = autohideParam === null ? 10 : parseInt(autohideParam, 10);
+      const seconds = Number.isFinite(parsedSeconds) ? Math.max(0, parsedSeconds) : 10;
+      if (seconds === 0) return;
+      hideTimer = setTimeout(() => nowWatchingCard.classList.add("dismissed"), seconds * 1000);
+    }
+
+    scheduleAutoHide();
+
     new OverlayController({
       stateUrl: "overlay-state.json",
       onUpdate: (state) => {
+        scheduleAutoHide();
         const type = state.broadcast_type || "rewatch";
         const badgeEl = document.getElementById("hud-badge-label");
         const eraEl = document.getElementById("hud-era");

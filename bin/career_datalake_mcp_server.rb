@@ -130,7 +130,7 @@ class CareerDatalakeMCPServer
               uri: "career://datalake/curriculum",
               name: "The Sound Above Rewatch Curriculum & Errata Catalog",
               mimeType: "application/json",
-              description: "37-episode oral history rewatch curriculum, SCNA 2011 launch provenance, host calibration, and Errata broadcast catalog."
+              description: "Season One working plan for revisiting the oral history archive, SCNA 2011 launch provenance, host calibration, and Errata broadcast catalog."
             },
             {
               uri: "witc://archive/manifest",

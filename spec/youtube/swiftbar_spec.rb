@@ -43,47 +43,39 @@ RSpec.describe 'SwiftBar Integration & Localhost Navigation' do
   end
 
   describe 'Localhost Site Navigation Integration' do
-    it 'includes YouTube Operations Cockpit and sub-dashboards in localhost-subnav.html' do
+    it 'includes the Season One plan and pipeline boundary in localhost-subnav.html' do
       content = File.read(localhost_subnav)
       expect(content).to include('/youtube/dashboard/')
-      expect(content).to include('/youtube/dashboard/#tab-bpmn')
-      expect(content).to include('/youtube/dashboard/#tab-teleprompter')
-      expect(content).to include('/youtube/dashboard/#tab-funnel')
+      expect(content).to include('Season One Working Outline')
+      expect(content).to include('https://media-pipeline.localhost/')
+      expect(content).not_to include('youtube_pipeline_telemetry.json')
       expect(content).to include('/dehum/dashboard.html')
     end
 
-    it 'includes Operations Cockpit in _data/navigation.yml' do
+    it 'includes the Season One working outline in _data/navigation.yml' do
       content = File.read(navigation_yml)
       nav = YAML.safe_load(content)
       sound_above_item = nav.dig('primary', 'items').find { |item| item['label'] == 'The Sound Above' }
       expect(sound_above_item).not_to be_nil
       children_hrefs = sound_above_item['children'].map { |c| c['href'] }
       expect(children_hrefs).to include('/youtube/dashboard/')
+      expect(sound_above_item['children'].map { |child| child['label'] }.join(' ')).to include('Season One Working Outline')
     end
 
     it 'includes YouTube Operations Cockpit in command-palette.html' do
       content = File.read(command_palette)
       expect(content).to include('/youtube/dashboard/')
-      expect(content).to include('data-search="youtube operations cockpit publishing pipeline bpmn workflow')
+      expect(content).to include('data-search="the sound above season one working plan')
     end
 
-    it 'includes direct BPMN and teleprompter chips in dashboard.html Card 0' do
+    it 'links the platform dashboard card to the outline and recording playbook' do
       content = File.read(dashboard_html)
-      expect(content).to include('/youtube/dashboard/#tab-bpmn')
-      expect(content).to include('/youtube/dashboard/#tab-teleprompter')
-      expect(content).to include('/youtube/dashboard/#tab-funnel')
+      expect(content).to include('The Sound Above: Season One Plan')
+      expect(content).not_to include('youtube_pipeline_telemetry.json')
     end
 
-    it 'normalizes metadata_status and caption_status to strings across all assets in telemetry' do
-      telemetry_path = File.join(root_dir, '_data', 'youtube_pipeline_telemetry.json')
-      telemetry = JSON.parse(File.read(telemetry_path))
-      assets = telemetry['assets'] || []
-      expect(assets).not_to be_empty
-
-      assets.each do |asset|
-        expect(asset['metadata_status']).to be_a(String)
-        expect(asset['caption_status']).to be_a(String)
-      end
+    it 'does not expose stale publication telemetry in localhost navigation' do
+      expect(File.read(localhost_subnav)).not_to include('youtube_pipeline_telemetry.json')
     end
   end
 end

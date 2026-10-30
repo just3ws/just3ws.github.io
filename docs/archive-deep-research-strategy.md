@@ -107,5 +107,5 @@ graph TD
 ## 5. Next Execution Steps
 
 1. **Continuous Daemon:** Keep `bundle exec rake transcript:daemon` active in background.
-2. **YouTube Subtitle Upload:** Run `ruby bin/sync_youtube_captions.rb --upload` when YouTube API OAuth token is configured.
+2. **YouTube Subtitle Upload:** Caption publication is handled by media-pipeline. The content-repository sync script is retired.
 3. **Editorial Publishing:** Publish long-form articles generated in `/studio/` to `/writing/`.

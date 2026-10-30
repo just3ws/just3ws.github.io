@@ -13,7 +13,7 @@ All declarative data in this project is bounded by JSON Schema draft 2020-12 def
 | Schema File | Target Data File | Primary Purpose |
 | :--- | :--- | :--- |
 | `obs/schemas/overlay-state.schema.json` | `obs/overlays/overlay-state.json` | Real-time browser source HUD state |
-| `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Curated 37-episode historical roadmap |
+| `obs/schemas/sequence-manifest.schema.json` | `obs/curation/sequence-manifest.json` | Archive map; first 17 interviews form the Season One working plan |
 | `obs/schemas/obs-scene-collection.schema.json` | `obs/scenes/ugtastic-sound-above.json` | OBS Studio 33 production scene contract |
 
 ---
@@ -29,14 +29,14 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
   "broadcast_type": "rewatch",
   "episode": {
     "number": 1,
-    "title": "The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET",
+    "title": "Sergio Pereira and Chicago Alt.NET",
     "interviewee": "Sergio Pereira",
     "role": "Chicago Alt.NET Organizer",
     "conference": "SCNA 2011",
     "location": "Chicago, IL",
     "year": "2011",
     "era": "The Chicago Workshop",
-    "sound_above_prompt": "Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?",
+    "sound_above_prompt": "What made people come back to Chicago Alt.NET?",
     "companion_links": [
       "https://just3ws.localhost/timeline/community/",
       "https://just3ws.localhost/scmc/"
@@ -47,7 +47,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
     "series_subtitle": "UGtastic Rewatch: Learning About People in Tech (2009–2026)",
     "host": "Mike Hall (Software Craftsmanship #106)",
     "status": "live",
-    "topic": "Rewatching Sergio Pereira (SCNA 2011): The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET"
+    "topic": "Rewatching Sergio Pereira at SCNA 2011: Chicago Alt.NET"
   },
   "errata": {
     "mode": "reading",
@@ -95,7 +95,7 @@ The file `obs/overlays/overlay-state.json` serves as the single source of truth 
 
 ## 3. Sequence Manifest Data Structure
 
-The file `obs/curation/sequence-manifest.json` defines the entire 37-episode curriculum across six chronological and thematic movements:
+The file `obs/curation/sequence-manifest.json` maps 35 candidate interviews across six chronological and thematic movements. The current Season One working plan covers Episodes 1 through 17. The rest remain candidates, not a release commitment.
 
 1. `the-chicago-workshop`: The Chicago Workshop
 2. `practice-and-dojo`: The Practice and the Dojo
@@ -116,10 +116,10 @@ The file `obs/curation/sequence-manifest.json` defines the entire 37-episode cur
   "conference": "SCNA 2011",
   "year": 2011,
   "location": "Chicago, IL",
-  "title": "The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET",
-  "sound_above_inquiry": "Who inspired the engineers breaking free from enterprise Microsoft silos? How did grassroots peer groups form before commercial developer platforms existed?",
-  "chicago_context": "Chicago Alt.NET was the precursor room for dozens of Chicago developers who later founded startups, consultancy practices, and user groups.",
-  "ai_era_parallel": "Just as Alt.NET questioned monolithic enterprise frameworks, modern engineers must question monolithic cloud AI abstractions and reclaim local control.",
+  "title": "Sergio Pereira and Chicago Alt.NET",
+  "sound_above_inquiry": "What made people come back to Chicago Alt.NET?",
+  "chicago_context": "A monthly group where members shared talks and discussed software beyond .NET.",
+  "ai_era_parallel": "Engineers still benefit from places to share work, ask questions, and judge new tools together.",
   "companion_video": "None (Primary Oral History Focus)",
   "status": "cued"
 }

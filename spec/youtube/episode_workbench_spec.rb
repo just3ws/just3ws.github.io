@@ -39,20 +39,19 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '1', '--markdown')
       expect(status.success?).to be true
       expect(stdout).to include('# Teleprompter Rundown: Episode 1')
-      expect(stdout).to include('Act 1: Cold Open & Personal Grounding')
-      expect(stdout).to include('Act 2: Setting the Historical Scene')
-      expect(stdout).to include('Act 3: The Core Inquiry: The Sound Above')
-      expect(stdout).to include('Act 4: Hallway Rewatch & Video Reaction')
-      expect(stdout).to include('Act 5: The AI-Era Parallel & Terminal Workbench')
-      expect(stdout).to include('Act 6: Community Coda, Outro & Next Stream')
+      expect(stdout).to include('Act 1: Start with the moment')
+      expect(stdout).to include('Act 2: Set the context')
+      expect(stdout).to include('Act 3: Name the question')
+      expect(stdout).to include('Act 4: Watch the source')
+      expect(stdout).to include('Act 5: Follow the evidence')
+      expect(stdout).to include('Act 6: Close with what changed')
     end
 
     it 'merges human marginalia into compiled teleprompter acts' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '1', '--markdown')
       expect(status.success?).to be true
-      expect(stdout).to include('[PERSONAL RECOLLECTION: Remembering walking into that first downtown meeting on a rainy Tuesday in 2008 with a ThinkPad and seeing people arguing passionately about IoC containers and testing.]')
-      expect(stdout).to include('[SETTING RECOLLECTION: That was the era before meetups were corporate sponsored recruiting events; developers paid for their own pizza and gathered purely to learn from each other.]')
-      expect(stdout).to include('Cited references: Sergio Pereira Interview Profile')
+      expect(stdout).to include('first user group Mike attended')
+      expect(stdout).to include('Sergio Pereira Interview Profile')
     end
 
     it 'supports validate command and passes cleanly' do
@@ -66,15 +65,15 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '0', '--markdown')
       expect(status.success?).to be true
       expect(stdout).to include('# Teleprompter Rundown: Episode 0')
-      expect(stdout).to include('The Mirage of Competence: AI Slop & Domain Boundaries')
-      expect(stdout).to include('under the high-tension wires')
-      expect(stdout).to include('patreon.com/whoistechcmty')
+      expect(stdout).to include('Testing the Audio Fix Under the Power Lines')
+      expect(stdout).to include('The recording answered the question')
     end
 
-    it 'includes Patreon archive callout in teleprompter Act 6 outro' do
+    it 'does not inject a fixed next-episode promise or funding pitch into the script' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '1')
       expect(status.success?).to be true
-      expect(stdout).to include('patreon.com/whoistechcmty')
+      expect(stdout).not_to include('patreon.com/whoistechcmty')
+      expect(stdout).not_to include('In Episode 2, we sit down')
     end
 
     it 'supports workshop command to add prompts and recompile' do
@@ -92,14 +91,14 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'stage', '0')
       expect(status.success?).to be true
       expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 0')
-      expect(stdout).to include('STAGING VERIFIED (READY TO BROADCAST)')
+      expect(stdout).to include('LOCAL PREPARATION CHECKS PASSED')
     end
   end
 
   describe 'Dossier Schema & Invariants' do
     let(:dossier_files) { Dir.glob(File.join(episodes_dir, 'episode-*.yml')).sort }
 
-    it 'has 38 episodes scaffolded (pilot episode 00, 35 rewatches, and 2 codas)' do
+    it 'retains the archive dossier catalog without treating it as the Season One commitment' do
       expect(dossier_files.size).to eq(38)
     end
 
@@ -117,7 +116,8 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
         expect(data['narrative']['ai_era_parallel']).not_to be_empty
         expect(data['lexicon']).to be_a(Hash)
         expect(data['human_marginalia']).to be_a(Hash)
-        expect(data['workflow_tasks']).to be_a(Hash)
+        task_text = data.fetch('workflow_tasks', {}).to_s
+        expect(task_text).not_to match(/youtube|broadcast|publish|caption/i)
       end
     end
 

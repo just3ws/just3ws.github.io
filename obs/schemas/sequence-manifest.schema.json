@@ -2,13 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://just3ws.com/schemas/obs/sequence-manifest.schema.json",
   "title": "SequenceManifest",
-  "description": "Schema for the curated UGtastic rewatch episode sequence manifest.",
+  "description": "Schema for the archive catalog and flexible Season One working plan.",
   "type": "object",
   "required": [
     "project",
     "curator",
-    "total_episodes",
-    "episodes"
+    "episodes",
+    "status",
+    "season_one_target",
+    "archive_record_count"
   ],
   "properties": {
     "project": {
@@ -18,11 +20,6 @@
     "curator": {
       "type": "string",
       "description": "Host and curator name with credentials."
-    },
-    "total_episodes": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "Total number of interview episodes in the manifest (codas are counted separately)."
     },
     "manifesto_anchor": {
       "type": "string",
@@ -48,7 +45,6 @@
           "title",
           "sound_above_inquiry",
           "chicago_context",
-          "ai_era_parallel",
           "status"
         ],
         "properties": {
@@ -99,7 +95,7 @@
           },
           "ai_era_parallel": {
             "type": "string",
-            "description": "Connection to modern multi-agent systems and AI engineering."
+            "description": "Optional present-day connection, included only when it follows naturally from the interview."
           },
           "companion_video": {
             "type": "string",
@@ -157,6 +153,20 @@
           }
         }
       }
+    },
+    "status": {
+      "const": "working_plan",
+      "description": "Editorial status; this manifest is not a release calendar."
+    },
+    "season_one_target": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Current working target for Season One interviews."
+    },
+    "archive_record_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of interview records currently in this archive catalog."
     }
   }
 }

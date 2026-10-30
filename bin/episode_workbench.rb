@@ -444,12 +444,10 @@ class EpisodeWorkbench
       'slug' => ep['slug'],
       'era_id' => ep['era_id'],
       'era_name' => ep['era_name'],
-      'youtube_broadcast_id' => ep['youtube_broadcast_id'],
       'youtube_video_id' => ep['resolved_youtube_id'] || ep['youtube_video_id'],
-      'target_broadcast_date' => nil,
       'narrative' => {
         'theme' => derive_theme(ep),
-        'tone' => 'Reflective, forensic, and empathetic with craftsman rigor',
+        'tone' => 'Plainspoken, curious, and grounded in the source',
         'topic' => ep['title'],
         'plot_arc' => {
           'inciting_incident' => "The technical context and friction in #{ep['year']}",
@@ -469,8 +467,9 @@ class EpisodeWorkbench
       'human_marginalia' => {
         'host_recollections' => [],
         'workshop_prompts' => [
-          "Connect the #{ep['year']} conversation directly to current engineering challenges.",
-          'Ground the technical critique in practitioner empathy.'
+          'What moment from the recording is worth revisiting?',
+          'What context does a viewer need to understand it?',
+          'Is there a present-day connection that follows naturally?'
         ]
       },
       'research_attachments' => [
@@ -481,15 +480,9 @@ class EpisodeWorkbench
         }
       ],
       'workflow_tasks' => {
-        'autonomous' => [
-          { 'task' => 'Whisper transcript alignment', 'status' => 'done' },
-          { 'task' => 'Staged metadata generation', 'status' => 'done' },
-          { 'task' => 'YouTube caption synchronization', 'status' => 'pending' }
-        ],
         'human' => [
-          { 'task' => 'Workshop personal recollections', 'status' => 'pending' },
-          { 'task' => 'Pre-broadcast OBS audio rehearsal', 'status' => 'pending' },
-          { 'task' => 'Live rewatch broadcast', 'status' => 'pending' }
+          { 'task' => 'Check the episode against the source recording', 'status' => 'pending' },
+          { 'task' => 'Prepare and rehearse the OBS recording', 'status' => 'pending' }
         ]
       }
     }
@@ -544,30 +537,29 @@ class EpisodeWorkbench
     attachments = dossier['research_attachments'] || []
     custom_scripts = dossier['teleprompter_script'] || {}
 
-    act1_story = stories.find { |s| s['scene']&.include?('Act 1') || s['scene']&.include?('Cold Open') }
-    act2_story = stories.find { |s| s['scene']&.include?('Act 2') || s['scene']&.include?('Setting') }
-    act4_story = stories.find { |s| s['scene']&.include?('Act 4') || s['scene']&.include?('Hallway') }
-    act5_story = stories.find { |s| s['scene']&.include?('Act 5') || s['scene']&.include?('AI-Era') || s['scene']&.include?('Workbench') }
+    act1_story = stories.find { |s| s['scene']&.include?('Act 1') || s['scene']&.include?('Moment') }
+    act2_story = stories.find { |s| s['scene']&.include?('Act 2') || s['scene']&.include?('Context') }
+    act4_story = stories.find { |s| s['scene']&.include?('Act 4') || s['scene']&.include?('Source') }
+    act5_story = stories.find { |s| s['scene']&.include?('Act 5') || s['scene']&.include?('Change') }
 
-    act1_default = custom_scripts['act_1'] || "Welcome back to The Sound Above. I am Mike Hall. Today we enter #{dossier['era_name']}. Before automated code synthesis and agent workflows, developers met face to face to establish standards of craftsmanship. Today we rewatch Episode #{ep_num}: #{dossier['interviewee']} from #{dossier['conference']}."
-    act1_default += " [PERSONAL RECOLLECTION: #{act1_story['story']}]" if act1_story && !act1_default.include?(act1_story['story'].to_s)
+    act1_default = custom_scripts['act_1'] || "Start with one detail from the recording or a memory you can describe plainly. Introduce #{dossier['interviewee']} and say why you chose this conversation."
+    act1_default += " [YOUR RECOLLECTION: #{act1_story['story']}]" if act1_story && !act1_default.include?(act1_story['story'].to_s)
 
-    act2_default = custom_scripts['act_2'] || dossier.dig('narrative', 'chicago_context').to_s
-    act2_default += " [SETTING RECOLLECTION: #{act2_story['story']}]" if act2_story && !act2_default.include?(act2_story['story'].to_s)
+    act2_default = custom_scripts['act_2'] || "Give only the context a viewer needs: #{dossier.dig('narrative', 'chicago_context')}"
+    act2_default += " [CONTEXT TO CHECK: #{act2_story['story']}]" if act2_story && !act2_default.include?(act2_story['story'].to_s)
 
-    act3_default = custom_scripts['act_3'] || "#{dossier.dig('narrative', 'core_inquiry')} What principles guided #{dossier['interviewee']} when this conversation was recorded? How do those lessons inform the software systems we design today?"
+    act3_default = custom_scripts['act_3'] || "Ask the episode's main question in your own words: #{dossier.dig('narrative', 'core_inquiry')}"
 
-    act4_default = custom_scripts['act_4'] || "Roll archive footage (YouTube ID: #{dossier['youtube_video_id']}). Watch for the unvarnished hallway exchanges, the emphasis on craft over speed, and the sheer enthusiasm of engineers taking responsibility for their software."
-    act4_default += " [ARCHIVE OBSERVATION: #{act4_story['story']}]" if act4_story && !act4_default.include?(act4_story['story'].to_s)
+    act4_default = custom_scripts['act_4'] || "Play the selected source passage. Let #{dossier['interviewee']}'s answer carry the point. Pause when you have a specific response."
+    act4_default += " [SOURCE NOTE: #{act4_story['story']}]" if act4_story && !act4_default.include?(act4_story['story'].to_s)
 
-    act5_default = custom_scripts['act_5'] || "#{dossier.dig('narrative', 'ai_era_parallel')} When implementation is cheap, verification and clarity become everything. We cannot accept the mirage of competence. Let us inspect the code contracts directly."
-    act5_default += " [WORKBENCH STORY: #{act5_story['story']}]" if act5_story && !act5_default.include?(act5_story['story'].to_s)
-    if attachments.any? && !act5_default.include?('Cited references:')
-      act5_default += " Cited references: " + attachments.map { |a| "#{a['title']} (#{a['url'] || a['path']})" }.join('; ')
+    act5_default = custom_scripts['act_5'] || 'Say what you noticed or understand differently after watching. Add a present-day connection only if it follows from the conversation.'
+    act5_default += " [FOLLOW-UP: #{act5_story['story']}]" if act5_story && !act5_default.include?(act5_story['story'].to_s)
+    if attachments.any? && !act5_default.include?('Source notes:')
+      act5_default += " Source notes: " + attachments.map { |a| "#{a['title']} (#{a['url'] || a['path']})" }.join('; ')
     end
 
-    next_num = (ep_num % 37) + 1
-    act6_default = custom_scripts['act_6'] || "Thank you for joining today's session. Full transcripts, provenance notes, and companion research are available at just3ws.com. To help underwrite our independent compute, hosting, and digital archive preservation, support us on Patreon at patreon.com/whoistechcmty. In our next broadcast, we explore Episode #{next_num}. Until next time, keep your feedback loops fast and your code humane."
+    act6_default = custom_scripts['act_6'] || 'Close with what you are taking away, thank the guest and viewer, and mention another episode only when its place in the plan is settled.'
 
     b = binding
     act1_script = render_template_act('act_01_cold_open.erb', b, act1_default)
@@ -589,50 +581,50 @@ class EpisodeWorkbench
       acts: [
         {
           act_number: 1,
-          name: 'Cold Open & Personal Grounding',
+          name: 'Start with the moment',
           scene_target: '01. Starting Soon -> 02. Monologue / Full Camera',
-          timing: '00:00 - 03:00',
-          host_lead: 'Welcome to The Sound Above. I am Mike Hall.',
+          timing: 'Flexible',
+          host_lead: 'Start with a moment from the recording or a clear personal memory.',
           teleprompter_script: act1_script
         },
         {
           act_number: 2,
-          name: 'Setting the Historical Scene',
+          name: 'Set the context',
           scene_target: '02. Monologue / Full Camera',
-          timing: '03:00 - 08:00',
-          host_lead: "Let us return to #{dossier['year']} in #{dossier['location']}.",
+          timing: 'Flexible',
+          host_lead: "Give the viewer the context they need about #{dossier['year']} in #{dossier['location']}.",
           teleprompter_script: act2_script
         },
         {
           act_number: 3,
-          name: 'The Core Inquiry: The Sound Above',
+          name: 'Name the question',
           scene_target: '02. Monologue / Full Camera -> 04. Split Screen',
-          timing: '08:00 - 14:00',
-          host_lead: 'The question that guides our rewatch today:',
+          timing: 'Flexible',
+          host_lead: 'State the question this rewatch is following.',
           teleprompter_script: act3_script
         },
         {
           act_number: 4,
-          name: 'Hallway Rewatch & Video Reaction',
+          name: 'Watch the source',
           scene_target: '03. Reaction - Video Focus',
-          timing: '14:00 - 28:00',
-          host_lead: 'Let us roll the archive tape.',
+          timing: 'Flexible',
+          host_lead: 'Play the interview and respond to what is there.',
           teleprompter_script: act4_script
         },
         {
           act_number: 5,
-          name: 'The AI-Era Parallel & Terminal Workbench',
+          name: 'Follow the evidence',
           scene_target: '05. Workbench - Code & Terminal',
-          timing: '28:00 - 40:00',
-          host_lead: 'How does this lesson apply to software engineering in 2026?',
+          timing: 'Flexible',
+          host_lead: 'Say what you noticed. A present-day connection is optional.',
           teleprompter_script: act5_script
         },
         {
           act_number: 6,
-          name: 'Community Coda, Outro & Next Stream',
+          name: 'Close with what changed',
           scene_target: '08. Outro & Next Stream',
-          timing: '40:00 - 45:00',
-          host_lead: 'Thank you for listening to the sound above.',
+          timing: 'Flexible',
+          host_lead: 'Close with what changed for you, thank the guest, and finish plainly.',
           teleprompter_script: act6_script
         }
       ]

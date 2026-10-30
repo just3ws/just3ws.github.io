@@ -62,15 +62,15 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       stdout, stderr, status = Open3.capture3(stage_bin, '0')
       expect(status.success?).to be true
       expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 0')
-      expect(stdout).to include('STAGING VERIFIED (READY TO BROADCAST)')
-      expect(stdout).to include('The Mirage of Competence: AI Slop & Domain Boundaries')
+      expect(stdout).to include('LOCAL PREPARATION CHECKS PASSED')
+      expect(stdout).to include('Testing the Audio Fix Under the Power Lines')
     end
 
     it 'successfully verifies Coda 1 (Episode 36) in staging mode' do
       stdout, stderr, status = Open3.capture3(stage_bin, '36')
       expect(status.success?).to be true
       expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 36')
-      expect(stdout).to include('STAGING VERIFIED (READY TO BROADCAST)')
+      expect(stdout).to include('LOCAL PREPARATION CHECKS PASSED')
       expect(stdout).to include('Without zdots, There Was Nothing')
     end
 
@@ -78,7 +78,7 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       stdout, stderr, status = Open3.capture3(stage_bin, '37')
       expect(status.success?).to be true
       expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 37')
-      expect(stdout).to include('STAGING VERIFIED (READY TO BROADCAST)')
+      expect(stdout).to include('LOCAL PREPARATION CHECKS PASSED')
       expect(stdout).to include('The Sound Above Roundtable: What We Carry Forward')
     end
 

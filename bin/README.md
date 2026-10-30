@@ -21,10 +21,10 @@ All operations are grouped under four cohesive domain verbs while preserving fla
 ./bin/pipeline media intake       # Run Google Drive media intake pipeline
 ./bin/pipeline media stream       # Run near-realtime SSE & telemetry streaming server
 ./bin/pipeline media swiftbar     # Run YouTube pipeline pulse for macOS SwiftBar
-./bin/pipeline media stage        # Run 37-episode staging & rehearsal workflow harness
+./bin/pipeline media stage        # Prepare selected episode materials for rehearsal
 ./bin/pipeline media patreon      # Run Patreon API v2 integration & credits CLI
 ./bin/pipeline media episode      # Run Episode Semantic Dossier & Workbench CLI
-./bin/pipeline media youtube      # Run YouTube publishing pipeline CLI
+./bin/pipeline media youtube      # Show the Season One working outline
 ./bin/pipeline media sync-prompts # Sync topic prompts to Google Drive for Ramblin' and Errata
 ./bin/pipeline media query        # Fast CLI query of live queues, worker, quota, and recent events
 ./bin/pipeline media status       # Aggregate media pipeline status
@@ -85,8 +85,8 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 - `intake_drive_video.rb` and `live_dashboard_streamer.rb`: retired execution entrypoints; processing and streaming belong to media-pipeline.
 - `just3ws-site-swiftbar`: site and media-pipeline dependency health menu.
 - `youtube-swiftbar`: compatibility entrypoint to `media-pipeline/bin/just3ws-media-pipeline-swiftbar`.
-- `youtube_pipeline.rb`: Unified operational overview CLI.
-- `stage_episode_workflow.rb`: 37-episode staging and rehearsal harness.
+- `youtube_pipeline.rb`: Read-only Season One outline and local metadata audit. YouTube publishing operations belong to media-pipeline.
+- `stage_episode_workflow.rb`: Local episode preparation and rehearsal harness.
 - `patreon_pipeline.rb`: Patreon API v2 compute funding and attribution.
 - `episode_workbench.rb`: Semantic dossier compiler and cue runner.
 

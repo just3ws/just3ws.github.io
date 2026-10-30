@@ -60,21 +60,9 @@ bin/broadcast --status
 
 Replace `1` with the episode number. The repo cue command accepts the curated rewatch range shown by `--list`, including the supported codas. It does not select an OBS scene or start a stream.
 
-For the local control pane, open:
+For the current editorial outline, open `https://www.just3ws.localhost/youtube/dashboard/`. The page links to the series plan and recording materials. It does not cue episodes or publish to YouTube.
 
-```text
-https://www.just3ws.localhost/youtube/dashboard/#tab-live
-```
-
-Use **Recording Day Launchpad** to select and cue the episode, then open the matching teleprompter. Cue feedback confirms whether the local overlay update succeeded. The **Pre-flight** button copies the CLI check command. The checkboxes are operator reminders; they do not sense hardware or persist their checked state.
-
-Open the teleprompter directly at `https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter`, or launch a document with:
-
-```sh
-bin/pipeline media textream 1 --open
-```
-
-Use the same episode number as the cue. If Textream is unavailable, use the dashboard read-along or export the `.textream` document for later use.
+Launch the matching teleprompter from the command line or open its `.textream` file in `obs/teleprompter/`. Use the same episode number as the local cue. The teleprompter is a flexible outline; timing and optional sections can change during recording.
 
 ## OBS preview and audio check
 

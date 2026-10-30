@@ -41,7 +41,7 @@ open -a OBS
 |---|------------|--------------------|------------------|
 | **01** | `01. Starting Soon` | Dark Slate, Overlay: Starting Screen | Pre-stream standby (play intro countdown) |
 | **02** | `02. Monologue / Full Camera` | Host Camera, Camera Background, Overlay: Lower Third | Opening framing, historical context, monologue |
-| **03** | `03. Reaction - Video Focus` | Video Window (Chromium), Video Audio (Chromium), Host Camera Inset, Overlay: Now Watching HUD, Overlay: Lower Third | Video reaction & commentary |
+| **03** | `03. Reaction - Video Focus` | Video Window (Chromium), Video Audio (Chromium), Host Camera Inset, transient Overlay: Now Watching HUD | Video reaction & commentary |
 | **04** | `04. Split Screen - Video & Research` | Video Window (Chromium), Research Browser (`just3ws.localhost`), Host Camera Inset, Overlay: Lower Third | Deep forensic analysis, transcripts, dossier |
 | **05** | `05. Workbench - Code & Terminal` | Workbench Terminal (`iTerm2`), Host Camera Inset, Overlay: Lower Third (Minimal HUD) | Live coding, git archaeology, CLI demos |
 | **06** | `06. Guest & Co-Host Discussion` | Host Camera, Guest Window, Overlay: Lower Third | Remote peer dialogues, paired discussions |
@@ -70,14 +70,14 @@ open -a OBS
 ## 4. Overlay Behavior & Troubleshooting Cheatsheet
 
 ### Lower Third HUD (`lower-third.html`)
-* **Location**: Bottom-left corner (Scene 02, 03, 04, 06) or top status pill (Scene 05 Minimal mode).
+* **Location**: Bottom-left corner (Scenes 02, 04, 05, 06). Minimal workbench mode also stays near the bottom.
 * **Auto-Hide**: Fades out automatically after **10 to 12 seconds** to keep screen unobscured.
 * **How to Refresh / Bring Back Lower Third**:
   * Option A: In OBS Sources list, select `Overlay: Lower Third` -> click **Refresh cache of current page**.
   * Option B: In terminal, run `bin/broadcast --rewatch <N>` to cue the episode again.
   * Option C (Persistent Display): If you want it visible permanently during testing, append `?autohide=0` in the Browser Source URL properties in OBS.
-* **Why Scene 02 Only Has Lower Third**:
-  * Monologue/Full Camera is intentionally uncluttered: it only renders the lower third, whereas Scene 03 adds the `Now Watching HUD` card in the upper-right corner.
+* **Scene 03**:
+  * The Now Watching card appears briefly at the lower left. The lower third stays hidden while the interview is on screen so the two overlays do not compete with each other or the recording.
 
 ---
 

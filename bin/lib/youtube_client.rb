@@ -20,6 +20,11 @@ class YouTubeClient
     "https://www.googleapis.com/auth/youtube.upload"
   ].freeze
 
+  def ensure_media_pipeline_owner!(operation)
+    raise NotImplementedError,
+          "#{operation} is owned by media-pipeline; direct YouTube writes are disabled in this content repository."
+  end
+
   attr_reader :client_id, :client_secret, :refresh_token, :access_token
 
   def initialize(opts = {})
@@ -80,6 +85,7 @@ class YouTubeClient
 
   # Update Live Video Snippet
   def update_video(video_id, snippet_payload)
+    ensure_media_pipeline_owner!("YouTube video updates")
     fetch_access_token! if @access_token.nil?
 
     uri = URI("#{API_BASE}/videos?part=snippet,status")
@@ -100,6 +106,7 @@ class YouTubeClient
 
   # Delete Video Permanently from YouTube
   def delete_video(video_id)
+    ensure_media_pipeline_owner!("YouTube video deletion")
     fetch_access_token! if @access_token.nil?
 
     uri = URI("#{API_BASE}/videos?id=#{video_id}")
@@ -114,6 +121,7 @@ class YouTubeClient
 
   # Update Video Privacy Status ('private', 'unlisted', 'public')
   def set_video_privacy(video_id, privacy_status)
+    ensure_media_pipeline_owner!("YouTube privacy changes")
     fetch_access_token! if @access_token.nil?
 
     video = get_video(video_id)
@@ -135,6 +143,7 @@ class YouTubeClient
 
   # Create Playlist
   def create_playlist(title, description, privacy_status = "public")
+    ensure_media_pipeline_owner!("YouTube playlist creation")
     fetch_access_token! if @access_token.nil?
 
     uri = URI("#{API_BASE}/playlists?part=snippet,status")
@@ -159,6 +168,7 @@ class YouTubeClient
 
   # Update Playlist Snippet & Metadata
   def update_playlist(playlist_id, title, description, privacy_status = "public")
+    ensure_media_pipeline_owner!("YouTube playlist updates")
     fetch_access_token! if @access_token.nil?
 
     uri = URI("#{API_BASE}/playlists?part=snippet,status")
@@ -239,6 +249,7 @@ class YouTubeClient
 
   # Add Video / Short to Playlist
   def add_playlist_item(playlist_id, video_id)
+    ensure_media_pipeline_owner!("YouTube playlist changes")
     fetch_access_token! if @access_token.nil?
 
     uri = URI("#{API_BASE}/playlistItems?part=snippet")
@@ -262,6 +273,7 @@ class YouTubeClient
 
   # Delete an item from a playlist by playlistItemId
   def delete_playlist_item(playlist_item_id)
+    ensure_media_pipeline_owner!("YouTube playlist changes")
     fetch_access_token! if @access_token.nil?
 
     uri = URI("#{API_BASE}/playlistItems?id=#{playlist_item_id}")
@@ -275,6 +287,7 @@ class YouTubeClient
 
   # Resumable Video Upload
   def upload_video(file_path, payload, content_type: nil)
+    ensure_media_pipeline_owner!("YouTube video uploads")
     fetch_access_token! if @access_token.nil?
     raise "File not found: #{file_path}" unless File.exist?(file_path)
 
@@ -345,6 +358,7 @@ class YouTubeClient
 
   # Upload Caption Track (WebVTT)
   def upload_caption(video_id, vtt_content, language: "en", name: "English (Human Verified)")
+    ensure_media_pipeline_owner!("YouTube caption uploads")
     fetch_access_token! if @access_token.nil?
     require 'securerandom'
 

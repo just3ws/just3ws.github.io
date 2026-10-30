@@ -45,7 +45,6 @@ module Jekyll
           'episode_number_formatted' => formatted_num,
           'prev_episode' => prev_ep,
           'next_episode' => next_ep,
-          'total_episodes' => total_episodes
         })
       end
     end

@@ -65,7 +65,7 @@ events:
     year: "2007-2008"
     date_display: "2007 to 2008"
     era: "precursor"
-    title: "Chicago Alt.NET: The First Room and First Stage"
+    title: "Chicago Alt.NET: A User Group and a First Talk"
     resume_anchor: "brightstar"
     location: "Sears Tower (Willis Tower), Chicago, IL"
     communities:
@@ -78,8 +78,8 @@ events:
         role: "Co-organizer, Chicago Alt.NET"
         note: "Helped curate speaker lineups and facilitate monthly discussions."
     narrative: >
-      Chicago Alt.NET was the very first technical user group Mike ever attended, and the first stage where he ever spoke. Meeting on the second Wednesday of every month at Redpoint Technologies in the Sears Tower, Sergio Pereira created a safe harbor for .NET developers who refused to accept that Microsoft was the only authority on software quality. On November 12, 2008, Mike presented on NHaml alongside Adam Tybor on Spark in a session exploring alternative view engines for ASP.NET MVC. It became the blueprint for everything Mike built later.
-    series_cue: "SERIES LAUNCHPAD: Episode 1 rewinds to this formative room, analyzing Sergio's philosophy on community curation and why open discourse mattered."
+      Chicago Alt.NET was the first user group Mike attended and the first one where he gave a presentation. In his 2011 interview, organizer Sergio Pereira describes monthly meetings where members could present and hear about software beyond .NET. The group gave Mike a place to learn and speak. It was one part of a wider Chicago developer community.
+    series_cue: "Episode 1 revisits Mike’s first user group and first talk through his 2011 interview with Sergio Pereira."
     primary_sources:
       - title: "Chicago Alt.NET: Mike Hall Interviews Sergio Pereira | SCNA 2011"
         url: "/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/"
@@ -366,9 +366,9 @@ events:
         role: "Creator, whisper.cpp"
         note: "Brought OpenAI Whisper out of heavy GPU cloud data centers onto consumer edge silicon."
     narrative: >
-      Faced with a decade-long backlog of over 200 untranscribed UGtastic oral histories and prohibitively expensive cloud transcription rates, Mike launched the open-source fluffle experiment in April 2023 using early ChatGPT coding assistance and whisper.cpp. To test what was possible for massive audio archives on modest local hardware, Mike chose Dead Rabbit Radio (DRR), a daily paranormal and historical podcast hosted solo by Jason Carpenter, whose rhythmic pacing matched Mike's cadence. Orchestrating a distributed 5-node Raspberry Pi cluster (node01 through node05) with bin-packing size balancing, Net::SSH rsync pipelines, and mandatory 120-second thermal cooldowns, the cluster transcribed over 1,000 episodes into 2,034 text and subtitle files. When expanding to fragmented RSS feeds collided with the crushing cognitive load of high-stakes enterprise Observability work, Mike stepped back. That skunkworks laboratory proved local AI speech recognition was viable, directly unlocking today's Apple Silicon Metal-accelerated transcription engine.
+      Faced with a backlog of more than 200 untranscribed UGtastic interviews and transcription costs beyond the project's budget, Mike used Dead Rabbit Radio as a test set for whisper.cpp. Five Raspberry Pis processed more than a thousand recordings, producing matching text and subtitle files. The Fluffle project did not become a general podcast tool, but the experiment gave Mike practical experience with transcription queues and audio processing that he later used when returning to the UGtastic archive.
     primary_sources:
-      - title: "The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & The Hard Lessons of Scaling Oral History"
+      - title: "Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs"
         url: "/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"
         kind: "article"
       - title: "GitHub: just3ws/fluffle Repository"

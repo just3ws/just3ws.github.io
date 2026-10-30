@@ -1,5 +1,5 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
-     CURRENT FOCUS - last updated 2026-10-29
+     CURRENT FOCUS - last updated 2026-10-30
      Cold-start resume state, canonical for every agent tool. Whoever closes
      a session rewrites this block in place - step one, before the wrap-up.
      Backlog + git log are truth for exact task status / SHAs; if this block
@@ -11,6 +11,14 @@
      handoff, never here.
 
        In flight: verify against Backlog (`backlog/tasks/`).
+       - SOUND ABOVE SEASON ONE CONTENT AND OBS BASELINE (2026-10-30):
+         - Reworked Episodes -1, 0, and 1 around their source stories and aligned dossiers, articles, teleprompters, thumbnails, navigation, and curation data.
+         - Season One is a flexible 17-interview target. Episodes -1 and 0 are setup pieces; the remaining archive records are candidates without a release schedule.
+         - Replaced formulaic teleprompter defaults with a flexible, source-led six-part outline. OBS overlay templates are lighter, lower in frame, and fade away after a short display.
+         - Retired content-repository YouTube API writers and removed publication metadata, quota simulation, and upload controls from local planning tools. Video, caption, playlist, metadata, and publication operations belong to `media-pipeline`.
+         - The Fluffle repository audit confirmed matching `.txt` and `.srt` outputs. Public copy uses the more durable “1K+ transcript pairs.”
+         - Checks pass: `rake validate:fast`, declarative data validation, Ruby syntax, Jekyll build (1,089 pages), and OBS preflight (56 assertions). The RSpec suite was not run.
+         - OBS repository templates and installed contracts match. No OBS configuration was installed or restarted during this change.
        - MEDIA PIPELINE SOURCE HYDRATION AND CATALOG SYNC (2026-10-29):
          - The media-pipeline now separates operator-held staged recordings from automatic processing with a verified hydration step.
          - The site catalog and transcript indexes include the latest Ramblin' & Amblin' publication sync and preserve transcript completeness signals for editorial review.

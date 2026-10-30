@@ -2,7 +2,7 @@
 episode: -1
 errata_slug: "errata-fluffle-precursor"
 series: "The Sound Above: Minus One"
-title: "The Fluffle Precursor: Distributed whisper.cpp & Dead Rabbit Radio"
+title: "Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs"
 status: ready
 interviewee: Mike Hall
 conference: Errata Studio Walkthrough
@@ -12,111 +12,61 @@ slug: the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster
 era_id: the-ai-horizon
 era_name: The AI Horizon
 narrative:
-  theme: Distributed Systems, Skunkworks Prototyping & Overcoming Imposter Syndrome
-  tone: Reflective, technically rigorous, humble, and vulnerable
-  topic: "The Fluffle Precursor: Distributed whisper.cpp & Dead Rabbit Radio"
+  theme: A practical transcription experiment and what became of it
+  tone: Personal, specific, and plainspoken
+  topic: "Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs"
   plot_arc:
-    inciting_incident: Facing a decade of silent hard drives holding 200+ UGtastic interviews because commercial transcription was economically impossible.
-    rising_action: In April 2023, pairing with early ChatGPT to build a 5-node Raspberry Pi cluster transcribing 1,000 episodes of Dead Rabbit Radio with whisper.cpp.
-    climax: Generating 2,034 transcripts, gaining Jason Carpenter's gracious blessing, and then hitting the wall of cognitive overload and imposter syndrome when trying to scale to all podcasts.
-    resolution: Realizing that the skunkworks experiment was the critical foundation that taught the deterministic DSP and state machine principles powering today's sovereign pipeline.
-  core_inquiry: When an ambitious grassroots project collides with working memory exhaustion and imposter syndrome, how do you recover the valuable lessons and honor the debt years later?
-  chicago_context: Echoes the software craftsmanship ethos of building your own tools, working in the open, and learning through deliberate, unglamorous practice.
-  ai_era_parallel: Moving beyond naive cloud generation toward local hardware sovereignty and deterministic pre-processing.
+    inciting_incident: More than two hundred UGtastic interviews sat without searchable transcripts, and paid transcription was beyond the project's budget.
+    rising_action: In 2023, Mike used Dead Rabbit Radio episodes as a test set and built Ruby scripts to distribute whisper.cpp work across five Raspberry Pis.
+    climax: The cluster produced more than a thousand matching text and subtitle pairs. The attempt to turn the experiment into a general podcast tool ran into broken feeds and more work than Mike could sustain.
+    resolution: The project stopped, but its queueing, audio preparation, and transcription experiments informed later work on the UGtastic archive.
+  core_inquiry: What did the five-Pi experiment accomplish, where did it stop, and which lessons carried forward?
+  chicago_context: This is one small, documented experiment in the longer effort to make community interviews searchable.
+  ai_era_parallel: Early ChatGPT helped draft parts of the orchestration code. Mike still had to run the system, inspect its results, and decide what to do next.
 teleprompter_script:
   act_1: |
     [SCENE: Cam on desk setup, MacBook visible]
-    So, this sticker.
+    I want to start with this sticker.
     [SHOW: Close-up of Dead Rabbit Radio sticker on MacBook lid]
     Right there on the lid of the MacBook Air, next to the Apple logo.
-    Most people assume it's podcast merch. It's not.
-    It's a physical artifact of the most humbling technical experiment I ever ran.
-    [FREEFORM: Talk about where you are right now, what's on the desk, how it feels to be recording this]
+    It came from Dead Rabbit Radio, a podcast I listened to while working on a transcription experiment.
     This is The Sound Above: Minus One. I'm Mike Hall.
-    Tonight I'm going to walk you through what I built, how it went from idea to 1,000+ transcriptions, and why I ghosted it, and what I learned.
-    Five Raspberry Pis. Over a thousand podcast episodes. Early ChatGPT, before there were proper tools.
-    And a podcaster named Jason Carpenter who was open to the idea.
-    [PAUSE: let it breathe]
-    The lessons from that experiment are running on this machine right now.
-    That's the reason we're here.
+    I built a system that spread transcription work across five Raspberry Pis.
+    I'll show what it did, where I stopped, and what I reused later.
   act_2: |
-    [SCENE: Cut to archive footage or slide: SCNA 2011 photo if available]
-    To get why this experiment happened, you have to go back to 2011.
-    I was recording technical interviews for UGtastic. Started at SCNA 2011.
-    Built-in mic on a 2010 MacBook Pro. Apple Photo Booth. That's it.
-    [FREEFORM: Talk about what it was like recording at conferences - the ambient noise, hauling gear, the improvised setup]
-    Over the next few years I recorded more than two hundred conversations.
-    And when I was done, I hit a wall.
-    In 2013, human transcription cost one to two dollars a minute.
-    For two hundred-plus interviews, that's a four-figure bill for an unfunded grassroots project.
-    The cloud speech APIs were worse. They'd spit back phonetic gibberish.
-    NHibernate came back as "and hibernate." StructureMap as "structure map" with a space.
-    [SHOW: Example bad transcript snippet if you have one]
-    For ten years, those tapes sat on hard drives. Knowledge locked in digital amber.
+    [SCENE: Show one of the original UGtastic recordings.]
+    I had more than two hundred interviews on disk and no practical way to search them.
+    Paying someone to transcribe the full collection was outside the budget for this community project.
+    The automated services I tried struggled with software names.
+    I wanted to find out whether local speech recognition could help.
+    [SHOW: A short example of the old transcript, if available.]
   act_3: |
-    [SCENE: Terminal or browser tab]
-    Then the world shifted. Late 2022, early 2023.
-    OpenAI open-sourced Whisper. Georgi Gerganov released whisper.cpp.
-    The marginal cost of transcription dropped to zero overnight.
-    [FREEFORM: Talk about what that moment felt like - the realization that the thing you'd been waiting a decade for was now just... free]
-    But I didn't want to risk the UGtastic tapes on unverified tools.
-    I needed a massive, clean dataset first. Something I could break things on.
-    I needed a single consistent speaker. Hundreds of hours. No crosstalk. No panel noise.
-    [PAUSE]
-    That's how I found Dead Rabbit Radio.
-    [SHOW: deadrabbitradio.com in browser]
+    [SCENE: Show whisper.cpp and the Fluffle repository.]
+    In 2023, I started trying whisper.cpp on my own hardware.
+    I did not want my first tests to be on the UGtastic archive.
+    I chose Dead Rabbit Radio because it had many episodes with one regular speaker.
+    That gave me a useful test set before I worked on the interviews.
   act_4: |
-    [SCENE: Show the fluffle GitHub repo in browser or terminal]
-    [SHOW: github.com/just3ws/fluffle]
-    Dead Rabbit Radio. Jason Carpenter. Daily paranormal folklore. Solo host.
-    Zero crosstalk, no mic swaps, consistent cadence.
-    And honestly? His speaking rhythm is a lot like mine.
-    I had five Raspberry Pi boards in my home lab. node01 through node05.
-    [FREEFORM: Describe the physical setup - where the Pis sat, what the basement looked like, how janky the whole rig was]
-    I wrote bin/distribution in Ruby to bin-pack the audio files across nodes by byte size.
-    bin/distribute pushed files via Net::SSH and rsync.
-    On each Pi, bin/transcribe ran whisper.cpp with a mandatory 120-second thermal cooldown between jobs.
-    [SHOW: The actual bin/transcribe script open in terminal or editor]
-    No heatsinks. Just stock boards. Sixty seconds of compute, two minutes of cooling. Repeat.
+    [SCENE: Show the Fluffle repository and the Raspberry Pi setup, if available.]
+    I had five Raspberry Pis at home.
+    Ruby scripts divided the recordings, sent work to the boards, and collected the output.
+    Each board ran whisper.cpp, then waited two minutes before taking another file.
+    [SHOW: The distribution script and one worker command.]
+    It was a small system, built to answer a practical question: could these boards get through the test set?
   act_5: |
-    [SCENE: Back on cam]
-    For several weeks that cluster just hummed in my basement.
-    It generated 2,034 distinct transcript files.
-    Text, subtitles. Over a thousand episodes.
-    I reached out to Jason on Discord to ask his blessing.
-    [FREEFORM: Talk about that conversation - how it felt to reach out, what Jason said, why it mattered to get that blessing before shipping anything]
-    He was genuinely gracious. Kind. Supportive. More than I expected.
-    And then I hit the cliff.
-    [PAUSE: this is the hard part, let it land]
-    I tried to turn fluffle into a universal podcast aggregator.
-    Immediately: broken RSS feeds. Corrupted ID3 tags. Erratic audio formats everywhere.
-    At the same time, high-severity production incidents at the day job.
-    Observability architecture work that was consuming everything I had.
-    [FREEFORM: Talk about what working memory exhaustion actually feels like - not as a clinical term, but as a lived thing. The tab-switching. The feeling of losing the thread.]
-    I told myself I was an imposter playing with toy scripts.
-    I froze. Stopped committing. Stopped responding to Jason on Discord.
-    For months I couldn't even bring myself to open the repo or listen to the show.
+    [SCENE: Show the completed transcript folder, then return to camera.]
+    The repository now has more than a thousand matching text and subtitle files.
+    I contacted Jason to explain the experiment and ask whether he was comfortable with it. He replied kindly.
+    I then tried to make the tool work with many different podcast feeds.
+    Feed formats and audio metadata varied, and I had other work that needed my attention.
+    I stopped working on the broader tool.
   act_6: |
-    [SCENE: Show the running pipeline dashboard or ztranscribe output in terminal]
-    For a long time I carried fluffle as a private regret.
-    [FREEFORM: Talk about what changed - when you picked it back up, what you were able to see from a distance that you couldn't see up close]
-    But craftsmanship teaches you to inspect your scars honestly.
-    That experiment wasn't a failure. It was the essential skunkworks lab that made today possible.
-    It taught me: normalize audio deterministically before running inference.
-    It taught me Maildir queue architecture. It taught me lexical priming for proper nouns.
-    And it proved local hardware sovereignty works.
-    [SHOW: ztranscribe running on a UGtastic interview file, timing output visible]
-    Five Raspberry Pis taking two hours per episode.
-    Now it's Apple Silicon. Ninety seconds. All 218 UGtastic interviews: transcribed and searchable.
-    [PAUSE]
-    To Jason Carpenter: thank you. For the stories, the generosity, and the craft.
-    The sticker stays on the laptop.
-    The lessons are in every line of code this system runs today.
-    [SCENE: Outro card / Patreon link]
-    If you want to support the archive and the independent hosting behind it:
-    patreon.com/whoistechcmty
-    Next up: Episode Zero. Minus Zero. The Mirage of Competence.
-    Keep your feedback loops fast.
+    [SCENE: Show a current UGtastic transcript beside its source recording.]
+    Fluffle did not become a universal podcast tool.
+    It gave me practice with distributing work and checking transcripts against the audio.
+    I used some of that experience when I later returned to the UGtastic recordings.
+    Thanks to Jason for making the show and for being kind when I contacted him about the experiment.
+    Next, I look at a field recording that I initially thought was out of sync.
 human_stories:
   act_1: "Pointing to the circular Dead Rabbit Radio sticker on the aluminum MacBook Air casing as the catalyst for the episode."
   act_2: "Remembering recording community interviews through conference hallways, and the frustration of knowing the audio was trapped without searchable transcripts."

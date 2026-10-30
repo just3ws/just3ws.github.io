@@ -8,10 +8,12 @@ RSpec.describe "The Sound Above Rewatch Series Artifacts" do
   let(:schema_file) { File.expand_path("../../obs/schemas/sequence-manifest.schema.json", __dir__) }
   let(:episode_one_html) { File.expand_path("../../series/the-sound-above/episode-01.html", __dir__) }
 
-  it "verifies sequence-manifest.json exists and contains exactly 35 sequential interview episodes" do
+  it "verifies the archive catalog and flexible Season One target" do
     expect(File.exist?(manifest_file)).to be true
     manifest = JSON.parse(File.read(manifest_file))
-    expect(manifest["total_episodes"]).to eq(35)
+    expect(manifest["status"]).to eq("working_plan")
+    expect(manifest["season_one_target"]).to eq(17)
+    expect(manifest["archive_record_count"]).to eq(35)
     expect(manifest["episodes"].size).to eq(35)
 
     numbers = manifest["episodes"].map { |ep| ep["number"] }
@@ -41,7 +43,7 @@ RSpec.describe "The Sound Above Rewatch Series Artifacts" do
       expect(ep["interviewee"]).to be_a(String), "Missing interviewee for episode #{ep['number']}"
       expect(ep["sound_above_inquiry"]).to be_a(String), "Missing inquiry for episode #{ep['number']}"
       expect(ep["chicago_context"]).to be_a(String), "Missing chicago context for episode #{ep['number']}"
-      expect(ep["ai_era_parallel"]).to be_a(String), "Missing AI parallel for episode #{ep['number']}"
+      expect(ep["ai_era_parallel"]).to be_nil.or be_a(String), "Invalid optional present-day connection for episode #{ep['number']}"
       expect(ep["slug"]).to be_a(String), "Missing slug for episode #{ep['number']}"
     end
   end

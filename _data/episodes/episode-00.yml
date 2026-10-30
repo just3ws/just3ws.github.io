@@ -1,8 +1,8 @@
 ---
 episode: 0
 series: 'The Sound Above: Minus Zero'
-title: 'The Mirage of Competence: AI Slop & Domain Boundaries'
-status: scheduled
+title: Testing the Audio Fix Under the Power Lines
+status: draft
 interviewee: Mike Hall
 conference: Field Recording
 year: 2026
@@ -12,211 +12,126 @@ era_id: the-ai-horizon
 era_name: The AI Horizon
 youtube_broadcast_id: XS7EZ1eWH4U
 youtube_video_id: 7YeFpKn5FbU
-target_broadcast_date: '2026-10-18'
 narrative:
-  theme: Sovereign Developer Verification & The Limits of Generative AI
-  tone: Reflective, unvarnished, forensic, and grounded
-  topic: 'The Mirage of Competence: AI Slop & Domain Boundaries'
+  theme: Finding out what happened in a damaged recording
+  tone: Plainspoken, curious, and careful
+  topic: Testing the Audio Fix Under the Power Lines
   plot_arc:
-    inciting_incident: Recording underneath high-tension power wires resulting in
-      massive electrical hum and an apparent audio-video clock desync, kicking off
-      an adventure into AI forensics and articles on verifiable competence.
-    rising_action: Prompting frontier models for audio restoration and watching them
-      produce authoritative, hallucinated DSP pipelines and bogus drift ratios, followed
-      by returning to the trail to re-attempt the physical scenario under the conductors.
-    climax: Constructing deterministic Python DSP notch filters and spectral gating
-      to salvage the audio, verifying whether the filter was a brittle one-off or
-      a reproducible general-purpose tool.
-    resolution: The cautionary realization that when AI models project fluent competence
-      far beyond our ability to verify, sovereign testing and empirical ground truth
-      are the only real safeguards against catastrophic failure.
-  core_inquiry: When AI models project effortless confidence across specialized technical
-    domains, how does an experienced engineer determine where competence ends and
-    plausible falsehood begins?
-  chicago_context: 'Echoes the early Chicago craftsmanship ethos: rejecting vendor
-    marketing claims in favor of empirical, reproducible tests and shared practitioner
-    honesty.'
-  ai_era_parallel: 'The defining challenge of Staff+ engineering in 2026: maintaining
-    cognitive control over system boundaries rather than passively accepting synthetic
-    code generation. Grounded in the Watts synthesis: Alan Watts warned IBM engineers
-    in 1969 not to mistake the net of discrete tokens for the living organism, while
-    Peter Watts demonstrated in Blindsight that high-throughput symbol manipulation
-    can simulate intelligence without comprehension.'
+    inciting_incident: A walk under power lines left a phone recording with a loud hum
+      and an apparent gap between the video and audio durations.
+    rising_action: An AI tool suggested stretching the audio, but the speech sounded
+      wrong when Mike tried it.
+    climax: Listening to the recording showed that the missing time was silence after
+      the talk. The phone's second microphone had also captured clearer speech.
+    resolution: A second walk showed which audio cleanup steps held up and which were
+      based on a mistaken diagnosis.
+  core_inquiry: What did the recording contain, and which parts of the audio fix worked
+    on a second walk?
+  chicago_context: This is a field recording from Northern Illinois, revisited by
+    inspecting the original audio and testing the same cleanup on a new recording.
+  ai_era_parallel: Generated code can run even when its explanation is wrong. Check
+    the source material and listen to the result.
 teleprompter_script:
   act_1: |
-    [SCENE: Cam on desk]
-    In October 2026 I walked out under 345,000-volt transmission lines in Northern Illinois
-    with a smartphone to record some thoughts on software craftsmanship.
-    When I got back to my desk and checked the footage, the audio was destroyed.
-    60 Hz electromagnetic hum. Corona arcing. And what looked like a three-and-a-half-minute
-    clock drift between audio and video.
-    [FREEFORM: Describe what it felt like sitting there staring at the waveform - the instinct to just trash it and reshoot]
-    The standard advice is: trash it, reshoot.
-    Instead, I opened a browser tab and started asking AI models what to do.
-    That's how this series started.
+    [SCENE: Camera. Show the original phone recording.]
+    I took my phone for a walk under the power lines.
+    I was recording a few thoughts about software craftsmanship.
+    When I got home, I heard a loud hum in the audio.
+    The video was about twenty-one minutes long.
+    The audio was about eighteen minutes long.
+    I thought the phone had lost sync.
     [PAUSE]
     This is The Sound Above: Minus Zero. I'm Mike Hall.
-    The bottleneck in engineering is never generation. It's verification.
+    I'll show what I checked, what I got wrong, and what worked on a second walk.
   act_2: |
-    [SCENE: Terminal - show the original prompt or a browser tab with the chat]
-    I started with thirteen words in a browser. Then brought it into Gemini Flash via the terminal.
-    The model immediately went to work.
-    Cascaded Butterworth filters. Exact duration ratios. Shell scripts. DSP pipelines.
-    It told me with total, unblinking confidence that the audio had drifted by twenty percent.
-    atempo=0.837. Here's the command. Run it.
-    [SHOW: The actual bad atempo command the model produced]
-    And it was completely wrong.
-    [FREEFORM: Talk about the sticker on the 2009 Dell Studio XPS from the Obtiva days: "Typing is not the bottleneck."
-    Talk about what that meant then vs what it means now - generating code is not the bottleneck, domain understanding is]
-    In Hollywood, they yell "Enhance!" and pixels appear from nowhere.
-    In software, that wishful thinking produces AI slop.
-    [PAUSE: let that sit]
-    The bottleneck is domain understanding. Same as it was in 2009.
+    [SCENE: Show the suggested command and the original recording.]
+    I asked an AI tool how to repair the audio.
+    It compared the two track durations and suggested speeding up the audio.
+    The proposed setting was atempo equals 0.837.
+    I tried it. The speech sounded slow and out of sync.
+    [SHOW: Play a short before and after sample.]
+    The command ran. The result was wrong.
+    I needed to find out what those extra three minutes contained.
   act_3: |
-    [SCENE: Show waveform or terminal output]
-    The container said: 21 minutes of video. 18 minutes of audio.
-    The model assumed linear drift and handed me atempo=0.837.
-    [SHOW: Audio waveform slurred - before fix]
-    When I tested it in headphones, the speech was slurred and completely out of sync.
-    [FREEFORM: Talk about what going back to ground truth feels like - the discipline of not trusting the answer just because it came out confidently]
-    So we went back to ground truth.
-    High-FPS frame extraction. Whisper subtitle alignment. Audio waveforms.
-    What had actually happened?
-    At 18 minutes I said "Thank you" and wrapped the talk.
-    The remaining three and a half minutes was me walking in silence with the camera still running.
-    The speech was at 1.0x the whole time.
+    [SCENE: Inspect the end of the video and the audio waveform.]
+    I checked the point where the audio ended.
+    I said "Thank you" and finished speaking.
+    Then I kept walking with the camera running.
+    The last few minutes were silence, not a sync problem.
+    [SHOW: Play the end of the original recording.]
+    The duration difference came from the walk after I finished talking.
+    Stretching the audio had changed speech that was already in sync.
     [PAUSE]
-    When AI models project effortless competence, how do you find the boundary?
-    You verify with empirical tests. Not conversational trust.
+    The recording answered the question. I had to listen to it.
   act_4: |
-    [SCENE: Show phone diagram or dual-mic diagram slide]
-    [SHOW: Diagram of iPhone dual-mic placement - top mic vs bottom mic]
-    Here's what was actually going on with the audio.
-    Modern smartphones use dual mics for noise suppression.
-    The mic at the top was acting as an unshielded inductive loop antenna.
-    Picking up 65 times more electromagnetic interference from the overhead towers
-    than the bottom mic.
-    [SHOW: Spectral waterfall - before and after isolating bottom mic]
-    Isolating the bottom mic gave us clean speech buried under the noise.
-    [FREEFORM: Talk about the decision to go back out under those same wires.
-    What you wanted to prove - was the dehum filter a one-time lucky fix or a real tool?]
-    And I didn't leave it there as a single lucky fix.
-    I walked back out under those same 345kV conductors.
-    Deliberately re-attempted the scenario. Same trail, same conductors.
-    I wanted to know: is this filter real, or was it one good day?
-    [SHOW: Second field recording footage if cued, or just the trail photo]
+    [SCENE: Show the two audio channels and their spectra.]
+    The phone recorded two audio channels.
+    One channel carried much more of the hum.
+    The other had clearer speech.
+    I isolated the clearer channel and reduced the remaining hum.
+    [SHOW: Compare the channels before and after cleanup.]
+    I wanted to know whether those steps would work on another recording.
+    So I went back to the same trail with the same phone.
   act_5: |
-    [SCENE: Terminal - show the deterministic filter running]
-    [DEMO: Run the dehum filter against the second field recording - show timing output]
-    That field re-test gets to the heart of the cautionary tale.
-    When you prompt a frontier model outside your domain, it hands you math and code
-    with total, fluent confidence. You look like an audio engineering expert.
-    But you're throwing a ball high into the air.
-    If you throw it too high, far beyond what you can verify and catch,
-    it comes straight down on your head.
-    [SHOW: just3ws.localhost/dehum/dashboard.html - the A/B listening comparison]
-    [FREEFORM: Walk through what the dashboard shows - the raw audio, the hum-removed audio,
-    the spectral diff, the filter parameters that survived the second test]
-    When we ran the re-attempt footage through the same pipeline, the parameters held.
-    40 milliseconds. Stripped the hum. Preserved clean voice.
-    But the warning stands: AI models simulate mastery without comprehension.
-    Like the Chinese room in Peter Watts' Blindsight.
-    Our job isn't to marvel at synthetic fluency.
-    Our job is to walk back under the wires and test the boundary.
+    [SCENE: Run the same cleanup on the second recording.]
+    The second recording had the same kind of hum.
+    I used the same channel selection and cleanup steps.
+    The speech stayed clear, and the hum came down.
+    I did not stretch the audio.
+    [SHOW: Compare the original and cleaned audio.]
+    The second recording showed which parts of the first repair were useful.
+    The duration ratio was not.
   act_6: |
-    [SCENE: Outro card with links]
-    That's the spirit of The Sound Above.
-    Across this 37-episode series we're going to rewatch fifteen years of conversations
-    from the Software Craftsmanship movement.
-    Chicago user groups to the AI horizon.
-    How developers tackled architecture, testing, and autonomy before commercial platforms took over.
-    [FREEFORM: Talk about what the archive means to you personally - why you kept those tapes,
-    why 218 conversations is a number that still surprises you]
-    Full transcripts, telemetry, and companion code are open at just3ws.com.
-    If you want to help support the independent hosting and archive preservation:
-    patreon.com/whoistechcmty
-    Next up: Episode 1. The first room. Sergio Pereira and Chicago Alt.NET.
-    Keep your feedback loops fast. And verify your code.
+    [SCENE: Outro card with the recording and source links.]
+    I thought the recording was out of sync.
+    Listening showed that I had walked in silence after the talk.
+    The second recording helped me test the audio cleanup separately.
+    A useful check is simple: compare the output with the source.
+    The recording, notes, and code are linked from just3ws.com.
+    Next, we go back to the UGtastic interviews with Sergio Pereira.
+    Thanks for watching.
 lexicon:
   key_concepts:
-  - The Mirage of Competence
-  - Domain Boundaries
-  - Deterministic Verification
-  - Forensic Audio Restoration
-  - Token Economics
-  - Blindsight
-  - Looking Through the Net
-  - Chinese Room Thought Experiment
-  - Mechanism vs. Organism
-  - Prickles and Goo
-  - Gallbladder Specialist Fallacy
+  - Field recording
+  - Audio cleanup
+  - Duration mismatch
+  - Source verification
   trigger_words:
-  - Competence
-  - Slop
-  - Verification
-  - Notch Filter
-  - DSP
+  - Hum
+  - Audio channels
+  - Playback speed
+  - Source recording
   hashtags:
   - "#TheSoundAbove"
   - "#SoftwareCraftsmanship"
-  - "#SystemCartography"
-  - "#AIslop"
+  - "#FieldRecording"
+  - "#AudioCleanup"
   - "#TechnicalRewatch"
 human_marginalia:
   host_recollections:
-  - scene: 'Act 1: Cold Open'
-    story: Standing under the high-tension wires with electrical buzz cutting through
-      the headphones, realizing that recovering this audio was a living metaphor for
-      working with AI models.
-  - scene: 'Act 2: Setting the Historical Scene'
-    story: 'Thinking back to the 2009 Dell Studio XPS PP35L laptop during the sole
-      Obtiva .NET engagement with the sticker: typing is not the bottleneck.'
-  - scene: 'Act 4: Hallway Rewatch & Video Reaction'
-    story: Walking back out underneath the 345kV conductors on the trail to re-attempt
-      the scenario, testing whether the phone would desync again and whether the dehum
-      filter was a brittle one-off or a reproducible tool.
-  - scene: 'Act 5: Terminal Workbench'
-    story: 'Showing the exact spectral waterfall diff: where Gemini gave confident
-      misinformation versus the deterministic filter code, exploring the cautionary
-      tale of the high-thrown ball and the mirage of competence.'
+  - scene: 'Act 1: Start with the recording'
+    story: The phone recording had a loud hum and a duration difference that looked
+      like a sync problem.
+  - scene: 'Act 3: Inspect the source'
+    story: Mike finished speaking before the audio ended; the remaining video captured
+      a silent walk.
+  - scene: 'Act 4: Test the cleanup again'
+    story: A second walk helped separate the useful audio cleanup from the mistaken
+      time-stretch diagnosis.
   workshop_prompts:
-  - Keep tone calm, reflective, and unvarnished; avoid all combative warrior rhetoric.
-  - Emphasize that the entire exercise cost less than $1.25 in subscription compute.
-  - Anchor the cautionary tale in the physical re-attempt under the power line conductors.
+  - Show the original before presenting the repair.
+  - Let viewers hear the before and after audio.
+  - Keep technical claims limited to what the recordings and files support.
 research_attachments:
-- title: 'The Mirage of Competence: AI Slop & Domain Boundaries (Case Study)'
+- title: 'Testing the Audio Fix Under the Power Lines'
   type: case_study
   url: https://just3ws.com/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
 - title: 'Ramblin'' & Amblin'' Monologue: Revisiting the Dehum Experiment'
   type: video_transcript
   url: https://just3ws.com/transcripts/ramblin-amblin-ok-next-experiment/
-- title: Blindsight by Peter Watts (Open Access Literature)
-  type: literature
-  url: https://www.rifters.com/real/Blindsight.htm
-- title: 'Alan Watts: Looking Through the Net (IBM Systems Group, 1969)'
-  type: primary_source
-  url: https://www.youtube.com/watch?v=OWlpa3wd9K4
 - title: Practice Run Recording (YouTube 7YeFpKn5FbU)
   type: video_asset
   url: https://www.youtube.com/watch?v=7YeFpKn5FbU
 - title: Audio Restoration A/B Listening Test
   type: audio_test
   url: https://just3ws.com/dehum/dashboard.html
-- title: Patreon Community Archive Support
-  type: patronage
-  url: https://www.patreon.com/whoistechcmty
-workflow_tasks:
-  autonomous:
-  - task: Practice run upload and unlisted staging
-    status: done
-  - task: Upcoming livestream scheduled in YouTube Studio
-    status: done
-  - task: Spectral telemetry and diff generation
-    status: done
-  human:
-  - task: Review practice run audio learnings
-    status: done
-  - task: Calibrate mic gain and OBS RNNoise filter
-    status: pending
-  - task: Broadcast definitive pilot livestream
-    status: pending

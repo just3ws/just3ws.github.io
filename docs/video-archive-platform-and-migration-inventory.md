@@ -41,7 +41,7 @@ The external drive (`/Volumes/Dock_1TB`) contains a dedicated video processing w
 ## 3. Detailed Non-YouTube Video Inventory (28 Total)
 
 ### Category A: Vimeo Masters Confirmed in `/Volumes/Dock_1TB/vimeo/videos/` (10 Videos)
-These 10 videos have verified local MP4 master files and are ready for immediate resumable upload to YouTube via `bin/upload_youtube_video.rb`:
+Historical migration inventory: these 10 videos were identified as having local MP4 masters. The former content-repository upload command is retired. Verify current asset state and perform any upload through media-pipeline:
 
 | # | Asset ID | Title / Speaker | Vimeo ID | Local Master Path | Size |
 |---|---|---|---|---|---|
@@ -105,7 +105,7 @@ To upload remaining masters to YouTube:
 1. **Verify OAuth Channel:** `ruby -e 'require_relative "bin/lib/youtube_client"; puts YouTubeClient.new.get_channel_info["snippet"]["title"]'`
 2. **Execute Resumable Batch Upload:**
    ```bash
-   ruby bin/upload_youtube_video.rb --file "/Volumes/Dock_1TB/vimeo/videos/Denver_Community_w_Charler_Baker_32391086.mp4" --asset-id charler-baker-denver-community-software-craftsmanship-north-america-2011
+   media-pipeline bin/mp intake --file "/Volumes/Dock_1TB/vimeo/videos/Denver_Community_w_Charler_Baker_32391086.mp4" --asset-id charler-baker-denver-community-software-craftsmanship-north-america-2011
    ```
 3. **Attach Subtitle Tracks:** Post the existing `.vtt` file from `assets/subtitles/<transcript_id>.vtt` to YouTube Data API captions endpoint.
 4. **Update Platform Record:** Append `platform: youtube` and set `primary_platform: youtube` in `_data/video_assets.yml`.

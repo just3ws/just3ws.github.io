@@ -22,11 +22,6 @@
         <span class="scope-domain-label">[just3ws.com]</span>
         <span class="scope-desc-label">Public Deployment Surface</span>
       {% endif %}
-
-      <a href="/youtube/dashboard/#tab-funnel" class="lh-processor-pulse" id="lh-processor-pulse" title="Media Intake Background Job Processor: Click to inspect Live Ingress Funnel &amp; Queues">
-        <span class="lh-pulse-dot" id="lh-pulse-dot"></span>
-        <span class="lh-pulse-label" id="lh-pulse-label">Processor: Idle (FIFO Ready)</span>
-      </a>
     </div>
 
     <div class="localhost-nav-links">
@@ -37,26 +32,23 @@
           <span class="lh-caret">▾</span>
         </button>
         <div class="lh-dropdown-menu" role="menu">
-          <div class="lh-menu-header">Control Planes &amp; Cockpits</div>
+          <div class="lh-menu-header">Local Tools</div>
           <a href="/dashboard/" class="lh-menu-item{% if page.url == '/dashboard/' or page.url == '/dashboard.html' %} is-active{% endif %}" role="menuitem">
             <strong>Platform Link Hub</strong> (Localhost Services)
           </a>
-          <a href="/youtube/dashboard/#tab-funnel" class="lh-menu-item" role="menuitem">
-            <strong>Live Ingress Funnel</strong> (Drive Maildir)
-          </a>
           <a href="/youtube/dashboard/" class="lh-menu-item{% if page.url contains '/youtube/dashboard/' %} is-active{% endif %}" role="menuitem">
-            <strong>YouTube Operations Cockpit</strong> (217 Assets)
+            <strong>Season One Working Outline</strong> (17 interview target)
           </a>
-          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem">
-            <strong>Broadcast Teleprompter</strong> (6 Acts &amp; Textream)
+          <a href="/obs/" class="lh-menu-item" role="menuitem">
+            <strong>OBS Recording Playbook</strong>
           </a>
-          <a href="/youtube/dashboard/#tab-bpmn" class="lh-menu-item" role="menuitem">
-            <strong>BPMN 2.0 &amp; SLO Monitor</strong> (Camunda Flow)
+          <a href="https://media-pipeline.localhost/" class="lh-menu-item" role="menuitem">
+            <strong>Media-pipeline</strong> (YouTube publishing)
           </a>
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Errata Recording Kit</div>
           <a href="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" class="lh-menu-item" role="menuitem">
-            <strong>Errata Ep 00:</strong> The Mirage of Competence (case study)
+            <strong>Ep 0:</strong> Testing the Audio Fix Under the Power Lines
           </a>
           <a href="/dehum/dashboard.html" class="lh-menu-item{% if page.url contains '/dehum/' %} is-active{% endif %}" role="menuitem">
             <strong>Errata Dehum Audio Workbench</strong> (Forensics)
@@ -70,9 +62,6 @@
           <a href="/phalanx-duel/" class="lh-menu-item{% if page.url contains '/phalanx-duel/' %} is-active{% endif %}" role="menuitem">
             <strong>Errata:</strong> Phalanx Duel Quickstart &amp; Materials
           </a>
-          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem">
-            <strong>Errata Teleprompter</strong> (Ep 00 &amp; Fluffle Precursor) 🎙️
-          </a>
         </div>
       </div>
 
@@ -83,53 +72,47 @@
           <span class="lh-caret">▾</span>
         </button>
         <div class="lh-dropdown-menu" role="menu">
-          <div class="lh-menu-header">Rewatch Curriculum (37 Episodes)</div>
+          <div class="lh-menu-header">The Sound Above: Season One</div>
           <a href="/series/the-sound-above/" class="lh-menu-item{% if page.url == '/series/the-sound-above/' %} is-active{% endif %}" role="menuitem">
-            <strong>All 37 Episodes Hub</strong> (syllabus &amp; jump)
+            <strong>Season One working outline</strong> (17 interview target)
           </a>
           <a href="/series/the-sound-above/episode-01/" class="lh-menu-item{% if page.url contains '/episode-01/' %} is-active{% endif %}" role="menuitem">
             <strong>Episode 1:</strong> Sergio Pereira on Alt.NET
           </a>
           <a href="/series/the-sound-above/#movement-1" class="lh-menu-item" role="menuitem">
-            <strong>Movement 1:</strong> The Chicago Workshop (Ep 01–05)
+            <strong>Archive Group:</strong> The Chicago Workshop
           </a>
           <a href="/series/the-sound-above/#movement-2" class="lh-menu-item" role="menuitem">
-            <strong>Movement 2:</strong> The Craft Awakening (Ep 06–12)
+            <strong>Archive Group:</strong> The Craft Awakening
           </a>
           <a href="/series/the-sound-above/#movement-3" class="lh-menu-item" role="menuitem">
-            <strong>Movement 3:</strong> Autonomy &amp; Apprenticeship (Ep 13–18)
+            <strong>Archive Group:</strong> Autonomy &amp; Apprenticeship
           </a>
           <a href="/series/the-sound-above/#movement-4" class="lh-menu-item" role="menuitem">
-            <strong>Movement 4:</strong> The Chicago Renaissance (Ep 19–23)
+            <strong>Archive Group:</strong> The Chicago Renaissance
           </a>
           <a href="/series/the-sound-above/#movement-5" class="lh-menu-item" role="menuitem">
-            <strong>Movement 5:</strong> Polyglot Pragmatism (Ep 24–28)
+            <strong>Archive Group:</strong> Polyglot Pragmatism
           </a>
           <a href="/series/the-sound-above/#movement-6" class="lh-menu-item" role="menuitem">
-            <strong>Movement 6:</strong> Systems Stewardship (Ep 29–35)
+            <strong>Archive Group:</strong> Systems Stewardship
           </a>
           <a href="/series/the-sound-above/#series-codas" class="lh-menu-item" role="menuitem">
-            <strong>Series Codas:</strong> Synthesis &amp; Roundtable (Ep 36–37)
+            <strong>Possible later extras:</strong> Synthesis &amp; Roundtable
           </a>
           <div class="lh-menu-divider"></div>
-          <div class="lh-menu-header">Prologue &amp; Broadcast Tools</div>
+          <div class="lh-menu-header">Setup Pieces &amp; Recording</div>
           <a href="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" class="lh-menu-item" role="menuitem">
-            <strong>Errata Ep 00:</strong> The Mirage of Competence (case study)
+            <strong>Ep 0:</strong> Testing the Audio Fix Under the Power Lines
           </a>
           <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" class="lh-menu-item" role="menuitem">
             <strong>Errata Minus One:</strong> The Fluffle Precursor (article)
-          </a>
-          <a href="/youtube/dashboard/" class="lh-menu-item" role="menuitem">
-            <strong>Operations Cockpit &amp; BPMN</strong> 🚀
-          </a>
-          <a href="/youtube/dashboard/#tab-teleprompter" class="lh-menu-item" role="menuitem">
-            <strong>Broadcast Teleprompter</strong> 🎙️
           </a>
           <a href="/dehum/dashboard.html" class="lh-menu-item" role="menuitem">
             <strong>Errata Audio Workbench</strong> 🎛️
           </a>
           <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" class="lh-menu-item" role="menuitem">
-            <strong>YouTube Playlist</strong> ↗
+            <strong>Original Interview Playlist</strong> ↗
           </a>
           <div class="lh-menu-divider"></div>
           <div class="lh-menu-header">Read Along Context</div>
@@ -143,7 +126,7 @@
             <strong>Speaker Directory</strong>
           </a>
           <a href="/interviews/" class="lh-menu-item" role="menuitem">
-            <strong>Video Archive</strong> (201 items)
+            <strong>Video Archive</strong>
           </a>
         </div>
       </div>
@@ -630,96 +613,6 @@
       }
     });
 
-    // Live pulse for background job processor
-    const pulseBadge = document.getElementById("lh-processor-pulse");
-    const pulseDot = document.getElementById("lh-pulse-dot");
-    const pulseLabel = document.getElementById("lh-pulse-label");
-
-    function updateProcessorPulse(telemetry) {
-      if (!pulseBadge || !pulseDot || !pulseLabel) return;
-      const targets = telemetry.media_intake && telemetry.media_intake.targets ? telemetry.media_intake.targets : (telemetry.targets || {});
-      const isStopped = telemetry.media_intake && telemetry.media_intake.stopped !== undefined ? telemetry.media_intake.stopped : (telemetry.stopped || false);
-      const isHalted = telemetry.media_intake && telemetry.media_intake.halted !== undefined ? telemetry.media_intake.halted : (telemetry.halted || false);
-      let totalPending = 0;
-      let totalProcessing = 0;
-      let totalFailed = 0;
-      let activeFilename = null;
-
-      Object.values(targets).forEach(function(t) {
-        totalPending += (t.pending_count || 0);
-        totalProcessing += (t.processing_count || 0);
-        totalFailed += (t.failed_count || 0);
-        if (t.processing_items && t.processing_items.length > 0 && !activeFilename) {
-          activeFilename = t.processing_items[0].filename;
-        }
-      });
-
-      pulseDot.className = "lh-pulse-dot";
-
-      if (isStopped) {
-        pulseDot.classList.add("is-stopped");
-        pulseLabel.textContent = "Processor: Stopped";
-        pulseBadge.title = "Background Job Processor: Pipeline stopped (immediate abort armed). Click to resume or inspect.";
-      } else if (isHalted) {
-        pulseDot.classList.add("is-halted");
-        pulseLabel.textContent = "Processor: Halted" + (totalProcessing > 0 ? " (finishing task)" : "");
-        pulseBadge.title = "Background Job Processor: Pipeline halted (will pause after current task). Click to resume or inspect.";
-      } else if (totalProcessing > 0) {
-        pulseDot.classList.add("is-processing");
-        const fileDesc = activeFilename ? " (" + (activeFilename.length > 20 ? activeFilename.slice(0, 18) + "..." : activeFilename) + ")" : "";
-        pulseLabel.textContent = "Processor: Ingesting" + fileDesc;
-        pulseBadge.title = "Background Job Processor: Actively ingesting video " + (activeFilename || "") + ". Serialized to 1 file across all channels.";
-      } else if (totalFailed > 0) {
-        pulseDot.classList.add("is-error");
-        pulseLabel.textContent = "Processor: " + totalFailed + " Failed";
-        pulseBadge.title = "Background Job Processor: " + totalFailed + " file(s) quarantined in failed/. Click to inspect.";
-      } else if (totalPending > 0) {
-        pulseDot.classList.add("is-pending");
-        pulseLabel.textContent = "Processor: " + totalPending + " Queued (FIFO)";
-        pulseBadge.title = "Background Job Processor: " + totalPending + " file(s) waiting in pending/ (processed in oldest-first FIFO order).";
-      } else {
-        pulseLabel.textContent = "Processor: Idle (FIFO Ready)";
-        pulseBadge.title = "Background Job Processor: Idle. Concurrency Lock ready for next FIFO video.";
-      }
-    }
-
-    if (isLocalhost) {
-      // 1. Connect to near-realtime SSE stream if available
-      let sseConnected = false;
-      try {
-        const evtSource = new EventSource("/api/live/events");
-        evtSource.addEventListener("telemetry", function(e) {
-          try {
-            const data = JSON.parse(e.data);
-            sseConnected = true;
-            updateProcessorPulse(data);
-          } catch(err) {}
-        });
-        evtSource.addEventListener("pipeline_step", function(e) {
-          try {
-            const step = JSON.parse(e.data);
-            if (step.status === "processing") {
-              pulseDot.className = "lh-pulse-dot is-processing";
-              pulseLabel.textContent = "Processor: Step " + step.step + " (" + (step.name || "ingesting") + ")";
-            }
-          } catch(err) {}
-        });
-        evtSource.onerror = function() {
-          sseConnected = false;
-        };
-      } catch(err) {}
-
-      // 2. Continuous fallback polling
-      function pollTelemetry() {
-        if (sseConnected) return;
-        fetch("/assets/data/youtube_pipeline_telemetry.json?t=" + Date.now())
-          .then(function(res) { return res.json(); })
-          .then(function(data) { updateProcessorPulse(data); })
-          .catch(function() {});
-      }
-      pollTelemetry();
-      setInterval(pollTelemetry, 5000);
-    }
   });
 })();
 </script>

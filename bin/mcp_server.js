@@ -20,7 +20,7 @@ const {
   ReadResourceRequestSchema,
   ListResourceTemplatesRequestSchema,
 } = require("@modelcontextprotocol/sdk/types.js");
-const { execSync } = require("child_process");
+const { execSync, execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 
@@ -194,15 +194,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     if (name === "query_media_pipeline") {
       const argsList = [];
       if (args && args.format === "json") argsList.push("--json");
-      if (args && args.section === "queues") argsList.push("--queues");
-      if (args && args.section === "quota") argsList.push("--quota");
-      if (args && args.section === "worker") argsList.push("--worker");
-      if (args && args.section === "activity") argsList.push("--activity");
-      if (args && args.section === "summary") argsList.push("--compact");
-      if (args && args.target) argsList.push(`--target "${args.target}"`);
+      else if (args && args.section === "summary") argsList.push("--compact");
+      else if (args && args.section === "queues") argsList.push("--queues");
 
-      const cmd = `ruby bin/query_pipeline.rb ${argsList.join(" ")}`.trim();
-      const output = execSync(cmd, {
+      const output = execFileSync(path.join(ROOT_DIR, "bin", "pipeline"), ["media", "status", ...argsList], {
         cwd: ROOT_DIR,
         encoding: "utf-8",
       });
@@ -285,7 +280,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   }
 
   if (uri === "site://audit/status" || uri === "site://pipeline/status") {
-    const output = execSync("ruby bin/query_pipeline.rb --json", {
+    const output = execFileSync(path.join(ROOT_DIR, "bin", "pipeline"), ["media", "status", "--json"], {
       cwd: ROOT_DIR,
       encoding: "utf-8",
     });

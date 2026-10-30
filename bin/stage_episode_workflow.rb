@@ -4,11 +4,10 @@
 # ---
 # name: stage_episode_workflow.rb
 # domain: media
-# purpose: Pre-broadcast staging and non-destructive rehearsal workflow harness
+# purpose: Local episode-material and OBS rehearsal checks
 # usage: bin/pipeline stage <episode_num> [--json] OR bin/pipeline stage --all
-# description: Simulates and validates the complete publishing pipeline across 7 gates:
-#   dossier invariants, metadata budgets, transcript parity, OBS overlay states,
-#   6-act teleprompter compilation, quota simulation, and Patreon patron credits.
+# description: Checks dossier structure, transcript availability, OBS cue shape,
+#   and local teleprompter materials. Publishing is handled by media-pipeline.
 # ---
 
 require 'json'
@@ -22,9 +21,6 @@ class StageEpisodeWorkflow
   SEQUENCE_PATH = File.join(ROOT_DIR, '_data', 'sound_above_sequence.json')
   TRANSCRIPTS_DIR = File.join(ROOT_DIR, '_data', 'transcripts')
   OVERLAY_STATE_PATH = File.join(ROOT_DIR, 'obs', 'overlays', 'overlay-state.json')
-  ROSTER_PATH = File.join(ROOT_DIR, '_data', 'patreon_roster.json')
-
-  DAILY_QUOTA_BUDGET = 10_000
 
   def run(args = ARGV)
     json_mode = args.delete('--json')
@@ -96,53 +92,20 @@ class StageEpisodeWorkflow
     report[:checks][:required_fields] = check_required_fields(dossier)
     report[:passed] = false if report[:checks][:required_fields][:status] == 'FAIL'
 
-    # Step 2: YouTube Metadata Staging & Invariants
-    ep_display = (ep_num.to_s == 'errata-fluffle-precursor' || ep_num.to_i == -1) ? -1 : ep_num
-    title = "#{dossier['title']} | The Sound Above Ep #{ep_display}"
-    title_ok = title.length <= 100
-    report[:checks][:title_length] = {
-      status: title_ok ? 'PASS' : 'FAIL',
-      message: "#{title.length}/100 chars: \"#{title}\""
-    }
-    report[:passed] = false unless title_ok
-
-    staged_desc = build_staged_description(dossier, ep_num)
-    desc_ok = staged_desc.length <= 5000
-    report[:checks][:description_budget] = {
-      status: desc_ok ? 'PASS' : 'FAIL',
-      message: "#{staged_desc.length}/5000 chars"
-    }
-    report[:passed] = false unless desc_ok
-
-    # Step 3: Transcript Parity Check
+    # Step 2: Source transcript availability
     transcript_status = evaluate_transcript_parity(dossier)
     report[:checks][:transcript_parity] = transcript_status
 
-    # Step 4: OBS Overlay Simulation
+    # Step 3: OBS Overlay Cue Shape
     overlay_sim = simulate_obs_overlay_cue(dossier)
     report[:checks][:obs_overlay_simulation] = overlay_sim
 
-    # Step 5: 6-Act Teleprompter Compilation
+    # Step 4: Teleprompter Materials
     teleprompter_sim = simulate_teleprompter_compilation(dossier, ep_num)
     report[:checks][:teleprompter_compilation] = teleprompter_sim
 
-    # Step 6: Quota Budget Simulation
-    quota_units = calculate_staged_quota(dossier)
-    report[:metrics][:quota_units_needed] = quota_units
-    report[:metrics][:daily_quota_budget] = DAILY_QUOTA_BUDGET
-    report[:metrics][:quota_percent] = ((quota_units.to_f / DAILY_QUOTA_BUDGET) * 100).round(2)
-    report[:checks][:quota_safety] = {
-      status: quota_units <= DAILY_QUOTA_BUDGET ? 'PASS' : 'FAIL',
-      message: "#{quota_units} units required (#{report[:metrics][:quota_percent]}% of 10,000 daily pool)"
-    }
-
-    # Step 7: Patreon Integration Check
-    patreon_check = evaluate_patreon_credits
-    report[:checks][:patreon_credits] = patreon_check
-
     report[:staged_artifacts] = {
-      title: title,
-      staged_description_preview: staged_desc[0..280] + '...',
+      title: dossier['title'],
       overlay_preview: overlay_sim[:overlay_payload],
       teleprompter_acts_count: 6
     }
@@ -168,19 +131,17 @@ class StageEpisodeWorkflow
       puts JSON.pretty_generate({ total: total, passed: passed, failed: failed, episodes: results })
     else
       puts '=================================================================='
-      puts " 🚀 COMPREHENSIVE STAGING HARNESS: ALL #{total} EPISODES"
+      puts " LOCAL PREPARATION CHECKS: ALL #{total} ARCHIVE DOSSIERS"
       puts '=================================================================='
-      printf "%-6s %-32s %-10s %-12s %s\n", 'EP', 'TITLE', 'STATUS', 'QUOTA', 'ERRORS'
+      printf "%-6s %-32s %-10s %s\n", 'EP', 'TITLE', 'STATUS', 'ISSUES'
       puts '------------------------------------------------------------------'
       results.each do |r|
         status_badge = r[:passed] ? '✅ PASS' : '❌ FAIL'
-        quota_str = "#{r.dig(:metrics, :quota_units_needed)} units"
         fails = r[:checks].select { |_, v| v[:status] == 'FAIL' }.keys.join(', ')
-        printf "%02d     %-32s %-10s %-12s %s\n",
+        printf "%02d     %-32s %-10s %s\n",
                r[:episode],
                (r.dig(:staged_artifacts, :title) || 'Episode')[0..30],
                status_badge,
-               quota_str,
                fails.empty? ? 'None' : fails
       end
       puts '=================================================================='
@@ -206,41 +167,6 @@ class StageEpisodeWorkflow
     end
   end
 
-  def build_staged_description(dossier, ep_num)
-    conf = dossier['conference']
-    year = dossier['year']
-    inquiry = dossier.dig('narrative', 'core_inquiry')
-    parallel = dossier.dig('narrative', 'ai_era_parallel')
-
-    ep_display = (ep_num.to_s == 'errata-fluffle-precursor' || ep_num.to_i == -1) ? -1 : ep_num
-    desc = "#{dossier['title']} | The Sound Above Ep #{ep_display}\n\n"
-    desc += "Live technical commentary and rewatch with Mike Hall (Staff Software Engineer, UGtastic creator, and SCMC co-founder).\n\n"
-    desc += "THE SOUND ABOVE INQUIRY:\n#{inquiry}\n\n"
-    desc += "THE 2026 AI-ERA PARALLEL:\n#{parallel}\n\n"
-    desc += "CHAPTERS:\n"
-    desc += "00:00 - Cold Open & Personal Grounding\n"
-    desc += "03:00 - Setting the Historical Scene (#{conf}, #{year})\n"
-    desc += "08:00 - Core Inquiry Thesis: The Sound Above\n"
-    desc += "14:00 - Archive Footage Rewatch (Guest: #{dossier['interviewee']})\n"
-    desc += "28:00 - AI-Era Parallel & Terminal Workbench\n"
-    desc += "40:00 - Community Coda & Outro\n\n"
-
-    attachments = dossier['research_attachments'] || []
-    if attachments.any?
-      desc += "RESEARCH & PROVENANCE CITATIONS:\n"
-      attachments.each do |att|
-        desc += "• #{att['title']}: #{att['url'] || att['path']}\n"
-      end
-      desc += "\n"
-    end
-
-    desc += "Interactive transcripts and companion analysis: https://www.just3ws.com/series/the-sound-above/\n"
-    desc += "Support independent compute, hosting, and digital archive preservation on Patreon: https://patreon.com/whoistechcmty\n\n"
-    hashtags = (dossier.dig('lexicon', 'hashtags') || []).join(' ')
-    desc += (hashtags.empty? ? '#SoftwareCraftsmanship #TheSoundAbove #TechnicalRewatch' : hashtags)
-    desc
-  end
-
   def evaluate_transcript_parity(dossier)
     slug = dossier['slug']
     yt_id = dossier['youtube_video_id'] || dossier['resolved_youtube_id']
@@ -260,7 +186,7 @@ class StageEpisodeWorkflow
     elsif dossier['conference'].to_s.include?('Coda') || dossier['conference'].to_s.include?('Presentation') || dossier['conference'].to_s.include?('Pilot')
       { status: 'PASS', message: 'Special broadcast mode (Live Demonstration / Roundtable / Pilot)' }
     else
-      { status: 'WARN', message: "No standalone transcript file found for slug '#{slug}'. Staging uses fallback audio track." }
+      { status: 'WARN', message: "No standalone transcript file found for slug '#{slug}'. Check the source recording before preparation." }
     end
   end
 
@@ -325,29 +251,13 @@ class StageEpisodeWorkflow
     }
   end
 
-  def calculate_staged_quota(dossier)
-    units = 50 # Base cost for staged video metadata update
-    units += 50 if dossier['youtube_video_id'] # Captions upload cost
-    units
-  end
-
-  def evaluate_patreon_credits
-    if File.exist?(ROSTER_PATH)
-      data = JSON.parse(File.read(ROSTER_PATH)) rescue {}
-      count = (data['members'] || []).count { |m| m['status'] == 'active_patron' }
-      { status: 'PASS', message: "Patron roster active with #{count} verified underwriters" }
-    else
-      { status: 'PASS', message: 'Sandbox patron roster loaded cleanly' }
-    end
-  end
-
   def print_human_report(r)
     puts '=================================================================='
     puts " 🛠️ STAGED EPISODE WORKFLOW VERIFICATION: EPISODE #{r[:episode]}"
     puts '=================================================================='
     puts "Title:     #{r.dig(:staged_artifacts, :title)}"
     puts "Timestamp: #{r[:timestamp]}"
-    puts "Status:    #{r[:passed] ? '✅ STAGING VERIFIED (READY TO BROADCAST)' : '❌ STAGING BLOCKED'}"
+    puts "Status:    #{r[:passed] ? '✅ LOCAL PREPARATION CHECKS PASSED' : '❌ CHECKS NEED ATTENTION'}"
     puts '------------------------------------------------------------------'
     puts 'PIPELINE VERIFICATION GATES:'
     r[:checks].each do |check_name, res|
@@ -355,9 +265,8 @@ class StageEpisodeWorkflow
       printf "  %-28s [%s] %s\n", check_name.to_s.gsub('_', ' ').capitalize, badge, res[:message]
     end
     puts '------------------------------------------------------------------'
-    puts 'RESOURCE & QUOTA TELEMETRY:'
-    puts "  Quota Required:    #{r.dig(:metrics, :quota_units_needed)} units (#{r.dig(:metrics, :quota_percent)}% of daily pool)"
-    puts "  Teleprompter Acts: #{r.dig(:staged_artifacts, :teleprompter_acts_count)} acts compiled"
+    puts 'LOCAL MATERIALS:'
+    puts "  Teleprompter Acts: #{r.dig(:staged_artifacts, :teleprompter_acts_count)} acts checked"
     puts '------------------------------------------------------------------'
     puts 'OBS OVERLAY PAYLOAD (SIMULATED):'
     payload = r.dig(:staged_artifacts, :overlay_preview) || {}
@@ -374,11 +283,10 @@ class StageEpisodeWorkflow
              bin/stage_episode_workflow.rb --all
 
       Examples:
-        bin/stage_episode_workflow.rb 0         # Rehearse Pilot episode
-        bin/stage_episode_workflow.rb 1         # Rehearse Episode 1
-        bin/stage_episode_workflow.rb 36        # Rehearse Coda 1
-        bin/stage_episode_workflow.rb 37        # Rehearse Coda 2 (Finale)
-        bin/stage_episode_workflow.rb --all     # Verify staging across all episodes
+        bin/stage_episode_workflow.rb 0         # Check local Episode 0 materials
+        bin/stage_episode_workflow.rb 1         # Check local Episode 1 materials
+        bin/stage_episode_workflow.rb -1        # Check local Fluffle materials
+        bin/stage_episode_workflow.rb --all     # Check all numeric archive dossiers
     USAGE
   end
 end

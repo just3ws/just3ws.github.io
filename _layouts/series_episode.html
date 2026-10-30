@@ -11,7 +11,7 @@ body_class: surface-editorial
 
   <div class="intel-hero">
     <div class="intel-hero-inner">
-      <span class="intel-badge">The Sound Above · UGtastic Technical Rewatch Series · Episode {{ page.episode_number_formatted }}</span>
+      <span class="intel-badge">The Sound Above · {% if ep.number <= 17 %}Season One · Working Plan{% else %}Archive Candidate{% endif %} · Episode {{ page.episode_number_formatted }}</span>
       <h1 class="intel-title">{{ ep.title }}</h1>
       <p class="intel-subtitle">
         A revisit of the UGtastic interview with {{ ep.interviewee }} recorded on-site at {{ ep.conference }} ({{ ep.year }}) in {{ ep.location | default: "Chicago, IL" }}.
@@ -32,7 +32,7 @@ body_class: surface-editorial
       {% assign p_label = "Ep " | append: prev.number | append: ": " | append: prev.interviewee %}
     {% else %}
       {% assign p_url = "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" %}
-      {% assign p_label = "Ep 00: The Mirage of Competence" %}
+      {% assign p_label = "Ep 0: Testing the Audio Fix" %}
     {% endif %}
 
     {% if next %}
@@ -52,7 +52,6 @@ body_class: surface-editorial
       next_url=n_url
       next_label=n_label
       current_movement=ep.era_name
-      total_episodes=page.total_episodes
       wayfinding_id="top"
     %}
 
@@ -99,7 +98,7 @@ body_class: surface-editorial
     <!-- Editorial Inquiries & Historical Context -->
     <section class="monograph-section" style="margin-bottom: 3rem;">
       <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--color-heading, #0f172a); border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
-        Core Inquiry: The Spoken Record
+        Questions for this episode
       </h2>
       <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
         {{ ep.sound_above_inquiry }}
@@ -114,26 +113,18 @@ body_class: surface-editorial
         </p>
       {% endif %}
 
-      {% if ep.ai_era_parallel %}
-        <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, #0f172a); margin-top: 1.75rem; margin-bottom: 0.75rem;">
-          The AI-Era Parallel
-        </h3>
-        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
-          {{ ep.ai_era_parallel }}
-        </p>
-      {% endif %}
     </section>
 
-    <!-- Why This Matters: Preserving Knowledge Across Software Eras -->
+    <!-- Why revisit this recording -->
     <section class="monograph-section" style="margin-bottom: 3rem;">
       <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--color-heading, #0f172a); border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
-        Carrying Knowledge Across the Transition
+        Why revisit this recording?
       </h2>
       <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
-        As engineering teams navigate rapid shifts toward automated synthesis, agentic assistants, and generative code pipelines, foundational muscle memory around debugging, system cohesion, and human peer review risks being eclipsed by sheer volume.
+        These are conversations from a particular time and place. Rewatching them gives me a chance to hear what people actually said, check my memories against the recording, and share any useful context I can add now.
       </p>
       <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
-        Preserving these 2009 to 2015 dialogues is not an exercise in nostalgia. It is an empirical manual for how software practitioners held their craft accountable, questioned industry dogmas, and built self-sustaining community cultures.
+        The original interview and its transcript are linked below. My commentary is one person's reading of that record.
       </p>
     </section>
 
@@ -147,13 +138,10 @@ body_class: surface-editorial
           📖 <a href="/interviews/{{ ep.slug }}/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Interactive Transcript for {{ ep.interviewee }}</a> (Seek into video directly from dialogue turns)
         </li>
         <li>
-          🏛️ <a href="/timeline/community/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Chicago Community Timeline</a> (See where this recording sits within the 17-year community ledger)
+          🏛️ <a href="/timeline/community/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Chicago Community Timeline</a> (Additional dates and context)
         </li>
         <li>
-          📺 <a href="/series/the-sound-above/" style="font-weight: 600; color: var(--color-primary, #0f766e);">The Sound Above Series Curriculum Hub</a> (Browse all 35 rewatch episodes and 2 codas)
-        </li>
-        <li>
-          ▶️ <a href="https://www.youtube.com/playlist?list=PLVcmLmfz2uyA" target="_blank" rel="noopener" style="font-weight: 600; color: var(--color-primary, #0f766e);">YouTube Rewatch Series Playlist</a> (Subscribe and watch live broadcasts)
+          📺 <a href="/series/the-sound-above/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Season One working outline</a> (See the current plan and later candidates)
         </li>
       </ul>
     </section>
@@ -166,7 +154,6 @@ body_class: surface-editorial
       next_url=n_url
       next_label=n_label
       current_movement=ep.era_name
-      total_episodes=page.total_episodes
       wayfinding_id="bottom"
     %}
 
@@ -197,8 +184,8 @@ body_class: surface-editorial
   },
   "isPartOf": {
     "@type": "CreativeWorkSeries",
-    "name": "The Sound Above: UGtastic Technical Rewatch Series",
-    "url": "https://www.youtube.com/playlist?list=PLVcmLmfz2uyA"
+    "name": "The Sound Above: Season One",
+    "url": "https://just3ws.com/series/the-sound-above/"
   }
 }
 </script>

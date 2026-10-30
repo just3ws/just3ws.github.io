@@ -7,7 +7,6 @@ require 'open3'
 
 RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
-  let(:telemetry_path) { File.join(root_dir, '_data', 'youtube_pipeline_telemetry.json') }
   let(:dashboard_path) { File.join(root_dir, 'youtube', 'dashboard.html') }
   let(:cli_path) { File.join(root_dir, 'bin', 'youtube_pipeline.rb') }
   let(:teleprompter_cli) { File.join(root_dir, 'bin', 'generate_sound_above_teleprompter.rb') }
@@ -20,33 +19,20 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
       expect(File.executable?(cli_path)).to be true
     end
 
-    it 'executes status command cleanly with zero exit code' do
-      output = `ruby #{cli_path} status`
-      expect($?.success?).to be true
-      expect(output).to include('YOUTUBE PUBLISHING PIPELINE & OPERATIONAL STATUS')
-      expect(output).to include('@whoistechcmty')
-      expect(output).to include('ASSET & PUBLICATION FUNNEL')
+    it 'fails closed for publisher operations owned by media-pipeline' do
+      %w[audit status telemetry quota resequence upload captions playlist].each do |command|
+        _stdout, stderr, status = Open3.capture3('ruby', cli_path, command)
+        expect(status.exitstatus).to eq(64)
+        expect(stderr).to include('media-pipeline')
+      end
     end
 
-    it 'executes audit command and reports zero em-dash violations' do
-      output = `ruby #{cli_path} audit`
-      expect($?.success?).to be true
-      expect(output).to include('Zero Em-Dash Invariant:   ✅ PASS (0 violations)')
-      expect(output).to include('Overall Compliance Score:')
-    end
-
-    it 'executes schedule command and displays publication calendar' do
+    it 'shows the flexible Season One working target without release dates' do
       output = `ruby #{cli_path} schedule`
       expect($?.success?).to be true
-      expect(output).to include('MEDIA PUBLICATION CALENDAR & RELEASE TIMELINE')
-      expect(output).to include('LIVESTREAM SCHEDULING & ORCHESTRATION')
-    end
-
-    it 'executes telemetry command and generates valid telemetry' do
-      output = `ruby #{cli_path} telemetry`
-      expect($?.success?).to be true
-      expect(output).to include('Telemetry generated successfully')
-      expect(File.exist?(telemetry_path)).to be true
+      expect(output).to include('SEASON ONE WORKING PLAN')
+      expect(output).to include('No release dates are set.')
+      expect(output).to include('17 interviews')
     end
   end
 
@@ -60,12 +46,9 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
       output = `ruby #{teleprompter_cli} --episode 1`
       expect($?.success?).to be true
       expect(output).to include('THE SOUND ABOVE: TELEPROMPTER & PRODUCTION RUNDOWN')
-      expect(output).to include('ACT 1: COLD OPEN & PERSONAL GROUNDING')
-      expect(output).to include('ACT 2: SETTING THE HISTORICAL SCENE')
-      expect(output).to include('ACT 3: THE CORE INQUIRY: THE SOUND ABOVE')
-      expect(output).to include('ACT 4: HALLWAY REWATCH & VIDEO REACTION')
-      expect(output).to include('ACT 5: THE AI-ERA PARALLEL & TERMINAL WORKBENCH')
-      expect(output).to include('ACT 6: COMMUNITY CODA, OUTRO & NEXT STREAM')
+      expect(output).to include('ACT 1: START WITH THE MOMENT')
+      expect(output).to include('ACT 2: SET THE CONTEXT')
+      expect(output).to include('ACT 6: CLOSE WITH WHAT CHANGED')
     end
   end
 
@@ -73,40 +56,10 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
     it 'exists and contains valid schedule structure' do
       expect(File.exist?(schedule_path)).to be true
       data = YAML.safe_load(File.read(schedule_path))
-      expect(data).to have_key('cadence')
+      expect(data['status']).to eq('working_plan')
+      expect(data['target_interviews']).to eq(17)
       expect(data).to have_key('schedule')
-      expect(data['schedule'].size).to be >= 4
-    end
-  end
-
-  describe 'Telemetry Dataset (_data/youtube_pipeline_telemetry.json)' do
-    let(:telemetry) { JSON.parse(File.read(telemetry_path)) }
-
-    it 'contains required top-level schema keys' do
-      expect(telemetry).to have_key('generated_at')
-      expect(telemetry).to have_key('channel')
-      expect(telemetry).to have_key('metrics')
-      expect(telemetry).to have_key('conferences')
-      expect(telemetry).to have_key('overlay_state')
-      expect(telemetry).to have_key('publication_schedule')
-      expect(telemetry).to have_key('sound_above_sequence')
-      expect(telemetry).to have_key('errata_catalog')
-      expect(telemetry).to have_key('episode_dossiers')
-      expect(telemetry['episode_dossiers'].size).to eq(38)
-      expect(telemetry).to have_key('assets')
-    end
-
-    it 'contains accurate asset metrics' do
-      metrics = telemetry['metrics']
-      expect(metrics['total_canonical_assets']).to be >= 200
-      expect(metrics['youtube_live_videos']).to be >= 200
-      expect(metrics['daily_quota_budget']).to eq(10_000)
-    end
-
-    it 'contains zero em dashes across all staged assets' do
-      telemetry['assets'].each do |asset|
-        expect(asset['title']).not_to include("\u2014"), "Asset #{asset['id']} title contains an em dash: #{asset['title']}"
-      end
+      expect(data['schedule']).to eq([])
     end
   end
 
@@ -126,28 +79,20 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
     end
 
     it 'contains teleprompter studio and publication schedule sections' do
-      expect(content).to include('The Sound Above: 6-Act Production Rundown Studio')
-      expect(content).to include('Thematic Release Sequence & Media Pipeline')
-      expect(content).to include('Sustainable Funding Channels for Independent Engineering Craft')
+      expect(content).to include('Season One working plan')
+      expect(content).to include('Current outline')
     end
 
-    it 'contains Episode Studio and Narrative Workshop controls' do
-      expect(content).to include('tab-btn-workshop')
-      expect(content).to include('tab-pane-workshop')
-      expect(content).to include('ws-input-title')
-      expect(content).to include('ws-input-theme')
-      expect(content).to include('ws-input-inquiry')
-      expect(content).to include('ws-input-parallel')
-      expect(content).to include('ws-story-act1')
-      expect(content).to include('ws-preview-pane-rundown')
-      expect(content).to include('ws-preview-pane-desc')
-      expect(content).to include('ws-preview-pane-yaml')
+    it 'keeps YouTube publishing in media-pipeline' do
+      expect(content).to include('https://media-pipeline.localhost/')
+      expect(content).to include('This content repository holds scripts')
+      expect(content).not_to include('API v3 Authorized')
+      expect(content).not_to include('youtube.upload')
     end
 
     it 'links to key YouTube and site control surfaces' do
-      expect(content).to include('https://studio.youtube.com')
-      expect(content).to include('https://www.youtube.com/@whoistechcmty')
-      expect(content).to include('/dashboard/')
+      expect(content).to include('/series/the-sound-above/')
+      expect(content).to include('/obs/')
     end
   end
 
@@ -156,9 +101,9 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
 
     it 'exists and has valid structure' do
       expect(File.exist?(strategy_path)).to be true
-      expect(content).to include('The Core Narrative Flywheel: Tri-Format Architecture')
-      expect(content).to include('Audience Sequencing: The Six-Movement Narrative Arc')
-      expect(content).to include('Sustainable Funding & Monetization Architecture')
+      expect(content).to include('Season One Working Plan')
+      expect(content).to include('17 interviews')
+      expect(content).to include('Publishing boundary')
     end
 
     it 'contains zero em dashes' do
@@ -171,29 +116,15 @@ RSpec.describe 'YouTube Publishing Pipeline and Overview Dashboard' do
 
     it 'links directly to the YouTube Operations Cockpit' do
       expect(dashboard_content).to include('/youtube/dashboard/')
-      expect(dashboard_content).to include('YouTube Publishing Cockpit')
+      expect(dashboard_content).to include('The Sound Above: Season One Plan')
     end
   end
 
-  describe 'Schedule Resequencer & Task Coordinator (TASK-289)' do
-    it 'classifies release milestones with human or autonomous executor' do
-      schedule = YAML.safe_load(File.read(schedule_path), permitted_classes: [Date, Time], aliases: true)
-      schedule['schedule'].each do |week|
-        week['releases'].each do |rel|
-          expect(rel).to have_key('executor')
-          expect(%w[human autonomous]).to include(rel['executor'])
-        end
-      end
-    end
-
-    it 'supports resequence --set command and syncs dates to episode dossiers' do
-      cmd = [cli_path, 'resequence', '--set', '2,2026-10-20']
-      stdout, stderr, status = Open3.capture3(*cmd)
-      expect(status.success?).to be true
-      expect(stdout).to include('Successfully set Episode 2 date to 2026-10-20')
-
-      ep2_dossier = YAML.safe_load(File.read(File.join(root_dir, '_data', 'episodes', 'episode-02.yml')), permitted_classes: [Date, Time], aliases: true)
-      expect(ep2_dossier['target_broadcast_date']).to eq('2026-10-20')
+  describe 'Publisher ownership boundary' do
+    it 'retires the legacy sweeper entrypoint' do
+      _stdout, stderr, status = Open3.capture3('ruby', File.join(root_dir, 'bin', 'youtube_sweeper.rb'))
+      expect(status.exitstatus).to eq(64)
+      expect(stderr).to include('media-pipeline')
     end
   end
 end

@@ -425,7 +425,7 @@ ERRATA_TOPICS = [
       "The April 2023 breakthrough: early ChatGPT assistance and Georgi Gerganov's whisper.cpp opening the door to local speech recognition.",
       "The Dead Rabbit Radio laboratory: why Jason Carpenter's solo daily podcast was the ideal testbed for single-speaker cadence and endurance.",
       "The 5-node Raspberry Pi cluster: bin-packing audio files by size across node01 through node05, Net::SSH rsync distribution, and mandatory 120-second thermal cooldowns.",
-      "Reaching out to Jason Carpenter: working in the open, gracious creator response, and CC BY-NC-ND attribution across 2,034 generated transcript files.",
+      "Reaching out to Jason Carpenter: working in the open, gracious creator response, and CC BY-NC-ND attribution across 1K+ matching transcript pairs.",
       "The wall of imposter syndrome: attempting to aggregate fragmented RSS/ATOM feeds, cognitive overload from enterprise Observability work, the shame of stepping away, and honoring the debt today."
     ],
     demonstration_assets: [

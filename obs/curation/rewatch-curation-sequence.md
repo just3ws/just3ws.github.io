@@ -1,67 +1,36 @@
-# The Sound Above: UGtastic Oral History Rewatch Series
+# The Sound Above: Season One Working Plan
 
-## Executive Overview and Master Curation Guide
+This is an editorial and production guide for revisiting the UGtastic archive. It is a working plan, not a release calendar.
 
-Curated and hosted by Mike Hall (SCMC Co-Founder, UGtastic Host).
+## Scope
 
-This curation guide provides the complete thematic sequencing, historical context, discussion prompts, and technical production notes for livestreaming the UGtastic oral history rewatch series.
+- Season One has a target of 17 interviews.
+- Episodes -1 and 0 are setup pieces and do not count toward that target.
+- Episodes 18–35 are later archive candidates, not commitments.
+- There is no release schedule. The order and scope can change after reviewing the recordings.
+- The original interview and transcript are the source. Commentary should follow what is there.
 
----
+## Editorial approach
 
-## The Core Philosophy: "The Sound Above"
+Start with a question raised by the conversation. Give the viewer enough context to understand the guest and the recording. Use a present-day connection only when it follows naturally from what the guest said. Do not force every episode into a shared conclusion or claim that a person, group, or interview caused a broader change without evidence.
 
-In January 2025, Mike Hall authored the foundational essay titled "The Sound Above: Bridging Inspiration and Understanding in Tech":
+The archive covers Chicago user groups, conferences, and technical conversations from the Software Craftsmanship period. It includes interviews with practitioners and organizers, recorded between 2011 and 2015.
 
-> "The sound above represents the echoes of ideas, inspirations, and cultural touchstones that have shaped an industry or a mindset. It is the legacy carried forward by those who came before, forming an unspoken language and shared context among those who lived through it... If we want the next generation to care about the sound above, to find inspiration in the values and stories that shaped us, we must first help them thrive. Only then can we inspire them to look up, to hear the echoes of the past and add their own notes to the sound of the future."
-
-When listening to great musicians, jazz players, or painters, we often ask: who inspired them before they became household names? What records were playing in their apartments when they were teenagers? Who was their teacher before they stepped onto the main stage?
-
-In software engineering, the same truth applies. The industry is currently undergoing a massive transformation with the arrival of large language models, agentic workflows, and automated code generation. As we navigate questions about the identity and future of software development, the grassroots lessons from the Software Craftsmanship era have never been more urgent.
-
-The Software Craftsmanship movement became global, but its deepest roots are planted firmly in Chicago:
-- The 2008 Libertyville Summit that drafted the Software Craftsmanship Manifesto
-- Mike Hall signing the Manifesto as Signatory #106 on March 6, 2009
-- The co-founding of Software Craftsmanship McHenry County (SCMC) by Mike Hall, Ryan Gerry, and Jim Suchy (following the late 2009 CDG inception), with Ryan Gerry continuing to run SCMC after Mike stepped away after the two-year anniversary
-- The emergence of 8th Light, Obtiva, Chicago Alt.NET, and ChicagoRuby
-- Over 200 video interviews recorded under the UGtastic banner at conferences including SCNA, RailsConf, GOTO Chicago, and regional user groups
-
-This rewatch series is not passive nostalgia. It is an active forensic investigation:
-1. What were we actually doing in this space when the cameras rolled?
-2. What were the unspoken connections between practitioners?
-3. Who inspired the interviewees before they wrote the books and keynoted the conferences?
-4. How do these exact lessons on deliberate practice, feedback loops, modular design, and professional stewardship guide our craft as we orchestrate autonomous AI agents today?
-
----
-
-## Why Rework the Sequence?
-
-The original UGtastic videos were recorded opportunistically in conference hallways, hotel lobbies, and meetup backrooms between 2010 and 2015. They were published across Vimeo, Tumblr, and early video platforms in the order they were edited, not in a coherent narrative arc.
-
-This curation reworks the archive into 37 curated sessions across six cohesive thematic movements:
-1. **Movement 1: The Chicago Workshop**: The pre-manifesto rooms, practical autonomy in enterprise .NET, and founding grassroots communities.
-2. **Movement 2: The Practice and the Dojo**: Deliberate practice, code katas, browser automation roots, and the pursuit of sub-second feedback loops.
-3. **Movement 3: The Human Communication Layer and Inclusion**: Mentorship hospitality, overcoming developer shame, RailsBridge pipelines, and deliberate discovery.
-4. **Movement 4: Philosophy, Empathy and Craftsmanship**: Humility, mental health in tech, social contracts, and passing the torch.
-5. **Movement 5: The Architecture & Testing Discipline**: The "TDD is Dead" corridor debates, client-side frameworks, and deconstructing complexity.
-6. **Movement 6: The AI Horizon and The Observable Control Plane**: Applying seventeen years of craftsmanship disciplines to multi-agent fleets, sovereign inference, and deterministic system cartography.
-
----
-
-## The Six Curated Movements
+## Archive groups
 
 ### The Chicago Workshop
 
-#### Episode 01: Sergio Pereira: The First Room: Chicago Alt.NET & Practical Autonomy in Enterprise .NET
+#### Episode 01: Sergio Pereira and Chicago Alt.NET
 - **Interviewee**: Sergio Pereira
 - **Conference / Date**: SCNA 2011 (2011)
 - **Location**: Chicago, IL
 - **Slug**: `sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011`
-- **The Sound Above Inquiry**: Who inspired the engineers adopting open tools and agile testing inside enterprise Microsoft environments? How did grassroots peer groups form before commercial developer platforms existed?
-- **Chicago Context**: Chicago Alt.NET was the precursor room for dozens of Chicago developers who later founded startups, consultancy practices, and user groups.
+- **The Sound Above Inquiry**: What made people come back to Chicago Alt.NET?
+- **Chicago Context**: A monthly group where members shared talks and discussed software beyond .NET.
+- **Present-day Echo**: Engineers still benefit from places to share work, ask questions, and judge new tools together.
 - **Forensic Primary Sources**:
-  - [November 12, 2008 Meeting Archive (Wayback Machine)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home): Mike Hall presenting NHaml alongside Adam Tybor on Spark at Redpoint Technologies (Sears Tower).
+  - [November 12, 2008 Meeting Archive (Wayback Machine)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home): Mike Hall presented NHaml alongside Adam Tybor on Spark at Redpoint Technologies.
   - [Chicago Alt.NET Slide Decks (SlideShare Archive)](https://www.slideshare.net/chicagoaltnet): Historical slide decks from Sergio Pereira and Chicago community speakers.
-- **AI Era Parallel**: Just as Alt.NET questioned monolithic enterprise frameworks, modern engineers must question monolithic cloud AI abstractions and reclaim local control.
 - **Companion Video**: None (Primary Oral History Focus)
 - **Status**: cued
 
@@ -454,7 +423,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 - **Companion Video**: Agile in 3 Minutes Retrospective
 - **Status**: planned
 
-#### Episode 36: Mike Hall (Host Monologue & Live Demonstration): Without zdots, There Was Nothing: Craftsmanship for Multi-Agent Fleets
+#### Later Candidate: Mike Hall (Host Monologue & Live Demonstration): Without zdots, There Was Nothing: Craftsmanship for Multi-Agent Fleets
 - **Interviewee**: Mike Hall (Host Monologue & Live Demonstration)
 - **Conference / Date**: SCMC 2026 Presentation (2026)
 - **Location**: Chicago, IL
@@ -465,7 +434,7 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 - **Companion Video**: The Observable Control Plane Technical Walkthrough
 - **Status**: planned
 
-#### Episode 37: Community Panel & Open Roundtable: The Sound Above Roundtable: What We Carry Forward
+#### Later Candidate: Community Panel & Open Roundtable: The Sound Above Roundtable: What We Carry Forward
 - **Interviewee**: Community Panel & Open Roundtable
 - **Conference / Date**: Live Stream Roundtable (2026)
 - **Location**: Chicago, IL
@@ -479,22 +448,22 @@ This curation reworks the archive into 37 curated sessions across six cohesive t
 
 ---
 
-## Live Stream Show Format and Segment Guide
+## Flexible Recording Outline
 
-Each rewatch stream is calibrated for a 60 to 90 minute broadcast:
+Use these blocks as a reminder, not a timed script. Let the recording and the conversation set the length.
 
 ```
-[00:00 - 05:00]  Scene 01: Starting Soon
+[Optional]          Scene 01: Starting Soon
                  Warm music, quote carousel, cued episode metadata.
 
-[05:00 - 15:00]  Scene 02: Monologue / The Frame
+[Opening]           Scene 02: Monologue / Context
                  Mike sets the historical stage:
                  - What year was it?
                  - What was happening in Chicago at that exact moment?
                  - Who was this person to the community?
                  - What was "the sound above" for them?
 
-[15:00 - 45:00]  Scene 03 & 04: The Rewatch & Reaction
+[Rewatch]           Scene 03 & 04: Watch, pause, and respond
                  Playing the archival video from Chromium browser:
                  - Listening closely to phrasing and unspoken context
                  - Pausing at inflection points

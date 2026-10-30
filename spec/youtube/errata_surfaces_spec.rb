@@ -24,18 +24,11 @@ RSpec.describe 'Errata episode surfaces' do
     expect(post.size).to eq(1)
   end
 
-  it 'exposes errata dossiers in telemetry without changing the 38 numeric dossiers' do
-    telemetry = JSON.parse(read.call('_data/youtube_pipeline_telemetry.json'))
-    expect(telemetry['episode_dossiers'].size).to eq(38)
-    errata_ids = telemetry['errata_dossiers'].map { |d| d['errata_slug'] || d['episode'] }
-    expect(errata_ids).to include('errata-fluffle-precursor')
-  end
-
-  it 'offers Errata in the teleprompter selector and resolves it client side' do
+  it 'keeps the local dashboard focused on content and routes publication to media-pipeline' do
     html = read.call('youtube/dashboard.html')
-    expect(html).to include('<option value="errata-fluffle-precursor">')
-    expect(html).to include("epNum.indexOf('errata-') === 0")
-    expect(html).to include('errata_dossiers')
+    expect(html).to include('Season One working plan')
+    expect(html).to include('https://media-pipeline.localhost/')
+    expect(html).not_to include('youtube.upload')
   end
 
   %w[

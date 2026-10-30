@@ -81,7 +81,7 @@ What I Do:
 Selected Work & Proof:
 1. OneMain Financial (Staff Software Engineer): Led acquisitions platform architecture, resolved multi-step session state integrity failures, founded the enterprise OpenTelemetry Working Group, and modernized core Rails services under continuous production load.
 2. The Sovereign Verification Project: A 3-part forensic systems investigation analyzing DSP audio restoration, dual-model generative divergence, and domain boundaries under 345,000-volt high-tension transmission lines (just3ws.com/series/ai-competence/).
-3. The Sound Above: A 37-episode technical rewatch series examining twenty years of Software Craftsmanship history, community building, and engineering stewardship (just3ws.com/series/the-sound-above/).
+3. The Sound Above: a working plan for revisiting the UGtastic interview archive, with a 17-interview target for Season One (just3ws.com/series/the-sound-above/).
 4. Phalanx Duel: A tactical rules engine and zero-indirection state machine built in Go, TypeScript, and SwiftUI (just3ws.com/phalanx-duel/).
 
 Full Resume & Technical Deep Dives: https://just3ws.com
@@ -107,7 +107,7 @@ LinkedIn allows pinning links, media, and articles at the top of the profile. Pi
 
 3. **The Sound Above Technical Rewatch Series**
    - **URL:** `https://just3ws.com/series/the-sound-above/`
-   - **Title:** The Sound Above: 37-Episode UGtastic Technical Rewatch Series
+   - **Title:** The Sound Above: UGtastic Interview Archive Rewatch
    - **Description:** Historical practitioner dialogues and contemporary systems commentary examining software craftsmanship, testing, and autonomy from 2011 to 2026.
 
 4. **Systems Cartography & Architecture Retrospectives**
@@ -214,7 +214,7 @@ A deterministic, multiplayer tactical rules engine that translates physical boar
 - **URL:** `https://just3ws.com/series/the-sound-above/`
 - **Description:**
 ```text
-A sovereign archival platform and 37-episode technical rewatch series spanning 218 transcribed developer dialogues recorded between 2006 and 2026. Features speech-to-text forensic transcription, an open SQLite/DuckDB datalake, interactive transcripts, and contemporary systems leadership commentary bridging historical craftsmanship with AI-era software architecture.
+A searchable archive of developer interviews and transcripts, with a flexible working plan for revisiting selected conversations from the UGtastic archive. Features speech-to-text forensic transcription, an open SQLite/DuckDB datalake, interactive transcripts, and contemporary systems leadership commentary bridging historical craftsmanship with AI-era software architecture.
 ```
 
 ---

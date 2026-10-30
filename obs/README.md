@@ -22,24 +22,11 @@ When we look back at the artists, musicians, and systems thinkers who shaped an 
 - What were the grassroots rooms, late-night pairing sessions, and hallway discussions that birthed their ideas?
 - What was the sound above?
 
-### The Chicago Craftsmanship Roots and The AI Era
+### The Sound Above
 
-The Software Craftsmanship movement became global, but its deepest roots are in Chicago:
-- The 2008 Libertyville Summit that drafted the Software Craftsmanship Manifesto
-- Mike Hall signing the Manifesto as Signatory #106 on March 6, 2009
-- The founding of Software Craftsmanship McHenry County (SCMC) in spring 2009
-- The vibrant communities of Chicago Alt.NET, ChicagoRuby, 8th Light, and Obtiva
-- Over 200 video interviews recorded under the UGtastic banner between 2010 and 2015
+This repository holds the recording setup and working episode notes for a rewatch of the UGtastic archive. Season One has a target of 17 interviews. Episodes -1 and 0 are setup pieces; the rest of the archive remains a pool of later candidates. There is no release schedule.
 
-As the industry transitions into the AI era and confronts massive questions regarding developer identity, code provenance, and autonomous software generation, these historical conversations hold urgent, timeless lessons:
-- Deliberate practice and code katas (Corey Haines)
-- Testing discipline, Kent Beck's Four Rules of Simple Design, and the TDD debates (DHH, Uncle Bob)
-- Software as human communication, deliberate discovery, and avoiding certification dogma (Dan North)
-- System boundaries, fast feedback loops, and Unix workbench ergonomics (Gary Bernhardt)
-- Unspoken team sociology and cognitive safety (Sarah Mei)
-- Small methods, duck typing, and radical simplicity (Sandi Metz)
-
-This rewatch series investigates how these foundational disciplines directly inform our stewardship of autonomous multi-agent fleets, sovereign local inference, and deterministic system cartography today.
+Start each episode with the guest and the conversation. Add historical context where it helps. Present-day connections are optional and should come from the recording, not a required segment template.
 
 ---
 
@@ -66,7 +53,7 @@ obs/
 │   ├── stream-brb.html               # Intermission card: "Holding the Thread"
 │   └── stream-outro.html             # Closing credits with archive links and summary
 ├── curation/
-│   ├── rewatch-curation-sequence.md  # 37-episode master curation guide & thematic movements
+│   ├── rewatch-curation-sequence.md  # Archive map; Season One is a 17-episode working plan
 │   ├── sequence-manifest.json        # Machine-readable episode roadmap and metadata
 │   └── errata-manifest.json          # Pre-curated catalog for Errata readings, concepts & artifacts
 ├── scripts/
@@ -97,7 +84,7 @@ The scene collection (`ugtastic-sound-above.json`) provides eight dedicated prod
 | :--- | :--- | :--- | :--- |
 | **01. Starting Soon** | Ambient slate background, pre-stream title, episode card, animated pulse | Off / Bumper | Pre-stream countdown and audience arrival |
 | **02. Monologue / Full Camera** | Host camera full screen with Lower-Third overlay | Mic/Aux only | Opening thesis, historical context, and concluding takeaways |
-| **03. Reaction - Video Focus** | Full-frame Chromium interview + 480x270 Host Camera inset (lower right) + Now Watching HUD | Mic/Aux + Chromium Video Audio | Watching UGtastic interviews, pausing, and commenting |
+| **03. Reaction - Video Focus** | Full-frame Chromium interview + 480x270 Host Camera inset (lower right) + transient Now Watching card (lower left) | Mic/Aux + Chromium Video Audio | Watching UGtastic interviews, pausing, and commenting |
 | **04. Split Screen - Video & Research** | Side-by-side: Chromium video on left, `just3ws.localhost` on right, centered host cam | Mic/Aux + Chromium Video Audio | Comparing interview moments directly against transcripts and timeline |
 | **05. Workbench - Code & Terminal** | Full terminal/editor window capture + Host Camera PiP (lower right) | Mic/Aux | Live code analysis, git archaeology, and zdots tool demos |
 | **06. Guest & Co-Host Discussion** | Two-up side-by-side camera boxes + shared screen inset | Mic/Aux; add guest app audio per session | Joint retrospectives with Chicago tech veterans |
@@ -201,7 +188,7 @@ file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/overlays/lower-third
 
 - **[Recording Playbook](../docs/recording-playbook.md)**: Canonical OBS preparation, test capture, recording, streaming, recovery, and close workflow.
 - **[Broadcast Operations Overview](../docs/runbooks/broadcast-operations-playbook.md)**: Archetype overview and links to the canonical recording procedure.
-- **[Curation Sequence Guide](curation/rewatch-curation-sequence.md)**: Full 37-episode roadmap across six movements.
+- **[Curation Sequence Guide](curation/rewatch-curation-sequence.md)**: Archive map with a 17-interview Season One working plan; later picks remain open.
 - **[Reaction and Coding Setup](docs/reaction-and-coding-setup.md)**: Window scaling, Retina ergonomics, and privacy boundaries.
 - **[macOS Audio Routing](docs/audio-routing-macos.md)**: ScreenCaptureKit audio setup, vocal processing, and multitrack recording.
 - **[Broadcast CLI Manual (`broadcast.1`)](../man/man1/broadcast.1)**: UNIX manual page for `bin/broadcast`.

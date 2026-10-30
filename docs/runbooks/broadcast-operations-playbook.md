@@ -35,11 +35,14 @@ bin/broadcast --dialogue --guest "Guest Name" --title "Discussion Topic"
 
 Preflight checks repository and local environment contracts. The cue commands update local overlay metadata only. Confirm the resulting cue in `bin/broadcast --status` and the OBS preview.
 
-## Dashboard and teleprompter
+## Episode outline and publishing
 
-- Recording controls and episode cueing: `https://www.just3ws.localhost/youtube/dashboard/#tab-live`
-- Episode rundown and Textream launch/export: `https://www.just3ws.localhost/youtube/dashboard/#tab-teleprompter`
-- The dashboard cue control reports local endpoint success or error. Its checkboxes are operator reminders, not hardware health checks.
+- Season One working outline: `https://www.just3ws.localhost/youtube/dashboard/`
+- Episode cue and status: `bin/broadcast --rewatch <number>` and `bin/broadcast --status`
+- Recording playbook: `docs/recording-playbook.md`
+- YouTube uploads, captions, metadata, playlists, and quota: media-pipeline
+
+The content-repository page is for planning. It has no publication controls.
 
 ## Operator workflow
 
