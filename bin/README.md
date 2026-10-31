@@ -88,7 +88,7 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 - `youtube_pipeline.rb`: Read-only Season One outline and local metadata audit. YouTube publishing operations belong to media-pipeline.
 - `stage_episode_workflow.rb`: Local episode preparation and rehearsal harness.
 - `patreon_pipeline.rb`: Patreon API v2 compute funding and attribution.
-- `episode_workbench.rb`: Semantic dossier compiler and cue runner.
+- `episode_workbench.rb`: Semantic dossier compiler, batch script packager, and cue runner. Use `prepare N [N ...]` or `prepare --all` for full Markdown and Textream packages.
 
 ### 3. Executive Pitch & Resume Generators (`generate_*`)
 Scripts that read `_data/*.yml` sources and compile pages/artifacts into Jekyll source:

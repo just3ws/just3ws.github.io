@@ -7,8 +7,8 @@
 # role: Episode Semantic Dossier & Production Workbench CLI
 # description: Manages structured episode dossiers (narrative, lexicon, human stories,
 #   research attachments, workflow tasks) and compiles blended teleprompter
-#   rundowns for live OBS broadcasting and YouTube syndication.
-# usage: bin/pipeline media episode <list|show|compile|workshop|stage|validate|cue> [options]
+#   rundowns and local recording packages for OBS.
+# usage: bin/pipeline media episode <list|show|compile|prepare|workshop|stage|validate|cue> [options]
 # ---
 
 require 'json'
@@ -42,6 +42,8 @@ class EpisodeWorkbench
       show_dossier(args.first)
     when 'compile', 'render', 'script'
       compile_episode(args)
+    when 'prepare', 'package'
+      prepare_episodes(args)
     when 'validate', 'audit'
       validate_dossiers
     when 'workshop'
@@ -59,7 +61,7 @@ class EpisodeWorkbench
     end
   end
 
-  # Lists all 35 episodes with narrative completeness, human story status, and attachments
+  # Lists the archive dossiers with narrative completeness, human story status, and attachments
   def list_episodes
     puts '=================================================================='
     puts ' 🎙️ THE SOUND ABOVE: EPISODE SEMANTIC DOSSIERS'
@@ -145,10 +147,11 @@ class EpisodeWorkbench
              "#{attach_count} link#{attach_count == 1 ? '' : 's'}"
     end
     puts '=================================================================='
-    total_numbered = episodes.size + codas.size
-    puts "Total: #{total_numbered} numbered curriculum episodes (prime number 37: #{episodes.size} rewatches + #{codas.size} codas) plus Episode 00 pilot."
+    puts "Archive catalog: #{episodes.size} interview records and #{codas.size} possible codas, plus Episode 00."
+    puts 'Season One working target: 17 interviews. The archive list is not a release commitment.'
     puts "Run `bin/episode_workbench.rb show <ep>` to inspect an episode dossier."
     puts "Run `bin/episode_workbench.rb compile <ep>` to generate a teleprompter rundown."
+    puts "Run `bin/episode_workbench.rb prepare <ep> [<ep> ...]` to create episode scripts and Textream files."
     puts "Run `bin/episode_workbench.rb stage <ep>` to verify in staging mode."
     puts '=================================================================='
   end
@@ -264,6 +267,94 @@ class EpisodeWorkbench
     else
       output_text_rundown(rundown)
     end
+  end
+
+  # Creates a complete local script package for one or more episode dossiers.
+  # Existing packages are preserved unless --force is supplied.
+  def prepare_episodes(args)
+    options = { force: false, cue: false, output_dir: File.join(ROOT_DIR, 'obs', 'teleprompter', 'prepared') }
+    parser = OptionParser.new do |opts|
+      opts.banner = 'Usage: bin/episode_workbench.rb prepare <N|minus-one> [N ...] [options]'
+      opts.on('--all', 'Prepare every numbered episode dossier, including Minus One') { options[:all] = true }
+      opts.on('--force', 'Replace existing generated script packages') { options[:force] = true }
+      opts.on('--cue', 'Cue the single prepared episode in OBS after generating its package') { options[:cue] = true }
+      opts.on('--output-dir PATH', 'Write packages under PATH instead of obs/teleprompter/prepared') do |path|
+        options[:output_dir] = File.expand_path(path)
+      end
+      opts.on('-h', '--help', 'Show preparation options') do
+        puts opts
+        exit 0
+      end
+    end
+
+    targets = parser.parse(args)
+    if options[:all]
+      if targets.any?
+        warn 'Use --all by itself, without episode numbers.'
+        exit 1
+      end
+      targets = [-1] if File.exist?(File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml'))
+      targets += Dir.glob(File.join(EPISODES_DIR, 'episode-*.yml')).filter_map do |path|
+        File.basename(path, '.yml')[/\Aepisode-(\d+)\z/, 1]&.to_i
+      end.sort
+    end
+
+    if targets.empty?
+      warn parser
+      exit 1
+    end
+
+    episode_numbers = targets.map do |target|
+      target == 'minus-one' ? -1 : Integer(target.to_s, 10)
+    rescue ArgumentError
+      warn "Invalid episode number: #{target.inspect}. Use minus-one for Episode -1."
+      exit 1
+    end
+    episode_numbers.uniq!
+
+    if options[:cue] && episode_numbers.size != 1
+      warn '--cue can only be used when preparing one episode because OBS has one active episode cue.'
+      exit 1
+    end
+
+    packages = episode_numbers.map do |number|
+      dossier = load_or_build_dossier(number)
+      unless dossier
+        warn "Episode #{number} was not found in the archive dossiers or sequence manifest."
+        exit 1
+      end
+
+      rundown = generate_rundown(dossier)
+      pages = rundown[:acts].map { |act| act[:teleprompter_script] }
+      package_name = number == -1 ? 'episode-minus-one' : format('episode-%02d', number)
+      package_dir = File.join(options[:output_dir], package_name)
+      files = [File.join(package_dir, 'script.md'), File.join(package_dir, 'episode.textream')]
+      existing = files.select { |path| File.exist?(path) }
+      if existing.any? && !options[:force]
+        warn "Episode #{number} package already exists. Use --force to replace it."
+        exit 1
+      end
+      if pages.size != 6 || pages.any? { |page| page.to_s.strip.empty? }
+        warn "Episode #{number} did not produce six non-empty script acts."
+        exit 1
+      end
+
+      { number: number, rundown: rundown, pages: pages, package_dir: package_dir }
+    end
+
+    packages.each do |package|
+      FileUtils.mkdir_p(package[:package_dir])
+      File.write(File.join(package[:package_dir], 'script.md'), markdown_rundown(package[:rundown]))
+      File.write(File.join(package[:package_dir], 'episode.textream'), JSON.pretty_generate(package[:pages]) + "\n")
+      puts "Prepared Episode #{package[:number]}: #{package[:rundown][:title]}"
+      puts "  Script:   #{File.join(package[:package_dir], 'script.md')}"
+      puts "  Textream: #{File.join(package[:package_dir], 'episode.textream')}"
+    end
+
+    return unless options[:cue]
+
+    success = system(File.join(ROOT_DIR, 'bin', 'broadcast'), '--rewatch', episode_numbers.first.to_s)
+    exit 1 unless success
   end
 
   # Validates all dossiers against schemas and invariants (e.g. zero em dashes)
@@ -406,6 +497,8 @@ class EpisodeWorkbench
   end
 
   def dossier_path(episode_num)
+    return File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml') if episode_num.to_i == -1
+
     formatted = sprintf('%02d', episode_num)
     File.join(EPISODES_DIR, "episode-#{formatted}.yml")
   end
@@ -651,16 +744,25 @@ class EpisodeWorkbench
   end
 
   def output_markdown_rundown(rundown)
-    puts "# Teleprompter Rundown: Episode #{rundown[:episode_number]}"
-    puts "## #{rundown[:title]}"
-    puts "**Era:** #{rundown[:era]} | **Guest:** #{rundown[:interviewee]} | **Provenance:** #{rundown[:conference]}\n\n"
-    puts "**Theme:** #{rundown[:theme]}\n\n"
+    puts markdown_rundown(rundown)
+  end
+
+  def markdown_rundown(rundown)
+    lines = [
+      "# Teleprompter Rundown: Episode #{rundown[:episode_number]}",
+      "## #{rundown[:title]}",
+      "**Era:** #{rundown[:era]} | **Guest:** #{rundown[:interviewee]} | **Provenance:** #{rundown[:conference]}",
+      "**Theme:** #{rundown[:theme]}",
+      ''
+    ]
     rundown[:acts].each do |act|
-      puts "### Act #{act[:act_number]}: #{act[:name]} (#{act[:timing]})"
-      puts "*Target Scene:* `#{act[:scene_target]}`\n"
-      puts "> **Lead:** #{act[:host_lead]}\n"
-      puts "#{act[:teleprompter_script]}\n"
+      lines << "### Act #{act[:act_number]}: #{act[:name]} (#{act[:timing]})"
+      lines << "*Target Scene:* `#{act[:scene_target]}`"
+      lines << "> **Lead:** #{act[:host_lead]}"
+      lines << act[:teleprompter_script].to_s
+      lines << ''
     end
+    lines.join("\n")
   end
 
   def render_template_act(filename, ctx, fallback)
@@ -683,8 +785,12 @@ class EpisodeWorkbench
         list        List all curriculum episodes with narrative completeness and story counts
         show <N>    Display semantic dossier for episode N
         compile <N> Compile 6-act teleprompter script (--markdown, --json)
+        prepare <N> [N ...] Create a full Markdown script and matching Textream file for each episode
+        prepare minus-one 0 1 Prepare multiple episodes with their dossier details
+        prepare --all Prepare every numbered episode dossier; use --force to replace generated files
+                    Add --cue for one episode to update the OBS overlay state
         workshop <N> Workshop episode prompts and regenerate copy (--prompt "...")
-        stage <N>   Exercise end-to-end publishing pipeline in non-destructive staging mode
+        stage <N>   Verify local episode materials and OBS cue shape
         init        Scaffold missing episode dossiers from sequence manifest
         validate    Validate all dossiers against schema and zero em-dash rules
         cue <N>     Cue episode into live OBS overlay state

@@ -60,6 +60,17 @@ bin/broadcast --status
 
 Replace `1` with the episode number. The repo cue command accepts the curated rewatch range shown by `--list`, including the supported codas. It does not select an OBS scene or start a stream.
 
+Prepare one or several episode scripts from their existing dossiers:
+
+```sh
+bin/episode_workbench.rb prepare 1
+bin/episode_workbench.rb prepare 1 2 3
+bin/episode_workbench.rb prepare minus-one 0 1
+bin/episode_workbench.rb prepare --all
+```
+
+Each package includes the full six-part Markdown rundown and matching Textream pages under `obs/teleprompter/prepared/`. Episode details come from its dossier, so the command needs only episode numbers. Existing packages are kept unless `--force` is supplied. Add `--cue` for one episode to update the OBS overlay state as part of preparation; a batch can create many packages, while OBS can show only one active episode cue.
+
 For the current editorial outline, open `https://www.just3ws.localhost/youtube/dashboard/`. The page links to the series plan and recording materials. It does not cue episodes or publish to YouTube.
 
 Launch the matching teleprompter from the command line or open its `.textream` file in `obs/teleprompter/`. Use the same episode number as the local cue. The teleprompter is a flexible outline; timing and optional sections can change during recording.
