@@ -20,6 +20,7 @@
          - The Fluffle repository audit confirmed matching `.txt` and `.srt` outputs. Public copy uses the more durable “1K+ transcript pairs.”
          - Checks pass: `rake validate:fast`, declarative data validation, Ruby syntax and CLI help, Jekyll build (1,089 pages), and OBS preflight (56 assertions). For the batch preparer update, `rake validate:fast`, Ruby syntax, CLI help, and `git diff --check` pass. RSpec was not run.
          - OBS repository templates and installed contracts match. No OBS configuration was installed or restarted during this change.
+         - Prepared a repeatable Chromium bookmark export at `bin/episode_bookmarks.rb`; it builds Hister research links and episode source folders for Minus One, Zero, the 17-interview working target, later archive candidates, and possible codas. Current browser extension packages match their upstream versions; the generated 40-folder set is installed in the active Chromium profile.
        - MEDIA PIPELINE SOURCE HYDRATION AND CATALOG SYNC (2026-10-29):
          - The media-pipeline now separates operator-held staged recordings from automatic processing with a verified hydration step.
          - The site catalog and transcript indexes include the latest Ramblin' & Amblin' publication sync and preserve transcript completeness signals for editorial review.
