@@ -168,6 +168,23 @@ class StageEpisodeWorkflow
   end
 
   def evaluate_transcript_parity(dossier)
+    setup_episodes = begin
+      JSON.parse(File.read(SEQUENCE_PATH)).fetch('setup_episodes', [])
+    rescue Errno::ENOENT, JSON::ParserError
+      []
+    end
+
+    if setup_episodes.map(&:to_i).include?(dossier['episode'].to_i)
+      script = dossier['teleprompter_script'] || {}
+      missing_acts = (1..6).reject { |act| script["act_#{act}"].to_s.strip != '' }
+
+      if missing_acts.empty?
+        return { status: 'PASS', message: 'Setup episode script verified: all 6 authored acts are present.' }
+      end
+
+      return { status: 'WARN', message: "Setup episode script is missing acts: #{missing_acts.join(', ')}." }
+    end
+
     slug = dossier['slug']
     yt_id = dossier['youtube_video_id'] || dossier['resolved_youtube_id']
 
