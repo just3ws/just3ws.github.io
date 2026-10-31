@@ -17,7 +17,7 @@
   {% endif %}
 {% endif %}
 
-<article class="editorial-card" data-collection="{{ interview.collection }}">
+<article class="editorial-card" data-collection="{{ interview.collection }}"{% if interview.series_episode_number %} data-series-group="{% if interview.series_episode_number <= 17 %}season-one{% else %}candidate{% endif %}"{% endif %}>
   {% if thumb %}
     <a class="editorial-card-thumb" href="{{ primary_url }}">
       <img src="{{ thumb }}" alt="Thumbnail for {{ interview.title }}" loading="lazy">
@@ -28,6 +28,15 @@
   {% endif %}
   <div class="editorial-card-body">
     <div class="editorial-card-meta">
+      {% if interview.series_episode_number %}
+        {% assign episode_number = interview.series_episode_number | prepend: "00" | slice: -2, 2 %}
+        {% if interview.series_episode_number <= 17 %}
+          <span class="collection-badge">Season One · Episode {{ episode_number }}</span>
+        {% else %}
+          <span class="collection-badge">Candidate · Episode {{ episode_number }}</span>
+        {% endif %}
+        <span class="meta-dot">•</span>
+      {% endif %}
       {% if interview.collection and interview.collection != "UGtastic" %}
         <span class="collection-badge">{{ interview.collection }}</span>
         <span class="meta-dot">•</span>

@@ -49,6 +49,28 @@ module Jekyll
       # Inject into site data for use in templates
       site.data['all_archive_items'] = all_items
 
+      # Keep the rewatch index limited to UGtastic interview records named by
+      # the canonical sequence. Other collections and one-off videos stay out.
+      sequence = site.data.dig('sound_above_sequence', 'episodes') || []
+      assets = site.data.dig('video_assets', 'items') || []
+      site.data['sound_above_interviews'] = sequence.map do |episode|
+        interview = all_items.find do |item|
+          item['collection'] == 'UGtastic' && item['id'] == episode['slug']
+        end
+
+        unless interview
+          raise Jekyll::Errors::FatalException,
+                "Sound Above episode #{episode['number']} has no matching UGtastic interview: #{episode['slug']}"
+        end
+
+        unless interview['video_asset_id'] && assets.any? { |asset| asset['id'] == interview['video_asset_id'] }
+          raise Jekyll::Errors::FatalException,
+                "Sound Above episode #{episode['number']} has no matching video asset: #{episode['slug']}"
+        end
+
+        interview.merge('series_episode_number' => episode['number'])
+      end
+
       # Calculate transcribed count
       transcripts = site.data['transcripts'] || {}
       assets = site.data.dig('video_assets', 'items') || []

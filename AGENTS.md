@@ -22,6 +22,7 @@
          - OBS repository templates and installed contracts match. No OBS configuration was installed or restarted during this change.
          - Prepared a repeatable Chromium bookmark export at `bin/episode_bookmarks.rb`; it groups Hister research and episode source links under setup episodes, one Season One working target, unscheduled archive candidates, and possible extras. Current browser extension packages match their upstream versions; the nested bookmark set is installed in the active Chromium profile.
          - Bonjourr uses a plain personal greeting, compact labeled links, and custom icons for the recording dashboard, series, Hister research, archive, timeline, and YouTube Studio.
+         - The `/interviews/` page now lists only the 35 UGtastic records in the Sound Above sequence. It separates 17 Season One targets from 18 later candidates and opens on the Episode 1 rewatch action.
        - MEDIA PIPELINE SOURCE HYDRATION AND CATALOG SYNC (2026-10-29):
          - The media-pipeline now separates operator-held staged recordings from automatic processing with a verified hydration step.
          - The site catalog and transcript indexes include the latest Ramblin' & Amblin' publication sync and preserve transcript completeness signals for editorial review.
