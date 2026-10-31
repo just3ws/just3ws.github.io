@@ -1,8 +1,11 @@
-# GEMINI.md: Gemini CLI & Antigravity Project Guidance
+---
+name: gemini-guidance
+scope: repository
+audience: GEMINI
+canonical: false
+---
 
-<!-- COLD-START RESUME STATE lives in the CURRENT FOCUS block at the top of
-     >>> AGENTS.md <<< (read it first. Closing a session = rewrite that
-     block in AGENTS.md, then commit). -->
+# GEMINI.md: Gemini CLI & Antigravity Project Guidance
 
 ## Required Project Context
 

@@ -18,7 +18,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '4.0.6'
+          ruby-version: '4.0.9'
           bundler-cache: true
       - name: Build and verify public boundary safety
         run: bundle exec rake publish_check

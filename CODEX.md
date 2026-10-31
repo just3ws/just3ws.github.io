@@ -1,3 +1,10 @@
+---
+name: codex-guidance
+scope: repository
+audience: CODEX
+canonical: false
+---
+
 # CODEX.md: Resume Evaluation & Editing Contract
 
 ## Role

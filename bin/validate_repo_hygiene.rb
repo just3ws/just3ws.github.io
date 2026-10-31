@@ -38,7 +38,17 @@ def top_level_entries(root)
 end
 
 def git_ignored?(root, entry)
-  system("git", "check-ignore", "-q", "--", entry, chdir: root)
+  return true if system("git", "check-ignore", "-q", "--", entry, chdir: root)
+
+  path = File.join(root, entry)
+  return false unless File.directory?(path)
+  return false if system("git", "ls-files", "--error-unmatch", "--", "#{entry}/", chdir: root, out: File::NULL, err: File::NULL)
+
+  files = Dir.glob(File.join(path, "**", "*"), File::FNM_DOTMATCH).select { |candidate| File.file?(candidate) }
+  !files.empty? && files.all? do |candidate|
+    relative = Pathname.new(candidate).relative_path_from(Pathname.new(root)).to_s
+    system("git", "check-ignore", "-q", "--", relative, chdir: root)
+  end
 end
 
 def docs_href_patterns(root)
