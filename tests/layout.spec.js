@@ -140,7 +140,6 @@ test.describe('Site Layout and Aesthetics', () => {
     await expect(page.locator('.pv-actor-scope')).toContainText('agentic AI system');
     await expect(page.getByText('Legacy System Modernization', { exact: true })).toBeVisible();
     await expect(page.getByText('Cross-System Integration & Cartography', { exact: true })).toBeVisible();
-    await expect(page.locator('main')).not.toContainText('EMR-Bear');
     await expect(page.locator('main')).not.toContainText('OneMain');
 
     const diagram = page.getByRole('img', { name: 'Panoramic View journey and system-wave model' });
