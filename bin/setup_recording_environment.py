@@ -22,6 +22,7 @@ import sys
 import os
 import re
 import json
+import base64
 import struct
 import zipfile
 import io
@@ -624,7 +625,53 @@ def generate_bonjourr_backup():
   font-weight: 600 !important;
   color: #1e232a !important;
 }
+
+#linkblocks.inline {
+  justify-content: center !important;
+  --column-gap: 0.65em;
+  --row-gap: 0.7em;
+}
+
+.inline .link {
+  padding: 0.35em 0.55em !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.inline .link:hover {
+  background: #eaf4f2 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.inline .link .link-icon {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.inline .link .link-elem-title {
+  max-width: none !important;
+  color: #1e232a !important;
+  font-size: 0.95em !important;
+  letter-spacing: 0 !important;
+  white-space: normal !important;
+}
 """
+
+    def icon_data_uri(svg: str) -> str:
+        encoded = base64.b64encode(svg.encode("utf-8")).decode("ascii")
+        return f"data:image/svg+xml;base64,{encoded}"
+
+    icon_art = {
+        "dashboard": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#e7f3f1"/><path d="M12 34h10l6-14 9 28 6-14h9" fill="none" stroke="#0f766e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+        "series": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#e7f3f1"/><path d="M14 27v10l8 7V20zm15-5v20l11 9V13zm20 4v12l8 6V20z" fill="#0f766e"/></svg>',
+        "hister": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#f8efe0"/><circle cx="28" cy="28" r="13" fill="none" stroke="#b45309" stroke-width="4"/><path d="m38 38 12 12" fill="none" stroke="#b45309" stroke-width="5" stroke-linecap="round"/></svg>',
+        "archive": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#e7f3f1"/><path d="M15 18h14c4 0 7 3 7 7v23c0-4-3-7-7-7H15zm34 0H35c-4 0-7 3-7 7v23c0-4 3-7 7-7h14z" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round"/></svg>',
+        "timeline": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#f8efe0"/><path d="M16 20h31M16 32h22M16 44h31" fill="none" stroke="#b45309" stroke-width="3" stroke-linecap="round"/><circle cx="48" cy="32" r="5" fill="#f8efe0" stroke="#b45309" stroke-width="3"/></svg>',
+        "studio": '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#f8e9e8"/><path d="M13 24h38v25H13zM13 24l5-10h38l-5 10zm12-10-5 10m17-10-5 10" fill="none" stroke="#c43b35" stroke-width="3.5" stroke-linejoin="round"/><path d="m28 31 12 6-12 6z" fill="#c43b35"/></svg>'
+    }
 
     bonjourr_config = {
         "showall": True,
@@ -632,9 +679,12 @@ def generate_bonjourr_backup():
         "dark": "disabled",
         "favicon": "studio",
         "tabtitle": "Mike Hall · Studio Cockpit",
-        "greeting": "Observable Control Plane",
+        "greeting": "Mike",
         "greetingsize": "3",
         "greetingsmode": "custom",
+        "linkstyle": "inline",
+        "linksrow": 6,
+        "linkiconradius": 0.7,
         "pagegap": 2,
         "pagewidth": 1280,
         "time": True,
@@ -666,38 +716,51 @@ def generate_bonjourr_backup():
         },
         "links_1": {
             "_id": "links_1",
-            "title": "Control Plane Dashboard",
+            "title": "Recording Dashboard",
             "url": "https://www.just3ws.localhost/dashboard.html",
             "parent": "default",
-            "order": 0
+            "order": 0,
+            "icon": {"type": "url", "value": icon_data_uri(icon_art["dashboard"])}
         },
         "links_2": {
             "_id": "links_2",
-            "title": "Chicago Community Timeline",
-            "url": "https://www.just3ws.localhost/timeline/community/",
+            "title": "The Sound Above",
+            "url": "https://www.just3ws.localhost/series/the-sound-above/",
             "parent": "default",
-            "order": 1
+            "order": 1,
+            "icon": {"type": "url", "value": icon_data_uri(icon_art["series"])}
         },
         "links_3": {
             "_id": "links_3",
-            "title": "Oral History Archive",
-            "url": "https://www.just3ws.localhost/interviews/",
+            "title": "Hister Research",
+            "url": "https://hister.localhost/",
             "parent": "default",
-            "order": 2
+            "order": 2,
+            "icon": {"type": "url", "value": icon_data_uri(icon_art["hister"])}
         },
         "links_4": {
             "_id": "links_4",
-            "title": "The Sound Above Curriculum",
-            "url": "https://www.just3ws.localhost/series/the-sound-above/",
+            "title": "Interview Archive",
+            "url": "https://www.just3ws.localhost/interviews/",
             "parent": "default",
-            "order": 3
+            "order": 3,
+            "icon": {"type": "url", "value": icon_data_uri(icon_art["archive"])}
         },
         "links_5": {
             "_id": "links_5",
-            "title": "YouTube Studio Live",
+            "title": "Community Timeline",
+            "url": "https://www.just3ws.localhost/timeline/community/",
+            "parent": "default",
+            "order": 4,
+            "icon": {"type": "url", "value": icon_data_uri(icon_art["timeline"])}
+        },
+        "links_6": {
+            "_id": "links_6",
+            "title": "YouTube Studio",
             "url": "https://studio.youtube.com/channel/UCAyLLkogK2UnjpGmyCTwjiw/livestreaming",
             "parent": "default",
-            "order": 4
+            "order": 5,
+            "icon": {"type": "url", "value": icon_data_uri(icon_art["studio"])}
         }
     }
 

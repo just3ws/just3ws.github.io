@@ -29,19 +29,18 @@ class EpisodeBookmarks
       link('Hister research search', HISTORIAN)
     ])
 
-    folders << episode_folder(-1, 'Setup episode: Minus One')
-    folders << episode_folder(0, 'Setup episode: Zero')
+    folders << folder('Setup episodes', [episode_folder(-1), episode_folder(0)])
 
-    @sequence.fetch('episodes', []).each do |episode|
-      number = episode.fetch('number')
-      group = number <= 17 ? 'Season One working target: interviews 1 to 17' : 'Archive candidates: not scheduled'
-      folders << episode_folder(number, group)
-    end
+    interviews = @sequence.fetch('episodes', [])
+    folders << folder('Season One: working target of up to 17 interviews',
+                      interviews.select { |episode| episode.fetch('number') <= 17 }
+                                .map { |episode| episode_folder(episode.fetch('number')) })
+    folders << folder('Archive candidates: not scheduled',
+                      interviews.select { |episode| episode.fetch('number') > 17 }
+                                .map { |episode| episode_folder(episode.fetch('number')) })
 
-    @sequence.fetch('codas', []).each_with_index do |coda, index|
-      number = 36 + index
-      folders << episode_folder(number, 'Possible later codas')
-    end
+    codas = @sequence.fetch('codas', []).each_index.map { |index| episode_folder(36 + index) }
+    folders << folder('Possible later extras', codas) unless codas.empty?
 
     FileUtils.mkdir_p(File.dirname(@output))
     File.write(@output, document(folders))
@@ -50,7 +49,7 @@ class EpisodeBookmarks
 
   private
 
-  def episode_folder(number, label)
+  def episode_folder(number)
     dossier = if number == -1
                 load_yaml('errata-fluffle-precursor.yml')
               else
@@ -77,9 +76,9 @@ class EpisodeBookmarks
       url = "#{SITE}#{url}" if url.start_with?('/')
       entries << link(attachment['title'] || 'Research source', url)
     end
-    folder("#{label} / #{title}", entries)
+    folder(title, entries)
   rescue Errno::ENOENT
-    folder("#{label} / Episode #{number} dossier missing", [link('Episode workbench', "#{SITE}/series/the-sound-above/")])
+    folder("Episode #{number} dossier missing", [link('Episode workbench', "#{SITE}/series/the-sound-above/")])
   end
 
   def load_yaml(filename)
@@ -95,13 +94,20 @@ class EpisodeBookmarks
   end
 
   def document(folders)
-    body = folders.map do |item|
-      children = item[:entries].map do |entry|
+    root = render_node(folder('The Sound Above Rewatch', folders))
+    "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n<TITLE>The Sound Above Rewatch</TITLE>\n<H1>The Sound Above Rewatch</H1>\n<DL><p>\n#{root}\n</DL><p>\n"
+  end
+
+  def render_node(item)
+    title = CGI.escapeHTML(item[:title])
+    children = item[:entries].map do |entry|
+      if entry[:entries]
+        render_node(entry)
+      else
         %(<DT><A HREF="#{CGI.escapeHTML(entry[:url])}">#{CGI.escapeHTML(entry[:title])}</A>)
-      end.join("\n")
-      %(<DT><H3>#{CGI.escapeHTML(item[:title])}</H3>\n<DL><p>\n#{children}\n</DL><p>)
+      end
     end.join("\n")
-    "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n<TITLE>The Sound Above Rewatch</TITLE>\n<H1>The Sound Above Rewatch</H1>\n<DL><p>\n#{body}\n</DL><p>\n"
+    %(<DT><H3>#{title}</H3>\n<DL><p>\n#{children}\n</DL><p>)
   end
 end
 

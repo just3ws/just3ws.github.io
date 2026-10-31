@@ -4,9 +4,12 @@
   "dark": "disabled",
   "favicon": "studio",
   "tabtitle": "Mike Hall \u00b7 Studio Cockpit",
-  "greeting": "Observable Control Plane",
+  "greeting": "Mike",
   "greetingsize": "3",
   "greetingsmode": "custom",
+  "linkstyle": "inline",
+  "linksrow": 6,
+  "linkiconradius": 0.7,
   "pagegap": 2,
   "pagewidth": 1280,
   "time": true,
@@ -14,7 +17,7 @@
   "dateformat": "us",
   "quicklinks": true,
   "textShadow": 0,
-  "css": "/* Canonical Digital Patina & Editorial Craft (derived from https://www.just3ws.localhost/) */\n:root {\n  --canvas: #faf8f5 !important;\n  --card-bg: #ffffff !important;\n  --ink: #1e232a !important;\n  --heading: #0f172a !important;\n  --muted: #525866 !important;\n  --teal: #0f766e !important;\n  --teal-light: rgba(15, 118, 110, 0.1) !important;\n  --amber: #b45309 !important;\n  --border: #e3dfd7 !important;\n}\n\n#interface {\n  font-family: \"Charter\", \"Bitstream Charter\", \"Iowan Old Style\", Georgia, serif !important;\n  color: #1e232a !important;\n}\n\n#clock, #time {\n  font-family: \"Charter\", \"Bitstream Charter\", \"Iowan Old Style\", Georgia, serif !important;\n  font-weight: 700 !important;\n  letter-spacing: -0.025em !important;\n  color: #0f172a !important;\n  text-shadow: none !important;\n}\n\n#greetings, #date {\n  font-family: \"Inter\", system-ui, -apple-system, sans-serif !important;\n  letter-spacing: 0.1em !important;\n  text-transform: uppercase !important;\n  font-size: 0.82rem !important;\n  font-weight: 700 !important;\n  color: #0f766e !important;\n  text-shadow: none !important;\n}\n\n.link, .link-item {\n  background: #ffffff !important;\n  border: 1px solid #e3dfd7 !important;\n  border-radius: 10px !important;\n  box-shadow: 0 4px 16px rgba(45, 35, 20, 0.05) !important;\n  transition: all 0.2s ease !important;\n}\n\n.link:hover, .link-item:hover {\n  border-color: #0f766e !important;\n  transform: translateY(-2px) !important;\n  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.15) !important;\n}\n\n.link-title {\n  font-family: \"Inter\", system-ui, sans-serif !important;\n  font-size: 0.85rem !important;\n  font-weight: 600 !important;\n  color: #1e232a !important;\n}\n",
+  "css": "/* Canonical Digital Patina & Editorial Craft (derived from https://www.just3ws.localhost/) */\n:root {\n  --canvas: #faf8f5 !important;\n  --card-bg: #ffffff !important;\n  --ink: #1e232a !important;\n  --heading: #0f172a !important;\n  --muted: #525866 !important;\n  --teal: #0f766e !important;\n  --teal-light: rgba(15, 118, 110, 0.1) !important;\n  --amber: #b45309 !important;\n  --border: #e3dfd7 !important;\n}\n\n#interface {\n  font-family: \"Charter\", \"Bitstream Charter\", \"Iowan Old Style\", Georgia, serif !important;\n  color: #1e232a !important;\n}\n\n#clock, #time {\n  font-family: \"Charter\", \"Bitstream Charter\", \"Iowan Old Style\", Georgia, serif !important;\n  font-weight: 700 !important;\n  letter-spacing: -0.025em !important;\n  color: #0f172a !important;\n  text-shadow: none !important;\n}\n\n#greetings, #date {\n  font-family: \"Inter\", system-ui, -apple-system, sans-serif !important;\n  letter-spacing: 0.1em !important;\n  text-transform: uppercase !important;\n  font-size: 0.82rem !important;\n  font-weight: 700 !important;\n  color: #0f766e !important;\n  text-shadow: none !important;\n}\n\n.link, .link-item {\n  background: #ffffff !important;\n  border: 1px solid #e3dfd7 !important;\n  border-radius: 10px !important;\n  box-shadow: 0 4px 16px rgba(45, 35, 20, 0.05) !important;\n  transition: all 0.2s ease !important;\n}\n\n.link:hover, .link-item:hover {\n  border-color: #0f766e !important;\n  transform: translateY(-2px) !important;\n  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.15) !important;\n}\n\n.link-title {\n  font-family: \"Inter\", system-ui, sans-serif !important;\n  font-size: 0.85rem !important;\n  font-weight: 600 !important;\n  color: #1e232a !important;\n}\n\n#linkblocks.inline {\n  justify-content: center !important;\n  --column-gap: 0.65em;\n  --row-gap: 0.7em;\n}\n\n.inline .link {\n  padding: 0.35em 0.55em !important;\n  background: transparent !important;\n  border-color: transparent !important;\n  box-shadow: none !important;\n}\n\n.inline .link:hover {\n  background: #eaf4f2 !important;\n  border-color: transparent !important;\n  box-shadow: none !important;\n  text-decoration: none !important;\n}\n\n.inline .link .link-icon {\n  background: transparent !important;\n  box-shadow: none !important;\n}\n\n.inline .link .link-elem-title {\n  max-width: none !important;\n  color: #1e232a !important;\n  font-size: 0.95em !important;\n  letter-spacing: 0 !important;\n  white-space: normal !important;\n}\n",
   "backgrounds": {
     "type": "color",
     "color": "#faf8f5",
@@ -38,37 +41,68 @@
   },
   "links_1": {
     "_id": "links_1",
-    "title": "Control Plane Dashboard",
+    "title": "Recording Dashboard",
     "url": "https://www.just3ws.localhost/dashboard.html",
     "parent": "default",
-    "order": 0
+    "order": 0,
+    "icon": {
+      "type": "url",
+      "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNlN2YzZjEiLz48cGF0aCBkPSJNMTIgMzRoMTBsNi0xNCA5IDI4IDYtMTRoOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY3NjZlIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg=="
+    }
   },
   "links_2": {
     "_id": "links_2",
-    "title": "Chicago Community Timeline",
-    "url": "https://www.just3ws.localhost/timeline/community/",
+    "title": "The Sound Above",
+    "url": "https://www.just3ws.localhost/series/the-sound-above/",
     "parent": "default",
-    "order": 1
+    "order": 1,
+    "icon": {
+      "type": "url",
+      "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNlN2YzZjEiLz48cGF0aCBkPSJNMTQgMjd2MTBsOCA3VjIwem0xNS01djIwbDExIDlWMTN6bTIwIDR2MTJsOCA2VjIweiIgZmlsbD0iIzBmNzY2ZSIvPjwvc3ZnPg=="
+    }
   },
   "links_3": {
     "_id": "links_3",
-    "title": "Oral History Archive",
-    "url": "https://www.just3ws.localhost/interviews/",
+    "title": "Hister Research",
+    "url": "https://hister.localhost/",
     "parent": "default",
-    "order": 2
+    "order": 2,
+    "icon": {
+      "type": "url",
+      "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNmOGVmZTAiLz48Y2lyY2xlIGN4PSIyOCIgY3k9IjI4IiByPSIxMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJtMzggMzggMTIgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2I0NTMwOSIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4="
+    }
   },
   "links_4": {
     "_id": "links_4",
-    "title": "The Sound Above Curriculum",
-    "url": "https://www.just3ws.localhost/series/the-sound-above/",
+    "title": "Interview Archive",
+    "url": "https://www.just3ws.localhost/interviews/",
     "parent": "default",
-    "order": 3
+    "order": 3,
+    "icon": {
+      "type": "url",
+      "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNlN2YzZjEiLz48cGF0aCBkPSJNMTUgMThoMTRjNCAwIDcgMyA3IDd2MjNjMC00LTMtNy03LTdIMTV6bTM0IDBIMzVjLTQgMC03IDMtNyA3djIzYzAtNCAzLTcgNy03aDE0eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMGY3NjZlIiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg=="
+    }
   },
   "links_5": {
     "_id": "links_5",
-    "title": "YouTube Studio Live",
+    "title": "Community Timeline",
+    "url": "https://www.just3ws.localhost/timeline/community/",
+    "parent": "default",
+    "order": 4,
+    "icon": {
+      "type": "url",
+      "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNmOGVmZTAiLz48cGF0aCBkPSJNMTYgMjBoMzFNMTYgMzJoMjJNMTYgNDRoMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2I0NTMwOSIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSI0OCIgY3k9IjMyIiByPSI1IiBmaWxsPSIjZjhlZmUwIiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjwvc3ZnPg=="
+    }
+  },
+  "links_6": {
+    "_id": "links_6",
+    "title": "YouTube Studio",
     "url": "https://studio.youtube.com/channel/UCAyLLkogK2UnjpGmyCTwjiw/livestreaming",
     "parent": "default",
-    "order": 4
+    "order": 5,
+    "icon": {
+      "type": "url",
+      "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTgiIGZpbGw9IiNmOGU5ZTgiLz48cGF0aCBkPSJNMTMgMjRoMzh2MjVIMTN6TTEzIDI0bDUtMTBoMzhsLTUgMTB6bTEyLTEwLTUgMTBtMTctMTAtNSAxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYzQzYjM1IiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Im0yOCAzMSAxMiA2LTEyIDZ6IiBmaWxsPSIjYzQzYjM1Ii8+PC9zdmc+"
+    }
   }
 }
