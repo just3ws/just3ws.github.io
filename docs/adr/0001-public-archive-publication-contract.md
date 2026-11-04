@@ -42,6 +42,10 @@ The Publication Gate requires:
 - provenance sufficient for future agents to understand source lineage and
   confidence;
 - accurate transcript state when transcript content is involved;
+- pipeline-synced videos have catalog privacy explicitly set to `public`; an
+  unlisted, private, or unset video and its transcript dossier, caption export,
+  and video-linked interview record are not part of Public Canon, and a privacy
+  change retracts the public copies;
 - successful relevant validation before merge or publication.
 
 `CONTEXT.md` is the compact domain glossary for future agents. ADRs under

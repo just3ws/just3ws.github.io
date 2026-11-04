@@ -82,6 +82,10 @@ hand-edit `_site/` or other generated artifacts to make that verification pass.
 2. Treat `$HOME/my` as Private Context, not as an import tree for this repo.
 3. Publish only Approved Public Artifacts, with clear Provenance where the source
    is recovered, transformed, AI-assisted, or confidence-limited.
+   Pipeline-synced videos are eligible only while their catalog privacy is
+   explicitly `public`; unlisted, private, and unset videos and their transcript
+   dossiers, caption exports, and video-linked interview records must be absent
+   from Public Canon.
 4. Keep Transcript State visible and honest. Do not hide validation failures by
    presenting low-confidence transcript output as fully canonical.
 5. Enforce the 3-Tier Content Classification: never pass off AI-generated articles
