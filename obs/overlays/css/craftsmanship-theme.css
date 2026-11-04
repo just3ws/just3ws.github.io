@@ -16,6 +16,14 @@
   match _sass/_p_variables.scss exactly.
 */
 
+@font-face {
+  font-family: "FiraCode Nerd Font Mono";
+  src: url("/assets/fonts/FiraCodeNerdFontMono-Retina.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   /* Shared with the site, identical hex values (validated) */
   --paper-canvas: #faf8f5;
@@ -46,7 +54,7 @@
   --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", "Apple Garamond", "Baskerville", "Source Serif Pro", Georgia, serif;
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-heritage: "Avenir Next", "Avenir", var(--font-sans);
-  --font-mono: "SF Mono", "Fira Code", Consolas, "Liberation Mono", Menlo, monospace;
+  --font-mono: "FiraCode Nerd Font Mono", "Fira Code", Consolas, "Liberation Mono", Menlo, monospace;
 
   --shadow-elevation: 0 16px 40px rgba(45, 35, 20, 0.08), 0 4px 12px rgba(45, 35, 20, 0.04);
   --radius-sm: 0.25rem;
