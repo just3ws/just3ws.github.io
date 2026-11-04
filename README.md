@@ -1,5 +1,9 @@
 # Mike Hall, Staff Software Engineer
 
+The repository root `VERSION` carries the shared Astronomicon platform epoch.
+The public site, `just3ws.com`, and its localhost/LAN aliases are one versioned
+surface.
+
 [![Deploy](https://github.com/just3ws/just3ws.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/just3ws/just3ws.github.io/actions/workflows/deploy.yml)
 
 I am a Staff Software Engineer rooted in hands-on software engineering. I work
