@@ -66,6 +66,7 @@ channels:
       the-sound-above:
         playlist_id: "PLVcmLmfz2uyA"
         series_name: "The Sound Above"
+        default_audio_language: "en-US"
         archetype: "technical_rewatch"
         purpose: "Structured 6-act rewatch broadcasts where Mike Hall revisits the 15-year UGtastic interview archive through the lens of modern Staff/Principal engineering, domain boundaries, and sovereign verification."
         default_privacy: "unlisted"
@@ -90,6 +91,7 @@ channels:
       errata:
         playlist_id: "PLKPAHha6I990"
         series_name: "The Sound Above: Errata"
+        default_audio_language: "en-US"
         archetype: "structured_errata"
         purpose: "Solo technical demonstrations, forensic audio/DSP deep dives, code reviews, BPMN workflow walkthroughs, and edge-case postmortems exploring the mechanics behind the systems."
         default_privacy: "unlisted"
@@ -113,6 +115,7 @@ channels:
       phalanx-duel:
         playlist_id: "PLHenvAZhJjHo"
         series_name: "Phalanx Duel"
+        default_audio_language: "en-US"
         archetype: "game_architecture_and_demos"
         purpose: "Demonstrations, design retrospectives, architectural walkthroughs, and guest presentations exploring Phalanx Duel from tabletop rules to deterministic multiplayer engine."
         default_privacy: "unlisted"
@@ -141,6 +144,7 @@ channels:
       marginalia:
         playlist_id: "PLCun5kLIQkSQ"
         series_name: "UGtastic Marginalia"
+        default_audio_language: "en-US"
         archetype: "historical_marginalia"
         purpose: |
           Historical UGtastic channel artifacts that provide institutional context for the project
@@ -174,3 +178,39 @@ channels:
           • Full Interview Archive: https://www.just3ws.com/interviews/
           • The Sound Above Rewatch Series: https://www.just3ws.com/series/the-sound-above/
           • Marginalia Playlist: https://www.youtube.com/playlist?list=PLCun5kLIQkSQ
+
+      panoramic-view-tracer:
+        playlist_id: "PLGFa67DrGfg4"
+        series_name: "Panoramic View Tracer"
+        default_audio_language: "en-US"
+        archetype: "synthetic_process_verification"
+        purpose: >-
+          Public, synthetic demonstration used to verify the media publication workflow
+          and its Panoramic View evidence trail from intake through site synchronization.
+        publication_context: >-
+          An original synthetic process-verification recording with computer-generated
+          narration and generated visuals.
+        default_privacy: "public"
+        category_id: "28"
+        test_only: true
+        auto_title_from_speech: false
+        transcribe_with_whisper: true
+        transcribe_prompt: "Synthetic narration, Panoramic View, media workflow verification"
+        ephemerality:
+          enabled: false
+        tags:
+          - "Panoramic View"
+          - "Synthetic Media"
+          - "Workflow Verification"
+          - "Media Pipeline"
+        description_template: |
+          A clearly labeled synthetic tracer recording for the Panoramic View media workflow.
+          Computer-generated narration demonstrates the public test path from intake through
+          transcription, metadata enrichment, YouTube publication, playlist insertion, and
+          just3ws.com site synchronization. This is an original process demonstration made
+          with generated narration and visuals.
+
+          • Panoramic View: https://www.just3ws.com/panoramic/
+          • Tracer playlist: https://www.youtube.com/playlist?list=PLGFa67DrGfg4
+          • Pipeline repository: https://github.com/just3ws/media-pipeline
+          • Synthetic media disclosure: narration is computer-generated.
