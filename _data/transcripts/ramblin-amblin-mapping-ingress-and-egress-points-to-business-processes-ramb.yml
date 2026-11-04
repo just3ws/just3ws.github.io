@@ -1,0 +1,225 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, Ramblin' & Amblin'
+turns:
+- speaker: M1
+  text: |-
+    Now you've mapped all your systems ingress and egress
+    points. You've identified who your collaborators are
+    upstream, downstream, lateral, doesn't matter. Everybody
+    knows everybody. And now these are just application level.
+- speaker: M1
+  text: |-
+    I'm also talking about your database teams, your DevOps
+    teams. And again, this is biased towards people who are
+    working in enterprise. Even if the answer is me, this is me, this is me, this is
+    me, and as you're going through and figuring out who's the
+    owner of this, it matters. It matters because it formulates
+    the contract and shows also even in a smaller organization
+    how much responsibility is invested in a single failure
+    point in all of us, in all systems.
+- speaker: M1
+  text: |-
+    If we're the only, if we're the only, if we're the only
+    point that the system can fail at, then it's a lot of
+    pressure. And it's, it's a sign that, you know, that needs
+    to be at least acknowledged. Okay, so we've got our ingress and egress points. We've got
+    improved relationships with our neighbors because we have a
+    better communication now with them because we know what to
+    expect and they know what to expect.
+- speaker: M1
+  text: |-
+    What is expected of them is what to expect of us and vice
+    versa. Now we're building out our contracts and improving
+    that understanding. All right, great. Hmm.
+- speaker: M1
+  text: |-
+    All right. Well,
+    now I know I have a team that's responsible for my Postgres
+    database. And I know that there's a team responsible for my
+    enterprise service bus integration. And I've identified the
+    , um, the interaction points.
+- speaker: M1
+  text: Great. Great. Now what? What is the nature of the relationship?
+- speaker: M1
+  text: |-
+    What is it that is happening because of this, uh,
+    dependency? What is the value of this dependency? Why, why
+    is it necessary? What business processes does it support?
+- speaker: M1
+  text: |-
+    And now business process, I think, uh, a lot of people
+    would, um, kind of, uh, glaze over when they hear that. Because, uh, it is, uh, it is for me. What's the point of
+    the system? Does this thing do something that is either
+    necessary for the specific transaction that the business is
+    required for, uh, doing the thing that the business does?
+- speaker: M1
+  text: |-
+    Like, this is part of presenting loan offers,
+    or this is part of, uh, helping the customer query for
+    their GPA at school. I'd like, I don't know. The thing that
+    is the point of the application, what, what do those ing
+    ress points map back to as far as, as terms of what, what
+    are the goals that are supported by, by those, um,
+    dependencies? Okay.
+- speaker: M1
+  text: |-
+    Yeah. We're connected to DSP because
+    the DSP,
+    enterprise service bus, um, is the channel for letting, uh,
+    primarily our, our marketing team know that, uh, uh,
+    customers expressed interest and, um, that supports our, um
+    , customer engagement, something like that. Whatever the
+    mission of your,
+    your organization is being able to start to map those
+    relationships back to, um, value, the purpose, the, the
+    reason for the system, um, is your outside. Now we're going
+    to work in, uh,
+    looking at the egress point, ingress points was the next
+    place I, I looked to.
+- speaker: M1
+  text: |-
+    And that is,
+    can I identify differences between the different ways a
+    system interacts with my system, whether that is a customer
+    , comes to a UI, what is, what is that first surface? What
+    is the point of that? Again, so this is why mapping out
+    what, this is part of that's mapping out the value. Okay.
+- speaker: M1
+  text: |-
+    So marking these entrance points and exit points, I'm going
+    to start to instrument those because they are places where
+    you've identified value in the operation of the system. You
+    need to know the health of these, these points. Also value in, um, that instrumentation being mapped to a
+    document that holds what the business process is. And you
+    start to map out the chain of events.
+- speaker: M1
+  text: |-
+    Now I'm like, I'm
+    realizing I'm kind of all over the place here. Cause I'm
+    trying to like, take what was an exercise where I was
+    presented
+    and I'm interested with a system that had multiple ways a
+    customer could engage with us. Um, it was a loan orig
+    ination, loan acquisition, um, uh, system. And I call it the
+    front door to OMF.
+- speaker: M1
+  text: |-
+    It's part of the front door of OMF was the acquisition
+    platform. The acquisition platform was where the customer
+    would come in. And I'm talking about the, you know, this
+    one thing, but I've worked in multiple, um, acquisition
+    systems. They all basically have the same customer acquisition fun
+    nels.
+- speaker: M1
+  text: |-
+    It's the shape of a funnel and customers move largely
+    from left to right. They're moving through a process of
+    pipeline of some sort. They come in, they express intent. I would like to get a
+    loan.
+- speaker: M1
+  text: |-
+    And then we say, okay, here's all the myriad ways
+    that you can come to our system to, um,
+    either accept an offer or, or be put down a certain funnel
+    path. Um, you know, the, the many different ways that a, um
+    , customer can come from organic search or direct mail or
+    all these common, super common mechanisms for, for, um,
+    arriving at the front page of, of, of OMF. And, uh, over time, all that's in and out and new people,
+    old people, new people, old people, out, gone, um, all the
+    context about what do all of these, these flows actually
+    mean? Like, yes, the customer can come in and they're going to
+    flow through our system.
+- speaker: M1
+  text: |-
+    Um, so what I did is I worked with the team and with the
+    stakeholders to, um, map out the, uh, these entry points
+    and say, okay,
+    we're going to instrument the place where we believe, or
+    should say, we, as a engineering team, working with product
+    , working with,
+    with, uh, the stakeholders for this space, making the
+    assertion that this specific location in the code is the
+    place where that flow starts. Okay. So flow starts at line 10 in controller right before
+    model gets updated, blah, you know, whatever. This is a decision moment.
+- speaker: M1
+  text: |-
+    So this, this is multidim
+    ensional. Okay. We have a place where we have agreed upon a,
+    a stake in the ground. So the trail marker, a tracker, and the tracker's
+    responsibility is to just count everybody that is coming in
+    to the system and, and entering this flow.
+- speaker: M1
+  text: |-
+    So that has an ID and that ID is published on our internal
+    documentation that is shared with our, uh, collaboration
+    partners. Particularly in our case, it was the, um, people
+    responsible for monitoring the systems. So giving them those insights allows them to know, Hey, we
+    've got all these dashboards. Let's go and look and see
+    where signals are being used to capture that business
+    process and compare that to the signals that we're getting
+    from this place that the team is now, um, for, for that
+    space is, uh, said, this is where that business process
+    actually starts.
+- speaker: M1
+  text: |-
+    So, uh, you know, being able to reconcile their records in
+    the end, they end up with a better understanding of what
+    there is they're responsible for, uh, monitoring that these
+    signals are vetted and verified by the team responsible for
+    them. And that they can, when the leadership is asking for a
+    value, like a, uh, like how much was actually impacted and
+    what business lines were need to be in, you know, informed,
+    um, you know, what is the impact of this issue or whatever,
+    or even what is the value of making a change in a certain
+    space? So, what is the value of making a change in a certain place
+    is now tied to a concrete, shared understanding of reality,
+    or at least the shared fact that is documented and if the
+    business process changes or you find out, um, it was wrong. It was wrong.
+- speaker: M1
+  text: |-
+    This is now a single non ephemeral, a non e
+    phemeral, um, identifier that is tied to a line of code that
+    is tied to a business process that is tied to monitoring
+    this tied to analytics for, for, uh, the business side. You know, so there's, you know, monitoring the system
+    health and then there's analytics for, you know, business
+    health, um, have a shared reality around this one
+    identifier and then you build out a library of those. And then you find where do we consider the end of that flow
+    that the customer is no longer in that floor or the API, uh
+    , request is no longer in that sequence. So building a bounding box of like kind of drawing a line
+    vertically across a left to right, um, waterfall of, of
+    movements through the system.
+- speaker: M1
+  text: |-
+    And then, you know, they fork and then you have a B tests
+    that you're going to run into and you're going to need to
+    be able to identify when, um, the customer got to the flow
+    through a or through B. The point is, is now before that was all ambiguous. Nobody knew anything. It was all a guess.
+- speaker: M1
+  text: |-
+    Um, even, you know, the poor designers trying to map
+    functionality from a design to an implementation and then
+    having to work back and forth with the team, trying to
+    figure out what is actually impacted by this change in a
+    design because stuff had gotten so complicated over decades
+    . And, um, moving towards this concrete shared reality comes
+    now, there's this lattice work that you can work across. So that's the second thing is one, you've found all your
+    ingress and egress points and you start to map those. That's your first identifier, your first tracker.
+- speaker: M1
+  text: |-
+    You've, you've, you've found your, your boundary. Now you don't have to go in this exact order. You could start with the, um, we just know one business
+    process and then we're going to work from there. Um, this is a video, so, um, I'm, I'm still reserving the
+    right to you.
+- speaker: M1
+  text: |-
+    I'm reserving the right to rework this message because it
+    is rambling and ambling. But, uh, yeah. So step two or step one, it really boils down to finding
+    the places where our business process starts. Instrumenting it with a, uh, a durable identifier that can
+    be shared and communicated.
+- speaker: M1
+  text: |-
+    So that way there's a better understanding across the
+    organization and through all collaborators on what is the
+    reality they're facing at that time. that's not for now all right thanks bye
