@@ -27,3 +27,12 @@ Panoramic View. While the Patreon page is a draft, use the public project
 overview at `/support/` in descriptions and outros. After the page is published,
 the overview can invite viewers to Patreon. Membership must never imply that
 public videos or private recordings are gated by support.
+
+## Repeatable channel and playlist setup
+
+For a new channel or series, follow the channel and playlist checklist in the
+[media-pipeline owner's manual](https://github.com/just3ws/media-pipeline/blob/main/docs/owners-manual.md#channel-and-playlist-setup).
+That checklist owns the configured channel identity, playlist IDs and
+descriptions, `en-US` spoken-language defaults, visibility, metadata templates,
+and quota-aware application. Keep editorial source and public context here;
+keep YouTube API writes in `media-pipeline`.

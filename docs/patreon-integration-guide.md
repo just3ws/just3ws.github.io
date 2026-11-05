@@ -12,10 +12,11 @@ data should draw from or agree with that source.
 
 ## Creator position
 
-Mike Hall (`just3ws`) is the creator and first-person narrator. He founded
-Cloud Developers Group with Ryan Gerry in 2009, was a lead co-founder of
-Software Craftsmanship McHenry County, and built the Chicago Code Camp website
-from 2010 through 2012. He created UGtastic, later branded WHOIS Tech
+Mike Hall (`just3ws`) is the creator and first-person narrator. He helped start
+Cloud Developers Group in 2009 and handled most of its initial setup. He was a
+lead co-founder of Software Craftsmanship McHenry County and built the Chicago
+Code Camp website from 2010 through 2012.
+He created UGtastic, later branded WHOIS Tech
 Community, and recorded more than 200 interviews. These are chapters in one
 continuing interview and community-history project.
 
@@ -33,15 +34,13 @@ privacy decision for a recording or make private material available.
 
 ## Launch recommendation
 
-The page is still an unpublished draft. The current six-step ladder was a
-bootstrap and should not be treated as the final offer. Recommended first
-release:
+The page is still an unpublished draft. The first release is intentionally
+small:
 
 1. Keep free following for general public updates. Do not describe it as a
    lifetime alumni membership or promise historical interviewees access.
-2. Start with one paid tier, **Studio Notes**, at **$5/month**. Patreon
-   itself recommends beginning with one tier and identifies $5 as a useful
-   starting point for many new membership programs.
+2. Offer one paid tier, **Studio Notes**, at **$5/month**. This keeps the
+   membership promise aligned with the time and material Mike can provide now.
 3. Offer posts Mike chooses to publish for members, such as occasional process
    notes, topic drafts, and archive progress. Do not promise a monthly cadence,
    early access, private consulting, playtest builds, spoken credits, or other
@@ -50,16 +49,22 @@ release:
 
 Draft tier copy:
 
-> I share occasional notes about shaping Ramblin' & Amblin', caring for the
-> interview archive, and making software. Your membership helps me make room
-> for those projects. My public work stays in its usual places; membership
-> doesn't unlock private recordings or change what I choose to publish.
+> I share occasional notes about making Ramblin' & Amblin', caring for the
+> interview archive, and building software. Your membership helps make room
+> for that work. I'll post when I have something worth showing; there is no
+> fixed schedule. Public videos and interviews stay on their own sites, and
+> membership doesn't unlock private recordings.
 
 The creator page remains unpublished. The $5 **Studio Notes** tier is the only
-active paid option; the bootstrap $1, $7, $20, and $97 tiers are unpublished
-drafts with no members. The welcome post is copy prepared in
-`_data/patreon_campaign.yml`; it has not been created in Patreon. The public
-support page hides Patreon calls to action until `page_status` changes to
+published paid option. The $1, $7, $20, and $97 bootstrap tiers remain
+unpublished drafts with no members. Their benefits and descriptions are stale;
+do not publish them. Keep future tier ideas in this guide until each has a
+clear, sustainable member experience.
+
+The welcome post is saved in Patreon as a free-access draft, using the copy in
+`_data/patreon_campaign.yml`. Review the rendered post and thumbnail before
+launch. Do not publish the page or post until Mike makes that launch decision. The
+public support page hides Patreon calls to action until `page_status` changes to
 `published`, so visitors are not sent to a closed creator page. Local tooling
 does not publish pages, posts, or tiers.
 
@@ -76,25 +81,51 @@ does not publish pages, posts, or tiers.
 
 The creator page name is **Mike Hall**; `just3ws` is the handle and part of the
 campaign URL. On the website, show both together in the identity line. The
-Craftsmanship accent is teal (`#0F766E`), but the Patreon draft currently still
-shows amber (`#C46820`). Update the Patreon theme color in its creator editor
-before publishing. Do not copy the retired campaign's "Tools for everything"
+Craftsmanship accent is deep teal (`#0F766E`). This color is now saved in the
+Patreon draft. Do not copy the retired campaign's "Tools for everything"
 manifesto into new copy without review.
 
 ## Visual presentation
 
-The shared visual reference is the site’s Craftsmanship theme: warm paper,
-deep teal, sumi ink, and small amber accents. The creator avatar is Mike’s
+The shared visual reference is the site's Craftsmanship theme: warm paper,
+deep teal, sumi ink, and small amber accents. The creator avatar is Mike's
 existing illustrated mark. The prepared 4:1 cover artwork is
 [`assets/images/patreon/mike-hall-studio-cover-2500x625.jpg`](../assets/images/patreon/mike-hall-studio-cover-2500x625.jpg).
-Use it for the Patreon cover and `/support/` hero so both surfaces share the same
-visual language. The artwork is ready locally; it has not yet been uploaded to
-Patreon.
+It is saved as the Patreon cover and used by the `/support/` hero, so both
+surfaces share the same visual language.
 
-The creator-page preview still shows empty post and collection shelves because
-there is no public post yet. The welcome-post copy in `_data/patreon_campaign.yml`
-is a draft only. Review and publish a public welcome post as part of the launch;
-keep the overall creator page unpublished until the launch decision is made.
+The welcome post is saved as a free-access draft. The page layout keeps Latest
+and Recent posts for launch, and removes empty popular-post, collection, and
+product shelves. Add a collection or product when there is a real item or a
+useful set of published posts. Leave the page unpublished until the launch
+decision is made.
+
+## Repeatable channel and playlist setup
+
+Use this checklist when preparing a new YouTube channel or playlist. The
+`media-pipeline` repository owns YouTube API writes; this site owns editorial
+source and public context.
+
+1. Record the channel owner as Mike Hall (`just3ws`, `mike@just3ws.com`) and
+   name the project brand separately. Keep `@whoistechcmty` as the channel that
+   hosts both the historical interview archive and Ramblin' & Amblin'.
+2. Set the spoken and metadata language to **English (United States)** where
+   YouTube exposes a language setting. Use Mike's first-person voice in titles,
+   descriptions, and captions.
+3. Before creating a playlist, write its title, one-sentence scope, audience,
+   visibility, and ordering rule. Use a human-readable title, never an internal
+   `VID_*` label. Keep titles and descriptions consistent between YouTube and
+   the site's canonical records.
+4. Explain in each playlist description what belongs in it and how it relates
+   to the channel. Link to the relevant archive or series page. Avoid promises
+   about release cadence or benefits that are not active.
+5. Review artwork, links, language, visibility, ordering, and a representative
+   video in YouTube Studio. Then verify the corresponding public site and
+   `media-pipeline` record. Do not publish a new channel or playlist from local
+   tooling without an explicit operator request.
+
+For the command path and verified channel inventory, follow the
+[YouTube channel management runbook](runbooks/youtube-channel-management.md).
 
 ## Local CLI and data safety
 
