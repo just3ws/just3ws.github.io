@@ -15,41 +15,37 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       expect(File.executable?(patreon_bin)).to be true
     end
 
-    it 'displays campaign status and recurring compute fund' do
+    it 'displays campaign status without inventing revenue estimates' do
       stdout, stderr, status = Open3.capture3(patreon_bin, 'status')
       expect(status.success?).to be true
-      expect(stdout).to include('PATREON CAMPAIGN STATUS & RECURRING COMPUTE FUNDING')
-      expect(stdout).to include('https://patreon.com/whoistechcmty')
-      expect(stdout).to include('Monthly Compute Fund:')
-      expect(stdout).to include('Archive Preservationist')
-      expect(stdout).to include('Workbench Craftsman')
-      expect(stdout).to include('Engineering Patron')
+      expect(stdout).to include('PATREON CAMPAIGN STATUS')
+      expect(stdout).to include('https://www.patreon.com/c/just3ws')
+      expect(stdout).to include('Revenue is not estimated')
     end
 
     it 'lists patrons and tier breakdowns' do
       stdout, stderr, status = Open3.capture3(patreon_bin, 'members')
       expect(status.success?).to be true
-      expect(stdout).to include('ACTIVE PATREON MEMBERS & TIERS')
-      expect(stdout).to include('Engineering Patron')
+      expect(stdout).to include('PATREON COUNTS BY TIER')
+      expect(stdout).to include('Member names and individual membership details are not stored or displayed.')
     end
 
     it 'formats broadcast outro closing credits for teleprompter and YouTube' do
       stdout, stderr, status = Open3.capture3(patreon_bin, 'credits')
       expect(status.success?).to be true
-      expect(stdout).to include('BROADCAST OUTRO CLOSING CREDITS')
-      expect(stdout).to include('FOR TELEPROMPTER READ-ALONG')
-      expect(stdout).to include('FOR YOUTUBE DESCRIPTION')
-      expect(stdout).to include('patreon.com/whoistechcmty')
+      expect(stdout).to include('COMMUNITY THANK-YOU COPY')
+      expect(stdout).to include('TELEPROMPTER')
+      expect(stdout).to include('YOUTUBE DESCRIPTION')
+      expect(stdout).to include('patreon.com/c/just3ws')
+      expect(stdout).to include('Named credits require an explicit, permissioned list')
     end
 
-    it 'syncs patron roster to _data/patreon_roster.json' do
-      stdout, stderr, status = Open3.capture3(patreon_bin, 'sync')
-      expect(status.success?).to be true
+    it 'does not sync fake patrons or write an identity roster without API credentials' do
+      stdout, stderr, status = Open3.capture3({ 'PATREON_CREATOR_TOKEN' => nil, 'PATREON_CAMPAIGN_ID' => nil }, patreon_bin, 'sync')
+      expect(status.exitstatus).to eq(2)
+      expect(stdout).not_to include('Chicago Craftsmanship Veteran')
       roster_path = File.join(root_dir, '_data', 'patreon_roster.json')
-      expect(File.exist?(roster_path)).to be true
-      data = JSON.parse(File.read(roster_path))
-      expect(data).to have_key('members')
-      expect(data['members'].size).to be >= 3
+      expect(File.exist?(roster_path)).to be false
     end
   end
 

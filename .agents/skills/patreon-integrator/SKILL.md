@@ -1,88 +1,61 @@
 ---
 name: patreon-integrator
-description: Connects to Patreon API v2 and Chrome browser automation to manage campaign tiers, brand styling, recurring compute funds, and closing credit attributions for just3ws broadcasts and open projects.
+description: Maintain Mike Hall's Patreon presence, its local reporting, and its links to the just3ws project surfaces.
 ---
 
-# Patreon Integrator Skill
+# Patreon Integrator
 
-Use this skill when managing, integrating, querying, or synchronizing Patreon memberships, calculating recurring compute funding, and formatting patron attribution for **UGtastic / WHOIS Tech Community**, **The Sound Above**, and **Phalanx Duel**.
+Use this skill for Patreon campaign inspection, draft-page maintenance, and
+cross-surface consistency under Mike Hall (`just3ws`, `mike@just3ws.com`).
 
----
+## Canonical references
 
-## 🎯 Ground Truth and Canonical Identity
+- Campaign: <https://www.patreon.com/c/just3ws>
+- Public overview: <https://www.just3ws.com/support/>
+- Campaign content source: `_data/patreon_campaign.yml`
+- Operational guide: `docs/patreon-integration-guide.md`
+- Theme accent: Craftsmanship Deep Craftsman Teal, `#0F766E`
 
-* **Primary Creator Identity**: Mike Hall (`mike@just3ws.com`, username `just3ws`).
-* **Canonical URL**: `https://www.patreon.com/c/just3ws` (supersedes legacy `whoistechcmty`).
-* **Campaign ID**: `15677398`.
-* **Theme Styling**: Craftsmanship Theme with **Deep Craftsman Teal (`#0F766E`)** as the primary brand accent, matching `etc/themes/craftsmanship.yaml` and `_sass/_p_variables.scss`.
-* **Consolidated Projects**:
-  1. **UGtastic / WHOIS Tech Community**: Preserving 200+ Software Craftsmanship McHenry County (SCMC) oral histories, transcripts, and Whisper compute.
-  2. **Phalanx Duel**: Ongoing strategy card game platform and community mechanics.
+UGtastic and WHOIS Tech Community are successive names for one historical
+interview/archive project. Ramblin' & Amblin' is Mike's current first-person
+video series. Phalanx Duel is a separate project under the same owner. Do not
+collapse their histories or suggest that a membership purchases ownership or
+access to any project's private materials.
 
----
+## Voice and offer
 
-## 🏛️ Tier Architecture & Benefits
+- Write as Mike in first person.
+- Treat all bootstrap copy as unapproved draft material.
+- Keep the explanation concrete: what Mike makes, what the support helps him
+  make time for, and where the public work lives.
+- The series format and cadence are still being developed. Never invent a
+  schedule, exclusive archive, early access, spoken credit, consulting session,
+  playtest, or other benefit.
+- The local launch recommendation is free following plus one $5 paid tier.
+  Add paid tiers only after Mike identifies a distinct, sustainable member
+  experience. This is a recommendation, not a claim that the live draft matches.
+- Membership does not override Mike's YouTube privacy choices. Never imply that
+  private videos or recordings are included.
 
-| Tier Slug | Title | Monthly Price | Core Scope & Deliverables |
-| :--- | :--- | :--- | :--- |
-| `tier_interviewee` | **Interviewee Alumni** | **$0 / month** | Honorary lifetime membership for all 192 historical interviewees with full post feed and community access. |
-| `tier_1` | **Community Supporter** | **$1 / month** | Grassroots backer tier supporting open craftsmanship archives and Phalanx Duel game development. |
-| `tier_5` | **Community Member** | **$5 / month** | Coffee-level recurring community patron tier. |
-| `tier_7` | **Archive Preservationist** | **$7 / month** | Underwrites Whisper GPU transcription, timecode alignment, and static hosting. Early access to uncompressed WebVTT captions and Markdown dossiers. |
-| `tier_20` | **Workbench Craftsman** | **$20 / month** | Underwrites audio DSP restoration, local tool development, and game playtests. Includes engineering marginalia, Python DSP notch scripts, and playtest builds. |
-| `tier_97` | **Engineering Patron** | **$97 / month** | Executive and institutional underwriting for multi-movement broadcast arcs. Spoken outro credits in Act 6, description underwriting lines, and quarterly 1-on-1 systems architecture discussions. |
+## Browser workflow
 
----
+Use the logged-in Chrome creator dashboard to inspect the draft. Prefer visible
+Patreon controls over DOM scripts that set React-controlled form values. Read
+back each saved change. The page is currently unpublished; leave it unpublished
+unless Mike explicitly requests launch.
 
-## ⚙️ Operational Interfaces & CLI
-
-### 1. Unified Pipeline CLI (`bin/patreon_pipeline.rb` / `bin/pipeline patreon`)
+## Local commands
 
 ```bash
-# Check campaign status, active members, and compute funding:
-ruby bin/patreon_pipeline.rb status
+bin/pipeline patreon help
+bin/pipeline patreon campaign
 bin/pipeline patreon status
-
-# Auto-discover or verify campaign metadata via API v2:
-ruby bin/patreon_pipeline.rb campaign
-
-# List members and current tier classifications:
-ruby bin/patreon_pipeline.rb members
-
-# Generate teleprompter read-along credits and YouTube descriptions:
-ruby bin/patreon_pipeline.rb credits
-
-# Synchronize live remote roster to _data/patreon_roster.json:
-ruby bin/patreon_pipeline.rb sync
+bin/pipeline patreon sync
 ```
 
-### 2. Browser Automation (Chrome via AppleScript)
-
-When active in Chrome with **View > Developer > Allow JavaScript from Apple Events** enabled:
-
-```bash
-# Inspect active Patreon tab:
-osascript -e 'tell application "Google Chrome" to get {title, URL} of active tab of front window'
-
-# Execute JavaScript inside Patreon tab:
-osascript -e 'tell application "Google Chrome" to tell active tab of front window to execute javascript "..."'
-```
-
----
-
-## 🛡️ Credential Storage Seams
-
-Credentials must never be hardcoded or checked into source control:
-
-1. **Option A (Personal OS Keychain)**:
-   ```bash
-   zdots-keychain add PATREON_CREATOR_TOKEN "<token>"
-   zdots-keychain add PATREON_CAMPAIGN_ID "15677398"
-   ```
-2. **Option B (Repository-scoped .env)**:
-   Add to `.env` (which is gitignored and tracked in `_data/repo_hygiene.yml`):
-   ```sh
-   PATREON_CREATOR_TOKEN="<token>"
-   PATREON_CAMPAIGN_ID="15677398"
-   ```
-   `PatreonPipeline#load_env_if_present` automatically loads this file on demand.
+The local client must not read repository `.env` files, fabricate members,
+write member names into public Jekyll data, or treat lifetime support as monthly
+revenue. Credentials are supplied through the process environment or a
+Keychain-backed launcher. Local sync output contains aggregate counts only and
+is stored outside the repository. Named credits require an explicit,
+permissioned list maintained separately from API membership data.

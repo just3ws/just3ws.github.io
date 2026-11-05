@@ -300,6 +300,10 @@ oral_history_curriculum = {
 # 10. Patreon Campaign & Community Compute Mission
 patreon_file = File.join(ROOT, '_data', 'patreon_campaign.yml')
 patreon_campaign = File.exist?(patreon_file) ? safe_yaml_load(File.read(patreon_file)) : {}
+patreon_public_fields = %w[
+  campaign_url creator_name creator_handle title short_description about projects history brand_color
+]
+patreon_campaign = patreon_campaign.slice(*patreon_public_fields)
 
 # 6. Narrative Synthesis Baseline (3-Act Story & Cover Letter Engine)
 narrative_synthesis = {

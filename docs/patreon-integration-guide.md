@@ -1,119 +1,120 @@
-# Patreon Integration and Community Sponsorship Guide
+# Patreon: Creator Workbench
 
-This manual documents the architecture, credential handling, tier structure, Craftsmanship theme tokens, and automation workflows for Mike Hall's Patreon presence at `https://www.patreon.com/c/just3ws`.
+Patreon is the shared membership surface for Mike Hall (`just3ws`), not a
+continuation of the retired `whoistechcmty` campaign identity. The canonical
+page is <https://www.patreon.com/c/just3ws>. The public site support page is
+<https://www.just3ws.com/support/>.
 
----
+The canonical campaign narrative and cross-surface project links live in
+[`_data/patreon_campaign.yml`](../_data/patreon_campaign.yml). The website's
+support page, YouTube preparation surface, campaign guide, and generated career
+data should draw from or agree with that source.
 
-## 1. Ground Truth and Strategic Consolidation
+## Creator position
 
-Mike Hall (`just3ws`, `mike@just3ws.com`) consolidates community support and digital humanities underwriting under his primary personal identity.
+Mike Hall (`just3ws`) is the creator and first-person narrator. He founded
+Cloud Developers Group with Ryan Gerry in 2009, was a lead co-founder of
+Software Craftsmanship McHenry County, and built the Chicago Code Camp website
+from 2010 through 2012. He created UGtastic, later branded WHOIS Tech
+Community, and recorded more than 200 interviews. These are chapters in one
+continuing interview and community-history project.
 
-### Ecosystem Lineage
-* **UGtastic and WHOIS Tech Community**: These represent the same historical initiative across successive eras. UGtastic is the founding name (2011 to 2014); WHOIS Tech Community represents the subsequent brand iteration. Both are now unified under `just3ws`.
-* **Primary Supported Projects**:
-  1. **UGtastic / WHOIS Tech Community**: Preserving 200+ Software Craftsmanship McHenry County (SCMC) oral history recordings, interview transcripts, and Whisper GPU transcription compute.
-  2. **Phalanx Duel**: Ongoing strategy card game design, rules engine, and playtest platform.
-  3. **WWWorkRemote & Open Tooling**: Distributed work intelligence and systems architecture utilities.
-* **Canonical URL**: `https://www.patreon.com/c/just3ws` (supersedes legacy `whoistechcmty`).
-* **Campaign ID**: `15677398`.
+Today Mike creates Phalanx Duel and the Panoramic View technique and makes
+Ramblin' & Amblin', his evolving first-person video series about software,
+systems, work, and ideas he is still considering. The projects share an owner;
+each keeps its own history and audience. The personal Patreon page makes that
+ownership and lineage clear.
 
----
+Membership is a way to make room for independent recording, editing, archive
+care, and software experiments. Do not imply that a payment is ring-fenced to a
+specific project unless Mike explicitly sets that up. Public videos and archive
+materials stay on their public surfaces. Patreon membership does not change the
+privacy decision for a recording or make private material available.
 
-## 2. Design Tokens and Craftsmanship Theme Styling
+## Launch recommendation
 
-The Patreon creator presence adheres strictly to the canonical **Craftsmanship Theme** defined in `etc/themes/craftsmanship.yaml` and `_sass/_p_variables.scss`:
+The page is still an unpublished draft. The current six-step ladder was a
+bootstrap and should not be treated as the final offer. Recommended first
+release:
 
-| Token | Hex Value | Semantic Role on Patreon |
-| :--- | :--- | :--- |
-| **`--accent`** | **`#0F766E`** | **Brand Color (Deep Craftsman Teal)**: Used for buttons, highlights, badges, and link states. |
-| **`--yellow`** | **`#B45309`** | **Warm Leather Accent**: Secondary highlight in graphics and video overlays. |
-| **`--bg`** | **`#FAF8F5`** | **Canvas Paper**: Warm linen background for banner cards and profile art. |
-| **`--text`** | **`#1E232A`** | **Sumi Ink**: High-contrast body typography. |
-| **`--heading`** | **`#0F172A`** | **Slate Ink**: Header typography. |
+1. Keep free following for general public updates. Do not describe it as a
+   lifetime alumni membership or promise historical interviewees access.
+2. Start with one paid tier, **Studio Notes**, at **$5/month**. Patreon
+   itself recommends beginning with one tier and identifies $5 as a useful
+   starting point for many new membership programs.
+3. Offer posts Mike chooses to publish for members, such as occasional process
+   notes, topic drafts, and archive progress. Do not promise a monthly cadence,
+   early access, private consulting, playtest builds, spoken credits, or other
+   deliverables until they are both enabled and sustainable.
+4. Add another tier only when it offers a distinct experience Mike can sustain.
 
-The brand color on Patreon is set to `#0F766E`.
+Draft tier copy:
 
----
+> I share occasional notes about shaping Ramblin' & Amblin', caring for the
+> interview archive, and making software. Your membership helps me make room
+> for those projects. My public work stays in its usual places; membership
+> doesn't unlock private recordings or change what I choose to publish.
 
-## 3. Tier Taxonomy and Pricing Ladder
+The creator page remains unpublished. The $5 **Studio Notes** tier is the only
+active paid option; the bootstrap $1, $7, $20, and $97 tiers are unpublished
+drafts with no members. A public welcome post is prepared as a draft in
+`_data/patreon_campaign.yml`. Review the page, post, and theme color in the
+creator dashboard before publishing. Local tooling does not publish pages,
+posts, or tiers.
 
-The membership structure incorporates a free level for historical alumni alongside five calibrated subscription tiers:
+## Cross-surface map
 
-```mermaid
-flowchart LR
-    A["Interviewee Alumni ($0/mo)"] --> B["Community Supporter ($1/mo)"]
-    B --> C["Community Member ($5/mo)"]
-    C --> D["Archive Preservationist ($7/mo)"]
-    D --> E["Workbench Craftsman ($20/mo)"]
-    E --> F["Engineering Patron ($97/mo)"]
-```
+| Surface | Role | Canonical link |
+|---|---|---|
+| Patreon | Membership, community posts, and support | <https://www.patreon.com/c/just3ws> |
+| just3ws.com/support | First-person overview and project map | <https://www.just3ws.com/support/> |
+| Ramblin' & Amblin' | Current YouTube series | <https://www.youtube.com/@whoistechcmty> |
+| Interview archive | Historical UGtastic / WHOIS Tech Community record | <https://www.just3ws.com/interviews/> |
+| Phalanx Duel | Independent game project | <https://github.com/phalanxduel/phalanxduel> |
+| Panoramic View | System-cartography method | <https://www.just3ws.com/panoramic-view/> |
 
-### Tier Definitions
+The launch URL, page title, first-person voice, teal accent (`#0F766E`), and
+project lineage should stay consistent. Do not copy the retired campaign's
+"Tools for everything" manifesto into new copy without review.
 
-1. **Interviewee Alumni ($0 / month)**:
-   * *Audience*: All 192 historical guests from Software Craftsmanship McHenry County and UGtastic.
-   * *Mechanism*: Native Free Membership on Patreon.
-   * *Deliverable*: Lifetime free access to community updates, post feeds, and honorary recognition in broadcast outro rolls.
+## Local CLI and data safety
 
-2. **Community Supporter ($1 / month)**:
-   * *Audience*: Grassroots backers and community members.
-   * *Deliverable*: Ongoing general support for open archives, oral history transcriptions, and Phalanx Duel development.
+`bin/patreon_pipeline.rb` is for read-only campaign inspection and local
+aggregate reporting. It must not read the repository `.env`, fabricate demo
+patrons, publish member names, or write identifiable membership records into
+Jekyll's `_data/` directory. Inject credentials through the process environment
+or a local Keychain-backed launcher; never print or commit them.
 
-3. **Community Member ($5 / month)**:
-   * *Audience*: Recurring supporters contributing monthly studio support.
-   * *Deliverable*: Standard community backer tier for meetups and platform infrastructure.
-
-4. **Archive Preservationist ($7 / month)**:
-   * *Audience*: Digital humanities supporters and researchers.
-   * *Deliverable*: Underwrites Whisper GPU compute, timecode alignments, and static site hosting. Early access to uncompressed WebVTT captions and Markdown transcript dossiers.
-
-5. **Workbench Craftsman ($20 / month)**:
-   * *Audience*: Software craft practitioners, audio engineers, and game mechanics enthusiasts.
-   * *Deliverable*: Underwrites lossless audio DSP restoration, local tool development, and Phalanx Duel playtesting. Includes engineering marginalia, Python DSP notch filter scripts, teleprompter rundowns, and playtest builds.
-
-6. **Engineering Patron ($97 / month)**:
-   * *Audience*: Executive underwriters and institutional sponsors.
-   * *Deliverable*: Multi-movement broadcast underwriting. Named spoken credit in Act 6 teleprompter read-alongs, description underwriting lines, and quarterly 1-on-1 systems architecture discussions.
-
----
-
-## 4. Pipeline Automation (`bin/patreon_pipeline.rb`)
-
-The CLI script `bin/patreon_pipeline.rb` provides deterministic interfaces for synchronization, credits generation, and fund tracking:
+Current supported commands:
 
 ```bash
-# Check status, member counts, and recurring compute fund tally:
-ruby bin/patreon_pipeline.rb status
+bin/pipeline patreon help
+bin/pipeline patreon campaign
 bin/pipeline patreon status
-
-# Discover or verify campaign metadata via Patreon API v2:
-ruby bin/patreon_pipeline.rb campaign
-
-# List active members and tier classifications:
-ruby bin/patreon_pipeline.rb members
-
-# Generate teleprompter read-along credits and YouTube descriptions:
-ruby bin/patreon_pipeline.rb credits
-
-# Synchronize remote members into _data/patreon_roster.json:
-ruby bin/patreon_pipeline.rb sync
+bin/pipeline patreon sync
 ```
 
----
+`sync` stores aggregate-only data in the operator's local application-support
+directory. `members` reports counts by tier, not names. `credits` produces only
+a generic thank-you unless Mike manually supplies a separate, explicit
+permissioned credit list. Patron display names are personal data; API access
+does not itself grant permission to publish them.
 
-## 5. Browser Automation Seam (Chrome via AppleScript)
+The Patreon API defines `currently_entitled_amount_cents` separately from
+lifetime support. Do not label lifetime support as monthly recurring revenue.
+The local report intentionally avoids revenue estimates until billing cadence
+and refunds are modeled correctly.
 
-For browser-level administration, the operator or agent interacts directly with an open Chrome session when **View > Developer > Allow JavaScript from Apple Events** is toggled on:
+## Browser operation
 
-```bash
-# Verify active tab:
-osascript -e 'tell application "Google Chrome" to get {title, URL} of active tab of front window'
+Use the logged-in Chrome creator dashboard to inspect and edit the draft page.
+Prefer Patreon’s visible editor over DOM scripts that manipulate React state.
+Read the saved page back after each change. Treat **Publish page** as a separate
+launch action; the automation and documentation workflows leave the page
+unpublished unless Mike explicitly requests publication.
 
-# Execute JavaScript inside active Patreon tab:
-osascript -e 'tell application "Google Chrome" to tell active tab of front window to execute javascript "..."'
-```
+## References
 
-This enables automated configuration of:
-* Tier titles, descriptions, and pricing without manual form entry.
-* Brand hex color adjustments to `#0F766E`.
-* Page details and layout sections.
+- [Patreon: How to write an eye-catching About section](https://support.patreon.com/hc/en-us/articles/8293386737677-How-to-write-an-eye-catching-About-section)
+- [Patreon: Setting up your membership program](https://support.patreon.com/hc/en-us/articles/8293538677005-Setting-Up-Your-Membership-Program)
+- [Patreon API v2 reference](https://docs.patreon.com/)

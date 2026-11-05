@@ -1146,7 +1146,7 @@ class MediaIntakePipeline
           desc_lines << ""
           desc_lines << "• Interactive Curriculum: https://www.just3ws.com/series/the-sound-above/"
           desc_lines << "• Archive Dossier: https://www.just3ws.com/interviews/#{dossier['slug']}/" if dossier['slug']
-          desc_lines << "• Patreon Community: https://www.patreon.com/whoistechcmty"
+          desc_lines << "• Mike's work and Patreon: https://www.just3ws.com/support/"
           description = desc_lines.compact.join("\n").strip
         end
       end

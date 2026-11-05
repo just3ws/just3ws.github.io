@@ -15,3 +15,14 @@ Live broadcast scheduling is not currently available through the media-pipeline 
 Generate local episode materials from the episode dossiers and review the result before recording. Keep the Season One outline flexible: 17 interviews is a working target, Episodes -1 and 0 are setup pieces, and later archive candidates are not commitments or a release calendar.
 
 The public series outline is at `/series/the-sound-above/`.
+
+## Creator identity and support link
+
+The channel `@whoistechcmty` hosts more than one era of Mike Hall's work; it is
+not the creator identity. Use Mike Hall / `just3ws` as the owner and write
+descriptions in Mike's first-person voice. The cross-project overview is
+[`/support/`](https://www.just3ws.com/support/), which connects Ramblin' &
+Amblin', the UGtastic / WHOIS Tech Community archive, Phalanx Duel, and
+Panoramic View. A Patreon link is an invitation to support Mike's independent
+work; it must not imply that public videos or private recordings are gated by
+membership.

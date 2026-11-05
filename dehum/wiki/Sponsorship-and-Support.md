@@ -21,6 +21,13 @@ The work conducted in `just3ws/dehum` and documented across [*The Sound Above*](
 
 ## Ways to Support
 
+Mike Hall's cross-project Patreon presence is under his primary identity,
+`just3ws`: <https://www.patreon.com/c/just3ws>. The overview at
+<https://www.just3ws.com/support/> explains how that creator presence relates
+to Ramblin' & Amblin', the interview archive, Phalanx Duel, and Panoramic View.
+Patreon support is for Mike's independent work as a whole; it is not a
+project-specific contribution to `just3ws/dehum`.
+
 - **GitHub Sponsors**: [github.com/sponsors/just3ws](https://github.com/sponsors/just3ws) (or directly via [github.com/just3ws](https://github.com/just3ws))
 - **Connect & Collaborate**: [LinkedIn / Mike Hall](https://www.linkedin.com/in/mikehall-just3ws/)
 - **Read & Cite the Companion Analysis**:

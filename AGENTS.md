@@ -58,6 +58,15 @@ Canonical naming is permanent. Read this before using any Panoramic View term in
 
 Full disambiguation rules: `docs/style-guide-and-canonical-naming.md` §7.
 
+## Patreon creator identity
+
+Patreon is under Mike Hall (`mike@just3ws.com`, username `just3ws`). UGtastic
+and WHOIS Tech Community are historical names for the same interview/archive
+project. Ramblin' & Amblin', Phalanx Duel, and Panoramic View remain distinct
+projects under Mike's identity. `_data/patreon_campaign.yml` is the campaign
+copy source; see `docs/patreon-integration-guide.md` before editing it. Keep
+copy first-person, evidence-based, and within the benefits Mike can sustain.
+
 ## Agent skills
 
 ### Issue tracker

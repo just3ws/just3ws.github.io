@@ -93,16 +93,17 @@ class EcosystemDatalake
     },
     {
       'id' => 'patreon-founding-vision',
-      'initiative' => 'WHOIS Tech Community',
-      'title' => 'Patreon Founding Vision and Tools for Everything Manifesto',
+      'initiative' => 'Mike Hall / just3ws',
+      'title' => 'Patreon Membership under Mike Hall / just3ws',
       'era' => '2011 - Present',
       'artifact_type' => 'document',
       'source_repo' => 'just3ws/just3ws.github.io',
       'file_path' => '_data/patreon_campaign.yml',
-      'description' => 'Canonical founding statement written by Mike Hall for the WHOIS Tech Community Patreon campaign.',
-      'canonical_url' => 'https://www.patreon.com/whoistechcmty',
+      'description' => 'Current membership presence for Mike Hall, connecting his independent software, community, archive, and video work under his canonical identity.',
+      'canonical_url' => 'https://www.patreon.com/c/just3ws',
       'provenance_details' => {
-        'tagline' => 'Tools for everything',
+        'historical_campaign' => 'WHOIS Tech Community',
+        'current_creator_identity' => 'Mike Hall / just3ws',
         'channel' => '@whoistechcmty'
       }
     },
