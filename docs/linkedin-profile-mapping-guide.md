@@ -57,37 +57,9 @@ Staff Observability & Resilience Architect | OpenTelemetry Working Group Founder
 
 ## 2. LinkedIn About / Summary Section (2,600-Character Limit)
 
-Mapped from `_data/resume/summary.yml`, `docs/site-refresh/panoramic-view-positioning.md`, and `docs/career-strategy-audhd-principal-engineering.md`.
+The copy source is `_data/linkedin/about.yml`. It incorporates recurring themes from Mike's public LinkedIn recommendations: coaching and approachable teaching, knowledge-sharing communities, understanding context before acting, careful problem-solving, and ownership that helps teammates succeed. The synthesis retains no recommender names or verbatim recommendation text.
 
-It follows the 3-level scan architecture:
-- **Level 1 (The 15-Second Hook):** Value proposition and core engineering promise.
-- **Level 2 (The Core Practice):** Technical competencies, scale, and operating loops.
-- **Level 3 (Sovereign Verification & Community):** Long-term stewardship, open research, and portfolio links.
-
-### Copy-Paste Text for LinkedIn About
-```text
-I make complex software systems easier to understand and safer to change.
-
-I am a Staff Software Engineer rooted in the discipline of software engineering. I work across multiple levels of system architecture: from low-level runtime behavior and telemetry through distributed asynchronous workflows and cross-team organizational boundaries.
-
-I stay close to the code while helping engineering teams agree on what the system actually does, who owns it, and how to change it safely under live customer load.
-
-What I Do:
-• Platform Architecture & Legacy Modernization: Reconstructing undocumented execution flows, untangling multi-step state machines, and executing zero-downtime database and framework migrations.
-• Production Reliability & Incident Response: Serving as final escalation lead for high-severity production failures, diagnosing live system pathology, and turning outages into permanent organizational and operational safeguards.
-• Systems Observability: Founding and scaling OpenTelemetry working groups, defining metric and trace semantics across polyglot microservices, and aligning telemetry with actual business transactions.
-• Sovereign Verification & Systems Tooling: Building deterministic, offline-capable developer runtimes, UNIX pipeline tooling, and local-first evaluation harnesses that hold non-deterministic systems accountable.
-
-Selected Work & Proof:
-1. OneMain Financial (Staff Software Engineer): Led acquisitions platform architecture, resolved multi-step session state integrity failures, founded the enterprise OpenTelemetry Working Group, and modernized core Rails services under continuous production load.
-2. The Sovereign Verification Project: A 3-part forensic systems investigation analyzing DSP audio restoration, dual-model generative divergence, and domain boundaries under 345,000-volt high-tension transmission lines (just3ws.com/series/ai-competence/).
-3. The Sound Above: a working plan for revisiting the UGtastic interview archive, with a 17-interview target for Season One (just3ws.com/series/the-sound-above/).
-4. Phalanx Duel: A tactical rules engine and zero-indirection state machine built in Go, TypeScript, and SwiftUI (just3ws.com/phalanx-duel/).
-
-Full Resume & Technical Deep Dives: https://just3ws.com
-Direct Contact: mike@just3ws.com
-```
-*Length: ~2,250 / 2,600 characters.*
+Use the current copy-paste block in the [LinkedIn profile helper](/linkedin/#sec-about). That page reads this data file directly, so the helper and source stay aligned.
 
 ---
 

@@ -47,7 +47,7 @@ Founded and led the OpenTelemetry Working Group, establishing distributed observ
 - Acquisition Workflow Enablement & Architecture Discovery: Founded the Acquisition Lane enablement team; mapped the loan acquisition and origination pipeline end-to-end from visit to booked loan (desktop browser to mainframe and back again at each step) and the Affiliate API at the same depth, identifying seven distinct lending funnels with a tracking initiative; architected an automated 5-phase PII remediation deletion engine across 30+ tables.
 - Enterprise Resilience & DynamoDB Session Remediation: Diagnosed and eliminated a critical session-cookie overflow defect that caused 4% silent traffic loss of digital loan applications during e-signing; architected zero-downtime blue/green migration to DynamoDB session store with zero incidents.
 - Enterprise Trace & Operational Alignment: Architected distributed telemetry across Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with end-to-end distributed tracing.
-- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and partnered with SRE leads to transition ongoing operational facilitation, establishing a durable community of practice.
+- Community Enablement & Sustainable Handoff: Founded Geekfest@OMF and ran recurring peer-learning sessions for more than a year, coaching engineers across teams. Then founded and led the OpenTelemetry Working Group from 2024 through 2025, growing cross-lane participation to 40+ engineers and transferring ownership as dedicated observability capabilities were staffed.
 - Applied AI & Innovation Leadership: Placed in two corporate hackathons building conversational agents with Rasa and a schema inference prototype; pioneered local LLM orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
 
 ### Senior Backend Developer
@@ -94,7 +94,7 @@ Engineered fraud detection queries in Vertica and conducted exploratory anomaly 
 - **Principal Consultant** | **Tandem** | Chicago, IL | August 2018 - August 2018: Conducted an on-site architectural and operational assessment for an at-risk federal software program (DoD MEPS), delivering viability analysis and risk mitigation recommendations directly to executive leadership.
 - **Senior Software Developer** | **ReachLocal** | Remote | March 2015 - November 2016: Owned API design and modernization strategy, leading incremental legacy migration for a high-volume digital marketing platform.
 - **CTO** | **KloboMedia** | Remote | March 2014 - September 2016: Owned end-to-end platform architecture, leading high-throughput data integration for an early-stage social media startup. The product, TheSocReport, ended when the upstream data taps closed: Twitter's firehose shutdown and the closing of Facebook's and Instagram's user-intelligence APIs removed the inputs the analytics depended on.
-- **Open-Source Transition Lead** | **Coderwall** | Remote | January 2014 - December 2014: Hired as a contractor by the founder to lead the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
+- **Open-Source Transition Lead** | **Coderwall** | Remote | January 2014 - December 2014: At Assembly, led the open-source transition of the Coderwall developer reputation platform, a Y Combinator-backed professional network for software engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary service extraction, infrastructure modernization, and community leadership as the top contributor to the open-source codebase.
 - **Software Engineer** | **Obtiva** | Chicago, IL | August 2009 - July 2011: Delivered backend systems and services as a consultant across multiple clients, including Sears, Leapfrog Online, and Groupon, supporting early-stage scaling and data-driven operations in high-growth environments.
 - **Assistant Vice President, Application Developer** | **JPMorgan Chase & Co.** | Chicago, IL | April 2008 - October 2008: Owned cross-system integration stability, leading defect resolution in regulated financial workflows.
 - **Senior .NET Developer** | **Brightstar Corporation** | Libertyville, IL | March 2007 - April 2008: Owned enterprise supply-chain integration, leading cross-system data unification for a global mobile device distributor.
@@ -102,9 +102,10 @@ Engineered fraud detection queries in Vertica and conducted exploratory anomaly 
 
 ## Technical Leadership
 
-- Established enterprise-wide OpenTelemetry standards and transitioned ownership after adoption stabilized across teams
-- Realigned Acquisition engineering responsibilities around business ownership, then founded and technically led an enablement team to sustain platform risk and remediation work
-- Built Communities of Practice to prevent architectural drift and align cross-team decisions
-- Built and ran global engineering onboarding and training at Groupon during hypergrowth, improving ramp time and retention
-- Founded Software Craftsmanship McHenry County (2009) with Ryan Gerry and Jim Suchy, building a community that still meets with 820+ members
-- Founded WHOIS Tech Community (UGtastic), interviewing industry leaders and shaping software craftsmanship discourse
+- Founded and led the OpenTelemetry Working Group, setting shared observability practices and transferring ownership when the organization staffed a durable capability
+- Founded Geekfest@OMF and ran peer-learning sessions for more than a year, coaching engineers and sharing practical technical knowledge across teams
+- Built engineering onboarding and training at Groupon during hypergrowth, helping new engineers contribute and teams share practices
+- Led Coderwall's open-source transition at Assembly, pairing security hardening and platform modernization with public stewardship
+- Realigned Acquisition engineering around business ownership, then founded and technically led an enablement team for platform risk and remediation
+- Lead co-founder of Software Craftsmanship McHenry County, building a public community of more than 820 members that continues to meet
+- Created UGtastic, later WHOIS Tech Community, and recorded more than 200 interviews to preserve practitioner experience and community history

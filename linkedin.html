@@ -547,7 +547,7 @@ breadcrumb: Profile & ATS Helper
       </label>
     </div>
     <p style="font-size: 0.88rem; color: var(--color-text-muted, #525866); margin: 0.2rem 0 0.75rem;">
-      Updated with your current `just3ws (Independent)` systems (`media-pipeline`, `dehum` high-voltage DSP restoration, `The Sound Above`, `Phalanx Duel`, and `WWWorkRemote`) alongside `OneMain Financial`.
+      This About copy is maintained in `_data/linkedin/about.yml` and informed by the themes summarized there from your recommendations.
     </p>
 
     <div class="linkedin-card-actions">
@@ -557,26 +557,7 @@ breadcrumb: Profile & ATS Helper
         <button class="linkedin-copy-btn primary-btn" onclick="copyToClipboard(this, 'about-textarea')">Copy LinkedIn About</button>
       </div>
     </div>
-    <textarea id="about-textarea" class="linkedin-textarea" data-limit="2600" style="min-height: 18rem;" readonly>I make complex software systems easier to understand and safer to change.
-
-I am a Staff Software Engineer rooted in hands-on software engineering across production web platforms, distributed systems, legacy modernization, observability, and local-first AI architectures. I work across multiple levels of system design: from runtime behavior, query plans, and signal processing through background pipelines and cross-team boundaries.
-
-I stay close to the code while helping teams agree on what the system actually does, who owns it, and how to change it safely under live customer load.
-
-What I Do:
-• Platform Architecture & Modernization: Reconstructing undocumented execution flows, untangling multi-step state machines, and executing zero-downtime Ruby on Rails, PostgreSQL, and service migrations.
-• Production Reliability & Incident Response: Serving as final escalation lead for high-severity production failures, diagnosing live pathology, and turning outages into permanent safeguards.
-• Systems Observability: Founding and scaling OpenTelemetry working groups, defining trace and metric semantics across polyglot services, and aligning telemetry with customer workflows.
-• Sovereign AI, Media & Deterministic Systems: Building production Rails 8 and PostgreSQL 18 (pgvector) platforms, hybrid vector/lexical search, deterministic TypeScript state engines, and FFmpeg audio DSP pipelines.
-
-Selected Work & Production Proof:
-1. OneMain Financial (Staff Software Engineer): Led Acquisitions platform architecture, delivered instant loan disbursement in minutes, resolved silent session state corruptions, founded the OpenTelemetry Working Group, and consolidated attrition-impacted teams into a high-performing enablement unit.
-2. Autonomous Media Pipeline & Local AI RAG: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) platform with Metal GPU Whisper transcription, hybrid RRF semantic search, local LLaMA 3.1 RAG synthesis via RubyLLM, and NIST SP 800-53 configuration governance across 270+ video masters.
-3. Forensic Audio DSP & Sovereign Verification (dehum): Engineered a deterministic 5-stage FFmpeg audio restoration and clock-drift sync pipeline eliminating 60 Hz EMI hum and corona discharge crackle under 345,000-volt transmission lines (just3ws.com/dehum/).
-4. Phalanx Duel & Technical Archive: Built a deterministic TypeScript tactical state engine (just3ws.com/phalanx-duel/) and an oral history knowledge graph preserving 218 interviews (just3ws.com/series/the-sound-above/).
-
-Resume & Case Studies: https://www.just3ws.com/resume/
-Contact: mike@just3ws.com</textarea>
+    <textarea id="about-textarea" class="linkedin-textarea" data-limit="2600" style="min-height: 18rem;" readonly>{{ site.data.linkedin.about.text | escape }}</textarea>
 
     <!-- Compact ATS Cover Notes / Elevator Pitches by Archetype -->
     <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">

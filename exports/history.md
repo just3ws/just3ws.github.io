@@ -137,10 +137,11 @@ observability, and guided cross-team platform reliability.
   Rails distributed monoliths, MuleSoft APIs, and IBM mainframe backends; partnered
   directly with Cybersecurity, EMC, SRE, and Incident Command to align monitoring with
   end-to-end distributed tracing.
-- Community Enablement & SRE Handoff: Founded weekly Geekfest@OMF and scaled the
-  enterprise OpenTelemetry Working Group to 40+ cross-lane engineers; mentored and
-  partnered with SRE leads to transition ongoing operational facilitation, establishing
-  a durable community of practice.
+- Community Enablement & Sustainable Handoff: Founded Geekfest@OMF and ran recurring
+  peer-learning sessions for more than a year, coaching engineers across teams. Then
+  founded and led the OpenTelemetry Working Group from 2024 through 2025, growing
+  cross-lane participation to 40+ engineers and transferring ownership as dedicated
+  observability capabilities were staffed.
 - Applied AI & Innovation Leadership: Placed in two corporate hackathons building
   conversational agents with Rasa and a schema inference prototype; pioneered local LLM
   orchestration and privacy-conscious AI developer tooling at Geekfest@OMF.
@@ -242,11 +243,11 @@ Instagram's user-intelligence APIs removed the inputs the analytics depended on.
 ## Open-Source Transition Lead
 **Coderwall** | Remote | January 2014 - December 2014
 
-Hired as a contractor by the founder to lead the open-source transition of the Coderwall
-developer reputation platform, a Y Combinator-backed professional network for software
-engineers (856 GitHub stars, 304 forks). Delivered security hardening, proprietary
-service extraction, infrastructure modernization, and community leadership as the top
-contributor to the open-source codebase.
+At Assembly, led the open-source transition of the Coderwall developer reputation
+platform, a Y Combinator-backed professional network for software engineers (856 GitHub
+stars, 304 forks). Delivered security hardening, proprietary service extraction,
+infrastructure modernization, and community leadership as the top contributor to the
+open-source codebase.
 
 **Highlights:**
 - Open-Source Transition & Security Hardening: Led open-source transition for a
