@@ -6,17 +6,16 @@ metadata:
     personal moments that shaped Mike Hall's life in technology. The photographs
     are his; dates and places are labeled by the evidence available for each item.
   introduction: >-
-    I did not keep a tidy archive. These are moments that stayed with me: rooms
-    where people learned together, work that became a community, and the
-    unexpected days that gave the rest of life its texture. The photographs are
-    mine. I label what comes from a photo record separately from what I remember.
-    I am also an Eagle Scout, a milestone I remain proud of; a family clipping
-    records it, though its publication year is not established here.
+    I'm Mike Hall, a software developer and community builder. I didn't keep a
+    tidy archive, but I saved these pictures of rooms where we learned
+    together, communities we built, work that shaped my path, and unexpected
+    days I still think about. This is part of the story I can tell through the
+    photos I took.
 
 eras:
   - id: family-roots
     label: "Before 2005 · Family and early life"
-    first_event_id: fathers-work-and-trucks
+    first_event_id: eagle-scout-milestone
   - id: early-practice
     label: "2005–2009 · Learning and teaching"
     first_event_id: ticketsnow-scrum
@@ -34,6 +33,23 @@ eras:
     first_event_id: chicagoruby-2026
 
 events:
+  - id: eagle-scout-milestone
+    date_sort: "0000-01-01"
+    date_display: "Date not recorded · an early milestone"
+    date_evidence: "The newspaper clipping identifies Mike Hall's Eagle Scout achievement; its publication date is not visible in the source photo."
+    era: family-roots
+    kind: personal
+    title: "Eagle Scout, proudly"
+    narrative: >-
+      I earned the rank of Eagle Scout. I'm proud of the work it took and still
+      carry that milestone with me. This clipping is one small piece of my
+      early story.
+    photo:
+      path: "/assets/images/lived-history/eagle-scout-clipping-photo.jpg"
+      alt: "A newspaper photo of Mike in his Scout uniform at his Eagle Scout recognition."
+    source: "Mike's Google Photos album and recollection."
+    source_album: "Photos-1-001 (6)"
+
   - id: fathers-work-and-trucks
     date_sort: "1988-01-01"
     date_display: "1988 and undated family photographs"
@@ -220,7 +236,7 @@ events:
     kind: community
     title: "Brian Marick at Clojure Chicago"
     location: "Chicago; exact venue not established"
-    location_evidence: "Album title and event context."
+    location_evidence: "Album context; venue is not established."
     narrative: >-
       The album preserves a second Brian Marick session, this time with Clojure
       Chicago. Together with his July visit to Obtiva, these images show how
@@ -389,27 +405,26 @@ events:
     source: "Mike's Google Photos album; date is from the original filenames."
     source_album: "Photos-1-001 (5)"
 
-  - id: last-obtiva-geekfest-2011
+  - id: obtiva-acquisition-gathering-2011
     date_sort: "2011-08-09"
     date_display: "August 9, 2011"
     date_evidence: "Date in the original photo filenames and album title."
     era: community-rooms
     kind: community
-    title: "The last Obtiva Geekfest in this photo archive"
+    title: "The day Obtiva learned about the Groupon acquisition"
     location: "Obtiva, Chicago"
-    location_evidence: "Album title and event context."
+    location_evidence: "Mike's recollection of the all-company gathering at Obtiva."
     narrative: >-
-      This album is titled “Last Obtiva Geekfest.” I also remember the day we
-      learned Obtiva was being acquired by Groupon, but I have not established
-      that it was the day pictured here, so I keep those memories separate.
-      What these photos do show is a room full of people making time to learn
-      together.
-    communities: ["Geekfest", "Obtiva"]
+      This was an all-Obtiva gathering to hear that we had been acquired by
+      Groupon and to learn the plan going forward. I took these photos without
+      fully understanding what the news meant. Looking back, I can see this as
+      the end of an era: a roomful of people and a company about to change.
+    communities: ["Obtiva"]
     photo:
-      path: "/assets/images/lived-history/last-obtiva-geekfest-2011.jpg"
-      alt: "Developers gathered in a circle during the last Obtiva Geekfest represented in this archive."
-    source: "Mike's Google Photos album; date is from original filenames and album title."
-    source_album: "Last Obtiva Geekfest"
+      path: "/assets/images/lived-history/obtiva-acquisition-gathering-2011.jpg"
+      alt: "Obtiva's people gather for the company-wide meeting about the Groupon acquisition and the plan going forward."
+    source: "Mike's recollection; date is from the original photo filenames and Google Photos album."
+    source_album: "Last Obtiva Geekfest (original Google Photos album title)"
 
   - id: weird-al-and-emo-phillips
     date_sort: "2018-04-09"
@@ -483,9 +498,9 @@ events:
     narrative: >-
       I was heading to a job interview when I found a woodpecker on the sidewalk.
       I contacted a Chicago bird rescue, and they came to recover it before I
-      went in. They ended up passing on me. I got the sense they were not
-      charmed that I had stopped to help the bird. It was a very strange day in the city, and the
-      woodpecker got the better story.
+      went in. It was a Scandinavian company. They were not charmed that I had
+      stopped to rescue the bird, and they passed on me. It was a very strange
+      day in the city.
     photo:
       path: "/assets/images/lived-history/woodpecker-rescue-2018.jpg"
       alt: "A woodpecker rests in Mike's hands before the bird rescue collected it."
@@ -562,14 +577,12 @@ events:
     era: internal-community
     kind: personal
     title: "A parking-garage rescue and a safe handoff"
-    location: "Carolina Waterfowl Rescue; the parking garage location is not established"
-    location_evidence: "The photographed sign identifies Carolina Waterfowl Rescue; Mike recalls finding the bird in a parking garage and driving it to the sanctuary."
+    location: "Parking garage and Carolina Waterfowl Rescue sanctuary"
+    location_evidence: "Mike's recollection of the rescue and handoff; the sanctuary sign appears in the album."
     narrative: >-
       I found a young bird in a parking garage, got it safely into my car, and
-      drove it to a sanctuary where they took it in. I had remembered the place
-      generally as a Carolina bird rescue; the sign in my photo identifies it
-      as Carolina Waterfowl Rescue. I am glad the bird made it to people who
-      could care for it.
+      drove it to a sanctuary, where they took it in. I believe it was Carolina
+      Waterfowl Rescue. I'm glad the bird made it to people who could care for it.
     photo:
       path: "/assets/images/lived-history/carolina-waterfowl-rescue.jpg"
       alt: "A small rescued bird being held during its handoff to a wildlife rescue."
