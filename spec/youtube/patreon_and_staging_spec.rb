@@ -30,13 +30,13 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       expect(stdout).to include('Member names and individual membership details are not stored or displayed.')
     end
 
-    it 'formats broadcast outro closing credits for teleprompter and YouTube' do
+    it 'points broadcast thank-you copy to the public support page' do
       stdout, stderr, status = Open3.capture3(patreon_bin, 'credits')
       expect(status.success?).to be true
-      expect(stdout).to include('COMMUNITY THANK-YOU COPY')
       expect(stdout).to include('TELEPROMPTER')
       expect(stdout).to include('YOUTUBE DESCRIPTION')
-      expect(stdout).to include('patreon.com/c/just3ws')
+      expect(stdout).to include('https://www.just3ws.com/support/')
+      expect(stdout).not_to include('patreon.com/c/just3ws')
       expect(stdout).to include('Named credits require an explicit, permissioned list')
     end
 
