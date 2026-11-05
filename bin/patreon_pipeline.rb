@@ -22,18 +22,38 @@ class PatreonPipeline
   ROSTER_PATH = File.join(ROOT_DIR, '_data', 'patreon_roster.json')
   PATREON_API_BASE = 'https://www.patreon.com/api/oauth2/v2'
 
-  CAMPAIGN_URL = 'https://patreon.com/whoistechcmty'
+  CAMPAIGN_URL = 'https://www.patreon.com/c/just3ws'
 
   # Calibrated Tiers:
   TIERS = {
+    'tier_interviewee' => { name: 'Interviewee Alumni', amount: 0.00, desc: 'Honorary Lifetime Membership for Interviewees' },
+    'tier_1' => { name: 'Community Supporter', amount: 1.00, desc: 'Grassroots Community Backer' },
+    'tier_5' => { name: 'Community Member', amount: 5.00, desc: 'Expanded Community & Project Supporter' },
     'tier_7' => { name: 'Archive Preservationist', amount: 7.00, desc: 'Compute & Hosting Underwriting' },
-    'tier_19' => { name: 'Workbench Craftsman', amount: 19.00, desc: 'Audio DSP & Engineering Marginalia' },
+    'tier_20' => { name: 'Workbench Craftsman', amount: 20.00, desc: 'Audio DSP & Engineering Marginalia' },
     'tier_97' => { name: 'Engineering Patron', amount: 97.00, desc: 'Institutional Underwriting & Advisory' }
   }.freeze
 
   def initialize
+    load_env_if_present
     @token = ENV['PATREON_CREATOR_TOKEN']
     @campaign_id = ENV['PATREON_CAMPAIGN_ID']
+  end
+
+  def load_env_if_present
+    env_file = File.join(ROOT_DIR, '.env')
+    return unless File.file?(env_file)
+
+    File.foreach(env_file) do |line|
+      line = line.strip
+      next if line.empty? || line.start_with?('#')
+
+      key, val = line.split('=', 2)
+      next unless key && val
+
+      val = val.strip.sub(/\A['"]/, '').sub(/['"]\z/, '')
+      ENV[key.strip] ||= val
+    end
   end
 
   def run(args = ARGV)
@@ -42,6 +62,8 @@ class PatreonPipeline
     case command
     when 'status'
       show_status
+    when 'campaign', 'id'
+      show_campaign_info
     when 'members', 'list'
       list_members
     when 'credits'
@@ -57,29 +79,58 @@ class PatreonPipeline
     end
   end
 
+  # Displays discovered campaign details from Patreon API
+  def show_campaign_info
+    unless api_configured?
+      puts 'Patreon token not set. Set PATREON_CREATOR_TOKEN in .env or via zdots-keychain.'
+      return
+    end
+
+    campaigns = fetch_campaigns
+    if campaigns.empty?
+      puts 'No campaigns found for this creator token.'
+      return
+    end
+
+    puts '=================================================================='
+    puts ' 🏷️  PATREON CAMPAIGN DISCOVERY'
+    puts '=================================================================='
+    campaigns.each do |c|
+      attrs = c['attributes'] || {}
+      puts "Campaign ID:   #{c['id']}"
+      puts "Creation Name: #{attrs['creation_name']}"
+      puts "URL:           #{attrs['url']}"
+      puts "Patron Count:  #{attrs['patron_count']}"
+      puts '------------------------------------------------------------------'
+    end
+    puts "Recommended configuration:"
+    puts "  export PATREON_CAMPAIGN_ID=\"#{campaigns.first['id']}\""
+    puts '=================================================================='
+  end
+
   # Displays current campaign status, active patrons, and recurring compute funding
   def show_status
     data = load_roster_data
     puts '=================================================================='
     puts ' 💰 PATREON CAMPAIGN STATUS & RECURRING COMPUTE FUNDING'
     puts '=================================================================='
-    puts "Campaign:       WHOIS Tech Community (#{CAMPAIGN_URL})"
+    puts "Campaign:       Mike Hall / just3ws Studio (#{CAMPAIGN_URL})"
     puts "API Connection: #{api_configured? ? 'Live Patreon API v2' : 'Local Sandbox / Staged Fixture'}"
     puts "Last Synced:    #{data['synced_at'] || 'Never'}"
     puts '------------------------------------------------------------------'
 
     members = data['members'] || []
-    active = members.select { |m| m['status'] == 'active_patron' }
+    active = members.select { |m| m['status'] == 'active_patron' || m['status'] == 'honorary_alum' }
 
     total_monthly = active.sum { |m| (m['pledge_amount'] || 0.0) }
-    puts "Active Patrons:         #{active.size}"
+    puts "Active Members:         #{active.size}"
     puts "Monthly Compute Fund:   $#{sprintf('%.2f', total_monthly)} / month"
     puts '------------------------------------------------------------------'
     puts 'TIER DISTRIBUTION:'
     TIERS.each do |key, meta|
       tier_members = active.select { |m| m['tier_id'] == key || m['tier_name'] == meta[:name] }
       subtotal = tier_members.size * meta[:amount]
-      printf "  • %-26s ($%2d/mo): %2d patrons  (Subtotal: $%6.2f/mo)\n",
+      printf "  • %-26s ($%2d/mo): %2d members  (Subtotal: $%6.2f/mo)\n",
              meta[:name], meta[:amount].to_i, tier_members.size, subtotal
     end
     puts '=================================================================='
@@ -113,11 +164,13 @@ class PatreonPipeline
   def format_credits
     data = load_roster_data
     members = data['members'] || []
-    active = members.select { |m| m['status'] == 'active_patron' }
+    active = members.select { |m| m['status'] == 'active_patron' || m['status'] == 'honorary_alum' }
 
     patrons_97 = active.select { |m| (m['pledge_amount'] || 0) >= 90.0 }
     patrons_19 = active.select { |m| (m['pledge_amount'] || 0) >= 15.0 && (m['pledge_amount'] || 0) < 90.0 }
-    patrons_7 = active.select { |m| (m['pledge_amount'] || 0) < 15.0 }
+    patrons_7 = active.select { |m| (m['pledge_amount'] || 0) >= 5.0 && (m['pledge_amount'] || 0) < 15.0 }
+    patrons_1 = active.select { |m| (m['pledge_amount'] || 0) > 0.0 && (m['pledge_amount'] || 0) < 5.0 }
+    interviewees = active.select { |m| m['tier_id'] == 'tier_interviewee' || m['status'] == 'honorary_alum' }
 
     puts '=================================================================='
     puts ' 📜 BROADCAST OUTRO CLOSING CREDITS (ACT 6 ATTRIBUTION)'
@@ -128,7 +181,11 @@ class PatreonPipeline
       names = patrons_97.map { |m| m['full_name'] }.join(', ')
       puts "Special gratitude to our Engineering Patrons: #{names}."
     end
-    puts "The Sound Above is underwritten by the patrons of WHOIS Tech Community at patreon.com/whoistechcmty."
+    if interviewees.any?
+      alumni_names = interviewees.map { |m| m['full_name'] }.join(', ')
+      puts "Warm recognition to our community interview alumni: #{alumni_names}."
+    end
+    puts "The Sound Above is underwritten by our community patrons at patreon.com/c/just3ws."
     puts ''
     puts '--- FOR YOUTUBE DESCRIPTION ---'
     puts "COMMUNITY ARCHIVE PATRONS:"
@@ -141,7 +198,13 @@ class PatreonPipeline
     if patrons_7.any?
       puts "• Archive Preservationists: " + patrons_7.map { |m| m['full_name'] }.join(', ')
     end
-    puts "Join the archive and underwrite compute costs: https://patreon.com/whoistechcmty"
+    if patrons_1.any?
+      puts "• Community Supporters: " + patrons_1.map { |m| m['full_name'] }.join(', ')
+    end
+    if interviewees.any?
+      puts "• Honorary Interviewee Alumni: " + interviewees.map { |m| m['full_name'] }.join(', ')
+    end
+    puts "Support our community archives, Phalanx Duel, and compute costs: https://www.patreon.com/c/just3ws"
     puts '=================================================================='
   end
 
@@ -171,8 +234,11 @@ class PatreonPipeline
   def fetch_or_build_roster
     return build_sandbox_roster unless api_configured?
 
+    cid = resolved_campaign_id
+    return build_sandbox_roster unless cid
+
     # Live API v2 call
-    uri = URI("#{PATREON_API_BASE}/campaigns/#{@campaign_id}/members?include=currently_entitled_tiers&fields[member]=full_name,patron_status,lifetime_support_cents,pledge_cadence&fields[tier]=title,amount_cents")
+    uri = URI("#{PATREON_API_BASE}/campaigns/#{cid}/members?include=currently_entitled_tiers&fields[member]=full_name,patron_status,lifetime_support_cents,pledge_cadence&fields[tier]=title,amount_cents")
     req = Net::HTTP::Get.new(uri)
     req['Authorization'] = "Bearer #{@token}"
     req['User-Agent'] = 'just3ws-the-sound-above-pipeline/1.0'
@@ -252,12 +318,40 @@ class PatreonPipeline
     }
   end
 
+  def resolved_campaign_id
+    if @campaign_id && @campaign_id.strip =~ /\A\d+\z/
+      return @campaign_id.strip
+    end
+
+    campaigns = fetch_campaigns
+    @campaign_id = campaigns.first&.dig('id')
+  end
+
+  def fetch_campaigns
+    return [] unless api_configured?
+
+    uri = URI("#{PATREON_API_BASE}/campaigns?fields[campaign]=creation_name,url,patron_count")
+    req = Net::HTTP::Get.new(uri)
+    req['Authorization'] = "Bearer #{@token}"
+    req['User-Agent'] = 'just3ws-media-pipeline/1.0'
+
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(req) }
+    return [] unless res.is_a?(Net::HTTPSuccess)
+
+    parsed = JSON.parse(res.body)
+    parsed['data'] || []
+  rescue StandardError => e
+    warn "Patreon API campaign discovery error: #{e.message}"
+    []
+  end
+
   def print_help
     puts <<~HELP
       Usage: bin/patreon_pipeline.rb <command> [options]
 
       Commands:
         status      Display campaign member counts, tier breakdowns, and compute funding
+        campaign    Discover and print your Patreon Campaign ID via API
         members     List active patrons, tier classifications, and join dates
         credits     Generate closing credit attribution for teleprompter and YouTube description
         sync        Cache roster data to _data/patreon_roster.json
@@ -265,7 +359,7 @@ class PatreonPipeline
 
       Environment Variables:
         PATREON_CREATOR_TOKEN   Creator access token from Patreon Developer Portal
-        PATREON_CAMPAIGN_ID     Numeric campaign ID for whoistechcmty
+        PATREON_CAMPAIGN_ID     Numeric campaign ID (auto-discovered if unset)
     HELP
   end
 end

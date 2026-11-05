@@ -1,55 +1,88 @@
 ---
 name: patreon-integrator
-description: Connects to Patreon API v2, manages campaign tiers, tracks recurring compute funding, and formats closing credit attributions for The Sound Above broadcasts.
+description: Connects to Patreon API v2 and Chrome browser automation to manage campaign tiers, brand styling, recurring compute funds, and closing credit attributions for just3ws broadcasts and open projects.
 ---
 
 # Patreon Integrator Skill
 
-Use this skill when integrating, querying, or synchronizing Patreon memberships, calculating recurring compute funding, and formatting patron attribution for **The Sound Above**, **Errata**, and **Ramblin' & Amblin'** broadcasts.
+Use this skill when managing, integrating, querying, or synchronizing Patreon memberships, calculating recurring compute funding, and formatting patron attribution for **UGtastic / WHOIS Tech Community**, **The Sound Above**, and **Phalanx Duel**.
 
 ---
 
-## 🎯 Core Capabilities & Architecture
+## 🎯 Ground Truth and Canonical Identity
 
-1. **Patreon API v2 Integration (`bin/patreon_pipeline.rb`)**:
-   - Queries the Patreon API v2 JSON:API endpoints:
-     * `GET /api/oauth2/v2/campaigns/{campaign_id}`: Campaign stats and pledge aggregates.
-     * `GET /api/oauth2/v2/campaigns/{campaign_id}/members`: Active patron identities, entitled tiers, and pledge amounts.
-     * `POST /api/oauth2/v2/campaigns/{campaign_id}/posts`: Automated patron post creation.
-   - Falls back gracefully to the deterministic sandbox fixture (`_data/patreon_roster.json`) when `PATREON_CREATOR_TOKEN` is unset during offline development or local testing.
+* **Primary Creator Identity**: Mike Hall (`mike@just3ws.com`, username `just3ws`).
+* **Canonical URL**: `https://www.patreon.com/c/just3ws` (supersedes legacy `whoistechcmty`).
+* **Campaign ID**: `15677398`.
+* **Theme Styling**: Craftsmanship Theme with **Deep Craftsman Teal (`#0F766E`)** as the primary brand accent, matching `etc/themes/craftsmanship.yaml` and `_sass/_p_variables.scss`.
+* **Consolidated Projects**:
+  1. **UGtastic / WHOIS Tech Community**: Preserving 200+ Software Craftsmanship McHenry County (SCMC) oral histories, transcripts, and Whisper compute.
+  2. **Phalanx Duel**: Ongoing strategy card game platform and community mechanics.
 
-2. **Three Calibrated Patron Tiers**:
-   - **Archive Preservationist ($7/month)**: Underwrites Whisper compute, token consumption, and static site hosting. Patrons receive uncompressed WebVTTs, raw JSONL turns, and early YAML dossiers.
-   - **Workbench Craftsman ($19/month)**: Underwrites audio DSP instrumentation and local-agent tooling. Patrons receive engineering marginalia (OBS configurations, Python DSP notch filter scripts) and teleprompter rundowns.
-   - **Engineering Patron / Institutional Underwriter ($97/month)**: Underwrites 6-movement broadcast arcs and digital humanities preservation. Patrons receive named broadcast underwriting in Act 6, quarterly 1-on-1 advisory sessions on system cartography, and corporate learning budget documentation.
+---
 
-3. **In-Stream & Metadata Syndication**:
-   - Teleprompter Act 6 Outro:
-     ```bash
-     bin/patreon_pipeline.rb credits
-     ```
-     Generates customized host read-along thank you lines for Engineering Patrons.
-   - YouTube Descriptions: Automatically prepends patron acknowledgments into staged video descriptions.
+## 🏛️ Tier Architecture & Benefits
 
-4. **CLI Commands Reference**:
+| Tier Slug | Title | Monthly Price | Core Scope & Deliverables |
+| :--- | :--- | :--- | :--- |
+| `tier_interviewee` | **Interviewee Alumni** | **$0 / month** | Honorary lifetime membership for all 192 historical interviewees with full post feed and community access. |
+| `tier_1` | **Community Supporter** | **$1 / month** | Grassroots backer tier supporting open craftsmanship archives and Phalanx Duel game development. |
+| `tier_5` | **Community Member** | **$5 / month** | Coffee-level recurring community patron tier. |
+| `tier_7` | **Archive Preservationist** | **$7 / month** | Underwrites Whisper GPU transcription, timecode alignment, and static hosting. Early access to uncompressed WebVTT captions and Markdown dossiers. |
+| `tier_20` | **Workbench Craftsman** | **$20 / month** | Underwrites audio DSP restoration, local tool development, and game playtests. Includes engineering marginalia, Python DSP notch scripts, and playtest builds. |
+| `tier_97` | **Engineering Patron** | **$97 / month** | Executive and institutional underwriting for multi-movement broadcast arcs. Spoken outro credits in Act 6, description underwriting lines, and quarterly 1-on-1 systems architecture discussions. |
+
+---
+
+## ⚙️ Operational Interfaces & CLI
+
+### 1. Unified Pipeline CLI (`bin/patreon_pipeline.rb` / `bin/pipeline patreon`)
+
+```bash
+# Check campaign status, active members, and compute funding:
+ruby bin/patreon_pipeline.rb status
+bin/pipeline patreon status
+
+# Auto-discover or verify campaign metadata via API v2:
+ruby bin/patreon_pipeline.rb campaign
+
+# List members and current tier classifications:
+ruby bin/patreon_pipeline.rb members
+
+# Generate teleprompter read-along credits and YouTube descriptions:
+ruby bin/patreon_pipeline.rb credits
+
+# Synchronize live remote roster to _data/patreon_roster.json:
+ruby bin/patreon_pipeline.rb sync
+```
+
+### 2. Browser Automation (Chrome via AppleScript)
+
+When active in Chrome with **View > Developer > Allow JavaScript from Apple Events** enabled:
+
+```bash
+# Inspect active Patreon tab:
+osascript -e 'tell application "Google Chrome" to get {title, URL} of active tab of front window'
+
+# Execute JavaScript inside Patreon tab:
+osascript -e 'tell application "Google Chrome" to tell active tab of front window to execute javascript "..."'
+```
+
+---
+
+## 🛡️ Credential Storage Seams
+
+Credentials must never be hardcoded or checked into source control:
+
+1. **Option A (Personal OS Keychain)**:
    ```bash
-   # Display campaign status and monthly compute fund:
-   bin/patreon_pipeline.rb status
-   bin/pipeline patreon status
-
-   # List active members and tier classifications:
-   bin/patreon_pipeline.rb members
-
-   # Generate closing credit attributions:
-   bin/patreon_pipeline.rb credits
-
-   # Sync live members to _data/patreon_roster.json:
-   bin/patreon_pipeline.rb sync
+   zdots-keychain add PATREON_CREATOR_TOKEN "<token>"
+   zdots-keychain add PATREON_CAMPAIGN_ID "15677398"
    ```
-
-5. **Staging and Verification**:
-   Before every live broadcast, run the staging harness to ensure patron attribution is rendered cleanly:
-   ```bash
-   bin/stage_episode_workflow.rb <N>
-   bin/pipeline stage <N>
+2. **Option B (Repository-scoped .env)**:
+   Add to `.env` (which is gitignored and tracked in `_data/repo_hygiene.yml`):
+   ```sh
+   PATREON_CREATOR_TOKEN="<token>"
+   PATREON_CAMPAIGN_ID="15677398"
    ```
+   `PatreonPipeline#load_env_if_present` automatically loads this file on demand.

@@ -38,6 +38,7 @@ This matrix governs task ownership, review obligations, and decision authority a
 | **Browser QA & Visual Regression** | Commissar | Browser QA | Accessibility Auditor | Site Refresh Builder |
 | **Transcript Ingestion & Boundaries** | Hierophant | Forensic Archivist | Cook Ding, Practitioner Archive Advocate | Aneta |
 | **Cross-Repo Job Lead & Peer Sync** | Aneta | Job Lead Evaluator | Peer Liaison, Career Strategist | `wwworkremote.localhost` |
+| **Patreon Sponsorship & Campaign Tiers** | Aneta | Patreon Integrator | Canonical Surface Steward, Oral History Broadcaster | Mike, `media-pipeline.localhost` |
 
 ---
 
