@@ -47,6 +47,9 @@ body_class: surface-editorial community-timeline-surface
       <a href="/reports/software-craftsmanship-forensics/" class="is-secondary">
         🔍 SCM Forensics
       </a>
+      <a href="/timeline/lived-history/" class="is-secondary">
+        📷 Rooms I Was In · Photo Timeline
+      </a>
     </div>
   </header>
 
@@ -116,7 +119,7 @@ body_class: surface-editorial community-timeline-surface
   <section class="timeline-feed">
 
     {% for event in events %}
-      <article class="timeline-event-card" data-era="{{ event.era }}" data-communities="{{ event.communities | join: ' ' }}">
+      <article id="{{ event.id }}" class="timeline-event-card" data-era="{{ event.era }}" data-communities="{{ event.communities | join: ' ' }}">
         <!-- Timeline Marker Dot -->
         <span class="marker-dot"></span>
 

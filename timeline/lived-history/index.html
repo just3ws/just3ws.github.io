@@ -1,0 +1,87 @@
+---
+layout: minimal
+title: "Rooms I Was In: A Lived History"
+description: "Mike Hall's first-person, photo-backed timeline of technology communities, teaching, work, and personal moments."
+permalink: /timeline/lived-history/
+body_class: surface-editorial lived-history-surface
+---
+
+{% assign history = site.data.lived_history_timeline %}
+{% assign events = history.events | sort: "date_sort" %}
+
+<main class="lived-history-page">
+  <header class="lived-history-hero">
+    <div class="lived-history-hero-copy">
+      <p class="lived-history-kicker">A photo-backed personal archive</p>
+      <h1>{{ history.metadata.title }}</h1>
+      <p class="lived-history-intro">{{ history.metadata.introduction }}</p>
+      <p class="lived-history-credit">Photographs by Mike Hall · Curated from his Google Photos archive</p>
+    </div>
+    <nav class="lived-history-jumps" aria-label="Jump to a period">
+      {% for era in history.eras %}
+        <a href="#{{ era.first_event_id }}">{{ era.label }}</a>
+      {% endfor %}
+      <a href="/timeline/community/">Community history</a>
+    </nav>
+  </header>
+
+  <section class="lived-history-feed" aria-label="Historical timeline">
+    {% for event in events %}
+      <article id="{{ event.id }}" class="lived-history-card{% unless event.photo %} is-text-only{% endunless %}">
+        <div class="lived-history-card-copy">
+          <div class="lived-history-meta">
+            <span class="lived-history-date">{{ event.date_display }}</span>
+            <span class="lived-history-kind">{{ event.kind | replace: '-', ' ' }}</span>
+          </div>
+          <h2>{{ event.title }}</h2>
+          {% if event.location %}
+            <p class="lived-history-location">{{ event.location }}</p>
+          {% endif %}
+          <p class="lived-history-narrative">{{ event.narrative }}</p>
+
+          {% if event.communities and event.communities.size > 0 %}
+            <ul class="lived-history-tags" aria-label="Related communities">
+              {% for community in event.communities %}
+                <li>{{ community }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+          <details class="lived-history-provenance">
+            <summary>Dates, sources, and context</summary>
+            <p><strong>Date:</strong> {{ event.date_evidence }}</p>
+            {% if event.location_evidence %}
+              <p><strong>Place:</strong> {{ event.location_evidence }}</p>
+            {% endif %}
+            <p><strong>Source:</strong> {{ event.source }}</p>
+          </details>
+
+          {% if event.link %}
+            <a class="lived-history-link" href="{{ event.link.url }}">{{ event.link.label }} <span aria-hidden="true">→</span></a>
+          {% endif %}
+        </div>
+
+        {% if event.photos and event.photos.size > 0 %}
+          <div class="lived-history-gallery">
+            {% for photo in event.photos %}
+              <figure class="lived-history-photo">
+                <img src="{{ photo.path }}" alt="{{ photo.alt }}" loading="lazy" decoding="async">
+                <figcaption>{{ photo.alt }}</figcaption>
+              </figure>
+            {% endfor %}
+          </div>
+        {% elsif event.photo %}
+          <figure class="lived-history-photo">
+            <img src="{{ event.photo.path }}" alt="{{ event.photo.alt }}" loading="lazy" decoding="async">
+            <figcaption>{{ event.photo.alt }}</figcaption>
+          </figure>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </section>
+
+  <footer class="lived-history-footer">
+    <p>This is a curated selection, not a dump of every album. The original photos remain in my archive; the images here are smaller web copies with embedded metadata removed.</p>
+    <a href="/timeline/community/">Explore the Community Pastiche and oral-history archive →</a>
+  </footer>
+</main>

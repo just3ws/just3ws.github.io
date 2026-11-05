@@ -167,7 +167,7 @@ body_class: surface-editorial
   "@type": "VideoObject",
   "name": {{ page.title | jsonify }},
   "description": {{ page.description | jsonify }},
-  "uploadDate": {{ ep.recorded_date | default: "2013-01-01" | jsonify }},
+  "uploadDate": {% assign video_upload_date = ep.published_at | default: ep.published_date | default: ep.recorded_date | default: "2013-01-01" %}{% if video_upload_date contains "T" %}{{ video_upload_date | jsonify }}{% else %}{{ video_upload_date | date: "%Y-%m-%dT00:00:00Z" | jsonify }}{% endif %},
   "url": {{ page.url | absolute_url | jsonify }},
   {% if ep.youtube_broadcast_id %}
   "embedUrl": {{ ep.youtube_broadcast_id | prepend: "https://www.youtube-nocookie.com/embed/" | jsonify }},

@@ -1,0 +1,573 @@
+metadata:
+  title: "Rooms I Was In: A Lived History"
+  curator: "Mike Hall"
+  description: >-
+    A first-person timeline of the technical communities, teaching, work, and
+    personal moments that shaped Mike Hall's life in technology. The photographs
+    are his; dates and places are labeled by the evidence available for each item.
+  introduction: >-
+    I did not keep a tidy archive. These are moments that stayed with me: rooms
+    where people learned together, work that became a community, and the
+    unexpected days that gave the rest of life its texture. The photographs are
+    mine. I label what comes from a photo record separately from what I remember.
+    I am also an Eagle Scout, a milestone I remain proud of; a family clipping
+    records it, though its publication year is not established here.
+
+eras:
+  - id: family-roots
+    label: "Before 2005 · Family and early life"
+    first_event_id: fathers-work-and-trucks
+  - id: early-practice
+    label: "2005–2009 · Learning and teaching"
+    first_event_id: ticketsnow-scrum
+  - id: community-rooms
+    label: "2010–2012 · The community rooms and corridors"
+    first_event_id: cloud-developers-group
+  - id: life-outside-work
+    label: "2018–2020 · Unexpected days and older history"
+    first_event_id: weird-al-and-emo-phillips
+  - id: internal-community
+    label: "2022–2025 · Work, making, and life outside it"
+    first_event_id: open-tech-talks-geekfest-omf
+  - id: current-practice
+    label: "2026 · Still showing up"
+    first_event_id: chicagoruby-2026
+
+events:
+  - id: fathers-work-and-trucks
+    date_sort: "1988-01-01"
+    date_display: "1988 and undated family photographs"
+    date_evidence: "One truck photograph is handwritten '1988'; the black-and-white photograph of my father at work is undated."
+    era: family-roots
+    kind: personal
+    title: "My father's work and trucks"
+    location: "Location not established"
+    narrative: >-
+      This album holds a few fragments of my father's life: a truck marked
+      1988, and a black-and-white photograph of him at work at CW. The dates
+      are uneven, but together they give me a glimpse of the work and world
+      that were part of my family story before my own technology-community
+      years.
+    photos:
+      - path: "/assets/images/lived-history/fathers-truck-1988.jpg"
+        alt: "A green semi truck with its license plate obscured; the print is handwritten 1988."
+      - path: "/assets/images/lived-history/father-at-work.jpg"
+        alt: "A black-and-white photograph of Mike's father at work at CW."
+    source: "Mike's Google Photos album and recollection; the handwritten year appears on the truck print."
+    source_album: "Photos-1-001 (6)"
+
+  - id: ticketsnow-scrum
+    date_sort: "2006-01-01"
+    date_display: "2005–2007 · TicketsNow"
+    date_evidence: "TicketsNow role record; the date of each class is not established by the later note photographs."
+    era: early-practice
+    kind: teaching
+    title: "Learning Scrum by helping a team practice it"
+    location: "Crystal Lake, Illinois"
+    narrative: >-
+      At TicketsNow I introduced and led Scrum practices with the core transaction
+      engineering team. The notes preserve what I was teaching: keep the product
+      backlog focused on prioritized requirements, draw the sprint backlog from
+      it, and use progress charts to talk about the work. I photographed these
+      pages in 2021, not during the classes, so the teaching dates remain
+      approximate.
+    source: "Mike's recollection and the public TicketsNow role record."
+    source_album: "Scrum book notes circa 2005-06"
+    link:
+      label: "TicketsNow role"
+      url: "/resume/positions/ticketsnow/"
+
+  - id: cloud-developers-group
+    date_sort: "2010-07-19"
+    date_display: "July 19, 2010"
+    date_evidence: "Date in the original photo filenames and album title; the capture EXIF date is absent."
+    era: community-rooms
+    kind: community
+    title: "Cloud Developers' Group around a table"
+    location: "Chicago area; exact venue not established"
+    location_evidence: "Album context; no reliable GPS location in the selected photo."
+    narrative: >-
+      This is the kind of room I wanted to make possible: a few people, laptops
+      open, trading ideas without needing a conference stage. The same five
+      photographs appear in another July 2010 export, so I count this as one
+      meeting rather than two separate events.
+    communities: ["Cloud Developers' Group"]
+    photo:
+      path: "/assets/images/lived-history/cloud-developers-group-2010.jpg"
+      alt: "A small Cloud Developers' Group meeting gathered around a table with laptops."
+    source: "Mike's Google Photos album; the selected image is one of five repeated in a second export."
+    source_album: "Cloud Developer's Group Meeting July 2010"
+
+  - id: obtiva-geekfest-july-2010
+    date_sort: "2010-07-20"
+    date_display: "July 20, 2010"
+    date_evidence: "Capture date in the original image EXIF and the Google Photos album title."
+    era: community-rooms
+    kind: community
+    title: "Geekfest at Obtiva: a room built for learning together"
+    location: "Obtiva, Chicago"
+    location_evidence: "Google Photos album title and event context."
+    narrative: >-
+      Geekfest was Obtiva's recurring study group and apprenticeship forum. I
+      joined the room as a practitioner and learned from the people who made
+      time to teach, try ideas, and work through code together. This album also
+      includes Brian Marick's July session at Obtiva.
+    communities: ["Geekfest", "Obtiva"]
+    photo:
+      path: "/assets/images/lived-history/obtiva-geekfest-july-2010.jpg"
+      alt: "A full room of developers listening during a Geekfest session at Obtiva."
+    source: "Mike's Google Photos album; original capture date retained in EXIF, removed from the public derivative."
+    source_album: "2010 July 20 Geekfest at Obtiva"
+    link:
+      label: "The community timeline"
+      url: "/timeline/community/"
+
+  - id: chicago-altnet-fawad-halim-2010
+    date_sort: "2010-08-11"
+    date_display: "August 11, 2010"
+    date_evidence: "Capture date in the original image EXIF; the public derivative has metadata removed."
+    era: community-rooms
+    kind: community
+    title: "Chicago Alt.NET looks beyond the expected stack"
+    location: "Chicago area; exact venue not established"
+    location_evidence: "Album and meeting context; no reliable GPS location in the selected photo."
+    narrative: >-
+      Fawad Halim presented Python for .NET Developers. Chicago Alt.NET made
+      room for people to question the defaults of their day jobs and bring
+      techniques from other communities back to their teams.
+    communities: ["Chicago Alt.NET"]
+    photo:
+      path: "/assets/images/lived-history/chicago-altnet-2010.jpg"
+      alt: "A Chicago Alt.NET meeting in progress, with attendees facing the presentation screen."
+    source: "Mike's Google Photos album and the presentation title visible in the original photographs."
+    source_album: "2010 August Chicago Alt.net - Fawad Halim Python for .Net Developers"
+    link:
+      label: "Chicago Alt.NET timeline entry"
+      url: "/timeline/community/#chicago-altnet-sergio"
+
+  - id: brian-marick-clojure-chicago-2010
+    date_sort: "2010-09-23"
+    date_display: "September 23, 2010"
+    date_evidence: "Date in the original photo filename; capture EXIF date is absent."
+    era: community-rooms
+    kind: community
+    title: "Brian Marick at Clojure Chicago"
+    location: "Chicago; exact venue not established"
+    location_evidence: "Album title and event context."
+    narrative: >-
+      The album preserves a second Brian Marick session, this time with Clojure
+      Chicago. Together with his July visit to Obtiva, these images show how
+      ideas moved between workplaces and open community rooms.
+    communities: ["Clojure Chicago"]
+    photo:
+      path: "/assets/images/lived-history/brian-marick-clojure-chicago-2010.jpg"
+      alt: "Brian Marick speaking to an audience at a Clojure Chicago gathering."
+    source: "Mike's Google Photos album; date inferred from the original filename and album title."
+    source_album: "Brian Marick at Clojure Chicago"
+
+  - id: scna-2010
+    date_sort: "2010-10-15"
+    date_display: "October 15–17, 2010"
+    date_evidence: "Original filenames place the selected photo on October 15; the album is titled SCNA 2010."
+    era: community-rooms
+    kind: conference
+    title: "Software Craftsmanship North America, 2010"
+    location: "Chicago; venue not established by this album"
+    location_evidence: "Album title and conference context."
+    narrative: >-
+      SCNA put practitioners from different corners of the movement in the same
+      place. I was there to learn, reconnect, and keep recording the people and
+      conversations that made the community feel real.
+    communities: ["SCNA", "Software Craftsmanship"]
+    photo:
+      path: "/assets/images/lived-history/scna-2010.jpg"
+      alt: "A speaker presents from the stage at Software Craftsmanship North America 2010."
+    source: "Mike's Google Photos album; date is from the original filename, not EXIF."
+    source_album: "SCNA 2010"
+    link:
+      label: "SCNA interview archive"
+      url: "/interviews/"
+
+  - id: first-scmc-meeting-2010
+    date_sort: "2010-10-18"
+    date_display: "October 18, 2010"
+    date_evidence: "Date in the original photo filenames and album title; capture EXIF date is absent."
+    era: community-rooms
+    kind: community
+    title: "The first Software Craftsmanship McHenry County meeting"
+    location: "McHenry County, Illinois; exact venue not established by the album"
+    location_evidence: "Album title and community context."
+    narrative: >-
+      Ryan Gerry and I helped start Software Craftsmanship McHenry County
+      (SCMC) as a place to practice, discuss, and share software craftsmanship
+      close to home. Seeing the name on the board still brings me back to the
+      beginning: a community takes shape when people keep making room for one
+      another.
+    communities: ["SCMC", "Software Craftsmanship"]
+    photo:
+      path: "/assets/images/lived-history/first-scmc-meeting-2010.jpg"
+      alt: "A handwritten Software Craftsmanship McHenry County sign at the first SCMC meeting."
+    source: "Mike's Google Photos album; date is from the filename and album title."
+    source_album: "First Ever SCMC Meeting"
+    link:
+      label: "SCMC archive"
+      url: "/scmc/"
+
+  - id: scmc-clojure-koans-2010
+    date_sort: "2010-11-16"
+    date_display: "November 16, 2010"
+    date_evidence: "Date in the original photo filenames; the public derivative has metadata removed."
+    era: community-rooms
+    kind: teaching
+    title: "Clojure Koans at SCMC"
+    location: "McHenry County, Illinois; exact venue not established by the album"
+    location_evidence: "Album title and community context."
+    narrative: >-
+      Colin Jones led a Clojure Koans session. People learned by working through
+      small exercises together, asking questions as the code made each idea
+      concrete. That format still shapes how I think about a useful technical
+      learning session.
+    communities: ["SCMC", "Clojure"]
+    photo:
+      path: "/assets/images/lived-history/scmc-clojure-koans-2010.jpg"
+      alt: "A presenter walks through a Clojure Koans exercise with an SCMC group."
+    source: "Mike's Google Photos album; date is from original filenames and album title."
+    source_album: "SCMC - Clojure Koans w-Colin Jones"
+
+  - id: chicago-code-camp-2011
+    date_sort: "2011-05-14"
+    date_display: "May 14, 2011 · Chicago Code Camp 3"
+    date_evidence: "Date in the original photo filenames and album title."
+    era: community-rooms
+    kind: community
+    title: "Chicago Code Camp: a shirt people wanted to wear"
+    location: "Chicagoland; the venue is not established by this album"
+    location_evidence: "Album title and event context."
+    narrative: >-
+      Another person designed the Chicago Code Camp logo. I helped decide which
+      submission to use, adapted the logo for the CCC shirt and sticker design,
+      and integrated it into the website. The shirt became wildly popular. I
+      remember the design work as one small piece of making a free community
+      conference feel like something people belonged to.
+    communities: ["Chicago Code Camp"]
+    photo:
+      path: "/assets/images/lived-history/chicago-code-camp-2011.jpg"
+      alt: "A speaker addresses the audience at Chicago Code Camp 3."
+    source: "Mike's Google Photos album; date is from original filenames and album title. The logo and design account is Mike's recollection."
+    source_album: "Some pics from CCC3"
+    link:
+      label: "Chicago Code Camp retrospective"
+      url: "/timeline/community/"
+
+  - id: last-obtiva-geekfest-2011
+    date_sort: "2011-08-09"
+    date_display: "August 9, 2011"
+    date_evidence: "Date in the original photo filenames and album title."
+    era: community-rooms
+    kind: community
+    title: "The last Obtiva Geekfest in this photo archive"
+    location: "Obtiva, Chicago"
+    location_evidence: "Album title and event context."
+    narrative: >-
+      This album is titled “Last Obtiva Geekfest.” I also remember the day we
+      learned Obtiva was being acquired by Groupon, but I have not established
+      that it was the day pictured here, so I keep those memories separate.
+      What these photos do show is a room full of people making time to learn
+      together.
+    communities: ["Geekfest", "Obtiva"]
+    photo:
+      path: "/assets/images/lived-history/last-obtiva-geekfest-2011.jpg"
+      alt: "Developers gathered in a circle during the last Obtiva Geekfest represented in this archive."
+    source: "Mike's Google Photos album; date is from original filenames and album title."
+    source_album: "Last Obtiva Geekfest"
+
+  - id: weird-al-and-emo-phillips
+    date_sort: "2018-04-09"
+    date_display: "April 9, 2018"
+    date_evidence: "Date in the original photo filenames and album title."
+    era: life-outside-work
+    kind: personal
+    title: "Weird Al, Emo Phillips, and a signed record"
+    location: "Milwaukee, Wisconsin"
+    location_evidence: "Google Photos album title."
+    narrative: >-
+      I went to see Weird Al and Emo Phillips, then met Weird Al and got a record
+      signed. The concert photographs capture the noise and color of the night;
+      the signed record is a memory I carry from the meet-and-greet, not an
+      object shown in this photo.
+    photo:
+      path: "/assets/images/lived-history/weird-al-milwaukee-2018.jpg"
+      alt: "Weird Al Yankovic performing under the lights at a Milwaukee concert."
+    source: "Mike's Google Photos album and personal recollection; the selected photo shows the concert, not the meet-and-greet."
+    source_album: "Weird Al Milwaukee April 9th, 2018"
+
+  - id: corey-haines-sticker-laptop
+    date_sort: "2012-10-05"
+    date_display: "October 5, 2012"
+    date_evidence: "Date in the original photo filename; the selected web copy has metadata removed."
+    era: community-rooms
+    kind: community
+    title: "Corey Haines shows off his laptop stickers"
+    narrative: >-
+      I caught Corey Haines showing off the stickers on his laptop. These little
+      bits of personality travelled from meetup to meetup alongside the ideas
+      people came to share. I have not established the venue from the album, so
+      I am leaving it unnamed.
+    photo:
+      path: "/assets/images/lived-history/corey-haines-laptop-stickers-2012.jpg"
+      alt: "Corey Haines holds up a laptop covered in stickers."
+    source: "Mike's Google Photos album and identification of Corey Haines; date is from the original filename."
+    source_album: "Photos-1-001 (3)"
+
+  - id: chicago-user-groups-presentation-2012
+    date_sort: "2012-09-25"
+    date_display: "September 25, 2012"
+    date_evidence: "Date in the original photo filenames; the selected web copies have metadata removed."
+    era: community-rooms
+    kind: community
+    title: "A Ruby presentation and an “I ♥ User-Groups!” sticker"
+    narrative: >-
+      I photographed a Ruby presentation and a community member showing off an
+      “I ♥ User-Groups!” sticker on a laptop. I like having both moments from
+      the same evening: the technical work people brought to the room, and the
+      pride they took in the communities around it. The album does not establish
+      the venue, so I have left it unnamed.
+    communities: ["Ruby", "User groups"]
+    photos:
+      - path: "/assets/images/lived-history/ruby-presentation-2012.jpg"
+        alt: "A presenter works through Ruby code projected on a screen during an evening meetup."
+      - path: "/assets/images/lived-history/i-love-user-groups-sticker-2012.jpg"
+        alt: "A community member holds up a laptop bearing an “I love User-Groups!” sticker."
+    source: "Mike's Google Photos album and recollection of the sticker; dates are from the original filenames."
+    source_album: "Photos-1-001 (4)"
+
+  - id: chicago-woodpecker-rescue
+    date_sort: "2018-04-16"
+    date_display: "April 16, 2018"
+    date_evidence: "Date in the original photo filenames and album title."
+    era: life-outside-work
+    kind: personal
+    title: "The woodpecker on the way to a job interview"
+    location: "Chicago, Illinois"
+    location_evidence: "Mike's recollection; the album title identifies the day, not the place."
+    narrative: >-
+      I was heading to a job interview when I found a woodpecker on the sidewalk.
+      I contacted a Chicago bird rescue, and they came to recover it before I
+      went in. They ended up passing on me. I got the sense they were not
+      charmed that I had stopped to help the bird. It was a very strange day in the city, and the
+      woodpecker got the better story.
+    photo:
+      path: "/assets/images/lived-history/woodpecker-rescue-2018.jpg"
+      alt: "A woodpecker rests in Mike's hands before the bird rescue collected it."
+    source: "Mike's Google Photos album and personal recollection."
+    source_album: "Operation Woodpecker Awake - 2018-04-16"
+
+  - id: cantigny-sfor-brcko
+    date_sort: "2020-03-07"
+    date_display: "March 7, 2020 · Cantigny Park"
+    date_evidence: "Date in the original image filename; the public derivative has metadata removed."
+    era: life-outside-work
+    kind: personal-history
+    title: "Revisiting the Bosnia deployment through Brčko"
+    location: "Cantigny Park, Illinois"
+    location_evidence: "Mike's recollection and the Google Photos album context."
+    narrative: >-
+      At Cantigny Park, I photographed a First Division Museum exhibit about
+      the Bosnia and Herzegovina conflict and the Brčko area. It brought me
+      back to my own Bosnia deployment with SFOR. The photograph here shows
+      the museum exhibit that made the connection for me.
+    photos:
+      - path: "/assets/images/lived-history/cantigny-sfor-exhibit-2020.jpg"
+        alt: "NATO and SFOR flags on display at the First Division Museum in Cantigny Park."
+      - path: "/assets/images/lived-history/cantigny-brcko-map-2020.jpg"
+        alt: "A marked museum map with Brčko and Tuzla visible in Bosnia and Herzegovina."
+    source: "Mike's Google Photos album and personal recollection; the visit date is from the original filename."
+    source_album: "SFOR"
+
+  - id: open-tech-talks-geekfest-omf
+    date_sort: "2022-06-15"
+    date_display: "June 2022–February 2024"
+    date_evidence: "OneMain Financial role record and public retrospective."
+    era: internal-community
+    kind: teaching
+    title: "Making a learning room inside a large organization"
+    location: "OneMain Financial · internal community"
+    narrative: >-
+      I started Open Tech Talks and grew it into Geekfest@OMF, carrying forward
+      the weekly peer-learning format I had experienced at Obtiva. Across more
+      than 49 sessions, we worked through Ruby, legacy code, SOLID, Cynefin,
+      early LLMs, and OpenTelemetry. I coached first-time speakers and made
+      space for engineers from different teams to teach one another. I am
+      keeping the workplace photographs private while I review them for
+      colleagues' privacy and internal material.
+    communities: ["Geekfest@OMF"]
+    source: "Existing public OneMain role record and retrospective; no private workplace photo is published here."
+    link:
+      label: "OneMain role and public summary"
+      url: "/resume/positions/onemain-financial/"
+
+  - id: phalanx-duel-notebook-origin
+    date_sort: "2022-07-10"
+    date_display: "July 10, 2022 · The notebook and pen behind Phalanx Duel"
+    date_evidence: "Capture date in the original photo filename; it documents the notebook and pen, not necessarily the first day of game design."
+    era: internal-community
+    kind: personal
+    title: "A game starts as notes on paper"
+    location: "Location not established"
+    narrative: >-
+      Before Phalanx Duel became a game, it lived in notebooks and on cards.
+      This is one of the original notebooks and the pen I used while working
+      out the ideas. I like having a picture of the workbench before it became
+      a product.
+    photo:
+      path: "/assets/images/lived-history/phalanx-notebook-origin.jpg"
+      alt: "A notebook, playing cards, and the pen Mike used while developing Phalanx Duel."
+    source: "Mike's Google Photos album and recollection; the capture date comes from the original filename."
+    source_album: "Photos-1-001 (8)"
+
+  - id: carolina-waterfowl-rescue
+    date_sort: "2022-04-27"
+    date_display: "April 27, 2022"
+    date_evidence: "Date in the original photo filename."
+    era: internal-community
+    kind: personal
+    title: "A parking-garage rescue and a safe handoff"
+    location: "Carolina Waterfowl Rescue; the parking garage location is not established"
+    location_evidence: "The photographed sign identifies Carolina Waterfowl Rescue; Mike recalls finding the bird in a parking garage and driving it to the sanctuary."
+    narrative: >-
+      I found a young bird in a parking garage, got it safely into my car, and
+      drove it to a sanctuary where they took it in. I had remembered the place
+      generally as a Carolina bird rescue; the sign in my photo identifies it
+      as Carolina Waterfowl Rescue. I am glad the bird made it to people who
+      could care for it.
+    photo:
+      path: "/assets/images/lived-history/carolina-waterfowl-rescue.jpg"
+      alt: "A small rescued bird being held during its handoff to a wildlife rescue."
+    source: "Mike's Google Photos album and recollection; the organization name is read from the sign in a separate source photo."
+    source_album: "Photos-1-001 (9)"
+
+  - id: toad-and-salamander-rescue
+    date_sort: "2022-07-09"
+    date_display: "July 9 and August 21, 2022"
+    date_evidence: "Dates in the original photo filenames; the photos show separate encounters."
+    era: internal-community
+    kind: personal
+    title: "A toad, a salamander, and a pause in the day"
+    location: "A skateboarding park and a separate outdoor spot; exact locations not established"
+    narrative: >-
+      I found a beautiful toad, then later came across a salamander at a
+      skateboarding park and moved it out of danger. They were small encounters,
+      but the photos bring back how much life is moving around us when we stop
+      long enough to notice.
+    photos:
+      - path: "/assets/images/lived-history/toad-skate-park-2022.jpg"
+        alt: "A small toad looking toward the camera from the dirt."
+      - path: "/assets/images/lived-history/salamander-rescue-2022.jpg"
+        alt: "A salamander resting in Mike's hand after being moved away from danger at a skateboarding park."
+    source: "Mike's Google Photos album and recollection; the capture dates are in the original filenames."
+    source_album: "Photos-1-001 (8)"
+
+  - id: kubecon-observability-day-2023
+    date_sort: "2023-11-06"
+    date_display: "November 6, 2023 · Observability Day"
+    date_evidence: "Original EXIF capture time and GPS rounded to the city; the public derivative contains no EXIF or coordinates."
+    era: internal-community
+    kind: conference
+    title: "KubeCon's Observability Day"
+    location: "Chicago, Illinois"
+    location_evidence: "Original EXIF GPS agrees with the album and conference context; exact coordinates are not published."
+    narrative: >-
+      I spent Observability Day moving between talks, notes, and hallway
+      conversations about how teams understand what their systems are doing.
+      A few photos caught the pages and ideas I wanted to carry home.
+    communities: ["KubeCon", "Observability"]
+    photo:
+      path: "/assets/images/lived-history/kubecon-observability-2023.jpg"
+      alt: "A full conference room during a KubeCon Observability Day session in Chicago."
+    source: "Mike's Google Photos album; original EXIF date and GPS were checked and stripped from the web image."
+    source_album: "KubeCon 2023 Observability Day"
+
+  - id: kubecon-chicago-2023
+    date_sort: "2023-11-07"
+    date_display: "November 7, 2023 · KubeCon + CloudNativeCon North America"
+    date_evidence: "Original EXIF capture time and GPS rounded to the city; the public derivative contains no EXIF or coordinates."
+    era: internal-community
+    kind: conference
+    title: "A day of talks, questions, and things to bring back to the team"
+    location: "Chicago, Illinois"
+    location_evidence: "Original EXIF GPS agrees with the album and conference context; exact coordinates are not published."
+    narrative: >-
+      I photographed talks and notes that connected observability, open source,
+      and the daily work of building reliable systems. These pictures are a
+      record of what caught my attention, not a claim that every photographed
+      slide is my work.
+    communities: ["KubeCon", "Cloud Native Computing Foundation"]
+    photo:
+      path: "/assets/images/lived-history/kubecon-chicago-2023.jpg"
+      alt: "A KubeCon audience watching a conference presentation in Chicago."
+    source: "Mike's Google Photos album; original EXIF date and GPS were checked and stripped from the web image."
+    source_album: "KubeCon 2023 Day 1"
+
+  - id: otel-working-group-handoff
+    date_sort: "2024-04-01"
+    date_display: "April 2024–September 12, 2025"
+    date_evidence: "OneMain Financial role record and public retrospective."
+    era: internal-community
+    kind: community
+    title: "Geekfest@OMF becomes the OpenTelemetry Working Group"
+    location: "OneMain Financial · internal community"
+    narrative: >-
+      I founded and led the OpenTelemetry Working Group, turning a recurring
+      learning community into a place to align teams around shared tracing and
+      observability practices. The group reached 122 invited members. I handed
+      it off when the organization could staff observability as a dedicated
+      capability. This is the public summary; the internal album is not used
+      as a photo source on this page.
+    communities: ["Geekfest@OMF", "OpenTelemetry Working Group"]
+    source: "Existing public OneMain role record and retrospective."
+    link:
+      label: "OneMain role and public summary"
+      url: "/resume/positions/onemain-financial/"
+
+  - id: chicagoruby-2026
+    date_sort: "2026-09-09"
+    date_display: "September 9, 2026"
+    date_evidence: "Date in the original photo filenames and album title."
+    era: current-practice
+    kind: community
+    title: "Still showing up for Chicago Ruby"
+    location: "Chicago area; exact venue not established by the album"
+    location_evidence: "Album title and event context."
+    narrative: >-
+      The rooms keep changing, and the reason to show up still feels familiar:
+      share what we are learning, make space for good questions, and leave with
+      a few ideas to try.
+    communities: ["ChicagoRuby"]
+    photo:
+      path: "/assets/images/lived-history/chicagoruby-2026.jpg"
+      alt: "A Chicago Ruby meetup in progress, with a speaker and attendees in the room."
+    source: "Mike's Google Photos album; date is from original filenames and album title."
+    source_album: "ChicagoRuby Sept 2026"
+
+  - id: ugtastic-sign-at-groupon
+    date_sort: "2012-11-07"
+    date_display: "November 7, 2012"
+    date_evidence: "Date in the original photo filename; it dates the photograph, not necessarily when the sign was printed."
+    era: community-rooms
+    kind: community
+    title: "A little sign at Groupon: “That's UGtastic!”"
+    location: "Groupon, Chicago"
+    location_evidence: "Mike's recollection of where colleagues made the sign."
+    narrative: >-
+      Some of my colleagues printed this little sign for me at Groupon to
+      celebrate UGtastic. It makes me smile because the community work I was
+      doing outside the office had found a small place inside it, too.
+    communities: ["UGtastic", "Groupon"]
+    photo:
+      path: "/assets/images/lived-history/ugtastic-groupon-sign-2012.jpg"
+      alt: "A small green sign on a desk reads, “That's UGtastic!”"
+    source: "Mike's Google Photos album and personal recollection; date is from the original filename."
+    source_album: "Photos-1-001 (2)"
+    link:
+      label: "UGtastic community archive"
+      url: "/interviews/"
