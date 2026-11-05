@@ -110,3 +110,95 @@ editorial_principles:
   - "Never promise individual credits, private access, early releases, consulting, or a delivery cadence by implication."
   - "Do not publish patron names or membership details without explicit permission."
   - "Use verifiable dates and project roles; use the project history as context, not as a list of inflated claims."
+
+# Operational inventory for reconciling the canonical copy with the creator page.
+# This is a manually verified snapshot, not a live Patreon API mirror.
+surface_management:
+  schema_version: 1
+  last_verified_at: "2026-11-04"
+  verified_from: "Patreon creator dashboard"
+  sync_mode: "manual_review"
+  publication_requires_operator_action: true
+  identity:
+    display_name: "Mike Hall"
+    handle: "just3ws"
+    campaign_url: "https://www.patreon.com/c/just3ws"
+  page:
+    desired_status: "draft"
+    observed_status: "unpublished"
+    title_source: "title"
+    about_source: "about"
+    color:
+      desired: "#0F766E"
+      observed: "#0F766E"
+    cover:
+      source: "cover_image"
+      observed_status: "saved"
+    avatar:
+      observed_status: "saved"
+      source: "Patreon creator profile"
+  home_layout:
+    visible_sections:
+      - "latest_posts"
+      - "recent_posts"
+    hidden_empty_sections:
+      - "popular_posts"
+      - "collections"
+      - "popular_products"
+      - "explore_more_posts"
+  membership:
+    launch_model_source: "membership_recommendation.launch_model"
+    free_following:
+      observed_status: "enabled"
+      description_source: "membership_recommendation.free_membership_description"
+    paid_tiers:
+      - id: "studio-notes"
+        name: "Studio Notes"
+        price_usd: 5
+        observed_status: "active"
+        description_source: "membership_recommendation.paid_tier_description"
+      - id: "bootstrap-1"
+        name: "Community Supporter"
+        price_usd: 1
+        observed_status: "unpublished_draft"
+        copy_status: "review_before_reuse"
+      - id: "bootstrap-7"
+        name: "Archive Preservationist"
+        price_usd: 7
+        observed_status: "unpublished_draft"
+        copy_status: "review_before_reuse"
+      - id: "bootstrap-20"
+        name: "Workbench Craftsman"
+        price_usd: 20
+        observed_status: "unpublished_draft"
+        copy_status: "review_before_reuse"
+      - id: "bootstrap-97"
+        name: "Engineering Patron"
+        price_usd: 97
+        observed_status: "unpublished_draft"
+        copy_status: "review_before_reuse"
+  posts:
+    - id: "welcome"
+      title_source: "welcome_post.title"
+      body_source: "welcome_post.body"
+      observed_status: "saved_draft"
+      observed_visibility: "public"
+  social_connections:
+    - platform: "YouTube"
+      observed_status: "connected"
+      url: "https://www.youtube.com/@whoistechcmty"
+    - platform: "just3ws.com"
+      observed_status: "linked_from_about_copy"
+      url: "https://www.just3ws.com/support/"
+  connected_surfaces:
+    - id: "just3ws-support"
+      role: "public overview and project map"
+      url: "https://www.just3ws.com/support/"
+      source_of_truth: "this repository"
+    - id: "ramblin-amblin"
+      role: "video series"
+      url: "https://www.youtube.com/@whoistechcmty"
+      language: "English (United States)"
+    - id: "interview-archive"
+      role: "historical interviews and community stories"
+      url: "https://www.just3ws.com/interviews/"

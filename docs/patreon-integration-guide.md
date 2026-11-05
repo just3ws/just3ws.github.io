@@ -10,6 +10,28 @@ The canonical campaign narrative and cross-surface project links live in
 support page, YouTube preparation surface, campaign guide, and generated career
 data should draw from or agree with that source.
 
+The same file's `surface_management` section records the creator-page settings
+and Patreon state last checked in the dashboard. Copy fields such as `about`,
+`welcome_post.body`, and the Studio Notes description are canonical content.
+Their `*_source` entries connect the observed page fields back to that content.
+The page, tier, post, layout, and connected-account statuses are an operator
+maintained snapshot, not a live API mirror. Update `last_verified_at` and those
+statuses after checking Patreon. Keep credentials and member-level data out of
+this public repository.
+
+Review the local source of truth with:
+
+```bash
+bin/pipeline patreon config
+bin/pipeline patreon validate-config
+```
+
+`config` reports the saved surface inventory. `validate-config` checks that
+key observed settings still point to the canonical copy and campaign identity.
+Neither command changes Patreon. The dashboard remains the place to apply and
+verify settings, and page or post publication always requires Mike's explicit
+action.
+
 ## Creator position
 
 Mike Hall (`just3ws`) is the creator and first-person narrator. He helped start

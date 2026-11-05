@@ -9,16 +9,18 @@ require 'json'
 require 'net/http'
 require 'time'
 require 'uri'
+require 'yaml'
+require_relative 'lib/patreon_surface_config'
 
 class PatreonPipeline
   ROOT_DIR = File.expand_path('..', __dir__)
   SUMMARY_PATH = File.join(Dir.home, '.local', 'share', 'just3ws', 'patreon', 'summary.json')
+  CAMPAIGN_PATH = File.join(ROOT_DIR, '_data', 'patreon_campaign.yml')
   API_BASE = 'https://www.patreon.com/api/oauth2/v2'
-  CAMPAIGN_URL = 'https://www.patreon.com/c/just3ws'
 
   def initialize(env = ENV)
     @token = env['PATREON_CREATOR_TOKEN']
-    @campaign_id = env['PATREON_CAMPAIGN_ID']
+    @campaign_id = env['PATREON_CAMPAIGN_ID'] || campaign_config['campaign_id']
   end
 
   def run(args = ARGV.dup)
@@ -28,6 +30,8 @@ class PatreonPipeline
     when 'members', 'list' then show_member_counts
     when 'credits' then show_thank_you_copy
     when 'sync' then sync_summary
+    when 'config' then PatreonSurfaceConfig.new(campaign_config).show
+    when 'validate-config' then PatreonSurfaceConfig.new(campaign_config).validate
     when 'help', '-h', '--help' then print_help
     else
       warn "Unknown command: #{args.first}"
@@ -42,10 +46,18 @@ class PatreonPipeline
     @token && !@token.strip.empty?
   end
 
+  def campaign_config
+    @campaign_config ||= YAML.safe_load_file(CAMPAIGN_PATH, aliases: false)
+  end
+
+  def campaign_url
+    campaign_config.fetch('campaign_url')
+  end
+
   def show_status
     data = load_summary
     puts 'PATREON CAMPAIGN STATUS'
-    puts "Campaign:    #{CAMPAIGN_URL}"
+    puts "Campaign:    #{campaign_url}"
     puts "API access:  #{api_configured? ? 'configured' : 'not configured'}"
     puts "Last synced: #{data['synced_at'] || 'never'}"
     puts "Paid members: #{data.fetch('active_paid_members', 'unknown')}"
@@ -107,7 +119,7 @@ class PatreonPipeline
 
     campaign_id = configured_campaign_id
     result = aggregate_members(campaign_id)
-    result['campaign_url'] = CAMPAIGN_URL
+    result['campaign_url'] = campaign_url
     result['campaign_id'] = campaign_id
     result['source'] = 'Patreon API v2 aggregate'
     result['synced_at'] = Time.now.utc.iso8601
@@ -189,6 +201,8 @@ class PatreonPipeline
 
       Commands:
         status    Show the local aggregate snapshot; no revenue estimate
+        config    Show the canonical Patreon page and membership configuration
+        validate-config  Check local Patreon configuration consistency
         campaign  Inspect campaign metadata through Patreon API v2
         members   Show aggregate member counts by tier
         credits   Print generic thank-you copy; no patron names
