@@ -81,6 +81,21 @@ shows amber (`#C46820`). Update the Patreon theme color in its creator editor
 before publishing. Do not copy the retired campaign's "Tools for everything"
 manifesto into new copy without review.
 
+## Visual presentation
+
+The shared visual reference is the site’s Craftsmanship theme: warm paper,
+deep teal, sumi ink, and small amber accents. The creator avatar is Mike’s
+existing illustrated mark. The prepared 4:1 cover artwork is
+[`assets/images/patreon/mike-hall-studio-cover-2500x625.jpg`](../assets/images/patreon/mike-hall-studio-cover-2500x625.jpg).
+Use it for the Patreon cover and `/support/` hero so both surfaces share the same
+visual language. The artwork is ready locally; it has not yet been uploaded to
+Patreon.
+
+The creator-page preview still shows empty post and collection shelves because
+there is no public post yet. The welcome-post copy in `_data/patreon_campaign.yml`
+is a draft only. Review and publish a public welcome post as part of the launch;
+keep the overall creator page unpublished until the launch decision is made.
+
 ## Local CLI and data safety
 
 `bin/patreon_pipeline.rb` is for read-only campaign inspection and local

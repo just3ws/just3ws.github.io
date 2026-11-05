@@ -10,14 +10,17 @@ body_class: page-support
 
 <article class="support-page">
   <header class="support-hero">
-    <p class="support-eyebrow">Mike Hall <span aria-hidden="true">·</span> just3ws</p>
-    <h1>Making useful things with people</h1>
-    <p class="support-lede">{{ campaign.short_description }}</p>
-    <div class="support-actions">
-      {% if campaign.page_status == "published" %}
-      <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow my work on Patreon</a>
-      {% endif %}
-      <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Watch Ramblin' &amp; Amblin'</a>
+    <img class="support-hero-image" src="{{ campaign.cover_image }}" alt="A warmly lit maker's workbench with a system map, audio recorder, interview pages, and camera." fetchpriority="high">
+    <div class="support-hero-copy">
+      <p class="support-eyebrow">Mike Hall <span aria-hidden="true">·</span> just3ws</p>
+      <h1>Making useful things with people</h1>
+      <p class="support-lede">{{ campaign.short_description }}</p>
+      <div class="support-actions">
+        {% if campaign.page_status == "published" %}
+        <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow my work on Patreon</a>
+        {% endif %}
+        <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Watch Ramblin' &amp; Amblin'</a>
+      </div>
     </div>
   </header>
 
