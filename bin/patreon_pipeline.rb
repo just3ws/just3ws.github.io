@@ -91,11 +91,11 @@ class PatreonPipeline
   def show_thank_you_copy
     puts 'TELEPROMPTER'
     puts 'Thanks for following and supporting my independent work.'
-    puts "If you'd like to follow along, I'm at patreon.com/c/just3ws."
+    puts "You can find my videos, interview archive, and projects at just3ws.com/support."
     puts
     puts 'YOUTUBE DESCRIPTION'
-    puts 'Follow Mike Hall’s work across Ramblin’ & Amblin’, the interview archive, and independent projects:'
-    puts CAMPAIGN_URL
+    puts 'Explore Mike Hall’s work across Ramblin’ & Amblin’, the interview archive, and independent projects:'
+    puts 'https://www.just3ws.com/support/'
     puts 'Named credits require an explicit, permissioned list; Patreon membership data is not used for attribution.'
   end
 

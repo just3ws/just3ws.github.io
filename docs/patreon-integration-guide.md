@@ -57,10 +57,11 @@ Draft tier copy:
 
 The creator page remains unpublished. The $5 **Studio Notes** tier is the only
 active paid option; the bootstrap $1, $7, $20, and $97 tiers are unpublished
-drafts with no members. A public welcome post is prepared as a draft in
-`_data/patreon_campaign.yml`. Review the page, post, and theme color in the
-creator dashboard before publishing. Local tooling does not publish pages,
-posts, or tiers.
+drafts with no members. The welcome post is copy prepared in
+`_data/patreon_campaign.yml`; it has not been created in Patreon. The public
+support page hides Patreon calls to action until `page_status` changes to
+`published`, so visitors are not sent to a closed creator page. Local tooling
+does not publish pages, posts, or tiers.
 
 ## Cross-surface map
 
@@ -73,9 +74,12 @@ posts, or tiers.
 | Phalanx Duel | Independent game project | <https://github.com/phalanxduel/phalanxduel> |
 | Panoramic View | System-cartography method | <https://www.just3ws.com/panoramic-view/> |
 
-The launch URL, page title, first-person voice, teal accent (`#0F766E`), and
-project lineage should stay consistent. Do not copy the retired campaign's
-"Tools for everything" manifesto into new copy without review.
+The creator page name is **Mike Hall**; `just3ws` is the handle and part of the
+campaign URL. On the website, show both together in the identity line. The
+Craftsmanship accent is teal (`#0F766E`), but the Patreon draft currently still
+shows amber (`#C46820`). Update the Patreon theme color in its creator editor
+before publishing. Do not copy the retired campaign's "Tools for everything"
+manifesto into new copy without review.
 
 ## Local CLI and data safety
 
