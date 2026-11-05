@@ -10,7 +10,6 @@ body_class: page-support
 
 <article class="support-page">
   <header class="support-hero">
-    <img class="support-hero-image" src="{{ campaign.cover_image }}" alt="A warmly lit maker's workbench with a system map, audio recorder, interview pages, and camera." fetchpriority="high">
     <div class="support-hero-copy">
       <p class="support-eyebrow">Mike Hall <span aria-hidden="true">·</span> just3ws</p>
       <h1>Making useful things with people</h1>
@@ -22,6 +21,10 @@ body_class: page-support
         <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Watch Ramblin' &amp; Amblin'</a>
       </div>
     </div>
+    <figure class="support-hero-figure">
+      <img class="support-hero-image" src="{{ campaign.support_hero_image }}" alt="{{ campaign.support_hero_image_alt }}" fetchpriority="high">
+      <figcaption>A frame from my Ramblin' &amp; Amblin' video about proximity and technical skill.</figcaption>
+    </figure>
   </header>
 
   <section class="support-story" aria-labelledby="support-story-title">
@@ -38,6 +41,9 @@ body_class: page-support
     <div class="support-project-grid">
       {% for project in campaign.projects %}
       <article class="support-project-card">
+        {% if project.image %}
+        <img class="support-project-image{% if project.image_fit == 'contain' %} support-project-image-contain{% endif %}" src="{{ project.image }}" alt="{{ project.image_alt }}">
+        {% endif %}
         <h3>{{ project.name }}</h3>
         <p>{{ project.description }}</p>
         <a href="{{ project.url }}" target="_blank" rel="noopener">Explore {{ project.name }}</a>

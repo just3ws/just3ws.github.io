@@ -111,10 +111,16 @@ manifesto into new copy without review.
 
 The shared visual reference is the site's Craftsmanship theme: warm paper,
 deep teal, sumi ink, and small amber accents. The creator avatar is Mike's
-existing illustrated mark. The prepared 4:1 cover artwork is
+existing illustrated mark. The Patreon dashboard cover artwork is
 [`assets/images/patreon/mike-hall-studio-cover-2500x625.jpg`](../assets/images/patreon/mike-hall-studio-cover-2500x625.jpg).
-It is saved as the Patreon cover and used by the `/support/` hero, so both
-surfaces share the same visual language.
+It is the AI-generated image saved as the Patreon cover. The local `/support/`
+page does not reuse it. The site uses a still from Mike's published Ramblin' &
+Amblin' video, the original UGtastic logo, existing Phalanx Duel and Chicago
+Code Camp captures, and the system-wave SVG from the Panoramic View method page.
+The video still is stored at
+[`assets/images/patreon/ramblin-amblin-proximity-frame.jpg`](../assets/images/patreon/ramblin-amblin-proximity-frame.jpg)
+and its source video is recorded in `support_hero_image_source` in the campaign
+data.
 
 The welcome post is saved as a free-access draft. The page layout keeps Latest
 and Recent posts for launch, and removes empty popular-post, collection, and
