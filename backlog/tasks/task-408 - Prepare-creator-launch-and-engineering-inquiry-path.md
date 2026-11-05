@@ -4,6 +4,7 @@ title: Prepare creator launch and engineering inquiry path
 status: In Progress
 assignee: []
 created_date: '2026-11-05T20:07:00Z'
+updated_date: '2026-11-05T20:08:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -33,3 +34,9 @@ Mike authorized a small launch using the existing public archive, free following
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+Use existing editorial layouts and support styles to add a modest timeline invitation, an evidence-based Studio Notes example, and a bounded engineering inquiry using the existing contact route. Preserve Patreon draft gating until live publication can be verified. Resolve promoted historical wording against primary public transcripts. Prepare three unsent promotion drafts and a launch checklist outside the public build. Run focused rendered-link and campaign-state checks, required public-boundary audit, installed localhost verification, and independent council/browser review. Audit accumulated commits before any production push; record access limitations honestly.
+<!-- SECTION:PLAN:END -->
