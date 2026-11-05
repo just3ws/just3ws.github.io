@@ -4,7 +4,7 @@ title: Prepare creator launch and engineering inquiry path
 status: In Progress
 assignee: []
 created_date: '2026-11-05T20:07:00Z'
-updated_date: '2026-11-05T20:08:00Z'
+updated_date: '2026-11-05T20:13:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -28,6 +28,7 @@ Mike authorized a small launch using the existing public archive, free following
 - [ ] #4 Historical discrepancies affecting promoted stories are resolved against evidence or explicitly held.
 - [ ] #5 Build, rendered links, public boundary, and desktop/mobile checks have recorded results and limitations.
 - [ ] #6 Public deployment and Patreon signup are verified, or concrete access and release blockers are recorded without claiming launch.
+- [ ] #7 Timeline research cites primary guidance and applies guided project threads, a complete event index, source limitations, shareable events, and correction paths while preserving existing records.
 <!-- AC:END -->
 
 ## Definition of Done
@@ -40,3 +41,9 @@ Mike authorized a small launch using the existing public archive, free following
 <!-- SECTION:PLAN:BEGIN -->
 Use existing editorial layouts and support styles to add a modest timeline invitation, an evidence-based Studio Notes example, and a bounded engineering inquiry using the existing contact route. Preserve Patreon draft gating until live publication can be verified. Resolve promoted historical wording against primary public transcripts. Prepare three unsent promotion drafts and a launch checklist outside the public build. Run focused rendered-link and campaign-state checks, required public-boundary audit, installed localhost verification, and independent council/browser review. Audit accumulated commits before any production push; record access limitations honestly.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+User expanded scope to research timeline best practices and comprehensive project context. Added four curated threads and a linked event index; preserved the chronology and event-level evidence. Research/design brief and staged possibilities are in excluded docs/runbooks/timeline-context-roadmap.md. Independent provenance review found no primary evidence for the Redpoint floor; removed the number, replaced an altered quote with attributed prose, and narrowed an unsupported influence claim. Existing timeline/OneMain route corrections are preserved.
+<!-- SECTION:NOTES:END -->
