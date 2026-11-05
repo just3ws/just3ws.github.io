@@ -1270,6 +1270,31 @@
 
 .lived-history-gallery .lived-history-photo img { aspect-ratio: 3 / 4; }
 
+.lived-history-extra-photos {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--history-border);
+  padding-top: 1rem;
+}
+
+.lived-history-extra-photos > summary {
+  cursor: pointer;
+  color: var(--history-ink);
+  font-weight: 650;
+  padding: 0.35rem 0;
+}
+
+.lived-history-album-gallery {
+  margin-top: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.lived-history-album-gallery .lived-history-photo img {
+  height: auto;
+  max-height: 32rem;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 .lived-history-card.is-text-only {
   grid-template-columns: minmax(0, 1fr);
   max-width: 70rem;
@@ -1299,4 +1324,5 @@
   .lived-history-photo img { max-height: 34rem; }
   .lived-history-gallery { grid-template-columns: minmax(0, 1fr); }
   .lived-history-gallery .lived-history-photo img { aspect-ratio: 4 / 3; }
+  .lived-history-album-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

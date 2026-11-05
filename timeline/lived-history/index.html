@@ -8,6 +8,7 @@ body_class: surface-editorial lived-history-surface
 
 {% assign history = site.data.lived_history_timeline %}
 {% assign events = history.events | sort: "date_sort" %}
+{% assign photo_albums = site.data.lived_history_galleries.albums %}
 
 <main class="lived-history-page">
   <header class="lived-history-hero">
@@ -27,7 +28,8 @@ body_class: surface-editorial lived-history-surface
 
   <section class="lived-history-feed" aria-label="Historical timeline">
     {% for event in events %}
-      <article id="{{ event.id }}" class="lived-history-card{% unless event.photo %} is-text-only{% endunless %}">
+      {% assign photo_album = photo_albums | where: "event_id", event.id | first %}
+      <article id="{{ event.id }}" class="lived-history-card{% unless event.photo or event.photos or photo_album %} is-text-only{% endunless %}">
         <div class="lived-history-card-copy">
           <div class="lived-history-meta">
             <span class="lived-history-date">{{ event.date_display }}</span>
@@ -76,12 +78,26 @@ body_class: surface-editorial lived-history-surface
             <figcaption>{{ event.photo.alt }}</figcaption>
           </figure>
         {% endif %}
+
+        {% if photo_album and photo_album.photos.size > 0 %}
+          <details class="lived-history-extra-photos">
+            <summary>Browse {{ photo_album.photos.size }} more photos from this event</summary>
+            <div class="lived-history-gallery lived-history-album-gallery">
+              {% for photo in photo_album.photos %}
+                <figure class="lived-history-photo">
+                  <img src="{{ photo.path }}" alt="{{ photo.alt }}" loading="lazy" decoding="async">
+                  <figcaption>{{ photo.caption }}</figcaption>
+                </figure>
+              {% endfor %}
+            </div>
+          </details>
+        {% endif %}
       </article>
     {% endfor %}
   </section>
 
   <footer class="lived-history-footer">
-    <p>This is a curated selection, not a dump of every album. The original photos remain in my archive; the images here are smaller web copies with embedded metadata removed.</p>
+    <p>Open an event gallery to browse more of the photographs I took there. Repeated exports are consolidated; the original photos remain in my archive, while these smaller web copies have embedded metadata removed.</p>
     <a href="/timeline/community/">Explore the Community Pastiche and oral-history archive →</a>
   </footer>
 </main>

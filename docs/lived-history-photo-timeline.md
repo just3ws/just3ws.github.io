@@ -1,17 +1,19 @@
 # Lived History Photo Timeline
 
-The public route `/timeline/lived-history/` combines selected photos with
-first-person recollections and links into the existing community and career
-archive. Its canonical content lives in `_data/lived_history_timeline.yml`.
+The public route `/timeline/lived-history/` combines first-person recollections
+with photographs and links into the existing community and career archive. Its
+event content lives in `_data/lived_history_timeline.yml`; the additional
+event-gallery index lives in `_data/lived_history_galleries.yml`.
 
 ## Curation and provenance
 
 - The Google Photos ZIP exports stay in the operator's local archive. Never add
-  ZIPs or unreviewed bulk exports to this repository.
+  ZIPs to this repository. Mike's direct account establishes his authorship,
+  provenance, and intended use of these event photographs.
 - Every displayed photograph is an optimized derivative under
   `assets/images/lived-history/`. The derivative is rotated according to the
   source orientation, resized, and saved without embedded EXIF or GPS.
-- Keep the curated web images in ordinary Git so GitHub Pages can serve them.
+- Keep optimized event photographs in ordinary Git so GitHub Pages can serve them.
   GitHub Pages does not support Git LFS for site assets. Keep each derivative
   small (roughly 500 KB or less where image quality allows); source albums and
   unreviewed exports stay in the local archive, outside the site repository.
@@ -46,16 +48,18 @@ archive. Its canonical content lives in `_data/lived_history_timeline.yml`.
 
 1. Review the album title, member count, media types, and dates without changing
    the source archive.
-2. Make a contact sheet for local review. Select only images that add context or
-   a distinct moment; do not publish the whole album by default.
+2. Group photographs under their event and consolidate repeated exports and
+   visually duplicate frames. Preserve the breadth of albums Mike supplied for
+   this history; galleries are collapsed by default so the timeline remains
+   easy to scan.
 3. Confirm each caption against the photo, album, existing public records, or
    Mike's recollection. Keep uncertain venue, event, and speaker details open.
 4. Create a small local web derivative with orientation corrected and EXIF/GPS
    removed. Keep the source ZIP outside Git.
 5. Add an event to `_data/lived_history_timeline.yml` with a stable `id`, ISO
    `date_sort`, reader-facing `date_display`, evidence fields, first-person
-   narrative, photo alt text, and source album name. Use `photos` for a small
-   set of images from one event.
+   narrative, photo alt text, and source album name. Add additional images to
+   the matching `event_id` in `_data/lived_history_galleries.yml`.
 6. Build and install the site, then inspect the timeline and source links.
 
 `bin/import-photo-album` handles shared Google Photos URLs, not local ZIP files.
