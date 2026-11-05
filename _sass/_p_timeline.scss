@@ -1112,6 +1112,68 @@
   padding: clamp(2rem, 5vw, 5rem) 0;
 }
 
+.lived-history-orientation {
+  width: min(100% - 2rem, 76rem);
+  margin: 2rem auto;
+  color: var(--history-ink);
+  line-height: 1.7;
+}
+
+.lived-history-trails {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lived-history-trails > details {
+  padding: 1rem;
+  border-block: 1px solid var(--history-border);
+  background: var(--history-card);
+}
+
+.lived-history-trails summary {
+  min-height: 2.75rem;
+  cursor: pointer;
+  color: var(--history-teal);
+  font-weight: 750;
+}
+
+.lived-history-trails li,
+.lived-history-orientation > details li {
+  margin-block: 0.5rem;
+}
+
+.lived-history-trails li span,
+.lived-history-orientation > details li span {
+  display: block;
+  color: var(--history-muted);
+  font-size: 0.8rem;
+}
+
+.lived-history-page summary {
+  min-height: 2.75rem;
+  padding-block: 0.6rem;
+}
+
+.lived-history-page :is(a, summary):focus-visible {
+  outline: 3px solid var(--history-teal);
+  outline-offset: 3px;
+}
+
+.lived-history-page details[id] {
+  scroll-margin-top: 6rem;
+}
+
+.lived-history-event-links {
+  margin: 0.8rem 0 0;
+  color: var(--history-muted);
+  font-size: 0.85rem;
+}
+
+.lived-history-photo > a {
+  display: block;
+}
+
 .lived-history-feed::before {
   position: absolute;
   top: 0;
@@ -1311,6 +1373,7 @@
 .lived-history-footer a { color: var(--history-teal); font-weight: 750; }
 
 @media (max-width: 780px) {
+  .lived-history-trails { grid-template-columns: minmax(0, 1fr); }
   .lived-history-hero { padding-inline: 1rem; }
   .lived-history-jumps { margin-top: 1.5rem; }
   .lived-history-feed { width: min(100% - 1rem, 1760px); }

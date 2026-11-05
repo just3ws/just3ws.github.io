@@ -64,3 +64,21 @@ event-gallery index lives in `_data/lived_history_galleries.yml`.
 
 `bin/import-photo-album` handles shared Google Photos URLs, not local ZIP files.
 It is not the import path for this local album collection.
+
+## Reading paths and annotation coverage
+
+The timeline offers short thematic threads as well as a full chronological
+index. Threads connect related records; they do not establish influence,
+causation, or endorsement. Their event references must resolve to existing IDs.
+
+Every event retains its date evidence and source note. Those fields describe
+the evidence available, not a blanket independent-verification status. Keep
+event dates separate from capture and publication dates.
+
+The gallery captions currently describe each event as a whole. Image-specific
+descriptions remain unfinished. Prioritize direct inspection of promoted photo
+sets and preserve uncertainty about names, places, and dates.
+
+Native disclosures keep detailed evidence and galleries available without
+requiring JavaScript. Each event has a direct link and a correction path.
+Photos open their larger optimized web copy, not the private source original.

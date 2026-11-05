@@ -58,7 +58,7 @@ This document establishes the permanent canonical naming, casing, and compound w
 | :--- | :--- | :--- | :--- |
 | **Swissotel Chicago** | `Swissotel Chicago` | 323 E Wacker Dr, Chicago, IL | Downtown hotel on the Chicago River and Lake Michigan. Host venue for SCNA 2011 (November 18-19, 2011). |
 | **Gleacher Center** | `Gleacher Center` | 450 N Cityfront Plaza Dr, Chicago, IL | University of Chicago Booth School of Business downtown conference center on the Chicago River. Host venue for SCNA 2012. |
-| **Sears Tower / Willis Tower** | `Sears Tower` / `Willis Tower` | 233 S Wacker Dr, Chicago, IL | Meeting location for Chicago Alt.NET (hosted at Redpoint Technologies on the 84th floor). |
+| **Sears Tower / Willis Tower** | `Sears Tower` / `Willis Tower` | 233 S Wacker Dr, Chicago, IL | Meeting location for Chicago Alt.NET, hosted at Redpoint Technologies. The 2011 Sergio Pereira interview establishes the building and host but does not identify a floor. |
 | **Follett Software Company** | `Follett Software Company` | McHenry, IL | Suburban venue and sponsor that hosted SCMC meetings, including Uncle Bob's October 2011 "The A Word: Architecture" keynote. |
 
 ---

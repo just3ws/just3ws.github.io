@@ -10,7 +10,7 @@ body_class: surface-editorial lived-history-surface
 {% assign events = history.events | sort: "date_sort" %}
 {% assign photo_albums = site.data.lived_history_galleries.albums %}
 
-<main class="lived-history-page">
+<article class="lived-history-page">
   <header class="lived-history-hero">
     <div class="lived-history-hero-copy">
       <p class="lived-history-kicker">A photo-backed personal archive</p>
@@ -23,8 +23,45 @@ body_class: surface-editorial lived-history-surface
         <a href="#{{ era.first_event_id }}">{{ era.label }}</a>
       {% endfor %}
       <a href="/timeline/community/">Community history</a>
+      <a href="#history-trails">Follow a project thread</a>
+      <a href="#history-index">Find an event</a>
     </nav>
   </header>
+
+  <section class="lived-history-orientation" aria-labelledby="history-trails">
+    <h2 id="history-trails">Follow a thread through the archive</h2>
+    <p>Start with a short reading path, jump to an event, or keep reading in date order. Each thread connects related records; it does not establish cause and effect.</p>
+    <div class="lived-history-trails">
+      {% for trail in history.trails %}
+        <details id="trail-{{ trail.id }}">
+          <summary>{{ trail.title }}</summary>
+          <p>{{ trail.description }}</p>
+          <ol>
+            {% for event_id in trail.event_ids %}
+              {% assign trail_event = events | where: "id", event_id | first %}
+              <li><a href="#{{ trail_event.id }}">{{ trail_event.title }}</a> <span>{{ trail_event.date_display }}</span></li>
+            {% endfor %}
+          </ol>
+          <a class="lived-history-link" href="{{ trail.destination.url }}">{{ trail.destination.label }}</a>
+        </details>
+      {% endfor %}
+    </div>
+    <details class="lived-history-provenance" id="history-index">
+      <summary>Find an event: {{ events.size }} entries in date order</summary>
+      <ol>
+        {% for event in events %}
+          <li><a href="#{{ event.id }}">{{ event.title }}</a> <span>{{ event.date_display }}</span></li>
+        {% endfor %}
+      </ol>
+    </details>
+    <details class="lived-history-provenance" id="reading-the-evidence">
+      <summary>How to read the dates, sources, and photographs</summary>
+      <p>These entries combine my recollections, photographs, and public records. A source note explains the basis of a claim; it does not mean every detail has independent confirmation.</p>
+      <p>A photograph's capture date, an event date, and a later publication date can differ. Approximate and unknown dates stay labeled. Their place in this reading order does not establish a precise date.</p>
+      <p>Gallery captions currently describe the event as a whole. Individual image descriptions and identifications are still being developed. Open a photograph to view its larger web copy.</p>
+      <p>The selections are my own history to tell. A person appearing in a photograph is not an endorsement of this site or its projects.</p>
+    </details>
+  </section>
 
   <section class="lived-history-feed" aria-label="Historical timeline">
     {% for event in events %}
@@ -56,25 +93,33 @@ body_class: surface-editorial lived-history-surface
               <p><strong>Place:</strong> {{ event.location_evidence }}</p>
             {% endif %}
             <p><strong>Source:</strong> {{ event.source }}</p>
+            {% assign correction_subject = "Timeline correction: " | append: event.title %}
+            <p><a href="/contact/#technical">Suggest a correction</a> or <a href="mailto:{{ site.data.resume.profile.contact.email }}?subject={{ correction_subject | url_encode }}">send context about this event</a>.</p>
           </details>
 
           {% if event.link %}
             <a class="lived-history-link" href="{{ event.link.url }}">{{ event.link.label }} <span aria-hidden="true">→</span></a>
           {% endif %}
+          <p class="lived-history-event-links"><a href="#{{ event.id }}" aria-label="Link to this event: {{ event.title | escape }}">Link to this event</a> · <a href="#history-index">Event index</a></p>
+          {% for trail in history.trails %}
+            {% if trail.event_ids contains event.id %}
+              <p class="lived-history-event-links">Continue the thread: <a href="#trail-{{ trail.id }}">{{ trail.title }}</a></p>
+            {% endif %}
+          {% endfor %}
         </div>
 
         {% if event.photos and event.photos.size > 0 %}
           <div class="lived-history-gallery">
             {% for photo in event.photos %}
               <figure class="lived-history-photo">
-                <img src="{{ photo.path }}" alt="{{ photo.alt }}" loading="lazy" decoding="async">
+                <a href="{{ photo.path }}" aria-label="View larger image: {{ photo.alt | escape }}"><img src="{{ photo.path }}" alt="{{ photo.alt }}" loading="lazy" decoding="async"></a>
                 <figcaption>{{ photo.alt }}</figcaption>
               </figure>
             {% endfor %}
           </div>
         {% elsif event.photo %}
           <figure class="lived-history-photo">
-            <img src="{{ event.photo.path }}" alt="{{ event.photo.alt }}" loading="lazy" decoding="async">
+            <a href="{{ event.photo.path }}" aria-label="View larger image: {{ event.photo.alt | escape }}"><img src="{{ event.photo.path }}" alt="{{ event.photo.alt }}" loading="lazy" decoding="async"></a>
             <figcaption>{{ event.photo.alt }}</figcaption>
           </figure>
         {% endif %}
@@ -85,7 +130,7 @@ body_class: surface-editorial lived-history-surface
             <div class="lived-history-gallery lived-history-album-gallery">
               {% for photo in photo_album.photos %}
                 <figure class="lived-history-photo">
-                  <img src="{{ photo.path }}" alt="{{ photo.alt }}" loading="lazy" decoding="async">
+                  <a href="{{ photo.path }}" aria-label="View larger image: {{ photo.alt | escape }}"><img src="{{ photo.path }}" alt="{{ photo.alt }}" loading="lazy" decoding="async"></a>
                   <figcaption>{{ photo.caption }}</figcaption>
                 </figure>
               {% endfor %}
@@ -99,5 +144,7 @@ body_class: surface-editorial lived-history-surface
   <footer class="lived-history-footer">
     <p>Open an event gallery to browse more of the photographs I took there. Repeated exports are consolidated; the original photos remain in my archive, while these smaller web copies have embedded metadata removed.</p>
     <a href="/timeline/community/">Explore the Community Pastiche and oral-history archive →</a>
+    <p><a href="/support/">Follow the work behind this archive</a>. See the projects, read a sample Studio Note, and find ways to stay connected.</p>
+    <p><a href="/engagements/#workflow-investigation">Discuss a focused engineering investigation</a> if your team needs help understanding an important workflow.</p>
   </footer>
-</main>
+</article>

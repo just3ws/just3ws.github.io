@@ -16,7 +16,7 @@ body_class: page-support
       <p class="support-lede">{{ campaign.short_description }}</p>
       <div class="support-actions">
         {% if campaign.page_status == "published" %}
-        <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow my work on Patreon</a>
+        <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow free on Patreon</a>
         {% endif %}
         <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Watch Ramblin' &amp; Amblin'</a>
       </div>
@@ -31,6 +31,20 @@ body_class: page-support
     <p class="support-eyebrow">A little context</p>
     <h2 id="support-story-title">I'm Mike. Here's the thread.</h2>
     {{ campaign.about | markdownify }}
+  </section>
+
+  <section class="support-story" id="studio-note" aria-labelledby="studio-note-title">
+    <p class="support-eyebrow">A sample from the workbench</p>
+    <h2 id="studio-note-title">{{ campaign.studio_note_sample.title }}</h2>
+    {% for paragraph in campaign.studio_note_sample.paragraphs %}
+      <p>{{ paragraph }}</p>
+    {% endfor %}
+    <p>{{ campaign.studio_note_sample.provenance }}</p>
+    <ul>
+      {% for link in campaign.studio_note_sample.links %}
+        <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
   </section>
 
   <section class="support-projects" aria-labelledby="support-projects-title">
@@ -61,7 +75,7 @@ body_class: page-support
       <p>{{ campaign.membership_recommendation.cadence }}</p>
       <p>Your support helps make room for the work as a whole. It doesn't assign your contribution to one project or change what I choose to publish.</p>
     </div>
-    <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">See Studio Notes on Patreon</a>
+    <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Join {{ campaign.membership_recommendation.paid_tier_name }} for ${{ campaign.membership_recommendation.paid_tier_price_usd }}/month</a>
     {% else %}
     <div>
       <p class="support-eyebrow">Coming soon</p>
@@ -73,5 +87,12 @@ body_class: page-support
       <a href="https://www.just3ws.com/interviews/">Explore the interview archive</a>
     </div>
     {% endif %}
+  </section>
+  <section class="support-story" aria-labelledby="support-engineering-title">
+    <p class="support-eyebrow">Working together</p>
+    <h2 id="support-engineering-title">Need help understanding a system?</h2>
+    <p>For engineering work, start with a focused investigation of one important workflow. We agree the question, access, scope, timing, and fee before work begins.</p>
+    <p><a href="/engagements/#workflow-investigation">See the workflow investigation and proposed outputs</a>, or <a href="/contact/#professional">contact me about your team</a>.</p>
+    <p>Engineering engagements are separate from Patreon membership.</p>
   </section>
 </article>

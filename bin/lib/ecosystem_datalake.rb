@@ -275,7 +275,7 @@ class EcosystemDatalake
       'source_repo' => 'just3ws/just3ws.github.io',
       'file_path' => 'docs/retrospectives/onemain-financial-system-cartography-and-architecture-retrospective.md',
       'description' => 'Three-year enterprise engineering enablement and observability arc at OneMain Financial: placed in the March 2022 corporate hackathon with a Rasa 3.0 conversational AI prototype; launched Open Tech Talks (June 2022) and officially rebranded to Geekfest@OMF (November 2022), facilitating 49+ weekly recorded brown-bag sessions across Ruby source inspection, Legacy Code, SOLID principles, early LLMs (April 2023), Cynefin (August 2023), OpenTelemetry (September 2023), KubeCon Chicago recap, and Local LLMs with Ollama (November 2023); placed in the February 2024 corporate hackathon leading team The Buckaroo Bonsais (automated JSON Schema inference batch pipeline with end-to-end OpenTelemetry tracing); evolved Geekfest@OMF in April 2024 into the OpenTelemetry Working Group (OTel WG), the company first Community of Practice scaling to 122 invited members across six lanes; and completed formal executive handoff on September 12, 2025 after leadership funded two full-time observability roles and three permanent working groups.',
-      'canonical_url' => 'https://www.just3ws.com/resume/positions/onemain-financial/',
+      'canonical_url' => 'https://www.just3ws.com/resume/positions/onemain/',
       'provenance_details' => {
         'hackathon_2022_03' => 'Rasa 3.0 Conversational AI Prototype (March 2022)',
         'geekfest_omf_span' => 'June 2022 (Open Tech Talks) / November 2022 (Geekfest@OMF) to February 2024 (49+ weekly Tuesday sessions)',
