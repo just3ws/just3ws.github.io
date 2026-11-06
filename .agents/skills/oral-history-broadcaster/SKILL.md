@@ -26,7 +26,7 @@ Use this skill when preparing or operating a recording session for the site's th
 6. Verify the cue with `bin/broadcast --status`, then use the local dashboard at `/youtube/dashboard/#tab-live` to open the matching teleprompter.
 7. In OBS, verify the selected profile and scene collection, capture-window bindings, preview composition, mic meter, Chromium application-audio meter, recording destination, and available disk space.
 
-The local dashboard cue control calls the existing loopback endpoint and displays success or failure. The dashboard checkboxes are manual reminders. They do not inspect OBS or persist their state.
+The local dashboard cue control calls the existing loopback endpoint and displays success or failure. The dashboard checkboxes are manual reminders. They do not inspect OBS or persist their state. `bin/broadcast --status` reports overlay cue metadata only, not active recording or stream state.
 
 ## Current OBS contract
 

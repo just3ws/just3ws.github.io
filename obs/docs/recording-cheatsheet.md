@@ -28,6 +28,15 @@ bin/broadcast --errata --mode concept --title "The Blink Test"
 # Archetype 3: Dialogue ("The Room")
 bin/broadcast --dialogue --guest "Corey Haines" --title "Simple Design"
 
+# Standalone series introduction: cue a solo behind-the-scenes lower third.
+bin/broadcast --errata --mode bts --series "The Sound Above" \\
+  --title "Series Introduction" \\
+  --subtitle "Plans, next steps, and ways to follow" \\
+  --citation "The Sound Above"
+bin/broadcast --status
+open obs/teleprompter/series-introduction-rundown.md
+open -a Textream obs/teleprompter/series-introduction.textream
+
 # 4. Open OBS Studio & launch iTerm2 profile
 open -a OBS
 # In iTerm2: Profile -> "The Sound Above"
@@ -102,11 +111,13 @@ In OBS Advanced Audio Properties, keep the global `Desktop Audio` source disable
 1. [ ] **Headphones plugged in** and default audio output selected; global Desktop Audio remains disabled for the rewatch setup.
 2. [ ] **Mic check**: Speak into mic; verify green-to-yellow level bounce on `Mic/Aux` (~-12 dB to -6 dB).
 3. [ ] **Video check**: Play a test second in Chromium; verify bounce on `Video Application Audio (Chromium)` meter.
-4. [ ] **Episode cued**: `bin/broadcast --rewatch <N>` executed; check interviewee name in OBS preview.
-5. [ ] **Window capture attached**: Verify Chromium in Scene 03 and iTerm2 in Scene 05.
-6. [ ] **Start in Scene 01 or 02**: Click Scene `01. Starting Soon` or `02. Monologue`.
-7. [ ] **Textream prompter ready**: Launch `bin/pipeline media textream <ep> --open` or click "Launch in Textream" on localhost dashboard.
-8. [ ] **Hit "Start Recording"** (or "Start Streaming").
+4. [ ] **Content cue matches the session**: For a rewatch, cue `bin/broadcast --rewatch <N>` and verify its title. For the standalone series introduction, do not cue an episode. Hide any stale episode-specific HUD and verify the host-only preview.
+5. [ ] **Window capture attached when needed**: Verify Chromium in Scene 03 and iTerm2 in Scene 05. The standalone talk uses Scene 02 and does not need Chromium audio.
+6. [ ] **Start in the matching scene**: Use Scene `01. Starting Soon` for a stream or Scene `02. Monologue / Full Camera` for a local solo talk.
+7. [ ] **Prompter ready**: For the standalone talk, open `obs/teleprompter/series-introduction.textream` in Textream. For episodes, launch the matching episode prompter.
+8. [ ] **Support invitation checked**: Confirm Patreon is published before using the Patreon-live wording or showing its call to action. Otherwise use the unpublished wording in the rundown.
+9. [ ] **Recording destination confirmed**: Verify the path and free space in OBS.
+10. [ ] **Start the intended action**: Click **Start Recording** for local capture. Start **Streaming** only for a separately prepared live session.
 
 ---
 

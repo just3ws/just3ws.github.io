@@ -32,14 +32,31 @@ echo "=================================================================="
 
 # 1. Check default sample rate
 echo "1. CoreAudio Devices & Configuration:"
-system_profiler SPAudioDataType | grep -E "(Default (Input|Output) Device|Sample Rate):" | sed 's/^[ \t]*/   /'
+audio_metadata_failed=0
+if audio_profile_report="$(system_profiler SPAudioDataType 2>&1)"; then
+  audio_device_fields="$(printf '%s\n' "$audio_profile_report" | grep -E "(Default (Input|Output) Device|Sample Rate):" || true)"
+  if [[ -n "$audio_device_fields" ]]; then
+    printf '%s\n' "$audio_device_fields" | sed 's/^[ \t]*/   /'
+  else
+    echo "   No default input/output device or sample-rate fields were reported."
+    audio_metadata_failed=1
+  fi
+else
+  echo "   macOS did not return audio device metadata."
+  audio_metadata_failed=1
+fi
 
 # 2. Check ScreenCaptureKit & OBS Permissions
 echo ""
 echo "2. macOS Screen Capture & Microphone Permissions:"
-if [[ -f "${HOME}/Library/Application Support/obs-studio/logs/$(ls -t "${HOME}/Library/Application Support/obs-studio/logs" 2>/dev/null | head -1)" ]]; then
-  LATEST_LOG="${HOME}/Library/Application Support/obs-studio/logs/$(ls -t "${HOME}/Library/Application Support/obs-studio/logs" | head -1)"
-  grep -i "permission" "${LATEST_LOG}" | head -5 | sed 's/^[ \t]*/   /' || echo "   Permissions verified in prior log session."
+obs_log_dir="${HOME}/Library/Application Support/obs-studio/logs"
+latest_log_name="$(ls -t "$obs_log_dir" 2>/dev/null | head -1 || true)"
+if [[ -n "$latest_log_name" && -f "$obs_log_dir/$latest_log_name" ]]; then
+  if grep -iq "permission" "$obs_log_dir/$latest_log_name"; then
+    echo "   Prior OBS permission diagnostics exist. Confirm current macOS permissions and capture in OBS."
+  else
+    echo "   No prior OBS permission hints found. Confirm current permissions and capture in OBS."
+  fi
 else
   echo "   No OBS logs found yet."
 fi
@@ -58,3 +75,8 @@ echo "   - Keep global Desktop Audio disabled to avoid duplicate Chromium and sy
 echo "   - OBS ScreenCaptureKit Application Audio capture isolates Chromium natively."
 echo "   - RNNoise suppression is enabled on Mic/Aux to remove keyboard clatter."
 echo "=================================================================="
+
+if [[ "$audio_metadata_failed" -ne 0 ]]; then
+  echo "Audio device metadata is unverified. Confirm the selected input and live OBS meters before recording."
+  exit 1
+fi

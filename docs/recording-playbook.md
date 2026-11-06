@@ -13,7 +13,7 @@ Use this playbook for a local recording or a YouTube live session. It covers the
 
 - `just3ws.github.io` owns the episode context, teleprompter, OBS templates, overlays, and recording preparation.
 - `media-pipeline` owns media intake, enrichment, YouTube publication, and lifecycle after an operator explicitly stages a recording.
-- `bin/broadcast --preflight` and `bin/broadcast --status` inspect local state. `bin/broadcast --rewatch N` changes local overlay metadata only. None starts OBS, recording, streaming, upload, or publication.
+- `bin/broadcast --preflight` and `bin/broadcast --status` inspect local state. `--status` reports overlay cue metadata only. It does not report whether OBS is recording or streaming. `bin/broadcast --rewatch N` changes local overlay metadata only. None starts OBS, recording, streaming, upload, or publication.
 - OBS configuration installation changes files under Application Support. Close OBS first. The installer refuses to run while OBS is open and preserves an existing `service.json`.
 - Scene and profile files are templates. The preview and audio meters in the running OBS instance are the final authority before capture.
 
@@ -74,6 +74,45 @@ Each package includes the full six-part Markdown rundown and matching Textream p
 For the current editorial outline, open `https://www.just3ws.localhost/youtube/dashboard/`. The page links to the series plan and recording materials. It does not cue episodes or publish to YouTube.
 
 Launch the matching teleprompter from the command line or open its `.textream` file in `obs/teleprompter/`. Use the same episode number as the local cue. The teleprompter is a flexible outline; timing and optional sections can change during recording.
+
+## Sit-down series introduction
+
+Use this procedure for the open-ended talk about The Sound Above, its plans, and how viewers can follow or support the work. It is a standalone solo recording, not a rewatch episode.
+
+### Before sitting down
+
+1. From the repository root, run the preflight and inspect the current overlay metadata:
+
+   ```sh
+   bin/broadcast --preflight
+   bin/broadcast --errata --mode bts --series "The Sound Above" \\
+     --title "Series Introduction" \\
+     --subtitle "Plans, next steps, and ways to follow" \\
+     --citation "The Sound Above"
+   bin/broadcast --status
+   ```
+
+   This updates the local lower-third cue. It does not start OBS, recording,
+   or streaming. The status output should say the cue is set and that capture
+   state must be checked in OBS.
+
+2. Open `obs/teleprompter/series-introduction-rundown.md` for the full outline and `obs/teleprompter/series-introduction.textream` in Textream for the prompter. Position Textream below the camera lens.
+3. Confirm the working plan is still current before saying it on camera: Season One has a 17-interview working target, and the current sequence opens with Sergio Pereira and Chicago Alt.NET. Do not present the working target as a release schedule.
+4. Check the Patreon creator page immediately before recording and again before publication. The saved campaign snapshot last checked on 2026-11-04 lists the page as unpublished. Verify the live page in the creator dashboard. If it is published, replace the Textream support passage with the published-page wording from the rundown. Use one version only and confirm the link before speaking it.
+5. Select Scene 02, `Monologue / Full Camera`, for the talk. The cue command above sets a solo behind-the-scenes lower third for The Sound Above. Verify the preview shows `The Sound Above` and `Series Introduction`, with no rewatch interview details.
+6. Decide whether to show any browser or archive page. Close unrelated tabs and hide private account details, notifications, credentials, and control pages before capture.
+
+### At the desk
+
+1. Wear headphones and frame the camera at eye level. Place the Textream window just below the lens. Keep the full rundown nearby so you can resume after a pause.
+2. Confirm the OBS profile is `The Sound Above` and the scene collection is `The Sound Above - UGtastic Rewatch`. Scene 02 should show the host camera without rewatch-specific graphics.
+3. Speak at normal volume. Confirm `Mic/Aux` moves consistently and does not clip. This talk uses the host microphone only. Chromium audio is not part of the program unless you deliberately add a source.
+4. Check the recording destination and free space in OBS. The profile defaults to `~/Movies`. Keep at least 10 GiB free for the media pipeline safety floor, plus the estimated size of the full recording. If that will not fit, use a verified destination on another volume or free space before recording.
+5. Record a short test if this is the first session with the current camera, microphone, or profile. Play it back and check framing, voice level, room echo, and sync.
+6. Start **Recording**. Do not start **Streaming** for this local talk. Speak from the outline, use the freeform prompts, pause when you need to gather a thought, and repeat a section if useful.
+7. Stop recording and wait for the MOV to finish finalizing. Review the beginning, middle, and end before moving or staging the source file.
+
+The series introduction rundown is a recording aid, not approved Patreon page copy. It makes no fixed schedule or private-access promise. Select only one Patreon ending, based on the live page status at publication time.
 
 ## OBS preview and audio check
 

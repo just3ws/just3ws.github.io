@@ -52,14 +52,15 @@ def print_status
 
   type = (state["broadcast_type"] || "rewatch").to_s.downcase
   puts "=================================================================="
-  puts " 🎙️ BROADCAST ORCHESTRATION STATUS"
+  puts " 🎙️ BROADCAST OVERLAY CUE"
   puts "=================================================================="
   puts "Archetype:       #{type.upcase}"
   puts "Series Title:    #{state.dig('stream', 'series_title')}"
   puts "Series Subtitle: #{state.dig('stream', 'series_subtitle')}"
   puts "Host:            #{state.dig('stream', 'host')}"
-  puts "Live Topic:      #{state.dig('stream', 'topic')}"
-  puts "Status:          #{state.dig('stream', 'status') || 'ready'}"
+  puts "Cue Topic:       #{state.dig('stream', 'topic')}"
+  puts "Cue State:       cued (overlay metadata only)"
+  puts "Capture State:   not inspected; verify in OBS"
   puts "------------------------------------------------------------------"
 
   case type
@@ -182,7 +183,7 @@ def cue_rewatch(episode_num, overrides = {})
   state["stream"]["series_title"] = overrides[:series] || "The Sound Above"
   state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech"
   state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
-  state["stream"]["status"] = "live"
+  state["stream"]["status"] = "cued"
   state["stream"]["topic"] = "Rewatching #{ep['interviewee']} (#{ep['conference']}): #{ep['title']}"
 
   state["episode"] = {
@@ -231,7 +232,7 @@ def cue_errata(options)
   state["stream"]["series_title"] = options[:series] || "Errata"
   state["stream"]["series_subtitle"] = "Marginalia, Readings & Demonstrations"
   state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
-  state["stream"]["status"] = "live"
+  state["stream"]["status"] = "cued"
   state["stream"]["topic"] = "#{title} (#{mode})"
 
   state["errata"] = {
@@ -262,7 +263,7 @@ def cue_dialogue(options)
   state["stream"]["series_title"] = options[:series] || "The Room"
   state["stream"]["series_subtitle"] = "Invitational Conversations & Peer Inquiry"
   state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
-  state["stream"]["status"] = "live"
+  state["stream"]["status"] = "cued"
   state["stream"]["topic"] = topic
 
   state["dialogue"] = {
@@ -363,7 +364,7 @@ opt_parser = OptionParser.new do |opts|
 
   opts.separator ""
   opts.separator "Operations & Validation:"
-  opts.on("--status", "Display active broadcast archetype and overlay HUD status") do
+  opts.on("--status", "Display overlay cue metadata; does not inspect recording or stream state") do
     options[:status] = true
   end
 
