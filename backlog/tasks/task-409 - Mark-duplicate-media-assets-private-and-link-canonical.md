@@ -4,7 +4,7 @@ title: Mark duplicate media assets private and link canonical
 status: In Progress
 assignee: []
 created_date: '2026-11-07T01:52:00Z'
-updated_date: '2026-11-07T01:53:00Z'
+updated_date: '2026-11-07T02:00:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -32,11 +32,11 @@ Add an operator action on a media asset that sets its linked YouTube video to pr
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 An operator can select a different canonical asset from the same media target and mark the current asset as its duplicate.
+- [x] #1 An operator can select a different canonical asset from the same media target and mark the current asset as its duplicate.
 - [ ] #2 When the duplicate has a YouTube video ID, YouTube must confirm the privacy update to private before the local record is marked duplicate.
 - [ ] #3 On success, the duplicate record has private privacy, duplicate status, a canonical asset link, no evergreen pin, and an audit event with the canonical ID and source.
 - [ ] #4 Public site manifests and transcript exports are retracted through the existing SiteSyncService privacy path.
-- [ ] #5 The asset page displays the canonical link and offers the duplicate action only when the asset is not already a duplicate or in active work.
+- [x] #5 The asset page displays the canonical link and offers the duplicate action only when the asset is not already a duplicate or in active work.
 - [ ] #6 Invalid canonical links and remote privacy failures leave local duplicate state unchanged and produce a clear operator message.
 - [ ] #7 No source file or YouTube video is deleted by this action.
 <!-- AC:END -->
@@ -63,3 +63,13 @@ Add an operator action on a media asset that sets its linked YouTube video to pr
 4. Add the operator-resolution contract to the workflow documentation.
 5. Run Ruby syntax checks and focused lint on changed files, inspect the final diff, and leave the real queue and YouTube assets untouched.
 <!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Implemented the operator duplicate action in the media-pipeline worktree. It makes an attached YouTube video private first and requires a private status in the API response before local mutation. It then records the duplicate link and state, clears evergreen, appends an operator event and Panoramic checkpoint, and uses SiteSyncService to retract public site entries. The action rejects active work, canceled assets, cross-target canonical records, and unresolved YouTube upload sessions. No source or YouTube video is deleted.
+
+Verification: Ruby syntax checks passed; RuboCop passed on the changed Ruby files; Rails route listing shows POST /media_assets/:id/mark_duplicate; Rails ERB compilation passed; live GET for asset 319 returned HTTP 200 and the duplicate action and canonical selector were present; docs/workflow-map.md passed mdl; graphify update completed. RSpec was not run and no real asset action was submitted. The service queue and YouTube assets were left unchanged.
+
+The AGENTS.md whole-file markdown lint reports formatting issues in older sections (MD005, MD007, MD022, MD031, MD032). The new current-focus entry adds no reported lint errors.
+<!-- SECTION:NOTES:END -->
