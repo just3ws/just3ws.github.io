@@ -196,17 +196,33 @@
 
         if (type === "errata") {
           const err = state.errata || {};
-          tag.textContent = "ERRATA // MARGINALIA & ESSAYS";
-          title.textContent = "Closing the Margin";
-          quote.textContent = err.excerpt_or_thesis || "The discipline of software craftsmanship is not in the tools we generate, but in the clarity of the mental model we leave behind.";
-          author.textContent = err.citation ? `${err.citation} : Errata Close Reading` : "Mike Hall : Errata Field Notes";
-          mission.innerHTML = `<strong>Errata Field Notes:</strong> Independent essays, book passages, concept dissections, and physical memorabilia from 25 years of engineering craft.`;
-          l1Title.textContent = "Essays & Notes";
-          l1Url.textContent = "just3ws.com/essays";
-          l2Title.textContent = "Career Datalake";
-          l2Url.textContent = "just3ws.com/resume";
-          bLeft.textContent = "Errata · Independent Technical Broadcast";
-          bRight.textContent = "MIKE HALL · CRAFTSMANSHIP & MARGINALIA";
+          const isDispatch = err.mode === "dispatch" || err.mode === "bts";
+          if (isDispatch) {
+            const series = state.stream.series_title || (err.mode === "bts" ? "The Sound Above" : "Mike Hall");
+            tag.textContent = `${series.toUpperCase()} : STUDIO DISPATCH`;
+            title.textContent = err.title ? (err.title.startsWith("Studio Dispatch") ? err.title : `Looking Ahead: ${err.title}`) : "Carrying the Conversation Forward";
+            quote.textContent = err.excerpt_or_thesis || "Open reflections, studio dispatches, and project notes from Mike Hall. Thanks for spending some time with me.";
+            author.textContent = `Mike Hall : ${series} Field Notes`;
+            mission.innerHTML = `<strong>Studio Dispatch:</strong> Open conversations, workbench thoughts, and project notes recorded out of series from the desk.`;
+            l1Title.textContent = "Main Site";
+            l1Url.textContent = "just3ws.com";
+            l2Title.textContent = "The Archive";
+            l2Url.textContent = "just3ws.com/interviews";
+            bLeft.textContent = `${series} · Studio Dispatches & Field Notes`;
+            bRight.textContent = "CRAFTSMANSHIP · SYSTEMS · OPEN INQUIRY";
+          } else {
+            tag.textContent = "ERRATA // MARGINALIA & ESSAYS";
+            title.textContent = "Closing the Margin";
+            quote.textContent = err.excerpt_or_thesis || "The discipline of software craftsmanship is not in the tools we generate, but in the clarity of the mental model we leave behind.";
+            author.textContent = err.citation ? `${err.citation} : Errata Close Reading` : "Mike Hall : Errata Field Notes";
+            mission.innerHTML = `<strong>Errata Field Notes:</strong> Independent essays, book passages, concept dissections, and physical memorabilia from 25 years of engineering craft.`;
+            l1Title.textContent = "Essays & Notes";
+            l1Url.textContent = "just3ws.com/essays";
+            l2Title.textContent = "Career Datalake";
+            l2Url.textContent = "just3ws.com/resume";
+            bLeft.textContent = "Errata · Independent Technical Broadcast";
+            bRight.textContent = "MIKE HALL · CRAFTSMANSHIP & MARGINALIA";
+          }
         } else if (type === "dialogue") {
           const dia = state.dialogue || {};
           tag.textContent = "THE ROOM // DIALOGUE COMPLETE";

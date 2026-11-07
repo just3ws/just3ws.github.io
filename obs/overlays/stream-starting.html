@@ -226,16 +226,17 @@
 
         if (type === "errata") {
           const err = state.errata || {};
-          brandTitle.textContent = state.stream.series_title || "Errata";
-          brandSub.textContent = state.stream.series_subtitle || "Marginalia, Readings & Field Notes";
-          kicker1.textContent = "MARGINALIA & ESSAYS";
-          eraEl.textContent = (err.mode || "READING").toUpperCase();
-          titleEl.textContent = err.title || "Errata Solo";
-          guestEl.textContent = err.citation || "Mike Hall";
+          const isDispatch = err.mode === "dispatch" || err.mode === "bts";
+          brandTitle.textContent = state.stream.series_title || (isDispatch ? "Mike Hall" : "Errata");
+          brandSub.textContent = state.stream.series_subtitle || (isDispatch ? "Studio Dispatches & Workbench Notes" : "Marginalia, Readings & Field Notes");
+          kicker1.textContent = isDispatch ? (err.mode === "bts" ? "PROJECT UPDATE" : "STUDIO DISPATCH") : "MARGINALIA & ESSAYS";
+          eraEl.textContent = isDispatch ? (err.mode === "bts" ? "BEHIND THE SCENES" : "STUDIO DISPATCH") : (err.mode || "READING").toUpperCase();
+          titleEl.textContent = err.title || (isDispatch ? "Studio Dispatch" : "Errata Solo");
+          guestEl.textContent = err.citation || state.stream.host || "Mike Hall";
           eventEl.textContent = err.artifact_year || "2026";
-          promptEl.textContent = err.excerpt_or_thesis ? `"${err.excerpt_or_thesis}"` : (err.subtitle || "");
-          routeLabel.textContent = "Writing & Notes";
-          routeVal.textContent = "just3ws.com/essays";
+          promptEl.textContent = err.excerpt_or_thesis ? `"${err.excerpt_or_thesis}"` : (err.subtitle || (isDispatch ? "Open reflections, workbench notes, and active ideas." : ""));
+          routeLabel.textContent = isDispatch ? "Dispatches & Archive" : "Writing & Notes";
+          routeVal.textContent = isDispatch ? "just3ws.com" : "just3ws.com/essays";
         } else if (type === "dialogue") {
           const dia = state.dialogue || {};
           const guests = dia.guests || [];

@@ -75,9 +75,9 @@ For the current editorial outline, open `https://www.just3ws.localhost/youtube/d
 
 Launch the matching teleprompter from the command line or open its `.textream` file in `obs/teleprompter/`. Use the same episode number as the local cue. The teleprompter is a flexible outline; timing and optional sections can change during recording.
 
-## Sit-down series introduction
+## Studio Dispatches and out-of-series recordings
 
-Use this procedure for the open-ended talk about The Sound Above, its plans, and how viewers can follow or support the work. It is a standalone solo recording, not a rewatch episode.
+Use this procedure for open-ended sit-down talks, project updates, idea explorations, and series introductions. These are standalone solo recordings outside the formal interview rewatch sequence.
 
 ### Before sitting down
 
@@ -85,10 +85,13 @@ Use this procedure for the open-ended talk about The Sound Above, its plans, and
 
    ```sh
    bin/broadcast --preflight
-   bin/broadcast --errata --mode bts --series "The Sound Above" \\
-     --title "Series Introduction" \\
-     --subtitle "Plans, next steps, and ways to follow" \\
-     --citation "The Sound Above"
+   # Spontaneous monologue with automatic date stamp:
+   bin/broadcast --dispatch
+
+   # Or with a specific topic and series context:
+   bin/broadcast --dispatch --series "The Sound Above" \
+     --title "Series Introduction" \
+     --subtitle "Plans, ideas, and structure"
    bin/broadcast --status
    ```
 

@@ -114,16 +114,20 @@ current_state["broadcast_type"] ||= "rewatch"
 
 if current_state["broadcast_type"] == "errata"
   current_state["errata"] ||= {}
-  current_state["errata"]["mode"] = options[:mode] || current_state["errata"]["mode"] || "concept"
-  current_state["errata"]["title"] = options[:title] if options[:title]
-  current_state["errata"]["subtitle"] = options[:subtitle] if options[:subtitle]
-  current_state["errata"]["citation"] = options[:citation] || options[:guest] if (options[:citation] || options[:guest])
-  current_state["errata"]["excerpt_or_thesis"] = options[:prompt] if options[:prompt]
-  current_state["errata"]["artifact_year"] = options[:year] if options[:year]
+  mode = options[:mode] || current_state["errata"]["mode"] || "concept"
+  is_dispatch = mode == "dispatch" || mode == "bts"
+  date_str = Time.now.strftime("%B %-d, %Y")
 
-  current_state["stream"]["series_title"] = options[:series] || "Errata"
-  current_state["stream"]["series_subtitle"] = "Marginalia, Readings & Demonstrations"
-  current_state["stream"]["topic"] = "#{current_state["errata"]["title"]} (#{current_state["errata"]["mode"]})"
+  current_state["errata"]["mode"] = mode
+  current_state["errata"]["title"] = options[:title] || current_state["errata"]["title"] || (is_dispatch ? "Studio Dispatch · #{date_str}" : "Untitled Insight")
+  current_state["errata"]["subtitle"] = options[:subtitle] || current_state["errata"]["subtitle"] || (is_dispatch ? "Open reflections, workbench notes, and active ideas" : "Marginalia and Demonstrations")
+  current_state["errata"]["citation"] = options[:citation] || options[:guest] || current_state["errata"]["citation"] || (is_dispatch ? "Mike Hall" : "Personal Archive")
+  current_state["errata"]["excerpt_or_thesis"] = options[:prompt] if options[:prompt]
+  current_state["errata"]["artifact_year"] = options[:year] || current_state["errata"]["artifact_year"] || Time.now.strftime("%Y")
+
+  current_state["stream"]["series_title"] = options[:series] || current_state["stream"]["series_title"] || (is_dispatch ? (mode == "bts" ? "The Sound Above" : "Mike Hall") : "Errata")
+  current_state["stream"]["series_subtitle"] = is_dispatch ? "Studio Dispatches & Workbench Notes" : "Marginalia, Readings & Demonstrations"
+  current_state["stream"]["topic"] = is_dispatch ? "#{current_state["errata"]["title"]} (Studio Dispatch)" : "#{current_state["errata"]["title"]} (#{mode})"
 elsif current_state["broadcast_type"] == "dialogue"
   current_state["dialogue"] ||= {}
   if options[:guest]

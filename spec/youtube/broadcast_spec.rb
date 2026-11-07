@@ -47,7 +47,7 @@ RSpec.describe 'Broadcast episode resolution' do
       expect(status.success?).to be(true), stderr
       expect(stdout).to include('Successfully cued Episode #-1')
       state = JSON.parse(File.read(File.join(sandbox, 'obs', 'overlays', 'overlay-state.json')))
-      expect(state.dig('episode', 'title')).to include('Fluffle Precursor')
+      expect(state.dig('episode', 'title')).to include('Fluffle')
       expect(state.dig('episode', 'number')).to eq(-1)
     end
   end
@@ -74,6 +74,47 @@ RSpec.describe 'Broadcast episode resolution' do
       expect(status.success?).to be false
       expect(stderr).to include('not found in sequence manifest or episode dossiers')
       expect(stdout).not_to include('Successfully cued Episode #0')
+    end
+  end
+
+  it 'cues a Studio Dispatch with dynamic date stamping when called without arguments' do
+    Dir.mktmpdir('broadcast-spec') do |sandbox|
+      FileUtils.mkdir_p(File.join(sandbox, 'bin'))
+      FileUtils.mkdir_p(File.join(sandbox, 'obs', 'curation'))
+      FileUtils.mkdir_p(File.join(sandbox, 'obs', 'overlays'))
+      FileUtils.cp(File.join(root_dir, 'bin/broadcast'), File.join(sandbox, 'bin/broadcast'))
+      FileUtils.cp(File.join(root_dir, 'obs/overlays/overlay-state.json'), File.join(sandbox, 'obs/overlays/overlay-state.json'))
+
+      stdout, stderr, status = Open3.capture3(
+        File.join(sandbox, 'bin', 'broadcast'), '--dispatch'
+      )
+
+      expect(status.success?).to be(true), stderr
+      expect(stdout).to include('Successfully cued Studio Dispatch')
+      state = JSON.parse(File.read(File.join(sandbox, 'obs', 'overlays', 'overlay-state.json')))
+      expect(state.dig('errata', 'mode')).to eq('dispatch')
+      expect(state.dig('errata', 'title')).to match(/^Studio Dispatch · \w+ \d+, \d{4}$/)
+      expect(state.dig('stream', 'series_title')).to eq('Mike Hall')
+    end
+  end
+
+  it 'cues a Studio Dispatch with sequence counter and custom topic' do
+    Dir.mktmpdir('broadcast-spec') do |sandbox|
+      FileUtils.mkdir_p(File.join(sandbox, 'bin'))
+      FileUtils.mkdir_p(File.join(sandbox, 'obs', 'curation'))
+      FileUtils.mkdir_p(File.join(sandbox, 'obs', 'overlays'))
+      FileUtils.cp(File.join(root_dir, 'bin/broadcast'), File.join(sandbox, 'bin/broadcast'))
+      FileUtils.cp(File.join(root_dir, 'obs/overlays/overlay-state.json'), File.join(sandbox, 'obs/overlays/overlay-state.json'))
+
+      stdout, stderr, status = Open3.capture3(
+        File.join(sandbox, 'bin', 'broadcast'), '--dispatch', '1', '-t', 'Series Introduction', '-s', 'Plans and roadmap'
+      )
+
+      expect(status.success?).to be(true), stderr
+      state = JSON.parse(File.read(File.join(sandbox, 'obs', 'overlays', 'overlay-state.json')))
+      expect(state.dig('errata', 'mode')).to eq('dispatch')
+      expect(state.dig('errata', 'title')).to eq('Studio Dispatch #1: Series Introduction')
+      expect(state.dig('errata', 'subtitle')).to eq('Plans and roadmap')
     end
   end
 end

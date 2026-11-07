@@ -149,19 +149,24 @@
 
         if (type === "errata") {
           const err = state.errata || {};
+          const isDispatch = err.mode === "dispatch" || err.mode === "bts";
           const modeMap = {
+            dispatch: "STUDIO DISPATCH",
+            bts: "PROJECT UPDATE",
             reading: "NOW READING",
             concept: "SYSTEM CONCEPT",
             demo: "ON THE WORKBENCH",
             story: "FIELD NOTES",
             artifact: "ARCHIVAL ARTIFACT"
           };
-          badgeEl.textContent = modeMap[err.mode] || "ERRATA";
-          eraEl.textContent = (err.artifact_year || "2026").toUpperCase();
-          titleEl.textContent = err.title || "Errata";
+          badgeEl.textContent = modeMap[err.mode] || (isDispatch ? "STUDIO DISPATCH" : "ERRATA");
+          eraEl.textContent = isDispatch ? (err.mode === "bts" ? "BEHIND THE SCENES" : "STUDIO DISPATCH") : (err.artifact_year || "2026").toUpperCase();
+          titleEl.textContent = err.title || (isDispatch ? "Studio Dispatch" : "Errata");
           confEl.textContent = err.citation || "";
           topicEl.textContent = err.subtitle || err.excerpt_or_thesis || "";
-          footSeries.textContent = "ERRATA // MARGINALIA & ESSAYS";
+          footSeries.textContent = isDispatch
+            ? `${(state.stream.series_title || "MIKE HALL").toUpperCase()} // STUDIO DISPATCH`
+            : "ERRATA // MARGINALIA & ESSAYS";
         } else if (type === "dialogue") {
           const dia = state.dialogue || {};
           const guests = dia.guests || [];

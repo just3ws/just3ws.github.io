@@ -265,11 +265,12 @@
 
         if (type === "errata") {
           const err = state.errata || {};
-          seriesEl.textContent = (state.stream.series_title || "ERRATA").toUpperCase();
-          if (err.mode === "bts") {
-            tagEl.textContent = "BEHIND THE SCENES";
-            credo1.textContent = "PROCESS NOTES";
-            credo2.textContent = "TOOLS, PROJECTS & PRACTICE";
+          const isDispatch = err.mode === "dispatch" || err.mode === "bts";
+          seriesEl.textContent = (state.stream.series_title || (isDispatch ? "MIKE HALL" : "ERRATA")).toUpperCase();
+          if (isDispatch) {
+            tagEl.textContent = err.mode === "dispatch" ? "STUDIO DISPATCH" : "BEHIND THE SCENES";
+            credo1.textContent = "OPEN REFLECTIONS";
+            credo2.textContent = "WORKBENCH & CRAFT";
             credo3.textContent = "MIKE HALL";
           } else {
             tagEl.textContent = (err.mode || "MARGINALIA").toUpperCase();
@@ -278,8 +279,8 @@
             credo3.textContent = "MIKE HALL";
           }
           nameEl.textContent = err.title;
-          ctxEl.textContent = err.citation || "Field Notes";
-          roleEl.textContent = err.subtitle || "Insights, Demonstrations & Archival Study";
+          ctxEl.textContent = err.citation || (state.stream.series_title || "Mike Hall");
+          roleEl.textContent = err.subtitle || "Open reflections and active work";
           if (err.excerpt_or_thesis) {
             promptEl.style.display = "block";
             promptEl.textContent = `"${err.excerpt_or_thesis}"`;

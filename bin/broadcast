@@ -221,19 +221,44 @@ def cue_errata(options)
   end
 
   mode = options[:mode] || target_item&.dig("mode") || "concept"
-  title = options[:title] || target_item&.dig("title") || "Untitled Insight"
-  subtitle = options[:subtitle] || target_item&.dig("subtitle") || "Marginalia and Demonstrations"
-  citation = options[:citation] || target_item&.dig("citation") || "Personal Archive"
+  date_str = Time.now.strftime("%B %-d, %Y")
+  is_dispatch = mode == "dispatch" || mode == "bts"
+
+  title = if is_dispatch
+            if options[:title]
+              if options[:dispatch_counter]
+                "Studio Dispatch ##{options[:dispatch_counter]}: #{options[:title]}"
+              else
+                options[:title]
+              end
+            elsif options[:dispatch_counter]
+              "Studio Dispatch ##{options[:dispatch_counter]} · #{date_str}"
+            else
+              mode == "dispatch" ? "Studio Dispatch · #{date_str}" : "Series Update"
+            end
+          else
+            options[:title] || target_item&.dig("title") || "Untitled Insight"
+          end
+
+  subtitle = options[:subtitle] || target_item&.dig("subtitle") ||
+             (is_dispatch ? "Open reflections, workbench notes, and active ideas" : "Marginalia and Demonstrations")
+
+  citation = options[:citation] || target_item&.dig("citation") ||
+             (options[:series] ? options[:series] : (is_dispatch ? "Mike Hall" : "Personal Archive"))
+
   excerpt = options[:prompt] || target_item&.dig("excerpt_or_thesis") || ""
-  year = (options[:year] || target_item&.dig("year") || "2026").to_s
+  year = (options[:year] || target_item&.dig("year") || Time.now.strftime("%Y")).to_s
+
+  default_series = is_dispatch ? (options[:series] || (mode == "bts" ? "The Sound Above" : "Mike Hall")) : "Errata"
+  default_sub = is_dispatch ? "Studio Dispatches & Workbench Notes" : "Marginalia, Readings & Demonstrations"
 
   state["broadcast_type"] = "errata"
   state["stream"] ||= {}
-  state["stream"]["series_title"] = options[:series] || "Errata"
-  state["stream"]["series_subtitle"] = "Marginalia, Readings & Demonstrations"
+  state["stream"]["series_title"] = options[:series] || default_series
+  state["stream"]["series_subtitle"] = default_sub
   state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
   state["stream"]["status"] = "cued"
-  state["stream"]["topic"] = "#{title} (#{mode})"
+  state["stream"]["topic"] = is_dispatch ? "#{title} (Studio Dispatch)" : "#{title} (#{mode})"
 
   state["errata"] = {
     "mode" => mode,
@@ -245,7 +270,7 @@ def cue_errata(options)
   }
 
   write_json(OVERLAY_STATE, state)
-  puts "Successfully cued Errata broadcast [#{mode.upcase}]: #{title}."
+  puts "Successfully cued #{is_dispatch ? 'Studio Dispatch' : 'Errata broadcast [' + mode.upcase + ']'}: #{title}."
   print_status
 end
 
@@ -288,10 +313,11 @@ opt_parser = OptionParser.new do |opts|
   opts.banner = "Usage: bin/broadcast [archetype] [options]"
   opts.separator ""
   opts.separator "Unified live broadcast director for Mike Hall (Staff Software Engineer & SCMC Co-Founder)."
-  opts.separator "Directs and cues three distinct broadcast archetypes:"
-  opts.separator "  1. --rewatch <N>   The Sound Above (interview review series, -1 to 37)"
-  opts.separator "  2. --errata        Errata (solo readings, concepts, live demos, artifacts, behind the scenes)"
-  opts.separator "  3. --dialogue      The Room (invited guest conversations and peer inquiry)"
+  opts.separator "Directs and cues distinct broadcast formats:"
+  opts.separator "  1. --rewatch <N>       The Sound Above (interview review series, -1 to 37)"
+  opts.separator "  2. --dispatch [ARG]    Studio Dispatch (out-of-series open reflections, updates, and introductions)"
+  opts.separator "  3. --errata            Errata (solo readings, concepts, live demos, artifacts)"
+  opts.separator "  4. --dialogue          The Room (invited guest conversations and peer inquiry)"
   opts.separator ""
   opts.separator "Recording prep: bin/broadcast --playbook, then bin/broadcast --preflight"
   opts.separator "Cueing updates local overlay metadata. It does not start OBS or a stream."
@@ -301,7 +327,31 @@ opt_parser = OptionParser.new do |opts|
     options[:episode] = ep.to_s =~ /^-?\d+$/ ? ep.to_i : ep.to_s
   end
 
-  opts.on("-e", "--errata", "Direct an Errata solo broadcast (reading, concept, demo, artifact, bts)") do
+  opts.on("--dispatch [ARG]", "Cue a Studio Dispatch (out-of-series open reflection or update; optional counter or topic)") do |arg|
+    options[:mode] = "dispatch"
+    options[:archetype] ||= "errata"
+    if arg && !arg.empty?
+      if arg =~ /^\d+$/
+        options[:dispatch_counter] = arg.to_i
+      else
+        options[:title] ||= arg
+      end
+    end
+  end
+
+  opts.on("-u", "--update [ARG]", "Alias for --dispatch") do |arg|
+    options[:mode] = "dispatch"
+    options[:archetype] ||= "errata"
+    if arg && !arg.empty?
+      if arg =~ /^\d+$/
+        options[:dispatch_counter] = arg.to_i
+      else
+        options[:title] ||= arg
+      end
+    end
+  end
+
+  opts.on("-e", "--errata", "Direct an Errata solo broadcast (reading, concept, demo, artifact, bts, dispatch)") do
     options[:archetype] = "errata"
   end
 
@@ -316,12 +366,12 @@ opt_parser = OptionParser.new do |opts|
 
   opts.separator ""
   opts.separator "Metadata Modifiers:"
-  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact bts], "Errata mode: reading, concept, demo, story, artifact, bts") do |m|
+  opts.on("-m", "--mode MODE", %w[reading concept demo story artifact bts dispatch], "Errata mode: reading, concept, demo, story, artifact, bts, dispatch") do |m|
     options[:mode] = m
     options[:archetype] ||= "errata"
   end
 
-  opts.on("--bts", "Shortcut for Errata behind-the-scenes broadcast engineering mode") do
+  opts.on("--bts", "Shortcut for behind-the-scenes series updates and preparation") do
     options[:mode] = "bts"
     options[:archetype] ||= "errata"
   end
