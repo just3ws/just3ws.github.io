@@ -196,8 +196,22 @@
 
         if (type === "errata") {
           const err = state.errata || {};
+          const isWorkbench = err.mode === "workbench";
           const isDispatch = err.mode === "dispatch" || err.mode === "bts";
-          if (isDispatch) {
+          if (isWorkbench) {
+            const series = state.stream.series_title || "Studio Workbench";
+            tag.textContent = `${series.toUpperCase()} : SESSION COMPLETE`;
+            title.textContent = err.title ? `Finished at the Bench: ${err.title}` : "Session Complete at the Bench";
+            quote.textContent = err.excerpt_or_thesis || "Process cinema is not about presenting polished answers as an auteur; it is working through the problem, testing hypotheses, and discovering what holds together in the real world.";
+            author.textContent = `Mike Hall : ${series}`;
+            mission.innerHTML = `<strong>Studio Workbench:</strong> Hands-on process cinema, live engineering problem-solving, and personal investigation at the desk.`;
+            l1Title.textContent = "Workbench & Code";
+            l1Url.textContent = "just3ws.com";
+            l2Title.textContent = "Digital Archive";
+            l2Url.textContent = "just3ws.com/interviews";
+            bLeft.textContent = `${series} · Process Cinema & Live Systems Exploration`;
+            bRight.textContent = "DISCOVERY · WORKING IN THE OPEN · CRAFTSMANSHIP";
+          } else if (isDispatch) {
             const series = state.stream.series_title || (err.mode === "bts" ? "The Sound Above" : "Mike Hall");
             tag.textContent = `${series.toUpperCase()} : STUDIO DISPATCH`;
             title.textContent = err.title ? (err.title.startsWith("Studio Dispatch") ? err.title : `Looking Ahead: ${err.title}`) : "Carrying the Conversation Forward";

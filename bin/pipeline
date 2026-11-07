@@ -93,6 +93,9 @@ run_media() {
         ruby bin/stage_episode_workflow.rb "$@"
       fi
       ;;
+    stage-workbench|stage_workbench)
+      ruby bin/stage_workbench "$@"
+      ;;
     patreon)
       if [ $# -eq 0 ]; then
         ruby bin/patreon_pipeline.rb status
@@ -478,6 +481,10 @@ case "$cmd" in
   stage|rehearse)
     shift
     run_media stage "$@"
+    ;;
+  stage-workbench|stage_workbench)
+    shift
+    run_media stage-workbench "$@"
     ;;
   intake|drive-intake|media-intake)
     shift

@@ -149,8 +149,10 @@
 
         if (type === "errata") {
           const err = state.errata || {};
+          const isWorkbench = err.mode === "workbench";
           const isDispatch = err.mode === "dispatch" || err.mode === "bts";
           const modeMap = {
+            workbench: "STUDIO WORKBENCH",
             dispatch: "STUDIO DISPATCH",
             bts: "PROJECT UPDATE",
             reading: "NOW READING",
@@ -159,14 +161,16 @@
             story: "FIELD NOTES",
             artifact: "ARCHIVAL ARTIFACT"
           };
-          badgeEl.textContent = modeMap[err.mode] || (isDispatch ? "STUDIO DISPATCH" : "ERRATA");
-          eraEl.textContent = isDispatch ? (err.mode === "bts" ? "BEHIND THE SCENES" : "STUDIO DISPATCH") : (err.artifact_year || "2026").toUpperCase();
-          titleEl.textContent = err.title || (isDispatch ? "Studio Dispatch" : "Errata");
-          confEl.textContent = err.citation || "";
-          topicEl.textContent = err.subtitle || err.excerpt_or_thesis || "";
-          footSeries.textContent = isDispatch
-            ? `${(state.stream.series_title || "MIKE HALL").toUpperCase()} // STUDIO DISPATCH`
-            : "ERRATA // MARGINALIA & ESSAYS";
+          badgeEl.textContent = modeMap[err.mode] || (isWorkbench ? "STUDIO WORKBENCH" : (isDispatch ? "STUDIO DISPATCH" : "ERRATA"));
+          eraEl.textContent = isWorkbench ? "PROCESS CINEMA" : (isDispatch ? (err.mode === "bts" ? "BEHIND THE SCENES" : "STUDIO DISPATCH") : (err.artifact_year || "2026").toUpperCase());
+          titleEl.textContent = err.title || (isWorkbench ? "Studio Workbench" : (isDispatch ? "Studio Dispatch" : "Errata"));
+          confEl.textContent = err.citation || (isWorkbench ? (state.stream.series_title || "Studio Workbench") : "");
+          topicEl.textContent = err.subtitle || err.excerpt_or_thesis || (isWorkbench ? "Process cinema and live engineering exploration" : "");
+          footSeries.textContent = isWorkbench
+            ? `${(state.stream.series_title || "STUDIO WORKBENCH").toUpperCase()} // PROCESS CINEMA`
+            : (isDispatch
+              ? `${(state.stream.series_title || "MIKE HALL").toUpperCase()} // STUDIO DISPATCH`
+              : "ERRATA // MARGINALIA & ESSAYS");
         } else if (type === "dialogue") {
           const dia = state.dialogue || {};
           const guests = dia.guests || [];

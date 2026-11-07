@@ -1,0 +1,183 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# ---
+# name: stage_workbench
+# domain: media
+# role: Studio Workbench recording intake and staging utility
+# description: Moves completed OBS recordings from /Users/mike/Movies to the
+#   studio-workbench ingress Maildir queue and triggers media-pipeline scan.
+# usage: bin/stage_workbench [options] [recording_file]
+# ---
+
+require 'fileutils'
+require 'optparse'
+require 'json'
+require 'net/http'
+require 'uri'
+require 'shellwords'
+require 'English'
+
+MOVIES_DIR = File.expand_path('~/Movies')
+INGRESS_DIR = File.expand_path('~/ai/media-pipeline/whoistechcmty/studio-workbench/staged')
+OVERLAY_STATE = File.expand_path('../obs/overlays/overlay-state.json', __dir__)
+SCAN_URL = 'http://127.0.0.1:32000/operations/scan'
+
+options = {
+  dry_run: false,
+  topic: nil,
+  keep_source: false
+}
+
+parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: bin/stage_workbench [options] [source_file]'
+  opts.separator ''
+  opts.separator 'Staging utility for Studio Workbench recordings.'
+  opts.separator 'Moves finished OBS recordings to the local NVMe ingress queue'
+  opts.separator 'and triggers media-pipeline for processing and YouTube upload.'
+  opts.separator ''
+
+  opts.on('-t', '--topic TOPIC', 'Descriptor or topic slug for destination filename') do |t|
+    options[:topic] = t
+  end
+
+  opts.on('-k', '--keep', 'Copy instead of move source recording') do
+    options[:keep_source] = true
+  end
+
+  opts.on('-n', '--dry-run', 'Preview staging actions without moving files') do
+    options[:dry_run] = true
+  end
+
+  opts.on_tail('-h', '--help', 'Show this help message') do
+    puts opts
+    exit 0
+  end
+end
+
+parser.parse!
+
+# 1. Resolve source file
+source_path = ARGV.first
+
+if source_path
+  source_file = File.expand_path(source_path)
+  unless File.file?(source_file)
+    warn "Error: Specified file does not exist: #{source_file}"
+    exit 1
+  end
+else
+  # Find latest video file in ~/Movies
+  candidates = Dir.glob(File.join(MOVIES_DIR, '*.{mov,mp4,mkv,MOV,MP4,MKV}')).select do |f|
+    File.file?(f) && File.size(f).positive?
+  end
+
+  if candidates.empty?
+    warn "Error: No recordings found in #{MOVIES_DIR}."
+    warn 'Please record in OBS first, or specify a file path.'
+    exit 1
+  end
+
+  source_file = candidates.max_by { |f| File.mtime(f) }
+end
+
+# 2. Safety check: ensure file is not actively being written
+file_size = File.size(source_file)
+if file_size.zero?
+  warn "Error: Source recording is empty (0 bytes): #{source_file}"
+  exit 1
+end
+
+# Check if file is currently open (e.g. by OBS)
+lsof_check = `lsof #{source_file.shellescape} 2>/dev/null`
+if $CHILD_STATUS&.success? && !lsof_check.strip.empty?
+  warn "Warning: Source file appears open by another process:"
+  warn lsof_check
+  warn "If OBS is still recording, stop recording before staging."
+  exit 1 unless options[:dry_run]
+end
+
+# 3. Determine topic from options or overlay state if available
+topic_slug = options[:topic]
+if topic_slug.nil? && File.file?(OVERLAY_STATE)
+  begin
+    state = JSON.parse(File.read(OVERLAY_STATE))
+    if state['broadcast_type'] == 'errata' && state.dig('errata', 'mode') == 'workbench'
+      raw_title = state.dig('errata', 'title') || ''
+      cleaned = raw_title.sub(/^Studio Workbench( #\d+)?:?\s*/i, '')
+      topic_slug = cleaned.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_+|_+$/, '') unless cleaned.empty?
+    end
+  rescue StandardError
+    # Ignore overlay read errors
+  end
+end
+
+# 4. Determine destination path
+source_ext = File.extname(source_file)
+source_base = File.basename(source_file, source_ext)
+
+dest_filename = if topic_slug && !topic_slug.empty?
+                  if source_base.include?(topic_slug)
+                    "#{source_base}#{source_ext}"
+                  else
+                    "#{source_base}_studio_workbench_#{topic_slug}#{source_ext}"
+                  end
+                elsif source_base.include?('studio_workbench')
+                  "#{source_base}#{source_ext}"
+                else
+                  "#{source_base}_studio_workbench#{source_ext}"
+                end
+
+dest_path = File.join(INGRESS_DIR, dest_filename)
+
+size_mb = (file_size.to_f / (1024 * 1024)).round(2)
+action = options[:keep_source] ? 'Copy' : 'Move'
+
+puts "=================================================================="
+puts " 🎬 STUDIO WORKBENCH STAGING"
+puts "=================================================================="
+puts "Source:      #{source_file} (#{size_mb} MB)"
+puts "Destination: #{dest_path}"
+puts "Action:      #{action}"
+puts "Topic:       #{topic_slug || '(none)'}"
+puts "=================================================================="
+
+if options[:dry_run]
+  puts "[DRY-RUN] Staging preview completed without modifications."
+  exit 0
+end
+
+# Ensure ingress directory exists
+FileUtils.mkdir_p(INGRESS_DIR)
+
+# Move or copy file
+if options[:keep_source]
+  FileUtils.cp(source_file, dest_path)
+else
+  FileUtils.mv(source_file, dest_path)
+end
+
+puts "File staged successfully in Maildir ingress queue."
+
+# 5. Trigger media-pipeline scan
+puts "Triggering media-pipeline intake scan..."
+begin
+  uri = URI.parse(SCAN_URL)
+  req = Net::HTTP::Post.new(uri.path, { 'Accept' => 'application/json' })
+  res = Net::HTTP.start(uri.host, uri.port, open_timeout: 3, read_timeout: 5) do |http|
+    http.request(req)
+  end
+
+  if res.is_a?(Net::HTTPSuccess)
+    puts "Scan triggered: #{res.body}"
+  else
+    puts "Scan response (#{res.code}): #{res.body}"
+  end
+rescue StandardError => e
+  puts "Notice: Could not trigger immediate scan on #{SCAN_URL} (#{e.message})."
+  puts "The media-pipeline service will detect the file on its regular polling interval."
+end
+
+puts ""
+puts "Studio Workbench recording is staged and queued for processing."
+puts "Check queue status with: ./bin/pipeline media status"

@@ -265,9 +265,16 @@
 
         if (type === "errata") {
           const err = state.errata || {};
+          const isWorkbench = err.mode === "workbench";
           const isDispatch = err.mode === "dispatch" || err.mode === "bts";
-          seriesEl.textContent = (state.stream.series_title || (isDispatch ? "MIKE HALL" : "ERRATA")).toUpperCase();
-          if (isDispatch) {
+          if (isWorkbench) {
+            seriesEl.textContent = (state.stream.series_title || "STUDIO WORKBENCH").toUpperCase();
+            tagEl.textContent = "PROCESS CINEMA";
+            credo1.textContent = "STUDIO WORKBENCH";
+            credo2.textContent = "SYSTEMS & DISCOVERY";
+            credo3.textContent = "MIKE HALL";
+          } else if (isDispatch) {
+            seriesEl.textContent = (state.stream.series_title || "MIKE HALL").toUpperCase();
             tagEl.textContent = err.mode === "dispatch" ? "STUDIO DISPATCH" : "BEHIND THE SCENES";
             credo1.textContent = "OPEN REFLECTIONS";
             credo2.textContent = "WORKBENCH & CRAFT";
@@ -279,8 +286,8 @@
             credo3.textContent = "MIKE HALL";
           }
           nameEl.textContent = err.title;
-          ctxEl.textContent = err.citation || (state.stream.series_title || "Mike Hall");
-          roleEl.textContent = err.subtitle || "Open reflections and active work";
+          ctxEl.textContent = err.citation || (state.stream.series_title || (isWorkbench ? "Studio Workbench" : "Mike Hall"));
+          roleEl.textContent = err.subtitle || (isWorkbench ? "Process cinema and hands-on investigation at the desk" : "Open reflections and active work");
           if (err.excerpt_or_thesis) {
             promptEl.style.display = "block";
             promptEl.textContent = `"${err.excerpt_or_thesis}"`;

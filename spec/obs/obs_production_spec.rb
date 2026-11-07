@@ -85,7 +85,7 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
 
     expect(state["episode"]["number"]).to be_nil.or(be >= -1)
     expect(state["episode"]["interviewee"]).not_to be_empty
-    expect(state["stream"]["series_title"]).to match(/The Sound Above|Errata|Ramblin' & Amblin'|The Room/)
+    expect(state["stream"]["series_title"]).to match(/The Sound Above|Errata|Ramblin' & Amblin'|The Room|Studio Workbench/)
 
     expect(File.exist?(theme_css_file)).to be true
     css = File.read(theme_css_file)
