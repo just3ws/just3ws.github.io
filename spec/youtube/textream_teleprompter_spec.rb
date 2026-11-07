@@ -31,15 +31,14 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
       expect(pages[5]).not_to include('ACT 6:')
     end
 
-    it 'outputs valid 6-act Textream pages for Episode 00 (Preparatory Pilot)' do
-      stdout, stderr, status = Open3.capture3('ruby', generator_script, '-e', '0', '-t')
+    it 'outputs valid 6-act Textream pages for Episode 01' do
+      stdout, stderr, status = Open3.capture3('ruby', generator_script, '-e', '1', '-t')
       expect(status.success?).to be true
       expect(stderr).to be_empty
 
       pages = JSON.parse(stdout)
       expect(pages.size).to eq(6)
-      expect(pages[0]).to include('The Sound Above: Minus Zero')
-      expect(pages[0]).to include('345,000-volt transmission lines')
+      expect(pages[0]).to include('Sergio Pereira')
       expect(pages[0]).not_to include('ACT 1:')
       expect(pages[3]).not_to include('ACT 4:')
       expect(pages[3]).not_to include('YouTube ID:')
@@ -75,12 +74,12 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
       FileUtils.rm_f(test_dest)
     end
 
-    it 'compiles all 38 episodes into obs/teleprompter with zero em dashes' do
+    it 'compiles all 37 episodes into obs/teleprompter with zero em dashes' do
       stdout, stderr, status = Open3.capture3('ruby', generator_script, '--all-textream')
       expect(status.success?).to be true
-      expect(stdout).to include('All 38 .textream documents compiled cleanly')
+      expect(stdout).to include('All 37 episodes and companion documents compiled cleanly')
 
-      (0..37).each do |n|
+      (1..37).each do |n|
         slug = format('episode-%02d.textream', n)
         path = File.join(teleprompter_dir, slug)
         expect(File.exist?(path)).to be true
@@ -122,8 +121,8 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
   end
 
   describe 'Staged Episode Workflow Verification (bin/stage_episode_workflow.rb)' do
-    it 'passes Teleprompter Compilation gate with Textream document verification for Episode 0' do
-      stdout, stderr, status = Open3.capture3('ruby', staging_script, '0')
+    it 'passes Teleprompter Compilation gate with Textream document verification for Studio Workbench' do
+      stdout, stderr, status = Open3.capture3('ruby', staging_script, 'workbench-hello-world')
       expect(status.success?).to be true
       expect(stdout).to include('Teleprompter compilation     [✅ PASS]')
       expect(stdout).to include('Textream document verified')
@@ -138,20 +137,10 @@ RSpec.describe 'Textream Teleprompter Integration & The Sound Above Broadcast Pr
   end
 
   describe 'Dashboard Studio Teleprompter Integration (youtube/dashboard.html)' do
-    it 'includes Textream launch and export controls in teleprompter studio' do
+    it 'routes recording and teleprompter workflow to local recording tools' do
       content = File.read(dashboard_html)
-      expect(content).to include('launchInTextream')
-      expect(content).to include('downloadTextream')
-      expect(content).to include('Launch in Textream')
-      expect(content).to include('Export .textream')
-      expect(content).to include('textream://read?text=')
-      expect(content).to include('Read in Textream')
-      expect(content).to include('Recording Day Launchpad')
-      expect(content).to include('cueLiveEpisodeInObs')
-      expect(content).to include('openLiveTeleprompter')
-      expect(content).to include('live-cue-feedback')
-      expect(content).to include('/youtube/recording-playbook/')
-      expect(content).to include("bin/broadcast --preflight")
+      expect(content).to include('/obs/')
+      expect(content).to include('https://media-pipeline.localhost/')
       expect(content).not_to include("\u2014")
     end
   end

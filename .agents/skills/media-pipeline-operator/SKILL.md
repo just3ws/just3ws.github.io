@@ -13,9 +13,9 @@ The media intake pipeline operates on a zero-disk-waste cloud streaming architec
 
 ## 1. Core Architectural Invariants
 
-1. **On-Demand Archive Residency**: Video files use temporary local staging. After verified publication, the master is moved into the Google Drive archive. That move alone does not prove macOS has released local file data. Confirm the archive file is `dataless` and check free space before claiming storage was reclaimed. Ephemeral scratch WAV files in `/tmp` are purged upon completion.
+1. **Zero Permanent Local SSD Footprint / On-Demand Archive Residency**: Video files use temporary local staging. After verified publication, the master is moved into the Google Drive archive. That move alone does not prove macOS has released local file data. Confirm the archive file is `dataless` and check free space before claiming storage was reclaimed. Ephemeral scratch WAV files in `/tmp` are purged upon completion.
 2. **Cross-Channel Concurrency Lock (1-at-a-Time)**: Exactly one video may reside in `processing/` across all channels and targets at any time to preserve localhost CPU, RAM, and Apple Silicon Neural Engine headroom.
-3. **Separate FIFO Orders**: Maildir intake uses filesystem ingress age. Publication is a separate database queue. `PublishDispatchJob` selects the oldest globally enriched asset by `recorded_at`, then `created_at`, across every target. It does not follow a selected dashboard group or a user-named batch.
+3. **Strict FIFO Queue Discipline (Separate Orders)**: Maildir intake uses filesystem ingress age. Publication is a separate database queue. `PublishDispatchJob` selects the oldest globally enriched asset by `recorded_at`, then `created_at`, across every target. It does not follow a selected dashboard group or a user-named batch.
 4. **Staged Safety Hold**: The `staged/` directory provides pre-queue storage so phone uploads can safely sync to Google Drive without triggering automated ingestion until moved into `pending/`.
 
 ### Batch scope and title approval

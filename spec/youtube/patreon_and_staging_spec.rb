@@ -54,12 +54,12 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       expect(File.executable?(stage_bin)).to be true
     end
 
-    it 'successfully verifies pilot episode 0 in staging mode' do
-      stdout, stderr, status = Open3.capture3(stage_bin, '0')
+    it 'successfully verifies Episode 1 in staging mode' do
+      stdout, stderr, status = Open3.capture3(stage_bin, '1')
       expect(status.success?).to be true
-      expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 0')
+      expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 1')
       expect(stdout).to include('LOCAL PREPARATION CHECKS PASSED')
-      expect(stdout).to include('Testing the Audio Fix Under the Power Lines')
+      expect(stdout).to include('Sergio Pereira')
     end
 
     it 'successfully verifies Coda 1 (Episode 36) in staging mode' do
@@ -78,10 +78,10 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       expect(stdout).to include('The Sound Above Roundtable: What We Carry Forward')
     end
 
-    it 'passes complete staging harness across all 38 episodes without errors' do
+    it 'passes complete staging harness across all 37 episodes without errors' do
       stdout, stderr, status = Open3.capture3(stage_bin, '--all')
       expect(status.success?).to be true
-      expect(stdout).to include('Summary: 38/38 episodes passed staging verification cleanly.')
+      expect(stdout).to include('Summary: 37/37 episodes passed staging verification cleanly.')
     end
   end
 

@@ -192,22 +192,17 @@ RSpec.describe 'Pipeline Namespacing, Ponytail Discipline & Staged Queues' do
       expect(content).not_to include("\u2014")
     end
 
-    it 'includes live processor pulse in localhost-subnav.html' do
+    it 'links to media-pipeline microservice in localhost-subnav.html' do
       content = File.read(subnav_html)
-      expect(content).to include('id="lh-processor-pulse"')
-      expect(content).to include('id="lh-pulse-dot"')
-      expect(content).to include('id="lh-pulse-label"')
-      expect(content).to include('updateProcessorPulse')
-      expect(content).to include('animation: pulse-green')
-      expect(content).to include('animation: pulse-blue')
+      expect(content).to include('https://media-pipeline.localhost/')
+      expect(content).to include('Media-pipeline')
     end
 
-    it 'includes background processor badge in youtube/dashboard.html' do
+    it 'routes YouTube publication to media-pipeline in youtube/dashboard.html' do
       content = File.read(dashboard_html)
-      expect(content).to include('id="bg-processor-badge"')
-      expect(content).to include('id="bg-processor-dot"')
-      expect(content).to include('id="bg-processor-text"')
-      expect(content).to include('Processor: Idle (FIFO Ready)')
+      expect(content).to include('https://media-pipeline.localhost/')
+      expect(content).to include('Video uploads, captions, playlist changes, metadata updates')
+      expect(content).not_to include("\u2014")
     end
   end
 end

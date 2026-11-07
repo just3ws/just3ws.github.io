@@ -49,12 +49,12 @@ RSpec.describe "LinkedIn & Universal Application Profile Helper (_site/linkedin/
       expect(ta.text.strip.length).to be_between(50, 220)
     end
 
-    # Verify About section is <= 2600 chars and includes dehum and OneMain
+    # Verify About section is <= 2600 chars and includes key canonical entities
     about_ta = doc.at_css("#about-textarea")
     expect(about_ta).not_to be_nil
     expect(about_ta.text.length).to be <= 2600
     expect(about_ta.text).to include("OneMain Financial")
-    expect(about_ta.text).to include("dehum")
+    expect(about_ta.text).to include("Software Craftsmanship McHenry County")
 
     # Verify all 25 chronological role cards render and stay <= 2000 chars
     role_cards = doc.css(".experience-role-card")

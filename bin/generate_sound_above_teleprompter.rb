@@ -25,7 +25,7 @@ TELEPROMPTER_DIR = File.join(ROOT_DIR, 'obs', 'teleprompter')
 # Resolve episode metadata across episode dossiers (00-37) and sequence manifest
 def resolve_episode(ep_num)
   # Check for episode YAML dossier first (_data/episodes/episode-XX.yml or _data/episodes/<slug>.yml)
-  dossier_path = if ep_num.to_s.start_with?('errata-')
+  dossier_path = if ep_num.to_s.start_with?('errata-') || ep_num.to_s.start_with?('workbench-')
                    File.join(EPISODES_DIR, "#{ep_num}.yml")
                  else
                    slug_num = format('%02d', ep_num.to_i)
@@ -38,7 +38,7 @@ def resolve_episode(ep_num)
 
     return {
       'number' => dossier['episode'] || ep_num,
-      'era_name' => dossier['era_name'] || 'The Sound Above',
+      'era_name' => dossier['era_name'] || (dossier['series'] || 'The Sound Above'),
       'title' => dossier['title'] || "Episode #{ep_num}",
       'interviewee' => dossier['interviewee'] || 'Featured Guest',
       'conference' => dossier['conference'] ? "#{dossier['conference']} (#{dossier['year']})" : dossier['year'].to_s,
@@ -50,7 +50,7 @@ def resolve_episode(ep_num)
       'ai_era_parallel' => narrative['ai_era_parallel'] || 'Maintaining cognitive control and deterministic verification over system boundaries.',
       'resolved_youtube_id' => dossier['resolved_youtube_id'] || dossier['youtube_video_id'] || '',
       'teleprompter_script' => dossier['teleprompter_script'] || {},
-      'textream_filename' => dossier['errata_slug'] ? "#{dossier['errata_slug']}.textream" : nil
+      'textream_filename' => dossier['workbench_slug'] ? "#{dossier['workbench_slug']}.textream" : (dossier['errata_slug'] ? "#{dossier['errata_slug']}.textream" : nil)
     }
   end
 
@@ -198,7 +198,7 @@ end.parse!
 if options[:all_episodes]
   FileUtils.mkdir_p(TELEPROMPTER_DIR)
   puts "📜 Generating native .textream documents for all episodes in #{TELEPROMPTER_DIR}..."
-  (0..37).each do |ep_num|
+  (1..37).each do |ep_num|
     ep_data = resolve_episode(ep_num)
     rd = build_rundown(ep_data)
     pages = build_textream_pages(rd)
@@ -215,7 +215,16 @@ if options[:all_episodes]
     save_textream_file(file_path, pages)
     puts "  [PASS] Errata #{slug}: #{file_path} (6 pages)"
   end
-  puts "✅ All 38 .textream documents compiled cleanly!"
+  Dir.glob(File.join(EPISODES_DIR, 'workbench-*.yml')).sort.each do |wb_yml|
+    slug = File.basename(wb_yml, '.yml')
+    ep_data = resolve_episode(slug)
+    rd = build_rundown(ep_data)
+    pages = build_textream_pages(rd)
+    file_path = File.join(TELEPROMPTER_DIR, "#{slug}.textream")
+    save_textream_file(file_path, pages)
+    puts "  [PASS] Workbench #{slug}: #{file_path} (6 pages)"
+  end
+  puts "✅ All 37 episodes and companion documents compiled cleanly!"
   exit 0
 end
 

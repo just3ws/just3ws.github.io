@@ -147,7 +147,7 @@ class EpisodeWorkbench
              "#{attach_count} link#{attach_count == 1 ? '' : 's'}"
     end
     puts '=================================================================='
-    puts "Archive catalog: #{episodes.size} interview records and #{codas.size} possible codas, plus Episode 00."
+    puts "Archive catalog: #{episodes.size} interview records and #{codas.size} possible codas."
     puts 'Season One working target: 17 interviews. The archive list is not a release commitment.'
     puts "Run `bin/episode_workbench.rb show <ep>` to inspect an episode dossier."
     puts "Run `bin/episode_workbench.rb compile <ep>` to generate a teleprompter rundown."
@@ -274,8 +274,8 @@ class EpisodeWorkbench
   def prepare_episodes(args)
     options = { force: false, cue: false, output_dir: File.join(ROOT_DIR, 'obs', 'teleprompter', 'prepared') }
     parser = OptionParser.new do |opts|
-      opts.banner = 'Usage: bin/episode_workbench.rb prepare <N|minus-one> [N ...] [options]'
-      opts.on('--all', 'Prepare every numbered episode dossier, including Minus One') { options[:all] = true }
+      opts.banner = 'Usage: bin/episode_workbench.rb prepare <N> [N ...] [options]'
+      opts.on('--all', 'Prepare every numbered episode dossier') { options[:all] = true }
       opts.on('--force', 'Replace existing generated script packages') { options[:force] = true }
       opts.on('--cue', 'Cue the single prepared episode in OBS after generating its package') { options[:cue] = true }
       opts.on('--output-dir PATH', 'Write packages under PATH instead of obs/teleprompter/prepared') do |path|
@@ -293,8 +293,7 @@ class EpisodeWorkbench
         warn 'Use --all by itself, without episode numbers.'
         exit 1
       end
-      targets = [-1] if File.exist?(File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml'))
-      targets += Dir.glob(File.join(EPISODES_DIR, 'episode-*.yml')).filter_map do |path|
+      targets = Dir.glob(File.join(EPISODES_DIR, 'episode-*.yml')).filter_map do |path|
         File.basename(path, '.yml')[/\Aepisode-(\d+)\z/, 1]&.to_i
       end.sort
     end
@@ -305,9 +304,9 @@ class EpisodeWorkbench
     end
 
     episode_numbers = targets.map do |target|
-      target == 'minus-one' ? -1 : Integer(target.to_s, 10)
+      Integer(target.to_s, 10)
     rescue ArgumentError
-      warn "Invalid episode number: #{target.inspect}. Use minus-one for Episode -1."
+      warn "Invalid episode number: #{target.inspect}."
       exit 1
     end
     episode_numbers.uniq!
@@ -326,7 +325,7 @@ class EpisodeWorkbench
 
       rundown = generate_rundown(dossier)
       pages = rundown[:acts].map { |act| act[:teleprompter_script] }
-      package_name = number == -1 ? 'episode-minus-one' : format('episode-%02d', number)
+      package_name = format('episode-%02d', number)
       package_dir = File.join(options[:output_dir], package_name)
       files = [File.join(package_dir, 'script.md'), File.join(package_dir, 'episode.textream')]
       existing = files.select { |path| File.exist?(path) }
@@ -497,9 +496,7 @@ class EpisodeWorkbench
   end
 
   def dossier_path(episode_num)
-    return File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml') if episode_num.to_i == -1
-
-    formatted = sprintf('%02d', episode_num)
+    formatted = sprintf('%02d', episode_num.to_i)
     File.join(EPISODES_DIR, "episode-#{formatted}.yml")
   end
 
@@ -786,7 +783,7 @@ class EpisodeWorkbench
         show <N>    Display semantic dossier for episode N
         compile <N> Compile 6-act teleprompter script (--markdown, --json)
         prepare <N> [N ...] Create a full Markdown script and matching Textream file for each episode
-        prepare minus-one 0 1 Prepare multiple episodes with their dossier details
+        prepare 1 2 3 Prepare multiple episodes with their dossier details
         prepare --all Prepare every numbered episode dossier; use --force to replace generated files
                     Add --cue for one episode to update the OBS overlay state
         workshop <N> Workshop episode prompts and regenerate copy (--prompt "...")

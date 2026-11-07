@@ -57,16 +57,15 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
     it 'supports validate command and passes cleanly' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'validate')
       expect(status.success?).to be true
-      expect(stdout).to include('[PASS] 100% em-dash clean across all 38 episode dossiers.')
-      expect(stdout).to include('[PASS] All 38 episode dossiers conform to semantic schema.')
+      expect(stdout).to include('[PASS] 100% em-dash clean across all 37 episode dossiers.')
+      expect(stdout).to include('[PASS] All 37 episode dossiers conform to semantic schema.')
     end
 
-    it 'supports compile for Episode 0 (Pilot) with personal marginalia' do
-      stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '0', '--markdown')
+    it 'supports compile for Episode 1 with personal marginalia' do
+      stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '1', '--markdown')
       expect(status.success?).to be true
-      expect(stdout).to include('# Teleprompter Rundown: Episode 0')
-      expect(stdout).to include('Testing the Audio Fix Under the Power Lines')
-      expect(stdout).to include('The recording answered the question')
+      expect(stdout).to include('# Teleprompter Rundown: Episode 1')
+      expect(stdout).to include('Sergio Pereira')
     end
 
     it 'does not inject a fixed next-episode promise or funding pitch into the script' do
@@ -88,9 +87,9 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
     end
 
     it 'supports stage command to verify episode in staging mode' do
-      stdout, stderr, status = Open3.capture3(workbench_bin, 'stage', '0')
+      stdout, stderr, status = Open3.capture3(workbench_bin, 'stage', '1')
       expect(status.success?).to be true
-      expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 0')
+      expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 1')
       expect(stdout).to include('LOCAL PREPARATION CHECKS PASSED')
     end
   end
@@ -99,7 +98,7 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
     let(:dossier_files) { Dir.glob(File.join(episodes_dir, 'episode-*.yml')).sort }
 
     it 'retains the archive dossier catalog without treating it as the Season One commitment' do
-      expect(dossier_files.size).to eq(38)
+      expect(dossier_files.size).to eq(37)
     end
 
     it 'contains required fields across all dossiers' do

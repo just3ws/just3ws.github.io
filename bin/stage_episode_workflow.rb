@@ -34,7 +34,7 @@ class StageEpisodeWorkflow
     if target == '--all'
       stage_all_episodes(json_mode: json_mode)
     else
-      ep_num = (target.to_s.start_with?('errata-') || target == '-1' || target == '-2') ? target : target.to_i
+      ep_num = (target.to_s.start_with?('errata-') || target.to_s.start_with?('workbench-')) ? target : target.to_i
       result = stage_single_episode(ep_num)
 
       if json_mode
@@ -48,8 +48,8 @@ class StageEpisodeWorkflow
   end
 
   def stage_single_episode(ep_num)
-    dossier_file = if ep_num.to_i == -1 || ep_num.to_s == 'errata-fluffle-precursor'
-                     File.join(EPISODES_DIR, 'errata-fluffle-precursor.yml')
+    dossier_file = if ep_num.to_s.start_with?('workbench-')
+                     File.join(EPISODES_DIR, "#{ep_num}.yml")
                    elsif ep_num.to_s.start_with?('errata-')
                      File.join(EPISODES_DIR, "#{ep_num}.yml")
                    else
@@ -156,7 +156,9 @@ class StageEpisodeWorkflow
 
   def check_required_fields(dossier)
     missing = []
-    %w[episode title interviewee conference era_name narrative].each do |k|
+    required = %w[title interviewee conference era_name narrative]
+    required.unshift('episode') unless dossier['series'] == 'Studio Workbench' || dossier['workbench_slug'] || dossier['errata_slug']
+    required.each do |k|
       missing << k unless dossier[k]
     end
 
@@ -208,10 +210,20 @@ class StageEpisodeWorkflow
   end
 
   def simulate_obs_overlay_cue(dossier)
+    is_workbench = dossier['series'] == 'Studio Workbench' || dossier['workbench_slug']
+    series = is_workbench ? 'Studio Workbench' : (dossier['series'] || 'The Sound Above')
+    stream_title = if is_workbench
+                     "Studio Workbench: #{dossier['title']}"
+                   elsif dossier['episode']
+                     "Episode #{dossier['episode']}: #{dossier['title']}"
+                   else
+                     dossier['title']
+                   end
+
     payload = {
-      active_archetype: 'THE_SOUND_ABOVE',
-      active_series: 'The Sound Above',
-      stream_title: "Episode #{dossier['episode']}: #{dossier['title']}",
+      active_archetype: is_workbench ? 'STUDIO_WORKBENCH' : 'THE_SOUND_ABOVE',
+      active_series: series,
+      stream_title: stream_title,
       interviewee_name: dossier['interviewee'],
       conference_name: "#{dossier['conference']} (#{dossier['year']})",
       interview_topic: dossier.dig('narrative', 'theme') || dossier['title'],
@@ -231,8 +243,8 @@ class StageEpisodeWorkflow
     stories = dossier.dig('human_marginalia', 'host_recollections') || []
     prompts = dossier.dig('human_marginalia', 'workshop_prompts') || []
 
-    textream_filename = if ep_num.to_i == -1 || ep_num.to_s == 'errata-fluffle-precursor'
-                          'errata-fluffle-precursor.textream'
+    textream_filename = if ep_num.to_s.start_with?('workbench-')
+                          "#{ep_num}.textream"
                         elsif ep_num.to_s.start_with?('errata-')
                           "#{ep_num}.textream"
                         else
@@ -300,10 +312,9 @@ class StageEpisodeWorkflow
              bin/stage_episode_workflow.rb --all
 
       Examples:
-        bin/stage_episode_workflow.rb 0         # Check local Episode 0 materials
-        bin/stage_episode_workflow.rb 1         # Check local Episode 1 materials
-        bin/stage_episode_workflow.rb -1        # Check local Fluffle materials
-        bin/stage_episode_workflow.rb --all     # Check all numeric archive dossiers
+        bin/stage_episode_workflow.rb 1                       # Check local Episode 1 materials
+        bin/stage_episode_workflow.rb workbench-hello-world   # Check local Studio Workbench materials
+        bin/stage_episode_workflow.rb --all                   # Check all numeric archive dossiers
     USAGE
   end
 end

@@ -116,7 +116,7 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       }
 
       meta = pipeline.synthesize_metadata("/dummy/path/2026-10-15_episode-01.mov", "the-sound-above", target_info, { text: "", vtt: "" }, {})
-      expect(meta[:title]).to include('The First Room')
+      expect(meta[:title]).to include('Sergio Pereira')
       expect(meta[:description]).to include('Sergio Pereira')
       expect(meta[:tags]).to include('The Sound Above')
     end
@@ -191,13 +191,10 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(doc).not_to include("\u2014")
     end
 
-    it 'integrates interactive BPMN workflow canvas into youtube/dashboard.html' do
+    it 'routes BPMN and operations to media-pipeline from youtube/dashboard.html' do
       expect(File.exist?(dashboard_path)).to be true
       dash = File.read(dashboard_path)
-      expect(dash).to include('tab-pane-bpmn')
-      expect(dash).to include('bpmn-svg-canvas')
-      expect(dash).to include('simulateBpmnFlow()')
-      expect(dash).to include('inspectBpmnNode')
+      expect(dash).to include('https://media-pipeline.localhost/')
     end
   end
 
@@ -255,12 +252,9 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       end
     end
 
-    it 'integrates realtime SSE listeners into youtube/dashboard.html' do
+    it 'routes realtime pipeline events to media-pipeline microservice' do
       dash = File.read(dashboard_path)
-      expect(dash).to include('initDashboardRealtimeStream()')
-      expect(dash).to include('live-stream-badge')
-      expect(dash).to include('EventSource')
-      expect(dash).to include('applyRealtimeTelemetry')
+      expect(dash).to include('https://media-pipeline.localhost/')
     end
 
     it 'self-heals stale PID file when worker process is no longer alive' do
