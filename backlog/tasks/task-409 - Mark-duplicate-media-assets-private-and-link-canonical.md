@@ -1,10 +1,10 @@
 ---
 id: TASK-409
 title: Mark duplicate media assets private and link canonical
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-11-07T01:52:00Z'
-updated_date: '2026-11-07T02:00:00Z'
+updated_date: '2026-11-07T02:12:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -15,11 +15,14 @@ documentation:
   - app/services/site_sync_service.rb
   - spec/requests/media_assets_spec.rb
 modified_files:
-  - app/models/media_asset.rb
+  - AGENTS.md
   - app/controllers/media_assets_controller.rb
-  - config/routes.rb
+  - app/models/media_asset.rb
   - app/views/media_assets/show.html.erb
+  - config/routes.rb
   - docs/workflow-map.md
+  - spec/requests/media_assets_spec.rb
+  - spec/services/site_sync_service_spec.rb
 priority: high
 type: feature
 ---
@@ -33,17 +36,17 @@ Add an operator action on a media asset that sets its linked YouTube video to pr
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
 - [x] #1 An operator can select a different canonical asset from the same media target and mark the current asset as its duplicate.
-- [ ] #2 When the duplicate has a YouTube video ID, YouTube must confirm the privacy update to private before the local record is marked duplicate.
-- [ ] #3 On success, the duplicate record has private privacy, duplicate status, a canonical asset link, no evergreen pin, and an audit event with the canonical ID and source.
-- [ ] #4 Public site manifests and transcript exports are retracted through the existing SiteSyncService privacy path.
+- [x] #2 When the duplicate has a YouTube video ID, YouTube must confirm the privacy update to private before the local record is marked duplicate.
+- [x] #3 On success, the duplicate record has private privacy, duplicate status, a canonical asset link, no evergreen pin, and an audit event with the canonical ID and source.
+- [x] #4 Public site manifests and transcript exports are retracted through the existing SiteSyncService privacy path.
 - [x] #5 The asset page displays the canonical link and offers the duplicate action only when the asset is not already a duplicate or in active work.
-- [ ] #6 Invalid canonical links and remote privacy failures leave local duplicate state unchanged and produce a clear operator message.
-- [ ] #7 No source file or YouTube video is deleted by this action.
+- [x] #6 Invalid canonical links and remote privacy failures leave local duplicate state unchanged and produce a clear operator message.
+- [x] #7 No source file or YouTube video is deleted by this action.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -72,4 +75,14 @@ Implemented the operator duplicate action in the media-pipeline worktree. It mak
 Verification: Ruby syntax checks passed; RuboCop passed on the changed Ruby files; Rails route listing shows POST /media_assets/:id/mark_duplicate; Rails ERB compilation passed; live GET for asset 319 returned HTTP 200 and the duplicate action and canonical selector were present; docs/workflow-map.md passed mdl; graphify update completed. RSpec was not run and no real asset action was submitted. The service queue and YouTube assets were left unchanged.
 
 The AGENTS.md whole-file markdown lint reports formatting issues in older sections (MD005, MD007, MD022, MD031, MD032). The new current-focus entry adds no reported lint errors.
+
+Final validation: full RSpec and the pre-commit verification hook passed with 353 examples and 0 failures. bin/mp-lint passed RuboCop, ERB lint, Prettier, Markdown lint, YAML/JSON validation, Mandoc, Brakeman with 0 warnings, and zero-em-dash checks. The focused asset and SiteSync specs passed with 25 examples. The site-sync regression proves private assets are removed from the public manifest and unreferenced transcript export.
+
+Commit 7455a2a feat(media): mark reviewed duplicates private includes only this feature. The two earlier local commits cc029c7 and 84c9bdf are also ahead of origin/main. Push was attempted twice, including a one-command DNS bypass. GitHub HTTPS is reachable by resolved IP, but the GitHub CLI token is invalid, osxkeychain cannot provide a credential in this execution environment, and SSH fails because UID 501 has no user record. No remote refs changed. Reauthenticate GitHub CLI and configure git credential integration before retrying push.
 <!-- SECTION:NOTES:END -->
+
+## Final Summary
+
+<!-- SECTION:FINAL_SUMMARY:BEGIN -->
+Implemented and committed the operator action that makes a reviewed duplicate private, links it to a canonical asset, records audit and Panoramic provenance, and retracts public site entries without deleting source or YouTube media. Live detail rendering, all 353 RSpec examples, full media-pipeline lint and verification gates passed. Commit 7455a2a is local; push remains pending because this environment has no usable GitHub credential and its system resolver fails for github.com. Unrelated dirty worktree changes were not staged.
+<!-- SECTION:FINAL_SUMMARY:END -->
