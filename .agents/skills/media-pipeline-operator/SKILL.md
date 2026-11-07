@@ -1,6 +1,6 @@
 ---
 name: media-pipeline-operator
-description: Operates, monitors, and audits the zero-disk-waste media intake and YouTube publishing pipeline across all channels and playlists (Ramblin' & Amblin', The Sound Above, Errata). Manages Maildir queues, Concurrency Locks, FIFO order, SSE telemetry, SwiftBar status, and BPMN SLO compliance.
+description: Operates, monitors, and audits the zero-disk-waste media intake and YouTube publishing pipeline across all channels and playlists (Ramblin' & Amblin', The Sound Above, Errata, Studio Workbench). Manages Maildir queues, Concurrency Locks, FIFO order, SSE telemetry, SwiftBar status, and BPMN SLO compliance.
 ---
 
 # /media-pipeline-operator: Media Intake & YouTube Publishing Pipeline
@@ -68,7 +68,7 @@ Queue directories are organized by channel and target playlist under:
 - Cloud Google Drive: `~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline/<channel>/<target>/`
 
 Canonical channel: strictly `whoistechcmty`.
-Canonical target series: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`.
+Canonical target series: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`, `studio-workbench`.
 
 | Directory | State Purpose | Operator Action |
 | :--- | :--- | :--- |

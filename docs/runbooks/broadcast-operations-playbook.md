@@ -13,6 +13,7 @@ This page maps the three broadcast formats and their system boundary. The OBS-sp
 | Format | Focus | Typical scenes |
 | --- | --- | --- |
 | The Sound Above | Rewatch and discuss a curated UGtastic interview | 02 Monologue, 03 Reaction, 04 Split Screen, 08 Outro |
+| Studio Workbench | Process cinema, live problem solving, and hands-on desk investigation | 02 Monologue, 05 Workbench, 08 Outro |
 | Errata | Solo reading, concept, demonstration, story, or artifact | 02 Monologue, 05 Workbench, 08 Outro |
 | The Room | Invited peer conversation | 01 Starting Soon, 06 Guest Discussion, 08 Outro |
 
@@ -28,9 +29,11 @@ bin/broadcast --playbook
 bin/broadcast --preflight
 bin/broadcast --status
 bin/broadcast --list
+bin/broadcast --workbench -t "Topic" -s "Context"
 bin/broadcast --rewatch 1
 bin/broadcast --errata --mode concept --title "The Blink Test"
 bin/broadcast --dialogue --guest "Guest Name" --title "Discussion Topic"
+bin/stage_workbench
 ```
 
 Preflight checks repository and local environment contracts. The cue commands update local overlay metadata only. Confirm the resulting cue in `bin/broadcast --status` and the OBS preview.

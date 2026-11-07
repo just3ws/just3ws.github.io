@@ -26,7 +26,7 @@ Do not treat this repository as an isolated Jekyll checkout. Its installed local
   - Channel Root: strictly `whoistechcmty`.
   - Local NVMe Base: `~/ai/media-pipeline/whoistechcmty/<series_slug>/<lifecycle_dir>/`.
   - Cloud Base Pattern: `~/Library/CloudStorage/GoogleDrive-*/My Drive/ai/media-pipeline/whoistechcmty/<series_slug>/<lifecycle_dir>/`.
-  - Target Series Slugs: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`.
+  - Target Series Slugs: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`, `studio-workbench`.
   - Lifecycle Queues: `staged/`, `pending/`, `processing/`, `processed/`, `failed/`, `corrupt/`, `blocked/`.
   - Invariant: Mobile phone and desktop uploads into Google Drive land in `My Drive/ai/media-pipeline/whoistechcmty/<target>/staged/`. The cloud path MUST target the `ai/` namespace.
 

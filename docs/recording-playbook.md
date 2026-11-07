@@ -54,7 +54,12 @@ bin/broadcast --list
 Choose the episode, cue the overlay metadata, and confirm it:
 
 ```sh
+# For The Sound Above oral history rewatches:
 bin/broadcast --rewatch 1
+bin/broadcast --status
+
+# For Studio Workbench process cinema sessions:
+bin/broadcast --workbench -t "Hello, World!" -s "Preparing the workbench"
 bin/broadcast --status
 ```
 
@@ -65,7 +70,6 @@ Prepare one or several episode scripts from their existing dossiers:
 ```sh
 bin/episode_workbench.rb prepare 1
 bin/episode_workbench.rb prepare 1 2 3
-bin/episode_workbench.rb prepare minus-one 0 1
 bin/episode_workbench.rb prepare --all
 ```
 
@@ -184,7 +188,7 @@ OBS profiles hold output settings independently of the scene collection. The rep
 - **Missing microphone:** confirm the selected CoreAudio input and macOS microphone permission. Do not compensate by enabling global Desktop Audio.
 - **Disk space is low:** stop the recording cleanly while OBS can still finalize the file. Automatic splits are off; do not wait for the volume to fill.
 - **OBS config needs repair:** close OBS, preserve the affected files, then run the installer. Do not manually edit Application Support files while OBS is open.
-- **Recording is ready for enrichment:** review the file and explicitly hand it to the media-pipeline intake procedure. Keep the original until the staged copy and its metadata are confirmed. Media-pipeline owns subsequent enrichment, publication, and lifecycle actions.
+- **Recording is ready for enrichment:** review the file and explicitly hand it to the media-pipeline intake procedure. For Studio Workbench recordings, run `bin/stage_workbench` to stage the recording into the Maildir ingress queue and trigger the intake scan. Keep the original until the staged copy and its metadata are confirmed. Media-pipeline owns subsequent enrichment, publication, and lifecycle actions.
 
 ## Session close checklist
 

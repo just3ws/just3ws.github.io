@@ -6,11 +6,12 @@ The **Media Pipeline System** is an autonomous, single-operator media intake, sp
 
 Its primary purpose is to convert raw field recordings and historical studio curriculum into canonical, structured, and search-indexed knowledge assets with zero permanent local storage footprint and minimal cognitive load on the operator.
 
-The pipeline serves Mike Hall's public and historical media corpus across three foundational tracks:
+The pipeline serves Mike Hall's public and historical media corpus across four foundational tracks:
 
 1. **Ramblin' & Amblin'** (`ramblin-amblin`): Spontaneous, unscripted field observations and systems craftsmanship reflections recorded while walking outdoors.
 2. **The Sound Above** (`the-sound-above`): A 35-episode oral history and audio forensics rewatch series exploring the software craftsmanship movement, Chicago tech user groups, and the human communication layer.
-3. **Errata & Technical Demos** (`errata`): Technical screencasts, bug post-mortems, architectural walkthroughs, and code refactor recordings.
+3. **Studio Workbench** (`studio-workbench`): Process cinema, live engineering problem solving, audio DSP forensics, and hands-on desk investigations.
+4. **Errata & Technical Demos** (`errata`): Technical screencasts, bug post-mortems, architectural walkthroughs, and code refactor recordings.
 
 ---
 
@@ -139,6 +140,7 @@ graph TD
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Ramblin' & Amblin'** | `ramblin-amblin` | Unscripted field notes | Enabled (first spoken thought) | Rolling 3-day / 2 public active videos, older rolled to Vault | `PLNtb969T2-l0` |
 | **The Sound Above** | `the-sound-above` | Studio oral history | Dossier-driven (35 curriculum episodes) | Permanent public curriculum | `PLYCKmHMYvC7s` |
+| **Studio Workbench** | `studio-workbench` | Process cinema & live investigation | Auto-titled with date and topic | Unlisted by default | `PL_STUDIO_WORKBENCH_PENDING` |
 | **Errata** | `errata` | Screencasts / Post-mortems | Auto-titled with date and topic | Unlisted by default | Ad-hoc playlists |
 
 ---
