@@ -19,7 +19,6 @@ modified_files:
   - app/controllers/media_assets_controller.rb
   - config/routes.rb
   - app/views/media_assets/show.html.erb
-  - spec/requests/media_assets_spec.rb
   - docs/workflow-map.md
 priority: high
 type: feature
