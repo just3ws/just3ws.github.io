@@ -25,7 +25,7 @@ RSpec.describe 'Broadcast episode resolution' do
     expect(playbook).to include('Session close checklist')
   end
 
-  it 'resolves the semantic Minus One slug to its dossier instead of episode zero' do
+  it 'rejects extracted non-interview episodes from rewatch and directs to Studio Workbench' do
     Dir.mktmpdir('broadcast-spec') do |sandbox|
       FileUtils.mkdir_p(File.join(sandbox, 'bin'))
       FileUtils.mkdir_p(File.join(sandbox, 'obs', 'curation'))
@@ -34,21 +34,18 @@ RSpec.describe 'Broadcast episode resolution' do
       [
         ['bin/broadcast', 'bin/broadcast'],
         ['obs/curation/sequence-manifest.json', 'obs/curation/sequence-manifest.json'],
-        ['obs/overlays/overlay-state.json', 'obs/overlays/overlay-state.json'],
-        ['_data/episodes/errata-fluffle-precursor.yml', '_data/episodes/errata-fluffle-precursor.yml']
+        ['obs/overlays/overlay-state.json', 'obs/overlays/overlay-state.json']
       ].each do |source, destination|
         FileUtils.cp(File.join(root_dir, source), File.join(sandbox, destination))
       end
 
       stdout, stderr, status = Open3.capture3(
-        File.join(sandbox, 'bin', 'broadcast'), '--rewatch', 'errata-fluffle-precursor'
+        File.join(sandbox, 'bin', 'broadcast'), '--rewatch', '0'
       )
 
-      expect(status.success?).to be(true), stderr
-      expect(stdout).to include('Successfully cued Episode #-1')
-      state = JSON.parse(File.read(File.join(sandbox, 'obs', 'overlays', 'overlay-state.json')))
-      expect(state.dig('episode', 'title')).to include('Fluffle')
-      expect(state.dig('episode', 'number')).to eq(-1)
+      expect(status.success?).to be(false)
+      expect(stderr).to include('extracted from The Sound Above')
+      expect(stderr).to include('bin/broadcast --workbench')
     end
   end
 

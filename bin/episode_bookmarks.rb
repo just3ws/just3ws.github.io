@@ -29,7 +29,7 @@ class EpisodeBookmarks
       link('Hister research search', HISTORIAN)
     ])
 
-    folders << folder('Setup episodes', [episode_folder(-1), episode_folder(0)])
+    folders << folder('Studio Workbench investigations', [workbench_folder('workbench-fluffle-cluster.yml'), workbench_folder('workbench-audio-fix-power-lines.yml')])
 
     interviews = @sequence.fetch('episodes', [])
     folders << folder('Season One: working target of up to 17 interviews',
@@ -48,6 +48,20 @@ class EpisodeBookmarks
   end
 
   private
+
+  def workbench_folder(filename)
+    dossier = load_yaml(filename)
+    title = format('Studio Workbench: %s', dossier.fetch('title'))
+    entries = [link('Season One working outline', "#{SITE}/series/the-sound-above/")]
+    entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
+    query = [dossier['interviewee'], dossier['title'], dossier['conference'], dossier['year']].compact.join(' ')
+    payload = CGI.escape(JSON.generate(text: query, limit: 12))
+    entries << link('Hister search results', "#{HISTORIAN}/search?query=#{payload}")
+    (dossier['research_attachments'] || []).each do |att|
+      entries << link(att['title'], att['url']) if att['url']
+    end
+    folder(title, entries)
+  end
 
   def episode_folder(number)
     dossier = if number == -1

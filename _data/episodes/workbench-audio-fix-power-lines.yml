@@ -1,0 +1,136 @@
+---
+series: 'Studio Workbench'
+title: Testing the Audio Fix Under the Power Lines
+status: draft
+interviewee: Mike Hall
+conference: Field Recording
+year: 2026
+location: Crystal Lake / High-Tension Wires
+slug: testing-the-audio-fix-under-the-power-lines
+workbench_slug: workbench-audio-fix-power-lines
+era_id: the-ai-horizon
+era_name: The AI Horizon
+youtube_broadcast_id: XS7EZ1eWH4U
+youtube_video_id: 7YeFpKn5FbU
+narrative:
+  theme: Finding out what happened in a damaged recording
+  tone: Plainspoken, curious, and careful
+  topic: Testing the Audio Fix Under the Power Lines
+  plot_arc:
+    inciting_incident: A walk under power lines left a phone recording with a loud hum
+      and an apparent gap between the video and audio durations.
+    rising_action: An AI tool suggested stretching the audio, but the speech sounded
+      wrong when Mike tried it.
+    climax: Listening to the recording showed that the missing time was silence after
+      the talk. The phone's second microphone had also captured clearer speech.
+    resolution: A second walk showed which audio cleanup steps held up and which were
+      based on a mistaken diagnosis.
+  core_inquiry: What did the recording contain, and which parts of the audio fix worked
+    on a second walk?
+  chicago_context: This is a field recording from Northern Illinois, revisited by
+    inspecting the original audio and testing the same cleanup on a new recording.
+  ai_era_parallel: Generated code can run even when its explanation is wrong. Check
+    the source material and listen to the result.
+teleprompter_script:
+  act_1: |
+    [SCENE: Camera. Show the original phone recording.]
+    I took my phone for a walk under the power lines.
+    I was recording a few thoughts about software craftsmanship.
+    When I got home, I heard a loud hum in the audio.
+    The video was about twenty-one minutes long.
+    The audio was about eighteen minutes long.
+    I thought the phone had lost sync.
+    [PAUSE]
+    This is Studio Workbench. I'm Mike Hall.
+    I'll show what I checked, what I got wrong, and what worked on a second walk.
+  act_2: |
+    [SCENE: Show the suggested command and the original recording.]
+    I asked an AI tool how to repair the audio.
+    It compared the two track durations and suggested speeding up the audio.
+    The proposed setting was atempo equals 0.837.
+    I tried it. The speech sounded slow and out of sync.
+    [SHOW: Play a short before and after sample.]
+    The command ran. The result was wrong.
+    I needed to find out what those extra three minutes contained.
+  act_3: |
+    [SCENE: Inspect the end of the video and the audio waveform.]
+    I checked the point where the audio ended.
+    I said "Thank you" and finished speaking.
+    Then I kept walking with the camera running.
+    The last few minutes were silence, not a sync problem.
+    [SHOW: Play the end of the original recording.]
+    The duration difference came from the walk after I finished talking.
+    Stretching the audio had changed speech that was already in sync.
+    [PAUSE]
+    The recording answered the question. I had to listen to it.
+  act_4: |
+    [SCENE: Show the two audio channels and their spectra.]
+    The phone recorded two audio channels.
+    One channel carried much more of the hum.
+    The other had clearer speech.
+    I isolated the clearer channel and reduced the remaining hum.
+    [SHOW: Compare the channels before and after cleanup.]
+    I wanted to know whether those steps would work on another recording.
+    So I went back to the same trail with the same phone.
+  act_5: |
+    [SCENE: Run the same cleanup on the second recording.]
+    The second recording had the same kind of hum.
+    I used the same channel selection and cleanup steps.
+    The speech stayed clear, and the hum came down.
+    I did not stretch the audio.
+    [SHOW: Compare the original and cleaned audio.]
+    The second recording showed which parts of the first repair were useful.
+    The duration ratio was not.
+  act_6: |
+    [SCENE: Outro card with the recording and source links.]
+    I thought the recording was out of sync.
+    Listening showed that I had walked in silence after the talk.
+    The second recording helped me test the audio cleanup separately.
+    A useful check is simple: compare the output with the source.
+    The recording, notes, and code are linked from just3ws.com.
+    Thanks for spending time with me at the workbench.
+lexicon:
+  key_concepts:
+  - Field recording
+  - Audio cleanup
+  - Duration mismatch
+  - Source verification
+  trigger_words:
+  - Hum
+  - Audio channels
+  - Playback speed
+  - Source recording
+  hashtags:
+  - "#TheSoundAbove"
+  - "#SoftwareCraftsmanship"
+  - "#FieldRecording"
+  - "#AudioCleanup"
+  - "#TechnicalRewatch"
+human_marginalia:
+  host_recollections:
+  - scene: 'Act 1: Start with the recording'
+    story: The phone recording had a loud hum and a duration difference that looked
+      like a sync problem.
+  - scene: 'Act 3: Inspect the source'
+    story: Mike finished speaking before the audio ended; the remaining video captured
+      a silent walk.
+  - scene: 'Act 4: Test the cleanup again'
+    story: A second walk helped separate the useful audio cleanup from the mistaken
+      time-stretch diagnosis.
+  workshop_prompts:
+  - Show the original before presenting the repair.
+  - Let viewers hear the before and after audio.
+  - Keep technical claims limited to what the recordings and files support.
+research_attachments:
+- title: 'Testing the Audio Fix Under the Power Lines'
+  type: case_study
+  url: https://just3ws.com/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
+- title: 'Ramblin'' & Amblin'' Monologue: Revisiting the Dehum Experiment'
+  type: video_transcript
+  url: https://just3ws.com/transcripts/ramblin-amblin-ok-next-experiment/
+- title: Practice Run Recording (YouTube 7YeFpKn5FbU)
+  type: video_asset
+  url: https://www.youtube.com/watch?v=7YeFpKn5FbU
+- title: Audio Restoration A/B Listening Test
+  type: audio_test
+  url: https://just3ws.com/dehum/dashboard.html

@@ -1,0 +1,120 @@
+---
+series: "Studio Workbench"
+title: "Hello, World!"
+status: ready
+interviewee: "Mike Hall"
+conference: "Studio Workbench Desk"
+year: 2026
+location: "Crystal Lake, IL"
+slug: "studio-workbench-hello-world"
+era_id: "the-ai-horizon"
+era_name: "The AI Horizon"
+narrative:
+  theme: "Setting up the workbench and choosing process cinema over the auteur posture"
+  tone: "Grounded, reflective, plainspoken, and curious"
+  topic: "Hello, World: Preparing the workbench and what has gone into it"
+  plot_arc:
+    inciting_incident: "After building the local pipeline, media ingest queues, and OBS multi-track audio routing, it is time to record the first session at the desk."
+    rising_action: "Walking through what went into the setup: Golden Gate CoreAudio isolation, 48kHz multi-track recording, Apple Silicon M4 encoding, zero-disk-waste Maildir queues, and whisper.cpp transcription."
+    climax: "Recognizing that this is process cinema, not an auteur production. The goal is not presenting polished, rehearsed answers, but learning about the problem in real time and discovering what holds together."
+    resolution: "Aligning the three distinct surfaces: Ramblin' and Amblin' walking thoughts, The Sound Above oral history rewatches, and Studio Workbench hands-on problem-solving, all sharing one autonomous media pipeline."
+  core_inquiry: "What has gone into preparing this recording environment, and why is working through problems in the open more honest than polished performance?"
+  chicago_context: "Rooted in Chicago Software Craftsmanship disciplines of deliberate practice, working in the open, and leaving legible tools behind."
+  ai_era_parallel: "In an era of synthetic speed, genuine engineering value is in the mental model, testing assumptions against reality, and observing what actually works."
+teleprompter_script:
+  act_1: |
+    [SCENE: Camera on desk setup. Screen capture ready.]
+    Hello, World.
+    Welcome to Studio Workbench. I am Mike Hall.
+    Today is not a polished presentation or a scripted lecture.
+    I am sitting down at my desk to open up the workbench and show what I am preparing for, what has gone into this environment, and why I want to work in the open.
+    I am not an auteur with all the answers.
+    I am an engineer working through the process, learning about each topic as I go, through my own lived experiences and direct discovery.
+  act_2: |
+    [SCENE: Switch to Workbench Terminal and OBS settings.]
+    Let me show what has gone into getting this room and this machine ready.
+    On this Mac, everything runs local-first.
+    We have OBS Studio configured for four isolated 48 kilohertz audio tracks.
+    My Shure vocal microphone is on its own isolated channel.
+    Desktop audio from Golden Gate and application audio from Chromium are strictly separated.
+    Video encoding uses Apple VideoToolbox hardware acceleration at full 1080p sixty frames per second.
+    When a recording completes, it moves through local NVMe Maildir queues: staged, pending, processing, processed.
+    There is no manual file shuffling or disk bloat.
+  act_3: |
+    [SCENE: Camera inset with terminal architecture diagram.]
+    Behind this desk is an autonomous media pipeline running on a local Rails microservice.
+    It watches the ingress queues, extracts ephemeral audio, runs whisper.cpp for local transcription on Apple Silicon, and handles chunked resumable YouTube uploads with zero permanent disk waste.
+    The same engine powers three distinct efforts that serve different purposes.
+    Ramblin' and Amblin' captures freeform, walking thoughts straight from the phone.
+    The Sound Above is a structured oral history rewatch examining thirty-five interviews from the Chicago Software Craftsmanship era.
+    And Studio Workbench is here at the desk: hands-on investigation, live debugging, and unvarnished problem solving.
+  act_4: |
+    [SCENE: Show the code editor and active project files.]
+    So why separate Studio Workbench from the rest?
+    Because the kinds of problems we hit at the desk need room to breathe.
+    When I am tracking down an audio hum under high-tension power lines, or figuring out why a distributed transcription cluster stopped scaling, I do not want to force that into an oral history interview syllabus.
+    Those are workbench investigations.
+    They belong here: looking at waveforms, testing hypotheses, reading logs, and seeing what breaks.
+    Sometimes I have a clear destination in mind.
+    Sometimes I am figuring out the point as I go.
+  act_5: |
+    [SCENE: Camera on host.]
+    That is the heart of process cinema.
+    In software craftsmanship, we talk a lot about deliberate practice.
+    Practice is not performing what you already know perfectly for an audience.
+    Practice is being willing to expose your ignorance, test a small experiment, see it fail, and adjust.
+    In an industry that currently hypes synthetic perfection, I find real comfort in working through genuine problems where you can see the seams.
+    If something fails on this desk, you will see it fail.
+    And if we find a clean solution, you will see exactly why it worked.
+  act_6: |
+    [SCENE: Outro lower third and closing resources.]
+    That is the setup.
+    The pipeline is connected. The audio is locked. The workbench is open.
+    In the sessions ahead, we will take on audio DSP forensics, distributed systems, system cartography, and live agent pairing.
+    All code, notes, and transcripts will be linked on just3ws.com.
+    Thank you for spending time with me at the bench today.
+    Let us get to work.
+lexicon:
+  key_concepts:
+    - Studio Workbench
+    - Process cinema
+    - Software craftsmanship
+    - Local-first architecture
+    - Golden Gate audio
+    - Autonomous media pipeline
+  trigger_words:
+    - Workbench
+    - Audio routing
+    - Deliberate practice
+    - Maildir queues
+    - Working in the open
+  hashtags:
+    - "#StudioWorkbench"
+    - "#SoftwareCraftsmanship"
+    - "#ProcessCinema"
+    - "#EngineeringInTheOpen"
+    - "#LocalFirst"
+human_marginalia:
+  host_recollections:
+    - scene: "Act 1: Hello World"
+      story: "First session at the desk introducing Studio Workbench as process cinema."
+    - scene: "Act 2: The Hardware Setup"
+      story: "OBS 4-track audio routing and Apple Silicon hardware acceleration."
+    - scene: "Act 3: Three Creative Threads"
+      story: "Differentiating Ramblin' and Amblin', The Sound Above, and Studio Workbench."
+    - scene: "Act 5: Process Cinema Principle"
+      story: "Emphasizing deliberate practice and transparent problem solving over rehearsed performance."
+  workshop_prompts:
+    - "Keep the tone calm, grounded, and unhurried."
+    - "Show the real terminal and OBS tools instead of slides."
+    - "Be honest about what is solved and what remains an active experiment."
+research_attachments:
+  - title: "Studio Workbench Target Specification"
+    type: "config"
+    path: "_data/media_intake_targets.yml"
+  - title: "OBS Golden Gate Audio & Recording Profile"
+    type: "system_profile"
+    path: "obs/profiles/the-sound-above/basic.ini"
+  - title: "Media Pipeline Service Architecture"
+    type: "documentation"
+    url: "https://media-pipeline.localhost"

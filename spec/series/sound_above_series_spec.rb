@@ -43,7 +43,7 @@ RSpec.describe "The Sound Above Rewatch Series Artifacts" do
       expect(ep["interviewee"]).to be_a(String), "Missing interviewee for episode #{ep['number']}"
       expect(ep["sound_above_inquiry"]).to be_a(String), "Missing inquiry for episode #{ep['number']}"
       expect(ep["chicago_context"]).to be_a(String), "Missing chicago context for episode #{ep['number']}"
-      expect(ep["ai_era_parallel"]).to be_nil.or be_a(String), "Invalid optional present-day connection for episode #{ep['number']}"
+      expect(ep["ai_era_parallel"]).to be_nil.or(be_a(String))
       expect(ep["slug"]).to be_a(String), "Missing slug for episode #{ep['number']}"
     end
   end
