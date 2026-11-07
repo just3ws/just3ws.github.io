@@ -236,8 +236,10 @@
           bRight.textContent = "CRAFTSMANSHIP & PEER INQUIRY";
         } else {
           // Default: The Sound Above Rewatch
-          tag.textContent = "THE SOUND ABOVE : EPISODE COMPLETE";
-          title.textContent = "Carrying the Sound Forward";
+          const ep = state.episode || {};
+          const isUnspecified = ep.number === null || ep.number === undefined || isNaN(parseInt(ep.number, 10));
+          tag.textContent = isUnspecified ? "THE SOUND ABOVE : BROADCAST COMPLETE" : "THE SOUND ABOVE : EPISODE COMPLETE";
+          title.textContent = isUnspecified && ep.title && ep.title !== "Series Introduction" ? ep.title : "Carrying the Sound Forward";
           quote.textContent = "\"If we want the next generation to care about the sound above, to find inspiration in the values and stories that shaped us, we must first help them thrive. Only then can we inspire them to look up, to hear the echoes of the past and add their own notes to the sound of the future.\"";
           author.textContent = "Mike Hall : \"The Sound Above: Bridging Inspiration and Understanding in Tech\" (2025)";
           mission.innerHTML = `<strong>The Heritage Mission:</strong> UGtastic is an ongoing oral history series of interviews with user-group and conference organizers, F/OSS contributors, noted authors, speakers, and tech community influencers. Learning about people, one conversation at a time.`;

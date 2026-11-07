@@ -179,15 +179,18 @@
           footSeries.textContent = "INVITATIONAL CONVERSATIONS";
         } else {
           // Default: Rewatch
-          const ep = state.episode;
-          badgeEl.textContent = "NOW WATCHING";
-          titleEl.textContent = ep.interviewee;
+          const ep = state.episode || {};
+          const isUnspecified = ep.number === null || ep.number === undefined || isNaN(parseInt(ep.number, 10));
+          badgeEl.textContent = isUnspecified ? "THE SOUND ABOVE" : "NOW WATCHING";
+          titleEl.textContent = isUnspecified ? (ep.title || "The Sound Above") : ep.interviewee;
           const confText = ep.conference || "";
           const yearStr = String(ep.year || "");
           confEl.textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
-          topicEl.textContent = ep.title;
-          eraEl.textContent = ep.era.toUpperCase();
-          footSeries.textContent = "WHOIS TECH COMMUNITY REWATCH";
+          topicEl.textContent = isUnspecified ? (ep.sound_above_prompt || ep.title) : ep.title;
+          eraEl.textContent = (ep.era || "THE AI HORIZON").toUpperCase();
+          footSeries.textContent = isUnspecified
+            ? "THE SOUND ABOVE // SERIES BROADCAST"
+            : `THE SOUND ABOVE // EPISODE ${String(ep.number).padStart(2, '0')}`;
         }
       }
     });

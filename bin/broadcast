@@ -85,7 +85,8 @@ def print_status
     puts "Prompt Question: #{dia['prompt']}"
   else
     ep = state["episode"] || {}
-    puts "Episode:         ##{ep['number']} - #{ep['title']}"
+    ep_num_str = ep['number'] ? "##{ep['number']}" : "(Unspecified)"
+    puts "Episode:         #{ep_num_str} - #{ep['title']}"
     puts "Interviewee:     #{ep['interviewee']}"
     puts "Conference:      #{ep['conference']} (#{ep['year']})"
     puts "Era:             #{ep['era']}"
@@ -141,42 +142,60 @@ def cue_rewatch(episode_num, overrides = {})
   seq = load_json(SEQUENCE_MANIFEST)
   state = load_json(OVERLAY_STATE) || {}
 
-  unless seq && seq["episodes"]
-    warn "Cannot cue episode: sequence manifest not found."
-    exit 1
-  end
+  is_unspecified = episode_num.nil? || episode_num.to_s.strip.empty? ||
+                   episode_num.to_s == "unspecified" || episode_num.to_s == "intro"
 
-  requested_number = Integer(episode_num.to_s, 10) rescue nil
-  ep = seq["episodes"].find { |e| e["number"].to_i == requested_number } if requested_number
-  if ep.nil?
-    dossier_path = if requested_number == -1 || episode_num.to_s == "errata-fluffle-precursor"
-                     File.join(ROOT_DIR, "_data", "episodes", "errata-fluffle-precursor.yml")
-                   elsif requested_number
-                     File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", requested_number))
-                   end
-    if dossier_path && File.exist?(dossier_path)
-      require "yaml"
-      dossier = YAML.safe_load(File.read(dossier_path)) rescue nil
-      if dossier
-        ep = {
-          "number" => dossier["episode"] || episode_num.to_i,
-          "title" => dossier["title"],
-          "interviewee" => dossier["interviewee"] || "Mike Hall",
-          "conference" => dossier["conference"] || "Errata Studio Walkthrough",
-          "location" => dossier["location"] || "Crystal Lake, IL",
-          "year" => dossier["year"] || 2026,
-          "era_name" => dossier["era_name"] || "The AI Horizon",
-          "sound_above_inquiry" => (dossier.dig("narrative", "core_inquiry") || dossier["sound_above_inquiry"]),
-          "role" => dossier["role"] || "Host and Curator"
-        }
-      end
-    end
-  end
+  ep = if is_unspecified
+         {
+           "number" => overrides[:number],
+           "title" => overrides[:title] || "Series Introduction",
+           "interviewee" => overrides[:guest] || "Mike Hall",
+           "role" => "Host & Curator",
+           "conference" => overrides[:conference] || "The Sound Above Studio",
+           "location" => "Crystal Lake, IL",
+           "year" => (overrides[:year] || Time.now.year).to_s,
+           "era_name" => overrides[:era] || "The AI Horizon",
+           "sound_above_inquiry" => overrides[:prompt] || overrides[:subtitle] || "Plans, ideas, and general structure"
+         }
+       else
+         unless seq && seq["episodes"]
+           warn "Cannot cue episode: sequence manifest not found."
+           exit 1
+         end
 
-  unless ep
-    warn "Episode ##{episode_num} not found in sequence manifest or episode dossiers."
-    exit 1
-  end
+         requested_number = Integer(episode_num.to_s, 10) rescue nil
+         found = seq["episodes"].find { |e| e["number"].to_i == requested_number } if requested_number
+         if found.nil?
+           dossier_path = if requested_number == -1 || episode_num.to_s == "errata-fluffle-precursor"
+                            File.join(ROOT_DIR, "_data", "episodes", "errata-fluffle-precursor.yml")
+                          elsif requested_number
+                            File.join(ROOT_DIR, "_data", "episodes", format("episode-%02d.yml", requested_number))
+                          end
+           if dossier_path && File.exist?(dossier_path)
+             require "yaml"
+             dossier = YAML.safe_load(File.read(dossier_path)) rescue nil
+             if dossier
+               found = {
+                 "number" => dossier["episode"] || episode_num.to_i,
+                 "title" => dossier["title"],
+                 "interviewee" => dossier["interviewee"] || "Mike Hall",
+                 "conference" => dossier["conference"] || "Errata Studio Walkthrough",
+                 "location" => dossier["location"] || "Crystal Lake, IL",
+                 "year" => dossier["year"] || 2026,
+                 "era_name" => dossier["era_name"] || "The AI Horizon",
+                 "sound_above_inquiry" => (dossier.dig("narrative", "core_inquiry") || dossier["sound_above_inquiry"]),
+                 "role" => dossier["role"] || "Host and Curator"
+               }
+             end
+           end
+         end
+
+         unless found
+           warn "Episode ##{episode_num} not found in sequence manifest or episode dossiers."
+           exit 1
+         end
+         found
+       end
 
   state["broadcast_type"] = "rewatch"
   state["stream"] ||= {}
@@ -184,10 +203,14 @@ def cue_rewatch(episode_num, overrides = {})
   state["stream"]["series_subtitle"] = "UGtastic Rewatch: Learning About People in Tech"
   state["stream"]["host"] = "Mike Hall (Staff Software Engineer & SCMC Co-Founder)"
   state["stream"]["status"] = "cued"
-  state["stream"]["topic"] = "Rewatching #{ep['interviewee']} (#{ep['conference']}): #{ep['title']}"
+  state["stream"]["topic"] = if is_unspecified
+                               "#{overrides[:title] || ep['title']}: #{overrides[:prompt] || overrides[:subtitle] || ep['sound_above_inquiry']} (The Sound Above)"
+                             else
+                               "Rewatching #{ep['interviewee']} (#{ep['conference']}): #{ep['title']}"
+                             end
 
   state["episode"] = {
-    "number" => ep["number"],
+    "number" => is_unspecified ? overrides[:number] : ep["number"],
     "title" => overrides[:title] || ep["title"],
     "interviewee" => overrides[:guest] || ep["interviewee"],
     "role" => ep["role"] || "Community Practitioner",
@@ -195,7 +218,7 @@ def cue_rewatch(episode_num, overrides = {})
     "location" => ep["location"] || "Chicago, IL",
     "year" => (overrides[:year] || ep["year"]).to_s,
     "era" => overrides[:era] || ep["era_name"],
-    "sound_above_prompt" => overrides[:prompt] || ep["sound_above_inquiry"],
+    "sound_above_prompt" => overrides[:prompt] || overrides[:subtitle] || ep["sound_above_inquiry"],
     "companion_links" => [
       "https://just3ws.localhost/timeline/community/",
       "https://just3ws.localhost/scmc/"
@@ -203,7 +226,11 @@ def cue_rewatch(episode_num, overrides = {})
   }
 
   write_json(OVERLAY_STATE, state)
-  puts "Successfully cued Episode ##{ep['number']} (#{ep['interviewee']}) for rewatch broadcast."
+  if is_unspecified
+    puts "Successfully cued unspecified episode (#{state['episode']['title']}) for The Sound Above broadcast."
+  else
+    puts "Successfully cued Episode ##{ep['number']} (#{ep['interviewee']}) for rewatch broadcast."
+  end
   print_status
 end
 
@@ -322,9 +349,27 @@ opt_parser = OptionParser.new do |opts|
   opts.separator "Recording prep: bin/broadcast --playbook, then bin/broadcast --preflight"
   opts.separator "Cueing updates local overlay metadata. It does not start OBS or a stream."
   opts.separator ""
-  opts.on("-r", "--rewatch EPISODE", "Cue rewatch episode (-1, 0, 1 to 37)") do |ep|
+  opts.on("-r", "--rewatch [EPISODE]", "Cue The Sound Above episode (1 to 37, or leave blank for unspecified episode)") do |ep|
     options[:archetype] = "rewatch"
-    options[:episode] = ep.to_s =~ /^-?\d+$/ ? ep.to_i : ep.to_s
+    options[:episode] = if ep.nil? || ep.empty?
+                          "unspecified"
+                        elsif ep.to_s =~ /^-?\d+$/
+                          ep.to_i
+                        else
+                          ep.to_s
+                        end
+  end
+
+  opts.on("--intro", "Cue an unspecified series introduction or open broadcast for The Sound Above") do
+    options[:archetype] = "rewatch"
+    options[:episode] = "unspecified"
+    options[:title] ||= "Series Introduction"
+    options[:subtitle] ||= "Plans, ideas, and general structure"
+  end
+
+  opts.on("--solo", "Cue an unspecified solo host broadcast for The Sound Above") do
+    options[:archetype] = "rewatch"
+    options[:episode] = "unspecified"
   end
 
   opts.on("--dispatch [ARG]", "Cue a Studio Dispatch (out-of-series open reflection or update; optional counter or topic)") do |arg|
@@ -485,12 +530,7 @@ end
 
 case options[:archetype]
 when "rewatch"
-  if options[:episode]
-    cue_rewatch(options[:episode], options)
-  else
-    warn "Error: Please specify episode number: bin/broadcast --rewatch <NUMBER>"
-    exit 1
-  end
+  cue_rewatch(options[:episode] || "unspecified", options)
 when "errata"
   cue_errata(options)
 when "dialogue"

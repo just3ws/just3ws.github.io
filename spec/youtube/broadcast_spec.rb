@@ -117,4 +117,28 @@ RSpec.describe 'Broadcast episode resolution' do
       expect(state.dig('errata', 'subtitle')).to eq('Plans and roadmap')
     end
   end
+
+  it 'cues an unspecified episode for The Sound Above via --intro' do
+    Dir.mktmpdir('broadcast-spec') do |sandbox|
+      FileUtils.mkdir_p(File.join(sandbox, 'bin'))
+      FileUtils.mkdir_p(File.join(sandbox, 'obs', 'curation'))
+      FileUtils.mkdir_p(File.join(sandbox, 'obs', 'overlays'))
+      FileUtils.cp(File.join(root_dir, 'bin/broadcast'), File.join(sandbox, 'bin/broadcast'))
+      FileUtils.cp(File.join(root_dir, 'obs/overlays/overlay-state.json'), File.join(sandbox, 'obs/overlays/overlay-state.json'))
+
+      stdout, stderr, status = Open3.capture3(
+        File.join(sandbox, 'bin', 'broadcast'), '--intro', '-s', 'Plans, ideas, and general structure'
+      )
+
+      expect(status.success?).to be(true), stderr
+      expect(stdout).to include('Successfully cued unspecified episode (Series Introduction)')
+      state = JSON.parse(File.read(File.join(sandbox, 'obs', 'overlays', 'overlay-state.json')))
+      expect(state['broadcast_type']).to eq('rewatch')
+      expect(state.dig('stream', 'series_title')).to eq('The Sound Above')
+      expect(state.dig('episode', 'number')).to be_nil
+      expect(state.dig('episode', 'title')).to eq('Series Introduction')
+      expect(state.dig('episode', 'interviewee')).to eq('Mike Hall')
+      expect(state.dig('episode', 'sound_above_prompt')).to eq('Plans, ideas, and general structure')
+    end
+  end
 end

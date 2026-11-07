@@ -86,9 +86,8 @@
       "required": ["number", "title", "interviewee", "conference", "year", "era", "sound_above_prompt"],
       "properties": {
         "number": {
-          "type": "integer",
-          "minimum": 1,
-          "description": "Episode sequence number."
+          "type": ["integer", "string", "null"],
+          "description": "Episode sequence number or null for unspecified series broadcasts."
         },
         "title": {
           "type": "string",

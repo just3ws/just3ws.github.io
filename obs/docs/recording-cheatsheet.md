@@ -28,9 +28,9 @@ bin/broadcast --errata --mode concept --title "The Blink Test"
 # Archetype 3: Dialogue ("The Room")
 bin/broadcast --dialogue --guest "Corey Haines" --title "Simple Design"
 
-# Studio Dispatch: open monologue or out-of-series recording
-bin/broadcast --dispatch
-bin/broadcast --dispatch 1 --series "The Sound Above" --title "Series Introduction" --subtitle "Plans, ideas, and structure"
+# The Sound Above: Unspecified episode or series introduction
+bin/broadcast --intro -s "Plans, ideas, and general structure"
+bin/broadcast --rewatch -t "Series Introduction" -s "Plans, ideas, and general structure"
 bin/broadcast --status
 open obs/teleprompter/series-introduction-rundown.md
 open -a Textream obs/teleprompter/series-introduction.textream

@@ -253,17 +253,18 @@
           routeVal.textContent = "just3ws.com";
         } else {
           // Default: Rewatch
-          const ep = state.episode;
+          const ep = state.episode || {};
+          const isUnspecified = ep.number === null || ep.number === undefined || isNaN(parseInt(ep.number, 10));
           brandTitle.textContent = state.stream.series_title || "The Sound Above";
           brandSub.textContent = state.stream.series_subtitle || "UGtastic Rewatch · Learning About People in Tech (2009–2026)";
-          kicker1.textContent = "CRAFTING COMMUNITY";
-          eraEl.textContent = ep.era.toUpperCase();
-          titleEl.textContent = ep.title;
-          guestEl.textContent = ep.interviewee;
-          const confText = ep.conference || "";
+          kicker1.textContent = isUnspecified ? "THE SOUND ABOVE" : "CRAFTING COMMUNITY";
+          eraEl.textContent = (ep.era || "THE AI HORIZON").toUpperCase();
+          titleEl.textContent = ep.title || "The Sound Above";
+          guestEl.textContent = isUnspecified && (ep.interviewee === "Mike Hall" || !ep.interviewee) ? "Mike Hall (Host & Curator)" : ep.interviewee;
+          const confText = ep.conference || (isUnspecified ? "The Sound Above Studio" : "");
           const yearStr = String(ep.year || "");
           eventEl.textContent = (confText.includes(yearStr) || !yearStr) ? confText : `${confText} (${yearStr})`;
-          promptEl.textContent = `"${ep.sound_above_prompt}"`;
+          promptEl.textContent = ep.sound_above_prompt ? `"${ep.sound_above_prompt}"` : "";
           routeLabel.textContent = "Digital Archive";
           routeVal.textContent = "just3ws.com/interviews";
         }
