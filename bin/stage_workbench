@@ -19,14 +19,15 @@ require 'shellwords'
 require 'English'
 
 MOVIES_DIR = File.expand_path('~/Movies')
-INGRESS_DIR = File.expand_path('~/ai/media-pipeline/whoistechcmty/studio-workbench/staged')
+BASE_QUEUE_DIR = File.expand_path('~/ai/media-pipeline/whoistechcmty/studio-workbench')
 OVERLAY_STATE = File.expand_path('../obs/overlays/overlay-state.json', __dir__)
 SCAN_URL = 'http://127.0.0.1:32000/operations/scan'
 
 options = {
   dry_run: false,
   topic: nil,
-  keep_source: false
+  keep_source: false,
+  queue: 'pending'
 }
 
 parser = OptionParser.new do |opts|
@@ -39,6 +40,14 @@ parser = OptionParser.new do |opts|
 
   opts.on('-t', '--topic TOPIC', 'Descriptor or topic slug for destination filename') do |t|
     options[:topic] = t
+  end
+
+  opts.on('-p', '--pending', 'Stage directly into pending queue for immediate automated pipeline ingestion (default)') do
+    options[:queue] = 'pending'
+  end
+
+  opts.on('-s', '--staged', 'Stage into staged queue (pre-intake safety hold)') do
+    options[:queue] = 'staged'
   end
 
   opts.on('-k', '--keep', 'Copy instead of move source recording') do
@@ -57,6 +66,8 @@ end
 
 parser.parse!
 
+ingress_dir = File.join(BASE_QUEUE_DIR, options[:queue])
+
 # 1. Resolve source file
 source_path = ARGV.first
 
@@ -67,14 +78,14 @@ if source_path
     exit 1
   end
 else
-  # Find latest video file across ingress staging and ~/Movies
-  candidates = (Dir.glob(File.join(INGRESS_DIR, '*.{mov,mp4,mkv,MOV,MP4,MKV}')) +
+  # Find latest video file across ingress staging, pending, and ~/Movies
+  candidates = (Dir.glob(File.join(BASE_QUEUE_DIR, '{staged,pending}', '*.{mov,mp4,mkv,MOV,MP4,MKV}')) +
                 Dir.glob(File.join(MOVIES_DIR, '*.{mov,mp4,mkv,MOV,MP4,MKV}'))).select do |f|
     File.file?(f) && File.size(f).positive?
   end
 
   if candidates.empty?
-    warn "Error: No recordings found in #{INGRESS_DIR} or #{MOVIES_DIR}."
+    warn "Error: No recordings found in #{BASE_QUEUE_DIR} or #{MOVIES_DIR}."
     warn 'Please record in OBS first, or specify a file path.'
     exit 1
   end
@@ -131,14 +142,14 @@ dest_filename = if topic_slug && !topic_slug.empty?
                   "#{source_base}_studio_workbench#{source_ext}"
                 end
 
-dest_path = File.join(INGRESS_DIR, dest_filename)
+dest_path = File.join(ingress_dir, dest_filename)
 
 size_mb = (file_size.to_f / (1024 * 1024)).round(2)
 action = if source_file == dest_path
            'Already in place (verify and scan)'
          elsif options[:keep_source]
            'Copy'
-         elsif File.dirname(source_file) == INGRESS_DIR
+         elsif File.dirname(source_file) == ingress_dir
            'Rename in place'
          else
            'Move'
@@ -149,6 +160,7 @@ puts " 🎬 STUDIO WORKBENCH STAGING"
 puts "=================================================================="
 puts "Source:      #{source_file} (#{size_mb} MB)"
 puts "Destination: #{dest_path}"
+puts "Queue:       #{options[:queue]} (#{options[:queue] == 'pending' ? 'active ingress for autonomous ingestion' : 'pre-intake hold'})"
 puts "Action:      #{action}"
 puts "Topic:       #{topic_slug || '(none)'}"
 puts "=================================================================="
@@ -159,7 +171,7 @@ if options[:dry_run]
 end
 
 # Ensure ingress directory exists
-FileUtils.mkdir_p(INGRESS_DIR)
+FileUtils.mkdir_p(ingress_dir)
 
 # Move or copy file
 if source_file == dest_path
@@ -170,7 +182,13 @@ else
   FileUtils.mv(source_file, dest_path)
 end
 
-puts "File staged successfully in Maildir ingress queue."
+if options[:queue] == 'pending'
+  puts "File staged successfully in Maildir pending ingress queue."
+  puts "Autonomous pipeline will detect and begin hydration/enrichment upon scan."
+else
+  puts "File staged successfully in Maildir staged pre-intake hold queue."
+  puts "File will remain safe until explicitly moved to pending/."
+end
 
 # 5. Trigger media-pipeline scan
 puts "Triggering media-pipeline intake scan..."
