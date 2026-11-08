@@ -21,13 +21,14 @@ The work conducted in `just3ws/dehum` and documented across [*The Sound Above*](
 
 ## Ways to Support
 
-Mike Hall's creator identity is `just3ws`. The public overview at
+Mike Hall's creator identity is `just3ws`. The central support page at
 <https://www.just3ws.com/support/> connects Ramblin' & Amblin', the interview
-archive, Phalanx Duel, and Panoramic View. The Patreon page is being prepared;
-once open, support will help Mike's independent work as a whole, not fund
-`just3ws/dehum` specifically.
+archive, Phalanx Duel, and Panoramic View. Support helps Mike's independent work
+as a whole, rather than funding `just3ws/dehum` specifically.
 
-- **GitHub Sponsors**: [github.com/sponsors/just3ws](https://github.com/sponsors/just3ws) (or directly via [github.com/just3ws](https://github.com/just3ws))
+- **Patreon & Hallway Chat**: [patreon.com/c/just3ws](https://www.patreon.com/c/just3ws) (Studio Notes and community chat)
+- **GitHub Sponsors**: [github.com/sponsors/just3ws](https://github.com/sponsors/just3ws) (developer and open-source sponsorship)
+- **Buy Me a Coffee**: [buymeacoffee.com/just3ws](https://buymeacoffee.com/just3ws) (one-time tip to help cover hosting and compute)
 - **Connect & Collaborate**: [LinkedIn / Mike Hall](https://www.linkedin.com/in/mikehall-just3ws/)
 - **Read & Cite the Companion Analysis**:
   - [LinkedIn Pulse: Under the High-Tension Wires](https://www.linkedin.com/pulse/under-high-tension-wires-2501-ai-leverage-trap-slop-real-mike-hall-gbbtc)

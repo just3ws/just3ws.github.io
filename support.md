@@ -97,7 +97,12 @@ body_class: page-support
     <div class="support-section-heading">
       <p class="support-eyebrow">Direct ways to back the work</p>
       <h2 id="support-channels-title">Funding channels &amp; community support</h2>
-      <p style="color: var(--color-text-muted); max-width: 60ch; line-height: 1.6;">Whether you want to join monthly studio discussions, sponsor open-source developer tooling, send a quick one-time tip, or partner on a focused systems investigation, every contribution keeps these efforts independent and freely shared.</p>
+      <p style="color: var(--color-text-muted); max-width: 65ch; line-height: 1.65;">
+        Think of this less as a corporate ask and more as digital busking: I build these games, tools, and archives out in the open because I genuinely love the craft, not because anyone owes me anything.
+      </p>
+      <p style="color: var(--color-text-muted); max-width: 65ch; line-height: 1.65;">
+        If you have played a match of Phalanx Duel, watched Ramblin' &amp; Amblin', explored an interview, or used the forensic audio pipelines, a coin in the case helps cover out-of-pocket costs for hosting (Fly.io, Neon databases), local compute, storage backups, and AI runtimes. It is always deeply appreciated and never expected.
+      </p>
     </div>
     <div class="support-project-grid">
       {% for channel in campaign.funding_channels %}
