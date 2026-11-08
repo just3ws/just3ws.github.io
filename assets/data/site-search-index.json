@@ -80,6 +80,64 @@ permalink: /assets/data/site-search-index.json
     "icon": "⚔️",
     "keywords": "phalanx duel scmc presentation teleprompter rules legible state machine tabletop cards camp tesomas architecture laboratory psychological safety childs voice"
   },
+  {% unless jekyll.environment == "production" %}
+  {
+    "title": "Phalanx Duel: Tactical Combat Game (Vite Client)",
+    "url": "https://play.phalanxduel.localhost/",
+    "badge": "play.phalanxduel.localhost",
+    "icon": "⚔️",
+    "keywords": "phalanx duel game tactical combat browser client 5173 vite play realtime multiplayer"
+  },
+  {
+    "title": "Phalanx Duel: Demo Cockpit (Scenario Runner)",
+    "url": "https://phalanxduel.localhost/demo/",
+    "badge": "phalanxduel.localhost/demo",
+    "icon": "🎬",
+    "keywords": "phalanx duel demo cockpit scenarios automated game bridge 3333 test bed"
+  },
+  {
+    "title": "Phalanx Duel: Admin Deck & Match Inspector",
+    "url": "https://admin.phalanxduel.localhost/",
+    "badge": "admin.phalanxduel.localhost",
+    "icon": "🛡️",
+    "keywords": "phalanx duel admin deck inspection players match 3103 metrics"
+  },
+  {
+    "title": "Media Pipeline: Intake & Publishing Cockpit",
+    "url": "https://media-pipeline.localhost/",
+    "badge": "media-pipeline.localhost",
+    "icon": "⚡",
+    "keywords": "media pipeline maildir intake whisper transcribing youtube publishing solidqueue 3000"
+  },
+  {
+    "title": "Hister: Software Craftsmanship & Oral History Search",
+    "url": "https://hister.localhost/",
+    "badge": "hister.localhost",
+    "icon": "🔍",
+    "keywords": "hister search engine local corpus oral history craftsmanship fulltext 4433"
+  },
+  {
+    "title": "OpenObserve: Local Cluster Telemetry & Spans",
+    "url": "https://o2.localhost/",
+    "badge": "o2.localhost",
+    "icon": "📊",
+    "keywords": "openobserve telemetry otel logs traces spans observability 5080 jaeger"
+  },
+  {
+    "title": "wwworkremote: Career Intelligence Peer",
+    "url": "https://wwworkremote.localhost/",
+    "badge": "wwworkremote.localhost",
+    "icon": "💼",
+    "keywords": "wwworkremote peer job search intelligence leads 3000 careeros"
+  },
+  {
+    "title": "Platform Link Control Plane (Cluster Hub)",
+    "url": "/dashboard/",
+    "badge": "Dashboard",
+    "icon": "⚡",
+    "keywords": "control plane dashboard platform link hub hister openobserve llama gemstash local ecosystem services"
+  },
+  {% endunless %}
   {
     "title": "10-Year Career Timeline",
     "url": "/timeline/",
