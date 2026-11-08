@@ -37,38 +37,39 @@ teleprompter_script:
   act_2: |
     [SCENE: Switch to screen capture. Show just3ws repository and old zdots commit history.]
     To understand how we got here, you have to realize that this project did not start with modern AI.
-    My dotfiles repository, zdots, existed long before large language models.
-    My personal portfolio, just3ws, existed long before.
+    My dotfiles repository, zdots, was founded on May 26, 2017, long before large language models.
+    My personal portfolio, just3ws, was founded on December 5, 2016.
     Back in 2009 and 2011, when I was co-founding Software Craftsmanship McHenry County and recording interviews across the Chicago tech scene, the goal of a full, sovereign transcription pipeline was already the dream.
     I had over two hundred recorded conversations sitting on hard drives.
     I wanted them searchable. I wanted them preserved.
-    But back then, accomplishing that as a solo practitioner was economically and practically impossible.
-    Cloud speech-to-text APIs would have cost thousands of dollars for hundreds of hours of video.
+    On April 4, 2014, I created a repository called many-hands-make-light-work, trying to crowdsource show-notes and transcripts from the community.
+    Accomplishing that as a solo practitioner was economically and practically impossible.
+    Cloud speech-to-text APIs would have cost thousands of dollars for hundreds of hours of video, with endless fees for revisions.
     Transcribing them by hand would have consumed thousands of hours of manual labor.
     For years, I had all but given up on ever finishing this archive.
     I had the architectural knowledge of how a pipeline should work, but not the physical leverage to build out the full infrastructure from scratch alone.
   act_3: |
     [SCENE: Show the Fluffle repository and dead-rabbit cluster documentation.]
-    The turning point started in 2023 with an experiment called The Fluffle.
+    The turning point started on April 6, 2023, with an experiment called The Fluffle.
     When Georgi Gerganov released whisper.cpp, local speech recognition suddenly became possible without sending audio to third-party cloud vendors.
     I set up five Raspberry Pis on my home desk.
     I wrote Ruby orchestration scripts to slice audio files, distribute work across the cluster, and collect matching subtitle pairs.
     I used Dead Rabbit Radio, a podcast I listened to, as an empirical test set.
-    The Fluffle proved that local, private transcription could work on commodity hardware.
-    It generated over a thousand transcript pairs.
+    The Fluffle proved that local, private transcription could work on commodity hardware, generating over a thousand transcript pairs.
     It had real limits: handling arbitrary podcast feeds became more overhead than one person could maintain, and the cluster ran hot.
-    The project stopped, but its lessons survived.
-    The five-state queue, the ephemeral audio extraction, and the verification checks from Fluffle became the direct blueprint for what we run today.
+    The experiment paused, but its lessons survived.
+    The five-state Maildir queue (staged, pending, processing, processed, failed), the ephemeral audio extraction, and the verification checks from Fluffle became the direct blueprint for what we run today.
   act_4: |
     [SCENE: Camera inset with Rails 8 SolidQueue and media-pipeline code.]
     Then came the modern AI wave: Claude, Gemini, Antigravity, and local inference on Apple Silicon.
-    People often ask: did AI build this pipeline?
-    The answer is nuanced. AI wrote a massive amount of the implementation code.
-    It did so strictly guided by my prior architectural opinions and battle scars.
-    Every queue boundary, every Aspect-Oriented diagnostic span, every zero-disk-waste invariant, and every single-worker concurrency lock came from how I have operated production systems for two decades.
-    Whether those patterns were textbook industry best practices or just my own pragmatic trade-offs, they were deliberate choices.
-    My limitation was never system design knowledge; it was the raw time required to handcraft every model, migration, test, and shell harness.
-    AI acted as a high-speed mechanical multiplier, allowing one engineer to assemble the machinery that previously required an entire infrastructure team.
+    Now here is where an adversarial skeptic might challenge me.
+    They would say: "Mike, if an AI agent wrote ninety-five percent of the Rails 8 and SolidQueue code in late 2026, isn't AI the real carpenter here? Aren't you just an observer taking credit for machine output?"
+    And my answer is factual: look at the architecture.
+    If you give an unconstrained language model a blank prompt to build a video pipeline, it suggests spinning up AWS Transcribe, S3 buckets, Redis clusters, and recurring SaaS subscriptions.
+    The single-worker concurrency lock, the 16kHz mono audio extraction, the zero-disk-waste streaming, and the Maildir queue invariants were not invented by an AI.
+    They were the exact operational constraints I spent fifteen years discovering through painful production failures.
+    My limitation was never system design knowledge; it was the raw time required to hand-type every model, migration, test, and shell harness.
+    AI was the high-speed pneumatic nail gun. But Theseus was the one enforcing every boundary and inspecting every joint.
   act_5: |
     [SCENE: Show live media-pipeline terminal, mp status, and morning ingestion logs.]
     Let us look at what happened during this morning's ingestion of our Sound Above Hello World recording.
@@ -83,13 +84,16 @@ teleprompter_script:
   act_6: |
     [SCENE: Return to camera at desk.]
     So we come back to the Ship of Theseus.
+    A second skeptic might challenge me here: "Mike, mathematically zero bytes of your 2009 code exist in today's system. The language changed from C# and Bash to Ruby and modern Rails. The hardware changed from Compaq depot PCs to Raspberry Pis to Apple Silicon M4. How can you claim with a straight face that this is the same ship?"
+    And my answer is: in software engineering, identity is not volatile syntax or silicon.
+    Identity is the domain invariants, the operational constraints, and the intent.
+    The mission never changed: to preserve human craft, to make spoken history searchable, and to build sovereign tools that do not surrender our records to corporate amnesia.
     The bash scripts from 2010 became Ruby tools.
     The Ruby tools became a Raspberry Pi cluster.
     The cluster became a partitioned Rails 8 microservice with SolidQueue and OpenTelemetry.
     The wooden boat is now essentially a space station.
-    Is it still the same project?
-    Yes, because the mission never changed: to preserve human craft, to make spoken history searchable, and to build sovereign tools that do not depend on opaque corporate platforms.
-    The transformation of the system was also a transformation of me as an engineer.
-    The boat changed because Theseus changed, learning with every plank what holds together under load.
+    And the critical difference from the ancient myth remains: in the myth, anonymous dockworkers swapped the rotting timber.
+    Here, Theseus himself was the one who carved and tested every plank.
+    The boat changed because Theseus changed, learning with every substitution what actually holds together under load.
     Thanks for joining me at the workbench.
     Keep your feedback loops fast, and your code humane.
