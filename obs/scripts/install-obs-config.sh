@@ -120,8 +120,8 @@ for PROFILE_NAME in "The Sound Above" "The Sound Above - Staging"; do
         mkdir -p "${PROFILE_DEST_DIR}"
       fi
 
-      # Dynamically adjust recording target paths to current user's $HOME/Movies
-      sed "s|/Users/[^/][^/]*/Movies|${HOME}/Movies|g; s|/Users/mike/|${HOME}/|g" \
+      # Dynamically adjust recording target paths to current user's $HOME
+      sed "s|/Users/mike/|${HOME}/|g" \
         "${PROFILE_SRC_DIR}/basic.ini" > "${PROFILE_DEST_DIR}/basic.ini"
       
       # Only copy service.json if one doesn't already exist (preserve user stream key)

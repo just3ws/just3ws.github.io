@@ -67,13 +67,14 @@ if source_path
     exit 1
   end
 else
-  # Find latest video file in ~/Movies
-  candidates = Dir.glob(File.join(MOVIES_DIR, '*.{mov,mp4,mkv,MOV,MP4,MKV}')).select do |f|
+  # Find latest video file across ingress staging and ~/Movies
+  candidates = (Dir.glob(File.join(INGRESS_DIR, '*.{mov,mp4,mkv,MOV,MP4,MKV}')) +
+                Dir.glob(File.join(MOVIES_DIR, '*.{mov,mp4,mkv,MOV,MP4,MKV}'))).select do |f|
     File.file?(f) && File.size(f).positive?
   end
 
   if candidates.empty?
-    warn "Error: No recordings found in #{MOVIES_DIR}."
+    warn "Error: No recordings found in #{INGRESS_DIR} or #{MOVIES_DIR}."
     warn 'Please record in OBS first, or specify a file path.'
     exit 1
   end
@@ -119,6 +120,8 @@ source_base = File.basename(source_file, source_ext)
 dest_filename = if topic_slug && !topic_slug.empty?
                   if source_base.include?(topic_slug)
                     "#{source_base}#{source_ext}"
+                  elsif source_base.include?('studio_workbench')
+                    "#{source_base}_#{topic_slug}#{source_ext}"
                   else
                     "#{source_base}_studio_workbench_#{topic_slug}#{source_ext}"
                   end
@@ -131,7 +134,15 @@ dest_filename = if topic_slug && !topic_slug.empty?
 dest_path = File.join(INGRESS_DIR, dest_filename)
 
 size_mb = (file_size.to_f / (1024 * 1024)).round(2)
-action = options[:keep_source] ? 'Copy' : 'Move'
+action = if source_file == dest_path
+           'Already in place (verify and scan)'
+         elsif options[:keep_source]
+           'Copy'
+         elsif File.dirname(source_file) == INGRESS_DIR
+           'Rename in place'
+         else
+           'Move'
+         end
 
 puts "=================================================================="
 puts " 🎬 STUDIO WORKBENCH STAGING"
@@ -151,7 +162,9 @@ end
 FileUtils.mkdir_p(INGRESS_DIR)
 
 # Move or copy file
-if options[:keep_source]
+if source_file == dest_path
+  puts "File is already staged at destination: #{dest_path}"
+elsif options[:keep_source]
   FileUtils.cp(source_file, dest_path)
 else
   FileUtils.mv(source_file, dest_path)

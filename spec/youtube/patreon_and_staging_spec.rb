@@ -8,6 +8,7 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
   let(:root_dir) { File.expand_path('../..', __dir__) }
   let(:patreon_bin) { File.join(root_dir, 'bin', 'patreon_pipeline.rb') }
   let(:stage_bin) { File.join(root_dir, 'bin', 'stage_episode_workflow.rb') }
+  let(:stage_workbench_bin) { File.join(root_dir, 'bin', 'stage_workbench') }
   let(:pipeline_bin) { File.join(root_dir, 'bin', 'pipeline') }
 
   describe 'Patreon Pipeline CLI (bin/patreon_pipeline.rb)' do
@@ -85,6 +86,33 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
     end
   end
 
+  describe 'Studio Workbench Staging Utility (bin/stage_workbench)' do
+    it 'is executable' do
+      expect(File.executable?(stage_workbench_bin)).to be true
+    end
+
+    it 'shows help message with usage' do
+      stdout, stderr, status = Open3.capture3(stage_workbench_bin, '--help')
+      expect(status.success?).to be true
+      expect(stdout).to include('Usage: bin/stage_workbench')
+      expect(stdout).to include('Staging utility for Studio Workbench recordings.')
+    end
+
+    it 'supports dry-run staging from specified file' do
+      require 'tempfile'
+      Tempfile.create(['test_workbench_rec', '.mov']) do |f|
+        f.write('dummy video payload')
+        f.flush
+        stdout, stderr, status = Open3.capture3(stage_workbench_bin, '--dry-run', '--topic', 'test_topic', f.path)
+        expect(status.success?).to be true
+        expect(stdout).to include('STUDIO WORKBENCH STAGING')
+        expect(stdout).to include('Destination:')
+        expect(stdout).to include('test_topic')
+        expect(stdout).to include('[DRY-RUN] Staging preview completed without modifications.')
+      end
+    end
+  end
+
   describe 'Pipeline wrapper integration' do
     it 'delegates patreon command from bin/pipeline' do
       stdout, stderr, status = Open3.capture3(pipeline_bin, 'patreon', 'status')
@@ -96,6 +124,12 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       stdout, stderr, status = Open3.capture3(pipeline_bin, 'stage', '1')
       expect(status.success?).to be true
       expect(stdout).to include('STAGED EPISODE WORKFLOW VERIFICATION: EPISODE 1')
+    end
+
+    it 'delegates stage-workbench command from bin/pipeline' do
+      stdout, stderr, status = Open3.capture3(pipeline_bin, 'media', 'stage-workbench', '--help')
+      expect(status.success?).to be true
+      expect(stdout).to include('Usage: bin/stage_workbench')
     end
   end
 end
