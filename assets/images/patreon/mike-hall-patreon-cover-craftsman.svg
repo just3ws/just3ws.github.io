@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2500 625" width="2500" height="625" role="img" aria-label="Mike Hall just3ws Patreon Banner">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="45%" stop-color="#0D5A54"/>
+      <stop offset="100%" stop-color="#082A27"/>
+    </linearGradient>
+
+    <!-- Warm Amber Accent Gradient -->
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <!-- Teal Wave Gradient -->
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#14B8A6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0F766E" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Architectural Grid Pattern -->
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#2DD4BF" stroke-width="0.75" stroke-opacity="0.08"/>
+    </pattern>
+
+    <pattern id="fineGrid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#FAF8F5" stroke-width="0.5" stroke-opacity="0.03"/>
+    </pattern>
+
+    <!-- Soft Radial Glow -->
+    <radialGradient id="leftGlow" cx="15%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#0F766E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rightGlow" cx="85%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0F766E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#082A27" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 1. Background Fill -->
+  <rect width="2500" height="625" fill="url(#bgGrad)"/>
+  <rect width="2500" height="625" fill="url(#leftGlow)"/>
+  <rect width="2500" height="625" fill="url(#rightGlow)"/>
+
+  <!-- 2. Grid Textures -->
+  <rect width="2500" height="625" fill="url(#grid)"/>
+  <rect width="2500" height="625" fill="url(#fineGrid)"/>
+
+  <!-- 3. System Cartography Waves & Contours (Right / Flowing Background) -->
+  <g opacity="0.85">
+    <!-- Flow Line 1 -->
+    <path d="M 700 480 C 1050 480, 1200 180, 1550 180 C 1900 180, 2100 420, 2500 320" 
+          fill="none" stroke="url(#waveGrad)" stroke-width="3" stroke-dasharray="8 6"/>
+
+    <!-- Flow Line 2 (Primary Amber Pulse) -->
+    <path d="M 780 540 C 1120 540, 1300 240, 1680 240 C 2020 240, 2220 460, 2500 390" 
+          fill="none" stroke="url(#amberGrad)" stroke-width="2.5"/>
+
+    <!-- Flow Line 3 (Deep Contour) -->
+    <path d="M 850 590 C 1220 590, 1420 310, 1800 310 C 2150 310, 2350 510, 2500 460" 
+          fill="none" stroke="#14B8A6" stroke-width="1.5" stroke-opacity="0.25"/>
+
+    <!-- Structural Guide Horizon -->
+    <line x1="120" y1="520" x2="2420" y2="520" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.12"/>
+    <line x1="120" y1="105" x2="2420" y2="105" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.08"/>
+
+    <!-- Right-Hand Layer Architecture Indicators (Panoramic View Model) -->
+    <g transform="translate(1720, 110)" opacity="0.35">
+      <!-- Architectural Horizontal Tiers -->
+      <rect x="0" y="0" width="620" height="42" rx="6" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+      <text x="25" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#2DD4BF" letter-spacing="2">INTERFACE &amp; PRESENTATION</text>
+
+      <rect x="0" y="58" width="620" height="42" rx="6" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+      <text x="25" y="85" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#2DD4BF" letter-spacing="2">APPLICATION &amp; DOMAIN</text>
+
+      <rect x="0" y="116" width="620" height="42" rx="6" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+      <text x="25" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#2DD4BF" letter-spacing="2">SERVICES &amp; PROTOCOLS</text>
+
+      <rect x="0" y="174" width="620" height="42" rx="6" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+      <text x="25" y="201" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#2DD4BF" letter-spacing="2">TELEMETRY &amp; INTEGRATION</text>
+
+      <rect x="0" y="232" width="620" height="42" rx="6" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+      <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="600" fill="#2DD4BF" letter-spacing="2">DATA, STATE &amp; ARCHIVES</text>
+
+      <!-- Vertical Transits -->
+      <circle cx="160" cy="21" r="5" fill="#F59E0B"/>
+      <circle cx="340" cy="137" r="5" fill="#2DD4BF"/>
+      <circle cx="500" cy="253" r="5" fill="#F59E0B"/>
+      <path d="M 160 21 C 160 120, 340 50, 340 137 C 340 220, 500 160, 500 253" fill="none" stroke="#F59E0B" stroke-width="2" stroke-opacity="0.6"/>
+    </g>
+
+    <!-- Geographic Coordinates & Provenance Stamps -->
+    <text x="120" y="85" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="13" fill="#2DD4BF" font-weight="500" letter-spacing="3" opacity="0.65">SYSTEM CARTOGRAPHY · EST. 2009 · CHICAGO &amp; MCHENRY COUNTY</text>
+    <text x="2420" y="85" text-anchor="end" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="13" fill="#2DD4BF" font-weight="500" letter-spacing="2" opacity="0.65">42.3334° N, 88.2787° W · 345kV EMI FORENSICS</text>
+  </g>
+
+  <!-- 4. Typography & Branding Lockup (Left & Center Left) -->
+  <!-- Left Margin: 140px, safe from circular avatar overlay (which sits at bottom-left in Patreon desktop) -->
+  <g transform="translate(140, 165)">
+    <!-- Eyebrow Badge -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="310" height="34" rx="4" fill="#082A27" stroke="#2DD4BF" stroke-width="1.2" stroke-opacity="0.4"/>
+      <circle cx="16" cy="17" r="4" fill="#F59E0B"/>
+      <text x="32" y="22" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" fill="#FAF8F5" letter-spacing="2.5">CRAFTSMAN WORKBENCH</text>
+    </g>
+
+    <!-- Creator Name -->
+    <text x="0" y="115" font-family="'Charter', 'Georgia', 'Iowan Old Style', serif" font-size="76" font-weight="700" fill="#FAF8F5" letter-spacing="-0.5">Mike Hall</text>
+    <text x="375" y="115" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="42" font-weight="400" fill="#2DD4BF" opacity="0.9">/ just3ws</text>
+
+    <!-- Primary Discipline Narrative -->
+    <text x="0" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#FAF8F5" opacity="0.95" letter-spacing="0.2">
+      Software Craftsmanship <tspan fill="#F59E0B" font-weight="300"> · </tspan> Systems Architecture <tspan fill="#F59E0B" font-weight="300"> · </tspan> Community Archives
+    </text>
+
+    <!-- Concrete Scope & Projects Line -->
+    <text x="0" y="226" font-family="'Charter', 'Georgia', serif" font-style="italic" font-size="21" fill="#E2E8F0" opacity="0.82">
+      Independent engineering research, oral histories, Phalanx Duel, and Ramblin' &amp; Amblin'
+    </text>
+
+    <!-- Bottom Technical Spec / Hash -->
+    <g transform="translate(0, 290)" opacity="0.55">
+      <text x="0" y="0" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#2DD4BF" letter-spacing="1.5">
+        ROOT: WHOISTECHCMTY · PLATFORM: ZDOTS · SCMC CO-FOUNDER (2009) · 200+ ORAL HISTORIES · PANORAMIC VIEW
+      </text>
+    </g>
+  </g>
+
+  <!-- 5. Subtle Border Accent -->
+  <rect x="0" y="0" width="2500" height="625" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-opacity="0.15"/>
+  <rect x="0" y="620" width="2500" height="5" fill="url(#amberGrad)"/>
+</svg>

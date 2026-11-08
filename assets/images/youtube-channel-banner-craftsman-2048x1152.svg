@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 1152" width="2048" height="1152" role="img" aria-label="Mike Hall just3ws YouTube Channel Banner">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="ytBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="35%" stop-color="#0D5A54"/>
+      <stop offset="70%" stop-color="#093834"/>
+      <stop offset="100%" stop-color="#061F1D"/>
+    </linearGradient>
+
+    <!-- Amber Accent Gradient -->
+    <linearGradient id="ytAmberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0.3"/>
+    </linearGradient>
+
+    <!-- Teal Wave Gradient -->
+    <linearGradient id="ytWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#14B8A6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0F766E" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- Grid Patterns -->
+    <pattern id="ytGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#2DD4BF" stroke-width="0.75" stroke-opacity="0.07"/>
+    </pattern>
+
+    <pattern id="ytFineGrid" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#FAF8F5" stroke-width="0.5" stroke-opacity="0.025"/>
+    </pattern>
+
+    <!-- Glows -->
+    <radialGradient id="ytCenterGlow" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#061F1D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 1. Full Canvas Background (TV Viewport) -->
+  <rect width="2048" height="1152" fill="url(#ytBgGrad)"/>
+  <rect width="2048" height="1152" fill="url(#ytCenterGlow)"/>
+  <rect width="2048" height="1152" fill="url(#ytGrid)"/>
+  <rect width="2048" height="1152" fill="url(#ytFineGrid)"/>
+
+  <!-- Top / TV Zone Accents -->
+  <g opacity="0.45">
+    <text x="120" y="100" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#2DD4BF" font-weight="500" letter-spacing="3">PANORAMIC VIEW LABS · PVL PLATFORM</text>
+    <text x="1928" y="100" text-anchor="end" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#2DD4BF" font-weight="500" letter-spacing="2">ROOT: ZDOTS · WHOISTECHCMTY</text>
+    <line x1="120" y1="125" x2="1928" y2="125" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.1"/>
+  </g>
+
+  <!-- 2. Central Safe Area Guidelines (Y: 400 to 752 is desktop/mobile safe band) -->
+  <!-- Background Wave flows through center -->
+  <g opacity="0.8">
+    <path d="M 300 680 C 600 680, 800 480, 1150 480 C 1500 480, 1750 640, 2048 560" 
+          fill="none" stroke="url(#ytWaveGrad)" stroke-width="3" stroke-dasharray="8 6"/>
+    <path d="M 380 720 C 680 720, 900 520, 1260 520 C 1600 520, 1850 670, 2048 610" 
+          fill="none" stroke="url(#ytAmberGrad)" stroke-width="2.5"/>
+  </g>
+
+  <!-- 3. Safe Zone Content (Desktop & Mobile view) -->
+  <!-- Centered safe band horizontally & vertically -->
+  <g transform="translate(140, 435)">
+    <!-- Eyebrow Badge -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="280" height="30" rx="4" fill="#082A27" stroke="#2DD4BF" stroke-width="1.2" stroke-opacity="0.4"/>
+      <circle cx="15" cy="15" r="3.5" fill="#F59E0B"/>
+      <text x="28" y="20" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#FAF8F5" letter-spacing="2">CRAFTSMAN WORKBENCH</text>
+    </g>
+
+    <!-- Name & Handle -->
+    <text x="0" y="85" font-family="'Charter', 'Georgia', 'Iowan Old Style', serif" font-size="64" font-weight="700" fill="#FAF8F5" letter-spacing="-0.5">Mike Hall</text>
+    <text x="320" y="85" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="34" font-weight="400" fill="#2DD4BF" opacity="0.9">/ just3ws</text>
+
+    <!-- Core Disciplines -->
+    <text x="0" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="500" fill="#FAF8F5" opacity="0.95" letter-spacing="0.2">
+      Software Craftsmanship <tspan fill="#F59E0B" font-weight="300"> · </tspan> Systems Architecture <tspan fill="#F59E0B" font-weight="300"> · </tspan> Community Archives
+    </text>
+
+    <!-- Series & Narrative -->
+    <text x="0" y="180" font-family="'Charter', 'Georgia', serif" font-style="italic" font-size="18" fill="#E2E8F0" opacity="0.82">
+      Independent engineering research, oral histories, Phalanx Duel, and Ramblin' &amp; Amblin'
+    </text>
+
+    <!-- Footnote within safe area -->
+    <text x="0" y="228" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#2DD4BF" letter-spacing="1.5" opacity="0.6">
+      SCMC CO-FOUNDER (2009) · 200+ INTERVIEWS · 345kV AUDIO FORENSICS · JUST3WS.COM
+    </text>
+  </g>
+
+  <!-- Right Side Architectural Diagram (Panoramic View Layers in Safe Zone) -->
+  <g transform="translate(1380, 440)" opacity="0.32">
+    <rect x="0" y="0" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="20" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">INTERFACE &amp; PRESENTATION</text>
+
+    <rect x="0" y="44" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="20" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">APPLICATION &amp; DOMAIN</text>
+
+    <rect x="0" y="88" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="20" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">SERVICES &amp; PROTOCOLS</text>
+
+    <rect x="0" y="132" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="20" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">TELEMETRY &amp; INTEGRATION</text>
+
+    <rect x="0" y="176" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="20" y="198" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">DATA, STATE &amp; ARCHIVES</text>
+
+    <circle cx="120" cy="17" r="4" fill="#F59E0B"/>
+    <circle cx="280" cy="105" r="4" fill="#2DD4BF"/>
+    <circle cx="420" cy="193" r="4" fill="#F59E0B"/>
+    <path d="M 120 17 C 120 90, 280 40, 280 105 C 280 170, 420 120, 420 193" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-opacity="0.6"/>
+  </g>
+
+  <!-- Bottom / TV Zone Accents -->
+  <g opacity="0.45">
+    <line x1="120" y1="1025" x2="1928" y2="1025" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.1"/>
+    <text x="120" y="1055" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="13" fill="#2DD4BF" font-weight="500" letter-spacing="2">YOUTUBE.COM/@JUST3WS · PATREON.COM/C/JUST3WS · GITHUB.COM/JUST3WS</text>
+    <text x="1928" y="1055" text-anchor="end" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="13" fill="#2DD4BF" font-weight="500" letter-spacing="2">CALM SYSTEMS LEADERSHIP</text>
+  </g>
+
+  <!-- Subtle Outer Border -->
+  <rect x="0" y="0" width="2048" height="1152" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-opacity="0.15"/>
+</svg>
