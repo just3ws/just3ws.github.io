@@ -71,8 +71,11 @@ class EpisodeBookmarks
     folders << folder('Datalake & Forensics', [
       link('career_datalake.json (JSON Manifest)', "#{SITE}/career_datalake.json"),
       link('career_datalake.jsonl (JSONL Stream)', "#{SITE}/career_datalake.jsonl"),
+      link('Full Career & Project Timeline (1997-2026)', "#{SITE}/timeline/"),
       link('Chicago Community Timeline (17-Year History)', "#{SITE}/timeline/community/"),
+      link('Software Craftsmanship McHenry County (SCMC)', "#{SITE}/scmc/"),
       link('Software Craftsmanship Forensics', "#{SITE}/reports/software-craftsmanship-forensics/"),
+      link('Panoramic View 4D Cartography', "#{SITE}/panoramic-view/"),
       link('Signatory Network (SCM x UGtastic x SCMC)', "#{SITE}/reports/software-craftsmanship-forensics/signatory-network/"),
       link('Agile Manifesto & Craftsmanship Intersection', "#{SITE}/reports/software-craftsmanship-forensics/agile-manifesto-intersection/"),
       link('Speakers Directory', "#{SITE}/speakers/"),
@@ -188,6 +191,23 @@ class EpisodeBookmarks
     folders << folder('The Mirage of Competence (AI Experiment)', [
       link('The Mirage of Competence on LinkedIn', 'https://www.linkedin.com/posts/just3ws_softwareengineering-generativeai-systemsarchitecture-ugcPost-7515895083825770496-e85P/'),
       link('Live Broadcast Workbench & Waveform HUD', "#{SITE}/dehum/dashboard.html")
+    ])
+
+    # 5. The Ship of Theseus: From Wooden Boat to Space Station
+    sot_query = CGI.escape(JSON.generate(text: 'Mike Hall Ship of Theseus Wooden Boat Space Station Studio Workbench 2026', limit: 12))
+    folders << folder('The Ship of Theseus: From Wooden Boat to Space Station', [
+      link('Executive Briefing Dossier & Adversarial Cross-Examination', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/studio-workbench-ship-of-theseus-briefing.md'),
+      link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus-rundown.md'),
+      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus.textream'),
+      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-ship-of-theseus.yml'),
+      link('Active Lower-Third Overlay', "#{SITE}/obs/overlays/lower-third.html"),
+      link('Active Overlay State (JSON)', "#{SITE}/obs/overlays/overlay-state.json"),
+      link('From Fiverr to whisper.cpp (15-Year Oral History Case Study)', "#{SITE}/ai/2026/09/02/from-fiverr-to-whisper-cpp-verifiable-oral-history/"),
+      link('Interactive Career & Milestone Chronology', "#{SITE}/timeline/"),
+      link('Software Craftsmanship McHenry County (SCMC Founding)', "#{SITE}/scmc/"),
+      link('Panoramic View & 4D System Cartography Framework', "#{SITE}/panoramic-view/"),
+      link('Autonomous Media Pipeline Cockpit', 'https://media-pipeline.localhost/'),
+      link('Hister research search', "#{HISTORIAN}/search?query=#{sot_query}")
     ])
 
     folder('Studio Workbench', folders)
