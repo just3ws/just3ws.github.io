@@ -82,13 +82,13 @@ body_class: page-support
     </div>
     {% else %}
     <div>
-      <p class="support-eyebrow">Coming soon</p>
-      <h2 id="support-invitation-title">I'm preparing a small Patreon launch</h2>
-      <p>I'm starting with occasional studio notes about the videos, the interview archive, and making software. I'll share the membership page here once it's ready.</p>
+      <p class="support-eyebrow">Studio Notes &amp; Community</p>
+      <h2 id="support-invitation-title">Support the independent work on Patreon</h2>
+      <p>Follow free for public updates, or join Studio Notes for occasional notes about the videos, the interview archive, making software, and access to the Hallway chatroom.</p>
     </div>
     <div class="support-actions">
-      <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Watch my videos</a>
-      <a href="https://www.just3ws.com/interviews/">Explore the interview archive</a>
+      <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Join Studio Notes for $5/month</a>
+      <a href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow free on Patreon</a>
     </div>
     {% endif %}
   </section>

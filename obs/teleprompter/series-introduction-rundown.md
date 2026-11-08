@@ -69,17 +69,11 @@ I am building this as a public record. I want it to be useful to people who were
 
 The simplest way to follow the series is to subscribe to the YouTube channel. That is free, and it helps you find the next video when it is ready.
 
-Use the wording that matches the campaign status when recording.
+Patreon is one way to support the time I spend recording, editing, caring for the interview archive, and making software. I share occasional notes about that work and host our Hallway community chat. I do not have a fixed posting schedule, and membership will not unlock private recordings or change what I choose to make public.
 
-- **If Patreon is unpublished:** I am preparing Patreon as a way to support the time I spend recording, editing, caring for the interview archive, and making software. I may share occasional notes about that work. I do not have a fixed posting schedule, and membership will not unlock private recordings or change what I choose to make public.
-- **If Patreon is published:** Patreon is one way to support the time I spend recording, editing, caring for the interview archive, and making software. I may share occasional notes about that work. I do not have a fixed posting schedule, and membership will not unlock private recordings or change what I choose to make public.
+If you would like to support the work, the Patreon link is in the description. Please join only if the offer makes sense for you. The public videos and interviews will remain available on their usual sites.
 
-**Choose one ending at publication time:**
-
-- **If Patreon is still unpublished:** Patreon is not open yet. I will add the link to the description if that changes. For now, subscribing to the channel is the best way to follow along.
-- **If Patreon is published:** If you would like to support the work, the Patreon link is in the description. Please join only if the offer makes sense for you. The public videos and interviews will remain available on their usual sites.
-
-**Production check:** Confirm the Patreon page status. Use the matching support paragraph and ending. Do not read both versions. The current campaign record says the page is unpublished.
+**Production check:** The Patreon creator page is published at https://www.patreon.com/c/just3ws with the $5 Studio Notes tier and Hallway community chatroom active.
 
 ## 7. Close
 
