@@ -28,6 +28,6 @@ Video uploads, captions, playlist changes, metadata updates, publication status,
 
 No episodes in this rewatch series have been published yet. The local outline and the production site describe work in progress, not a release calendar.
 
-## Episode -1 transcript count
+## Studio Workbench: Fluffle transcript count
 
 The Fluffle source repository was audited at a tracked snapshot. It contained 1,017 matching `.txt` and `.srt` pairs, with no unmatched stems. Public-facing copy uses “1K+ transcript pairs” so the published wording remains useful as the repository grows.
