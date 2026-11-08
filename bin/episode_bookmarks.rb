@@ -2,7 +2,8 @@
 # frozen_string_literal: true
 
 # Generates a Netscape bookmark file and updates Chromium browser bookmarks
-# for The Sound Above, Studio Workbench, and Ramblin' & Amblin' series research.
+# for Localhost (*.localhost), Phalanx Duel, The Sound Above, Studio Workbench,
+# and Ramblin' & Amblin' series and platform surfaces.
 
 require 'cgi'
 require 'date'
@@ -22,7 +23,6 @@ class EpisodeBookmarks
   HISTORIAN = 'https://hister.localhost'
 
   PRESERVED_BAR_ITEMS = [
-    'dots',
     'LAN System Map',
     'Media Pipeline Cockpit',
     'Hister | Software Craftsmanship & Oral History Research',
@@ -33,6 +33,61 @@ class EpisodeBookmarks
   def initialize(output = DEFAULT_OUTPUT)
     @output = File.expand_path(output)
     @sequence = JSON.parse(File.read(SEQUENCE))
+  end
+
+  def build_localhost_ecosystem
+    folders = []
+    folders << folder('Core Platforms', [
+      link('zdots.localhost (Platform Bus & Control Plane)', 'https://zdots.localhost/'),
+      link('my.localhost (Platform Dashboard)', 'https://my.localhost/'),
+      link('just3ws.localhost (Public CareerOS & Archive)', "#{SITE}/"),
+      link('wwworkremote.localhost (Career Intelligence)', 'https://wwworkremote.localhost/')
+    ])
+
+    folders << folder('Operational Cockpits', [
+      link('media-pipeline.localhost (Media Pipeline)', 'https://media-pipeline.localhost/'),
+      link('hister.localhost (Search Engine)', HISTORIAN),
+      link('dehum Cockpit (Acoustic Forensics)', "#{SITE}/dehum/dashboard.html"),
+      link('LAN System Map (Topology)', 'https://lan.just3ws.com/map')
+    ])
+
+    folders << folder('Realtime & Gaming', [
+      link('play.phalanxduel.localhost (Game Client)', 'https://play.phalanxduel.localhost/'),
+      link('admin.phalanxduel.localhost (Admin Console)', 'https://admin.phalanxduel.localhost/'),
+      link('phalanxduel.localhost (Rules & Architecture)', 'https://phalanxduel.localhost/'),
+      link('phalanxduel.localhost/demo/ (Demo Cockpit)', 'https://phalanxduel.localhost/demo/')
+    ])
+
+    folders << folder('AI & Inference', [
+      link('llama.localhost (Local LLM Inference)', 'https://llama.localhost/'),
+      link('embed.localhost (Vector Embeddings)', 'https://embed.localhost/')
+    ])
+
+    folders << folder('Observability & Telemetry', [
+      link('o2.localhost (OpenObserve Telemetry)', 'https://o2.localhost/'),
+      link('jaeger.localhost (Distributed Tracing)', 'https://jaeger.localhost/')
+    ])
+
+    folders << folder('Package Caches', [
+      link('gemstash.localhost (RubyGems Cache)', 'https://gemstash.localhost/')
+    ])
+
+    folder('Localhost (*.localhost)', folders)
+  end
+
+  def build_phalanx_duel
+    entries = [
+      link('Play Client (play.phalanxduel.localhost)', 'https://play.phalanxduel.localhost/'),
+      link('Admin Console (admin.phalanxduel.localhost)', 'https://admin.phalanxduel.localhost/'),
+      link('Rules & Architecture (phalanxduel.localhost)', 'https://phalanxduel.localhost/'),
+      link('Generated Demo Cockpit (/demo/)', 'https://phalanxduel.localhost/demo/'),
+      link('Live Public Platform (phalanxduel.com)', 'https://phalanxduel.com'),
+      link('SCMC Presentation & Quickstart', "#{SITE}/phalanx-duel/"),
+      link('Retrospective Systems Essay', "#{SITE}/2026/10/20/phalanx-duel-make-the-rules-legible-scmc-presentation-and-game-architecture.html"),
+      link('YouTube Architecture Playlist', 'https://www.youtube.com/playlist?list=PLHenvAZhJjHo'),
+      link('Local Game Source Directory', 'file:///Users/mike/github.com/phalanxduel/game/')
+    ]
+    folder('Phalanx Duel', entries)
   end
 
   def build_sound_above
@@ -128,14 +183,20 @@ class EpisodeBookmarks
   end
 
   def all_series_folders
-    [build_sound_above, build_studio_workbench, build_ramblin_amblin]
+    [
+      build_localhost_ecosystem,
+      build_phalanx_duel,
+      build_sound_above,
+      build_studio_workbench,
+      build_ramblin_amblin
+    ]
   end
 
   def generate
     series_folders = all_series_folders
     FileUtils.mkdir_p(File.dirname(@output))
     File.write(@output, document(series_folders))
-    puts "Wrote #{series_folders.size} series bookmark collections to #{@output}"
+    puts "Wrote #{series_folders.size} bookmark collections to #{@output}"
   end
 
   def install_to_chromium
@@ -173,16 +234,20 @@ class EpisodeBookmarks
     id_gen = Enumerator.new { |y| (max_id + 1).step { |n| y << n.to_s } }
     timestamp = (Time.now.to_f * 1_000_000 + 11644473600000000).to_i.to_s
 
-    series_nodes = all_series_folders.map do |series_folder|
-      to_chromium_node(series_folder, id_gen, timestamp)
-    end
-
     bar = b_data['roots']['bookmark_bar']
     preserved_children = bar['children'].select { |c| PRESERVED_BAR_ITEMS.include?(c['name']) }
-    bar['children'] = preserved_children + series_nodes
+
+    bar['children'] = [to_chromium_node(build_localhost_ecosystem, id_gen, timestamp)] +
+                      preserved_children +
+                      [
+                        to_chromium_node(build_phalanx_duel, id_gen, timestamp),
+                        to_chromium_node(build_sound_above, id_gen, timestamp),
+                        to_chromium_node(build_studio_workbench, id_gen, timestamp),
+                        to_chromium_node(build_ramblin_amblin, id_gen, timestamp)
+                      ]
 
     File.write(CHROMIUM_BOOKMARKS, JSON.pretty_generate(b_data))
-    puts "Successfully updated Chromium Bookmarks with #{series_nodes.size} series folders."
+    puts "Successfully updated Chromium Bookmarks with Localhost and Phalanx Duel folders."
 
     if was_running
       puts 'Relaunching Chromium...'
@@ -261,7 +326,7 @@ class EpisodeBookmarks
 
   def document(folders)
     rendered_folders = folders.map { |f| render_node(f) }.join("\n")
-    "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n<TITLE>Channel Series Research Bookmarks</TITLE>\n<H1>Channel Series Research Bookmarks</H1>\n<DL><p>\n#{rendered_folders}\n</DL><p>\n"
+    "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n<TITLE>Channel Series & Platform Research Bookmarks</TITLE>\n<H1>Channel Series & Platform Research Bookmarks</H1>\n<DL><p>\n#{rendered_folders}\n</DL><p>\n"
   end
 
   def render_node(item)
@@ -284,8 +349,8 @@ if __FILE__ == $PROGRAM_NAME
   parser = OptionParser.new do |opts|
     opts.banner = 'Usage: bin/episode_bookmarks.rb [options] [output_file]'
     opts.separator ''
-    opts.separator 'Generates and installs research bookmarks for The Sound Above,'
-    opts.separator 'Studio Workbench, and Ramblin\' & Amblin\' across Chromium.'
+    opts.separator 'Generates and installs research bookmarks for Localhost (*.localhost),'
+    opts.separator 'Phalanx Duel, The Sound Above, Studio Workbench, and Ramblin\' & Amblin\'.'
     opts.separator ''
 
     opts.on('-i', '--install', 'Install bookmarks directly into Chromium browser profile') do

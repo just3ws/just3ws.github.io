@@ -126,13 +126,15 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       expect(stdout).to include('Generates and installs research bookmarks')
     end
 
-    it 'generates HTML bookmarks covering all three primary series' do
+    it 'generates HTML bookmarks covering series and platform surfaces' do
       require 'tempfile'
       Tempfile.create(['test_bookmarks', '.html']) do |f|
         stdout, stderr, status = Open3.capture3(bookmarks_bin, '-o', f.path)
         expect(status.success?).to be true
-        expect(stdout).to include('Wrote 3 series bookmark collections')
+        expect(stdout).to include('Wrote 5 bookmark collections')
         content = File.read(f.path)
+        expect(content).to include('Localhost (*.localhost)')
+        expect(content).to include('Phalanx Duel')
         expect(content).to include('The Sound Above')
         expect(content).to include('Studio Workbench')
         expect(content).to include("Ramblin&#39; &amp; Amblin&#39;")
