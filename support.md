@@ -70,12 +70,16 @@ body_class: page-support
     {% if campaign.page_status == "published" %}
     <div>
       <p class="support-eyebrow">Support the independent work</p>
-      <h2 id="support-invitation-title">A studio note now and then</h2>
+      <h2 id="support-invitation-title">Studio Notes &amp; The Hallway Chatroom</h2>
       <p>{{ campaign.membership_recommendation.paid_tier_description }}</p>
+      <p>Members also get access to <strong>{{ campaign.community_chat.name }}</strong>, our direct chatroom on Patreon for conversations about software craft, audio forensics, archive history, and live workbench questions.</p>
       <p>{{ campaign.membership_recommendation.cadence }}</p>
       <p>Your support helps make room for the work as a whole. It doesn't assign your contribution to one project or change what I choose to publish.</p>
     </div>
-    <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Join {{ campaign.membership_recommendation.paid_tier_name }} for ${{ campaign.membership_recommendation.paid_tier_price_usd }}/month</a>
+    <div class="support-actions">
+      <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Join {{ campaign.membership_recommendation.paid_tier_name }} for ${{ campaign.membership_recommendation.paid_tier_price_usd }}/month</a>
+      <a href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow free on Patreon</a>
+    </div>
     {% else %}
     <div>
       <p class="support-eyebrow">Coming soon</p>
@@ -87,6 +91,24 @@ body_class: page-support
       <a href="https://www.just3ws.com/interviews/">Explore the interview archive</a>
     </div>
     {% endif %}
+  </section>
+
+  <section class="support-projects" aria-labelledby="support-channels-title">
+    <div class="support-section-heading">
+      <p class="support-eyebrow">Direct ways to back the work</p>
+      <h2 id="support-channels-title">Funding channels &amp; community support</h2>
+      <p style="color: var(--color-text-muted); max-width: 60ch; line-height: 1.6;">Whether you want to join monthly studio discussions, sponsor open-source developer tooling, send a quick one-time tip, or partner on a focused systems investigation, every contribution keeps these efforts independent and freely shared.</p>
+    </div>
+    <div class="support-project-grid">
+      {% for channel in campaign.funding_channels %}
+      <article class="support-project-card">
+        <span class="support-eyebrow" style="margin-top: 1.25rem;">{{ channel.badge }}</span>
+        <h3>{{ channel.name }}</h3>
+        <p>{{ channel.description }}</p>
+        <a href="{{ channel.url }}" {% if channel.url contains 'http' %}target="_blank" rel="noopener"{% endif %}>{{ channel.action_label }} &rarr;</a>
+      </article>
+      {% endfor %}
+    </div>
   </section>
   <section class="support-story" aria-labelledby="support-engineering-title">
     <p class="support-eyebrow">Working together</p>

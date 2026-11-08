@@ -78,25 +78,25 @@ Draft tier copy:
 > or sponsors. I post when I have something meaningful to show rather than on a
 > rigid deadline. Public videos and interviews remain free for everyone.
 
-The creator page remains unpublished. The $5 **Studio Notes** tier is the only
-published paid option. The $1, $7, $20, and $97 bootstrap tiers remain
-unpublished drafts with no members. Their benefits and descriptions are stale;
-do not publish them. Keep future tier ideas in this guide until each has a
-clear, sustainable member experience.
+The creator page is live and published. The $5 **Studio Notes** tier is the active
+paid option, providing workbench notes and access to the **Hallway** community
+chatroom on Patreon. The $1, $7, $20, and $97 bootstrap tiers remain
+unpublished drafts with no members.
 
-The welcome post is saved in Patreon as a free-access draft, using the copy in
-`_data/patreon_campaign.yml`. Review the rendered post and thumbnail before
-launch. Do not publish the page or post until Mike makes that launch decision. The
-public support page hides Patreon calls to action until `page_status` changes to
-`published`, so visitors are not sent to a closed creator page. Local tooling
-does not publish pages, posts, or tiers.
+The public support page (<https://www.just3ws.com/support/>) surfaces Patreon
+membership alongside Mike's other enabled funding methods: GitHub Sponsors for open
+source, Buy Me a Coffee for one-time support, and focused workflow investigations for
+teams.
 
 ## Cross-surface map
 
 | Surface | Role | Canonical link |
 |---|---|---|
-| Patreon | Membership, community posts, and support | <https://www.patreon.com/c/just3ws> |
-| just3ws.com/support | First-person overview and project map | <https://www.just3ws.com/support/> |
+| Patreon | Membership, community posts, and Studio Notes | <https://www.patreon.com/c/just3ws> |
+| Hallway Chat | Direct community chatroom on Patreon | <https://www.patreon.com/c/just3ws/chats> |
+| GitHub Sponsors | Open-source developer sponsorship | <https://github.com/sponsors/just3ws> |
+| Buy Me a Coffee | Direct one-time tip support | <https://buymeacoffee.com/just3ws> |
+| just3ws.com/support | Central support and project map | <https://www.just3ws.com/support/> |
 | Ramblin' & Amblin' | Current YouTube series | <https://www.youtube.com/@whoistechcmty> |
 | Interview archive | Historical UGtastic / WHOIS Tech Community record | <https://www.just3ws.com/interviews/> |
 | Phalanx Duel | Independent game project | <https://github.com/phalanxduel/phalanxduel> |

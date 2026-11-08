@@ -97,15 +97,53 @@ membership_recommendation:
   paid_tier_name: "Studio Notes"
   paid_tier_price_usd: 5
   paid_tier_description: >-
-    A window into the work between finished pieces. I share occasional notes
-    and early drafts on shaping video topics, lessons from building software,
-    and steps in caring for the 200+ interview archive. Your support gives me
-    the time and independence to dig into ideas deeply without chasing algorithms
-    or sponsors. I post when I have something meaningful to show rather than on a
+    A window into the work between finished pieces and access to the Hallway
+    community chatroom on Patreon. I share occasional notes and early drafts on
+    shaping video topics, lessons from building software, audio forensics, and
+    steps in caring for the 200+ interview archive. Your support gives me the
+    time and independence to dig into ideas deeply without chasing algorithms or
+    sponsors. I post when I have something meaningful to show rather than on a
     rigid deadline. Public videos and interviews remain free for everyone.
   free_membership_description: >-
     Follow for public updates and posts I choose to share with free members.
   cadence: "I'm still finding a pace I can sustain, so there is no fixed publishing schedule."
+
+community_chat:
+  name: "Hallway"
+  platform: "Patreon"
+  url: "https://www.patreon.com/c/just3ws/chats"
+  description: "A community chatroom on Patreon for members and supporters to talk software craft, audio forensics, archive history, and live workbench notes."
+  access: "Members and supporters"
+
+funding_channels:
+  - id: "patreon"
+    name: "Patreon & Hallway Chat"
+    badge: "Monthly Community"
+    url: "https://www.patreon.com/c/just3ws"
+    description: "Follow for free or join Studio Notes ($5/month) for workbench notes, early drafts, and access to the Hallway chatroom."
+    action_label: "Join on Patreon"
+    primary: true
+  - id: "github-sponsors"
+    name: "GitHub Sponsors"
+    badge: "Open Source"
+    url: "https://github.com/sponsors/just3ws"
+    description: "Support open-source development, developer tooling, reproducible pipelines, and code repositories on GitHub."
+    action_label: "Sponsor on GitHub"
+    primary: false
+  - id: "buymeacoffee"
+    name: "Buy Me a Coffee"
+    badge: "One-Time Tip"
+    url: "https://buymeacoffee.com/just3ws"
+    description: "A simple, one-time contribution for viewers, readers, and players who want a quick, commitment-free way to back the studio."
+    action_label: "Tip on Buy Me a Coffee"
+    primary: false
+  - id: "engagements"
+    name: "Focused Systems Investigations"
+    badge: "Engineering Advisory"
+    url: "/engagements/#workflow-investigation"
+    description: "For engineering teams: a bounded, evidence-based investigation of one critical system or workflow with agreed scope and fee."
+    action_label: "View Engagements"
+    primary: false
 
 studio_note_sample:
   title: "What a photograph can tell us"
@@ -177,7 +215,7 @@ surface_management:
     campaign_url: "https://www.patreon.com/c/just3ws"
   page:
     desired_status: "published"
-    observed_status: "unpublished"
+    observed_status: "published"
     title_source: "title"
     about_source: "about"
     color:
