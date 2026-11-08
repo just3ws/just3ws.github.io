@@ -13,29 +13,110 @@ body_class: page-platform-dashboard
 
   <!-- Header -->
   <header style="margin-bottom: 2.5rem; border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 1.5rem;">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-      <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
-        ⚡ Control Plane Dashboard
-      </span>
-      <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem;">Local Loopback Ecosystem (.localhost)</span>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="background: rgba(15, 118, 110, 0.12); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.3); font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 9999px; text-transform: uppercase;">
+          ⚡ Control Plane Dashboard
+        </span>
+        <span style="color: var(--color-text-muted, #64748b); font-size: 0.85rem;">Local Loopback Ecosystem (.localhost)</span>
+      </div>
+      <button id="ping-dashboard-btn" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 6px; padding: 0.25rem 0.65rem; font-family: ui-monospace, monospace; font-size: 0.75rem; color: #0f766e; font-weight: 600; cursor: pointer;">
+        Ping Services
+      </button>
     </div>
     <h1 style="font-size: 2.25rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.5rem 0; font-family: var(--font-serif-editorial, Georgia, serif);">
       Local Platform Link Dashboard
     </h1>
     <p style="font-size: 1.1rem; color: var(--color-text-muted, #525866); margin: 0; max-width: 50rem;">
-      Single-pane access to all nginx-proxied microservices, AI inference endpoints, observability consoles, and local research surfaces.
+      Single-pane access to all nginx-proxied microservices, gaming engines, AI inference endpoints, observability consoles, and local research surfaces.
     </p>
   </header>
 
   <!-- Grid of Service Cards -->
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
 
-    <!-- Card 0: The Sound Above Season One Plan -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <!-- Card 0: Phalanx Duel (Tactical Tabletop & Web Game) -->
+    <div class="service-card" data-service-url="https://play.phalanxduel.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">⚔️ Phalanx Duel (Game & Admin)</h3>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
+          Realtime turn-based tactical card and board game. Single-player, bot matches, and LAN multiplayer powered by Node.js, Vite, and PostgreSQL.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
+          <a href="https://admin.phalanxduel.localhost/" target="_blank" style="font-size: 0.75rem; background: rgba(15, 118, 110, 0.1); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.25); padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: 600;">
+            🛡️ Admin Deck
+          </a>
+          <a href="https://phalanxduel.localhost/" target="_blank" style="font-size: 0.75rem; background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.25); padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: 600;">
+            📖 Rules & Retros
+          </a>
+          <a href="https://phalanxduel.localhost/demo/" target="_blank" style="font-size: 0.75rem; background: rgba(217, 119, 6, 0.1); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.25); padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: 600;">
+            🎬 Scenario Demo
+          </a>
+        </div>
+        <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
+          Host: play.phalanxduel.localhost (:5173 / :3001)
+        </div>
+      </div>
+      <a href="https://play.phalanxduel.localhost/" target="_blank" style="display: inline-block; background: #0284c7; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
+        Launch Phalanx Duel ↗
+      </a>
+    </div>
+
+    <!-- Card 1: Media Pipeline Cockpit -->
+    <div class="service-card" data-service-url="https://media-pipeline.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">⚡ Media Pipeline Cockpit</h3>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
+          Zero-disk-waste media intake, whisper.cpp transcription, SolidQueue orchestration, and automated YouTube publishing pipeline.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
+          <a href="https://media-pipeline.localhost/stream" target="_blank" style="font-size: 0.75rem; background: rgba(15, 118, 110, 0.1); color: #0f766e; border: 1px solid rgba(15, 118, 110, 0.25); padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: 600;">
+            📡 SSE Telemetry
+          </a>
+          <a href="/youtube/dashboard/" style="font-size: 0.75rem; background: rgba(180, 83, 9, 0.1); color: #b45309; border: 1px solid rgba(180, 83, 9, 0.25); padding: 0.2rem 0.5rem; border-radius: 0.25rem; text-decoration: none; font-weight: 600;">
+            📺 Season One Plan
+          </a>
+        </div>
+        <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
+          Host: media-pipeline.localhost (127.0.0.1:3000)
+        </div>
+      </div>
+      <a href="https://media-pipeline.localhost/" target="_blank" style="display: inline-block; background: #0f766e; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
+        Open Pipeline Cockpit ↗
+      </a>
+    </div>
+
+    <!-- Card 2: Hister Search Engine -->
+    <div class="service-card" data-service-url="https://hister.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">🔍 Hister Search Engine</h3>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
+          Personal local-first web and document search engine. Crawls, indexes, and surfaces research documents with instant full-text recall.
+        </p>
+        <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
+          Upstream: 127.0.0.1:4433 (PID 1371)
+        </div>
+      </div>
+      <a href="https://hister.localhost" target="_blank" style="display: inline-block; background: #0f766e; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
+        Launch Hister (hister.localhost) ↗
+      </a>
+    </div>
+
+    <!-- Card 3: The Sound Above Season One Plan -->
+    <div class="service-card" data-service-url="/youtube/dashboard/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">📺 The Sound Above: Season One Plan</h3>
-          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">HTTP 200</span>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
         </div>
         <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
           A flexible working outline for revisiting selected interviews from the UGtastic archive. Season One has a target of 17 interviews and no release schedule.
@@ -54,31 +135,12 @@ body_class: page-platform-dashboard
       </a>
     </div>
 
-    <!-- Card 1: Hister Search Engine -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
-      <div>
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-          <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">🔍 Hister Search Engine</h3>
-          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">HTTP 200</span>
-        </div>
-        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
-          Personal local-first web and document search engine. Crawls, indexes, and surfaces research documents with instant full-text recall.
-        </p>
-        <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
-          Upstream: 127.0.0.1:4433 (PID 1371)
-        </div>
-      </div>
-      <a href="https://hister.localhost" target="_blank" style="display: inline-block; background: #0f766e; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
-        Launch Hister (hister.localhost) ↗
-      </a>
-    </div>
-
-    <!-- Card 2: SCM Forensics Report -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <!-- Card 4: SCM Forensics Report -->
+    <div class="service-card" data-service-url="/reports/software-craftsmanship-forensics/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">📜 SCM Forensics Report</h3>
-          <span style="background: #e0e7ff; color: #4338ca; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">Research</span>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
         </div>
         <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
           Archaeological analysis of softwarecraftsmanship.org, verifying Mike Hall's 106th signatory rank, ledger drift, and 17-year link rot.
@@ -92,18 +154,18 @@ body_class: page-platform-dashboard
       </a>
     </div>
 
-    <!-- Card 3: zdots Observable Control Plane -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <!-- Card 5: zdots Observable Control Plane -->
+    <div class="service-card" data-service-url="https://zdots.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">🧭 zdots Control Plane</h3>
-          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">HTTP 200</span>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
         </div>
         <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
           Live system status console monitoring platform health, background workers, AI endpoints, and telemetry across the host.
         </p>
         <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
-          Host: zdots.localhost
+          Host: zdots.localhost (:11600)
         </div>
       </div>
       <a href="https://zdots.localhost" target="_blank" style="display: inline-block; background: #0f172a; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
@@ -111,18 +173,18 @@ body_class: page-platform-dashboard
       </a>
     </div>
 
-    <!-- Card 4: OpenObserve (o2) -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <!-- Card 6: OpenObserve (o2) -->
+    <div class="service-card" data-service-url="https://o2.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">📊 OpenObserve (o2)</h3>
-          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">HTTP 200</span>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
         </div>
         <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
           High-performance distributed observability dashboard for real-time log streaming, OpenTelemetry spans, and command metrics.
         </p>
         <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
-          Host: o2.localhost (zsvc o2)
+          Host: o2.localhost (zsvc o2 :5080)
         </div>
       </div>
       <a href="https://o2.localhost" target="_blank" style="display: inline-block; background: #d97706; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
@@ -130,12 +192,12 @@ body_class: page-platform-dashboard
       </a>
     </div>
 
-    <!-- Card 5: Local AI Chat (llama-server) -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <!-- Card 7: Local AI Chat (llama-server) -->
+    <div class="service-card" data-service-url="https://llama.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">🤖 Local LLM Inference</h3>
-          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">HTTP 200</span>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
         </div>
         <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
           Local OpenAI-compatible inference endpoint backed by llama.cpp. Zero data leaves loopback.
@@ -149,12 +211,12 @@ body_class: page-platform-dashboard
       </a>
     </div>
 
-    <!-- Card 6: Gemstash Proxy -->
-    <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+    <!-- Card 8: Gemstash Proxy -->
+    <div class="service-card" data-service-url="https://gemstash.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
       <div>
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">💎 Gemstash Proxy</h3>
-          <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px;">HTTP 200</span>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
         </div>
         <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
           Private RubyGems caching server speeding up local bundle installs and eliminating upstream dependencies.
@@ -168,6 +230,61 @@ body_class: page-platform-dashboard
       </a>
     </div>
 
+    <!-- Card 9: wwworkremote (Career Intelligence Peer) -->
+    <div class="service-card" data-service-url="https://wwworkremote.localhost/" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <h3 style="margin: 0; font-size: 1.2rem; font-weight: 700; color: #0f172a;">💼 wwworkremote Peer</h3>
+          <span class="service-status-pill" style="background: #f1f5f9; color: #64748b; font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 9999px; font-family: ui-monospace, monospace;">Checking...</span>
+        </div>
+        <p style="font-size: 0.9rem; color: #475569; margin: 0 0 1rem 0; line-height: 1.5;">
+          Peer career intelligence and job search evaluation platform, synchronized via CareerOS PeerMutex and the zdots message bus.
+        </p>
+        <div style="font-size: 0.8rem; font-family: ui-monospace, monospace; color: #64748b; margin-bottom: 1rem;">
+          Host: wwworkremote.localhost (127.0.0.1:3000)
+        </div>
+      </div>
+      <a href="https://wwworkremote.localhost/" target="_blank" style="display: inline-block; background: #475569; color: #ffffff; text-align: center; font-weight: 700; font-size: 0.875rem; padding: 0.6rem 1rem; border-radius: 0.375rem; text-decoration: none;">
+        Open wwworkremote ↗
+      </a>
+    </div>
+
   </div>
 
 </div>
+
+<script>
+  async function pingDashboardServices() {
+    const btn = document.getElementById('ping-dashboard-btn');
+    if (btn) btn.textContent = 'Pinging...';
+
+    const cards = document.querySelectorAll('.service-card[data-service-url]');
+    await Promise.all(Array.from(cards).map(async (card) => {
+      const url = card.getAttribute('data-service-url');
+      const pill = card.querySelector('.service-status-pill');
+      if (!url || !pill) return;
+
+      const start = performance.now();
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2000);
+        await fetch(url, { mode: 'no-cors', cache: 'no-store', signal: controller.signal });
+        clearTimeout(timeoutId);
+        const latency = Math.round(performance.now() - start);
+        pill.textContent = latency + 'ms';
+        pill.style.background = '#dcfce7';
+        pill.style.color = '#15803d';
+      } catch (e) {
+        pill.textContent = 'Standby';
+        pill.style.background = '#f1f5f9';
+        pill.style.color = '#64748b';
+      }
+    }));
+
+    if (btn) btn.textContent = 'Ping Services';
+  }
+
+  pingDashboardServices();
+  setInterval(pingDashboardServices, 30000);
+  document.getElementById('ping-dashboard-btn')?.addEventListener('click', pingDashboardServices);
+</script>
