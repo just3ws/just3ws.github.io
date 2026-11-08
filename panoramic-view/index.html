@@ -172,6 +172,16 @@ permalink: /panoramic-view/
         The actor advances horizontally. Each interaction creates a vertical request-response wave whose evidence can be correlated at every layer.
       </figcaption>
     </figure>
+
+    <div class="pv-dimensions" aria-label="Panoramic View cartography dimensions">
+      {% for dim in pv.dimensions %}
+        <article class="pv-dimension">
+          <p class="pv-card-label">{{ dim.label }}</p>
+          <h3>{{ dim.name }}</h3>
+          <p>{{ dim.summary }}</p>
+        </article>
+      {% endfor %}
+    </div>
   </section>
 
   <!-- SECTION 4: FIELD VOCABULARY -->

@@ -9,7 +9,7 @@ meta:
     interface path to upstream supply chain, external partners, operational
     controls, retention, and archival cold storage.
   origin: >-
-    Mike Hall conceived Panoramic View circa 2021–2022, drawing on years of
+    Mike Hall conceived Panoramic View circa 2021-2022, drawing on years of
     production diagnosis, legacy-system ownership, observability, incremental
     modernization, and organizational knowledge recovery. The earliest
     timestamped exported evidence is from September 2023.
@@ -108,6 +108,14 @@ dimensions:
       implemented domain model, actual system operation, ownership, confidence,
       contradictions, and explicit unknowns.
     label: "Context axis"
+  - name: "Time and impact measure knowledge, not just latency"
+    summary: >-
+      The time dimension extends beyond network round-trips into context
+      loading costs, institutional knowledge attrition, and the operational
+      radius of impact. Business decisions are captured as tracked assets,
+      anchoring infrastructure investments to the sustained value of the
+      underlying business processes they support.
+    label: "Temporal & impact axis"
 
 discovery_loop:
   - title: "Define the premise"
@@ -166,6 +174,18 @@ vocabulary:
     - plain: "Hotpath mapping is one view of the larger map."
       related: "Critical-path analysis and journey prioritization"
       meaning: "Use frequency, business importance, or risk to choose where to begin without mistaking the first slice for the whole system."
+    - plain: "Business decisions are tracked assets that set the radius of impact."
+      related: "Decision asset tracking, radius of impact, and critical context bounds"
+      meaning: "Capture business decisions as concrete, tracked system assets mapped to code paths, data structures, and runtime infrastructure. This bounds the radius of impact and preserves the critical context required for safe change."
+    - plain: "Infrastructure value mirrors the business decisions it sustains."
+      related: "Value-derived infrastructure, holistic investment, and socio-technical stewardship"
+      meaning: "Map key decision points to the systems they run on to evaluate infrastructure value directly against business capability value. Sustained investment supports both the computing foundation and the long-term human capacity required to operate it."
+    - plain: "The time dimension measures context load and knowledge rot, not just API latency."
+      related: "Cognitive latency, context loading costs, and knowledge attrition prevention"
+      meaning: "Evaluate the time dimension of transactions across the entire lifecycle, including the hours spent recovering lost architectural context, the acceleration of knowledge rot, and the true cost of unmapped dependencies."
+    - plain: "A map that aligns human teams grounds AI agents too."
+      related: "Agentic grounding, socio-technical cartography, and hallucination containment"
+      meaning: "Use the same empirical system map that bridges Product and Engineering to bound AI agent context. Anchoring agents in verified decision points eliminates context thrashing and prevents speculative code generation."
 
 practice_areas:
   - title: "Legacy System Modernization"
@@ -180,3 +200,10 @@ practice_areas:
     text: >-
       Establishing a shared operational picture so Product, engineering teams,
       and leadership reason from correlated execution reality rather than guesswork.
+  - title: "Decision-Asset Cartography & Infrastructure Value"
+    text: >-
+      Treating business decisions as concrete, tracked system assets to establish
+      their operational radius of impact. Mapping key decision points to runtime
+      infrastructure clarifies the true value of computing investments, while
+      accounting for the full time dimension: context loading costs, institutional
+      knowledge attrition, and grounding autonomous AI agents in empirical reality.

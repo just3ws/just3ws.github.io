@@ -145,17 +145,18 @@ Panoramic View maps the correspondences and gaps among interested-party understa
 - The visible interface is only the horizon; every actor choice creates a vertical wave through technical and organizational layers.
 - The complete view must show both the journey across time and the repeated descent and return of each interaction.
 - The practical boundary is organizational scope and available time: the same model can continue upstream into supply chain and downstream through the complete data lifecycle.
-- Mike Hall conceived Panoramic View circa 2021–2022, drawing on years of
+- Mike Hall conceived Panoramic View circa 2021-2022, drawing on years of
   production diagnosis, legacy-system ownership, observability, incremental
   modernization, and organizational knowledge recovery. The earliest
   timestamped exported evidence is from September 2023.
 
-### 3. The two-dimensional model
+### 3. The multi-dimensional model
 
 - **Horizontal axis:** the actor enters stage left, moves through a business process, pauses or branches, and exits stage right.
 - **Vertical axis:** each interaction descends from interface to edge, application, services, integrations, and data, then returns as the next presented state.
 - **Evidence layer:** correlated traces, logs, recordings, source history, state differences, and subject-matter knowledge.
 - **Meaning layer:** business decisions, ownership, confidence, contradictions, and explicit unknowns.
+- **Temporal & impact axis:** business decisions captured as tracked assets setting the operational radius of impact. Measures the time dimension across context loading costs and knowledge attrition/rot acceleration rather than narrow API latency alone.
 
 ### 4. The Simple Loop of Discovery
 
@@ -173,7 +174,9 @@ Panoramic View maps the correspondences and gaps among interested-party understa
 - Architecture and modernization views.
 - Ownership and knowledge-risk views.
 - Security, compliance, quality, and decision-governance projections.
-- AI-ready context with provenance and uncertainty attached.
+- Decision-asset registries and radius of impact boundaries.
+- Infrastructure valuation mapped to supported business capabilities.
+- AI-ready context with provenance, bounded blast radii, and uncertainty attached.
 
 The model is primary. Every diagram, inventory, report, or AI context window is a projection of it.
 
@@ -260,7 +263,7 @@ The methodology page should teach the general method. Case studies should prove 
 | Claim area | Public-safe treatment | Provenance and confidence | Publication rule |
 |---|---|---|---|
 | Panoramic View authorship | “Mike Hall created Panoramic View.” | Mike's direct statements plus consistent historical and implementation records; high | Publish |
-| Origin date | “Conceived circa 2021–2022; earliest timestamped exported evidence is September 2023.” | Recalled origin differs by about one year across two evidence packages; high for range, not exact year | Publish the range; do not claim a more precise date without stronger evidence |
+| Origin date | “Conceived circa 2021-2022; earliest timestamped exported evidence is September 2023.” | Recalled origin differs by about one year across two evidence packages; high for range, not exact year | Publish the range; do not claim a more precise date without stronger evidence |
 | General method | Reconciles interested-party understanding, the implemented domain model, and observed runtime behavior through an actor journey plus repeated system traversals | Mike's descriptions and dated evolution; high | Publish in plain language |
 | Actor scope | Actors may be people, organizations, automated services, or agentic AI systems; each pursues a goal through an interface enacting a business process | Mike's direct conceptual clarification; high | Publish; avoid reducing “actor” to only a human user or customer |
 | Three-model reconciliation | Maps interested-party understanding to the implemented domain model and observed runtime behavior so their delta is explicit | Mike's direct conceptual clarification; high | Publish; qualify completeness by decision scope and available evidence |
