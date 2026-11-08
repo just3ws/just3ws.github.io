@@ -3,6 +3,9 @@ title: The Sound Above Recording Playbook
 description: Practical preparation, recording, live streaming, and recovery steps for the local OBS workflow.
 layout: minimal
 permalink: /youtube/recording-playbook/
+redirect_from:
+  - /obs/
+  - /obs/index.html
 ---
 
 # The Sound Above Recording Playbook

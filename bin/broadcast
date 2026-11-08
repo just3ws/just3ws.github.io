@@ -42,6 +42,10 @@ end
 
 def write_json(path, data)
   File.write(path, JSON.pretty_generate(data) + "\n")
+  if path == OVERLAY_STATE
+    webroot_state = '/opt/homebrew/var/www/just3ws.github.io/obs/overlays/overlay-state.json'
+    File.write(webroot_state, JSON.pretty_generate(data) + "\n") if File.directory?(File.dirname(webroot_state))
+  end
 end
 
 def print_status
