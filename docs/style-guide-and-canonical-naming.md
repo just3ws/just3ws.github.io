@@ -175,4 +175,22 @@ All surfaces surfaced on stream, in presentation browsers, in terminals, and on 
    - Dynamic profile JSON located at `obs/iterm2/the-sound-above.json` (installed to `~/Library/Application Support/iTerm2/DynamicProfiles/the-sound-above.json`).
    - Calibrated with sumi dark slate background, canvas text, 18pt Fira Code, and a solid box non-blinking cursor to prevent ScreenCaptureKit keyframe dropouts.
 
+### 8.3 Canonical Brand & Channel Image Assets
+
+All brand identity and media channel artwork adhere to strict aspect ratio and safe-zone contracts:
+
+1. **Profile Pictures & Avatars**:
+   - `assets/images/patreon/mike-hall-avatar-1024x1024-transparent.png` (Master Illustrated Mark, RGBA). Use on YouTube profile, Patreon avatar, GitHub (`@just3ws`), Discord, and video lower thirds. Transparent background prevents square crop artifacts on circular avatar masks.
+   - `assets/images/patreon/mike-hall-avatar-1024x1024.png` (Solid Master Mark, RGB). Use when opaque white background is required by legacy form inputs or favicon generators.
+   - `assets/images/patreon/mike-hall-photo-portrait-720x720.jpg` (Photographic Headshot, JPG). Use for speaker bios, conference programs, or formal publications requesting a real camera portrait.
+
+2. **Patreon Cover Banners (2500 x 625, 4:1 Aspect Ratio)**:
+   - `assets/images/patreon/mike-hall-patreon-cover-craftsman-2500x625.jpg` (Primary). Canonical editorial banner featuring Deep Craftsman Teal (`#0F766E`), Panoramic View system-journey waves, and craftsman typography.
+   - `assets/images/patreon/mike-hall-patreon-cover-workbench-photo-2500x625.jpg` (Alternate). Physical workbench photo featuring the July 2022 Phalanx Duel notebook and pen. Use during hardware, game design, or physical workshop series.
+   - Vector source: `assets/images/patreon/mike-hall-patreon-cover-craftsman.svg`.
+
+3. **YouTube Channel Banners (2048 x 1152, 16:9 Aspect Ratio)**:
+   - `assets/images/youtube-channel-banner-craftsman-2048x1152.png` (Primary). Formatted for YouTube's multi-device requirements. Headline, subtitle, and branding are locked within the centered 1235 x 338 safe zone ("Viewable on all devices"), flanked by architectural wings on desktop and TV.
+   - Vector source: `assets/images/youtube-channel-banner-craftsman-2048x1152.svg`.
+
 

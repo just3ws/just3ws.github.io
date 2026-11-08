@@ -111,17 +111,25 @@ manifesto into new copy without review.
 ## Visual presentation
 
 The shared visual reference is the site's Craftsmanship theme: warm paper,
-deep teal, sumi ink, and small amber accents. The creator avatar is Mike's
-existing illustrated mark. The Patreon dashboard cover artwork is
-[`assets/images/patreon/mike-hall-studio-cover-2500x625.jpg`](../assets/images/patreon/mike-hall-studio-cover-2500x625.jpg).
-It is the AI-generated image saved as the Patreon cover. The local `/support/`
-page does not reuse it. The site uses a still from Mike's published Ramblin' &
-Amblin' video, the original UGtastic logo, existing Phalanx Duel and Chicago
-Code Camp captures, and the system-wave SVG from the Panoramic View method page.
-The video still is stored at
-[`assets/images/patreon/ramblin-amblin-proximity-frame.jpg`](../assets/images/patreon/ramblin-amblin-proximity-frame.jpg)
-and its source video is recorded in `support_hero_image_source` in the campaign
-data.
+deep teal (`#0F766E`), sumi ink, and amber accents (`#F59E0B`).
+
+The creator avatar is Mike's original high-resolution illustrated mark:
+- Master Transparent Avatar: `assets/images/patreon/mike-hall-avatar-1024x1024-transparent.png`
+- Solid White Avatar: `assets/images/patreon/mike-hall-avatar-1024x1024.png`
+- Real Photographic Portrait: `assets/images/patreon/mike-hall-photo-portrait-720x720.jpg`
+
+The canonical Patreon cover banner is:
+- Editorial Craftsman Banner: `assets/images/patreon/mike-hall-patreon-cover-craftsman-2500x625.jpg`
+- Physical Workbench Photo (alternate): `assets/images/patreon/mike-hall-patreon-cover-workbench-photo-2500x625.jpg`
+- Vector Source: `assets/images/patreon/mike-hall-patreon-cover-craftsman.svg`
+
+The YouTube channel banner is:
+- Channel Banner (16:9 safe-zone centered): `assets/images/youtube-channel-banner-craftsman-2048x1152.png`
+- Vector Source: `assets/images/youtube-channel-banner-craftsman-2048x1152.svg`
+
+The public support page (`/support/`) uses authentic video stills from Ramblin' &
+Amblin', the original UGtastic logo, Phalanx Duel and Chicago Code Camp captures,
+and the system-wave SVG from the Panoramic View method page.
 
 The welcome post is saved as a free-access draft. The page layout keeps Latest
 and Recent posts for launch, and removes empty popular-post, collection, and
