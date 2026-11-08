@@ -9,6 +9,7 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
   let(:patreon_bin) { File.join(root_dir, 'bin', 'patreon_pipeline.rb') }
   let(:stage_bin) { File.join(root_dir, 'bin', 'stage_episode_workflow.rb') }
   let(:stage_workbench_bin) { File.join(root_dir, 'bin', 'stage_workbench') }
+  let(:bookmarks_bin) { File.join(root_dir, 'bin', 'episode_bookmarks.rb') }
   let(:pipeline_bin) { File.join(root_dir, 'bin', 'pipeline') }
 
   describe 'Patreon Pipeline CLI (bin/patreon_pipeline.rb)' do
@@ -113,6 +114,33 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
     end
   end
 
+  describe 'Episode & Series Bookmarks Utility (bin/episode_bookmarks.rb)' do
+    it 'is executable' do
+      expect(File.executable?(bookmarks_bin)).to be true
+    end
+
+    it 'shows help message with usage' do
+      stdout, stderr, status = Open3.capture3(bookmarks_bin, '--help')
+      expect(status.success?).to be true
+      expect(stdout).to include('Usage: bin/episode_bookmarks.rb')
+      expect(stdout).to include('Generates and installs research bookmarks')
+    end
+
+    it 'generates HTML bookmarks covering all three primary series' do
+      require 'tempfile'
+      Tempfile.create(['test_bookmarks', '.html']) do |f|
+        stdout, stderr, status = Open3.capture3(bookmarks_bin, '-o', f.path)
+        expect(status.success?).to be true
+        expect(stdout).to include('Wrote 3 series bookmark collections')
+        content = File.read(f.path)
+        expect(content).to include('The Sound Above')
+        expect(content).to include('Studio Workbench')
+        expect(content).to include("Ramblin&#39; &amp; Amblin&#39;")
+        expect(content).to include('Hello, World! (Preparation &amp; Desk Tour)')
+      end
+    end
+  end
+
   describe 'Pipeline wrapper integration' do
     it 'delegates patreon command from bin/pipeline' do
       stdout, stderr, status = Open3.capture3(pipeline_bin, 'patreon', 'status')
@@ -130,6 +158,12 @@ RSpec.describe 'Patreon Pipeline & Staging Workflow Integration' do
       stdout, stderr, status = Open3.capture3(pipeline_bin, 'media', 'stage-workbench', '--help')
       expect(status.success?).to be true
       expect(stdout).to include('Usage: bin/stage_workbench')
+    end
+
+    it 'delegates bookmarks command from bin/pipeline' do
+      stdout, stderr, status = Open3.capture3(pipeline_bin, 'media', 'bookmarks', '--help')
+      expect(status.success?).to be true
+      expect(stdout).to include('Usage: bin/episode_bookmarks.rb')
     end
   end
 end

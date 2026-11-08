@@ -96,6 +96,9 @@ run_media() {
     stage-workbench|stage_workbench)
       ruby bin/stage_workbench "$@"
       ;;
+    bookmarks)
+      ruby bin/episode_bookmarks.rb "$@"
+      ;;
     patreon)
       if [ $# -eq 0 ]; then
         ruby bin/patreon_pipeline.rb status
@@ -234,11 +237,11 @@ run_media() {
       ruby bin/analyze_ramblin_cadence.rb "$@"
       ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <status|inventory|assets|scan|corrupt|metadata|intake|stream|swiftbar|stage|patreon|episode|youtube|teleprompter|textream|sync-prompts|cadence|halt|stop|resume|query|service|restart|logs|doctor> [options]"
+      echo "Usage: ./bin/pipeline media <status|inventory|assets|scan|corrupt|metadata|intake|stream|swiftbar|stage|stage-workbench|bookmarks|patreon|episode|youtube|teleprompter|textream|sync-prompts|cadence|halt|stop|resume|query|service|restart|logs|doctor> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: status, inventory, assets, scan, corrupt, metadata, intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, cadence, halt, stop, resume, query, service, restart, logs, doctor" >&2
+      echo "Available: status, inventory, assets, scan, corrupt, metadata, intake, stream, swiftbar, stage, stage-workbench, bookmarks, patreon, episode, youtube, teleprompter, textream, sync-prompts, cadence, halt, stop, resume, query, service, restart, logs, doctor" >&2
       exit 1
       ;;
   esac
@@ -485,6 +488,10 @@ case "$cmd" in
   stage-workbench|stage_workbench)
     shift
     run_media stage-workbench "$@"
+    ;;
+  bookmarks)
+    shift
+    run_media bookmarks "$@"
     ;;
   intake|drive-intake|media-intake)
     shift

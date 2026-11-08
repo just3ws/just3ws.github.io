@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# Generates a Netscape bookmark file for The Sound Above episode research.
-# Import the resulting HTML file in Chromium's Bookmark Manager.
+# Generates a Netscape bookmark file and updates Chromium browser bookmarks
+# for The Sound Above, Studio Workbench, and Ramblin' & Amblin' series research.
 
 require 'cgi'
+require 'date'
+require 'fileutils'
 require 'json'
+require 'optparse'
+require 'securerandom'
 require 'yaml'
 
 class EpisodeBookmarks
@@ -13,23 +17,32 @@ class EpisodeBookmarks
   SEQUENCE = File.join(ROOT, '_data', 'sound_above_sequence.json')
   EPISODES = File.join(ROOT, '_data', 'episodes')
   DEFAULT_OUTPUT = File.join(ROOT, 'obs', 'bookmarks', 'the-sound-above-rewatch.html')
+  CHROMIUM_BOOKMARKS = File.expand_path('~/Library/Application Support/Chromium/Default/Bookmarks')
   SITE = 'https://www.just3ws.localhost'
   HISTORIAN = 'https://hister.localhost'
+
+  PRESERVED_BAR_ITEMS = [
+    'dots',
+    'LAN System Map',
+    'Media Pipeline Cockpit',
+    'Hister | Software Craftsmanship & Oral History Research',
+    'Mike Hall | Software Engineer - Mike Hall Technical Archive',
+    'YouTube Publishing Pipeline & Overview Dashboard'
+  ].freeze
 
   def initialize(output = DEFAULT_OUTPUT)
     @output = File.expand_path(output)
     @sequence = JSON.parse(File.read(SEQUENCE))
   end
 
-  def generate
+  def build_sound_above
     folders = []
     folders << folder('Start here', [
       link('The Sound Above series', "#{SITE}/series/the-sound-above/"),
       link('UGtastic interview archive', "#{SITE}/interviews/"),
-      link('Hister research search', HISTORIAN)
+      link('Hister research search', HISTORIAN),
+      link('Public Support & Credits', "#{SITE}/support/")
     ])
-
-    folders << folder('Studio Workbench investigations', [workbench_folder('workbench-fluffle-cluster.yml'), workbench_folder('workbench-audio-fix-power-lines.yml')])
 
     interviews = @sequence.fetch('episodes', [])
     folders << folder('Season One: working target of up to 17 interviews',
@@ -42,34 +55,173 @@ class EpisodeBookmarks
     codas = @sequence.fetch('codas', []).each_index.map { |index| episode_folder(36 + index) }
     folders << folder('Possible later extras', codas) unless codas.empty?
 
+    folder('The Sound Above', folders)
+  end
+
+  def build_studio_workbench
+    folders = []
+    folders << folder('Start here', [
+      link('Media Pipeline Cockpit', 'https://media-pipeline.localhost/'),
+      link('Live Broadcast Workbench', "#{SITE}/dehum/dashboard.html"),
+      link('YouTube Publishing Pipeline & Overview Dashboard', "#{SITE}/youtube/dashboard/#tab-queue"),
+      link('Hister research search', HISTORIAN)
+    ])
+
+    # 1. Hello, World!
+    hw_query = CGI.escape(JSON.generate(text: 'Mike Hall Studio Workbench Hello World 2026', limit: 12))
+    folders << folder('Hello, World! (Preparation & Desk Tour)', [
+      link('Media Pipeline Architecture & Cockpit', 'https://media-pipeline.localhost/'),
+      link('Active Overlay State', "#{SITE}/obs/overlays/overlay-state.json"),
+      link('Hister search results', "#{HISTORIAN}/search?query=#{hw_query}"),
+      link('Studio Workbench Target Specification', "#{SITE}/series/"),
+      link('Site Main Archive', SITE)
+    ])
+
+    # 2. Testing the Audio Fix Under the Power Lines
+    af_query = CGI.escape(JSON.generate(text: 'Mike Hall Testing the Audio Fix Under the Power Lines Field Recording 2026', limit: 12))
+    folders << folder('Testing the Audio Fix Under the Power Lines', [
+      link('Under the High-Tension Wires Case Study', "#{SITE}/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/"),
+      link('Live Broadcast Workbench & A/B Listening Test', "#{SITE}/dehum/dashboard.html"),
+      link('Source recording (YouTube 7YeFpKn5FbU)', 'https://www.youtube.com/watch?v=7YeFpKn5FbU'),
+      link('Ramblin\' & Amblin\' Monologue: Revisiting the Dehum Experiment', 'https://just3ws.com/transcripts/ramblin-amblin-ok-next-experiment/'),
+      link('Practice Run Recording', 'https://www.youtube.com/watch?v=7YeFpKn5FbU'),
+      link('Hister search results', "#{HISTORIAN}/search?query=#{af_query}")
+    ])
+
+    # 3. Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs
+    fl_query = CGI.escape(JSON.generate(text: 'Mike Hall Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs Errata Studio Walkthrough 2026', limit: 12))
+    folders << folder('Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs', [
+      link('The Fluffle Precursor Retrospective', "#{SITE}/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"),
+      link('GitHub: just3ws/fluffle Repository', 'https://github.com/just3ws/fluffle'),
+      link('Local WITC Archive Index', 'file:///Volumes/Dock_1TB/WITC/'),
+      link('Dead Rabbit Radio Daily Paranormal Podcast', 'https://deadrabbitradio.com'),
+      link('Hister search results', "#{HISTORIAN}/search?query=#{fl_query}")
+    ])
+
+    # 4. Mirage of Competence
+    folders << folder('The Mirage of Competence (AI Experiment)', [
+      link('The Mirage of Competence on LinkedIn', 'https://www.linkedin.com/posts/just3ws_softwareengineering-generativeai-systemsarchitecture-ugcPost-7515895083825770496-e85P/'),
+      link('Live Broadcast Workbench & Waveform HUD', "#{SITE}/dehum/dashboard.html")
+    ])
+
+    folder('Studio Workbench', folders)
+  end
+
+  def build_ramblin_amblin
+    folders = []
+    folders << folder('Playlists & Archive', [
+      link('Active Series Playlist (YouTube)', 'https://www.youtube.com/playlist?list=PLNtb969T2-l0'),
+      link('Sovereign Vault Archive Playlist (YouTube)', 'https://www.youtube.com/playlist?list=PLYCKmHMYvC7s'),
+      link('Field Transcripts Full Archive', "#{SITE}/transcripts/"),
+      link('Hister research search', HISTORIAN)
+    ])
+
+    folders << folder('Selected Field Notes & Transcripts', [
+      link('Revisiting the Dehum Experiment', 'https://just3ws.com/transcripts/ramblin-amblin-ok-next-experiment/'),
+      link('Mapping Ingress & Egress Points to Business Processes', "#{SITE}/transcripts/ramblin-amblin-mapping-ingress-and-egress-points-to-business-processes-ramb/"),
+      link('Mapping Business Decisions Across the System', "#{SITE}/transcripts/ramblin-amblin-mapping-business-decisions-across-the-system-ramblin-amblin/"),
+      link('When I Started Doing UGtastic', "#{SITE}/transcripts/ramblin-amblin-when-i-started-doing-ugtastic-the-way-i/"),
+      link('Good Morning & Mosquito Hood Recording (YouTube)', 'https://www.youtube.com/watch?v=8FyUrHlDFzE&list=PLNtb969T2-l0')
+    ])
+
+    folder("Ramblin' & Amblin'", folders)
+  end
+
+  def all_series_folders
+    [build_sound_above, build_studio_workbench, build_ramblin_amblin]
+  end
+
+  def generate
+    series_folders = all_series_folders
     FileUtils.mkdir_p(File.dirname(@output))
-    File.write(@output, document(folders))
-    puts "Wrote #{folders.size} research folders to #{@output}"
+    File.write(@output, document(series_folders))
+    puts "Wrote #{series_folders.size} series bookmark collections to #{@output}"
+  end
+
+  def install_to_chromium
+    unless File.file?(CHROMIUM_BOOKMARKS)
+      warn "Error: Chromium Bookmarks file not found: #{CHROMIUM_BOOKMARKS}"
+      return false
+    end
+
+    # Ensure Chromium is stopped to prevent file overwrite on quit
+    was_running = system('pgrep Chromium > /dev/null 2>&1')
+    if was_running
+      puts 'Gracefully stopping Chromium before updating Bookmarks profile...'
+      system("osascript -e 'tell application \"Chromium\" to quit' > /dev/null 2>&1")
+      10.times do
+        break unless system('pgrep Chromium > /dev/null 2>&1')
+
+        sleep 0.5
+      end
+    end
+
+    # Timestamped backup
+    backup_path = "#{CHROMIUM_BOOKMARKS}.backup-#{Time.now.strftime('%Y%m%d-%H%M%S')}"
+    FileUtils.cp(CHROMIUM_BOOKMARKS, backup_path)
+    puts "Created backup of Chromium bookmarks at: #{backup_path}"
+
+    b_data = JSON.parse(File.read(CHROMIUM_BOOKMARKS))
+    existing_ids = []
+    scan_ids = lambda do |node|
+      existing_ids << node['id'].to_i if node['id']
+      node['children']&.each { |child| scan_ids.call(child) }
+    end
+    b_data['roots'].each_value { |root_node| scan_ids.call(root_node) }
+
+    max_id = existing_ids.max || 1000
+    id_gen = Enumerator.new { |y| (max_id + 1).step { |n| y << n.to_s } }
+    timestamp = (Time.now.to_f * 1_000_000 + 11644473600000000).to_i.to_s
+
+    series_nodes = all_series_folders.map do |series_folder|
+      to_chromium_node(series_folder, id_gen, timestamp)
+    end
+
+    bar = b_data['roots']['bookmark_bar']
+    preserved_children = bar['children'].select { |c| PRESERVED_BAR_ITEMS.include?(c['name']) }
+    bar['children'] = preserved_children + series_nodes
+
+    File.write(CHROMIUM_BOOKMARKS, JSON.pretty_generate(b_data))
+    puts "Successfully updated Chromium Bookmarks with #{series_nodes.size} series folders."
+
+    if was_running
+      puts 'Relaunching Chromium...'
+      system('open -a Chromium')
+    end
+
+    true
   end
 
   private
 
-  def workbench_folder(filename)
-    dossier = load_yaml(filename)
-    title = format('Studio Workbench: %s', dossier.fetch('title'))
-    entries = [link('Season One working outline', "#{SITE}/series/the-sound-above/")]
-    entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
-    query = [dossier['interviewee'], dossier['title'], dossier['conference'], dossier['year']].compact.join(' ')
-    payload = CGI.escape(JSON.generate(text: query, limit: 12))
-    entries << link('Hister search results', "#{HISTORIAN}/search?query=#{payload}")
-    (dossier['research_attachments'] || []).each do |att|
-      entries << link(att['title'], att['url']) if att['url']
+  def to_chromium_node(item, id_gen, timestamp)
+    if item[:entries]
+      {
+        'children' => item[:entries].map { |child| to_chromium_node(child, id_gen, timestamp) },
+        'date_added' => timestamp,
+        'date_last_used' => '0',
+        'date_modified' => timestamp,
+        'guid' => SecureRandom.uuid,
+        'id' => id_gen.next,
+        'name' => item[:title],
+        'type' => 'folder'
+      }
+    else
+      {
+        'date_added' => timestamp,
+        'date_last_used' => '0',
+        'guid' => SecureRandom.uuid,
+        'id' => id_gen.next,
+        'name' => item[:title],
+        'type' => 'url',
+        'url' => item[:url]
+      }
     end
-    folder(title, entries)
   end
 
   def episode_folder(number)
-    dossier = if number == -1
-                load_yaml('errata-fluffle-precursor.yml')
-              else
-                load_yaml(format('episode-%02d.yml', number))
-              end
-    title = format('Episode %s: %s', number.negative? ? 'Minus One' : number.to_s.rjust(2, '0'), dossier.fetch('title'))
+    dossier = load_yaml(format('episode-%02d.yml', number))
+    title = format('Episode %02d: %s', number, dossier.fetch('title'))
     entries = [link('Season One working outline', "#{SITE}/series/the-sound-above/")]
     if number.between?(1, 35)
       entries << link('Episode page', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/")
@@ -108,8 +260,8 @@ class EpisodeBookmarks
   end
 
   def document(folders)
-    root = render_node(folder('The Sound Above Rewatch', folders))
-    "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n<TITLE>The Sound Above Rewatch</TITLE>\n<H1>The Sound Above Rewatch</H1>\n<DL><p>\n#{root}\n</DL><p>\n"
+    rendered_folders = folders.map { |f| render_node(f) }.join("\n")
+    "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n<TITLE>Channel Series Research Bookmarks</TITLE>\n<H1>Channel Series Research Bookmarks</H1>\n<DL><p>\n#{rendered_folders}\n</DL><p>\n"
   end
 
   def render_node(item)
@@ -125,8 +277,35 @@ class EpisodeBookmarks
   end
 end
 
-require 'date'
-require 'fileutils'
+if __FILE__ == $PROGRAM_NAME
+  output = EpisodeBookmarks::DEFAULT_OUTPUT
+  install = false
 
-output = ARGV[0] && !ARGV[0].start_with?('-') ? ARGV[0] : EpisodeBookmarks::DEFAULT_OUTPUT
-EpisodeBookmarks.new(output).generate
+  parser = OptionParser.new do |opts|
+    opts.banner = 'Usage: bin/episode_bookmarks.rb [options] [output_file]'
+    opts.separator ''
+    opts.separator 'Generates and installs research bookmarks for The Sound Above,'
+    opts.separator 'Studio Workbench, and Ramblin\' & Amblin\' across Chromium.'
+    opts.separator ''
+
+    opts.on('-i', '--install', 'Install bookmarks directly into Chromium browser profile') do
+      install = true
+    end
+
+    opts.on('-o', '--output FILE', 'Path for Netscape HTML bookmark export') do |f|
+      output = f
+    end
+
+    opts.on_tail('-h', '--help', 'Show this help message') do
+      puts opts
+      exit 0
+    end
+  end
+
+  parser.parse!
+  output = ARGV[0] if ARGV[0] && !ARGV[0].start_with?('-')
+
+  eb = EpisodeBookmarks.new(output)
+  eb.generate
+  eb.install_to_chromium if install
+end
