@@ -22,6 +22,13 @@ It was a casual, spontaneous moment. Corey was laughing and riffing about a scen
 
 That was more than sixteen years ago. Nearly six thousand days have passed since that upload, and the video has lived quietly in the YouTube archive ever since.
 
+Sometimes, when enough years slip past, memory plays tricks on you. You start to doubt your own history. You wonder if you were just a ghost standing in the hallway, looking in through a crack in the door.
+
+The archive is proof. The recordings are proof.
+I was really there.
+I was really part of it.
+I still am.
+
 When I look back across those sixteen years, I see a long parade of project titles, show names, and channel banners: UGtastic, WHOIS Tech Community, organizational wrappers, and production pseudonyms.
 
 If I am honest about why I created so many different containers, the truth is simple: I went through years of trying not to be myself online.

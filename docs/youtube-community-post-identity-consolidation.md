@@ -14,7 +14,11 @@ More than sixteen years ago, on July 13, 2010, I uploaded a six-second clip to Y
 
 Corey was laughing about Twilight while Noel Rappin held up a pillar in the background. It was the early days of Chicago Software Craftsmanship and Software Craftsmanship McHenry County (SCMC). Just friends in a room who cared about code, having fun.
 
-Sixteen years and almost six thousand days have passed since that upload. Across that time, I put out videos and projects under a lot of different names: UGtastic, WHOIS Tech Community, organizational umbrellas, and production aliases.
+Sixteen years and almost six thousand days have passed since that upload.
+
+When enough years drift by, memory can play tricks on you. You start to doubt your own story. But the archive is real. I was really there. I was really part of it. I still am.
+
+Across that time, I put out videos and projects under a lot of different names: UGtastic, WHOIS Tech Community, organizational umbrellas, and production aliases.
 
 If I am honest about why I kept creating new wrappers, it was because I spent years trying not to be myself online.
 
