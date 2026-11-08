@@ -68,11 +68,42 @@ class EpisodeBookmarks
       link('jaeger.localhost (Distributed Tracing)', 'https://jaeger.localhost/')
     ])
 
+    folders << folder('Datalake & Forensics', [
+      link('career_datalake.json (JSON Manifest)', "#{SITE}/career_datalake.json"),
+      link('career_datalake.jsonl (JSONL Stream)', "#{SITE}/career_datalake.jsonl"),
+      link('Chicago Community Timeline (17-Year History)', "#{SITE}/timeline/community/"),
+      link('Software Craftsmanship Forensics', "#{SITE}/reports/software-craftsmanship-forensics/"),
+      link('Signatory Network (SCM x UGtastic x SCMC)', "#{SITE}/reports/software-craftsmanship-forensics/signatory-network/"),
+      link('Agile Manifesto & Craftsmanship Intersection', "#{SITE}/reports/software-craftsmanship-forensics/agile-manifesto-intersection/"),
+      link('Speakers Directory', "#{SITE}/speakers/"),
+      link('Interview Topics Directory', "#{SITE}/interviews/topics/"),
+      link('Executive Pitch Briefs Hub (Cold Storage)', "#{SITE}/exports/briefs/"),
+      link('LinkedIn Profile Mapping & Export', "#{SITE}/linkedin/")
+    ])
+
     folders << folder('Package Caches', [
       link('gemstash.localhost (RubyGems Cache)', 'https://gemstash.localhost/')
     ])
 
     folder('Localhost (*.localhost)', folders)
+  end
+
+  def build_obs_studio
+    entries = [
+      link('Recording Playbook (/obs/)', "#{SITE}/obs/"),
+      link('Teleprompter Studio (Web Prompter)', "#{SITE}/youtube/dashboard/#tab-prompter"),
+      link('Media Pipeline SSE Stream (Live Telemetry)', 'https://media-pipeline.localhost/stream'),
+      link('Active Overlay State (JSON)', "#{SITE}/obs/overlays/overlay-state.json"),
+      link('Lower Third Overlay (HTML)', "#{SITE}/obs/overlays/lower-third.html"),
+      link('Now Watching Overlay (HTML)', "#{SITE}/obs/overlays/now-watching.html"),
+      link('Stream Starting Overlay (HTML)', "#{SITE}/obs/overlays/stream-starting.html"),
+      link('Stream Outro Overlay (HTML)', "#{SITE}/obs/overlays/stream-outro.html"),
+      link('Stream BRB Overlay (HTML)', "#{SITE}/obs/overlays/stream-brb.html"),
+      link('Camera Background Overlay (HTML)', "#{SITE}/obs/overlays/camera-background.html"),
+      link('Teleprompter Local Directory', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/'),
+      link('Public Backer Credits & Support', "#{SITE}/support/")
+    ]
+    folder('OBS Overlays & Prompter', entries)
   end
 
   def build_phalanx_duel
@@ -182,12 +213,54 @@ class EpisodeBookmarks
     folder("Ramblin' & Amblin'", folders)
   end
 
+  def build_errata
+    folders = []
+    folders << folder('Start here', [
+      link('Errata & Series Overview', "#{SITE}/series/"),
+      link('Hister research search', HISTORIAN),
+      link('YouTube Studio Live Broadcast Deck', 'https://studio.youtube.com/channel/UCAyLLkogK2UnjpGmyCTwjiw/livestreaming')
+    ])
+
+    folders << folder('Phalanx Duel at SCMC: Make the Rules Legible', [
+      link('SCMC Presentation & Quickstart', "#{SITE}/phalanx-duel/"),
+      link('Retrospective Systems Essay (Oct 20, 2026)', "#{SITE}/2026/10/20/phalanx-duel-make-the-rules-legible-scmc-presentation-and-game-architecture.html"),
+      link('Play Client (play.phalanxduel.localhost)', 'https://play.phalanxduel.localhost/'),
+      link('Admin Deck (admin.phalanxduel.localhost)', 'https://admin.phalanxduel.localhost/'),
+      link('Scenario Demo Cockpit (/demo/)', 'https://phalanxduel.localhost/demo/'),
+      link('YouTube Architecture Playlist', 'https://www.youtube.com/playlist?list=PLHenvAZhJjHo')
+    ])
+
+    folders << folder('The Fluffle Precursor (Distributed Whisper)', [
+      link('The Fluffle Precursor Retrospective', "#{SITE}/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"),
+      link('GitHub: just3ws/fluffle Repository', 'https://github.com/just3ws/fluffle'),
+      link('Local WITC Archive Index', 'file:///Volumes/Dock_1TB/WITC/'),
+      link('Dead Rabbit Radio Daily Paranormal Podcast', 'https://deadrabbitradio.com')
+    ])
+
+    folders << folder('Under the High-Tension Wires (Audio Forensics)', [
+      link('345kV EMI Case Study', "#{SITE}/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/"),
+      link('Interactive Dehum Audio Forensics Lab', "#{SITE}/dehum/"),
+      link('Live Broadcast Workbench & A/B Listening Test', "#{SITE}/dehum/dashboard.html"),
+      link('Source Field Recording (YouTube)', 'https://www.youtube.com/watch?v=7YeFpKn5FbU')
+    ])
+
+    folders << folder('The Blink Test & Deterministic Verification', [
+      link('Blink Test Concept & Case Studies', "#{SITE}/case-studies/"),
+      link('4D System Cartography Framework', "#{SITE}/panoramic-view/"),
+      link('Platform Link Control Plane', "#{SITE}/dashboard/")
+    ])
+
+    folder('Errata', folders)
+  end
+
   def all_series_folders
     [
       build_localhost_ecosystem,
+      build_obs_studio,
       build_phalanx_duel,
       build_sound_above,
       build_studio_workbench,
+      build_errata,
       build_ramblin_amblin
     ]
   end
@@ -210,9 +283,14 @@ class EpisodeBookmarks
     if was_running
       puts 'Gracefully stopping Chromium before updating Bookmarks profile...'
       system("osascript -e 'tell application \"Chromium\" to quit' > /dev/null 2>&1")
-      10.times do
+      15.times do
         break unless system('pgrep Chromium > /dev/null 2>&1')
 
+        sleep 0.4
+      end
+      if system('pgrep Chromium > /dev/null 2>&1')
+        puts 'Terminating Chromium process...'
+        system('pkill Chromium > /dev/null 2>&1')
         sleep 0.5
       end
     end
@@ -237,17 +315,19 @@ class EpisodeBookmarks
     bar = b_data['roots']['bookmark_bar']
     preserved_children = bar['children'].select { |c| PRESERVED_BAR_ITEMS.include?(c['name']) }
 
-    bar['children'] = [to_chromium_node(build_localhost_ecosystem, id_gen, timestamp)] +
-                      preserved_children +
-                      [
-                        to_chromium_node(build_phalanx_duel, id_gen, timestamp),
-                        to_chromium_node(build_sound_above, id_gen, timestamp),
-                        to_chromium_node(build_studio_workbench, id_gen, timestamp),
-                        to_chromium_node(build_ramblin_amblin, id_gen, timestamp)
-                      ]
+    bar['children'] = [
+      to_chromium_node(build_localhost_ecosystem, id_gen, timestamp),
+      to_chromium_node(build_obs_studio, id_gen, timestamp)
+    ] + preserved_children + [
+      to_chromium_node(build_phalanx_duel, id_gen, timestamp),
+      to_chromium_node(build_sound_above, id_gen, timestamp),
+      to_chromium_node(build_studio_workbench, id_gen, timestamp),
+      to_chromium_node(build_errata, id_gen, timestamp),
+      to_chromium_node(build_ramblin_amblin, id_gen, timestamp)
+    ]
 
     File.write(CHROMIUM_BOOKMARKS, JSON.pretty_generate(b_data))
-    puts "Successfully updated Chromium Bookmarks with Localhost and Phalanx Duel folders."
+    puts "Successfully updated Chromium Bookmarks with #{all_series_folders.size} series and platform folders."
 
     if was_running
       puts 'Relaunching Chromium...'
