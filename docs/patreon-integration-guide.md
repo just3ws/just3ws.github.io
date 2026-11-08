@@ -71,11 +71,12 @@ small:
 
 Draft tier copy:
 
-> I share occasional notes about making Ramblin' & Amblin', caring for the
-> interview archive, and building software. Your membership helps make room
-> for that work. I'll post when I have something worth showing; there is no
-> fixed schedule. Public videos and interviews stay on their own sites, and
-> membership doesn't unlock private recordings.
+> A window into the work between finished pieces. I share occasional notes
+> and early drafts on shaping video topics, lessons from building software,
+> and steps in caring for the 200+ interview archive. Your support gives me
+> the time and independence to dig into ideas deeply without chasing algorithms
+> or sponsors. I post when I have something meaningful to show rather than on a
+> rigid deadline. Public videos and interviews remain free for everyone.
 
 The creator page remains unpublished. The $5 **Studio Notes** tier is the only
 published paid option. The $1, $7, $20, and $97 bootstrap tiers remain
