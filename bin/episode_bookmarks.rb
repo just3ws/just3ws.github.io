@@ -196,7 +196,7 @@ class EpisodeBookmarks
     # 5. The Ship of Theseus: From Wooden Boat to Space Station
     sot_query = CGI.escape(JSON.generate(text: 'Mike Hall Ship of Theseus Wooden Boat Space Station Studio Workbench 2026', limit: 12))
     folders << folder('The Ship of Theseus: From Wooden Boat to Space Station', [
-      link('Executive Briefing Dossier & Adversarial Cross-Examination', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/studio-workbench-ship-of-theseus-briefing.md'),
+      link('Executive Briefing Dossier & Adversarial Cross-Examination', "#{SITE}/docs/studio-workbench-ship-of-theseus-briefing/"),
       link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus-rundown.md'),
       link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus.textream'),
       link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-ship-of-theseus.yml'),

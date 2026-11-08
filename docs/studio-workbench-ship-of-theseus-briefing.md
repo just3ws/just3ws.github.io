@@ -1,3 +1,12 @@
+---
+layout: minimal
+title: "Studio Workbench Briefing: The Ship of Theseus"
+description: "Architectural Lineage, Empirical Timeline Stats, and Adversarial Cross-Examination for Studio Workbench."
+permalink: /docs/studio-workbench-ship-of-theseus-briefing/
+robots: noindex,nofollow
+sitemap: false
+---
+
 # Studio Workbench Briefing: The Ship of Theseus
 
 **Session:** Studio Workbench (Process Cinema & Systems Forensics)  
