@@ -10,14 +10,14 @@
 
     <!-- Amber Accent Gradient -->
     <linearGradient id="ytAmberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.85"/>
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.9"/>
       <stop offset="100%" stop-color="#D97706" stop-opacity="0.3"/>
     </linearGradient>
 
     <!-- Teal Wave Gradient -->
     <linearGradient id="ytWaveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.5"/>
-      <stop offset="50%" stop-color="#14B8A6" stop-opacity="0.3"/>
+      <stop offset="0%" stop-color="#2DD4BF" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#14B8A6" stop-opacity="0.35"/>
       <stop offset="100%" stop-color="#0F766E" stop-opacity="0.05"/>
     </linearGradient>
 
@@ -30,89 +30,107 @@
       <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#FAF8F5" stroke-width="0.5" stroke-opacity="0.025"/>
     </pattern>
 
-    <!-- Glows -->
-    <radialGradient id="ytCenterGlow" cx="50%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.18"/>
+    <!-- Center Safe-Area Glow -->
+    <radialGradient id="ytCenterGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#061F1D" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
-  <!-- 1. Full Canvas Background (TV Viewport) -->
+  <!-- 1. Full Canvas Background (TV Viewport 2048 x 1152) -->
   <rect width="2048" height="1152" fill="url(#ytBgGrad)"/>
   <rect width="2048" height="1152" fill="url(#ytCenterGlow)"/>
   <rect width="2048" height="1152" fill="url(#ytGrid)"/>
   <rect width="2048" height="1152" fill="url(#ytFineGrid)"/>
 
-  <!-- Top / TV Zone Accents -->
+  <!-- Top / TV Zone Accents (Visible on TV only) -->
   <g opacity="0.45">
     <text x="120" y="100" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#2DD4BF" font-weight="500" letter-spacing="3">PANORAMIC VIEW LABS · PVL PLATFORM</text>
     <text x="1928" y="100" text-anchor="end" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#2DD4BF" font-weight="500" letter-spacing="2">ROOT: ZDOTS · WHOISTECHCMTY</text>
     <line x1="120" y1="125" x2="1928" y2="125" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.1"/>
   </g>
 
-  <!-- 2. Central Safe Area Guidelines (Y: 400 to 752 is desktop/mobile safe band) -->
-  <!-- Background Wave flows through center -->
-  <g opacity="0.8">
-    <path d="M 300 680 C 600 680, 800 480, 1150 480 C 1500 480, 1750 640, 2048 560" 
+  <!-- 2. System Waves Spanning Canvas -->
+  <g opacity="0.75">
+    <path d="M 0 680 C 450 680, 800 480, 1150 480 C 1500 480, 1750 640, 2048 560" 
           fill="none" stroke="url(#ytWaveGrad)" stroke-width="3" stroke-dasharray="8 6"/>
-    <path d="M 380 720 C 680 720, 900 520, 1260 520 C 1600 520, 1850 670, 2048 610" 
+    <path d="M 0 730 C 500 730, 900 520, 1260 520 C 1600 520, 1850 680, 2048 610" 
           fill="none" stroke="url(#ytAmberGrad)" stroke-width="2.5"/>
   </g>
 
-  <!-- 3. Safe Zone Content (Desktop & Mobile view) -->
-  <!-- Centered safe band horizontally & vertically -->
-  <g transform="translate(140, 435)">
+  <!-- 3. Desktop Left Wing (X: 80 to 380, Y: 407 to 745) -->
+  <!-- Visible on Desktop, safely hidden on Mobile -->
+  <g opacity="0.45">
+    <text x="100" y="550" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#2DD4BF" letter-spacing="2">SYSTEM CARTOGRAPHY</text>
+    <text x="100" y="575" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#FAF8F5" letter-spacing="1">42.3334° N, 88.2787° W</text>
+    <text x="100" y="600" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#2DD4BF" letter-spacing="1">MCHENRY COUNTY, IL</text>
+    <line x1="100" y1="520" x2="360" y2="520" stroke="#2DD4BF" stroke-width="1" stroke-opacity="0.3"/>
+    <line x1="100" y1="625" x2="360" y2="625" stroke="#2DD4BF" stroke-width="1" stroke-opacity="0.3"/>
+  </g>
+
+  <!-- 4. ALL-DEVICES SAFE ZONE (X: 430 to 1618, Y: 407 to 745) -->
+  <!-- Centered / Aligned safely inside the 1235 x 338 mobile safe box -->
+  <g transform="translate(460, 435)">
     <!-- Eyebrow Badge -->
     <g transform="translate(0, 0)">
-      <rect x="0" y="0" width="280" height="30" rx="4" fill="#082A27" stroke="#2DD4BF" stroke-width="1.2" stroke-opacity="0.4"/>
-      <circle cx="15" cy="15" r="3.5" fill="#F59E0B"/>
-      <text x="28" y="20" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600" fill="#FAF8F5" letter-spacing="2">CRAFTSMAN WORKBENCH</text>
+      <rect x="0" y="0" width="270" height="28" rx="4" fill="#082A27" stroke="#2DD4BF" stroke-width="1.2" stroke-opacity="0.4"/>
+      <circle cx="14" cy="14" r="3.5" fill="#F59E0B"/>
+      <text x="26" y="19" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="11.5" font-weight="600" fill="#FAF8F5" letter-spacing="2">CRAFTSMAN WORKBENCH</text>
     </g>
 
     <!-- Name & Handle -->
-    <text x="0" y="85" font-family="'Charter', 'Georgia', 'Iowan Old Style', serif" font-size="64" font-weight="700" fill="#FAF8F5" letter-spacing="-0.5">Mike Hall</text>
-    <text x="320" y="85" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="34" font-weight="400" fill="#2DD4BF" opacity="0.9">/ just3ws</text>
+    <text x="0" y="78" font-family="'Charter', 'Georgia', 'Iowan Old Style', serif" font-size="58" font-weight="700" fill="#FAF8F5" letter-spacing="-0.5">Mike Hall</text>
+    <text x="290" y="78" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="30" font-weight="400" fill="#2DD4BF" opacity="0.9">/ just3ws</text>
 
     <!-- Core Disciplines -->
-    <text x="0" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="500" fill="#FAF8F5" opacity="0.95" letter-spacing="0.2">
+    <text x="0" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="500" fill="#FAF8F5" opacity="0.95" letter-spacing="0.2">
       Software Craftsmanship <tspan fill="#F59E0B" font-weight="300"> · </tspan> Systems Architecture <tspan fill="#F59E0B" font-weight="300"> · </tspan> Community Archives
     </text>
 
     <!-- Series & Narrative -->
-    <text x="0" y="180" font-family="'Charter', 'Georgia', serif" font-style="italic" font-size="18" fill="#E2E8F0" opacity="0.82">
+    <text x="0" y="168" font-family="'Charter', 'Georgia', serif" font-style="italic" font-size="17" fill="#E2E8F0" opacity="0.85">
       Independent engineering research, oral histories, Phalanx Duel, and Ramblin' &amp; Amblin'
     </text>
 
-    <!-- Footnote within safe area -->
-    <text x="0" y="228" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="11" fill="#2DD4BF" letter-spacing="1.5" opacity="0.6">
-      SCMC CO-FOUNDER (2009) · 200+ INTERVIEWS · 345kV AUDIO FORENSICS · JUST3WS.COM
-    </text>
+    <!-- Technical Spec Anchor -->
+    <g transform="translate(0, 212)" opacity="0.7">
+      <text x="0" y="0" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#2DD4BF" letter-spacing="1.5">
+        SCMC CO-FOUNDER (2009) · 200+ ORAL HISTORIES · 345kV EMI FORENSICS · JUST3WS.COM
+      </text>
+    </g>
   </g>
 
-  <!-- Right Side Architectural Diagram (Panoramic View Layers in Safe Zone) -->
-  <g transform="translate(1380, 440)" opacity="0.32">
-    <rect x="0" y="0" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
-    <text x="20" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">INTERFACE &amp; PRESENTATION</text>
-
-    <rect x="0" y="44" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
-    <text x="20" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">APPLICATION &amp; DOMAIN</text>
-
-    <rect x="0" y="88" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
-    <text x="20" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">SERVICES &amp; PROTOCOLS</text>
-
-    <rect x="0" y="132" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
-    <text x="20" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">TELEMETRY &amp; INTEGRATION</text>
-
-    <rect x="0" y="176" width="520" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
-    <text x="20" y="198" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">DATA, STATE &amp; ARCHIVES</text>
-
-    <circle cx="120" cy="17" r="4" fill="#F59E0B"/>
-    <circle cx="280" cy="105" r="4" fill="#2DD4BF"/>
-    <circle cx="420" cy="193" r="4" fill="#F59E0B"/>
-    <path d="M 120 17 C 120 90, 280 40, 280 105 C 280 170, 420 120, 420 193" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-opacity="0.6"/>
+  <!-- Subtle Cartographic Nodes in Safe Zone Right Area (X: 1350 to 1580) -->
+  <g transform="translate(1380, 460)" opacity="0.5">
+    <circle cx="60" cy="50" r="6" fill="#F59E0B"/>
+    <circle cx="160" cy="110" r="5" fill="#2DD4BF"/>
+    <circle cx="100" cy="180" r="5" fill="#F59E0B"/>
+    <path d="M 60 50 C 60 110, 160 60, 160 110 C 160 160, 100 130, 100 180" fill="none" stroke="#2DD4BF" stroke-width="1.8" stroke-dasharray="4 3"/>
+    <text x="75" y="54" font-family="ui-monospace, monospace" font-size="11" fill="#FAF8F5" letter-spacing="1">OBSERVE</text>
+    <text x="175" y="114" font-family="ui-monospace, monospace" font-size="11" fill="#FAF8F5" letter-spacing="1">DELIBERATE</text>
+    <text x="115" y="184" font-family="ui-monospace, monospace" font-size="11" fill="#FAF8F5" letter-spacing="1">PRESERVE</text>
   </g>
 
-  <!-- Bottom / TV Zone Accents -->
+  <!-- 5. Desktop Right Wing: Full Architecture Diagram (X: 1660 to 2000, Y: 407 to 745) -->
+  <!-- Visible on Desktop, safely outside Mobile safe box -->
+  <g transform="translate(1670, 445)" opacity="0.35">
+    <rect x="0" y="0" width="310" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="15" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">INTERFACE</text>
+
+    <rect x="0" y="44" width="310" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="15" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">APPLICATION</text>
+
+    <rect x="0" y="88" width="310" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="15" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">SERVICES</text>
+
+    <rect x="0" y="132" width="310" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="15" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">TELEMETRY</text>
+
+    <rect x="0" y="176" width="310" height="34" rx="5" fill="#0D5A54" stroke="#2DD4BF" stroke-width="1.2"/>
+    <text x="15" y="198" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#2DD4BF" letter-spacing="1.5">DATA / STATE</text>
+  </g>
+
+  <!-- Bottom / TV Zone Accents (Visible on TV only) -->
   <g opacity="0.45">
     <line x1="120" y1="1025" x2="1928" y2="1025" stroke="#FAF8F5" stroke-width="1" stroke-opacity="0.1"/>
     <text x="120" y="1055" font-family="ui-monospace, Menlo, Monaco, Consolas, monospace" font-size="13" fill="#2DD4BF" font-weight="500" letter-spacing="2">YOUTUBE.COM/@JUST3WS · PATREON.COM/C/JUST3WS · GITHUB.COM/JUST3WS</text>
