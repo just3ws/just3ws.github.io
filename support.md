@@ -70,9 +70,9 @@ body_class: page-support
     {% if campaign.page_status == "published" %}
     <div>
       <p class="support-eyebrow">Support the independent work</p>
-      <h2 id="support-invitation-title">Studio Notes &amp; The Hallway Chatroom</h2>
+      <h2 id="support-invitation-title">Studio Notes &amp; The Hallway Track Chatroom</h2>
       <p>{{ campaign.membership_recommendation.paid_tier_description }}</p>
-      <p>Members also get access to <strong>{{ campaign.community_chat.name }}</strong>, our direct chatroom on Patreon for conversations about software craft, audio forensics, archive history, and live workbench questions.</p>
+      <p>Followers and members can join <strong>{{ campaign.community_chat.name }}</strong>, our open chatroom on Patreon for informal conversations about software craft, audio forensics, archive history, and live workbench questions.</p>
       <p>{{ campaign.membership_recommendation.cadence }}</p>
       <p>Your support helps make room for the work as a whole. It doesn't assign your contribution to one project or change what I choose to publish.</p>
     </div>
@@ -84,7 +84,7 @@ body_class: page-support
     <div>
       <p class="support-eyebrow">Studio Notes &amp; Community</p>
       <h2 id="support-invitation-title">Support the independent work on Patreon</h2>
-      <p>Follow free for public updates, or join Studio Notes for occasional notes about the videos, the interview archive, making software, and access to the Hallway chatroom.</p>
+      <p>Follow free for public updates and access to the Hallway Track chatroom, or join Studio Notes for occasional notes about the videos, the interview archive, and making software.</p>
     </div>
     <div class="support-actions">
       <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Join Studio Notes for $5/month</a>

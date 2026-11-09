@@ -79,8 +79,8 @@ Draft tier copy:
 > rigid deadline. Public videos and interviews remain free for everyone.
 
 The creator page is live and published. The $5 **Studio Notes** tier is the active
-paid option, providing workbench notes and access to the **Hallway** community
-chatroom on Patreon. The $1, $7, $20, and $97 bootstrap tiers remain
+paid option, providing workbench notes and early drafts, alongside the open **Hallway Track**
+community chatroom on Patreon. The $1, $7, $20, and $97 bootstrap tiers remain
 unpublished drafts with no members.
 
 The public support page (<https://www.just3ws.com/support/>) surfaces Patreon
@@ -93,7 +93,7 @@ teams.
 | Surface | Role | Canonical link |
 |---|---|---|
 | Patreon | Membership, community posts, and Studio Notes | <https://www.patreon.com/c/just3ws> |
-| Hallway Chat | Direct community chatroom on Patreon | <https://www.patreon.com/c/just3ws/chats> |
+| Hallway Track Chat | Open community chatroom on Patreon | <https://www.patreon.com/c/just3ws/chats> |
 | GitHub Sponsors | Open-source developer sponsorship | <https://github.com/sponsors/just3ws> |
 | Buy Me a Coffee | Direct one-time tip support | <https://buymeacoffee.com/just3ws> |
 | just3ws.com/support | Central support and project map | <https://www.just3ws.com/support/> |
