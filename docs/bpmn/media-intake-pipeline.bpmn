@@ -31,6 +31,7 @@
         <bpmn:flowNodeRef>Task_SynthesizeMetadata</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Publishing" name="YouTube API &amp; Captions Parity">
+        <bpmn:flowNodeRef>Task_RoundRobinSchedule</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ResumableUpload</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_AssignPlaylist</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_UploadCaptions</bpmn:flowNodeRef>
@@ -96,9 +97,15 @@
       <bpmn:outgoing>Flow_06</bpmn:outgoing>
     </bpmn:serviceTask>
 
+    <bpmn:serviceTask id="Task_RoundRobinSchedule" name="5b. Round-Robin Priority Ring &amp; Intra-Playlist FIFO Selection" camunda:type="external" camunda:topic="intake-round-robin">
+      <bpmn:documentation>SLI: Ring traversal ordered by significance (Studio Workbench to Ramblin' &amp; Amblin'), records NOOP absence proof on empty targets, selects oldest candidate.</bpmn:documentation>
+      <bpmn:incoming>Flow_06</bpmn:incoming>
+      <bpmn:outgoing>Flow_06b</bpmn:outgoing>
+    </bpmn:serviceTask>
+
     <bpmn:serviceTask id="Task_ResumableUpload" name="6. Resumable Upload to YouTube API v3" camunda:type="external" camunda:topic="youtube-upload">
       <bpmn:documentation>SLI: Upload throughput &gt;= 25 Mbps. SLA Timeout: 1800s.</bpmn:documentation>
-      <bpmn:incoming>Flow_06</bpmn:incoming>
+      <bpmn:incoming>Flow_06b</bpmn:incoming>
       <bpmn:outgoing>Flow_07</bpmn:outgoing>
     </bpmn:serviceTask>
 
@@ -155,7 +162,8 @@
     <bpmn:sequenceFlow id="Flow_03" sourceRef="Task_AtomicLock" targetRef="Task_ExtractAudio" />
     <bpmn:sequenceFlow id="Flow_04" sourceRef="Task_ExtractAudio" targetRef="Task_WhisperTranscription" />
     <bpmn:sequenceFlow id="Flow_05" sourceRef="Task_WhisperTranscription" targetRef="Task_SynthesizeMetadata" />
-    <bpmn:sequenceFlow id="Flow_06" sourceRef="Task_SynthesizeMetadata" targetRef="Task_ResumableUpload" />
+    <bpmn:sequenceFlow id="Flow_06" sourceRef="Task_SynthesizeMetadata" targetRef="Task_RoundRobinSchedule" />
+    <bpmn:sequenceFlow id="Flow_06b" sourceRef="Task_RoundRobinSchedule" targetRef="Task_ResumableUpload" />
     <bpmn:sequenceFlow id="Flow_07" sourceRef="Task_ResumableUpload" targetRef="Task_AssignPlaylist" />
     <bpmn:sequenceFlow id="Flow_08" sourceRef="Task_AssignPlaylist" targetRef="Task_UploadCaptions" />
     <bpmn:sequenceFlow id="Flow_09" sourceRef="Task_UploadCaptions" targetRef="Task_RegisterDatabase" />
