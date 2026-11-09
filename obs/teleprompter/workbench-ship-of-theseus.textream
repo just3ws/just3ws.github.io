@@ -14,13 +14,21 @@ It feels like watching a wooden boat turn into a space station.
 
 And there is one critical difference from the myth: in this room, Theseus himself was the one cutting and fitting every replacement plank.
 
-To understand how we got here, you have to realize that this project did not start with the modern AI wave.
-
-My dotfiles repository, zdots, was founded on May 26, 2017, long before large language models.
+To understand how we got here, you have to look at the potter's marks left in the clay across different machines and operating systems over fifteen years.
 
 My personal portfolio, just3ws, was founded on December 5, 2016.
 
-Back in 2009 and 2011, when I was co-founding Software Craftsmanship McHenry County and recording interviews across the Chicago tech scene, the goal of a full, sovereign transcription pipeline was already the dream.
+My dotfiles repository, zdots, was founded on May 26, 2017, long before modern language models.
+
+Back in 2010 and 2011, I was carrying a Flip Video camera and a unibody MacBook Pro with a spinning hard drive through conference hallways.
+
+If you look at my git history from February 2011 on Chicago Code Camp, there is a commit where I upgraded to Ruby 1.9.2 and deleted SystemTimer from my Gemfile. That single diff marks the exact week the Ruby world gained native POSIX threads and dropped green threads.
+
+In those same early Gemfiles, you see autotest-fsevent hooking directly into Apple's Darwin kernel so tests would trigger without thrashing spinning laptop platters.
+
+Later, in 2017, you see all of Homebrew sitting at `/usr/local` on Intel Macs, before the Apple Silicon transition moved everything to `/opt/homebrew` with jemalloc.
+
+The desire for a sovereign, automated media pipeline was already there in those early rooms.
 
 I had over two hundred recorded conversations sitting on hard drives.
 
@@ -28,7 +36,7 @@ I wanted them searchable. I wanted them preserved.
 
 On April 4, 2014, I created a repository called many-hands-make-light-work, trying to crowdsource show-notes and transcripts from the community.
 
-Accomplishing that as a solo practitioner was economically and practically impossible:
+Accomplishing that as a solo practitioner back then was economically and practically impossible:
 
 Commercial cloud speech-to-text APIs would have cost thousands of dollars for hundreds of hours of video, with endless fees for revisions.
 

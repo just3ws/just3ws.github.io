@@ -91,7 +91,43 @@ All statistics are deterministically verified from the local ecosystem datalake 
 
 ---
 
-## 4. Adversarial Cross-Examination
+## 4. The Potter's Marks in the Clay: Silicon, Operating Systems & Toolchains
+
+Systems leave physical signatures in their source repositories. Like finger impressions left in thrown clay before it enters the kiln, configuration files and compiler flags reveal the exact hardware, operating systems, and industry eras where the work occurred:
+
+### The Silicon & Workstation Archaeology Matrix
+
+| Era | Physical Workstation & Hardware | Operating System & Kernel | Runtime & Language Pin | Forensic Signature in Repository |
+| :--- | :--- | :--- | :--- | :--- |
+| **1997-2005: The Depot & Enterprise Floor** | Compaq Deskpro / ProLiant towers, Pentium II/III, floppy drives, PCMCIA dongles, CRT monitors (1024x768). | Windows 95 OSR2, Windows NT 4.0 Workstation, Windows 2000 Pro. | Visual Basic 5/6, VBA, Classic ASP, VBScript. | Visual SourceSafe databases (`srcsafe.ini`), raw `.mdf`/`.ldf` database files, Unix shell OCR receipt parsing at Sentinel. |
+| **2005-2008: Real-Time .NET Operations** | Custom Windows PC, dual monitors, Intel Core 2 Duo. | Windows XP Professional, Windows Server 2003. | C# 2.0 on .NET Framework 2.0, SQL Server 2005, ReSharper 4.5. | `CodeCampServer.sln`, SubSonic ORM, NStun (RFC 3489 UDP NAT traversal on CodePlex). |
+| **2009-2011: The Transition Machine** | 15-inch Unibody MacBook Pro (Intel Core 2 Duo, 5400 RPM spinning hard drive, MagSafe 1, optical SuperDrive, built-in dual mics). Flip Video UltraHD camera in hand. | Mac OS X 10.6 Snow Leopard (Aqua UI, Mach kernel) to OS X 10.7 Lion. | Ruby Enterprise Edition (`ree@ccc3`) to Ruby 1.9.2 YARV, Bundler 0.9, Sinatra, Blueprint CSS, Haml. | Commit `9d367da0` dropping `SystemTimer` because native POSIX threads replaced green threads; `autotest-fsevent` hooking Darwin `FSEvents` to save spinning hard disk platters; `source :gemcutter`. |
+| **2012-2020: Intel Retina & Virtualization** | Retina MacBook Pro (Intel Haswell / Skylake x86_64, PCIe SSD, MagSafe 2). | OS X 10.8 Mountain Lion through macOS 10.15 Catalina (death of 32-bit binaries, default shell shift from Bash to Zsh). | Ruby 2.x/3.x, Rails 3/4/5, Vagrant + VirtualBox, RVM to rbenv/chruby. | Homebrew strictly at `/usr/local` (x86_64 convention); `just3ws/zdots` commit `e25021c7` wiring iTerm2 shell integration; Arctic Code Vault permafrost snapshot. |
+| **2021-2023: The Edge Cluster (The Fluffle)** | 5 clustered Raspberry Pi 4 Model B (Broadcom BCM2711 quad-core Cortex-A72 ARMv8 at 1.5GHz, passive aluminum heatsinks, micro-SD cards, USB power array). | Debian 11 Bullseye (Raspberry Pi OS 64-bit arm64, Linux kernel 5.10). | early `whisper.cpp` compiled with ARM NEON SIMD optimizations, Ruby orchestration. | Repository `just3ws/fluffle`; audio slicing down to 3-minute chunks to avoid hardware OOM panics; creation of the 5-state Maildir queue. |
+| **2024-2026: Sovereign Apple Silicon Space Station** | Apple Silicon M4 Max / Pro (ARM64, Unified Memory Architecture, 16-core Neural Engine, Metal GPU shaders). | macOS Sonoma 14 / Sequoia 15 (Darwin 24+ kernel). | Ruby 3.4/4.0 on `mise.toml` with jemalloc, Python 3.14 on MLX, Rails 8 + SolidQueue on PostgreSQL 18. | Homebrew permanently at `/opt/homebrew`; `mise.toml` compiling Ruby with `--with-jemalloc --with-openssl-dir=$(brew --prefix openssl@3)`; 103-second local Whisper benchmark on Metal. |
+
+---
+
+### Concrete Forensic Fingerprints in the Repository
+
+1. **The SystemTimer Deletion (Commit `9d367da0`, February 2011)**:
+   In Ruby 1.8.7 and Ruby Enterprise Edition, `timeout.rb` was notoriously unsafe because green threads could interrupt C extensions at arbitrary moments. Every serious Rails developer had to vendor `SystemTimer`. When Mike committed *"w00t did you say? Oh, I said UPGRADE TO 1.9.2"* on `just3ws/ccs`, the diff deleted `gem 'SystemTimer'` and swapped `.rvmrc` from `ree@ccc3` to `ruby-1.9.2 @ccc3`. That single commit pinpoints the exact week the Ruby community crossed the bridge to native POSIX threads.
+
+2. **The Darwin FSEvents Hook (`autotest-fsevent`)**:
+   On spinning 5400 RPM laptop drives in 2010, running automated test suites via directory polling caused the drive head to thrash constantly. The inclusion of `autotest-fsevent` in early Gemfiles marks the physical presence of an Apple laptop, hooking directly into OS X's kernel-level file-system event daemon so tests triggered instantly on save without mechanical wear.
+
+3. **Gemcutter & The Birth of Bundler (Commit `a7c8e01`, March 2010)**:
+   Before `rubygems.org` existed as the unified standard host, Nick Quaranto ran Gemcutter. In March 2010, Mike's Gemfile specified `source :gemcutter` and loaded Bundler via `.bundle/environment`. Bundler 0.9 had launched only weeks earlier; this fingerprint captures early adoption on the bleeding edge of the Ruby community.
+
+4. **The Physical Move from `/usr/local` to `/opt/homebrew`**:
+   The transition from Intel x86_64 to Apple Silicon ARM64 is etched across the history of `zdots`. In 2017, all paths, dynamic libraries, and compilers pointed to `/usr/local`. In 2024, the path switches to `/opt/homebrew`, accompanied by `RUBY_CONFIGURE_OPTS="--with-jemalloc"` in `mise.toml`. This is the exact signature of Apple's Unified Memory Architecture, where jemalloc prevents heap fragmentation across unified CPU/GPU address spaces.
+
+5. **The Five-State Queue Born from Raspberry Pi Thermal Throttles**:
+   Why does `media-pipeline` use a 5-state Maildir queue (`staged/`, `pending/`, `processing/`, `processed/`, `failed/`) instead of storing job status in an in-memory Redis key? Because in April 2023, The Fluffle's 5 Raspberry Pis would randomly reboot under heavy `whisper.cpp` load when ambient desk temperatures rose. An in-memory queue lost state on crash; a filesystem Maildir directory survived sudden power loss and allowed another node to claim the next chunk. The space station runs on the survival mechanics of the cluster.
+
+---
+
+## 5. Adversarial Cross-Examination
 
 To make the Studio Workbench session authentic, grounded, and intellectually unassailable, we examine three fierce adversarial objections:
 
@@ -126,12 +162,14 @@ To make the Studio Workbench session authentic, grounded, and intellectually una
 
 ---
 
-## 5. Spoken Teleprompter Prompts for the Session
+## 6. Spoken Teleprompter Prompts for the Session
 
 When presenting this at the desk, keep these exact figures and phrases front and center:
 
+- *"In 2011, I committed the upgrade to Ruby 1.9.2 and deleted SystemTimer from my Gemfile because native POSIX threads finally replaced green threads. That was the week the clay changed."*
 - *"In 2014, I created a repo called `many-hands-make-light-work` because I could not afford thousands of dollars in cloud speech APIs and I could not transcribe two hundred hours alone."*
 - *"In 2017, I committed the first line of `zdots`. It was not about AI; it was about building a machine I could trust."*
 - *"In 2023, The Fluffle proved on five Raspberry Pis that whisper.cpp could work, generating over a thousand transcript pairs."*
-- *"This morning, our autonomous pipeline processed twenty-eight minutes of 1080p video in one hundred and three seconds with zero bytes of permanent disk bloat."*
+- *"The five-state queue we use today was not invented for Rails 8. It was born on five hot Raspberry Pis on my desk that kept rebooting under Whisper loads."*
+- *"This morning, our autonomous pipeline processed twenty-eight minutes of 1080p video in one hundred and three seconds on Apple Silicon Metal with zero bytes of permanent disk bloat."*
 - *"When does a wooden boat become a space station? When Theseus spends fifteen years at the workbench, replacing every plank with what he learned from the sea."*
