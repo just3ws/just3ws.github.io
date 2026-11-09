@@ -127,7 +127,43 @@ Systems leave physical signatures in their source repositories. Like finger impr
 
 ---
 
-## 5. Adversarial Cross-Examination
+## 5. The Plank Replacement Map & Panoramic View Decision Radius
+
+Every major platform migration across fifteen years was not an aesthetic rewrite. In Panoramic View terms, each architectural choice was a tracked business and systems decision that set an operational radius of impact, lowering context loading costs and arresting knowledge rot:
+
+| Modern Space Station Plank (2026) | Historical Precursor Plank | The Problem That Forced the Cut | Panoramic View Decision Radius & Context Cost |
+| :--- | :--- | :--- | :--- |
+| **Rails 8 SolidQueue** (`media-pipeline`) | Resque (2011) and Sidekiq (2014) backed by Redis | Redis memory exhaustion, keyspace eviction, and multi-process daemon drift. | **Zero External Broker Tax**: Eliminates Redis ops entirely; transactions and job states share one ACID PostgreSQL database, cutting context loading overhead for a single operator. |
+| **5-State Maildir Queue** (`staged/`, `pending/`, `processing/`...) | The Fluffle 5-Pi Cluster (2023) | Thermal throttling and sudden node reboots on Raspberry Pis losing in-memory jobs. | **Fault-Tolerant Persistence**: Filesystem states survive kernel panics, power loss, and node crashes without state loss. |
+| **103-Second Whisper Large v3 Turbo on Metal** | Many-Hands-Make-Light-Work crowdsourcing repo (2014) | Commercial cloud speech APIs costing thousands of dollars for 200+ hours of video. | **$0 Marginal Egress**: Complete digital sovereignty; transcribing 28 minutes of audio costs $0.00 and stays private to local NVMe. |
+| **Ephemeral 16kHz WAV Purge (0-Byte Waste)** | Manual disk cleanups on 128GB MacBook Air SSDs (2012) | Local SSD exhaustion while rendering high-definition video assets. | **Bounded Local Footprint**: Audio buffers live in `/tmp/` for 103 seconds and are unlinked immediately upon Whisper exit. |
+| **`mise.toml` with jemalloc on Apple Silicon** | `.rvmrc` monkey-patching `cd` with Ruby Enterprise Edition (2010) | Ruby memory bloat, copy-on-write degradation, and x86_64 architecture mismatches. | **Unified Memory Efficiency**: jemalloc eliminates heap fragmentation across Apple Silicon shared CPU and GPU memory. |
+| **Autonomous YouTube Publisher** | Manual web uploads and Flip Video USB arm transfers (2011) | Human fatigue, forgotten uploads, and broken series continuity. | **Sovereign Delivery Continuity**: Verified OAuth tokens and SolidQueue jobs publish enriched videos during nighttime quotas. |
+
+---
+
+## 6. The Three-Lane Synchronized Lineage
+
+When examining any historical year, the lived story braids three parallel horizons together:
+
+```
+Year    The Physical Room & Venue          The Machine & Silicon              The Code & Invariant Planks
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+2005    TicketsNow (Crystal Lake, IL)      Custom PC, dual CRTs, Win XP       C# 2.0, NStun (RFC 3489 STUN NAT traversal)
+2008    Sears Tower (Chicago Alt.NET)      Windows Server, early Mac OS X     NHaml view engine, WatiR, CruiseControl.NET
+2009    8th Light (Libertyville, IL)       Early MacBooks, Vim, tmux          Signing Craftsmanship Manifesto (#106)
+2010    Follett Software (SCMC Founding)   15" Unibody MacBook Pro (5400 RPM) Bundler 0.9, Gemcutter, Sinatra + Sequel
+2011    SCNA / Chicago Code Camp           Flip Video Camera in hand          Ruby 1.9.2, deleting SystemTimer for POSIX threads
+2014    Conference Hallway Tracks          Retina MacBook Pro (x86_64)        many-hands repo, Coderwall PostgreSQL migration
+2017    Home Desk & Remote Engineering     Intel Mac, macOS Sierra            zdots genesis (commit e25021c7), iTerm2 shell integration
+2020    GitHub Arctic Code Vault           Intel Mac, macOS Catalina          Snapshotting zdots and coderwall to Svalbard permafrost
+2023    Home Desk Edge Cluster             5 clustered Raspberry Pi 4s        The Fluffle, whisper.cpp ARM NEON, Maildir queue
+2026    The Studio Workbench               Apple Silicon M4 Max, dual displays Rails 8 SolidQueue, Metal GPU 103s Whisper
+```
+
+---
+
+## 7. Adversarial Cross-Examination
 
 To make the Studio Workbench session authentic, grounded, and intellectually unassailable, we examine three fierce adversarial objections:
 
@@ -162,7 +198,7 @@ To make the Studio Workbench session authentic, grounded, and intellectually una
 
 ---
 
-## 6. Spoken Teleprompter Prompts for the Session
+## 8. Spoken Teleprompter Prompts for the Session
 
 When presenting this at the desk, keep these exact figures and phrases front and center:
 
