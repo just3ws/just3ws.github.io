@@ -349,6 +349,75 @@ permalink: /panoramic-view/
     </div>
   </section>
 
+  <!-- SECTION 6: THE SYSTEMS HEALTH LATTICE WORK & CORPORATE ROSETTA STONE -->
+  {% if pv.lattice_work %}
+  <section class="pv-lattice" aria-labelledby="lattice-heading" style="margin-top: 3.5rem; margin-bottom: 3.5rem;">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">{{ pv.lattice_work.eyebrow }}</p>
+      <h2 id="lattice-heading">{{ pv.lattice_work.title }}</h2>
+      <p style="font-size:1.05rem; line-height:1.6; color:var(--pv-muted, #938aa9); margin-top:0.5rem; max-width:850px;">
+        {{ pv.lattice_work.lede }}
+      </p>
+    </div>
+
+    <!-- The Corporate Rosetta Stone Table -->
+    <div style="margin-top: 2rem; margin-bottom: 2.5rem; overflow-x: auto; background: var(--pv-surface, #2a2a37); border: 1px solid var(--pv-border, #363646); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+      <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin: 0 0 1rem 0;">The Universal Health Rosetta Stone</h3>
+      <table style="width: 100%; min-width: 780px; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid var(--pv-border, #363646); color: var(--pv-accent, #7e9cd8);">
+            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Dimension</th>
+            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Clinical Care (EHR)</th>
+            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Corporate OKRs</th>
+            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">SRE Reliability</th>
+            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Panoramic View &amp; PCMS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in pv.lattice_work.rosetta_stone %}
+          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--pv-ink, #dcd7ba);">
+            <td style="padding: 0.65rem 0.75rem; font-weight: 700; color: var(--pv-accent, #7e9cd8); white-space: nowrap;">{{ row.dimension }}</td>
+            <td style="padding: 0.65rem 0.75rem;">{{ row.clinical }}</td>
+            <td style="padding: 0.65rem 0.75rem;">{{ row.okr }}</td>
+            <td style="padding: 0.65rem 0.75rem;">{{ row.sre }}</td>
+            <td style="padding: 0.65rem 0.75rem; font-weight: 600;">{{ row.cartography }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Key Implementations Grid -->
+    <div style="margin-top: 2rem;">
+      <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin: 0 0 1rem 0;">Living Platform Implementations &amp; Evidence</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+        {% for impl in pv.lattice_work.implementations %}
+        <div style="background: var(--pv-surface, #2a2a37); border: 1px solid var(--pv-border, #363646); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+              <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--pv-ink, #dcd7ba); margin: 0;">{{ impl.title }}</h4>
+              <span style="font-size: 0.7rem; font-weight: 800; background: rgba(126,156,216,0.15); color: var(--pv-accent, #7e9cd8); padding: 0.15rem 0.5rem; border-radius: 4px; text-transform: uppercase;">{{ impl.badge }}</span>
+            </div>
+            <p style="font-size: 0.85rem; line-height: 1.55; color: var(--pv-muted, #938aa9); margin: 0 0 1rem 0;">{{ impl.description }}</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid var(--pv-border, #363646); padding-top: 0.75rem;">
+            {% for link in impl.links %}
+              {% if link.url %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener" style="font-size: 0.78rem; font-weight: 700; color: var(--pv-accent, #7e9cd8); text-decoration: none; padding: 0.25rem 0.5rem; background: rgba(126,156,216,0.1); border-radius: 4px;">{{ link.label }}</a>
+              {% elsif link.code %}
+                <code style="font-size: 0.75rem; background: rgba(0,0,0,0.3); color: #34d399; padding: 0.25rem 0.5rem; border-radius: 4px; font-family: ui-monospace, monospace;">$ {{ link.code }}</code>
+              {% elsif link.path %}
+                <code style="font-size: 0.75rem; background: rgba(0,0,0,0.3); color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-family: ui-monospace, monospace;">{{ link.path }}</code>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
   <!-- FOOTER -->
   <footer class="pv-footer">
     <p class="pv-kicker">Engineering leadership without guesswork</p>

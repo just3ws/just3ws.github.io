@@ -207,3 +207,73 @@ practice_areas:
       infrastructure clarifies the true value of computing investments, while
       accounting for the full time dimension: context loading costs, institutional
       knowledge attrition, and grounding autonomous AI agents in empirical reality.
+
+lattice_work:
+  eyebrow: "Socio-Technical Systems Health"
+  title: "The Systems Health Lattice Work & Corporate Rosetta Stone"
+  lede: >-
+    In high-consequence environments, technical excellence fails when teams speak incompatible dialects. Panoramic View bridges behavioral healthcare treatment planning (BehaveHealth), corporate goal-setting (OKRs), and Site Reliability Engineering (SRE SLO/SLI/SLA) into a unified operational vocabulary.
+  rosetta_stone:
+    - dimension: "The Friction"
+      clinical: "Problem / Clinical Diagnosis"
+      okr: "Strategic Bottleneck or Market Threat"
+      sre: "Reliability Incident or Latent Debt"
+      cartography: "Tracked Friction Seam & Blast Radius"
+    - dimension: "The North Star"
+      clinical: "Treatment Goal (Long-term client wellness and autonomy)"
+      okr: "Objective (Inspirational, directional destination)"
+      sre: "SLA (Contractual business boundary and promise)"
+      cartography: "System Invariant (Zero disk waste, calm autonomy, sovereign archive)"
+    - dimension: "The Target"
+      clinical: "Objective (Observable, time-bound behavioral milestones)"
+      okr: "Key Result (Measurable threshold: 0 to 1.0)"
+      sre: "SLO (Agreed reliability threshold, e.g. 99.5%)"
+      cartography: "Target Gateway State (Clean exit routing, whole-path p95 target)"
+    - dimension: "The Measurement"
+      clinical: "Assessment Score, Vitals, Behavioral Log"
+      okr: "Performance Metric, Milestone Completion"
+      sre: "SLI (Raw quantitative metric: latency, error rate)"
+      cartography: "Checkpoint Telemetry (24h error count, checkpoint p95 latency)"
+    - dimension: "The Action"
+      clinical: "Clinical Intervention or Therapeutic Modality"
+      okr: "Strategic Initiative or Engineering Refactor"
+      sre: "Error Budget Policy or Self-Healing Runbook"
+      cartography: "Automated Proof Harness or Isolated Degradation Seam"
+    - dimension: "The Continuity"
+      clinical: "Nurse Shift Handoff (SBAR Protocol)"
+      okr: "Quarterly Business Review (QBR) & Cadence"
+      sre: "On-Call Shift Handoff & Postmortem Review"
+      cartography: "zdots Session Handoff & Carried Context"
+  implementations:
+    - title: "BPMN 2.0 Subprocess Architecture"
+      badge: "OMG BPMN 2.0"
+      description: "Parent flow (media-publication.v3) coordinates local fast STT and canonical distillation across domain boundaries via standard BPMN Call Activities into ztranscribe.v1."
+      links:
+        - label: "Parent Workflow BPMN ↗"
+          url: "https://media-pipeline.localhost/panoramic/diagram"
+        - label: "ztranscribe Subprocess BPMN ↗"
+          url: "https://media-pipeline.localhost/panoramic/ztranscribe"
+    - title: "6-Layer Domain Boundary Health Audit"
+      badge: "L0-L5 Health Stack"
+      description: "Isolates subsystem failures (L0 Silicon, L1 Binaries, L2 Weights, L3 Context Engine, L4 Diarization, L5 Telemetry) into an aggregate health signal without crashing parent pipelines."
+      links:
+        - label: "Health Service Source ↗"
+          url: "https://github.com/just3ws/media-pipeline/blob/main/app/services/ztranscribe_subsystem_health_service.rb"
+        - label: "Proof Harness CLI"
+          code: "bin/mp panoramic prove-subprocess"
+    - title: "1:1 BPMN Diagram Interchange (BPMNDI)"
+      badge: "Camunda Parity"
+      description: "Exports standard BPMN 2.0 XML with full diagram plane bounds and sequence flow waypoints, rendering visually in Camunda Modeler and bpmn.io with 1:1 fidelity."
+      links:
+        - label: "Parent BPMNDI XML ↗"
+          url: "https://media-pipeline.localhost/panoramic/flow.bpmn?flow_id=media-publication.v3"
+        - label: "Subprocess BPMNDI XML ↗"
+          url: "https://media-pipeline.localhost/panoramic/flow.bpmn?flow_id=ztranscribe.v1"
+    - title: "Nurse Shift Handoff for AI & Engineers"
+      badge: "Continuity of Care"
+      description: "Session-to-session handoffs transfer carried context, active telemetry, pending background jobs, and watch items across rotating autonomous agents and human operators."
+      links:
+        - label: "Career Strategy Guide ↗"
+          url: "/docs/career-strategy-audhd-principal-engineering/"
+        - label: "System Cartographer Skill ↗"
+          url: "/docs/agents/agent-raci-matrix/"
