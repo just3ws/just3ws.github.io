@@ -13,8 +13,8 @@ permalink: /ai/2026/11/02/panoramic-view-media-publishing-control-run/
 ai_generated: true
 robots: noindex,follow
 sitemap: false
-human_led: false
-source_kind: ai-assisted-operational-case-draft
+human_led: true
+source_kind: ai-augmented-human-led
 content_type: case-study
 ---
 

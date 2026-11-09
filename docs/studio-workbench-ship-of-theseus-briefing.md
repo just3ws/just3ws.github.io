@@ -213,6 +213,7 @@ To make the Studio Workbench session authentic, grounded, and intellectually una
 - **The Constraints Came from Battle Scars:** If you ask an unconstrained LLM to build a video pipeline, it suggests spinning up AWS Transcribe, S3 buckets, Redis clusters, and recurring SaaS subscriptions.
 - **The Invariants Pre-Dated the Code:** The 5-state Maildir queue (`staged`, `pending`, `processing`, `processed`, `failed`), the single-worker concurrency lock, the 16kHz mono WAV extraction, and the zero-disk-waste streaming invariants were already documented and proven in the 2023 Fluffle experiment and early zdots shell harnesses.
 - **AI as Pneumatic Tool:** AI was a high-velocity mechanical multiplier, not the architect. Mike's limitation was never system design or distributed systems knowledge; it was the physical time required for a single human to hand-type thousands of lines of boilerplate. The architectural opinions, failure recovery, and boundaries were 100% Mike Hall.
+- **Panoramic View as the Safety Harness:** Operating safely with AI at this velocity required inventing the **Panoramic View methodology**. Without rigid internal and external context mapping, AI pairs suffer from severe context rot, premature abstraction, and hallucinatory architectural drift. By mapping context **internally** (AST topography, class seams, L0-L5 infrastructure health) and **externally** (BPMN 2.0 lifecycle states, sovereign subprocess call activities, daily quota budgets), both the engineer and the AI assistant share the exact same verifiable mental model. Key business decisions and operational invariants are preserved across every commit.
 
 ### Objection 2: "Isn't 15 years to transcribe 200 videos the ultimate premature abstraction and sunk cost?"
 **The Skeptic's Claim:**
@@ -233,6 +234,7 @@ To make the Studio Workbench session authentic, grounded, and intellectually una
   2. Local tools must be fully legible, inspectable, and reproducible.
   3. Change must be safe, verified, and humane.
 - **Theseus Directed Every Cut:** In the Greek myth, anonymous harbor workers swapped the rotten timber. In this system, **Theseus himself directed and tested every replacement**. Every substitution was informed by the failures of the previous plank. The wooden boat evolved into a space station because the craftsman evolved alongside the vessel.
+- **Continuity of Care Across Epochs:** Just as modern healthcare enforces clinical shift handoffs between nurses to prevent cognitive drift, this system enforces structured handoffs at the end of every engineering session. The platform's health, background processes, and open watch items are handed to the next shift seamlessly, preserving continuity of care across decades.
 
 ---
 
@@ -246,4 +248,6 @@ When presenting this at the desk, keep these exact figures and phrases front and
 - *"In 2023, The Fluffle proved on five Raspberry Pis that whisper.cpp could work, generating over a thousand transcript pairs."*
 - *"The five-state queue we use today was not invented for Rails 8. It was born on five hot Raspberry Pis on my desk that kept rebooting under Whisper loads."*
 - *"This morning, our autonomous pipeline processed twenty-eight minutes of 1080p video in one hundred and three seconds on Apple Silicon Metal with zero bytes of permanent disk bloat."*
+- *"When you pair with AI, speed without cartography leads to brittle systems. Panoramic View maps context internally and externally so every key business decision remains verifiable."*
+- *"Every time a video publishes, automated post-publish hooks syndicate companion notes to Patreon, building our public catalog and sharing the craft between finished pieces."*
 - *"When does a wooden boat become a space station? When Theseus spends fifteen years at the workbench, replacing every plank with what he learned from the sea."*

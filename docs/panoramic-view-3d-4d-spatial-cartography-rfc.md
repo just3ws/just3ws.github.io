@@ -112,7 +112,7 @@ To ensure zero external dependencies and single-operator simplicity, the 3D/4D s
 ## 4. Key Operator Capabilities
 
 1. **Topological Fly-Through**: An operator can orbit the entire ecosystem at 30,000 feet to evaluate cross-system health, or dive directly down to the silicon layer (L0) to observe GPU compute allocation during a fast transcription slice.
-2. **Drill-Down Along Conduits**: Clicking any BPMN Call Activity smoothly moves the virtual camera through the Z-plane into the child subprocess, maintaining complete spatial orientation.
+2. **Traversing Along Conduits**: Clicking any BPMN Call Activity smoothly moves the virtual camera through the Z-plane into the child subprocess, maintaining complete spatial orientation.
 3. **Bottleneck Archaeology**: Replaying a failed or degraded run visually exposes the exact gateway decision where the transaction diverted to an error offramp, pinpointing the code location, reason code, and affected infrastructure layer.
 4. **Executive System Comprehension**: Eliminates abstract slides during leadership reviews by presenting an undeniable, living digital twin of how software, hardware, and business processes interact.
 

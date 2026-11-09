@@ -73,7 +73,7 @@ These became the direct architectural blueprint for what we run today.
 
 ---
 
-## Act 4: When Pre-AI Meets AI
+## Act 4: When Pre-AI Meets AI & Augmented Development
 
 **Scene:** Camera inset with Rails 8 SolidQueue and media-pipeline code.
 
@@ -88,9 +88,15 @@ They were the exact operational constraints I spent fifteen years discovering th
 My limitation was never system design knowledge; it was the raw time required to hand-type every model, migration, test, and shell harness.
 AI was the high-speed pneumatic nail gun. But Theseus was the one enforcing every boundary and inspecting every joint.
 
+And more importantly: to run safely at that speed, we had to invent the Panoramic View methodology.
+When you pair with AI, speed without cartography leads to brittle systems, hallucinated dependencies, and architectural drift.
+Panoramic View maps context internally into verifiable AST nodes, class seams, and six-layer infrastructure health audits, from compute silicon up to telemetry signals.
+And it maps context externally into formal BPMN 2.0 lifecycle states, sovereign subprocess call activities, daily quota budgets, and filesystem conventions.
+By anchoring both the human engineer and the AI assistant in the exact same living, verifiable cartography, key business decisions and operational invariants are preserved across every commit.
+
 ---
 
-## Act 5: The Space Station in Production
+## Act 5: The Space Station in Production & The Living Canvas
 
 **Scene:** Show live media-pipeline terminal, mp status, and morning ingestion logs.
 
@@ -105,11 +111,24 @@ Let us look at what happened during this morning's ingestion of our Sound Above 
 
 Zero permanent SSD waste. Zero manual file copying. Zero cloud egress costs.
 
+And notice what happens when publication finishes:
+- Our newly added post-publish hooks kick in immediately.
+- The pipeline automatically synthesizes a companion article for Patreon, explaining the video themes, the architectural decisions, and the Panoramic View lessons.
+- It stages the post and emits a notification to our local platform message bus, building our catalog and sharing the work between finished pieces.
+- And when you look at our workflow diagrams, this is not a flat drawing: our parent publication flow binds directly to the sovereign ztranscribe subprocess through standard BPMN 2.0 Call Activities with full Diagram Interchange.
+- You can inspect the six explicit boundary layers of the subsystem, or open the diagram directly in Camunda Modeler with one-to-one visual fidelity.
+- We are even specifying a four-dimensional spatial-temporal cartography engine in WebGL, turning these flat process maps into stacked three-dimensional architectural planes with timeseries scrubbing and particle flow rates.
+
 ---
 
-## Act 6: Close With What Changed
+## Act 6: Continuity of Care & What Survives
 
 **Scene:** Return to camera at desk.
+
+And there is one final lesson from modern healthcare that applies directly to systems engineering: the clinical nursing shift handoff.
+In a hospital, a nurse cannot simply walk away when their shift ends; they deliver a structured SBAR handoff to the incoming nurse to ensure continuity of care.
+In our platform, every engineering session ends with an explicit handoff capturing vitals, background tasks, and open watch items.
+Whether the next shift is me tomorrow morning, an AI agent running overnight, or another craftsman five years from now, the system's identity, health, and trajectory are preserved.
 
 So we come back to the Ship of Theseus.
 A second skeptic might challenge me here: "Mike, mathematically zero bytes of your 2009 code exist in today's system. The language changed from C# and Bash to Ruby and modern Rails. The hardware changed from Compaq depot PCs to Raspberry Pis to Apple Silicon M4. How can you claim with a straight face that this is the same ship?"
