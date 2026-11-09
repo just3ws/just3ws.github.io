@@ -322,7 +322,7 @@
 
     function loadSearchCatalog() {
       if (isCatalogLoaded) return Promise.resolve();
-      return fetch('/assets/data/site-search-index.json')
+      return fetch('/assets/data/site-search-index.json?v={{ site.time | date: "%s" }}', { cache: 'no-cache' })
         .then(res => res.json())
         .then(data => {
           searchCatalog = data || [];
@@ -338,7 +338,7 @@
 
     function loadKnowledgeGraph() {
       if (isGraphLoaded) return Promise.resolve();
-      return fetch('/assets/data/knowledge_graph.json')
+      return fetch('/assets/data/knowledge_graph.json?v={{ site.time | date: "%s" }}', { cache: 'no-cache' })
         .then(res => res.json())
         .then(data => {
           knowledgeGraph = data || { nodes: [], links: [] };
@@ -454,7 +454,7 @@
       }
 
       if (isCatalogLoaded && searchCatalog.length > 0) {
-        const terms = q.split(/\s+/).filter(Boolean);
+        const terms = q.replace(/["'“”]/g, '').split(/\s+/).filter(Boolean);
         const matches = searchCatalog.filter(entry => {
           if (!terms.length) return true;
           const text = (entry.title + ' ' + (entry.keywords || '') + ' ' + (entry.badge || '')).toLowerCase();
@@ -470,7 +470,7 @@
         });
         renderDynamicMatches(combined, q);
       } else {
-        const terms = q.split(/\s+/).filter(Boolean);
+        const terms = q.replace(/["'“”]/g, '').split(/\s+/).filter(Boolean);
         let count = 0;
         let first = null;
         initialItems.forEach(item => {

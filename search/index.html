@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let catalog = [];
 
   const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
-  fetch('/assets/data/site-search-index.json').then(response => response.json()).then(data => {
+  fetch('/assets/data/site-search-index.json?v={{ site.time | date: "%s" }}', { cache: 'no-cache' }).then(response => response.json()).then(data => {
     catalog = data.filter(item => item && item.url);
     const query = new URLSearchParams(window.location.search).get('q') || '';
     input.value = query;
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function render(raw) {
     const query = raw.trim().toLowerCase();
-    const terms = query.split(/\s+/).filter(Boolean);
+    const terms = query.replace(/["'“”]/g, '').split(/\s+/).filter(Boolean);
     const matches = catalog.filter(item => {
       const haystack = `${item.title} ${item.badge || ''} ${item.keywords || ''}`.toLowerCase();
       return terms.every(term => haystack.includes(term));
