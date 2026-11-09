@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# ---
+# name: mp
+# domain: media
+# purpose: Forwarding wrapper for media-pipeline CLI from just3ws root
+# usage: bin/mp <command> [options]
+# ---
+set -euo pipefail
+
+MP_DIR="$(ruby -ryaml -e '
+  cfg = YAML.load_file(File.expand_path("../_data/media_intake_targets.yml", __dir__)) rescue {}
+  puts File.expand_path(ENV["MEDIA_PIPELINE_WORKDIR"] || cfg["service_working_directory"] || "~/github.com/just3ws/media-pipeline")
+')"
+
+if [[ -x "$MP_DIR/bin/mp" ]]; then
+  exec "$MP_DIR/bin/mp" "$@"
+else
+  echo "media-pipeline CLI not found at $MP_DIR/bin/mp" >&2
+  exit 1
+fi

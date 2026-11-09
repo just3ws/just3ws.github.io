@@ -18,7 +18,7 @@ Usage: ./bin/pipeline <domain> <action> [options]
 
 Namespaces:
   media     Media-pipeline operations plus local recording and episode preparation.
-            YouTube publishing runs in media-pipeline. Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, query, status, inventory, assets, corrupt, metadata, service, doctor.
+            YouTube publishing runs in media-pipeline. Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, query, status, inventory, assets, corrupt, metadata, service, doctor, panoramic, mp.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   lake      Ecosystem datalake across GitHub orgs, git commits, artifacts, timeline.
@@ -236,12 +236,30 @@ run_media() {
     cadence|drift)
       ruby bin/analyze_ramblin_cadence.rb "$@"
       ;;
+    panoramic)
+      if [ -x "$MP_WORKDIR/bin/mp-panoramic" ]; then
+        exec "$MP_WORKDIR/bin/mp-panoramic" "$@"
+      elif [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" panoramic "$@"
+      else
+        echo "media-pipeline CLI not found at $MP_WORKDIR/bin/mp" >&2
+        exit 1
+      fi
+      ;;
+    mp)
+      if [ -x "$MP_WORKDIR/bin/mp" ]; then
+        exec "$MP_WORKDIR/bin/mp" "$@"
+      else
+        echo "media-pipeline CLI not found at $MP_WORKDIR/bin/mp" >&2
+        exit 1
+      fi
+      ;;
     help|-h|--help)
-      echo "Usage: ./bin/pipeline media <status|inventory|assets|scan|corrupt|metadata|intake|stream|swiftbar|stage|stage-workbench|bookmarks|patreon|episode|youtube|teleprompter|textream|sync-prompts|cadence|halt|stop|resume|query|service|restart|logs|doctor> [options]"
+      echo "Usage: ./bin/pipeline media <status|inventory|assets|scan|corrupt|metadata|intake|stream|swiftbar|stage|stage-workbench|bookmarks|patreon|episode|youtube|teleprompter|textream|sync-prompts|cadence|panoramic|mp|halt|stop|resume|query|service|restart|logs|doctor> [options]"
       ;;
     *)
       echo "Unknown media action: $action" >&2
-      echo "Available: status, inventory, assets, scan, corrupt, metadata, intake, stream, swiftbar, stage, stage-workbench, bookmarks, patreon, episode, youtube, teleprompter, textream, sync-prompts, cadence, halt, stop, resume, query, service, restart, logs, doctor" >&2
+      echo "Available: status, inventory, assets, scan, corrupt, metadata, intake, stream, swiftbar, stage, stage-workbench, bookmarks, patreon, episode, youtube, teleprompter, textream, sync-prompts, cadence, panoramic, mp, halt, stop, resume, query, service, restart, logs, doctor" >&2
       exit 1
       ;;
   esac
@@ -540,6 +558,14 @@ case "$cmd" in
   doctor|media-doctor)
     shift
     run_media doctor "$@"
+    ;;
+  panoramic)
+    shift
+    run_media panoramic "$@"
+    ;;
+  mp)
+    shift
+    run_media mp "$@"
     ;;
   help|-h|--help)
     usage
