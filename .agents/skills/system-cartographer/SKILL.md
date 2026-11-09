@@ -78,6 +78,32 @@ While each system operates under unique local constraints (compute hardware, sto
 ### Checklist 4: Deterministic Proof Harness
 - Does the toolchain expose an automated proof suite (for example, `bin/mp panoramic prove-subprocess`) that verifies flow contracts, gateway logic, dual ingress paths, health layers, and HTTP endpoints in CI and pre-push gates?
 
+## Corporate Terminology Integration: SLO, SLI, SLA, OKR & Systems Health
+
+To communicate effectively with corporate executive leadership, SRE teams, and cross-functional product organizations, Panoramic View maps clinical treatment planning, systems cartography, and corporate frameworks into a single unified health model:
+
+### The Rosetta Stone of Systems Health & Evolution
+
+| Health Dimension | Clinical Treatment Planning | Corporate Leadership (OKRs) | SRE & Systems Reliability | Panoramic View & PCMS |
+| :--- | :--- | :--- | :--- | :--- |
+| **The Friction** | Problem / Clinical Diagnosis | Strategic Bottleneck / Threat | Incident / Latent Reliability Risk | Tracked Friction Seam / Blast Radius |
+| **The North Star** | **Treatment Goal** (Long-term client wellness and autonomy) | **Objective (O)** (Inspirational, qualitative strategic destination) | **SLA** (Contractual business boundary and promise) | **System Invariant** (Zero disk waste, calm autonomy, archive durability) |
+| **The Target** | **Objective** (Observable, time-bound behavioral milestones) | **Key Result (KR)** (Measurable, verifiable threshold: 0 to 1.0) | **SLO** (Agreed reliability threshold, for example 99.5% success) | **Target Gateway State** (Clean exit routing, whole-path p95 target) |
+| **The Measurement** | Clinical Assessment Score / Vitals | Performance Metric / Key Result Progress | **SLI** (Raw quantitative metric: latency, error rate, saturation) | **Checkpoint Measurement** (24h error count, checkpoint p95 latency) |
+| **The Action** | Clinical Intervention / Modality | Strategic Initiative / Engineering Refactor | Error Budget Policy / Self-Healing Runbook | Automated Proof Harness / Isolated Degradation Seam |
+| **The Continuity** | **Nurse Shift Handoff (SBAR)** | Quarterly Business Review & Cadence | On-Call Shift Handoff & Incident Review | **zdots Session Handoff & Carried Context** |
+
+### Operational Dynamics Over Time
+
+1. **Goals and SLAs Protect Architectural Wellness**:
+   - Goals establish what the system must be to remain viable. An SLA or system invariant (such as zero permanent local SSD consumption or strict FIFO publication) is not an arbitrary metric. It defines the boundary of sustainable operation.
+2. **Objectives and SLOs Govern Evolutionary Velocity**:
+   - SLOs and Key Results act as the operating budget. When a system consumes its error budget (for example, when ztranscribe telemetry records two intermittent errors in 24 hours), the system does not panic or crash. It signals `DEGRADED`, triggering preflight checks and cooling publication batches until the objective is re-stabilized.
+3. **Interventions Are Explicit Runbooks, Not Guesswork**:
+   - When an indicator (SLI) deviates from an objective (SLO), interventions must not be ad-hoc. They are mapped directly to self-healing runbooks (for example, `bin/mp panoramic verify-scheduling` or `bin/mp panoramic prove-subprocess`).
+4. **Shift Handoffs Guarantee Continuity of Care**:
+   - Just as rotating clinical shifts require structured SBAR handoffs, rotating AI agents and human operators require the session handoff file (`~/.config/adots/handoffs/YYYY-MM-DD.md`). It transmits current vitals (L0-L5 stack status), open threads, pending news (background timers, async enqueue states), and watch items so the incoming shift operates with complete context.
+
 ## Evaluation & Tone Guidelines
 
 - **Staff IC Signal**: Frame decisions around structural outcomes, risk mitigation, and unblocking engineering teams rather than tactical task completion.
