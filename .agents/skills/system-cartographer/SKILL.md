@@ -38,6 +38,46 @@ Sustained cartography reduces context loading friction and halts knowledge rot.
 ### 4. Dual Grounding: Aligning Humans and Grounding AI Agents
 Panoramic View originally gave cross-functional human teams (Product, Engineering, Operations, Leadership) a shared empirical model. That same cartography is equally vital for AI agents. Autonomous coding and diagnostic agents require bounded context, explicit blast radii, and verified decision anchors to execute safely without hallucinating or thrashing.
 
+## Panoramic View Labs (PVL) & Pavel
+
+Panoramic View is the system-cartography technique. Panoramic View Labs (PVL, pronounced "Pavel") is the initiative and organizational umbrella. Pavel is the Panoramic View specialist agent responsible for leading runtime investigations, tracing actor journeys from browser to backend, discovering modernization seams, and enforcing the PSGOI and PCMS standards across all repositories (media-pipeline, zdots, just3ws, wwworkremote).
+
+## The PSGOI Framework
+
+Every system analyzed or modernized under Panoramic View uses the PSGOI scaffolding to align process architecture, support, and maintenance:
+
+1. **Problem (P)**: The empirical friction point, legacy failure mode, or unverified cross-boundary assumption that invites technical debt or context thrashing.
+2. **Strategy / Solution (S)**: The architectural mechanism chosen to isolate and resolve the problem (for example, standard BPMN 2.0 Call Activities, dual-ingress routing, or isolated aggregate health drawers).
+3. **Goal (G)**: The durable system invariant that must never be compromised (for example, zero permanent local SSD consumption, fair-share FIFO dispatch, or sovereign archive integrity).
+4. **Objective (O)**: The concrete, observable milestones across the execution trail (for example, sub-second STT latency, dual-format convergence on shared GPU compute, or clean error offramps).
+5. **Indicator (I)**: The measurable SLI or gate decision metric recorded by the telemetry bus (for example, 24-hour intermittent failure count, p95 whole-path duration, or explicit exit versus error routing counts).
+
+## PCMS Checklists (System Health & Evolution)
+
+While each system operates under unique local constraints (compute hardware, storage layers, quota budgets, or third-party APIs), the Panoramic Cartography & Modernization System (PCMS) enforces universal health and evolution checklists:
+
+### Checklist 1: Sovereign Subprocess Isolation
+- Does the subsystem define and own its authoritative BPMN 2.0 flow specification (for example, `ztranscribe.v1.yml`) instead of being hardcoded as an implicit internal branch of the parent caller?
+- Does the child flow declare its own distinct swimlanes, entry events, gateways, and terminal exits?
+
+### Checklist 2: Explicit Domain Boundaries & Multi-Layer Health
+- Does the parent workflow isolate subsystem failures into an aggregate health signal (Healthy, Degraded, Unhealthy) rather than halting unrelated parent stages?
+- Does the subsystem health service audit the entire vertical stack through explicit operational layers:
+  - L0: Compute Silicon (Metal GPU, CPU threads, hardware acceleration)
+  - L1: System CLI Binaries (executables on PATH, exit codes)
+  - L2: Model Weights & Static Assets (presence, integrity, checksums, sizes)
+  - L3: Storage Engine & Vector Database (PostgreSQL, pgvector, HTTP health endpoints)
+  - L4: Auxiliary Services (diarization tokens, secondary processors)
+  - L5: Telemetry & SLO Signals (24-hour error windows, intermittent failure dampening)
+
+### Checklist 3: 1:1 BPMN 2.0 Diagram Interchange (BPMNDI) Parity
+- Does the system export valid OMG BPMN 2.0 XML containing both the semantic execution process and the complete `<bpmndi:BPMNDiagram>` plane?
+- Do reusable subprocess calls use standard `<bpmn:callActivity calledElement="...">` bindings?
+- Can the exported XML be loaded directly into Camunda Modeler or online viewers (such as demo.bpmn.io) with 1:1 visual fidelity, intact swimlanes, and routed waypoints?
+
+### Checklist 4: Deterministic Proof Harness
+- Does the toolchain expose an automated proof suite (for example, `bin/mp panoramic prove-subprocess`) that verifies flow contracts, gateway logic, dual ingress paths, health layers, and HTTP endpoints in CI and pre-push gates?
+
 ## Evaluation & Tone Guidelines
 
 - **Staff IC Signal**: Frame decisions around structural outcomes, risk mitigation, and unblocking engineering teams rather than tactical task completion.

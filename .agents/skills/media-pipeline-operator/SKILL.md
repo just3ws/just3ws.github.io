@@ -147,6 +147,12 @@ mp swiftbar
    - Installed at `~/.swiftbar/media-pipeline.30s.sh` delegating to `bin/media-pipeline-swiftbar`.
    - Displays real-time pending counts, series submenus, candidate file sizes, and one-click operational triggers.
 
+7. **Panoramic View BPMN & Subprocess Cartography**:
+   - Location: `https://media-pipeline.localhost/panoramic/diagram` (Parent Media Intake & Publication) and `https://media-pipeline.localhost/panoramic/ztranscribe` (Subprocess ztranscribe).
+   - In Cockpit: Tab 9 (`#bpmn`).
+   - CLI verification: `bin/mp panoramic prove-subprocess` (audits 5 proof suites, 27 assertions, Call Activity mappings, dual ingress paths, and 6-layer domain boundary health).
+   - Standard Exports: Downloadable BPMN 2.0 XML with full Diagram Interchange (BPMNDI) for 1:1 Camunda Modeler and bpmn.io rendering.
+
 ---
 
 ## 5. Incident Diagnosis & Recovery Playbook
