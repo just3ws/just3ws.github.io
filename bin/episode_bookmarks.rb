@@ -150,6 +150,8 @@ class EpisodeBookmarks
   def build_studio_workbench
     folders = []
     folders << folder('Start here', [
+      link('Studio Workbench Series Hub', "#{SITE}/series/studio-workbench/"),
+      link('The Ship of Theseus Episode Walkthrough', "#{SITE}/series/studio-workbench/ship-of-theseus/"),
       link('Media Pipeline Cockpit', 'https://media-pipeline.localhost/'),
       link('Live Broadcast Workbench', "#{SITE}/dehum/dashboard.html"),
       link('YouTube Publishing Pipeline & Overview Dashboard', "#{SITE}/youtube/dashboard/#tab-queue"),
@@ -196,6 +198,7 @@ class EpisodeBookmarks
     # 5. The Ship of Theseus: From Wooden Boat to Space Station
     sot_query = CGI.escape(JSON.generate(text: 'Mike Hall Ship of Theseus Wooden Boat Space Station Studio Workbench 2026', limit: 12))
     folders << folder('The Ship of Theseus: From Wooden Boat to Space Station', [
+      link('Interactive Episode Walkthrough & Recursive HUD', "#{SITE}/series/studio-workbench/ship-of-theseus/"),
       link('Executive Briefing Dossier & Adversarial Cross-Examination', "#{SITE}/docs/studio-workbench-ship-of-theseus-briefing/"),
       link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus-rundown.md'),
       link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus.textream'),
