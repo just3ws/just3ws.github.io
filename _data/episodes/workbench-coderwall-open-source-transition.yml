@@ -1,0 +1,84 @@
+---
+workbench_slug: "workbench-coderwall-open-source-transition"
+series: "Studio Workbench"
+title: "The Lost Coderwall Guides: Open Source, Vagrant, and What Survives"
+status: ready
+interviewee: "Mike Hall"
+conference: "Studio Workbench Desk"
+year: 2026
+location: "Crystal Lake, IL"
+slug: "the-lost-coderwall-guides-open-source-vagrant-and-what-survives"
+era_id: "the-ai-horizon"
+era_name: "The AI Horizon"
+narrative:
+  theme: "Rediscovering the 2014 Coderwall developer onboarding screencasts, how YouTube's 2021 unlisted video security lockdown erased developer history, and what the open-source transition teaches us about onboarding humans and AI in 2026"
+  tone: "Engaged, archaeological, technically precise, and grounded in developer empathy"
+  topic: "The Lost Coderwall Guides: 2014 open-source transition, Google Hangouts on Air, YouTube bit rot, and modern system onboarding"
+  plot_arc:
+    inciting_incident: "A viewer asked about the old Coderwall screencasts recorded via Google Hangouts on Air in 2014. Navigating to the links in the README yielded 'This video is unavailable', launching a digital forensics investigation into the Wayback Machine."
+    rising_action: "Walking through the 2014 Coderwall open-source transition on Assembly: Mike's role as number one contributor (634 commits), migrating MongoDB to PostgreSQL under live load, and authoring the 4-part Coderwall New Developer Guides with Vagrant and VirtualBox."
+    climax: "Uncovering the exact mechanism of disappearance: YouTube's July 2021 security update that automatically converted all pre-2017 unlisted videos to Private. Discovering the exact July 23, 2021 Wayback Machine snapshots capturing all four video IDs and metadata."
+    resolution: "Connecting the 2014 developer onboarding problem (Vagrant, VirtualBox, .env stubs) to the 2026 AI-assisted augmented engineering problem (Panoramic View, BPMN 2.0 subprocesses, explicit context mapping). Reclaiming the master recordings from YouTube Studio into the local sovereign datalake."
+  core_inquiry: "When platforms silently lock down historical developer media, how do we preserve the human and technical context of how software was actually built?"
+  chicago_context: "Connecting the Chicago craftsmanship ethos of working in the open, mentoring junior contributors, and maintaining verifiable digital provenance across decades."
+  ai_era_parallel: "Onboarding external open-source contributors with Vagrant in 2014 required the exact same architectural boundary discipline as onboarding AI pair programmers with Panoramic View cartography in 2026."
+teleprompter_script:
+  act_1: |
+    [SCENE: Camera on desk setup. Terminal and browser visible on monitor.]
+    Earlier today, someone asked me a question that stopped me in my tracks:
+    "On YouTube, didn't you record a bunch of videos during the Coderwall era back in 2014 using Google Hangouts?"
+    I remembered recording them. I remembered sitting at my desk in late 2014, working through the open-source transition of Coderwall.
+    So I went looking for them.
+    I pulled up the old Coderwall README on GitHub, found the YouTube playlist link, and clicked it.
+    And there it was: "This video is unavailable."
+    The playlist was gone. The links were dead.
+    Did those videos evaporate? Were they deleted by a platform cleanup?
+    Today on Studio Workbench, we are going on a digital archaeological dig into a pivotal moment in open-source developer history.
+    We tracked down the exact video identifiers, the Wayback Machine snapshots, and the corporate security decision that silently locked them away.
+    And more importantly: what that 2014 onboarding effort teaches us about building systems that humans and AI can actually understand today.
+  act_2: |
+    [SCENE: Switch to screen capture. Show coderwall/coderwall-legacy GitHub repository and pull requests.]
+    To understand why those videos existed, you have to rewind to September 2014.
+    Coderwall was a Y Combinator-backed developer network with hundreds of thousands of active users. Developers used it to showcase badges, share technical protips, and find engineering jobs.
+    Matt Deiters brought me on as a contractor to lead the open-source transition of the entire platform.
+    We were moving Coderwall to Assembly, a platform for crowdsourced software development where contributors earned revenue-sharing coins.
+    I ended up as the number one contributor to coderwall-legacy with 634 commits, roughly half the repository's total history.
+    The technical lift was massive:
+    We had to strip proprietary billing engines and extract scoring algorithms into clean service stubs.
+    We closed SQL injection vulnerabilities and Symbol DoS attack vectors before public release.
+    And across Pull Requests 226 and 227, we executed a live, zero-downtime database migration from MongoDB to PostgreSQL under production load.
+  act_3: |
+    [SCENE: Show Coderwall README.md line pointing to YouTube playlist PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO.]
+    Every experienced Staff engineer knows this hard truth: code is only half of an open-source transition.
+    If an external contributor cannot get your application running on their laptop in five minutes, your open-source project is dead.
+    In 2014, Docker was not yet standard on macOS. Everyone ran different operating systems, conflicting Ruby versions, and broken native C extensions.
+    So I packaged the entire developer environment using VirtualBox and Vagrant.
+    And then, on September 29, 2014, I fired up Google Hangouts on Air and recorded the Coderwall New Developer Guides:
+    Episode 0: Welcome to Coderwall, laying out the roadmap.
+    Episode 1: GitHub Fork, Clone, and Pull Request, teaching Git workflow to beginners.
+    Episode 2: Vagrant Up, getting the VM compiled and running.
+    Episode 3: Configure .env and Stripe test integration, showing how to test paid workflows safely.
+    I linked that playlist right in the README so anyone arriving from GitHub could watch and get to work.
+  act_4: |
+    [SCENE: Show Wayback Machine snapshot from July 23, 2021, and compare with YouTube 404.]
+    So why did they vanish?
+    In July 2021, Google and YouTube executed a platform-wide security update.
+    The technical explanation was that unlisted video URLs created before 2017 used older security hashes.
+    YouTube decided that every unlisted video uploaded before January 1, 2017 would be automatically flipped to Private, unless the creator submitted an opt-out form.
+    Across the internet, millions of developer tutorials, conference talks, and community demos instantly broke.
+    When we queried the Wayback Machine today, we found the exact snapshot from July 23, 2021, the exact week YouTube flipped the switch.
+    The good news: the videos were never deleted.
+    They are sitting right now in my YouTube Studio content library under WHOIS Tech Community, waiting behind a private toggle.
+  act_5: |
+    [SCENE: Return to desk camera. Terminal showing modern media-pipeline and Panoramic View.]
+    What is the enduring lesson here for software systems engineering?
+    First: external platforms will always decay your institutional memory. If you do not maintain sovereign, verifiable copies on your own storage, you are renting your own history.
+    Second: onboarding is the ultimate litmus test of system design.
+    In 2014, onboarding human open-source contributors required Vagrant, isolated stubs, and clear walkthroughs.
+    In 2026, onboarding an AI pair programmer like Claude or Gemini requires the exact same discipline:
+    Our Panoramic View methodology, with its 6-layer L0-L5 boundaries, BPMN 2.0 subprocesses, and clinical session handoffs, is nothing more than making the hidden system assumptions visible.
+  act_6: |
+    [SCENE: Host camera, overlay active. Wrap up and sign-off.]
+    After we wrap this session today, I am going into YouTube Studio, flipping those four Coderwall videos back to visible, and pulling the master recordings into our local media pipeline.
+    Because software craftsmanship is not just about the code you ship today; it is about keeping the lineage legible for the people who come after you.
+    Until next time: keep your feedback loops fast, hold on to your masters, and keep your code humane.

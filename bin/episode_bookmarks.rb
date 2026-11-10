@@ -210,6 +210,28 @@ class EpisodeBookmarks
       link('Hister research search', "#{HISTORIAN}/search?query=#{sot_query}")
     ])
 
+    # 6. The Lost Coderwall Guides: Open Source, Vagrant, and What Survives
+    cw_query = CGI.escape(JSON.generate(text: 'Mike Hall Coderwall Open Source Vagrant Google Hangouts 2014 Studio Workbench 2026', limit: 12))
+    folders << folder('The Lost Coderwall Guides: Open Source, Vagrant, and What Survives', [
+      link('Executive Briefing Dossier & Digital Forensic Archaeology', "#{SITE}/docs/studio-workbench-coderwall-briefing/"),
+      link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-coderwall-open-source-transition-rundown.md'),
+      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-coderwall-open-source-transition.textream'),
+      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-coderwall-open-source-transition.yml'),
+      link('Coderwall Legacy Repository (GitHub)', 'https://github.com/coderwall/coderwall-legacy'),
+      link('Coderwall README with YouTube Playlist Seam', 'https://raw.githubusercontent.com/coderwall/coderwall-legacy/master/README.md'),
+      link('Original YouTube Playlist (PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO)', 'https://www.youtube.com/playlist?list=PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO'),
+      link('Wayback Machine Playlist Archive (July 23, 2021)', 'http://web.archive.org/web/20181006091357/https://www.youtube.com/playlist?list=PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO'),
+      link('Ep. 0: Welcome to Coderwall (Wayback 2021)', 'http://web.archive.org/web/20210723142835/https://www.youtube.com/watch?v=OWqTkhbcXUM'),
+      link('Ep. 1: GitHub Fork, Clone & PR (Wayback 2021)', 'http://web.archive.org/web/20210723161840/https://www.youtube.com/watch?v=V0c8cKe-heI'),
+      link('Ep. 2: Vagrant Up (Wayback 2021)', 'http://web.archive.org/web/20210723144507/https://www.youtube.com/watch?v=8YeVny-X7D0'),
+      link('Ep. 3: .env & Stripe Test Integration (Wayback 2021)', 'http://web.archive.org/web/20210723141003/https://www.youtube.com/watch?v=6xXOfQFj98g'),
+      link('From Coderwall to Assembly Case Study', "#{SITE}/ai/2026/08/18/from-coderwall-to-assembly-the-evolution-of-developer-reputation/"),
+      link('Active Lower-Third Overlay', "#{SITE}/obs/overlays/lower-third.html"),
+      link('Active Overlay State (JSON)', "#{SITE}/obs/overlays/overlay-state.json"),
+      link('YouTube Studio Content Manager (Unlock Videos)', 'https://studio.youtube.com/'),
+      link('Hister research search', "#{HISTORIAN}/search?query=#{cw_query}")
+    ])
+
     folder('Studio Workbench', folders)
   end
 
