@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1920px;
+      height: 1080px;
+      background: #070d14;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 60px 80px;
+      position: relative;
+    }
+
+    /* Subtle cybernetic grid */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid rgba(56, 189, 248, 0.25);
+      padding-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .initiative {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: #0ea5e9;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #38bdf8;
+    }
+
+    .epoch-tag {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 14px;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #94a3b8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      letter-spacing: 0.08em;
+    }
+
+    .main-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 40px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .act-label {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 20px;
+      font-weight: 800;
+      color: #0ea5e9;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .act-title {
+      font-size: 52px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .act-subtitle {
+      font-size: 24px;
+      font-weight: 400;
+      color: #94a3b8;
+      line-height: 1.4;
+      margin-bottom: 32px;
+    }
+
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      padding: 24px 30px;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-label {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: #38bdf8;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      position: relative;
+      z-index: 2;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      color: #475569;
+    }
+
+    .speaker-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="initiative">
+      <span class="status-dot"></span>
+      PANORAMIC VIEW LABS // SYSTEM CARTOGRAPHY DEPOSITION
+    </div>
+    <div class="epoch-tag">PREVENTING ARCHITECTURAL DRIFT</div>
+  </div>
+
+  <div class="main-card">
+    <div class="act-label">ACT 03 // PREVENTING ARCHITECTURAL DRIFT</div>
+    <div class="act-title">PANORAMIC VIEW: THE 4D NAVIGATIONAL GRID</div>
+    <div class="act-subtitle">Internal Hull Invariants Across L0 to L5</div>
+
+    <div class="telemetry-grid">
+      <div class="stat-box"><span class="stat-label">L0 Silicon</span><span class="stat-value">Apple Silicon M4 Metal</span></div>
+<div class="stat-box"><span class="stat-label">L1 Kernel</span><span class="stat-value">Darwin jemalloc Seams</span></div>
+<div class="stat-box"><span class="stat-label">L4 Pipeline</span><span class="stat-value">Rails 8 SolidQueue</span></div>
+<div class="stat-box"><span class="stat-label">Knowledge Graph</span><span class="stat-value">9,600+ AST Nodes</span></div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="speaker-badge">
+      <span>SPEAKER:</span>
+      <span style="color: #38bdf8;">PAVEL (PANORAMIC VIEW SPECIALIST)</span>
+    </div>
+    <div>RECORDED TELEMETRY // STUDIO WORKBENCH EPISODE 01</div>
+    <div>AUTHENTICITY HASH: VERIFIED INVARIANTS</div>
+  </div>
+</body>
+</html>
