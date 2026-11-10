@@ -874,9 +874,9 @@ namespace :localhost do
     webroot = '/opt/homebrew/var/www/just3ws.github.io'
     sh "mkdir -p #{webroot}"
     sh "rsync -a --delete _site/ #{webroot}/"
-    if Dir.exist?('obs/overlays')
+    if Dir.exist?('obs')
       sh "mkdir -p #{webroot}/obs"
-      sh "rsync -a obs/overlays #{webroot}/obs/"
+      sh "rsync -a obs/overlays obs/thumbnails obs/assets obs/media #{webroot}/obs/"
     end
     sh "chmod o+x $(dirname #{webroot}) && chmod -R o+rX #{webroot}"
   end
