@@ -54,12 +54,30 @@ body.page-resume {
   }
 }
 
-/* Local Operations Dashboards require full-width edge-to-edge canvas */
-body.page-youtube-dashboard {
-  .main-container {
+/* Fluid edge-to-edge canvas for dashboards, workbench, and editorial surfaces */
+body.page-youtube-dashboard,
+body.surface-editorial,
+body.page-series,
+body.page-studio-workbench,
+body.fluid-canvas {
+  .header-container,
+  .main-container,
+  .footer-container {
     max-width: 100%;
-    padding: 0 1rem;
+    padding: 0 clamp(1rem, 2.5vw, 2.5rem);
   }
+
+  article {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.intel-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* Unified Navigation Header */

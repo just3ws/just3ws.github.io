@@ -96,7 +96,35 @@ By anchoring both the human engineer and the AI assistant in the exact same livi
 
 ---
 
-## Act 5: The Space Station in Production & The Living Canvas
+## Act 5: Peter Watts' Blindsight: Cunningham's Bees and the Alien Rorschach
+
+**Scene:** Host camera with book citation card (Peter Watts, *Blindsight*, Tor Books, 2006). Visual overlay of the Chinese Room and honeycomb geometry.
+
+This brings us to a profound philosophical intersection: Peter Watts' 2006 science fiction novel, *Blindsight*.
+In *Blindsight*, Watts explores the chilling premise that intelligence and consciousness are entirely separate evolutionary developments:
+- Consciousness is metabolically expensive, slow, and prone to narrative self-deception.
+- Intelligence is raw information processing: high-throughput syntactic symbol manipulation without subjective awareness.
+
+Watts illustrates this through the character Robert Cunningham, who asks a deceptively simple question: why do honeybees build hexagonal honeycombs?
+Humans look at a beehive and marvel at the architectural genius of the bee, assuming the bee must understand Euclidean geometry and optimal spatial tessellation.
+Cunningham points out the physical reality: bees do not build hexagons. Bees build circles.
+The bee simply spins in a circle and extrudes wax. It is the physical forces of surface tension and the mechanical pressure of adjacent cells that pulls the circular wax cylinders into hexagonal prisms.
+The bee has zero geometric understanding. The environment does the work.
+Watts calls this the illusion of competence.
+
+And in *Blindsight*, the alien entity that intercepts humanity at the edge of the solar system is literally named *Rorschach*.
+*Rorschach* is a colossal, non-conscious bio-mechanical system that speaks fluent human languages, answers queries, and passes every linguistic Turing test with ease, yet possesses zero conscious understanding. It is a living Chinese Room (John Searle, 1980).
+
+Modern large language models are the real-world manifestation of Watts' *Rorschach*:
+- They spin in circles, extruding tokens based on statistical attention weights.
+- They produce code that looks like a beautiful hexagonal honeycomb.
+- But like Cunningham's bees, they do not know what an operating system kernel is, they do not feel the heat of a failing Raspberry Pi, and they do not know why an in-memory queue crashes under power loss.
+
+Without an engineer who understands the physical forces of the environment, you are left with fragile wax cylinders that collapse the moment production pressure hits.
+
+---
+
+## Act 6: The Space Station in Production & The Living Canvas
 
 **Scene:** Show live media-pipeline terminal, mp status, and morning ingestion logs.
 
@@ -121,9 +149,16 @@ And notice what happens when publication finishes:
 
 ---
 
-## Act 6: Continuity of Care & What Survives
+## Act 7: The System as a Rorschach Test: Continuity of Care & What Survives
 
 **Scene:** Return to camera at desk.
+
+And that brings us to the dual meaning of Rorschach: this entire system is an empirical Rorschach test for anyone who looks at it.
+When a technologist inspects this fifteen-year repository and our modern Rails 8 media pipeline, what they see reveals their own biases and blind spots:
+- The AI-maximalist looks at this codebase and projects: "AI generated this entire pipeline in late 2026; the human is just a spectator taking credit." They suffer from *Blindsight*: they confuse syntactic symbol extrusion with architectural intent.
+- The cynical traditionalist looks at it and projects: "A fifteen-year yak shave for a personal video blog." They fail to see that the discipline of building sovereign tools is what creates engineering mastery.
+
+The system is an objective inkblot. It reflects back the worldview of the person judging it.
 
 And there is one final lesson from modern healthcare that applies directly to systems engineering: the clinical nursing shift handoff.
 In a hospital, a nurse cannot simply walk away when their shift ends; they deliver a structured SBAR handoff to the incoming nurse to ensure continuity of care.
