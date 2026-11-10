@@ -26,27 +26,29 @@ require "json"
 require "optparse"
 require "fileutils"
 
-MANIFEST_PATH = "obs/curation/errata-manifest.json"
+DEFAULT_MANIFEST_PATH = "obs/curation/errata-manifest.json"
+WORKBENCH_MANIFEST_PATH = "obs/curation/workbench-manifest.json"
 THUMBNAILS_DIR = "obs/thumbnails"
 
-def load_manifest
-  unless File.exist?(MANIFEST_PATH)
-    warn "❌ Error: Errata manifest not found at #{MANIFEST_PATH}"
+def load_manifest(path)
+  manifest_path = path || DEFAULT_MANIFEST_PATH
+  unless File.exist?(manifest_path)
+    warn "❌ Error: Manifest not found at #{manifest_path}"
     exit 1
   end
-  JSON.parse(File.read(MANIFEST_PATH))
+  JSON.parse(File.read(manifest_path))
 end
 
 def find_item(manifest, item_id)
   item = manifest["items"]&.find { |i| i["id"] == item_id }
   unless item
-    warn "❌ Error: Errata item '#{item_id}' not found in manifest."
+    warn "❌ Error: Item '#{item_id}' not found in manifest."
     exit 1
   end
   item
 end
 
-def build_html(item)
+def build_html(item, series_name = "Errata")
   mode = (item["mode"] || "concept").downcase
   title = item["title"] || "Untitled Insight"
   subtitle = item["subtitle"] || "Marginalia and Demonstrations"
@@ -57,20 +59,25 @@ def build_html(item)
 
   mode_label = mode.upcase
   mode_kicker = case mode
-                when "reading"  then "Foundational Text & Close Reading"
-                when "demo"     then "Live Terminal Workbench & Code Kata"
-                when "artifact" then "Physical Archival Artifact Showcase"
-                when "story"    then "First-Person Oral History Memoir"
-                when "bts"      then "Behind the Scenes & Systems Engineering"
-                else                 "Systems Architecture & Cartography"
+                when "reading"   then "Foundational Text & Close Reading"
+                when "demo"      then "Live Terminal Workbench & Code Kata"
+                when "artifact"  then "Physical Archival Artifact Showcase"
+                when "story"     then "First-Person Oral History Memoir"
+                when "bts"       then "Behind the Scenes & Systems Engineering"
+                when "workbench" then "Process Cinema & Desk Investigation"
+                else                  "Systems Architecture & Cartography"
                 end
+
+  is_workbench = series_name == "Studio Workbench" || mode == "workbench"
+  display_series = is_workbench ? "Studio Workbench" : "Errata"
+  display_credo = is_workbench ? "Process Cinema & Systems Forensics" : "Craftsmanship, Invariants & Ephemera"
 
   <<~HTML
     <!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
-      <title>Errata - #{title} Thumbnail</title>
+      <title>#{display_series} - #{title} Thumbnail</title>
       <link rel="stylesheet" href="../overlays/css/craftsmanship-theme.css">
       <style>
         * {
@@ -316,9 +323,9 @@ def build_html(item)
 
       <footer>
         <div class="credo-cluster">
-          <span class="credo-bold">Errata</span>
+          <span class="credo-bold">#{display_series}</span>
           <span>·</span>
-          <span>Craftsmanship, Invariants & Ephemera</span>
+          <span>#{display_credo}</span>
         </div>
         <div class="meta-group">
           <div class="meta-item">
@@ -374,10 +381,16 @@ def run
   options = {}
   OptionParser.new do |opts|
     opts.banner = "Usage: bin/generate_errata_thumbnail.rb [options]"
-    opts.on("-i", "--id ID", String, "Errata item ID from errata-manifest.json") do |id|
+    opts.on("-i", "--id ID", String, "Item ID from manifest") do |id|
       options[:id] = id
     end
-    opts.on("-a", "--all", "Render thumbnails for all items in errata-manifest.json") do
+    opts.on("-m", "--manifest PATH", String, "Path to manifest JSON (default: errata-manifest.json)") do |m|
+      options[:manifest] = m
+    end
+    opts.on("-w", "--workbench", "Use Studio Workbench manifest (obs/curation/workbench-manifest.json)") do
+      options[:manifest] = WORKBENCH_MANIFEST_PATH
+    end
+    opts.on("-a", "--all", "Render thumbnails for all items in manifest") do
       options[:all] = true
     end
     opts.on("-h", "--help", "Show help and usage information") do
@@ -387,7 +400,9 @@ def run
   end.parse!
 
   FileUtils.mkdir_p(THUMBNAILS_DIR)
-  manifest = load_manifest
+  manifest_path = options[:manifest] || DEFAULT_MANIFEST_PATH
+  manifest = load_manifest(manifest_path)
+  series_name = manifest["series"] || "Errata"
 
   items = if options[:all]
             manifest["items"] || []
@@ -404,7 +419,7 @@ def run
     out_1080 = File.expand_path(File.join(THUMBNAILS_DIR, "#{id}-1080p.png"))
     out_720 = File.expand_path(File.join(THUMBNAILS_DIR, "#{id}-720p.png"))
 
-    File.write(html_file, build_html(item))
+    File.write(html_file, build_html(item, series_name))
     puts "Wrote HTML template: #{html_file}"
     render_thumbnail(html_file, out_1080, out_720)
   end
