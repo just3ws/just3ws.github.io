@@ -1,6 +1,6 @@
 # Panoramic View: 3D & 4D Spatial-Temporal System Cartography RFC
 
-**Author:** Mike Hall (just3ws)  
+**Author:** Mike Hall  
 **Date:** 2026-11-09  
 **Status:** Architectural Specification & Roadmap  
 **Canonical Initiative:** Panoramic View Labs (PVL)  

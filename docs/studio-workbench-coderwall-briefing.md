@@ -11,7 +11,7 @@ sitemap: false
 
 **Session:** Studio Workbench (Process Cinema & Digital Archaeology)  
 **Episode Heading:** The Lost Coderwall Guides: Open Source, Vagrant, and What Survives  
-**Host:** Mike Hall (just3ws)  
+**Host:** Mike Hall  
 **Date:** 2026-11-09  
 **Scope:** Architectural Lineage, Digital Provenance, and Forensic Investigation  
 

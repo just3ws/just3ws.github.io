@@ -31,11 +31,11 @@ I still am.
 
 Over the years, I put out hundreds of videos, interviews, and writing under different banners: UGtastic, WHOIS Tech Community, organizational titles, and project aliases.
 
-If I am honest about why I created so many wrappers, the truth is simple: I went through years of trying not to be myself online.
+If I am honest about why I created so many wrappers, the truth is simple: for years, putting myself directly forward felt too exposed.
 
 As someone who is AuDHD, putting my face, my voice, and my real presence out there felt intensely vulnerable. I felt weird. I worried about how I sounded and how I was perceived. Hiding behind an umbrella brand felt much safer. It was a shield.
 
-Right now, that shield is coming down. I am in the middle of consolidating all of my historical archives, channels, and platform work under my core identity: **just3ws**.
+Right now, that shield is coming down. I am in the middle of consolidating all of my historical archives, channels, and platform work under one open, permanent roof at **just3ws.com**.
 
 The new banners are up here on Patreon and on YouTube. The old handle reservation has been released, and the fourteen-day countdown is ticking toward claiming @just3ws for the main video home. My site and local systems are aligning under that single name.
 

@@ -31,13 +31,13 @@ I still am.
 
 When I look back across those sixteen years, I see a long parade of project titles, show names, and channel banners: UGtastic, WHOIS Tech Community, organizational wrappers, and production pseudonyms.
 
-If I am honest about why I created so many different containers, the truth is simple: I went through years of trying not to be myself online.
+If I am honest about why I created so many different containers, the truth is simple: for years, putting myself directly forward felt too exposed.
 
 As someone who is AuDHD, putting my face, my natural speaking rhythm, and my real presence directly into public view felt intensely vulnerable. I felt weird. I worried about how my voice sounded, how my thoughts wandered, and how my mannerisms came across. Hiding behind an umbrella brand or a community banner felt much safer. It was a protective buffer. If people disliked the project, at least they were not rejecting me directly.
 
 That buffer served a purpose for a while, but it also became a cage.
 
-Right now, that migration is actively underway. I am consolidating all of those scattered efforts and historical archives under my core identity: **just3ws**.
+Right now, that migration is actively underway. I am consolidating all of those scattered efforts and historical archives under one open, permanent roof at **just3ws.com**.
 
 The old handle reservation on my secondary account has been released, YouTube's fourteen-day hold timer is counting down toward the Day 15 claim window, and my site, Patreon, banners, and local systems are aligning under that single name.
 

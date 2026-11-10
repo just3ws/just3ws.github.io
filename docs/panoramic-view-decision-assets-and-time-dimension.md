@@ -1,6 +1,6 @@
 # Panoramic View: Business Decisions as Tracked Assets, Infrastructure Value, and the Multi-Dimensional Time Vector
 
-**Author:** Mike Hall (just3ws)  
+**Author:** Mike Hall  
 **Date:** 2026-11-08  
 **Scope:** Architectural Doctrine & System Cartography Specification  
 **Canonical Initiative:** Panoramic View Labs (PVL)  

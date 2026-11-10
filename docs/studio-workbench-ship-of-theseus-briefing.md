@@ -11,7 +11,7 @@ sitemap: false
 
 **Session:** Studio Workbench (Process Cinema & Systems Forensics)  
 **Episode Heading:** The Ship of Theseus: From Wooden Boat to Space Station  
-**Host:** Mike Hall (just3ws)  
+**Host:** Mike Hall  
 **Date:** 2026-11-08  
 **Scope:** Architectural Lineage, Empirical Timeline Stats, and Adversarial Cross-Examination  
 

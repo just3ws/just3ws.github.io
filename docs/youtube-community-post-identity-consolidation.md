@@ -20,11 +20,11 @@ When enough years drift by, memory can play tricks on you. You start to doubt yo
 
 Across that time, I put out videos and projects under a lot of different names: UGtastic, WHOIS Tech Community, organizational umbrellas, and production aliases.
 
-If I am honest about why I kept creating new wrappers, it was because I spent years trying not to be myself online.
+If I am honest about why I kept creating new wrappers, it was because for years, putting myself directly forward felt too exposed.
 
 As someone who is AuDHD, putting my face, my voice, and my real presence out there felt intensely vulnerable. I felt weird. I worried about how I sounded and how I came across. Hiding behind an umbrella brand felt safe. It gave me a protective shield.
 
-Right now, that shield is coming down. I am in the middle of consolidating all my video channels, archives, and projects under my core personal identity: just3ws.
+Right now, that shield is coming down. I am in the middle of consolidating all my video channels, archives, and projects under one open, permanent roof at just3ws.com.
 
 The old handle reservation has been released, YouTube's 14-day hold timer is ticking down toward the Day 15 claim window for @just3ws, and my site, Patreon, and banners are aligning to that single name.
 
