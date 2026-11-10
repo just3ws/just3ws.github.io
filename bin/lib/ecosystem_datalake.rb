@@ -453,8 +453,8 @@ class EcosystemDatalake
       'repo_full_name' => 'ugtastic/.github',
       'event_type' => 'community_milestone',
       'title' => 'Launch of UGtastic Video Oral History Archive',
-      'description' => 'Mike Hall begins conducting on-camera interviews with technology community leaders, speakers, and organizers using Flip video cameras.',
-      'details_json' => { 'equipment' => 'Flip Video Cameras', 'total_interviews' => 218, 'channel' => '@ugtastic' }.to_json
+      'description' => 'Mike Hall begins conducting on-camera interviews with technology community leaders, speakers, and organizers by flipping open his unibody MacBook Pro and recording via built-in camera, microphone, and Photo Booth.app.',
+      'details_json' => { 'equipment' => 'Unibody MacBook Pro built-in camera & Photo Booth.app', 'total_interviews' => 218, 'channel' => '@ugtastic' }.to_json
     },
     {
       'id' => 'milestone-2012-ugtastic-first-capture',

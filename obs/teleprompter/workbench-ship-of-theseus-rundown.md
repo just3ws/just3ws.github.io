@@ -33,7 +33,11 @@ To understand how we got here, you have to look at the potter's marks left in th
 My personal portfolio, just3ws, was founded on December 5, 2016.
 My dotfiles repository, zdots, was founded on May 26, 2017, long before modern language models.
 
-Back in 2010 and 2011, I was carrying a Flip Video camera and a unibody MacBook Pro with a spinning hard drive through conference hallways.
+Back in 2010 and 2011, I was flipping open the lid of a unibody MacBook Pro with a spinning hard drive in conference hallways, recording early conversations in Photo Booth using the laptop's built-in camera and microphone.
+
+Later, my camera setup evolved across the years. When I recorded my final series of interviews, I used a dedicated camera. That camera is the exact same camera I am looking at right now to record this video on Studio Workbench.
+
+Think about that physical continuity. The camera survived. But every machine it plugged into, every operating system, every spinning hard drive, every transcription model, and every pipeline script around it was replaced plank by plank.
 If you look at my git history from February 2011 on Chicago Code Camp, there is a commit where I upgraded to Ruby 1.9.2 and deleted SystemTimer from my Gemfile. That single diff marks the exact week the Ruby world gained native POSIX threads and dropped green threads.
 In those same early Gemfiles, you see autotest-fsevent hooking directly into Apple's Darwin kernel so tests would trigger without thrashing spinning laptop platters.
 Later, in 2017, you see all of Homebrew sitting at `/usr/local` on Intel Macs, before the Apple Silicon transition moved everything to `/opt/homebrew` with jemalloc.

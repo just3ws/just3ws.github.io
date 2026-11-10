@@ -12,7 +12,7 @@ flowchart TD
         altnet["Chicago Alt.NET (2008)<br/>Convention over Configuration"]
         scmc["SCMC (2009)<br/>Software Craftsmanship McHenry County"]
         ccc["Chicago Code Camp (2010-2012)<br/>Rails ccs Engine & Haml Schedule Matrix"]
-        ugtastic_flip["UGtastic Oral History (2011)<br/>Flip Video Cameras & Tech Community"]
+        ugtastic_flip["UGtastic Oral History (2011)<br/>MacBook Pro Photo Booth to Studio Rig"]
     end
 
     subgraph E1["Epoch 1: Distributed Services (2012-2015)"]
@@ -77,7 +77,7 @@ In January 2009, Mike founded **Software Craftsmanship McHenry County (SCMC)**, 
 
 Chicago Code Camp was an existing regional conference where Mike volunteered and assisted for a couple years, engineering the conference website (`just3ws/ccs`) for at least three years of conferences. On May 13, 2011, Mike authored commit `9a7d7035` (`app/views/schedules/printable.html.haml`), generating the 9-track conference grid across 5 session blocks.
 
-Simultaneously in June 2011, Mike carried a Flip video camera into conference hallways to launch **UGtastic**, filming conversations with community organizers, open-source maintainers, and working programmers. Over the next decade, this grew into an irreplaceable 218-interview oral history archive.
+Simultaneously in June 2011, Mike flipped open his unibody MacBook Pro and launched Photo Booth.app in conference hallways to launch **UGtastic**, filming conversations with community organizers, open-source maintainers, and working programmers. Over the next decade, this setup evolved into a dedicated studio rig, growing into an irreplaceable 218-interview oral history archive.
 
 ### Epoch 1: Distributed Services & Micro-App Experiments (2012 - 2015)
 As the user group movement grew, Mike explored microservices to map and connect communities. In 2012, `uglst-dtsrv` and `uglst-geosrv` were built to calculate geospatial proximity between developer meetups. On **February 13, 2013**, Mike submitted [`fog/fog#1562`](https://github.com/fog/fog/pull/1562) ([commit `fecbf150`](https://github.com/fog/fog/commit/fecbf150a4574a0080d5d454807a248f0b71d31a)) to the Ruby cloud services library `fog`, upgrading `net-scp` after v1.0.6 was yanked from RubyGems.org; `fog` creator Wesley Beary (`@geemus`) merged it in [`2fccaa27`](https://github.com/fog/fog/commit/2fccaa27131b4b5b41cb8b89368b40879a945bbd), credited *"thanks Michael D. Hall"* in the `v1.10.0` `CHANGELOG.md`, and sent Mike the official `fog` contributor t-shirt. On January 11, 2014, Mike launched **UGl.st** (`ugl.st`), the User-Group List, featuring the signature heart glyph in its user-group registration interface (`https://web.archive.org/web/20140111160057/https://ugl.st/`). Mike owned and operated `ugl.st` throughout 2014, with the final snapshot under his ownership captured on December 22, 2014 (`https://web.archive.org/web/20141222063128/https://ugl.st/`). Command-line utilities and published RubyGems under `just3ws` (**60,304 total downloads** across `express_pigeon` with 30,267 downloads, `biscuit-monitor` with 18,026 downloads for CLEAR Spot 4G+ hotspot telemetry, and `biscotti` with 12,011 downloads) alongside `Cleeks` (capturing automated desktop screenshots to Dropbox via `launchctl`) established an early pattern: treating the local operating system as a programmable platform.
@@ -123,7 +123,7 @@ Between 2023 and 2026, the enterprise observability, local AI, and oral history 
 | **2009-02-01** | Craftsmanship Genesis | twatio.com | `just3ws.github.io` | `community_milestone` | Built twatio.com on ASP.NET MVC to prove Twitter audience overlap hypothesis |
 | **2010-05-15** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` | `community_milestone` | Volunteer and website developer for existing regional conference |
 | **2011-05-13** | Craftsmanship Genesis | Chicago Code Camp | `just3ws/ccs` (`9a7d7035`) | `turning_point` | Added print-friendly Haml schedule generator for 9-track matrix |
-| **2011-06-01** | Craftsmanship Genesis | UGtastic | `ugtastic/.github` | `community_milestone` | Launch of UGtastic oral history interviews with Flip video cameras |
+| **2011-06-01** | Craftsmanship Genesis | UGtastic | `ugtastic/.github` | `community_milestone` | Launch of UGtastic oral history interviews using MacBook Pro Photo Booth.app |
 | **2012-04-14** | Craftsmanship Genesis | UGtastic | `ugtastic.com` | `community_milestone` | First recorded Internet Archive capture of ugtastic.com |
 | **2012-06-12** | Distributed Services | uglst | `just3ws/uglst-geosrv` | `repo_creation` | Geospatial microservice for user group mapping |
 | **2012-07-31** | Distributed Services | RubyGems | `just3ws/biscuit-monitor` | `community_milestone` | Published `biscuit-monitor` (18,026 downloads) & `express_pigeon` (30,267 downloads) |
