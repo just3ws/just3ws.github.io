@@ -35,6 +35,7 @@ html_files.each do |path|
   next if relative.start_with?('AGENTS.')
   next if relative.start_with?('backlog/')
   next if relative.start_with?('exports/')
+  next if relative.start_with?('obs/')
 
   html = read(path)
   canonical = canonical_href(html)

@@ -15,7 +15,7 @@ ROOT = File.expand_path('..', __dir__)
 SITE_DIR = File.join(ROOT, '_site')
 DEFAULT_REPORT_PATH = File.join(ROOT, 'tmp', 'seo-metadata-report.json')
 report_path = ENV.fetch('SEO_REPORT_JSON', DEFAULT_REPORT_PATH)
-EXCLUDED_PREFIXES = ['AGENTS.', 'backlog/'].freeze
+EXCLUDED_PREFIXES = ['AGENTS.', 'backlog/', 'exports/', 'obs/'].freeze
 EXCLUDED_FILES = ['AGENTS.html'].freeze
 SAMPLE_LIMIT = 10
 

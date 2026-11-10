@@ -38,6 +38,7 @@ Dir.glob(File.join(SITE_DIR, '**', '*.html')).each do |path|
   next if relative.start_with?('AGENTS.')
   next if relative.start_with?('backlog/')
   next if relative.start_with?('exports/')
+  next if relative.start_with?('obs/')
 
   html = read(path)
   robots = robots_content(html)
