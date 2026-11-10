@@ -135,6 +135,45 @@
         </div>
       </div>
 
+      <!-- Studio Workbench Direct Link -->
+      <div class="lh-dropdown">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/series/studio-workbench/' or page.url contains '/workbench/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+          <span>🎬 Studio Workbench</span>
+          <span class="lh-caret">▾</span>
+        </button>
+        <div class="lh-dropdown-menu" role="menu">
+          <div class="lh-menu-header">Studio Workbench: Process Cinema</div>
+          <a href="/series/studio-workbench/" class="lh-menu-item{% if page.url == '/series/studio-workbench/' %} is-active{% endif %}" role="menuitem">
+            <strong>Series Overview &amp; Curriculum</strong>
+          </a>
+          <a href="/series/studio-workbench/episode-01/" class="lh-menu-item{% if page.url contains '/ship-of-theseus/' or page.url contains '/episode-01/' %} is-active{% endif %}" role="menuitem">
+            <strong>Episode 1:</strong> The Ship of Theseus (15-Year Evolution)
+          </a>
+          <a href="/series/studio-workbench/the-lost-coderwall-guides/" class="lh-menu-item{% if page.url contains '/the-lost-coderwall-guides/' or page.url contains '/episode-02/' %} is-active{% endif %}" role="menuitem">
+            <strong>Episode 2:</strong> The Lost Coderwall Guides (Archaeology)
+          </a>
+          <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Executive Briefings &amp; Objections</div>
+          <a href="/docs/studio-workbench-ship-of-theseus-briefing/" class="lh-menu-item" role="menuitem">
+            <strong>Ep 1 Briefing:</strong> Ship of Theseus &amp; Blindsight
+          </a>
+          <a href="/docs/studio-workbench-coderwall-briefing/" class="lh-menu-item" role="menuitem">
+            <strong>Ep 2 Briefing:</strong> Coderwall Open-Source Transition
+          </a>
+          <div class="lh-menu-divider"></div>
+          <div class="lh-menu-header">Forensic Workbenches &amp; Precursors</div>
+          <a href="/dehum/dashboard.html" class="lh-menu-item{% if page.url contains '/dehum/' %} is-active{% endif %}" role="menuitem">
+            <strong>Dehum Audio Workbench</strong> (Forensics Cockpit)
+          </a>
+          <a href="/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" class="lh-menu-item" role="menuitem">
+            <strong>Ep 0:</strong> Testing Audio Fix Under Power Lines
+          </a>
+          <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" class="lh-menu-item" role="menuitem">
+            <strong>Ep -1:</strong> The Fluffle Precursor (Whisper Cluster)
+          </a>
+        </div>
+      </div>
+
       <!-- Localhost Hub Dropdown: Tailored Archetype Resumes & Archive -->
       <div class="lh-dropdown">
         <button type="button" class="lh-dropdown-btn{% if page.url contains '/resumes/' or page.url contains '/reports/archetype' or page.url contains '/exports/briefs/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
@@ -263,6 +302,7 @@
           <div class="lh-menu-header">Public Surfaces (just3ws.com)</div>
           <a href="/" class="lh-menu-item" role="menuitem">🏠 <strong>Home / Resume</strong></a>
           <a href="/series/the-sound-above/" class="lh-menu-item" role="menuitem">📺 <strong>The Sound Above (Rewatch)</strong></a>
+          <a href="/series/studio-workbench/" class="lh-menu-item" role="menuitem">🎬 <strong>Studio Workbench (Process Cinema)</strong></a>
           <a href="/series/ai-competence/" class="lh-menu-item" role="menuitem">🧭 <strong>Sovereign Verification Series</strong></a>
           <a href="/case-studies/" class="lh-menu-item" role="menuitem">🗺️ <strong>Case Studies</strong></a>
           <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html" class="lh-menu-item" role="menuitem">✍️ <strong>System Cartography Essay</strong></a>
