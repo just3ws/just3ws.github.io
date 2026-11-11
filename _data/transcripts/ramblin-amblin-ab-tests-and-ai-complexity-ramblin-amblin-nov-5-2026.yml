@@ -1,0 +1,135 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, Ramblin' & Amblin'
+turns:
+- speaker: M1
+  text: |-
+    One thing that's going to be interesting in the age of AI
+    to me is how A/B tests are going to be handled. Because it
+    was already something that I would see in some of the
+    longer term companies that had A/B tests that have been
+    sitting in production for years. And I tried to explain to
+    technical leadership that it had basically become a fractal
+    of complexity and one person, at least one person,
+    got it. But, you know, I don't know what they did with that
+    information.
+- speaker: M1
+  text: |-
+    But the point was is that with debugging, as I
+    described in another video about my leg, is that I got bit
+    by a tick, monitoring for Lyme disease, and seems to be
+    like I have to determine whether
+    my sore throat, my sore throat and a little bit of lethargy
+    is related to, I'm going to pass somebody here in a second. Good morning. So, I'm trying to determine whether or not what I'm
+    experiencing is because of cause A or cause B. Huh.
+- speaker: M1
+  text: |-
+    It's
+    almost like because of the ambiguity, if you don't know
+    whether you're an A or B, maybe C, you just don't know
+    about it because there was some other A/B test upstream, is
+    that there's a compounding factor in these, in these, uh,
+    um,
+    experiences is an A/B test, is an A/B test becomes a branch
+    , right? And, uh, so A, and this is going to end up being
+    awkward, I'm trying to say is that, you know, A could have,
+    um, send you down a path that has another A/B test further
+    down the line. But the thing is, is that five steps ago, you went through
+    an A/B test, and you branched, and then you're looking at
+    an error inside of, let's say, the B, uh, further down the
+    road, but that was only because something happened in the
+    first branch, but if users go through B first, and then
+    continue to the next test, and they go through A, they don
+    't experience it. They kind of like, I envision it like
+    roads that just, um, intersect.
+- speaker: M1
+  text: |-
+    Uh, but they're going in the same direction, they're just
+    in and out of each other. And you could, you know, say, you
+    could say, A, A, A, B, B, A, B, B, you know, how many paths
+    did you go through? Four, right? Um, one, two, three, four,
+    five, six, oh, what am I doing here?
+- speaker: M1
+  text: |-
+    One, two, three, four,
+    right? be one of those and when you're trying to debug that you're
+    looking further down the path so these
+    this is like in life okay things are complex nothing
+    happens in in a vacuum and some people
+    might have gone through path a and some people might have
+    gone through path b so when they
+    it's so complicated point that i'm trying to get to here is
+    that an ai
+    that complexity remember these context windows okay they're
+    looking at the current state as they are in
+    the system but a b tests are one time and uh you know it's
+    when the user or whatever trigger in the
+    system makes a decision route through a route through b and
+    then if you just leave those in
+    the code base forever they become infrastructure so you got
+    a fractal of complexity because if there's
+    one there's two and if there's two there's a hundred tests
+    and i i know there was more than
+    a hundred tests in the system i was responsible for and uh
+    getting those flattened out was quite the
+    challenge because people had forgotten what any of it
+    really did and what the implications of aa versus
+    the numbers were they would count the numbers and then i
+    don't think they understood what the numbers were
+    um because i'm not i'm not pulling this out of the air um
+    but ai is no better than at that than uh
+    people are because you know you can only move so fast like
+    at least point to a system that can only change
+    change so much in a given uh sprint um or even you know
+    quarter but with ai
+    these these tests are boy i don't know what's going to
+    happen i have some ideas uh on the panoramic view
+    about how to use this to map those uh intersections against
+    uh known flows and uh item well not item potent but
+    permalinks in in the source code uh to try drift over time
+    uh and determine you know which train route
+    which uh which uh which switch uh got flipped to where um
+    to uh to um send the people down that route
+    yeah so ai dealing with dynamic behaviors is one of the
+    blind spots i think that this product engineering
+    focus is it's it's showing its its limitations um because i
+    know engineers that had trouble with
+    dealing with uh the complexity of the a-b tests and uh and
+    nested a-b tests where it's in the customer's
+    route this is why it's important to have just one a-b test
+    at a time because much like with my leg with the
+    concern about am i showing symptoms of uh being out trick-
+    or-treating and my kids getting a little sick
+    and i got a little chest thing or am i expressing the
+    symptoms because i'm maybe not showing a lime
+    disease on my leg yet and this is an early warning you know
+    did the failure happened in the system
+    because the user went through a and then b a certain way
+    but everybody uh most of the traffic goes through
+    aaa or ba for whatever reason and they don't have that
+    issue and then how do you how do you how do you
+    map against that it's this is one of the complicated things
+    that uh experienced engineers don't always
+    deal with um i did uh so i'm kind of experienced in that
+    and i do have a strategy for it but it is a uh
+    it's a hard nut to crack how do you deal with runtime
+    behavior that is itself non-deterministic because
+    it's a coin flip 50 go through a 50 go through b but which
+    one is going to be usually you don't know
+    you find out after so a b test that's going to be the real
+    challenge and and it's one of the ways i see that these
+    folks are looking at uh
+    ai being the solution to everything uh code wise and that
+    we can just sit anybody down in front of an ai
+    console to have them describe a product and have it be a
+    sustainable system that can actually reliably
+    do the thing it's supposed to do that was already hard
+    enough when people were changing stuff
+    it's going to be well a nightmare um let's just be honest
+    uh when we have people that don't even have
+    the concept of of a branching bullying decision or routing
+    or uh happen to be aware of the context in
+    which something ran um yeah be interesting all right thanks
+    bye

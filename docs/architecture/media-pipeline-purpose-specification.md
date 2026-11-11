@@ -140,7 +140,7 @@ graph TD
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Ramblin' & Amblin'** | `ramblin-amblin` | Unscripted field notes | Enabled (first spoken thought) | Rolling 3-day / 2 public active videos, older rolled to Vault | `PLNtb969T2-l0` |
 | **The Sound Above** | `the-sound-above` | Studio oral history | Dossier-driven (35 curriculum episodes) | Permanent public curriculum | `PLYCKmHMYvC7s` |
-| **Studio Workbench** | `studio-workbench` | Process cinema & live investigation | Auto-titled with date and topic | Unlisted by default | `PL_STUDIO_WORKBENCH_PENDING` |
+| **Studio Workbench** | `studio-workbench` | Process cinema & live investigation | Auto-titled with date and topic | Unlisted by default | `PLHsdpV47tSqk` |
 | **Errata** | `errata` | Screencasts / Post-mortems | Auto-titled with date and topic | Unlisted by default | Ad-hoc playlists |
 
 ---

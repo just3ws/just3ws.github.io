@@ -1,0 +1,361 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, Ramblin' & Amblin'
+turns:
+- speaker: M1
+  text: |-
+    A follow-up to my talk about the A/B tests and their
+    challenge especially nested A/B tests over time or an error
+    happening far enough downstream of an A/B test that the AI
+    coding tools will have difficulty identifying that because
+    the people who are sitting down with those tools
+    well we're not engineers and it's gonna it's gonna wind up
+    in a in my experience this kind of stuff winds up in a kn
+    otted mess of practical complexity and I saw this happen one
+    time where humans were responsible for a system and they
+    had done their due diligence
+    there was just it was just a step too far so what I saw was
+    it was in a Rails code base and there was a point in a flow
+    in a certain branch of code in a certain area of the system
+    that's the coder needed to clear some cookies clear some
+    cash entries I should say and
+    they did a rails cash clear but this was at the very end of
+    a process you see if you've done rails you already probably
+    are cringing hearing this so in production they deploy and
+    finally a user customer manages to go down that path and
+    they run rails cash clear redis gone everything is is wiped
+    all all kinds of stuff and settings that were never
+    documented were lost so I me personally yours truly this
+    guy this guy here went through and diagnosed what happened
+    and then defended the people that had made the mistake
+    and basically what it was is that they had tested the flow
+    and it worked exactly as expected but what they never did
+    is a second run through the flow so they did get the effect
+    of clearing the cash but they didn't realize they cleared
+    the entire database and basically truncated the redis
+    database
+    wiping out all the keys and I ultimately put in a mechanism
+    to log keys and I put in a mechanism to log keys as an imp
+    romptu backup because the devops
+    was on such an old version of redis that it didn't have the
+    wall log log keys I can't remember what it was but it didn
+    't have the wall log keys and it didn't have the key to log
+    keys and I didn't have the key to log keys and I put in a
+    mechanism to log keys and I put in a mechanism to log keys
+    and I put in a mechanism to log keys and I put in a
+    mechanism to log keys and I put in a mechanism to log keys
+    and I put in a mechanism to log keys and I put in a
+    mechanism to log keys and I put in a mechanism to log keys
+    and I put in a mechanism to log keys as an impromptu backup
+    because the devops
+    was on such an old version of redis that it didn't have the
+    wall log keys and I can't remember what it was but they
+    couldn't do runtime backups they take the database down
+    until you back it up it's been a little while so that's why
+    keeping up to date matters
+    the test the testers QA people had run this unit of code
+    through the ringer but it was always they started at the
+    top of a flow and then they took their guided tour down
+    through the system and then terminated
+    and yes the clash was clear but if they had gone back to
+    the beginning in that same system and run the test again
+    they would have failed immediately because the system was
+    crashing now because it didn't have its settings
+    and I defended them for that I said I looked through their
+    tests and they did test but here's the blind spot
+    this is what they did is they only tested one pass through
+    now I'm not going to be particularly harsh
+    towards them because you know I do see they made a mistake
+    they made a mistake but they were
+    to whatever their abilities you know they did their best
+    the problem is the organization who didn't have backups
+    and didn't invest in updating their infrastructure so that
+    they could have backups and then I bailed them out
+    and then they did that to me and another QA person went
+    through the system an Afghani woman who deserves respect
+    because she was an ally to the United States and a friend
+    of America
+    and she and I worked out what the the missing values were
+    to the closest fidelity we could get them and restored the
+    system
+    not going to talk about the guy that took all the credit
+    for that and presented it the solution as if he did it and
+    I was watching him playing this day leave my name out of
+    everything but uh that's a different conversation
+    but I think it's related and uh it's it's worth noting but
+    the problem was is it's a single track mine
+    and it wasn't and it wasn't a robust holistic uh testing uh
+    testing strategy
+    and that there was no recovery mechanism and then I put in
+    a basic recovery mechanism which
+    later again uh paid off when some other fields were lost
+    later um
+    with AI I think uh this is actually one of those places
+    where doing richer tests is possible because I've
+    used AI to build out pretty sophisticated um
+    automated workflows that could just run
+    uh outside in tests
+    and and and fuzz test
+    but also be aware
+    that the bad guys can do that too
+    right
+    so
+    this investment in infrastructure
+    um
+    your backups
+    you better have them
+    because they're coming for you
+    you
+    if it isn't somebody on the inside who just
+    is gonna be a product engineer
+    and be like
+    yeah
+    cache clear
+    cool
+    they're not even gonna have seen the code that did it
+    they won't even know
+    they won't even know
+    what happened
+    unless the AI can tell them
+    and they have
+    if for that
+    they would have had to know
+    they have to know
+    because that's an engineering thing
+    they would have to know
+    to wire up
+    that logging
+    they have to know logging exists
+    they have to know telemetry exists
+    and I know most developers
+    didn't know what
+    telemetry was
+    at least in my experience
+    so
+    we've got systems
+    that have nested A-B tests
+    that are derived at run time
+    determined at run time
+    randomly
+    we have
+    limited
+    support for infrastructure
+    for disaster recovery
+    and we just
+    see a
+    comfort
+    with
+    connectivity
+    that is
+    going to leave
+    these paths
+    wide open
+    and we see
+    what happened in France
+    with the
+    with the
+    with the refrigerators
+    that ruined
+    millions of dollars
+    with the food
+    now
+    we talk about dollars
+    that's food
+    that isn't being eaten
+    by a human
+    and that food
+    is gonna come from somewhere
+    when
+    a hundred pounds of food
+    is destroyed
+    now everybody's
+    you know
+    a hundred pounds
+    out of two hundred
+    let's say
+    now we're down to just one hundred
+    and now we gotta
+    spread that out
+    we've lost
+    you know
+    a lot of food
+    and it's
+    people still gotta eat
+    blood
+    has been lost
+    literally
+    because of
+    over
+    over
+    over
+    comfort
+    with
+    not realizing
+    the vulnerability
+    of these systems
+    the bad guys
+    have the AI too
+    and we barely know
+    how our systems work
+    and
+    we have people
+    who have
+    what is it
+    divested
+    from
+    securing
+    infrastructure
+    ensuring it's
+    maintained
+    and up to date
+    and
+    backed up
+    and secure
+    and then idiots
+    like me
+    come in
+    and save the day
+    and then they all go
+    ha ha
+    who's the director
+    now
+    the guy who
+    gave this
+    presentation
+    jerk
+    about the fix
+    that I did
+    so
+    bailing people out
+    isn't a winning
+    strategy either
+    we are going
+    to go through
+    a period of consequences
+    and
+    there's going to be
+    consequences for this
+    lack of
+    infrastructure support
+    while at the same
+    time doubling down
+    on product engineering
+    which is
+    a
+    what is it
+    two words
+    that should never
+    be put together
+    that are just
+    made up
+    because it's not
+    engineering
+    unless they learn
+    all of this stuff
+    because it's
+    it's only going to
+    go faster
+    and it's going to
+    get worse
+    and the less people
+    are going to know
+    about why it's
+    the way it is
+    and what it does
+    and how to
+    figure out
+    how to get it
+    back together
+    much less
+    do the necessary
+    PMCS
+    the preventive
+    maintenance
+    and check services
+    to ensure that
+    the system
+    stays healthy
+    and operational
+    and mission ready
+    and that there are
+    mechanisms
+    to be able to view
+    and observe
+    the health
+    and operation
+    of the system
+    and make determinations
+    about whether
+    it is operating
+    nominally
+    much less
+    the ability
+    to recover
+    anything
+    should
+    the unspeakable
+    happen
+    the unthinkable
+    happen
+    and the problem
+    is that our jobs
+    as engineers
+    is to think
+    about that stuff
+    that's the difference
+    between just being
+    a developer
+    a code monkey
+    and being an engineer
+    I can see
+    product developer
+    but product engineer
+    is a bridge
+    too far for me
+    and I don't mean
+    that disrespectfully
+    to anybody
+    if you're a product engineer
+    and you're putting
+    in the effort
+    well
+    that's good for you
+    that's good for you
+    the problem is
+    there's a lot of people
+    in it
+    it's not that they
+    aren't willing
+    to put in the effort
+    it's
+    they don't even know
+    that there's
+    a requirement
+    for the effort
+    to begin with
+    I always bristled
+    at people saying
+    Rails magic
+    because it's not
+    it's code
+    and it's the same thing here
+    AI isn't magic
+    and it can't
+    predict the future
+    and it's not
+    going to save you
+    when you crash
+    into a wall
+    or you run down
+    the wrong alley
+    and you never go back
+    to check to see
+    if you accidentally
+    burn the alley down
+    at the very end
+    alright
+    anyway
+    thanks
+    bye

@@ -153,6 +153,7 @@ class EpisodeBookmarks
       link('Studio Workbench Series Hub', "#{SITE}/series/studio-workbench/"),
       link('Episode 1: The Ship of Theseus', "#{SITE}/series/studio-workbench/episode-01/"),
       link('Episode 2: The Lost Coderwall Guides', "#{SITE}/series/studio-workbench/episode-02/"),
+      link('Studio Workbench YouTube Playlist', 'https://www.youtube.com/playlist?list=PLHsdpV47tSqk'),
       link('Media Pipeline Cockpit', 'https://media-pipeline.localhost/'),
       link('Live Broadcast Workbench', "#{SITE}/dehum/dashboard.html"),
       link('YouTube Publishing Pipeline & Overview Dashboard', "#{SITE}/youtube/dashboard/#tab-queue"),
@@ -199,6 +200,9 @@ class EpisodeBookmarks
     # 5. The Ship of Theseus: From Wooden Boat to Space Station
     sot_query = CGI.escape(JSON.generate(text: 'Mike Hall Ship of Theseus Wooden Boat Space Station Studio Workbench 2026', limit: 12))
     folders << folder('The Ship of Theseus: From Wooden Boat to Space Station', [
+      link('YouTube Full Master: The Ship of Theseus (1h 19m)', 'https://www.youtube.com/watch?v=R_WagKejbtw'),
+      link('YouTube Preview: Ship of Theseus (7m 52s)', 'https://www.youtube.com/watch?v=sIySOU-107c'),
+      link('YouTube System Deposition Master (3m 12s)', 'https://www.youtube.com/watch?v=fKNUR871P7Q'),
       link('Interactive Episode Walkthrough & Recursive HUD', "#{SITE}/series/studio-workbench/episode-01/"),
       link('Local Master & Deposition Player', "#{SITE}/series/studio-workbench/episode-01/#systems-deposition"),
       link('Executive Briefing Dossier & Adversarial Cross-Examination', "#{SITE}/docs/studio-workbench-ship-of-theseus-briefing/"),
