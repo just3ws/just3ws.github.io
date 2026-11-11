@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T22:22:33-06:00",
-  "total_nodes": 469,
-  "total_links": 760,
+  "generated_at": "2026-11-11T06:28:46-06:00",
+  "total_nodes": 478,
+  "total_links": 800,
   "clusters": {
     "Conference": {
       "color": "#0284c7",
@@ -481,6 +481,24 @@
       "url": "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/",
       "val": 14,
       "description": "The deceptive perception of understanding produced when a statistical model generates fluent, authoritative domain artifacts without causal grounding or sovereign verification."
+    },
+    {
+      "id": "concept-ship-of-theseus",
+      "label": "The Ship of Theseus",
+      "type": "Concept",
+      "group": 7,
+      "url": "/series/studio-workbench/episode-01/",
+      "val": 14,
+      "description": "The foundational paradox of identity and continuity in engineering: when every plank, compiler, operating system, and queue in a 15-year infrastructure has been substituted, does the system survive because the same craftsman directed every substitution?"
+    },
+    {
+      "id": "concept-process-cinema",
+      "label": "Process Cinema",
+      "type": "Concept",
+      "group": 7,
+      "url": "/series/studio-workbench/",
+      "val": 14,
+      "description": "Technical documentation and video production grounded in open problem-solving, live terminals, and active system forensics, rejecting polished auteur performance in favor of discovering what holds together under load."
     },
     {
       "id": "article-2026-09-02-aop-opentelemetry-strangler-fig",
@@ -4261,6 +4279,69 @@
       "url": "/series/the-sound-above/episode-37/",
       "val": 16,
       "description": "The Permanent Legacy of Software Craftsmanship & What We Carry Forward"
+    },
+    {
+      "id": "errata-fluffle-precursor",
+      "label": "Errata: Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/",
+      "val": 14,
+      "description": "A practical transcription experiment and what became of it"
+    },
+    {
+      "id": "errata-phalanx-duel",
+      "label": "Errata: Phalanx Duel: Make the Rules Legible",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/the-sound-above/",
+      "val": 14,
+      "description": "Deterministic Game Engines, Server Authority & Software Craftsmanship"
+    },
+    {
+      "id": "workbench-audio-fix-power-lines",
+      "label": "Studio Workbench: Testing the Audio Fix Under the Power Lines",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/studio-workbench/",
+      "val": 18,
+      "description": "Finding out what happened in a damaged recording"
+    },
+    {
+      "id": "workbench-coderwall-open-source-transition",
+      "label": "Studio Workbench: The Lost Coderwall Guides: Open Source, Vagrant, and What Survives",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/studio-workbench/the-lost-coderwall-guides/",
+      "val": 18,
+      "description": "Rediscovering the 2014 Coderwall developer onboarding screencasts, how YouTube's 2021 unlisted video security lockdown erased developer history, and what the open-source transition teaches us about onboarding humans and AI in 2026"
+    },
+    {
+      "id": "workbench-fluffle-cluster",
+      "label": "Studio Workbench: Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/studio-workbench/",
+      "val": 18,
+      "description": "A practical transcription experiment and what became of it"
+    },
+    {
+      "id": "workbench-hello-world",
+      "label": "Studio Workbench: Hello, World!",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/studio-workbench/",
+      "val": 18,
+      "description": "Setting up the workbench and choosing process cinema over the auteur posture"
+    },
+    {
+      "id": "workbench-ship-of-theseus",
+      "label": "Studio Workbench: The Ship of Theseus: From Wooden Boat to Space Station",
+      "type": "Episode",
+      "group": 9,
+      "url": "/series/studio-workbench/episode-01/",
+      "val": 18,
+      "description": "How 15 years of personal infrastructure evolved from pre-AI shell scripts to an autonomous media platform, mapping the Ship of Theseus paradox through Peter Watts' Blindsight, the Chinese Room, and the system as a Rorschach test spanning pre-AI wounds to modern generative AI"
     }
   ],
   "links": [
@@ -4493,6 +4574,18 @@
       "weight": 2
     },
     {
+      "source": "topic-system-cartography",
+      "target": "concept-ship-of-theseus",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "topic-system-cartography",
+      "target": "concept-process-cinema",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
       "source": "concept-software-craftsmanship",
       "target": "topic-system-cartography",
       "relationship": "related_concept",
@@ -4513,6 +4606,18 @@
     {
       "source": "concept-software-craftsmanship",
       "target": "concept-looking-through-the-net",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-software-craftsmanship",
+      "target": "concept-ship-of-theseus",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-software-craftsmanship",
+      "target": "concept-process-cinema",
       "relationship": "related_concept",
       "weight": 2
     },
@@ -4607,6 +4712,12 @@
       "weight": 2
     },
     {
+      "source": "concept-blindsight",
+      "target": "concept-ship-of-theseus",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
       "source": "concept-looking-through-the-net",
       "target": "concept-blindsight",
       "relationship": "related_concept",
@@ -4655,6 +4766,12 @@
       "weight": 2
     },
     {
+      "source": "concept-chinese-room",
+      "target": "concept-ship-of-theseus",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
       "source": "concept-synthetic-competence",
       "target": "concept-blindsight",
       "relationship": "related_concept",
@@ -4675,6 +4792,72 @@
     {
       "source": "concept-synthetic-competence",
       "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-synthetic-competence",
+      "target": "concept-ship-of-theseus",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-ship-of-theseus",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-ship-of-theseus",
+      "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-ship-of-theseus",
+      "target": "concept-blindsight",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-ship-of-theseus",
+      "target": "concept-synthetic-competence",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-ship-of-theseus",
+      "target": "concept-process-cinema",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-ship-of-theseus",
+      "target": "concept-chinese-room",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-process-cinema",
+      "target": "concept-software-craftsmanship",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-process-cinema",
+      "target": "topic-system-cartography",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-process-cinema",
+      "target": "concept-knowledge-work",
+      "relationship": "related_concept",
+      "weight": 2
+    },
+    {
+      "source": "concept-process-cinema",
+      "target": "concept-ship-of-theseus",
       "relationship": "related_concept",
       "weight": 2
     },
@@ -8822,6 +9005,144 @@
       "source": "episode-37",
       "target": "concept-software-craftsmanship",
       "relationship": "explores_concept",
+      "weight": 2
+    },
+    {
+      "source": "errata-fluffle-precursor",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
+      "weight": 2
+    },
+    {
+      "source": "errata-phalanx-duel",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
+      "weight": 2
+    },
+    {
+      "source": "workbench-audio-fix-power-lines",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "grounded_in_community",
+      "weight": 2
+    },
+    {
+      "source": "workbench-coderwall-open-source-transition",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-coderwall-open-source-transition",
+      "target": "topic-system-cartography",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-coderwall-open-source-transition",
+      "target": "concept-process-cinema",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-coderwall-open-source-transition",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "grounded_in_community",
+      "weight": 2
+    },
+    {
+      "source": "workbench-fluffle-cluster",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "grounded_in_community",
+      "weight": 2
+    },
+    {
+      "source": "workbench-hello-world",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-hello-world",
+      "target": "topic-system-cartography",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-hello-world",
+      "target": "concept-process-cinema",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-hello-world",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "grounded_in_community",
+      "weight": 2
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "concept-ship-of-theseus",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "concept-blindsight",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "concept-chinese-room",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "concept-synthetic-competence",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "topic-system-cartography",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "concept-software-craftsmanship",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "concept-process-cinema",
+      "relationship": "explores_concept",
+      "weight": 3
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "ug-scmc--mchenry-county-",
+      "relationship": "grounded_in_community",
+      "weight": 2
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "workbench-hello-world",
+      "relationship": "related_workbench_session",
+      "weight": 2
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "workbench-coderwall-open-source-transition",
+      "relationship": "related_workbench_session",
+      "weight": 2
+    },
+    {
+      "source": "workbench-ship-of-theseus",
+      "target": "workbench-fluffle-cluster",
+      "relationship": "related_workbench_session",
       "weight": 2
     }
   ]

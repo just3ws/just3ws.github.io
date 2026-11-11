@@ -97,7 +97,7 @@
   definition: A disciplined way to map a living system across code, runtime behavior, ownership, and organizational context before changing it.
   url: /2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html
   graph_id: topic-system-cartography
-  related: [conways-law, strangler-fig, opentelemetry, software-craftsmanship, looking-through-the-net, blindsight]
+  related: [conways-law, strangler-fig, opentelemetry, software-craftsmanship, looking-through-the-net, blindsight, ship-of-theseus, process-cinema]
 
 - slug: software-craftsmanship
   label: Software Craftsmanship
@@ -105,7 +105,7 @@
   definition: A practitioner discipline grounded in simple design, test-driven feedback loops, apprenticeship, and care for how software is built and maintained.
   url: /chicago-craftsmanship/
   graph_id: concept-software-craftsmanship
-  related: [system-cartography, knowledge-work, blindsight, looking-through-the-net]
+  related: [system-cartography, knowledge-work, blindsight, looking-through-the-net, ship-of-theseus, process-cinema]
 
 - slug: command-palette
   label: command palette
@@ -137,7 +137,7 @@
   definition: "Peter Watts' 2006 exploration of intelligence without consciousness, the alien construct Rorschach, and the Chinese Room thought experiment, illustrating Cunningham's honeycomb paradox where high-throughput symbol manipulation creates the illusion of architectural competence without comprehension."
   url: /docs/studio-workbench-ship-of-theseus-briefing/
   graph_id: concept-blindsight
-  related: [looking-through-the-net, chinese-room, synthetic-competence, software-craftsmanship, system-cartography]
+  related: [looking-through-the-net, chinese-room, synthetic-competence, software-craftsmanship, system-cartography, ship-of-theseus]
 
 - slug: looking-through-the-net
   label: Looking Through the Net (Alan Watts)
@@ -153,7 +153,7 @@
   definition: John Searle's 1980 thought experiment demonstrating that syntactic symbol manipulation, no matter how sophisticated or convincing, does not constitute semantic understanding or consciousness.
   url: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
   graph_id: concept-chinese-room
-  related: [blindsight, looking-through-the-net, synthetic-competence]
+  related: [blindsight, looking-through-the-net, synthetic-competence, ship-of-theseus]
 
 - slug: synthetic-competence
   label: The Mirage of Competence
@@ -161,5 +161,21 @@
   definition: The deceptive perception of understanding produced when a statistical model generates fluent, authoritative domain artifacts without causal grounding or sovereign verification.
   url: /ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/
   graph_id: concept-synthetic-competence
-  related: [blindsight, looking-through-the-net, chinese-room, software-craftsmanship]
+  related: [blindsight, looking-through-the-net, chinese-room, software-craftsmanship, ship-of-theseus]
+
+- slug: ship-of-theseus
+  label: The Ship of Theseus
+  aliases: [The Ship of Theseus, Ship of Theseus, system identity, wooden boat to space station, Theseus paradox]
+  definition: "The foundational paradox of identity and continuity in engineering: when every plank, compiler, operating system, and queue in a 15-year infrastructure has been substituted, does the system survive because the same craftsman directed every substitution?"
+  url: /series/studio-workbench/episode-01/
+  graph_id: concept-ship-of-theseus
+  related: [system-cartography, software-craftsmanship, blindsight, synthetic-competence, process-cinema, chinese-room]
+
+- slug: process-cinema
+  label: Process Cinema
+  aliases: [Process Cinema, unscripted problem-solving, working in the open, desk investigations]
+  definition: Technical documentation and video production grounded in open problem-solving, live terminals, and active system forensics, rejecting polished auteur performance in favor of discovering what holds together under load.
+  url: /series/studio-workbench/
+  graph_id: concept-process-cinema
+  related: [software-craftsmanship, system-cartography, knowledge-work, ship-of-theseus]
 

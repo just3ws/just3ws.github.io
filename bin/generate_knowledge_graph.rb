@@ -8,7 +8,7 @@
 # usage: ruby bin/generate_knowledge_graph.rb
 # ---
 
-# bin/generate_knowledge_graph.rb — Taxonomical Entity & Knowledge Graph Generator
+# bin/generate_knowledge_graph.rb: Taxonomical Entity & Knowledge Graph Generator
 #
 # Extracts entities (Interviewees, Conferences, User Groups, Open Source Projects, Topics)
 # and builds node/edge/cluster relationships for the Knowledge Graph Network.
@@ -219,24 +219,75 @@ class KnowledgeGraphGenerator
       end
     end
 
-    # 3. Process Episode Dossiers (The Sound Above Curriculum)
-    Dir[File.join("_data/episodes", "episode-*.yml")].sort.each do |ep_path|
+    # 3. Process Episode Dossiers (The Sound Above, Studio Workbench & Errata)
+    Dir[File.join("_data/episodes", "*.yml")].sort.each do |ep_path|
       ep = YAML.load_file(ep_path, permitted_classes: [Date, Time], aliases: true) rescue next
-      raw_num = ep["episode"] || ep["number"]
-      next unless ep.is_a?(Hash) && !raw_num.nil?
+      next unless ep.is_a?(Hash)
 
-      ep_num = format("%02d", raw_num.to_i)
-      ep_id = "episode-#{ep_num}"
-      ep_label = "Ep #{ep_num}: #{ep['title']} (#{ep['interviewee']})"
-      ep_url = raw_num.to_i == 0 ? "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" : "/series/the-sound-above/episode-#{ep_num}/"
-      ep_desc = ep.dig("narrative", "theme") || ep.dig("narrative_plot", "theme") || ep["era_name"] || ""
-      add_node(nodes, node_ids, ep_id, ep_label, "Episode", 9, ep_url, val: 16, description: ep_desc.to_s)
+      basename = File.basename(ep_path, ".yml")
+      if basename.start_with?("episode-")
+        raw_num = ep["episode"] || ep["number"]
+        next if raw_num.nil?
 
-      src_int = (ep["slug"] || ep["source_interview_id"]).to_s
-      if !src_int.empty? && node_ids.include?(src_int)
-        add_link(links, ep_id, src_int, "rewatches_interview", 3)
-      elsif node_ids.include?("concept-software-craftsmanship")
-        add_link(links, ep_id, "concept-software-craftsmanship", "explores_concept", 2)
+        ep_num = format("%02d", raw_num.to_i)
+        ep_id = "episode-#{ep_num}"
+        ep_label = "Ep #{ep_num}: #{ep['title']} (#{ep['interviewee']})"
+        ep_url = raw_num.to_i == 0 ? "/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/" : "/series/the-sound-above/episode-#{ep_num}/"
+        ep_desc = ep.dig("narrative", "theme") || ep.dig("narrative_plot", "theme") || ep["era_name"] || ""
+        add_node(nodes, node_ids, ep_id, ep_label, "Episode", 9, ep_url, val: 16, description: ep_desc.to_s)
+
+        src_int = (ep["slug"] || ep["source_interview_id"]).to_s
+        if !src_int.empty? && node_ids.include?(src_int)
+          add_link(links, ep_id, src_int, "rewatches_interview", 3)
+        elsif node_ids.include?("concept-software-craftsmanship")
+          add_link(links, ep_id, "concept-software-craftsmanship", "explores_concept", 2)
+        end
+      elsif basename.start_with?("workbench-")
+        ep_id = basename
+        ep_label = "#{ep['series'] || 'Studio Workbench'}: #{ep['title']}"
+        ep_url = case basename
+                 when "workbench-ship-of-theseus"
+                   "/series/studio-workbench/episode-01/"
+                 when "workbench-coderwall-open-source-transition"
+                   "/series/studio-workbench/the-lost-coderwall-guides/"
+                 else
+                   "/series/studio-workbench/"
+                 end
+        ep_desc = ep.dig("narrative", "theme") || ep.dig("narrative", "topic") || ""
+        add_node(nodes, node_ids, ep_id, ep_label, "Episode", 9, ep_url, val: 18, description: ep_desc.to_s)
+
+        # Bi-directional concept connections
+        Array(ep["concepts"]).each do |c_slug|
+          cid = "concept-#{c_slug}"
+          tid = "topic-#{c_slug}"
+          target_node = node_ids.include?(cid) ? cid : (node_ids.include?(tid) ? tid : nil)
+          add_link(links, ep_id, target_node, "explores_concept", 3) if target_node
+        end
+
+        # Community connections (SCMC)
+        if node_ids.include?("ug-scmc--mchenry-county-")
+          add_link(links, ep_id, "ug-scmc--mchenry-county-", "grounded_in_community", 2)
+        end
+
+        # Sister episode links
+        Array(ep["related_episodes"]).each do |rel|
+          add_link(links, ep_id, rel, "related_workbench_session", 2) if node_ids.include?(rel)
+        end
+
+        # Fallback to avoid orphans
+        unless links.any? { |l| l[:source] == ep_id || l[:target] == ep_id }
+          add_link(links, ep_id, "concept-software-craftsmanship", "explores_concept", 2) if node_ids.include?("concept-software-craftsmanship")
+        end
+      elsif basename.start_with?("errata-")
+        ep_id = basename
+        ep_label = "Errata: #{ep['title'] || basename}"
+        ep_url = "/series/the-sound-above/"
+        ep_desc = ep.dig("narrative", "theme") || ""
+        add_node(nodes, node_ids, ep_id, ep_label, "Episode", 9, ep_url, val: 14, description: ep_desc.to_s)
+
+        if node_ids.include?("concept-software-craftsmanship")
+          add_link(links, ep_id, "concept-software-craftsmanship", "explores_concept", 2)
+        end
       end
     end
 
