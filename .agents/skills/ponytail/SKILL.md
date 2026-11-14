@@ -3,7 +3,7 @@ name: ponytail
 description: Audits code, designs, and architectural proposals against premature technical debt. Cuts speculative abstractions, simplifies over-engineered solutions, and enforces explicit '# ponytail: <rationale>' markers on pragmatic shortcuts. Use during code review, feature planning, refactoring, or when asking for a simpler, leaner design.
 ---
 
-# /ponytail: Reducing Premature Technical Debt
+# /ponytail — Reducing Premature Technical Debt
 
 The **Ponytail Skill** is a disciplined razor against speculative engineering.
 
@@ -27,7 +27,7 @@ Run these questions against any proposed design or diff:
 1. **The Caller Count**: How many distinct callers exist for this abstraction *today*?
    - If 1: Inline it or keep it concrete.
    - If 0 (speculative): Delete it immediately (Rung 1: Omission).
-2. **The Config Trap**: Are we introducing a YAML file or database table for 2 to 3 static values?
+2. **The Config Trap**: Are we introducing a YAML file or database table for 2–3 static values?
    - Replace with inline constants or code defaults.
 3. **The Layer Check**: Does this class/module simply pass parameters through to another layer without transforming data or enforcing a domain invariant?
    - Collapse the wrapper. Let the caller touch the seam directly.
@@ -56,34 +56,23 @@ Always stop at the lowest rung that satisfies the requirement:
 When taking a deliberate, pragmatic shortcut, never hide it. Format the comment as:
 
 ```ruby
-# ponytail: <what was simplified>: <why it is sufficient for single-operator local platform>;
+# ponytail: <what was simplified> — <why it is sufficient for single-operator local platform>;
 # upgrade trigger: <condition that justifies building full abstraction>.
 ```
 
 Example:
 ```ruby
-# ponytail: thresholds are inline constants, not a YAML config (single operator on localhost);
+# ponytail: thresholds are inline constants, not a YAML config — one operator on localhost;
 # upgrade trigger: extract to config if multi-tenant thresholds are ever required.
 MAX_DRIFT = 5
 ```
 
 ---
 
-## 5. Tool Namespacing & Consolidation Protocol
-
-When organizing local scripts, tools, and CLIs:
-
-1. **Namespace by Domain**: Group commands by domain (e.g., `media`, `validate`, `data`, `site`) rather than creating dozens of top-level scripts.
-2. **Prune Before Creating**: Check existing tools in `bin/` or `_data/` before authoring a new script.
-3. **Preserve Backward Compatibility**: Retain legacy command aliases where external scripts, cron jobs, or muscle memory depend on them.
-4. **Favor Unified Drivers**: Prefer routing through a unified pipeline driver (`bin/pipeline <domain> <action>`) over loose root scripts.
-
----
-
-## 6. Audit Workflow for Agents
+## 5. Audit Workflow for Agents
 
 When requested to review or write code with the Ponytail skill:
 1. **List all new files and abstractions** introduced in the plan.
 2. **Apply the Complexity Razor** to each.
-3. **Recommend cuts** (e.g., "We do not need a factory class; a simple Hash map eliminates 40 lines").
+3. **Recommend cuts** (e.g. "We don't need `RegistryFactory`—a simple Hash map in `bus.rb` eliminates 40 lines").
 4. **Ensure remaining trade-offs are tagged** with `# ponytail:`.
