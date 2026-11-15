@@ -1,0 +1,132 @@
+---
+episode: -3
+errata_slug: "errata-alan-watts-seeing-through-the-net"
+series: "Errata"
+title: "Seeing Through the Net: Alan Watts at IBM (1969) & the AI Era"
+subtitle: "A watch-along discussion of Watts's IBM Systems Group talk and what it reveals about tokens, harnesses, and mistaking the menu for the dinner"
+status: ready
+interviewee: Mike Hall
+source_speaker: Alan Watts
+source_host: Mark Watts (Being in the Way Podcast Ep. 36)
+conference: IBM Systems Group of Engineers
+year: 1969
+published_year: 2026
+location: Crystal Lake, IL
+slug: errata-alan-watts-seeing-through-the-net
+era_id: the-ai-horizon
+era_name: The AI Horizon
+source_media:
+  youtube_url: "https://www.youtube.com/watch?v=OWlpa3wd9K4"
+  youtube_id: "OWlpa3wd9K4"
+  research_dossier: "_data/research/alan-watts-looking-through-the-net-ibm-1969.json"
+  transcript_raw: "~/Downloads/transcripts/OWlpa3wd9K4/OWlpa3wd9K4.txt"
+  transcript_srt: "~/Downloads/transcripts/OWlpa3wd9K4/OWlpa3wd9K4.srt"
+  transcript_cleaned: "~/Downloads/transcripts/OWlpa3wd9K4/OWlpa3wd9K4.cleaned.txt"
+narrative:
+  theme: Systems Thinking, Epistemology & Craftsmanship in the AI Era
+  tone: Reflective, conversational, practical, and candid
+  topic: "Alan Watts: Seeing Through the Net (IBM Systems Group, ~1969) mapped to modern AI engineering"
+  plot_arc:
+    inciting_incident: Rewatching Alan Watts's late-1960s talk to IBM systems engineers through the local ztranscribe archive and recognizing every pattern showing up in 2026 AI tooling.
+    rising_action: Walking timestamp by timestamp through Watts's metaphors (the fisherman's net, prickles and goo, spotlight vs floodlight attention, the gallbladder specialist, and mechanism vs organism).
+    climax: Connecting Watts's warning about confusing the menu with the dinner directly to generated code volume, benchmark scores, and brittle AI wrappers.
+    resolution: Grounding AI adoption in deterministic harnesses, full-system visibility, and human stewardship rather than treating probabilistic outputs as finished reality.
+  core_inquiry: What did Alan Watts warn IBM systems engineers about in the late 1960s, and how are we repeating the exact same mistake with LLMs and AI agents today?
+  ai_era_parallel: Token grids, context windows, and benchmark dashboards are the new fisherman's net; reliable engineering pairs probabilistic fluency (goo) with deterministic verification (prickles).
+watch_along_cues:
+  - timestamp: "00:01:06"
+    label: "IBM Systems Group Framing"
+    quote: "Alan Watts, Seeing Through the Net, with the IBM Systems Group of Engineers recorded in the mid-60s."
+    ai_mapping: "Before personal computers or LLMs, systems engineers were already asking how much control an abstract model really gives you."
+  - timestamp: "00:15:22"
+    label: "The Fisherman's Net & Wiggles"
+    quote: "All biological existences wiggle... some ancient fisherman one day held up his net and looked at the world through the net."
+    ai_mapping: "Tokens, embeddings, and eval grids slice continuous reality into neat squares. We start believing the grid is the world."
+  - timestamp: "00:17:28"
+    label: "Prickles and Goo"
+    quote: "This natural universe is neither prickles nor goo exclusively. It's gooey prickles and prickly goo."
+    ai_mapping: "Deterministic tests, types, and state machines (prickles) vs. probabilistic LLM generation (goo). Useful systems need both."
+  - timestamp: "00:20:26"
+    label: "Spotlight vs. Floodlight Attention"
+    quote: "The advantage of the spotlight is it gives you intensely concentrated light on restricted areas. A floodlight, by comparison, has less intensity."
+    ai_mapping: "Prompting an LLM inside a narrow context window is a blinding spotlight; architecture maps and graph queries act as the floodlight."
+  - timestamp: "00:23:41"
+    label: "The Gallbladder Specialist"
+    quote: "Whenever he looks at a human being, he sees him in terms of gallbladder."
+    ai_mapping: "Single-tool evangelism: treating every organizational or architectural bottleneck as a prompt-engineering or RAG problem."
+  - timestamp: "00:24:32"
+    label: "Mechanism vs. Organism"
+    quote: "A mechanism is assembled: you add this bit to that bit to that bit... but an organism grows."
+    ai_mapping: "Sticking generated snippets together produces a fragile mechanism; maintainable software grows with shared boundaries and feedback loops."
+  - timestamp: "00:44:54"
+    label: "Eating the Menu Instead of the Dinner"
+    quote: "We've confused the symbol with the physical reality, the money with the wealth, and the menu with the dinner, and we're starving on eating menus."
+    ai_mapping: "Measuring lines of generated code, green mocked tests, or AI-written summaries instead of whether the running system actually works."
+teleprompter_script:
+  act_1: |
+    [SCENE: Cam on desk, OWlpa3wd9K4 video cued on screen]
+    Welcome to Errata. I'm Mike Hall.
+    Today I want to sit down with a recording I pulled into ztranscribe:
+    Alan Watts speaking to the IBM Systems Group of Engineers in the late 1960s,
+    "Seeing Through the Net."
+    [FREEFORM: Explain why "reaction video" feels like the wrong phrase here.
+    This isn't about hot takes on a 55-year-old philosophy lecture.
+    It's about pausing at the timestamps where Watts is talking to systems engineers
+    and noticing how squarely it lands on what we're doing with AI right now.]
+
+  act_2: |
+    [CUE: Play / pause at 00:15:22 - 00:15:49]
+    [SHOW: Transcript excerpt - "All biological existences wiggle... some ancient fisherman one day held up his net"]
+    Watts starts with a simple image: real life wiggles.
+    To make sense of it, we hold up a fisherman's net and look through the squares.
+    The net isn't bad. You need coordinates, measurements, and categories to build anything.
+    The trap is forgetting you're looking through a net.
+    [FREEFORM: Map the net to 2026 AI tooling.
+    Tokenizers, vector embeddings, context windows, and benchmark leaderboards are our net.
+    When an LLM scores 90 percent on a synthetic eval, it's easy to mistake the square in the net
+    for the messy production system underneath.]
+
+  act_3: |
+    [CUE: Play / pause at 00:17:28 - 00:18:55]
+    [SHOW: Transcript excerpt - "Prickles and Goo... gooey prickles and prickly goo"]
+    At 17 minutes in, Watts splits thinkers into prickles and goo.
+    Prickles want hard edges, discrete atoms, exact rules.
+    Goo wants flow, continuity, intuition, the whole picture at once.
+    And Watts reminds the room: nature isn't one or the other. It's prickly goo and gooey prickles.
+    [FREEFORM: Connect this directly to engineering with LLMs today.
+    Pure "goo" is shipping raw probabilistic agent output without tests or types.
+    Pure "prickles" is pretending heuristics and natural language have no place in tooling.
+    The real craft is pairing deterministic harnesses, ledgers, and compilers (prickles)
+    with probabilistic search and synthesis (goo).]
+
+  act_4: |
+    [CUE: Play / pause at 00:20:26 - 00:23:58]
+    [SHOW: Spotlight vs Floodlight & The Gallbladder Specialist excerpts]
+    Around 20 minutes, Watts contrasts spotlight attention with floodlight attention.
+    A spotlight gives you blinding clarity on one small patch while everything around it goes dark.
+    A few minutes later, he tells the story of the gallbladder specialist
+    who studies one organ so intensely that every human being looks like a walking gallbladder.
+    [FREEFORM: Tie this to your Nov 7 Ramblin' & Amblin' observation about consciousness filtering out the world.
+    An LLM chat window is a spotlight. It will happily refactor a single file to perfection
+    while breaking three upstream contracts it never saw.
+    That's why system mapping and architectural boundaries matter more now, not less.]
+
+  act_5: |
+    [CUE: Play / pause at 00:24:32 - 00:24:54]
+    [SHOW: Mechanism vs Organism excerpt]
+    At 24 minutes, Watts draws the line between a mechanism and an organism.
+    A mechanism is assembled piece by piece from the outside.
+    An organism grows from the inside out, adapting to its environment.
+    [FREEFORM: Contrast copy-pasted AI boilerplate stitched together under deadline pressure
+    with systems that evolve cleanly over years, keeping their feedback loops intact.]
+
+  act_6: |
+    [CUE: Play / pause at 00:44:54 - 00:45:09]
+    [SHOW: "Confused the menu with the dinner, and we're starving on eating menus"]
+    Right near the end, Watts lands the punchline:
+    we confuse the symbol with physical reality, the money with the wealth,
+    and the menu with the dinner, and we end up starving on eating menus.
+    [FREEFORM: Close with what this means for engineers watching in 2026.
+    Don't mistake a generated PR summary, a pretty diagram, or a wall of synthetic code for the dinner.
+    Run the code against reality, check the audio, check the database, check the user outcome.
+    Links to the cleaned transcript and research notes are in the description.]
