@@ -3,7 +3,7 @@ name: ponytail
 description: Audits code, designs, and architectural proposals against premature technical debt. Cuts speculative abstractions, simplifies over-engineered solutions, and enforces explicit '# ponytail: <rationale>' markers on pragmatic shortcuts. Use during code review, feature planning, refactoring, or when asking for a simpler, leaner design.
 ---
 
-# /ponytail — Reducing Premature Technical Debt
+# /ponytail: Reducing Premature Technical Debt
 
 The **Ponytail Skill** is a disciplined razor against speculative engineering.
 
@@ -56,13 +56,13 @@ Always stop at the lowest rung that satisfies the requirement:
 When taking a deliberate, pragmatic shortcut, never hide it. Format the comment as:
 
 ```ruby
-# ponytail: <what was simplified> — <why it is sufficient for single-operator local platform>;
+# ponytail: <what was simplified>; <why it is sufficient for single-operator local platform>;
 # upgrade trigger: <condition that justifies building full abstraction>.
 ```
 
 Example:
 ```ruby
-# ponytail: thresholds are inline constants, not a YAML config — one operator on localhost;
+# ponytail: thresholds are inline constants, not a YAML config (one operator on localhost);
 # upgrade trigger: extract to config if multi-tenant thresholds are ever required.
 MAX_DRIFT = 5
 ```
@@ -74,5 +74,5 @@ MAX_DRIFT = 5
 When requested to review or write code with the Ponytail skill:
 1. **List all new files and abstractions** introduced in the plan.
 2. **Apply the Complexity Razor** to each.
-3. **Recommend cuts** (e.g. "We don't need `RegistryFactory`—a simple Hash map in `bus.rb` eliminates 40 lines").
+3. **Recommend cuts** (e.g. "We don't need `RegistryFactory`; a simple Hash map in `bus.rb` eliminates 40 lines").
 4. **Ensure remaining trade-offs are tagged** with `# ponytail:`.
