@@ -52,7 +52,7 @@
         <div class="workbench-stage-card">
           <div class="stage-card-kicker">STAGE 3 · INFERENCE</div>
           <div class="stage-card-title">whisper.cpp + Cooldown</div>
-          <div class="stage-card-body"><code>ggml-small.bin</code> on ARM64 NEON, deletes <code>episode.wav</code>, then runs <code>sleep 120</code> to prevent thermal panic.</div>
+          <div class="stage-card-body"><code>ggml-small.bin</code> on DietPi <code>aarch64</code>, deletes <code>episode.wav</code> off USB thumbdrives, then runs <code>sleep 120</code>.</div>
         </div>
 
         <div class="workbench-stage-card is-highlight">
@@ -111,7 +111,7 @@
       <h3 style="font-size: 1.08rem; font-weight: 800; margin: 1.25rem 0 0.5rem;">1. Network &amp; 5-Node Cluster Topology</h3>
       <pre><code class="language-mermaid">flowchart LR
     RSS["Libsyn RSS Feeds<br/>Dead Rabbit Radio · Belief Hole · Philosophize This"] -->|"Curl::Easy + Nokogiri"| CTRL["macOS Control Plane<br/>Rakefile + Down + FFMPEG"]
-    CTRL -->|"Net::SSH df/du + rsync"| PI["5x Raspberry Pi 4B<br/>node01..node05 (ARM64 Debian 11)"]
+    CTRL -->|"Net::SSH df/du + rsync"| PI["5x Raspberry Pi 4 (2x 4B, 3x Pi 4)<br/>node01..node05 (DietPi Debian 11 aarch64)"]
     PI -->|"whisper.cpp + sleep 120"| SYNC["bin/syncer.zsh<br/>Pull .txt .srt .log .*"]
     SYNC -->|"bin/replacements"| CLEAN["replacements.yaml<br/>+ episode_checker.rb"]</code></pre>
 
@@ -153,7 +153,7 @@
         In Dead Rabbit Radio show lore, host Jason Carpenter calls his Patreon supporter community <strong>"The Fluffle"</strong> (a group of wild rabbits). Seventeen months before <code>just3ws/fluffle</code> began, Jason welcomed Mike Hall into Dead Rabbit Command on <strong>EP 769</strong> (<em>Was Travis Scott's Astroworld A Satanic Sacrifice?</em>, November 8, 2021) at <code>00:00:49</code> and <code>00:14:53</code> (<em>"Mike Hall is flying us around the carbon helicopter"</em>).
       </p>
       <p style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-muted, #525866); margin: 0;">
-        No verifiable on-air Dead Rabbit Radio episode discussed the 2023 Raspberry Pi transcription repository. Instead, Mike contacted Jason privately to ask if he was comfortable with the experiment, Jason replied kindly, and all outputs were published under CC BY-NC-ND 4.0 with explicit attribution.
+        No verifiable on-air Dead Rabbit Radio episode discussed the 2023 Raspberry Pi transcription repository. Instead, after Jason mentioned transcripts on an episode, Mike drafted a private outreach message on April 6, 2023 explaining GitHub (<code>LICENSE</code>, <code>CONTRIBUTING</code>, <code>README</code>), offering write access, and proposing CC BY-NC-ND 4.0 while citing Jason Carpenter as sole owner. By April 7, Jason was aware and open to the experiment; they chatted on Discord, and Mike paused follow-up when XML feed drift and day-job load hit at <code>Process 2.0</code>.
       </p>
     </div>
 
@@ -167,9 +167,10 @@
           What the 79 Commits Reveal
         </h3>
         <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); display: grid; gap: 0.45rem;">
-          <li><strong>Phase 1 (Apr 6 to 17, 52 commits):</strong> Before-work (6 AM), lunch (12 PM), and evening (9 PM) runs; Rudie Jazz shoutout (<code>abc718c</code>); deleting 26 duplicate <code>.wav.srt</code> files (<code>2fac228</code>, -52,952 lines).</li>
+          <li><strong>Pre-Repo Prep (Mar 25 to Apr 5):</strong> <code>Net::SSH</code> orchestration across <code>node01..node05</code>, Ruby 2.7 Raft tests, Libsyn XML parsing, failed macOS Radeon CUDA attempt, and Pi <code>lm-sensors</code> thermal checks.</li>
+          <li><strong>Phase 1 (Apr 6 to 17, 51 commits):</strong> Before-work (6 AM), lunch (12 PM), and evening (9 PM) runs; Rudie Jazz shoutout (<code>abc718c</code>); deleting 26 duplicate <code>.wav.srt</code> files (<code>2fac228</code>, -52,952 lines).</li>
           <li><strong>Phase 2 (Apr 25, <code>3122642</code>):</strong> Hand-editing 509 transcripts proved manual cleanup could not scale, followed by a 22-day gap.</li>
-          <li><strong>Phase 3 (May 17 to Jun 12, 25 commits):</strong> 10-minute regex fix (<code>d8cd747</code>) cleaning 981 files (<code>4db66d1</code>), <code>Rakefile</code> state machine, <code>episode_checker.rb</code> HTML grid (<code>abfb3a9</code>), and stopping at <code>Process 2.0</code> (<code>bc4ec64</code>, 4,135 files).</li>
+          <li><strong>Phase 3 (May 17 to Jun 12, 27 commits):</strong> 10-minute regex fix (<code>d8cd747</code>) cleaning 981 files (<code>4db66d1</code>), <code>Rakefile</code> state machine, <code>episode_checker.rb</code> HTML grid (<code>abfb3a9</code>, 1,175 rows), and stopping at <code>Process 2.0</code> (<code>bc4ec64</code>, 4,135 files).</li>
         </ul>
       </section>
 
@@ -178,7 +179,7 @@
           Blindsight in Practice
         </div>
         <h3 style="font-size: 1.15rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, #0f172a);">
-          29 Ways Whisper Misspelled "Jason Carpenter"
+          30+ Ways Whisper Misspelled "Jason Carpenter"
         </h3>
         <p style="font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
           Echoing Peter Watts' <em>Blindsight</em> from Episode 01, <code>whisper.cpp</code> extruded phonemes without semantic grounding: <em>Garpenter</em>, <em>Garbineiro</em>, <em>Krupper</em>, <em>Carmoner</em>, <em>Jason Asa</em>, and <em>deadrabberdurgible</em>.
@@ -188,6 +189,23 @@
         </p>
       </section>
     </div>
+
+    <!-- Verified Hardware, Runtime & Artifact Ledger -->
+    <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem; margin-bottom: 2.5rem;">
+      <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e); margin-bottom: 0.35rem;">
+        Verified Hardware, Runtime &amp; Artifact Ledger
+      </div>
+      <h2 style="font-size: 1.2rem; font-weight: 800; margin: 0 0 0.85rem; color: var(--color-heading, #0f172a);">
+        Exact 2023 Specs: Cluster, OS, Ruby, Whisper &amp; Repo vs. Disk
+      </h2>
+      <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); display: grid; gap: 0.45rem;">
+        <li><strong>Raspberry Pi Nodes (<code>node01..node05</code>):</strong> Five Pi 4 boards (two Raspberry Pi 4B, three plain Raspberry Pi 4; <code>node01</code> confirmed 8GB RAM), stock heatsinks, official cases, USB thumbdrive storage, WiFi off, wired via a dedicated local hub router.</li>
+        <li><strong>Node OS &amp; Kernel:</strong> DietPi on Debian 11 (Bullseye) <code>aarch64</code>, verified on <code>node01</code> as <code>Linux node01 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr 3 17:24:16 BST 2023 aarch64 GNU/Linux</code>.</li>
+        <li><strong>Control Plane &amp; Ruby:</strong> Intel macOS 13 Ventura (<code>x86_64-darwin-22</code>), Bundler <code>2.4.13</code>, Ruby <code>3.1+</code> hash-shorthand syntax in <code>Rakefile</code>, <code>bin/distribution</code>, and <code>bin/episode_checker.rb</code> (no <code>.ruby-version</code> pin in repo; March 25 Raft prototypes started on Ruby 2.7).</li>
+        <li><strong>Transcription Engine:</strong> <code>~/whisper.cpp/main</code> running <code>~/whisper.cpp/models/ggml-small.bin</code> (Whisper <code>small</code> 244M GGML; exact 2023 build commit and model byte size are unlogged).</li>
+        <li><strong>In Repo vs. On Disk vs. Published:</strong> GitHub <code>just3ws/fluffle</code> holds <code>2,034</code> files in <code>transcripts/</code> (<code>1,017</code> matching <code>.txt</code>/<code>.srt</code> pairs), <code>1,073</code> UUID directories in <code>episodes/</code> (<code>1,175</code> <code>episode.xml</code>, <code>138</code> <code>episode.{srt,txt,vtt}</code>), <code>episodes.html</code> (<code>1,175</code> rows), and <code>feed.xml</code> (<code>12.6 MB</code>). Local <code>~/podcasts/</code> is no longer on this M4 Mac.</li>
+      </ul>
+    </section>
 
     <!-- Companion Artifacts & Briefing Links -->
     <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem;">

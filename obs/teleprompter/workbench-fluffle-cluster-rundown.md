@@ -41,7 +41,7 @@
 
 ### Act 4: The *Blindsight* Moment (15:00 to 20:00)
 - **Screen:** `fluffle/README.md` + `fluffle/replacements.yaml` + `git log` on May 17, 2023 (`07:03` to `07:13 AM`).
-- **Key Beat:** 29 Whisper misspellings of "Jason Carpenter" (`Garpenter`, `Garbineiro`, `Krupper`) + `deadrabberdurgible`. Deterministic YAML regexes (`d8cd747`, `4db66d1`) fixing 981 files in one pass.
+- **Key Beat:** 30+ Whisper misspellings of "Jason Carpenter" (`Garpenter`, `Garbineiro`, `Krupper`) + `deadrabberdurgible`. Deterministic YAML regexes (`d8cd747`, `4db66d1`) fixing 981 files in one pass.
 
 ### Act 5: Git Archaeology & Where It Stopped (20:00 to 25:00)
 - **Screen:** `git log` (79 commits across 67 days) + `bin/episode_checker.rb` / `episodes.html`.

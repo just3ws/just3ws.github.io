@@ -28,13 +28,13 @@ narrative:
       title: "just3ws/fluffle GitHub Repository (79 commits, Apr 6 to Jun 12, 2023)"
       date: "2023-04-06"
       url: "https://github.com/just3ws/fluffle"
-      key_concept: "Distributed Ruby + Net::SSH + rsync orchestration across 5 Raspberry Pi 4B nodes running whisper.cpp (ggml-small.bin), producing 1,017 .txt and 1,017 .srt pairs."
+      key_concept: "Distributed Ruby (3.1+ syntax, Bundler 2.4.13 on x86_64-darwin-22) + Net::SSH + rsync orchestration across 5 Raspberry Pi 4 nodes (two 4B, three plain 4; DietPi Debian 11 aarch64 on USB thumbdrives) running whisper.cpp (ggml-small.bin), producing 1,017 .txt and 1,017 .srt pairs."
     - author: "Peter Watts"
       title: "Blindsight"
       publisher: "Tor Books"
       year: 2006
       url: "https://www.rifters.com/real/Blindsight.htm"
-      key_concept: "Syntactic output without semantic grounding: whisper.cpp generated 29 phonetic variants of 'Jason Carpenter' until deterministic YAML regexes enforced ground truth."
+      key_concept: "Syntactic output without semantic grounding: whisper.cpp generated 30+ phonetic variants of 'Jason Carpenter' until deterministic YAML regexes enforced ground truth."
   plot_arc:
     inciting_incident: "More than two hundred UGtastic interviews sat without searchable transcripts, and paid transcription was beyond the project's budget."
     rising_action: "In April 2023, Mike used Dead Rabbit Radio episodes as a test set and built Ruby scripts to distribute whisper.cpp work across five Raspberry Pis before work, at lunch, and after dinner."
@@ -69,9 +69,9 @@ teleprompter_script:
     On the MacBook control plane, Curb and Nokogiri pulled the Libsyn RSS feed and parsed each episode GUID.
     Down followed up to sixteen or sixty-four HTTP redirects to grab the MP3, and FFmpeg converted it to 16-kilohertz mono PCM WAV.
     [SHOW: Rakefile lines 185-221 and bin/transcribe]
-    Then Rakefile used Net::SSH to interrogate five Raspberry Pi 4s on my desk: node01 through node05.
-    Before shipping a single WAV file, it checked two hard limits: at least five gigabytes free on the microSD card, and under two gigabytes of podcasts per node.
-    On each Pi, bin/transcribe touched a dot-log lock file, ran whisper.cpp with the ggml-small model, deleted the WAV to protect the SD card, and slept for 120 seconds so the passive heatsinks could cool down.
+    Then Rakefile used Net::SSH to interrogate five Raspberry Pi 4s on my desk: node01 through node05, two 4Bs and three plain 4s running DietPi on Debian 11 aarch64 off USB thumbdrives.
+    Before shipping a single WAV file, it checked two hard limits: at least five gigabytes free on the USB thumbdrive, and under two gigabytes of podcasts per node.
+    On each Pi, bin/transcribe touched a dot-log lock file, ran whisper.cpp with the ggml-small model, deleted the WAV to protect the flash drive, and slept for 120 seconds so the stock passive heatsinks could cool down.
     And look at how it tracked progress without Redis: dotfile markers right on the filesystem.
     Dot-downloading, dot-downloaded, dot-converted, dot-distributed, dot-failed.
     If a Pi overheated and rebooted, nothing was lost. That exact dotfile pattern is the direct ancestor of the five-state Maildir queue we run in media-pipeline today.
@@ -80,18 +80,18 @@ teleprompter_script:
     Remember in the Ship of Theseus episode when we talked about Peter Watts' Blindsight and Cunningham's bees?
     Bees build circles, and physics turns them into hexagons. Neural models extrude tokens without knowing what the world means.
     Here is the proof from 2023: whisper.cpp had zero concept of who Jason Carpenter was.
-    In README.md, I documented twenty-nine different ways Whisper spelled his name: Garpenter, Garbineiro, Krupper, Carmoner, Garbender, and even Jason Asa.
+    In README.md and replacements.yaml, I documented over thirty different ways Whisper spelled his name: Garpenter, Garbineiro, Krupper, Carmoner, Garbender, and even Jason Asa.
     It transcribed "Dead Rabbit Dirigible" as "deadrabberdurgible".
     Look at the git timestamps on May 17, 2023: at 7:03 AM I wrote bin/replacements. At 7:08 AM I committed "Order matters in replacements.yml". At 7:12 AM, "Replace word suffixes last". At 7:13 AM, one automated pass fixed 981 files at once.
     Probabilistic inference needed a deterministic dictionary downstream.
   act_5: |
     [SCENE: Show git log of fluffle (79 commits) and bin/episode_checker.rb.]
     If you read all seventy-nine commits across sixty-seven days, you see the human story behind the code.
-    Phase one was pure joy: fifty-two commits in eleven days, running jobs at six in the morning before work, at lunch, and at nine at night, even dedicating episode 381 to fellow listener Rudie Jazz.
+    Phase one was pure joy: fifty-one commits in twelve days, running jobs at six in the morning before work, at lunch, and at nine at night, even dedicating episode 381 to fellow listener Rudie Jazz.
     On April 8, I deleted twenty-six duplicate dot-wav-dot-srt files after catching a whisper.cpp naming quirk.
     Then on April 25, I hand-edited five hundred and nine files, realized manual cleanup could not scale, and went silent for twenty-two days.
-    When I came back in May, I built the Rakefile state machine and episode_checker.rb so I could see all 1,073 episode directories in a green-and-red HTML table.
-    I messaged Jason privately to ask if he was comfortable with the experiment, and he replied kindly. No Dead Rabbit Radio episode ever discussed the repo on-air.
+    When I came back in May, I built the Rakefile state machine and episode_checker.rb so I could see all 1,175 rows across 1,073 episode directories in a green-and-red HTML table.
+    When Jason mentioned transcripts on an episode, I drafted an April 6 DM explaining GitHub and CC BY-NC-ND 4.0, chatted with him on Discord, and verified he knew about the repo. No Dead Rabbit Radio episode ever discussed just3ws/fluffle on-air.
     On June 12, commit seventy-nine, Process 2.0, tried to generalize across multiple podcast feeds like Belief Hole and Philosophize This.
     Broken XML feeds, enterprise day-job incidents, and solo maintenance weight hit all at once, and I stopped.
   act_6: |

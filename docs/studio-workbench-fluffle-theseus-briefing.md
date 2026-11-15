@@ -70,7 +70,7 @@ In Dead Rabbit Radio's own show lore, Jason Carpenter refers to his Patreon supp
 
 ### C. Was the 2023 `just3ws/fluffle` Transcription Project Discussed On-Air?
 **No verifiable on-air episode was found.** Searching public Dead Rabbit Radio indices (`deadrabbitradio.com`, `libsyn.com`, `spoken.md` with 1,400+ indexed episodes) and the local `fluffle` transcript corpus returns zero episodes where Jason Carpenter discussed Mike Hall's Raspberry Pi transcription cluster on-air.  
-Per Mike's own episode dossier (`_data/episodes/errata-fluffle-precursor.yml`, lines 59 and 73), the interaction happened **off-air**: Mike messaged Jason privately to ask whether he was comfortable with the experiment, Jason replied kindly, and Mike later felt too embarrassed to follow up on Discord when day-job production incidents and broken XML feeds stalled the multi-podcast expansion.
+Per Mike's own episode dossier (`_data/episodes/errata-fluffle-precursor.yml`) and 2023 vault logs (`2023-04-06-github-folder-sharing.md`, `2023-04-07-mmv-rename-wav-srt.md`), the interaction happened **off-air**: after Jason mentioned transcripts on an episode, Mike drafted a private DM on April 6 explaining GitHub (`LICENSE` CC BY-NC-ND 4.0, `CONTRIBUTING`, `README`) and offering write access. By April 7 Jason was aware and open/undecided; they chatted on Discord, and Mike later felt too overwhelmed to follow up when day-job incidents and broken XML feeds stalled `Process 2.0`.
 
 > **Broadcast Tip:** That contrast is gold for the episode. You were literally in Dead Rabbit Command in November 2021 (*"flying the carbon helicopter"*), built a 5-node cluster for the show in April 2023, got Jason's private blessing, and yet the project lived quietly in GitHub commits rather than on the airwaves.
 
@@ -80,18 +80,29 @@ Per Mike's own episode dossier (`_data/episodes/errata-fluffle-precursor.yml`, l
 
 Auditing all 79 commits in `~/github.com/just3ws/fluffle` (`2023-04-06` to `2023-06-12`) exposes the human rhythm, live discoveries, and scaling walls behind the code:
 
-### A. Three Distinct Phases Across 67 Days
-1. **Phase 1: Pure Discovery & Joy (Apr 6 to Apr 17, 52 commits in 11 days):**
+### A. Three Distinct Phases Across 67 Days (Plus Pre-Repo Prep)
+0. **Pre-Repo Preparation (Mar 25 to Apr 5, 2023):** Personal vault logs document `Net::SSH` orchestration across `node01..node05`, Ruby 2.7 Raft prototyping (`2023-03-25`), Libsyn XML parsing (`2023-04-01`), a failed PyTorch/CUDA test on Intel macOS Radeon GPU (`2023-04-02`), `.srt` Word2Vec/LangChain experiments (`2023-04-03`), and Pi `lm-sensors` thermal checks (`2023-04-05`).
+1. **Phase 1: Pure Discovery & Joy (Apr 6 to Apr 17, 51 commits in 12 days):**
    - **Before-and-After-Work Cadence:** Commits cluster at `06:04` to `08:01`, `12:21`, and `16:38` to `21:27`, showing a working engineer feeding the 5-Pi cluster before work, at lunch, and after dinner.
    - **Community Spirit:** On Day 1 (`2023-04-06`), you added `LICENSE` (CC BY-NC-ND 4.0) and `CONTRIBUTING`, opened PR `#1` (`e50da66`) on your own repo to model the workflow, and dedicated `abc718c` (*"This one's for Rudie Jazz"*, `ep_0381_hans_wormhat_comp.srt`) to a fellow listener.
    - **Playful Commit Voice:** `Welcome to The Fluffle` (`b841c92`), `Transcribers, scroll out` (`cf9b777`), `Trancriberingring banana phone` (`321d5e4`), `Over 900` (`b603f09`), and `On this transcription of Dead Rabbit Radio` (`5d347f8`).
    - **First File-Naming Scar (`2fac228`, Apr 8):** `whisper.cpp` emits `<file>.wav.srt` by default. After deleting 26 duplicate `.wav.srt` files (`-52,952` lines), `bin/transcribe` explicitly renames `${file}.srt` to `${episode}.srt`.
 2. **Phase 2: The Quality Awakening & Quiet Gap (Apr 17 to May 17):**
-   - After an 8-day pause, `3122642` (`A whole mess of corrections`, Apr 25) touched **509 files** (`+540 / -528` lines) by hand, proving manual cleanup of Whisper errors (`Jason isn't Asa` in `a9ec62f`, plus 29 variants of "Jason Carpenter") could not scale. A 22-day silence followed.
-3. **Phase 3: The Systems-Engineering Pivot (May 17 to Jun 12, 25 commits):**
+   - After an 8-day pause, `3122642` (`A whole mess of corrections`, Apr 25) touched **509 files** (`+540 / -528` lines) by hand, proving manual cleanup of Whisper errors (`Jason isn't Asa` in `a9ec62f`, plus 30 variants in `README.md` / `replacements.yaml`) could not scale. A 22-day silence followed.
+3. **Phase 3: The Systems-Engineering Pivot (May 17 to Jun 12, 27 commits):**
    - **10-Minute Live Regex Discovery (May 17, 07:03 to 07:13 AM):** `749b604` (`Added script to bulk replace words`) -> `d8cd747` (`Order matters in replacements.yml`) -> `936b4bf` (`Replace word suffixes last`) -> `4db66d1` (`First pass word cleanup`, **981 files changed, +3,107 / -3,107 lines**).
    - **Formal Orchestration (May 18 to May 21):** `Rakefile` replaces ad-hoc shell loops with `podcasts:pull`, `podcasts:load`, `podcasts:convert`, and `podcasts:distribute`.
-   - **Scaling Pain & Observability (May 26 to Jun 12):** `4a264e9` (`Only attempt fail to attempt up to 10 times`), `3233e36` (`Fixed distribution counter`), `abfb3a9` (`Tool to view progress report` via `bin/episode_checker.rb` because 1,073 directories could no longer be inspected by eye), and finally `bc4ec64` (`Process 2.0`, **4,135 files changed, +760,831 lines**), where generalizing across multiple RSS feeds (`dead-rabbit-radio`, `belief-hole`, `philosophize-this`) hit the solo-maintenance ceiling.
+   - **Scaling Pain & Observability (May 26 to Jun 12):** `4a264e9` (`Only attempt fail to attempt up to 10 times`), `3233e36` (`Fixed distribution counter`), `abfb3a9` (`Tool to view progress report` via `bin/episode_checker.rb` producing `episodes.html` with 1,175 episode rows), and finally `bc4ec64` (`Process 2.0`, **4,135 files changed, +760,831 lines**), where generalizing across multiple RSS feeds (`dead-rabbit-radio`, `belief-hole`, `philosophize-this`) hit the solo-maintenance ceiling.
+
+### B. Verified Hardware, Runtime & Artifact Ledger
+
+| Dimension | Verified Ground Truth | Source / Status |
+| :--- | :--- | :--- |
+| **Raspberry Pi Nodes** | 5 Pi 4 boards (`node01..node05`): **two Raspberry Pi 4B, three plain Raspberry Pi 4** (`node01` confirmed 8GB RAM). Stock heatsinks, official cases, USB thumbdrives, WiFi off, wired local hub router. | Vault `2023-05-01` & handoff `2026-10-20-5.md`; exact `4B`/RAM map for `node02..node05` is unrecorded. |
+| **Node OS & Kernel** | **DietPi on Debian 11 (Bullseye) `aarch64`**: `Linux node01 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr 3 17:24:16 BST 2023 aarch64 GNU/Linux` (`deb.debian.org`, `dietpi.com/apt`, `archive.raspberrypi.com` bullseye). | Vault `2024-07-08` `node01` `uname -a` & `apt` sources. |
+| **Control Plane & Ruby** | Intel macOS 13 Ventura (`x86_64-darwin-22`), Bundler `2.4.13`, Ruby `3.1+` hash-shorthand syntax in `Rakefile` / `bin/distribution` / `bin/episode_checker.rb` (no `.ruby-version` pin; Mar 25 Raft tests started on Ruby `2.7`). | `fluffle/Gemfile.lock`, `Rakefile`, vault `2023-03-25`. |
+| **Transcription Engine** | `~/whisper.cpp/main` with `~/whisper.cpp/models/ggml-small.bin` (Whisper `small` 244M GGML). Exact 2023 build commit and model byte size are unlogged. | `fluffle/bin/transcribe:20`, vault `2023-04-08`. |
+| **Repo vs. Disk vs. Published** | `just3ws/fluffle` holds `2,034` files in `transcripts/` (`1,017` `.txt`/`.srt` pairs), `1,073` UUID dirs in `episodes/` (`1,175` `episode.xml`, `1,170` `.downloaded`, `1,062` `.converted`, `171` `.distributed`, `139` `.transcribed`, `138` `episode.{srt,txt,vtt}`), `episodes.html` (`1,175` rows), `feed.xml` (`12.6 MB`). `~/podcasts/` is no longer on this M4 Mac. | Direct file audit of `~/github.com/just3ws/fluffle`. |
 
 ```mermaid
 timeline
@@ -131,7 +142,7 @@ flowchart LR
         REPORT["bin/episode_checker.rb<br/>Builder HTML Status Matrix"]
     end
 
-    subgraph LAN["Home Desk Edge Cluster (5x Raspberry Pi 4B · ARM64 Debian 11)"]
+    subgraph LAN["Home Desk Edge Cluster (5x Raspberry Pi 4: 2x 4B, 3x Pi 4 · DietPi Debian 11 aarch64)"]
         N1["node01<br/>deploy@node01"]
         N2["node02<br/>deploy@node02"]
         N3["node03<br/>deploy@node03"]
@@ -282,7 +293,7 @@ Fluffle was shaped by physical hardware limits. Every constant in `Rakefile` and
 flowchart TB
     subgraph LIMITS["Physical Hardware & Network Constraints"]
         T["Heat: Pi 4 BCM2711 Thermal Throttling<br/>Passive heatsinks under 100% ARM NEON load"]
-        S["Storage: MicroSD Card Exhaustion<br/>Small root partitions + flash wear"]
+        S["Storage: USB Thumbdrive Exhaustion<br/>Root partitions + flash wear"]
         A["Audio Integrity: Corrupt/Truncated MP3s<br/>Redirect loops & broken downloads"]
         F["Feed Drift: Multi-Podcast XML Variance<br/>Missing enclosures, GUID collisions"]
     end
@@ -316,7 +327,7 @@ flowchart LR
     subgraph E2023A["April 2023: Fluffle v1 (bin/podcasts)"]
         B1["bin/podcasts + bin/transcribe"]
         B2["44.1kHz Stereo WAV -> 16kHz Mono"]
-        B3["5x Raspberry Pi 4B (ggml-small)"]
+        B3["5x Raspberry Pi 4 (2x 4B, 3x Pi 4; ggml-small)"]
     end
 
     subgraph E2023B["May 2023: Fluffle v2 (Rakefile)"]
@@ -339,7 +350,7 @@ flowchart LR
 ---
 
 ### Perspective 7: Whisper Hallucination & Post-Processing Forensics
-In `fluffle/README.md` and `fluffle/replacements.yaml`, you documented **29 distinct Whisper misspellings of "Jason Carpenter"** (`Garpenter`, `Garbineiro`, `Krupper`, `Carmoner`, `Garbender`, etc.) plus `deadrabberdurgible` ("Dead Rabbit Dirigible") and `DeadRabbitRadio at gmail.com`.  
+In `fluffle/README.md` and `fluffle/replacements.yaml`, you documented **30+ distinct Whisper misspellings of "Jason Carpenter"** (`Garpenter`, `Garbineiro`, `Krupper`, `Carmoner`, `Garbender`, etc.) plus `deadrabberdurgible` ("Dead Rabbit Dirigible") and `DeadRabbitRadio at gmail.com`.  
 This is a concrete, humorous demonstration of *Blindsight* in action: the neural model hears phonemes without knowing who Jason Carpenter is, so **deterministic domain dictionaries (`replacements.yaml`, order-dependent regexes) must sit downstream of probabilistic inference**.
 
 ```mermaid

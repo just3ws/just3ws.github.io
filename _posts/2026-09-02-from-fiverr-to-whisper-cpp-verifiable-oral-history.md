@@ -65,11 +65,7 @@ output with the recording. I could keep intermediate files and resume from the
 last completed step. A bad result became something I could improve instead of a
 bill I had to accept.
 
-The first local project in this lineage has a name I cannot currently recover.
-I remember it as something like “fluffle,” but I have not found a matching
-directory in the local GitHub workspace. That is a known unknown. The important
-fact is not the name. The important fact is the direction of travel: local
-speech recognition became the first step toward a pipeline I could own.
+The first local project in this lineage was [`just3ws/fluffle`](https://github.com/just3ws/fluffle) (April to June 2023), which was later recovered on disk and documented in full in [Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs](/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html) and [Studio Workbench Episode 2](/series/studio-workbench/fluffle-cluster/). The important fact is the direction of travel: local speech recognition became the first step toward a pipeline I could own.
 
 ## A transcript needs a chain of custody
 

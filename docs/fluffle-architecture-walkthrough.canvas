@@ -114,7 +114,7 @@
       "y": -140,
       "width": 360,
       "height": 580,
-      "label": "3. 5-NODE RASPBERRY PI 4B CLUSTER"
+      "label": "3. 5-NODE RASPBERRY PI 4 CLUSTER"
     },
     {
       "id": "pi-nodes",
@@ -124,7 +124,7 @@
       "width": 300,
       "height": 190,
       "color": "2",
-      "text": "### Edge Compute (`node01..node05`)\n- Hardware: 5x Raspberry Pi 4B (BCM2711 ARM64, passive heatsinks)\n- OS: Debian 11 (Raspberry Pi OS 64-bit)\n- User: `deploy@node01..05`\n- Binary: `~/whisper.cpp/main` compiled with ARM NEON"
+      "text": "### Edge Compute (`node01..node05`)\n- Hardware: 5x Raspberry Pi 4 (two 4B, three plain 4; `node01` 8GB RAM), stock heatsinks, official cases, USB thumbdrives, WiFi off\n- OS: DietPi on Debian 11 Bullseye (`aarch64` `6.1.21-v8+`)\n- User: `deploy@node01..05`\n- Binary: `~/whisper.cpp/main` (`ggml-small.bin`)"
     },
     {
       "id": "pi-worker",
@@ -134,7 +134,7 @@
       "width": 300,
       "height": 170,
       "color": "2",
-      "text": "### Worker Loop (`bin/transcribe`)\n1. Skip if `<episode>.log` exists\n2. `touch <episode>.log` (claim lock)\n3. Run `ggml-small.bin -osrt -otxt`\n4. `rm <episode>.wav` (save SD card)\n5. `sleep 120` (thermal cooldown)"
+      "text": "### Worker Loop (`bin/transcribe`)\n1. Skip if `<episode>.log` exists\n2. `touch <episode>.log` (claim lock)\n3. Run `ggml-small.bin -osrt -otxt`\n4. `rm <episode>.wav` (save USB thumbdrive)\n5. `sleep 120` (thermal cooldown)"
     },
     {
       "id": "pi-blindsight",
@@ -232,7 +232,7 @@
       "width": 250,
       "height": 150,
       "color": "5",
-      "text": "**Act 4 (16:00-21:00)**\n*Blindsight* in action: 29 ways Whisper misspelled Jason Carpenter + `replacements.yaml` deterministic cleanup."
+      "text": "**Act 4 (16:00-21:00)**\n*Blindsight* in action: 30+ ways Whisper misspelled Jason Carpenter + `replacements.yaml` deterministic cleanup."
     },
     {
       "id": "act-5",
