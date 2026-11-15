@@ -231,7 +231,7 @@ class EpisodeBookmarks
     # 6. The Lost Coderwall Guides: Open Source, Vagrant, and What Survives
     cw_query = CGI.escape(JSON.generate(text: 'Mike Hall Coderwall Open Source Vagrant Google Hangouts 2014 Studio Workbench 2026', limit: 12))
     folders << folder('The Lost Coderwall Guides: Open Source, Vagrant, and What Survives', [
-      link('Interactive Episode Walkthrough & Digital Archaeology', "#{SITE}/series/studio-workbench/episode-02/"),
+      link('Interactive Episode Walkthrough & Digital Archaeology', "#{SITE}/series/studio-workbench/the-lost-coderwall-guides/"),
       link('Executive Briefing Dossier & Digital Forensic Archaeology', "#{SITE}/docs/studio-workbench-coderwall-briefing/"),
       link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-coderwall-open-source-transition-rundown.md'),
       link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-coderwall-open-source-transition.textream'),
@@ -289,10 +289,21 @@ class EpisodeBookmarks
     ])
 
     folders << folder('The Fluffle Precursor (Distributed Whisper)', [
+      link('Studio Workbench Ep 2 Walkthrough & Architecture Canvas', "#{SITE}/series/studio-workbench/fluffle-cluster/"),
+      link('7-Perspective Mermaid Briefing Dossier', "#{SITE}/docs/studio-workbench-fluffle-theseus-briefing/"),
+      link('JSON Canvas Architecture Walkthrough', "#{SITE}/docs/fluffle-architecture-walkthrough.canvas"),
       link('The Fluffle Precursor Retrospective', "#{SITE}/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"),
       link('GitHub: just3ws/fluffle Repository', 'https://github.com/just3ws/fluffle'),
       link('Local WITC Archive Index', 'file:///Volumes/Dock_1TB/WITC/'),
       link('Dead Rabbit Radio Daily Paranormal Podcast', 'https://deadrabbitradio.com')
+    ])
+
+    folders << folder('Alan Watts: Seeing Through the Net (AI Era Watch)', [
+      link('Source Video: Alan Watts - Seeing Through the Net (YouTube OWlpa3wd9K4)', 'https://www.youtube.com/watch?v=OWlpa3wd9K4'),
+      link('Spoken Rundown & Cue Sheet', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/errata-alan-watts-seeing-through-the-net-rundown.md'),
+      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/errata-alan-watts-seeing-through-the-net.textream'),
+      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/errata-alan-watts-seeing-through-the-net.yml'),
+      link('Cleaned Transcript (ztranscribe OWlpa3wd9K4)', 'file:///Users/mike/Downloads/transcripts/OWlpa3wd9K4/OWlpa3wd9K4.cleaned.txt')
     ])
 
     folders << folder('Under the High-Tension Wires (Audio Forensics)', [
