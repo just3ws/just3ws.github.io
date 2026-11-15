@@ -30,6 +30,8 @@ class PatreonPipeline
     when 'members', 'list' then show_member_counts
     when 'credits' then show_thank_you_copy
     when 'sync' then sync_summary
+    when 'reconcile', 'diff' then reconcile_surface
+    when 'export-copy' then export_canonical_copy
     when 'config' then PatreonSurfaceConfig.new(campaign_config).show
     when 'validate-config' then PatreonSurfaceConfig.new(campaign_config).validate
     when 'help', '-h', '--help' then print_help
@@ -133,6 +135,56 @@ class PatreonPipeline
     exit 2
   end
 
+  def reconcile_surface
+    unless api_configured?
+      warn 'API access is not configured. Set PATREON_CREATOR_TOKEN to compare live Patreon metadata against _data/patreon_campaign.yml.'
+      exit 2
+    end
+
+    campaign_id = configured_campaign_id
+    payload = get_json("#{API_BASE}/campaigns/#{campaign_id}?include=tiers&fields%5Bcampaign%5D=creation_name,summary,url,patron_count&fields%5Btier%5D=title,amount_cents,description,published")
+    attrs = payload.dig('data', 'attributes') || {}
+    live_tiers = (payload['included'] || []).select { |i| i['type'] == 'tier' }
+
+    puts 'PATREON BI-DIRECTIONAL RECONCILIATION'
+    puts "Campaign ID: #{campaign_id}"
+    puts "Local title: #{campaign_config['title']}"
+    puts "Live title:  #{attrs['creation_name']}"
+    puts "Patron count (live): #{attrs['patron_count']}"
+
+    local_summary = campaign_config['short_description'].to_s.strip
+    live_summary = attrs['summary'].to_s.gsub(/<[^>]+>/, '').strip
+    if local_summary == live_summary
+      puts 'Short description: IN SYNC'
+    else
+      puts 'Short description: DRIFT DETECTED (run `bin/pipeline patreon export-copy` and update Patreon dashboard)'
+    end
+
+    paid_tier = campaign_config.dig('membership_recommendation', 'paid_tier_name')
+    matched_tier = live_tiers.find { |t| t.dig('attributes', 'title') == paid_tier }
+    if matched_tier
+      cents = matched_tier.dig('attributes', 'amount_cents').to_i
+      puts "Paid tier '#{paid_tier}': LIVE ($#{cents / 100.0}, published=#{matched_tier.dig('attributes', 'published')})"
+    else
+      puts "Paid tier '#{paid_tier}': NOT FOUND in live tiers"
+    end
+  rescue StandardError => e
+    warn "Patreon reconcile failed: #{e.class}"
+    exit 2
+  end
+
+  def export_canonical_copy
+    rec = campaign_config.fetch('membership_recommendation', {})
+    welcome = campaign_config.fetch('welcome_post', {})
+    puts '=== PATREON CANONICAL COPY (SYNCED WITH /support/) ==='
+    puts "\n[TITLE]\n#{campaign_config['title']}"
+    puts "\n[SHORT DESCRIPTION]\n#{campaign_config['short_description']}"
+    puts "\n[ABOUT]\n#{campaign_config['about']}"
+    puts "\n[FREE MEMBERSHIP]\n#{rec['free_membership_description']}"
+    puts "\n[TIER: #{rec['paid_tier_name']} ($#{rec['paid_tier_price_usd']}/mo)]\n#{rec['paid_tier_description']}"
+    puts "\n[WELCOME POST: #{welcome['title']}]\n#{welcome['body']}"
+  end
+
   def load_summary
     JSON.parse(File.read(SUMMARY_PATH))
   rescue Errno::ENOENT, JSON::ParserError
@@ -207,6 +259,8 @@ class PatreonPipeline
         members   Show aggregate member counts by tier
         credits   Print generic thank-you copy; no patron names
         sync      Save aggregate counts outside the public repository
+        reconcile Compare live Patreon API metadata against _data/patreon_campaign.yml
+        export-copy  Print canonical Patreon copy synced with /support/
         help      Show this help
 
       Credentials are read from process environment only:

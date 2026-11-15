@@ -63,7 +63,7 @@ The technical core of this Studio Workbench episode explores why developer onboa
 ## 4. Spoken Desk Prompts & Objections
 
 ### Objection: "Isn't looking for ten-year-old unlisted videos just nostalgia?"
-- **The Grounded Answer:** No. It is an audit of platform dependency risk. When an engineering organization trusts third-party SaaS platforms with their documentation, operational runbooks, or video records, the vendor will inevitably deprecate or silently lock down that knowledge. Sovereign verification means owning the storage, owning the transcripts, and keeping the lineage unbroken.
+- **The Grounded Answer:** No. It is an audit of platform dependency risk. When an engineering organization trusts third-party SaaS platforms with their documentation, operational runbooks, or video records, the vendor will inevitably deprecate or silently lock down that knowledge. Independent verification means owning the storage, owning the transcripts, and keeping the lineage unbroken.
 
 ### Objection: "Why record screencasts with Google Hangouts on Air instead of local capture?"
 - **The Grounded Answer:** In 2014, Google Hangouts on Air was the breakthrough zero-latency streaming and recording bridge. It transcoded video on Google's infrastructure and piped it directly to YouTube without local rendering delays, making it the fastest way for open-source maintainers to publish documentation.

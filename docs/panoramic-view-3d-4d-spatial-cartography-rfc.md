@@ -1,3 +1,9 @@
+---
+layout: base
+title: "Panoramic View: 3D & 4D Spatial-Temporal System Cartography RFC"
+permalink: /docs/panoramic-view-3d-4d-spatial-cartography-rfc/
+---
+
 # Panoramic View: 3D & 4D Spatial-Temporal System Cartography RFC
 
 **Author:** Mike Hall  

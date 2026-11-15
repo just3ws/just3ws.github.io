@@ -28,7 +28,7 @@ Hands-on Founding Staff Engineer who translates product ambiguity into robust, p
 ### Staff Software Engineer
 **just3ws (Independent)** | Chicago, IL | February 2026 - Present
 
-Built sovereign full-stack and AI platforms: a Rails 8 and PostgreSQL 18 (pgvector) autonomous media pipeline with Whisper STT and local LLaMA 3.1 RAG synthesis, a deterministic TypeScript/Node.js tactical game engine (Phalanx Duel) with replayable action ledgers, and a multi-source job intelligence platform (WWWorkRemote) with a 4-stage prompt-injection defense pipeline.
+Built local-first full-stack and AI platforms: a Rails 8 and PostgreSQL 18 (pgvector) autonomous media pipeline with Whisper STT and local LLaMA 3.1 RAG synthesis, a deterministic TypeScript/Node.js tactical game engine (Phalanx Duel) with replayable action ledgers, and a multi-source job intelligence platform (WWWorkRemote) with a 4-stage prompt-injection defense pipeline.
 
 **Key Outcomes:**
 - Autonomous Media Pipeline & Local AI RAG Microservice: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) media ingestion and publishing platform with on-device Metal GPU Whisper transcription, hybrid lexical and vector semantic search via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM, OpenTelemetry distributed tracing, Ahoy analytics, and PgHero query tuning across 270+ processed video masters.

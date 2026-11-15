@@ -131,7 +131,7 @@ mp swiftbar
    - Location: `https://media-pipeline.localhost/admin/operations`
    - Real-time host runtime metrics (PID, memory RSS, NVMe storage), daemon status, Solid Queue concurrency, and operational controls (Scan, Pause/Resume, Sweep Corrupt, Rotate Logs, Service Doctor).
 
-3. **Sovereign Ahoy Analytics**:
+3. **Local Ahoy Analytics**:
    - Location: `https://media-pipeline.localhost/ahoy` (or `/analytics`)
    - First-party cookie-less dashboard displaying 30-day visit and event volumes, technology breakdowns, and live event stream.
 

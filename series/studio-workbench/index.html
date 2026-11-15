@@ -34,31 +34,31 @@ body_class: surface-editorial
   </header>
 
   <!-- Featured Central Episode Banner: The Ship of Theseus -->
-  <section style="margin-bottom: 3rem; background: #0b1118; border: 1px solid #1e293b; border-radius: 12px; padding: 2rem; box-shadow: 0 12px 32px rgba(0,0,0,0.25); color: #f8fafc;">
-    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
-      <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #38bdf8; font-family: var(--font-mono, monospace);">
+  <section class="workbench-stage" style="margin-bottom: 3rem; padding: 2rem;">
+    <div class="workbench-stage-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0.75rem;">
+      <span class="workbench-stage-kicker">
         Featured Investigation · Episode 01
       </span>
-      <span style="font-size: 0.78rem; color: #94a3b8; font-family: var(--font-mono, monospace); background: #1e293b; padding: 0.25rem 0.6rem; border-radius: 4px;">
+      <span class="workbench-stage-badge">
         central recursive anchor
       </span>
     </div>
-    <h2 style="font-size: 1.75rem; font-weight: 800; color: #ffffff; margin: 0 0 0.75rem;">
-      <a href="/series/studio-workbench/ship-of-theseus/" style="color: #ffffff; text-decoration: none;">
+    <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--color-heading, #0f172a); margin: 0 0 0.75rem;">
+      <a href="/series/studio-workbench/ship-of-theseus/" style="color: var(--color-heading, #0f172a); text-decoration: none;">
         The Ship of Theseus: From Wooden Boat to Space Station &rarr;
       </a>
     </h2>
-    <p style="font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; max-width: 48rem; margin: 0 0 1.25rem;">
+    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-text, #1e232a); max-width: 48rem; margin: 0 0 1.25rem;">
       When an engineer replaces every plank of their personal infrastructure over 15 years, from 2010 shell scripts and Raspberry Pi clusters to an autonomous Apple Silicon media platform, does the identity of the system survive because Theseus himself carved every replacement plank?
     </p>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-      <a href="/series/studio-workbench/ship-of-theseus/" style="display: inline-block; background: #0f766e; color: #ffffff; padding: 0.6rem 1.25rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.9rem;">
+      <a href="/series/studio-workbench/ship-of-theseus/" style="display: inline-block; background: var(--color-primary, #0f766e); color: #ffffff; padding: 0.6rem 1.25rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.9rem;">
         Walk Through Episode 01 &rarr;
       </a>
-      <a href="/series/studio-workbench/ship-of-theseus/#systems-deposition" style="display: inline-block; background: rgba(14, 165, 233, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; padding: 0.6rem 1.1rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
+      <a href="/series/studio-workbench/ship-of-theseus/#systems-deposition" style="display: inline-block; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-primary, #0f766e); color: var(--color-primary, #0f766e); padding: 0.6rem 1.1rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
         🎬 Watch System Deposition (3m 12s) &rarr;
       </a>
-      <a href="/docs/studio-workbench-ship-of-theseus-briefing/" style="color: #38bdf8; text-decoration: none; font-weight: 600; font-size: 0.88rem;">
+      <a href="/docs/studio-workbench-ship-of-theseus-briefing/" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600; font-size: 0.88rem;">
         Executive Briefing &amp; Objections &rarr;
       </a>
     </div>
@@ -97,7 +97,30 @@ body_class: surface-editorial
       <!-- Ep 2 -->
       <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
-          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase;">Episode 02 · Digital Archaeology</span>
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase;">Episode 02 · Distributed Systems</span>
+          <span style="font-size: 0.8rem; color: var(--color-text-muted, #525866); font-family: var(--font-mono, monospace);">2026</span>
+        </div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin: 0;">
+          <a href="/series/studio-workbench/fluffle-cluster/" style="color: var(--color-heading, #0f172a); text-decoration: none;">
+            Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs
+          </a>
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--color-text-main, #1e232a); line-height: 1.6; margin: 0;">
+          Distributing whisper.cpp across a home cluster of five Raspberry Pi 4 boards to transcribe over a thousand Dead Rabbit Radio episodes, and how its dotfile state machine forged the 2026 media pipeline.
+        </p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-top: 0.5rem; font-size: 0.82rem; font-family: var(--font-mono, monospace);">
+          <a href="/series/studio-workbench/fluffle-cluster/" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">Walkthrough &rarr;</a>
+          <span style="color: #cbd5e1;">&middot;</span>
+          <a href="/docs/studio-workbench-fluffle-theseus-briefing/" style="color: #0284c7; text-decoration: none;">7-Perspective Mermaid Briefing &rarr;</a>
+          <span style="color: #cbd5e1;">&middot;</span>
+          <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" style="color: #0284c7; text-decoration: none;">Retrospective &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Ep 3 -->
+      <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase;">Episode 03 · Digital Archaeology</span>
           <span style="font-size: 0.8rem; color: var(--color-text-muted, #525866); font-family: var(--font-mono, monospace);">2026</span>
         </div>
         <h3 style="font-size: 1.2rem; font-weight: 800; margin: 0;">
@@ -113,22 +136,6 @@ body_class: surface-editorial
           <span style="color: #cbd5e1;">&middot;</span>
           <a href="/docs/studio-workbench-coderwall-briefing/" style="color: #0284c7; text-decoration: none;">Forensic Briefing Dossier &rarr;</a>
         </div>
-      </div>
-
-      <!-- Ep 3 -->
-      <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
-          <span style="font-size: 0.75rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase;">Episode 03 · Distributed Systems</span>
-          <span style="font-size: 0.8rem; color: var(--color-text-muted, #525866); font-family: var(--font-mono, monospace);">2026</span>
-        </div>
-        <h3 style="font-size: 1.2rem; font-weight: 800; margin: 0;">
-          <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" style="color: var(--color-heading, #0f172a); text-decoration: none;">
-            Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs
-          </a>
-        </h3>
-        <p style="font-size: 0.95rem; color: var(--color-text-main, #1e232a); line-height: 1.6; margin: 0;">
-          Distributing whisper.cpp across a home cluster of five Raspberry Pi 4 boards to transcribe over a thousand Dead Rabbit Radio episodes, and discovering the operational limits of a small experiment.
-        </p>
       </div>
 
       <!-- Ep 4 -->

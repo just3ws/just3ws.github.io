@@ -1,0 +1,398 @@
+{
+  "nodes": [
+    {
+      "id": "group-header",
+      "type": "group",
+      "x": -80,
+      "y": -420,
+      "width": 1680,
+      "height": 220,
+      "label": "THE FLUFFLE & THE SHIP OF THESEUS: ARCHITECTURAL WALKTHROUGH (2023 -> 2026)"
+    },
+    {
+      "id": "thesis-node",
+      "type": "text",
+      "x": -40,
+      "y": -380,
+      "width": 520,
+      "height": 150,
+      "color": "6",
+      "text": "## Core Thesis (Bridge from Ship of Theseus)\nIn `R_WagKejbtw`, we showed that identity lives in **domain invariants**, not silicon or syntax.\n\n**The Fluffle (Apr-Jun 2023)** is the pivot plank: where pre-AI shell/Ruby craft first bolted on local neural inference (`whisper.cpp`) and forged the survival rules for 2026 `media-pipeline`."
+    },
+    {
+      "id": "drr-citation-node",
+      "type": "text",
+      "x": 520,
+      "y": -380,
+      "width": 520,
+      "height": 150,
+      "color": "5",
+      "text": "## Dead Rabbit Radio Citations\n- **EP 769 (2021-11-08):** Mike Hall welcomed into Dead Rabbit Command as Patreon supporter (*\"flying us around the carbon helicopter\"*, `ep_0769_travis_scott_comp.srt` @ `00:00:49` & `00:14:53`).\n- **Origin of Name:** Jason Carpenter calls supporters **\"The Fluffle\"**.\n- **On-Air Status:** No verifiable on-air episode discussed `just3ws/fluffle`; Jason gave his blessing privately off-air."
+    },
+    {
+      "id": "stats-node",
+      "type": "text",
+      "x": 1080,
+      "y": -380,
+      "width": 480,
+      "height": 150,
+      "color": "4",
+      "text": "## Verified Repository Telemetry\n- **Repo:** `just3ws/fluffle` (created `2023-04-06`)\n- **Git History:** `79` commits (`2023-04-12` `cf9b777` to `2023-06-12` `bc4ec64`)\n- **Outputs:** `2,034` transcript files (`1,017` `.txt` + `1,017` `.srt` pairs) across `1,073` episode directories\n- **License:** CC BY-NC-ND 4.0 (with attribution to Jason Carpenter)"
+    },
+    {
+      "id": "group-upstream",
+      "type": "group",
+      "x": -80,
+      "y": -140,
+      "width": 380,
+      "height": 420,
+      "label": "1. UPSTREAM FEEDS & INGEST"
+    },
+    {
+      "id": "upstream-rss",
+      "type": "text",
+      "x": -50,
+      "y": -90,
+      "width": 320,
+      "height": 150,
+      "color": "1",
+      "text": "### Libsyn RSS Feeds (`Rakefile`)\n- `dead-rabbit-radio`: `feeds.libsyn.com/140084/rss`\n- `belief-hole`: `feeds.libsyn.com/112657/rss`\n- `philosophize-this`: `feeds.libsyn.com/44756/rss`\n\nFetched via `Curl::Easy` -> `feed.xml` (12.6 MB)."
+    },
+    {
+      "id": "upstream-cdn",
+      "type": "text",
+      "x": -50,
+      "y": 90,
+      "width": 320,
+      "height": 160,
+      "color": "1",
+      "text": "### Audio Enclosure Download\n- Parsed via `Nokogiri::XML` (`//item`, `guid`, `enclosure/@url`)\n- `Down.download` with `max_redirects: 16` (`64` in `bin/podcasts`)\n- Failures touch `.failed` and delete partial `episode.mp3`"
+    },
+    {
+      "id": "group-control",
+      "type": "group",
+      "x": 360,
+      "y": -140,
+      "width": 440,
+      "height": 580,
+      "label": "2. MACOS CONTROL PLANE (Rakefile + bin/)"
+    },
+    {
+      "id": "ctrl-transcode",
+      "type": "text",
+      "x": 390,
+      "y": -90,
+      "width": 380,
+      "height": 160,
+      "color": "3",
+      "text": "### Audio Normalization (`FFMPEG::Movie`)\n- `bin/podcasts` (v1): `44.1kHz` stereo + `MAX_TOLERANCE = 10`s duration check\n- `Rakefile` (v2): `pcm_s16le`, `16_000` Hz, `1` channel (mono)\n- Touches `.converted`, deletes `episode.mp3` unless `KEEP=1`"
+    },
+    {
+      "id": "ctrl-distribute",
+      "type": "text",
+      "x": 390,
+      "y": 100,
+      "width": 380,
+      "height": 170,
+      "color": "3",
+      "text": "### Scheduler & SSH Guard (`podcasts:distribute`)\n- Earlier `bin/distribution` did greedy bin-packing into `distribution.yaml`\n- `Rakefile` checks each Pi via `Net::SSH`:\n  - `df -BM /` > `5_000` MB free\n  - `du -sb` < `2` GB per node\n- `rsync -avzP` + byte-size parity check (`du -b == File.size`)"
+    },
+    {
+      "id": "ctrl-post",
+      "type": "text",
+      "x": 390,
+      "y": 300,
+      "width": 380,
+      "height": 120,
+      "color": "3",
+      "text": "### Sync, Clean & Observe\n- `bin/syncer.zsh`: pulls `*.txt, *.srt, *.log, .*`\n- `bin/replacements` + `replacements.yaml`: patches 29+ \"Jason Carpenter\" misspellings\n- `bin/episode_checker.rb`: renders `episodes.html` status grid"
+    },
+    {
+      "id": "group-cluster",
+      "type": "group",
+      "x": 860,
+      "y": -140,
+      "width": 360,
+      "height": 580,
+      "label": "3. 5-NODE RASPBERRY PI 4B CLUSTER"
+    },
+    {
+      "id": "pi-nodes",
+      "type": "text",
+      "x": 890,
+      "y": -90,
+      "width": 300,
+      "height": 190,
+      "color": "2",
+      "text": "### Edge Compute (`node01..node05`)\n- Hardware: 5x Raspberry Pi 4B (BCM2711 ARM64, passive heatsinks)\n- OS: Debian 11 (Raspberry Pi OS 64-bit)\n- User: `deploy@node01..05`\n- Binary: `~/whisper.cpp/main` compiled with ARM NEON"
+    },
+    {
+      "id": "pi-worker",
+      "type": "text",
+      "x": 890,
+      "y": 130,
+      "width": 300,
+      "height": 170,
+      "color": "2",
+      "text": "### Worker Loop (`bin/transcribe`)\n1. Skip if `<episode>.log` exists\n2. `touch <episode>.log` (claim lock)\n3. Run `ggml-small.bin -osrt -otxt`\n4. `rm <episode>.wav` (save SD card)\n5. `sleep 120` (thermal cooldown)"
+    },
+    {
+      "id": "pi-blindsight",
+      "type": "text",
+      "x": 890,
+      "y": 320,
+      "width": 300,
+      "height": 100,
+      "color": "2",
+      "text": "### Blindsight Moment\nPhonetic output without semantic grounding: `Garpenter`, `Garbineiro`, `Krupper`, `deadrabberdurgible`."
+    },
+    {
+      "id": "group-evolution",
+      "type": "group",
+      "x": 1280,
+      "y": -140,
+      "width": 340,
+      "height": 580,
+      "label": "4. 2026 SPACE STATION (media-pipeline)"
+    },
+    {
+      "id": "evo-maildir",
+      "type": "text",
+      "x": 1310,
+      "y": -90,
+      "width": 280,
+      "height": 170,
+      "color": "4",
+      "text": "### Dotfiles -> 5-State Maildir\n2023 Dotfiles:\n`.downloading` -> `.downloaded` -> `.converted` -> `.distributed` -> `.log` / `.failed`\n\n2026 Maildir:\n`staged/` -> `pending/` -> `processing/` -> `processed/` | `failed/`"
+    },
+    {
+      "id": "evo-silicon",
+      "type": "text",
+      "x": 1310,
+      "y": 110,
+      "width": 280,
+      "height": 150,
+      "color": "4",
+      "text": "### 5 Pis -> Apple Silicon M4\n- Rails 8 + SolidQueue + PostgreSQL 18\n- Single-worker concurrency lock\n- `whisper-large-v3-turbo` on Metal\n- 28m audio in `103` seconds\n- `0` bytes permanent SSD waste"
+    },
+    {
+      "id": "evo-lessons",
+      "type": "text",
+      "x": 1310,
+      "y": 290,
+      "width": 280,
+      "height": 130,
+      "color": "4",
+      "text": "### Why Fluffle Paused (and Survived)\nArbitrary podcast XML feeds (`belief-hole`, `philosophize-this`) exceeded solo maintenance. The queue invariants survived into `media-pipeline`."
+    },
+    {
+      "id": "group-acts",
+      "type": "group",
+      "x": -80,
+      "y": 500,
+      "width": 1700,
+      "height": 220,
+      "label": "5. SIX-ACT EPISODE WALKTHROUGH"
+    },
+    {
+      "id": "act-1",
+      "type": "text",
+      "x": -50,
+      "y": 540,
+      "width": 250,
+      "height": 150,
+      "color": "5",
+      "text": "**Act 1 (00:00-03:00)**\nDRR sticker on MacBook Air + Ship of Theseus callback + EP 769 carbon helicopter Easter egg."
+    },
+    {
+      "id": "act-2",
+      "type": "text",
+      "x": 230,
+      "y": 540,
+      "width": 250,
+      "height": 150,
+      "color": "5",
+      "text": "**Act 2 (03:00-07:00)**\n2014 `many-hands` wall + why DRR was the safe proving ground before touching 200+ UGtastic tapes."
+    },
+    {
+      "id": "act-3",
+      "type": "text",
+      "x": 510,
+      "y": 540,
+      "width": 250,
+      "height": 150,
+      "color": "5",
+      "text": "**Act 3 (07:00-16:00)**\nLive walkthrough of `Rakefile`, `Net::SSH` guards, `bin/transcribe` `sleep 120`, and dotfile state markers."
+    },
+    {
+      "id": "act-4",
+      "type": "text",
+      "x": 790,
+      "y": 540,
+      "width": 250,
+      "height": 150,
+      "color": "5",
+      "text": "**Act 4 (16:00-21:00)**\n*Blindsight* in action: 29 ways Whisper misspelled Jason Carpenter + `replacements.yaml` deterministic cleanup."
+    },
+    {
+      "id": "act-5",
+      "type": "text",
+      "x": 1070,
+      "y": 540,
+      "width": 250,
+      "height": 150,
+      "color": "5",
+      "text": "**Act 5 (21:00-26:00)**\nXML feed drift, commit 79 pause (`Process 2.0`), off-air blessing from Jason, and why no on-air episode aired."
+    },
+    {
+      "id": "act-6",
+      "type": "text",
+      "x": 1350,
+      "y": 540,
+      "width": 250,
+      "height": 150,
+      "color": "5",
+      "text": "**Act 6 (26:00-29:00)**\n`episodes.html` -> 2026 M4 cockpit (103s Whisper). Patreon callout + next *The Sound Above* preview."
+    },
+    {
+      "id": "group-git-arc",
+      "type": "group",
+      "x": -80,
+      "y": 780,
+      "width": 1700,
+      "height": 230,
+      "label": "6. GIT ARCHAEOLOGY: 67-DAY LEARNING ARC (79 COMMITS)"
+    },
+    {
+      "id": "git-phase-1",
+      "type": "text",
+      "x": -50,
+      "y": 820,
+      "width": 520,
+      "height": 160,
+      "color": "6",
+      "text": "### Phase 1: Discovery & Joy (Apr 6-17, 52 commits)\n- Runs at `06:04-08:01`, `12:21`, and `16:38-21:27` (before/after day job)\n- Day 1 `LICENSE` (CC BY-NC-ND 4.0), `CONTRIBUTING`, PR `#1` (`e50da66`)\n- `abc718c` (*\"This one's for Rudie Jazz\"*), `cf9b777`, `b603f09` (*\"Over 900\"*)\n- `2fac228`: deleted 26 duplicate `.wav.srt` files (`-52,952` lines)"
+    },
+    {
+      "id": "git-phase-2",
+      "type": "text",
+      "x": 510,
+      "y": 820,
+      "width": 520,
+      "height": 160,
+      "color": "1",
+      "text": "### Phase 2: Quality Awakening (Apr 17-May 17)\n- 8-day pause -> `3122642` (`A whole mess of corrections`, **509 files**)\n- Proved manual cleanup of Whisper errors (`Jason isn't Asa`, 29 variants) could not scale\n- Followed by a **22-day silence** (Apr 25 to May 17)"
+    },
+    {
+      "id": "git-phase-3",
+      "type": "text",
+      "x": 1070,
+      "y": 820,
+      "width": 530,
+      "height": 160,
+      "color": "4",
+      "text": "### Phase 3: Systems Pivot & Ceiling (May 17-Jun 12, 25 commits)\n- May 17 `07:03-07:13`: 10-min regex fix (`d8cd747`) + **981-file** cleanup (`4db66d1`)\n- `Rakefile` state machine (`e53fe59`), retry cap (`4a264e9`), `episode_checker.rb` (`abfb3a9`)\n- Jun 12 `bc4ec64` (`Process 2.0`, **4,135 files**): multi-feed wall & pause"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "fromNode": "upstream-rss",
+      "fromSide": "bottom",
+      "toNode": "upstream-cdn",
+      "toSide": "top",
+      "label": "enclosure URLs"
+    },
+    {
+      "id": "e2",
+      "fromNode": "upstream-cdn",
+      "fromSide": "right",
+      "toNode": "ctrl-transcode",
+      "toSide": "left",
+      "label": ".downloaded mp3"
+    },
+    {
+      "id": "e3",
+      "fromNode": "ctrl-transcode",
+      "fromSide": "bottom",
+      "toNode": "ctrl-distribute",
+      "toSide": "top",
+      "label": ".converted 16kHz wav"
+    },
+    {
+      "id": "e4",
+      "fromNode": "ctrl-distribute",
+      "fromSide": "right",
+      "toNode": "pi-nodes",
+      "toSide": "left",
+      "label": "SSH check + rsync"
+    },
+    {
+      "id": "e5",
+      "fromNode": "pi-nodes",
+      "fromSide": "bottom",
+      "toNode": "pi-worker",
+      "toSide": "top",
+      "label": "whisper.cpp ARM NEON"
+    },
+    {
+      "id": "e6",
+      "fromNode": "pi-worker",
+      "fromSide": "left",
+      "toNode": "ctrl-post",
+      "toSide": "right",
+      "label": "syncer.zsh pulls .txt/.srt"
+    },
+    {
+      "id": "e7",
+      "fromNode": "ctrl-distribute",
+      "fromSide": "right",
+      "toNode": "evo-maildir",
+      "toSide": "left",
+      "label": "dotfiles -> Maildir"
+    },
+    {
+      "id": "e8",
+      "fromNode": "pi-worker",
+      "fromSide": "right",
+      "toNode": "evo-silicon",
+      "toSide": "left",
+      "label": "5 Pis -> M4 Metal"
+    },
+    {
+      "id": "e9",
+      "fromNode": "act-1",
+      "fromSide": "right",
+      "toNode": "act-2",
+      "toSide": "left"
+    },
+    {
+      "id": "e10",
+      "fromNode": "act-2",
+      "fromSide": "right",
+      "toNode": "act-3",
+      "toSide": "left"
+    },
+    {
+      "id": "e11",
+      "fromNode": "act-3",
+      "fromSide": "right",
+      "toNode": "act-4",
+      "toSide": "left"
+    },
+    {
+      "id": "e12",
+      "fromNode": "act-4",
+      "fromSide": "right",
+      "toNode": "act-5",
+      "toSide": "left"
+    },
+    {
+      "id": "e13",
+      "fromNode": "act-5",
+      "fromSide": "right",
+      "toNode": "act-6",
+      "toSide": "left"
+    }
+  ]
+}

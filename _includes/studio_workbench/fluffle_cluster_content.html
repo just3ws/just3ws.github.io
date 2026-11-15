@@ -1,0 +1,405 @@
+<article class="chicago-craftsmanship-page series-episode-page">
+  {% include breadcrumbs.html %}
+
+  <div class="intel-hero">
+    <div class="intel-hero-inner">
+      <span class="intel-badge">Studio Workbench · Distributed Systems · Episode 2</span>
+      <h1 class="intel-title">Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs</h1>
+      <p class="intel-subtitle">
+        The pivot plank of the Ship of Theseus: 79 commits, whisper.cpp on ARM64, Dead Rabbit Radio, and the survival invariants of a 2026 media pipeline.
+      </p>
+    </div>
+  </div>
+
+  <div class="intel-container" style="width: 100%; max-width: 100%; margin: 0; padding: clamp(1rem, 2.5vw, 2.5rem) 0;">
+
+    <!-- Wayfinding Header -->
+    <nav class="series-wayfinding-nav no-print" aria-label="Studio Workbench episode wayfinding" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; padding: 0.75rem 1.25rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px;">
+      <a href="/series/studio-workbench/ship-of-theseus/" class="wayfinding-link" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">&larr; Ep 1: Ship of Theseus</a>
+      <a href="/series/studio-workbench/" class="wayfinding-link" style="color: var(--color-text-muted, #525866); text-decoration: none; font-weight: 600;">Studio Workbench Hub</a>
+      <a href="/series/studio-workbench/the-lost-coderwall-guides/" class="wayfinding-link" style="color: var(--color-primary, #0f766e); text-decoration: none; font-weight: 600;">Ep 3: Lost Coderwall Guides &rarr;</a>
+    </nav>
+
+    <!-- Architecture Stage: From 5 Pis to Apple Silicon M4 -->
+    <div class="workbench-stage">
+      <div class="workbench-stage-header">
+        <div>
+          <span class="workbench-stage-kicker">
+            Ship of Theseus · Pivot Plank (2023 &rarr; 2026)
+          </span>
+          <h2 class="workbench-stage-title">
+            How Five Hot Raspberry Pis Forged the 2026 Space Station
+          </h2>
+        </div>
+        <span class="workbench-stage-badge">
+          79 commits · 2,034 transcript files
+        </span>
+      </div>
+
+      <div class="workbench-stage-grid">
+        <div class="workbench-stage-card">
+          <div class="stage-card-kicker">STAGE 1 · INGEST</div>
+          <div class="stage-card-title">RSS &amp; 16kHz Mono</div>
+          <div class="stage-card-body"><code>Curl::Easy</code> + <code>Nokogiri</code> + <code>Down</code> (16 redirects) &rarr; <code>FFMPEG::Movie</code> (<code>pcm_s16le</code>, 16kHz mono).</div>
+        </div>
+
+        <div class="workbench-stage-card">
+          <div class="stage-card-kicker">STAGE 2 · DISTRIBUTE</div>
+          <div class="stage-card-title">Net::SSH &amp; Disk Guards</div>
+          <div class="stage-card-body">Checks <code>&gt;5,000 MB</code> free &amp; <code>&lt;2 GB</code> per node on <code>node01..node05</code>, then verifies byte-size parity after <code>rsync</code>.</div>
+        </div>
+
+        <div class="workbench-stage-card">
+          <div class="stage-card-kicker">STAGE 3 · INFERENCE</div>
+          <div class="stage-card-title">whisper.cpp + Cooldown</div>
+          <div class="stage-card-body"><code>ggml-small.bin</code> on ARM64 NEON, deletes <code>episode.wav</code>, then runs <code>sleep 120</code> to prevent thermal panic.</div>
+        </div>
+
+        <div class="workbench-stage-card is-highlight">
+          <div class="stage-card-kicker">STAGE 4 · SURVIVAL</div>
+          <div class="stage-card-title">Dotfiles &rarr; Maildir</div>
+          <div class="stage-card-body"><code>.downloading</code> &rarr; <code>.downloaded</code> &rarr; <code>.converted</code> &rarr; <code>.distributed</code> became <code>media-pipeline</code>'s 5-state Maildir queue.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive HTML5 Canvas Architecture Map -->
+    <section class="workbench-stage" aria-labelledby="fluffle-canvas-heading">
+      <div class="workbench-stage-header">
+        <div>
+          <span class="workbench-stage-kicker">Interactive Spatial Walkthrough</span>
+          <h2 id="fluffle-canvas-heading" class="workbench-stage-title">
+            Original Fluffle Architecture Canvas (Pan &amp; Zoom)
+          </h2>
+        </div>
+        <span class="workbench-stage-badge">HTML5 Canvas &middot; JSON Canvas v1.0</span>
+      </div>
+      <p style="font-size: 0.92rem; color: var(--color-text-muted, #525866); margin: 0;">
+        Drag to pan, scroll or use the buttons to zoom, and click any node to inspect its verified source details.
+      </p>
+
+      <div class="workbench-canvas-shell">
+        <div class="workbench-canvas-toolbar">
+          <div>
+            <button type="button" class="workbench-canvas-btn" id="fluffle-zoom-in">+ Zoom In</button>
+            <button type="button" class="workbench-canvas-btn" id="fluffle-zoom-out">- Zoom Out</button>
+            <button type="button" class="workbench-canvas-btn" id="fluffle-zoom-reset">Fit All</button>
+          </div>
+          <span id="fluffle-canvas-status" style="color: var(--color-text-muted, #525866);">Loading canvas...</span>
+        </div>
+        <canvas id="fluffle-arch-canvas" width="1100" height="540" style="display: block; width: 100%; height: 520px; cursor: grab;"></canvas>
+        <div id="fluffle-canvas-inspector" style="padding: 0.85rem 1rem; background: var(--color-bg-card, #ffffff); border-top: 1px solid var(--color-border, #e3dfd7); font-size: 0.88rem; color: var(--color-text, #1e232a); min-height: 3.2rem;">
+          Click any node on the canvas to inspect its role, files, and citations.
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Mermaid Architecture Diagrams -->
+    <section class="workbench-stage" aria-labelledby="fluffle-mermaid-heading">
+      <div class="workbench-stage-header">
+        <div>
+          <span class="workbench-stage-kicker">Mermaid Perspectives</span>
+          <h2 id="fluffle-mermaid-heading" class="workbench-stage-title">
+            Topology, State Machine &amp; 67-Day Git Archaeology
+          </h2>
+        </div>
+        <a href="/docs/studio-workbench-fluffle-theseus-briefing/" class="workbench-stage-badge" style="text-decoration: none; font-weight: 700;">
+          View All 7 Perspectives &rarr;
+        </a>
+      </div>
+
+      <h3 style="font-size: 1.08rem; font-weight: 800; margin: 1.25rem 0 0.5rem;">1. Network &amp; 5-Node Cluster Topology</h3>
+      <pre><code class="language-mermaid">flowchart LR
+    RSS["Libsyn RSS Feeds<br/>Dead Rabbit Radio · Belief Hole · Philosophize This"] -->|"Curl::Easy + Nokogiri"| CTRL["macOS Control Plane<br/>Rakefile + Down + FFMPEG"]
+    CTRL -->|"Net::SSH df/du + rsync"| PI["5x Raspberry Pi 4B<br/>node01..node05 (ARM64 Debian 11)"]
+    PI -->|"whisper.cpp + sleep 120"| SYNC["bin/syncer.zsh<br/>Pull .txt .srt .log .*"]
+    SYNC -->|"bin/replacements"| CLEAN["replacements.yaml<br/>+ episode_checker.rb"]</code></pre>
+
+      <h3 style="font-size: 1.08rem; font-weight: 800; margin: 1.5rem 0 0.5rem;">2. Filesystem State Machine (Dotfiles to 2026 Maildir)</h3>
+      <pre><code class="language-mermaid">stateDiagram-v2
+    [*] --> Discovered : GUID parsed from feed XML
+    Discovered --> Downloading : touch dot-downloading
+    Downloading --> Failed : Network error touch dot-failed
+    Downloading --> Downloaded : touch dot-downloaded
+    Downloaded --> Converted : ffmpeg 16kHz mono WAV touch dot-converted
+    Converted --> Distributed : Net SSH size match touch dot-distributed
+    Distributed --> Claimed : Pi worker touches dot-log
+    Claimed --> Transcribed : whisper cpp emits srt and txt rm wav
+    Transcribed --> Cooldown : sleep 120s thermal cooldown
+    Cooldown --> [*] : syncer zsh plus replacements yaml</code></pre>
+
+      <h3 style="font-size: 1.08rem; font-weight: 800; margin: 1.5rem 0 0.5rem;">3. 67-Day Git Archaeology (79 Commits)</h3>
+      <pre><code class="language-mermaid">timeline
+    title The Fluffle Learning Arc (Apr 6 to Jun 12, 2023)
+    2023-04-06 : Repo created, CC BY-NC-ND 4.0 &amp; CONTRIBUTING
+    2023-04-08 : Duplicate .wav.srt bug fixed (-52,952 lines, 2fac228) &amp; Rudie Jazz shoutout
+    2023-04-16 : Over 900 artifacts (b603f09) in 10 days of 6am/9pm runs
+    2023-04-25 : 509-file manual correction pass (3122642), then 22-day gap
+    2023-05-17 : 10-min regex fix (d8cd747) &amp; 981-file automated cleanup (4db66d1)
+    2023-05-18 : Rakefile v2 orchestrator &amp; dotfile state machine started (e53fe59)
+    2023-06-07 : episode_checker.rb HTML observability grid built (abfb3a9)
+    2023-06-12 : Process 2.0 (4,135 files, bc4ec64), multi-feed wall &amp; pause</code></pre>
+    </section>
+
+    <!-- Dead Rabbit Radio Provenance & EP 769 Citation -->
+    <div class="editorial-archive-header" style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); padding: 1.5rem; border-radius: 0 10px 10px 0; margin-bottom: 2.5rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+      <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e); margin-bottom: 0.4rem;">
+        Verifiable Dead Rabbit Radio Provenance
+      </div>
+      <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, #0f172a);">
+        EP 769 (Nov 8, 2021) &amp; Why It Was Named "The Fluffle"
+      </h2>
+      <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
+        In Dead Rabbit Radio show lore, host Jason Carpenter calls his Patreon supporter community <strong>"The Fluffle"</strong> (a group of wild rabbits). Seventeen months before <code>just3ws/fluffle</code> began, Jason welcomed Mike Hall into Dead Rabbit Command on <strong>EP 769</strong> (<em>Was Travis Scott's Astroworld A Satanic Sacrifice?</em>, November 8, 2021) at <code>00:00:49</code> and <code>00:14:53</code> (<em>"Mike Hall is flying us around the carbon helicopter"</em>).
+      </p>
+      <p style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-muted, #525866); margin: 0;">
+        No verifiable on-air Dead Rabbit Radio episode discussed the 2023 Raspberry Pi transcription repository. Instead, Mike contacted Jason privately to ask if he was comfortable with the experiment, Jason replied kindly, and all outputs were published under CC BY-NC-ND 4.0 with explicit attribution.
+      </p>
+    </div>
+
+    <!-- Git Archaeology & Blindsight -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem;">
+        <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent, #b45309); margin-bottom: 0.35rem;">
+          Git Archaeology (67 Days)
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, #0f172a);">
+          What the 79 Commits Reveal
+        </h3>
+        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); display: grid; gap: 0.45rem;">
+          <li><strong>Phase 1 (Apr 6 to 17, 52 commits):</strong> Before-work (6 AM), lunch (12 PM), and evening (9 PM) runs; Rudie Jazz shoutout (<code>abc718c</code>); deleting 26 duplicate <code>.wav.srt</code> files (<code>2fac228</code>, -52,952 lines).</li>
+          <li><strong>Phase 2 (Apr 25, <code>3122642</code>):</strong> Hand-editing 509 transcripts proved manual cleanup could not scale, followed by a 22-day gap.</li>
+          <li><strong>Phase 3 (May 17 to Jun 12, 25 commits):</strong> 10-minute regex fix (<code>d8cd747</code>) cleaning 981 files (<code>4db66d1</code>), <code>Rakefile</code> state machine, <code>episode_checker.rb</code> HTML grid (<code>abfb3a9</code>), and stopping at <code>Process 2.0</code> (<code>bc4ec64</code>, 4,135 files).</li>
+        </ul>
+      </section>
+
+      <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem;">
+        <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-primary, #0f766e); margin-bottom: 0.35rem;">
+          Blindsight in Practice
+        </div>
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, #0f172a);">
+          29 Ways Whisper Misspelled "Jason Carpenter"
+        </h3>
+        <p style="font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
+          Echoing Peter Watts' <em>Blindsight</em> from Episode 01, <code>whisper.cpp</code> extruded phonemes without semantic grounding: <em>Garpenter</em>, <em>Garbineiro</em>, <em>Krupper</em>, <em>Carmoner</em>, <em>Jason Asa</em>, and <em>deadrabberdurgible</em>.
+        </p>
+        <p style="font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0;">
+          Deterministic domain dictionaries (<code>replacements.yaml</code> with order-dependent rules and atomic <code>Tempfile</code> swaps) supplied the ground truth that probabilistic inference lacked.
+        </p>
+      </section>
+    </div>
+
+    <!-- Companion Artifacts & Briefing Links -->
+    <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.5rem;">
+      <h2 style="font-size: 1.2rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, #0f172a);">
+        Architecture Maps &amp; Companion Material
+      </h2>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
+        <a href="/docs/studio-workbench-fluffle-theseus-briefing/" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">7-Perspective Mermaid Briefing &rarr;</a>
+        <span style="color: #cbd5e1;">&middot;</span>
+        <a href="/docs/fluffle-architecture-walkthrough.canvas" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">Download JSON Canvas (.canvas) &rarr;</a>
+        <span style="color: #cbd5e1;">&middot;</span>
+        <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" style="color: #0284c7; text-decoration: none;">Long-Form Retrospective &rarr;</a>
+        <span style="color: #cbd5e1;">&middot;</span>
+        <a href="https://github.com/just3ws/fluffle" target="_blank" rel="noopener" style="color: #0284c7; text-decoration: none;">GitHub: just3ws/fluffle &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+</article>
+
+<script>
+(function () {
+  const canvas = document.getElementById("fluffle-arch-canvas");
+  const statusEl = document.getElementById("fluffle-canvas-status");
+  const inspectorEl = document.getElementById("fluffle-canvas-inspector");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  const PALETTE = {
+    "1": { bg: "#fef3c7", border: "#b45309", title: "#78350f" },
+    "2": { bg: "#e0f2fe", border: "#0284c7", title: "#0c4a6e" },
+    "3": { bg: "#e6f4f1", border: "#0f766e", title: "#134e4a" },
+    "4": { bg: "#ecfdf5", border: "#047857", title: "#064e3b" },
+    "5": { bg: "#f4f0e8", border: "#8c9a96", title: "#1e232a" },
+    "6": { bg: "#eef2ff", border: "#4338ca", title: "#312e81" }
+  };
+
+  let data = { nodes: [], edges: [] };
+  let scale = 0.52;
+  let offsetX = 70;
+  let offsetY = 260;
+  let dragging = false;
+  let moved = false;
+  let lastX = 0;
+  let lastY = 0;
+  let selectedId = null;
+
+  function fitAll() {
+    if (!data.nodes.length) return;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    data.nodes.forEach((n) => {
+      minX = Math.min(minX, n.x);
+      minY = Math.min(minY, n.y);
+      maxX = Math.max(maxX, n.x + n.width);
+      maxY = Math.max(maxY, n.y + n.height);
+    });
+    const rect = canvas.getBoundingClientRect();
+    const w = rect.width || canvas.width;
+    const h = rect.height || canvas.height;
+    const pad = 24;
+    scale = Math.min((w - pad * 2) / (maxX - minX), (h - pad * 2) / (maxY - minY), 1);
+    offsetX = (w - (maxX - minX) * scale) / 2 - minX * scale;
+    offsetY = (h - (maxY - minY) * scale) / 2 - minY * scale;
+    draw();
+  }
+
+  function sidePoint(node, side) {
+    if (side === "left") return { x: node.x, y: node.y + node.height / 2 };
+    if (side === "right") return { x: node.x + node.width, y: node.y + node.height / 2 };
+    if (side === "top") return { x: node.x + node.width / 2, y: node.y };
+    return { x: node.x + node.width / 2, y: node.y + node.height };
+  }
+
+  function wrapLines(text, maxWidth) {
+    const clean = text.replace(/[#*`]/g, "").split("\n")[0];
+    const words = text.replace(/[#*`]/g, "").replace(/\n+/g, " · ").split(" ");
+    const lines = [];
+    let line = "";
+    words.forEach((w) => {
+      const test = line ? line + " " + w : w;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = w;
+      } else {
+        line = test;
+      }
+    });
+    if (line) lines.push(line);
+    return { title: clean.slice(0, 48), lines: lines.slice(0, 4) };
+  }
+
+  function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    const w = rect.width || 1100;
+    const h = rect.height || 520;
+    if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = "#f4f0e8";
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.save();
+    ctx.translate(offsetX, offsetY);
+    ctx.scale(scale, scale);
+
+    const byId = Object.fromEntries(data.nodes.map((n) => [n.id, n]));
+
+    data.nodes.filter((n) => n.type === "group").forEach((g) => {
+      ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
+      ctx.strokeStyle = "#cbd5e1";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(g.x, g.y, g.width, g.height, 12);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "#0f766e";
+      ctx.font = "800 16px ui-monospace, monospace";
+      ctx.fillText(g.label || g.id, g.x + 14, g.y + 24);
+    });
+
+    data.edges.forEach((e) => {
+      const from = byId[e.fromNode];
+      const to = byId[e.toNode];
+      if (!from || !to) return;
+      const p1 = sidePoint(from, e.fromSide || "right");
+      const p2 = sidePoint(to, e.toSide || "left");
+      ctx.strokeStyle = "#0f766e";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+    });
+
+    data.nodes.filter((n) => n.type !== "group").forEach((n) => {
+      const c = PALETTE[n.color] || PALETTE["5"];
+      ctx.fillStyle = c.bg;
+      ctx.strokeStyle = n.id === selectedId ? "#0f172a" : c.border;
+      ctx.lineWidth = n.id === selectedId ? 3.5 : 2;
+      ctx.beginPath();
+      ctx.roundRect(n.x, n.y, n.width, n.height, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = "#1e232a";
+      ctx.font = "13px system-ui, -apple-system, sans-serif";
+      const parsed = wrapLines(n.text || "", n.width - 24);
+      parsed.lines.forEach((ln, idx) => {
+        ctx.fillText(ln, n.x + 12, n.y + 26 + idx * 18);
+      });
+    });
+
+    ctx.restore();
+    statusEl.textContent = `${data.nodes.length} nodes · ${Math.round(scale * 100)}% zoom`;
+  }
+
+  canvas.addEventListener("mousedown", (e) => {
+    dragging = true;
+    moved = false;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    canvas.style.cursor = "grabbing";
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+    offsetX += dx;
+    offsetY += dy;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    draw();
+  });
+
+  window.addEventListener("mouseup", (e) => {
+    if (!dragging) return;
+    dragging = false;
+    canvas.style.cursor = "grab";
+    if (!moved) {
+      const rect = canvas.getBoundingClientRect();
+      const wx = (e.clientX - rect.left - offsetX) / scale;
+      const wy = (e.clientY - rect.top - offsetY) / scale;
+      const hit = data.nodes.filter((n) => n.type !== "group").find(
+        (n) => wx >= n.x && wx <= n.x + n.width && wy >= n.y && wy <= n.y + n.height
+      );
+      if (hit) {
+        selectedId = hit.id;
+        inspectorEl.textContent = (hit.text || hit.id).replace(/\n+/g, " | ");
+        draw();
+      }
+    }
+  });
+
+  canvas.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.1 : 0.9;
+    scale = Math.max(0.2, Math.min(2.2, scale * factor));
+    draw();
+  }, { passive: false });
+
+  document.getElementById("fluffle-zoom-in").addEventListener("click", () => { scale = Math.min(2.2, scale * 1.2); draw(); });
+  document.getElementById("fluffle-zoom-out").addEventListener("click", () => { scale = Math.max(0.2, scale * 0.85); draw(); });
+  document.getElementById("fluffle-zoom-reset").addEventListener("click", fitAll);
+
+  fetch("/docs/fluffle-architecture-walkthrough.canvas")
+    .then((r) => r.json())
+    .then((json) => { data = json; fitAll(); })
+    .catch(() => { statusEl.textContent = "Canvas load error"; });
+})();
+</script>

@@ -28,7 +28,7 @@ Platform Architecture & Legacy Modernization, Cross-Domain Boundary Architecture
 ### Staff Software Engineer
 **just3ws (Independent)** | Chicago, IL | February 2026 - Present
 
-Architected and operating sovereign production platforms across Ruby on Rails 8, PostgreSQL 18 (pgvector), Solid Queue, TypeScript, and local Metal GPU AI inference runtimes, combining autonomous media pipelines, deterministic 5-stage FFmpeg audio DSP restoration (dehum), hybrid vector/lexical search, deterministic state engines (Phalanx Duel), and multi-source ingestion with prompt-injection guardrails (WWWorkRemote).
+Architected and operating self-hosted production platforms across Ruby on Rails 8, PostgreSQL 18 (pgvector), Solid Queue, TypeScript, and local Metal GPU AI inference runtimes, combining autonomous media pipelines, deterministic 5-stage FFmpeg audio DSP restoration (dehum), hybrid vector/lexical search, deterministic state engines (Phalanx Duel), and multi-source ingestion with prompt-injection guardrails (WWWorkRemote).
 
 **Key Outcomes:**
 - Autonomous Media Pipeline & Local AI RAG Microservice: Architected a Rails 8, Solid Queue, and PostgreSQL 18 (pgvector) media ingestion and publishing platform with on-device Metal GPU Whisper transcription, hybrid lexical and vector semantic search via Reciprocal Rank Fusion (RRF), local LLaMA 3.1 RAG synthesis via RubyLLM, OpenTelemetry distributed tracing, Ahoy analytics, and PgHero query tuning across 270+ processed video masters.

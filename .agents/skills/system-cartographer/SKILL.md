@@ -48,7 +48,7 @@ Every system analyzed or modernized under Panoramic View uses the PSGOI scaffold
 
 1. **Problem (P)**: The empirical friction point, legacy failure mode, or unverified cross-boundary assumption that invites technical debt or context thrashing.
 2. **Strategy / Solution (S)**: The architectural mechanism chosen to isolate and resolve the problem (for example, standard BPMN 2.0 Call Activities, dual-ingress routing, or isolated aggregate health drawers).
-3. **Goal (G)**: The durable system invariant that must never be compromised (for example, zero permanent local SSD consumption, fair-share FIFO dispatch, or sovereign archive integrity).
+3. **Goal (G)**: The durable system invariant that must never be compromised (for example, zero permanent local SSD consumption, fair-share FIFO dispatch, or local archive integrity).
 4. **Objective (O)**: The concrete, observable milestones across the execution trail (for example, sub-second STT latency, dual-format convergence on shared GPU compute, or clean error offramps).
 5. **Indicator (I)**: The measurable SLI or gate decision metric recorded by the telemetry bus (for example, 24-hour intermittent failure count, p95 whole-path duration, or explicit exit versus error routing counts).
 
@@ -56,7 +56,7 @@ Every system analyzed or modernized under Panoramic View uses the PSGOI scaffold
 
 While each system operates under unique local constraints (compute hardware, storage layers, quota budgets, or third-party APIs), the Panoramic Cartography & Modernization System (PCMS) enforces universal health and evolution checklists:
 
-### Checklist 1: Sovereign Subprocess Isolation
+### Checklist 1: Decoupled Subprocess Isolation
 - Does the subsystem define and own its authoritative BPMN 2.0 flow specification (for example, `ztranscribe.v1.yml`) instead of being hardcoded as an implicit internal branch of the parent caller?
 - Does the child flow declare its own distinct swimlanes, entry events, gateways, and terminal exits?
 

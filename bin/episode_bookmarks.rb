@@ -152,7 +152,8 @@ class EpisodeBookmarks
     folders << folder('Start here', [
       link('Studio Workbench Series Hub', "#{SITE}/series/studio-workbench/"),
       link('Episode 1: The Ship of Theseus', "#{SITE}/series/studio-workbench/episode-01/"),
-      link('Episode 2: The Lost Coderwall Guides', "#{SITE}/series/studio-workbench/episode-02/"),
+      link('Episode 2: Fluffle Cluster (5 Raspberry Pis)', "#{SITE}/series/studio-workbench/fluffle-cluster/"),
+      link('Episode 3: The Lost Coderwall Guides', "#{SITE}/series/studio-workbench/the-lost-coderwall-guides/"),
       link('Studio Workbench YouTube Playlist', 'https://www.youtube.com/playlist?list=PLHsdpV47tSqk'),
       link('Media Pipeline Cockpit', 'https://media-pipeline.localhost/'),
       link('Live Broadcast Workbench', "#{SITE}/dehum/dashboard.html"),
@@ -166,7 +167,7 @@ class EpisodeBookmarks
       link('Media Pipeline Architecture & Cockpit', 'https://media-pipeline.localhost/'),
       link('Active Overlay State', "#{SITE}/obs/overlays/overlay-state.json"),
       link('Hister search results', "#{HISTORIAN}/search?query=#{hw_query}"),
-      link('Studio Workbench Target Specification', "#{SITE}/series/"),
+      link('Studio Workbench Target Specification', "#{SITE}/series/studio-workbench/"),
       link('Site Main Archive', SITE)
     ])
 
@@ -176,15 +177,23 @@ class EpisodeBookmarks
       link('Under the High-Tension Wires Case Study', "#{SITE}/ai/2026/10/12/under-the-high-tension-wires-building-deterministic-tools-from-nondeterministic-systems/"),
       link('Live Broadcast Workbench & A/B Listening Test', "#{SITE}/dehum/dashboard.html"),
       link('Source recording (YouTube 7YeFpKn5FbU)', 'https://www.youtube.com/watch?v=7YeFpKn5FbU'),
-      link('Ramblin\' & Amblin\' Monologue: Revisiting the Dehum Experiment', 'https://just3ws.com/transcripts/ramblin-amblin-ok-next-experiment/'),
+      link('Interactive Dehum Audio Forensics Lab', "#{SITE}/dehum/"),
       link('Practice Run Recording', 'https://www.youtube.com/watch?v=7YeFpKn5FbU'),
       link('Hister search results', "#{HISTORIAN}/search?query=#{af_query}")
     ])
 
-    # 3. Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs
-    fl_query = CGI.escape(JSON.generate(text: 'Mike Hall Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs Errata Studio Walkthrough 2026', limit: 12))
+    # 3. Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs (Episode 2)
+    fl_query = CGI.escape(JSON.generate(text: 'Mike Hall Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs Studio Workbench 2026', limit: 12))
     folders << folder('Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs', [
+      link('Interactive Episode Walkthrough & Architecture Canvas', "#{SITE}/series/studio-workbench/fluffle-cluster/"),
+      link('7-Perspective Mermaid Briefing Dossier', "#{SITE}/docs/studio-workbench-fluffle-theseus-briefing/"),
+      link('JSON Canvas Architecture Walkthrough', "#{SITE}/docs/fluffle-architecture-walkthrough.canvas"),
       link('The Fluffle Precursor Retrospective', "#{SITE}/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"),
+      link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-fluffle-cluster-rundown.md'),
+      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-fluffle-cluster.textream'),
+      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-fluffle-cluster.yml'),
+      link('Active Lower-Third Overlay', "#{SITE}/obs/overlays/lower-third.html"),
+      link('Active Overlay State (JSON)', "#{SITE}/obs/overlays/overlay-state.json"),
       link('GitHub: just3ws/fluffle Repository', 'https://github.com/just3ws/fluffle'),
       link('Local WITC Archive Index', 'file:///Volumes/Dock_1TB/WITC/'),
       link('Dead Rabbit Radio Daily Paranormal Podcast', 'https://deadrabbitradio.com'),
@@ -249,16 +258,12 @@ class EpisodeBookmarks
     folders = []
     folders << folder('Playlists & Archive', [
       link('Active Series Playlist (YouTube)', 'https://www.youtube.com/playlist?list=PLNtb969T2-l0'),
-      link('Sovereign Vault Archive Playlist (YouTube)', 'https://www.youtube.com/playlist?list=PLYCKmHMYvC7s'),
-      link('Field Transcripts Full Archive', "#{SITE}/transcripts/"),
+      link('Archive Vault Playlist (YouTube)', 'https://www.youtube.com/playlist?list=PLYCKmHMYvC7s'),
+      link('Interviews & Transcripts Full Archive', "#{SITE}/interviews/"),
       link('Hister research search', HISTORIAN)
     ])
 
     folders << folder('Selected Field Notes & Transcripts', [
-      link('Revisiting the Dehum Experiment', 'https://just3ws.com/transcripts/ramblin-amblin-ok-next-experiment/'),
-      link('Mapping Ingress & Egress Points to Business Processes', "#{SITE}/transcripts/ramblin-amblin-mapping-ingress-and-egress-points-to-business-processes-ramb/"),
-      link('Mapping Business Decisions Across the System', "#{SITE}/transcripts/ramblin-amblin-mapping-business-decisions-across-the-system-ramblin-amblin/"),
-      link('When I Started Doing UGtastic', "#{SITE}/transcripts/ramblin-amblin-when-i-started-doing-ugtastic-the-way-i/"),
       link('Good Morning & Mosquito Hood Recording (YouTube)', 'https://www.youtube.com/watch?v=8FyUrHlDFzE&list=PLNtb969T2-l0')
     ])
 
@@ -268,7 +273,8 @@ class EpisodeBookmarks
   def build_errata
     folders = []
     folders << folder('Start here', [
-      link('Errata & Series Overview', "#{SITE}/series/"),
+      link('The Sound Above & Series Hub', "#{SITE}/series/the-sound-above/"),
+      link('Studio Workbench Hub', "#{SITE}/series/studio-workbench/"),
       link('Hister research search', HISTORIAN),
       link('YouTube Studio Live Broadcast Deck', 'https://studio.youtube.com/channel/UCAyLLkogK2UnjpGmyCTwjiw/livestreaming')
     ])

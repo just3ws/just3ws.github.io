@@ -37,7 +37,7 @@ All spoken copy must reflect authentic, grounded engineering practice. It is wri
   - *Grounded Sign-off*: Warm, unvarnished parting thought ("Keep your feedback loops fast, keep walking, and verify your code").
 
 ### 2. UGtastic Technical Rewatch Series: The Sound Above (`PLVcmLmfz2uyA`)
-- **Intent**: 6-act structured live broadcast rewatching archival UGtastic interviews (2009 to 2016) through the lens of modern Staff/Principal engineering, domain boundaries, and sovereign verification.
+- **Intent**: 6-act structured live broadcast rewatching archival UGtastic interviews (2009 to 2016) through the lens of modern Staff/Principal engineering, domain boundaries, and independent verification.
 - **Standard 6-Act Arc**:
   - *Act 1 (Cold Open & Personal Grounding, 00:00 - 03:00)*:
     State the era and movement, introduce the guest and conference venue, and share an unvarnished personal recollection from the room.
