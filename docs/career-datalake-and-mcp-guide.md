@@ -88,7 +88,7 @@ ruby bin/query_career_datalake.rb --era "2009-2015"
 
 ## 3. Model Context Protocol (MCP) Server Reference
 
-The STDIO server is implemented in [`bin/career_datalake_mcp_server.rb`](file:///Users/mike/github.com/just3ws/just3ws.github.io/bin/career_datalake_mcp_server.rb) and registered in [`mcp.json`](file:///Users/mike/github.com/just3ws/just3ws.github.io/mcp.json).
+The STDIO server is implemented in [`bin/career_datalake_mcp_server.rb`](https://github.com/just3ws/just3ws.github.io/blob/master/bin/career_datalake_mcp_server.rb) and registered in [`mcp.json`](https://github.com/just3ws/just3ws.github.io/blob/master/mcp.json).
 
 ### Callable Tools
 1. **`query_career_history(query)`**: Search across all positions, case studies, 156 blog articles, and milestones.

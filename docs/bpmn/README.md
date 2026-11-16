@@ -15,7 +15,7 @@ Any operator, autonomous agent, or monitoring daemon can determine:
 ## 2. BPMN 2.0 Process Architecture
 
 The executable BPMN definition is maintained canonically at:
-[`docs/bpmn/media-intake-pipeline.bpmn`](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/bpmn/media-intake-pipeline.bpmn)
+[`docs/bpmn/media-intake-pipeline.bpmn`](https://github.com/just3ws/just3ws.github.io/blob/master/docs/bpmn/media-intake-pipeline.bpmn)
 
 ### Process Topology & Swimlanes
 The ingress queue supports a staged hold directory (`staged/`) alongside the execution queues (`pending/`, `processing/`, `processed/`, `failed/`). Files backed up to `staged/` are safely preserved on Google Drive without triggering automated ingestion until explicitly moved into `pending/`.

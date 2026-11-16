@@ -118,8 +118,8 @@ delegated to `bin/wwwr match` above, not reimplemented here.
 * **Rake Tasks**: `bundle exec rake "job:evaluate[<LEAD_ID>]"` / `rake "job:evaluate[<LEAD_ID>,true]"` (the second
   positional arg escalates)
 * **Agent Skills**:
-  - [`.agents/skills/job-lead-evaluator/SKILL.md`](file:///Users/mike/github.com/just3ws/just3ws.github.io/.agents/skills/job-lead-evaluator/SKILL.md)
-  - [`.agents/skills/executive-brief-generator/SKILL.md`](file:///Users/mike/github.com/just3ws/just3ws.github.io/.agents/skills/executive-brief-generator/SKILL.md)
+  - [`.agents/skills/job-lead-evaluator/SKILL.md`](https://github.com/just3ws/just3ws.github.io/blob/master/.agents/skills/job-lead-evaluator/SKILL.md)
+  - [`.agents/skills/executive-brief-generator/SKILL.md`](https://github.com/just3ws/just3ws.github.io/blob/master/.agents/skills/executive-brief-generator/SKILL.md)
 
 ---
 

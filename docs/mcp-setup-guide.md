@@ -8,7 +8,7 @@ Any MCP client: including **Claude Code**, **Claude Desktop**, **Antigravity**, 
 
 ## 1. Registered MCP Servers
 
-The repository configuration is defined in [`mcp.json`](file:///Users/mike/github.com/just3ws/just3ws.github.io/mcp.json):
+The repository configuration is defined in [`mcp.json`](https://github.com/just3ws/just3ws.github.io/blob/master/mcp.json):
 
 ```json
 {
