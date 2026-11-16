@@ -3,7 +3,7 @@
 ## Staff Software Engineer
 **just3ws (Independent)** | Chicago, IL | February 2026 - Present
 
-Architected and operating sovereign production platforms across Ruby on Rails 8,
+Architected and operating self-hosted production platforms across Ruby on Rails 8,
 PostgreSQL 18 (pgvector), TypeScript, and local Metal GPU AI inference runtimes,
 combining deterministic state engines, autonomous media processing pipelines, and
 distributed OpenTelemetry observability.

@@ -35,7 +35,7 @@ UGtastic and WHOIS Tech Community.
 ### Staff Software Engineer at just3ws (Independent)
 **February 2026 - Present** | Chicago, IL
 
-Architected and operating sovereign production platforms across Ruby on Rails 8,
+Architected and operating self-hosted production platforms across Ruby on Rails 8,
 PostgreSQL 18 (pgvector), TypeScript, and local Metal GPU AI inference runtimes,
 combining deterministic state engines, autonomous media processing pipelines, and
 distributed OpenTelemetry observability.
