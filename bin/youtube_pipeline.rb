@@ -12,7 +12,7 @@ when 'schedule', 'calendar', ''
   plan = YAML.safe_load_file(File.join(ROOT_DIR, '_data', 'publication_schedule.yml')) || {}
   puts 'THE SOUND ABOVE: SEASON ONE WORKING PLAN'
   puts 'No release dates are set.'
-  puts "Current target: #{plan.fetch('target_interviews', 17)} interviews. Episodes -1 and 0 are setup pieces."
+  puts "Current target: #{plan.fetch('target_interviews', 17)} interviews. Setup and tooling episodes live in Studio Workbench."
   puts 'The order and scope can change; there is no release schedule.'
   puts 'See /series/the-sound-above/ for the current outline.'
 when 'script', 'teleprompter'

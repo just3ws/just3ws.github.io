@@ -5,7 +5,7 @@ This is an editorial and production guide for revisiting the UGtastic archive. I
 ## Scope
 
 - Season One has a target of 17 interviews.
-- Episodes -1 and 0 are setup pieces and do not count toward that target.
+- Setup, tooling, and recovery episodes live in Studio Workbench and do not count toward that target.
 - Episodes 18–35 are later archive candidates, not commitments.
 - There is no release schedule. The order and scope can change after reviewing the recordings.
 - The original interview and transcript are the source. Commentary should follow what is there.

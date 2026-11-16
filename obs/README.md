@@ -24,7 +24,7 @@ When we look back at the artists, musicians, and systems thinkers who shaped an 
 
 ### The Sound Above
 
-This repository holds the recording setup and working episode notes for a rewatch of the UGtastic archive. Season One has a target of 17 interviews. Episodes -1 and 0 are setup pieces; the rest of the archive remains a pool of later candidates. There is no release schedule.
+This repository holds the recording setup and working episode notes for a rewatch of the UGtastic archive. Season One has a target of 17 interviews. Setup and tooling episodes live in Studio Workbench; the rest of the archive remains a pool of later candidates. There is no release schedule.
 
 Start each episode with the guest and the conversation. Add historical context where it helps. Present-day connections are optional and should come from the recording, not a required segment template.
 

@@ -12,7 +12,7 @@ Live broadcast scheduling is not currently available through the media-pipeline 
 
 ## Content preparation
 
-Generate local episode materials from the episode dossiers and review the result before recording. Keep the Season One outline flexible: 17 interviews is a working target, Episodes -1 and 0 are setup pieces, and later archive candidates are not commitments or a release calendar.
+Generate local episode materials from the episode dossiers and review the result before recording. Keep the Season One outline flexible: 17 interviews is a working target, Studio Workbench holds setup and tooling episodes, and later archive candidates are not commitments or a release calendar.
 
 The public series outline is at `/series/the-sound-above/`.
 

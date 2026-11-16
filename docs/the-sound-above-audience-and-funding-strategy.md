@@ -6,7 +6,7 @@ layout: minimal
 
 # The Sound Above: Season One Working Plan
 
-This is a working outline for revisiting interviews from the UGtastic archive. Season One has a target of 17 interviews. Episodes -1 and 0 are setup pieces outside that count. Later archive records remain candidates. There is no release schedule, and the order can change.
+This is a working outline for revisiting interviews from the UGtastic archive. Season One has a target of 17 interviews. Setup and tooling episodes live in Studio Workbench outside that count. Later archive records remain candidates. There is no release schedule, and the order can change.
 
 ## What each episode needs
 
