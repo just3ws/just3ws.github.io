@@ -26,7 +26,7 @@
 ### Act 1: The Sticker, The Helicopter & The Pivot Plank (00:00 to 03:00)
 - **Cam:** Desk setup, MacBook Air DRR sticker close-up.
 - **Key Beat:** Bridge directly from Studio Workbench Episode 1 (*The Ship of Theseus*, 1h 19m YouTube master) to the single most important plank replacement: April 2023.
-- **Proof Point:** `ep_0769_travis_scott_comp.srt` (`2021-11-08`, `00:00:49` and `00:14:53`): *"Give it up for Mike Hall... Mike Hall is flying us around the carbon helicopter."*
+- **Proof Point:** `ep_0769_travis_scott_comp.srt` (`2021-11-08`, `00:00:49` and `00:14:53`): *"Give it up for Mike Hall... Mike Hall is flying us around the carbon [Carpenter] helicopter."* (Whisper `ggml-small.bin` misheard Jason's signature **Carpenter Copter / Carpenter Helicopter**).
 
 ### Act 2: Why Not Start on UGtastic? (03:00 to 06:00)
 - **Screen:** `many-hands-make-light-work` (2014-04-04) vs `just3ws/fluffle` (2023-04-06).

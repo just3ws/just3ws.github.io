@@ -32,7 +32,7 @@ When Georgi Gerganov released `whisper.cpp`, local speech recognition on hardwar
 Seventeen months before writing a line of Fluffle code, on **November 8, 2021**, Jason welcomed me into Dead Rabbit Command as a Patreon supporter on **EP 769** (*Was Travis Scott's Astroworld A Satanic Sacrifice?*):
 
 - **`00:00:49`**: *"Give it up for Mike Hall. Give a round of applause to Mike."*
-- **`00:14:53`**: *"Mike Hall is flying us around the carbon helicopter."*
+- **`00:14:53`**: *"Mike Hall is flying us around the carbon [Carpenter] helicopter."* (`ggml-small.bin` misheard Jason's recurring **Carpenter Copter / Carpenter Helicopter** Patreon bit as `"carbon helicopter"`, the same kind of phonetic drift that led to `replacements.yaml`.)
 
 In show lore, Jason calls his supporter community **The Fluffle**, because a group of wild rabbits is called a fluffle. When I spun up five Raspberry Pis in April 2023, that was the only name for the repository.
 

@@ -63,7 +63,7 @@ This question has three distinct, verifiable answers based on the local `fluffle
 ### A. What IS Verifiably On-Air: EP 769 (November 8, 2021)
 In `fluffle/transcripts/ep_0769_travis_scott_comp.srt` (corresponding to **EP 769 - Was Travis Scott's Astroworld A Satanic Sacrifice?**, published `Mon, 08 Nov 2021 04:08:32 +0000` in `fluffle/feed.xml`), Jason Carpenter welcomes Mike Hall as a new Patreon supporter at two timestamps:
 - **`00:00:49,640 --> 00:00:54,120`**: *"First off, coming into Dead Rabbit Command right now is one of our newest patron supporters. He's running in, he's super excited to get this episode started. Give it up for Mike Hall. Give a round of applause to Mike."*
-- **`00:14:53,320 --> 00:14:55,600`**: *"Mike Hall is flying us around the carbon helicopter."* (Jason's signature Patreon-pilot bit).
+- **`00:14:53,320 --> 00:14:55,600`**: *"Mike Hall is flying us around the carbon [Carpenter] helicopter."* (`ggml-small.bin` mistranscribed Jason's signature **Carpenter Copter / Carpenter Helicopter** Patreon-pilot bit as `"carbon helicopter"`).
 
 ### B. Why the Project Was Named "The Fluffle"
 In Dead Rabbit Radio's own show lore, Jason Carpenter refers to his Patreon supporters and dedicated listener community as **"The Fluffle"** (or **"Forever Fluffle"**), because a group of wild rabbits is called a fluffle. Mike named the 2023 repository `just3ws/fluffle` (*"The Fluffle Transcribes Dead Rabbit Radio"*) as a direct nod to that community, and licensed the outputs under **CC BY-NC-ND 4.0** with explicit attribution to Jason Carpenter (`fluffle/README.md`).
@@ -72,7 +72,7 @@ In Dead Rabbit Radio's own show lore, Jason Carpenter refers to his Patreon supp
 **No verifiable on-air episode was found.** Searching public Dead Rabbit Radio indices (`deadrabbitradio.com`, `libsyn.com`, `spoken.md` with 1,400+ indexed episodes) and the local `fluffle` transcript corpus returns zero episodes where Jason Carpenter discussed Mike Hall's Raspberry Pi transcription cluster on-air.  
 Per Mike's own episode dossier (`_data/episodes/errata-fluffle-precursor.yml`) and 2023 vault logs (`2023-04-06-github-folder-sharing.md`, `2023-04-07-mmv-rename-wav-srt.md`), the interaction happened **off-air**: after Jason mentioned transcripts on an episode, Mike drafted a private DM on April 6 explaining GitHub (`LICENSE` CC BY-NC-ND 4.0, `CONTRIBUTING`, `README`) and offering write access. By April 7 Jason was aware and open/undecided; they chatted on Discord, and Mike later felt too overwhelmed to follow up when day-job incidents and broken XML feeds stalled `Process 2.0`.
 
-> **Broadcast Tip:** That contrast is gold for the episode. You were literally in Dead Rabbit Command in November 2021 (*"flying the carbon helicopter"*), built a 5-node cluster for the show in April 2023, got Jason's private blessing, and yet the project lived quietly in GitHub commits rather than on the airwaves.
+> **Broadcast Tip:** That contrast is gold for the episode. You were literally in Dead Rabbit Command in November 2021 (*"flying the Carpenter Helicopter"*, which Whisper `small` heard as `"carbon helicopter"`), built a 5-node cluster for the show in April 2023, got Jason's private blessing, and yet the project lived quietly in GitHub commits rather than on the airwaves.
 
 ---
 
@@ -370,7 +370,7 @@ This rundown directly follows up [Studio Workbench Episode 1: *The Ship of These
 ### Act 1: The Sticker, The Helicopter & The Pivot Plank (00:00 to 03:00)
 - **Visual:** MacBook Air lid showing the Dead Rabbit Radio sticker; cut to `workbench-ship-of-theseus` thumbnail or clip callback.
 - **Spoken Hook:** Last episode, we looked at the whole 18-year Ship of Theseus, from wooden boat to Apple Silicon space station. Today we zoom in on the single plank that changed everything: **The Fluffle**, April 2023.
-- **Verifiable Easter Egg:** Pull up `fluffle/transcripts/ep_0769_travis_scott_comp.srt` (Nov 8, 2021). *"In November 2021, 17 months before I wrote a line of Fluffle code, Jason Carpenter welcomed me into Dead Rabbit Command and had me flying the carbon helicopter. That is why I named the cluster after his community."*
+- **Verifiable Easter Egg:** Pull up `fluffle/transcripts/ep_0769_travis_scott_comp.srt` (Nov 8, 2021). *"In November 2021, 17 months before I wrote a line of Fluffle code, Jason Carpenter welcomed me into Dead Rabbit Command and had me flying the Carpenter Helicopter (which Whisper `ggml-small.bin` transcribed as `carbon helicopter`). That is why I named the cluster after his community."*
 
 ### Act 2: Why Not Start on UGtastic? (03:00 to 07:00)
 - **Visual:** `just3ws/many-hands-make-light-work` (2014) vs `just3ws/fluffle` (2023).
