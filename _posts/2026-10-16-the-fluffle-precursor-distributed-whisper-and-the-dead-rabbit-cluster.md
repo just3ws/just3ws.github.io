@@ -19,7 +19,7 @@ description: "A full engineering retrospective on Fluffle (just3ws/fluffle): fiv
 
 There is a circular Dead Rabbit Radio sticker on the lid of my MacBook Air, right next to the Apple logo. To most people it looks like ordinary podcast merch. To me it is a physical artifact of [just3ws/fluffle](https://github.com/just3ws/fluffle), the 2023 distributed `whisper.cpp` experiment that became the pivot plank of my 18-year infrastructure story in [Studio Workbench Episode 1: The Ship of Theseus](/series/studio-workbench/ship-of-theseus/).
 
-> **Companion Surfaces:** Explore the [Studio Workbench Episode 2 Walkthrough](/series/studio-workbench/fluffle-cluster/) (with interactive HTML5 Canvas), the [7-Perspective Mermaid Briefing](/docs/studio-workbench-fluffle-theseus-briefing/), and the [JSON Canvas Architecture Map](/docs/fluffle-architecture-walkthrough.canvas).
+> **Companion Surfaces:** Explore the [Studio Workbench Episode 2 Walkthrough](/series/studio-workbench/fluffle-cluster/), the [7-Perspective Mermaid Briefing](/docs/studio-workbench-fluffle-theseus-briefing/), and the [Interactive Architecture Canvas](/series/studio-workbench/fluffle-cluster/#fluffle-canvas-map).
 
 ---
 

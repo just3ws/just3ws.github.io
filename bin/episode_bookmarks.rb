@@ -187,11 +187,11 @@ class EpisodeBookmarks
     folders << folder('Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs', [
       link('Interactive Episode Walkthrough & Architecture Canvas', "#{SITE}/series/studio-workbench/fluffle-cluster/"),
       link('7-Perspective Mermaid Briefing Dossier', "#{SITE}/docs/studio-workbench-fluffle-theseus-briefing/"),
-      link('JSON Canvas Architecture Walkthrough', "#{SITE}/docs/fluffle-architecture-walkthrough.canvas"),
+      link('Interactive Architecture Canvas (Pan & Zoom)', "#{SITE}/series/studio-workbench/fluffle-cluster/#fluffle-canvas-map"),
       link('The Fluffle Precursor Retrospective', "#{SITE}/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"),
-      link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-fluffle-cluster-rundown.md'),
-      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-fluffle-cluster.textream'),
-      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-fluffle-cluster.yml'),
+      link('Spoken Rundown & Staging Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/workbench-fluffle-cluster-rundown.md'),
+      link('Native Textream Teleprompter Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/workbench-fluffle-cluster.textream'),
+      link('Episode YAML Dossier (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/_data/episodes/workbench-fluffle-cluster.yml'),
       link('Active Lower-Third Overlay', "#{SITE}/obs/overlays/lower-third.html"),
       link('Active Overlay State (JSON)', "#{SITE}/obs/overlays/overlay-state.json"),
       link('GitHub: just3ws/fluffle Repository', 'https://github.com/just3ws/fluffle'),
@@ -215,9 +215,9 @@ class EpisodeBookmarks
       link('Interactive Episode Walkthrough & Recursive HUD', "#{SITE}/series/studio-workbench/episode-01/"),
       link('Local Master & Deposition Player', "#{SITE}/series/studio-workbench/episode-01/#systems-deposition"),
       link('Executive Briefing Dossier & Adversarial Cross-Examination', "#{SITE}/docs/studio-workbench-ship-of-theseus-briefing/"),
-      link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus-rundown.md'),
-      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-ship-of-theseus.textream'),
-      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-ship-of-theseus.yml'),
+      link('Spoken Rundown & Staging Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/workbench-ship-of-theseus-rundown.md'),
+      link('Native Textream Teleprompter Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/workbench-ship-of-theseus.textream'),
+      link('Episode YAML Dossier (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/_data/episodes/workbench-ship-of-theseus.yml'),
       link('Active Lower-Third Overlay', "#{SITE}/obs/overlays/lower-third.html"),
       link('Active Overlay State (JSON)', "#{SITE}/obs/overlays/overlay-state.json"),
       link('From Fiverr to whisper.cpp (15-Year Oral History Case Study)', "#{SITE}/ai/2026/09/02/from-fiverr-to-whisper-cpp-verifiable-oral-history/"),
@@ -233,9 +233,9 @@ class EpisodeBookmarks
     folders << folder('The Lost Coderwall Guides: Open Source, Vagrant, and What Survives', [
       link('Interactive Episode Walkthrough & Digital Archaeology', "#{SITE}/series/studio-workbench/the-lost-coderwall-guides/"),
       link('Executive Briefing Dossier & Digital Forensic Archaeology', "#{SITE}/docs/studio-workbench-coderwall-briefing/"),
-      link('Spoken Rundown & Staging Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-coderwall-open-source-transition-rundown.md'),
-      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/workbench-coderwall-open-source-transition.textream'),
-      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/workbench-coderwall-open-source-transition.yml'),
+      link('Spoken Rundown & Staging Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/workbench-coderwall-open-source-transition-rundown.md'),
+      link('Native Textream Teleprompter Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/workbench-coderwall-open-source-transition.textream'),
+      link('Episode YAML Dossier (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/_data/episodes/workbench-coderwall-open-source-transition.yml'),
       link('Coderwall Legacy Repository (GitHub)', 'https://github.com/coderwall/coderwall-legacy'),
       link('Coderwall README with YouTube Playlist Seam', 'https://raw.githubusercontent.com/coderwall/coderwall-legacy/master/README.md'),
       link('Original YouTube Playlist (PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO)', 'https://www.youtube.com/playlist?list=PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO'),
@@ -291,7 +291,7 @@ class EpisodeBookmarks
     folders << folder('The Fluffle Precursor (Distributed Whisper)', [
       link('Studio Workbench Ep 2 Walkthrough & Architecture Canvas', "#{SITE}/series/studio-workbench/fluffle-cluster/"),
       link('7-Perspective Mermaid Briefing Dossier', "#{SITE}/docs/studio-workbench-fluffle-theseus-briefing/"),
-      link('JSON Canvas Architecture Walkthrough', "#{SITE}/docs/fluffle-architecture-walkthrough.canvas"),
+      link('Interactive Architecture Canvas (Pan & Zoom)', "#{SITE}/series/studio-workbench/fluffle-cluster/#fluffle-canvas-map"),
       link('The Fluffle Precursor Retrospective', "#{SITE}/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html"),
       link('GitHub: just3ws/fluffle Repository', 'https://github.com/just3ws/fluffle'),
       link('Local WITC Archive Index', 'file:///Volumes/Dock_1TB/WITC/'),
@@ -300,9 +300,9 @@ class EpisodeBookmarks
 
     folders << folder('Alan Watts: Seeing Through the Net (AI Era Watch)', [
       link('Source Video: Alan Watts - Seeing Through the Net (YouTube OWlpa3wd9K4)', 'https://www.youtube.com/watch?v=OWlpa3wd9K4'),
-      link('Spoken Rundown & Cue Sheet', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/errata-alan-watts-seeing-through-the-net-rundown.md'),
-      link('Native Textream Teleprompter Script', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/obs/teleprompter/errata-alan-watts-seeing-through-the-net.textream'),
-      link('Episode YAML Dossier', 'file:///Users/mike/github.com/just3ws/just3ws.github.io/_data/episodes/errata-alan-watts-seeing-through-the-net.yml'),
+      link('Spoken Rundown & Cue Sheet (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/errata-alan-watts-seeing-through-the-net-rundown.md'),
+      link('Native Textream Teleprompter Script (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/errata-alan-watts-seeing-through-the-net.textream'),
+      link('Episode YAML Dossier (GitHub)', 'https://github.com/just3ws/just3ws.github.io/blob/master/_data/episodes/errata-alan-watts-seeing-through-the-net.yml'),
       link('Cleaned Transcript (ztranscribe OWlpa3wd9K4)', 'file:///Users/mike/Downloads/transcripts/OWlpa3wd9K4/OWlpa3wd9K4.cleaned.txt')
     ])
 
