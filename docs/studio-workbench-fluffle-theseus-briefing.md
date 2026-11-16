@@ -30,7 +30,7 @@ In *The Ship of Theseus: From Wooden Boat to Space Station* (`R_WagKejbtw`), you
 **Where this next episode picks up:**  
 If *The Ship of Theseus* was the 18-year aerial view of the vessel, **The Fluffle is the zoom-in on the single most important plank replacement in the ship's history**. On April 6, 2023, the wooden boat (pre-AI shell scripts and abandoned 2014 crowdsourcing) first bolted on local neural inference (`whisper.cpp` on five Raspberry Pi 4s). Every survival mechanic in your 2026 Apple Silicon space station was discovered on that hot, noisy desk cluster in Crystal Lake.
 
-> **Companion Visual Map:** Open [fluffle-architecture-walkthrough.canvas](file:///Users/mike/github.com/just3ws/just3ws.github.io/docs/fluffle-architecture-walkthrough.canvas) in Obsidian or a JSON Canvas v1.0 viewer for a spatial pan-and-zoom walkthrough of the cluster, state machine, timeline, and 6-act episode structure.
+> **Companion Visual Map:** Explore the [Interactive Architecture Canvas](/series/studio-workbench/fluffle-cluster/#fluffle-canvas-map) in your browser, or open `docs/fluffle-architecture-walkthrough.canvas` in Obsidian for a spatial pan-and-zoom walkthrough of the cluster, state machine, timeline, and 6-act episode structure.
 
 ---
 
