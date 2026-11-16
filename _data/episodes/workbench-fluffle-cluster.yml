@@ -46,65 +46,80 @@ narrative:
 teleprompter_script:
   act_1: |
     [SCENE: Camera on desk setup. MacBook Air visible with Dead Rabbit Radio sticker.]
-    Last time on Studio Workbench, we looked at the whole eighteen-year Ship of Theseus: how a wooden boat of shell scripts turned into an Apple Silicon space station.
-    Today, we zoom in on the single most important plank replacement in that ship's history.
-    And it starts with this sticker right here on the lid of my MacBook Air, next to the Apple logo.
-    [SHOW: Close-up of Dead Rabbit Radio sticker on MacBook lid]
-    It is from Dead Rabbit Radio, a daily paranormal podcast hosted by Jason Carpenter.
-    In fact, let me show you an Easter egg I found in the transcript archive.
-    [SHOW: fluffle/transcripts/ep_0769_travis_scott_comp.srt at 00:00:49 and 00:14:53]
-    On November 8, 2021, seventeen months before I wrote a single line of Fluffle code, Jason welcomed me into Dead Rabbit Command as a new Patreon supporter and had me flying the Carpenter Helicopter, which Whisper small famously mistranscribed as the "carbon helicopter".
-    In show lore, Jason calls his supporter community The Fluffle, because a group of rabbits is called a fluffle.
-    So when I spun up five Raspberry Pis in April 2023 to teach myself local speech recognition, there was only one name for the repository: The Fluffle.
+    This is Studio Workbench. I'm Mike Hall.
+    Last time, we looked at the eighteen-year Ship of Theseus: how a wooden boat of shell scripts became today's media pipeline.
+    Today, we're looking at the single most important plank in that ship.
+    It starts with this sticker right here on the lid of my MacBook Air, next to the Apple logo.
+    [PAUSE]
+    [SHOW: Close-up of Dead Rabbit Radio sticker on MacBook lid.]
+    It's from Dead Rabbit Radio, a daily paranormal podcast hosted by Jason Carpenter.
+    Before we look at the code, let me show you something I found in the transcript archive.
+    [SHOW: ep_0769_travis_scott_comp.srt at 00:00:49 and 00:14:53.]
+    November 8, 2021. Seventeen months before I wrote a single line of Fluffle code.
+    Jason welcomed me into Dead Rabbit Command as a new Patreon supporter.
+    He had me flying the Carpenter Helicopter, which Whisper small famously heard as "carbon helicopter."
+    In show lore, Jason calls his supporters The Fluffle, because a group of rabbits is called a fluffle.
+    [FREEFORM: Mention why that name stuck when spinning up the five Pis in April 2023.]
   act_2: |
     [SCENE: Show just3ws/many-hands-make-light-work (2014) beside just3ws/fluffle (2023).]
-    People ask why I did not start this experiment directly on the UGtastic interviews.
-    I had over two hundred recorded conversations from Chicago conferences sitting on hard drives, and I had already failed once in 2014 with a crowdsourcing repo called many-hands-make-light-work.
-    Cloud speech APIs cost thousands of dollars, and those interviews were irreplaceable community history.
-    I refused to beta-test an unproven local AI pipeline on UGtastic.
-    Dead Rabbit Radio gave me what every engineer needs before touching production cargo: a consistent solo speaker, over a thousand episodes, and zero risk to my primary archive.
+    People ask why I didn't test this first on the UGtastic interviews.
+    I had over two hundred Chicago community conversations sitting on hard drives.
+    I'd already failed once in 2014 with a crowdsourcing repo called many-hands-make-light-work.
+    Cloud speech APIs cost thousands of dollars back then, and those interviews are irreplaceable history.
+    I wasn't going to beta-test an unproven local AI pipeline on UGtastic.
+    [FREEFORM: Explain what Dead Rabbit Radio gave you: one consistent speaker, over a thousand episodes, and zero risk to the archive.]
   act_3: |
-    [SCENE: Pan across fluffle-architecture-walkthrough.canvas and the Rakefile / bin/transcribe code.]
+    [SCENE: Pop out the Interactive Architecture Canvas on /series/studio-workbench/fluffle-cluster/.]
     Let's walk through what I actually built in April and May 2023.
-    On my 2018 Intel Core i7 MacBook Pro, Curb and Nokogiri pulled the Libsyn RSS feed and parsed each episode GUID.
-    Down followed up to sixteen or sixty-four HTTP redirects to grab the MP3, and FFmpeg converted it to 16-kilohertz mono WAV.
-    [SHOW: Rakefile lines 185-221 and bin/transcribe]
-    Then Rakefile used Net::SSH to check on five Raspberry Pi 4s on my desk: node01 through node05, two 4Bs and three plain 4s running 64-bit DietPi on Debian 11 off USB thumbdrives.
-    Before shipping a single WAV file, it checked two hard limits: at least five gigabytes free on the USB thumbdrive, and under two gigabytes of podcasts per node.
-    On each Pi, bin/transcribe touched a dot-log lock file, ran whisper.cpp with the ggml-small model, deleted the WAV to protect the flash drive, and slept for 120 seconds so the stock passive heatsinks could cool down.
-    And look at how it tracked progress without Redis: dotfile markers right on the filesystem.
+    The control plane was my 15-inch 2018 Intel Core i7 MacBook Pro.
+    Curb and Nokogiri pulled the Libsyn RSS feed and parsed each episode GUID.
+    Down followed HTTP redirects to grab the MP3, and FFmpeg turned it into 16-kilohertz mono WAV.
+    [SHOW: Rakefile lines 185-221 and bin/transcribe.]
+    From there, Rakefile used Net::SSH to check on five Raspberry Pi 4s on my desk: node01 through node05.
+    Two 4Bs and three plain 4s, running 64-bit DietPi on Debian 11 off USB thumbdrives.
+    Before shipping a single file, it checked two hard limits: five gigabytes free, and under two gigabytes of audio per node.
+    On each Pi, whisper.cpp ran the small model, deleted the WAV to protect the thumbdrive, and slept two minutes so the passive heatsinks could cool down.
+    [PAUSE]
+    Notice there was no Redis here. Just dotfile markers right on the filesystem.
     Dot-downloading, dot-downloaded, dot-converted, dot-distributed, dot-failed.
-    If a Pi overheated and rebooted, nothing was lost. That exact dotfile pattern is the direct ancestor of the five-state Maildir queue we run in media-pipeline today.
+    [FREEFORM: Connect those 2023 dotfiles directly to today's five-state Maildir queue in media-pipeline.]
   act_4: |
     [SCENE: Show fluffle/README.md and fluffle/replacements.yaml.]
-    Remember in the Ship of Theseus episode when we talked about Peter Watts' Blindsight and Cunningham's bees?
-    Bees build circles, and physics turns them into hexagons. Neural models extrude tokens without knowing what the world means.
-    Here is the proof from 2023: whisper.cpp had zero concept of who Jason Carpenter was.
-    In README.md and replacements.yaml, I documented over thirty different ways Whisper spelled his name: Garpenter, Garbineiro, Krupper, Carmoner, Garbender, and even Jason Asa.
-    It transcribed "Dead Rabbit Dirigible" as "deadrabberdurgible".
-    Look at the git timestamps on May 17, 2023: at 7:03 AM I wrote bin/replacements. At 7:08 AM I committed "Order matters in replacements.yml". At 7:12 AM, "Replace word suffixes last". At 7:13 AM, one automated pass fixed 981 files at once.
-    Probabilistic inference needed a deterministic dictionary downstream.
+    Remember in Episode 1 when we talked about Peter Watts' Blindsight and Cunningham's bees?
+    Neural models extrude tokens without knowing what the world actually means.
+    Whisper had zero idea who Jason Carpenter was.
+    In README.md and replacements.yaml, I logged over thirty different ways it spelled his name.
+    Garpenter. Garbineiro. Krupper. Carmoner. Garbender. Even Jason Asa.
+    It even transcribed "Dead Rabbit Dirigible" as "deadrabberdurgible."
+    [SHOW: Git timestamps for May 17, 2023 (07:03 to 07:13 AM).]
+    At 7:03 AM on May 17, I wrote bin/replacements.
+    Ten minutes later, one deterministic dictionary pass cleaned 981 files at once.
+    [FREEFORM: Reflect on why probabilistic AI still needs deterministic ground truth downstream.]
   act_5: |
     [SCENE: Show git log of fluffle (79 commits) and bin/episode_checker.rb.]
-    If you read all seventy-nine commits across sixty-seven days, you see the human story behind the code.
-    Phase one was pure joy: fifty-one commits in twelve days, running jobs at six in the morning before work, at lunch, and at nine at night, even dedicating episode 381 to fellow listener Rudie Jazz.
-    On April 8, I deleted twenty-six duplicate SRT files after catching a whisper.cpp naming quirk.
-    Then on April 25, I hand-edited five hundred and nine files, realized manual cleanup could not scale, and went silent for twenty-two days.
-    When I came back in May, I built the Rakefile state machine and episode_checker.rb so I could see all 1,175 rows across 1,073 episode directories in a green-and-red HTML table.
-    When Jason mentioned transcripts on an episode, I drafted an April 6 DM explaining GitHub and a Creative Commons license, chatted with him on Discord, and verified he knew about the repo. No Dead Rabbit Radio episode ever discussed just3ws/fluffle on-air.
-    On June 12, commit seventy-nine, Process 2.0, tried to generalize across multiple podcast feeds like Belief Hole and Philosophize This.
-    Broken XML feeds, enterprise day-job incidents, and solo maintenance weight hit all at once, and I stopped.
+    If you read all seventy-nine commits across sixty-seven days, you see the real pace of the project.
+    Phase one was pure joy: fifty-one commits in twelve days.
+    Running batches at six in the morning before work, at lunch, and at nine at night.
+    On April 8, I caught a whisper.cpp naming quirk and deleted twenty-six duplicate SRT files.
+    Then on April 25, I tried hand-editing five hundred and nine transcripts.
+    I realized manual cleanup wouldn't scale, and I walked away for twenty-two days.
+    [PAUSE]
+    When I came back in May, I built the Rakefile state machine and episode_checker.rb so I could see all 1,175 rows in one green-and-red HTML table.
+    [FREEFORM: Mention the April 6 DM draft to Jason Carpenter, chatting on Discord, and keeping it private off-air.]
+    On June 12, commit seventy-nine tried to generalize across other podcasts like Belief Hole and Philosophize This.
+    Broken XML feeds, day-job incidents, and solo maintenance hit at once, and I stopped.
   act_6: |
     [SCENE: Side-by-side of fluffle/episodes.html and 2026 media-pipeline cockpit on M4.]
-    On git log alone, Fluffle looks like an abandoned experiment that stopped at commit seventy-nine.
-    In reality, every survival rule in our 2026 Apple Silicon space station was earned on those five hot Raspberry Pis.
-    The dotfile markers became our five-state Maildir queue.
-    The sixteen-kilohertz mono transcode became ephemeral memory streaming with zero permanent disk waste.
-    And those five Pis gave way to Apple Silicon M4 Metal transcribing twenty-eight minutes of speech in one hundred and three seconds.
-    Thank you to Jason Carpenter for making Dead Rabbit Radio and for being generous when I reached out.
-    If you want to support independent local compute and archival work like The Sound Above, you can join us at patreon.com/whoistechcmty.
-    Next, we carry these verified transcripts straight into The Sound Above rewatch.
-    Until next time: keep your feedback loops fast, and your code humane.
+    On git log alone, Fluffle looks like an abandoned experiment.
+    In reality, every survival rule in our 2026 pipeline was earned on those five hot Raspberry Pis.
+    The dotfiles became our five-state Maildir queue.
+    The WAV scratch files became ephemeral memory streaming.
+    And those five Pis gave way to Apple Silicon M4 transcribing twenty-eight minutes of speech in 103 seconds.
+    [PAUSE]
+    Thank you to Jason Carpenter for making Dead Rabbit Radio, and for being generous when I reached out.
+    If you want to explore the repo, the canvas, or the architecture notes, everything is linked on just3ws.com.
+    Next, we carry these transcripts straight into The Sound Above rewatch.
+    Until then, keep your feedback loops fast, and take care of each other.
 human_stories:
   act_1: "Pointing to the Dead Rabbit Radio sticker on the MacBook Air lid and pulling up the Nov 8, 2021 EP 769 Carpenter Helicopter cameo (transcribed as carbon helicopter)."
   act_2: "Refusing to beta-test an unproven AI pipeline on 200+ irreplaceable UGtastic community interviews."
