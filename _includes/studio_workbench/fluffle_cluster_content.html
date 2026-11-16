@@ -78,12 +78,50 @@
         Drag to pan, scroll or use the buttons to zoom, and click any node to inspect its verified source details.
       </p>
 
-      <div class="workbench-canvas-shell">
+      <style>
+        #fluffle-canvas-backdrop {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(15, 23, 42, 0.58);
+          z-index: 9998;
+          backdrop-filter: blur(2px);
+        }
+        #fluffle-canvas-backdrop.is-open { display: block; }
+        #fluffle-canvas-shell.is-maximized {
+          position: fixed;
+          top: 1rem;
+          right: 1rem;
+          bottom: 1rem;
+          left: 1rem;
+          width: calc(100vw - 2rem);
+          height: calc(100vh - 2rem);
+          max-height: calc(100vh - 2rem);
+          z-index: 9999;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          background: var(--color-bg-card, #ffffff);
+          box-shadow: 0 24px 64px rgba(15, 23, 42, 0.4);
+          border-radius: 12px;
+        }
+        #fluffle-canvas-shell.is-maximized #fluffle-arch-canvas {
+          flex: 1 1 auto;
+          width: 100% !important;
+          height: 100% !important;
+          min-height: 0;
+        }
+      </style>
+      <div id="fluffle-canvas-backdrop" aria-hidden="true"></div>
+      <div id="fluffle-canvas-anchor" style="display: none;"></div>
+      <div class="workbench-canvas-shell" id="fluffle-canvas-shell">
         <div class="workbench-canvas-toolbar">
           <div>
             <button type="button" class="workbench-canvas-btn" id="fluffle-zoom-in">+ Zoom In</button>
             <button type="button" class="workbench-canvas-btn" id="fluffle-zoom-out">- Zoom Out</button>
             <button type="button" class="workbench-canvas-btn" id="fluffle-zoom-reset">Fit All</button>
+            <button type="button" class="workbench-canvas-btn" id="fluffle-canvas-maximize" aria-pressed="false">&#x26F6; Pop Out / Maximize</button>
           </div>
           <span id="fluffle-canvas-status" style="color: var(--color-text-muted, #525866);">Loading canvas...</span>
         </div>
@@ -150,7 +188,7 @@
         EP 769 (Nov 8, 2021) &amp; Why It Was Named "The Fluffle"
       </h2>
       <p style="font-size: 0.95rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
-        In Dead Rabbit Radio show lore, host Jason Carpenter calls his Patreon supporter community <strong>"The Fluffle"</strong> (a group of wild rabbits). Seventeen months before <code>just3ws/fluffle</code> began, Jason welcomed Mike Hall into Dead Rabbit Command on <strong>EP 769</strong> (<em>Was Travis Scott's Astroworld A Satanic Sacrifice?</em>, November 8, 2021) at <code>00:00:49</code> and <code>00:14:53</code> (<em>"Mike Hall is flying us around the carbon [Carpenter] helicopter"</em>, a classic <code>ggml-small.bin</code> mistranscription of Jason's signature Carpenter Copter / Carpenter Helicopter).
+        In <a href="https://deadrabbitradio.com" target="_blank" rel="noopener">Dead Rabbit Radio</a> show lore, host Jason Carpenter calls his Patreon supporter community <strong>"The Fluffle"</strong> (a group of wild rabbits). Seventeen months before <a href="https://github.com/just3ws/fluffle" target="_blank" rel="noopener"><code>just3ws/fluffle</code></a> began, Jason welcomed Mike Hall into Dead Rabbit Command on <a href="https://github.com/just3ws/fluffle/blob/main/transcripts/ep_0769_travis_scott_comp.srt" target="_blank" rel="noopener"><strong>EP 769</strong></a> (<em>Was Travis Scott's Astroworld A Satanic Sacrifice?</em>, November 8, 2021) at <code>00:00:49</code> and <code>00:14:53</code> (<em>"Mike Hall is flying us around the carbon [Carpenter] helicopter"</em>, a classic <code>ggml-small.bin</code> mistranscription of Jason's signature Carpenter Copter / Carpenter Helicopter).
       </p>
       <p style="font-size: 0.92rem; line-height: 1.6; color: var(--color-text-muted, #525866); margin: 0;">
         No verifiable on-air Dead Rabbit Radio episode discussed the 2023 Raspberry Pi transcription repository. Instead, after Jason mentioned transcripts on an episode, Mike drafted a private outreach message on April 6, 2023 explaining GitHub (<code>LICENSE</code>, <code>CONTRIBUTING</code>, <code>README</code>), offering write access, and proposing CC BY-NC-ND 4.0 while citing Jason Carpenter as sole owner. By April 7, Jason was aware and open to the experiment; they chatted on Discord, and Mike paused follow-up when XML feed drift and day-job load hit at <code>Process 2.0</code>.
@@ -168,9 +206,9 @@
         </h3>
         <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); display: grid; gap: 0.45rem;">
           <li><strong>Pre-Repo Prep (Mar 25 to Apr 5):</strong> <code>Net::SSH</code> orchestration across <code>node01..node05</code>, Ruby 2.7 Raft tests, Libsyn XML parsing, failed macOS Radeon CUDA attempt, and Pi <code>lm-sensors</code> thermal checks.</li>
-          <li><strong>Phase 1 (Apr 6 to 17, 51 commits):</strong> Before-work (6 AM), lunch (12 PM), and evening (9 PM) runs; Rudie Jazz shoutout (<code>abc718c</code>); deleting 26 duplicate <code>.wav.srt</code> files (<code>2fac228</code>, -52,952 lines).</li>
-          <li><strong>Phase 2 (Apr 25, <code>3122642</code>):</strong> Hand-editing 509 transcripts proved manual cleanup could not scale, followed by a 22-day gap.</li>
-          <li><strong>Phase 3 (May 17 to Jun 12, 27 commits):</strong> 10-minute regex fix (<code>d8cd747</code>) cleaning 981 files (<code>4db66d1</code>), <code>Rakefile</code> state machine, <code>episode_checker.rb</code> HTML grid (<code>abfb3a9</code>, 1,175 rows), and stopping at <code>Process 2.0</code> (<code>bc4ec64</code>, 4,135 files).</li>
+          <li><strong>Phase 1 (Apr 6 to 17, 51 commits):</strong> Before-work (6 AM), lunch (12 PM), and evening (9 PM) runs; Rudie Jazz shoutout (<a href="https://github.com/just3ws/fluffle/commit/abc718c" target="_blank" rel="noopener"><code>abc718c</code></a>); deleting 26 duplicate <code>.wav.srt</code> files (<a href="https://github.com/just3ws/fluffle/commit/2fac228" target="_blank" rel="noopener"><code>2fac228</code></a>, -52,952 lines).</li>
+          <li><strong>Phase 2 (Apr 25, <a href="https://github.com/just3ws/fluffle/commit/3122642" target="_blank" rel="noopener"><code>3122642</code></a>):</strong> Hand-editing 509 transcripts proved manual cleanup could not scale, followed by a 22-day gap.</li>
+          <li><strong>Phase 3 (May 17 to Jun 12, 27 commits):</strong> 10-minute regex fix (<a href="https://github.com/just3ws/fluffle/commit/d8cd747" target="_blank" rel="noopener"><code>d8cd747</code></a>) cleaning 981 files (<a href="https://github.com/just3ws/fluffle/commit/4db66d1" target="_blank" rel="noopener"><code>4db66d1</code></a>), <a href="https://github.com/just3ws/fluffle/blob/main/Rakefile" target="_blank" rel="noopener"><code>Rakefile</code></a> state machine, <a href="https://github.com/just3ws/fluffle/blob/main/bin/episode_checker.rb" target="_blank" rel="noopener"><code>episode_checker.rb</code></a> HTML grid (<a href="https://github.com/just3ws/fluffle/commit/abfb3a9" target="_blank" rel="noopener"><code>abfb3a9</code></a>, 1,175 rows), and stopping at <code>Process 2.0</code> (<a href="https://github.com/just3ws/fluffle/commit/bc4ec64" target="_blank" rel="noopener"><code>bc4ec64</code></a>, 4,135 files).</li>
         </ul>
       </section>
 
@@ -182,10 +220,10 @@
           30+ Ways Whisper Misspelled "Jason Carpenter"
         </h3>
         <p style="font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0 0 0.75rem;">
-          Echoing Peter Watts' <em>Blindsight</em> from Episode 01, <code>whisper.cpp</code> extruded phonemes without semantic grounding: <em>Garpenter</em>, <em>Garbineiro</em>, <em>Krupper</em>, <em>Carmoner</em>, <em>Jason Asa</em>, and <em>deadrabberdurgible</em>.
+          Echoing Peter Watts' <em>Blindsight</em> from <a href="/series/studio-workbench/ship-of-theseus/">Episode 01</a>, <code>whisper.cpp</code> extruded phonemes without semantic grounding: <em>Garpenter</em>, <em>Garbineiro</em>, <em>Krupper</em>, <em>Carmoner</em>, <em>Jason Asa</em>, and <em>deadrabberdurgible</em>.
         </p>
         <p style="font-size: 0.92rem; line-height: 1.65; color: var(--color-text, #1e232a); margin: 0;">
-          Deterministic domain dictionaries (<code>replacements.yaml</code> with order-dependent rules and atomic <code>Tempfile</code> swaps) supplied the ground truth that probabilistic inference lacked.
+          Deterministic domain dictionaries (<a href="https://github.com/just3ws/fluffle/blob/main/replacements.yaml" target="_blank" rel="noopener"><code>replacements.yaml</code></a> with order-dependent rules and atomic <code>Tempfile</code> swaps in <a href="https://github.com/just3ws/fluffle/blob/main/bin/replacements" target="_blank" rel="noopener"><code>bin/replacements</code></a>) supplied the ground truth that probabilistic inference lacked.
         </p>
       </section>
     </div>
@@ -215,7 +253,7 @@
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.88rem; font-family: var(--font-mono, monospace);">
         <a href="/docs/studio-workbench-fluffle-theseus-briefing/" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">7-Perspective Mermaid Briefing &rarr;</a>
         <span style="color: #cbd5e1;">&middot;</span>
-        <a href="/docs/fluffle-architecture-walkthrough.canvas" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">Download JSON Canvas (.canvas) &rarr;</a>
+        <a href="/docs/fluffle-architecture-walkthrough.canvas" download="fluffle-architecture-walkthrough.canvas" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">Download JSON Canvas (.canvas) &rarr;</a>
         <span style="color: #cbd5e1;">&middot;</span>
         <a href="/2026/10/16/the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.html" style="color: #0284c7; text-decoration: none;">Long-Form Retrospective &rarr;</a>
         <span style="color: #cbd5e1;">&middot;</span>
@@ -406,14 +444,46 @@
 
   canvas.addEventListener("wheel", (e) => {
     e.preventDefault();
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
     const factor = e.deltaY < 0 ? 1.1 : 0.9;
-    scale = Math.max(0.2, Math.min(2.2, scale * factor));
+    const nextScale = Math.max(0.2, Math.min(2.2, scale * factor));
+    offsetX = mx - ((mx - offsetX) / scale) * nextScale;
+    offsetY = my - ((my - offsetY) / scale) * nextScale;
+    scale = nextScale;
     draw();
   }, { passive: false });
 
   document.getElementById("fluffle-zoom-in").addEventListener("click", () => { scale = Math.min(2.2, scale * 1.2); draw(); });
   document.getElementById("fluffle-zoom-out").addEventListener("click", () => { scale = Math.max(0.2, scale * 0.85); draw(); });
   document.getElementById("fluffle-zoom-reset").addEventListener("click", fitAll);
+
+  const shell = document.getElementById("fluffle-canvas-shell");
+  const anchor = document.getElementById("fluffle-canvas-anchor");
+  const backdrop = document.getElementById("fluffle-canvas-backdrop");
+  const maxBtn = document.getElementById("fluffle-canvas-maximize");
+  function setMaximized(open) {
+    if (open) {
+      document.body.appendChild(backdrop);
+      document.body.appendChild(shell);
+    } else if (anchor && anchor.parentNode) {
+      anchor.parentNode.insertBefore(backdrop, anchor);
+      anchor.parentNode.insertBefore(shell, anchor.nextSibling);
+    }
+    shell.classList.toggle("is-maximized", open);
+    backdrop.classList.toggle("is-open", open);
+    maxBtn.setAttribute("aria-pressed", open ? "true" : "false");
+    maxBtn.textContent = open ? "\u2715 Exit Fullscreen (Esc)" : "\u26F6 Pop Out / Maximize";
+    document.body.style.overflow = open ? "hidden" : "";
+    requestAnimationFrame(() => { if (data) fitAll(); });
+  }
+  maxBtn.addEventListener("click", () => setMaximized(!shell.classList.contains("is-maximized")));
+  backdrop.addEventListener("click", () => setMaximized(false));
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && shell.classList.contains("is-maximized")) setMaximized(false);
+  });
+  window.addEventListener("resize", () => { if (data) draw(); });
 
   fetch("/docs/fluffle-architecture-walkthrough.canvas")
     .then((r) => r.json())
