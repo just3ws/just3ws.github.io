@@ -44,7 +44,7 @@ Every detail below comes directly from `~/github.com/just3ws/fluffle` and 2023-2
 
 - **Cluster (`node01..node05`):** Five Raspberry Pi 4 boards on a desk (**two Raspberry Pi 4B, three plain Raspberry Pi 4**; `node01` confirmed 8GB RAM), stock passive heatsinks, official cases, **USB thumbdrives** for storage (not microSD cards), WiFi turned off, wired through a dedicated local hub router.
 - **Node OS & Kernel:** **DietPi on Debian 11 (Bullseye) `aarch64`**, verified on `node01` via `uname -a`: `Linux node01 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr 3 17:24:16 BST 2023 aarch64 GNU/Linux`.
-- **Control Plane & Ruby:** Intel macOS 13 Ventura (`x86_64-darwin-22`), Bundler `2.4.13`, and Ruby `3.1+` hash-value shorthand syntax in `Rakefile`, `bin/distribution`, and `bin/episode_checker.rb` (no `.ruby-version` pin in the repo; March 25 Raft prototypes started on Ruby `2.7`).
+- **Control Plane & Ruby:** 15-inch 2018 MacBook Pro (2.6 GHz 6-Core Intel Core i7, Radeon Pro 560X 4 GB, 16 GB 2400 MHz DDR4) running macOS 13 Ventura (`x86_64-darwin-22`), Bundler `2.4.13`, and Ruby `3.1+` hash-value shorthand syntax in `Rakefile`, `bin/distribution`, and `bin/episode_checker.rb` (no `.ruby-version` pin in the repo; March 25 Raft prototypes started on Ruby `2.7`).
 - **Transcription Engine:** `~/whisper.cpp/main -m ~/whisper.cpp/models/ggml-small.bin -f "$file" -osrt -otxt` (Whisper `small` 244M GGML; exact 2023 build commit and model byte size are unlogged).
 
 ---
@@ -75,7 +75,7 @@ No verifiable on-air Dead Rabbit Radio episode discussed `just3ws/fluffle`. Afte
 ## What Ended Up in the Repo vs. Disk vs. Published
 
 - **In `just3ws/fluffle` (GitHub, commit `bc4ec64`):** `transcripts/` holds **2,034 files** (`1,017` matching `.txt` and `.srt` pairs); `episodes/` holds **1,073 UUID directories** (`1,175` `episode.xml`, `1,170` `.downloaded`, `1,062` `.converted`, `171` `.distributed`, `139` `.transcribed`, `138` `episode.{srt,txt,vtt}`); `episodes.html` has **1,175 rows**; and `feed.xml` is **12.6 MB**.
-- **On Local Disk Today:** `~/podcasts/` is no longer stored on this M4 Mac; those intermediate audio runs lived on the 2023 Intel Mac and the five Pi USB drives.
+- **On Local Disk Today:** `~/podcasts/` is no longer stored on this M4 Mac; those intermediate audio runs lived on the 2018 Intel Core i7 MacBook Pro and the five Pi USB drives.
 - **Survival Invariants in 2026:** Fluffle's dotfile markers (`.downloading`, `.downloaded`, `.converted`, `.distributed`, `.failed`) became the direct ancestor of `media-pipeline`'s 5-state Maildir queue (`staged/`, `pending/`, `processing/`, `processed/`, `failed/`), and its `16kHz` mono PCM WAV transcode carried straight forward into zero-disk-waste streaming on Apple Silicon M4 Metal.
 
 Thanks to Jason Carpenter for creating Dead Rabbit Radio and for his generosity when I reached out. Continue the walkthrough in [Studio Workbench Episode 2](/series/studio-workbench/fluffle-cluster/) or inspect all seven Mermaid views in the [Fluffle Briefing](/docs/studio-workbench-fluffle-theseus-briefing/).

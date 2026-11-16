@@ -65,11 +65,11 @@ teleprompter_script:
     Dead Rabbit Radio gave me what every engineer needs before touching production cargo: a consistent solo speaker, over a thousand episodes, and zero risk to my primary archive.
   act_3: |
     [SCENE: Pan across fluffle-architecture-walkthrough.canvas and the Rakefile / bin/transcribe code.]
-    Let us walk the actual architecture I built in April and May 2023.
-    On the MacBook control plane, Curb and Nokogiri pulled the Libsyn RSS feed and parsed each episode GUID.
-    Down followed up to sixteen or sixty-four HTTP redirects to grab the MP3, and FFmpeg converted it to 16-kilohertz mono PCM WAV.
+    Let's walk through what I actually built in April and May 2023.
+    On my 2018 Intel Core i7 MacBook Pro, Curb and Nokogiri pulled the Libsyn RSS feed and parsed each episode GUID.
+    Down followed up to sixteen or sixty-four HTTP redirects to grab the MP3, and FFmpeg converted it to 16-kilohertz mono WAV.
     [SHOW: Rakefile lines 185-221 and bin/transcribe]
-    Then Rakefile used Net::SSH to interrogate five Raspberry Pi 4s on my desk: node01 through node05, two 4Bs and three plain 4s running DietPi on Debian 11 aarch64 off USB thumbdrives.
+    Then Rakefile used Net::SSH to check on five Raspberry Pi 4s on my desk: node01 through node05, two 4Bs and three plain 4s running 64-bit DietPi on Debian 11 off USB thumbdrives.
     Before shipping a single WAV file, it checked two hard limits: at least five gigabytes free on the USB thumbdrive, and under two gigabytes of podcasts per node.
     On each Pi, bin/transcribe touched a dot-log lock file, ran whisper.cpp with the ggml-small model, deleted the WAV to protect the flash drive, and slept for 120 seconds so the stock passive heatsinks could cool down.
     And look at how it tracked progress without Redis: dotfile markers right on the filesystem.
@@ -88,10 +88,10 @@ teleprompter_script:
     [SCENE: Show git log of fluffle (79 commits) and bin/episode_checker.rb.]
     If you read all seventy-nine commits across sixty-seven days, you see the human story behind the code.
     Phase one was pure joy: fifty-one commits in twelve days, running jobs at six in the morning before work, at lunch, and at nine at night, even dedicating episode 381 to fellow listener Rudie Jazz.
-    On April 8, I deleted twenty-six duplicate dot-wav-dot-srt files after catching a whisper.cpp naming quirk.
+    On April 8, I deleted twenty-six duplicate SRT files after catching a whisper.cpp naming quirk.
     Then on April 25, I hand-edited five hundred and nine files, realized manual cleanup could not scale, and went silent for twenty-two days.
     When I came back in May, I built the Rakefile state machine and episode_checker.rb so I could see all 1,175 rows across 1,073 episode directories in a green-and-red HTML table.
-    When Jason mentioned transcripts on an episode, I drafted an April 6 DM explaining GitHub and CC BY-NC-ND 4.0, chatted with him on Discord, and verified he knew about the repo. No Dead Rabbit Radio episode ever discussed just3ws/fluffle on-air.
+    When Jason mentioned transcripts on an episode, I drafted an April 6 DM explaining GitHub and a Creative Commons license, chatted with him on Discord, and verified he knew about the repo. No Dead Rabbit Radio episode ever discussed just3ws/fluffle on-air.
     On June 12, commit seventy-nine, Process 2.0, tried to generalize across multiple podcast feeds like Belief Hole and Philosophize This.
     Broken XML feeds, enterprise day-job incidents, and solo maintenance weight hit all at once, and I stopped.
   act_6: |
@@ -106,7 +106,7 @@ teleprompter_script:
     Next, we carry these verified transcripts straight into The Sound Above rewatch.
     Until next time: keep your feedback loops fast, and your code humane.
 human_stories:
-  act_1: "Pointing to the Dead Rabbit Radio sticker on the MacBook Air lid and pulling up the Nov 8, 2021 EP 769 carbon-helicopter cameo."
+  act_1: "Pointing to the Dead Rabbit Radio sticker on the MacBook Air lid and pulling up the Nov 8, 2021 EP 769 Carpenter Helicopter cameo (transcribed as carbon helicopter)."
   act_2: "Refusing to beta-test an unproven AI pipeline on 200+ irreplaceable UGtastic community interviews."
   act_4: "Debugging regex order in replacements.yaml in 10 minutes at 7 AM after failing to hand-edit 509 transcripts."
   act_5: "Running the cluster before work, at lunch, and at 9 PM, then hitting the Process 2.0 wall on June 12, 2023."
