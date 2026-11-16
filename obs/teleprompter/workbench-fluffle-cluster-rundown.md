@@ -2,7 +2,7 @@
 
 **Format:** Process cinema and live architectural walkthrough  
 **Episode Heading:** Fluffle: Five Raspberry Pis and 1K+ Transcript Pairs  
-**Bridge From:** *The Ship of Theseus: From Wooden Boat to Space Station* (`R_WagKejbtw`)  
+**Bridge From:** Studio Workbench Episode 1: *The Ship of Theseus: From Wooden Boat to Space Station* (https://www.youtube.com/watch?v=R_WagKejbtw)  
 **Target Length:** 25 to 30 minutes  
 **Setting:** Desk setup (MacBook Air DRR sticker), Obsidian JSON Canvas (`docs/fluffle-architecture-walkthrough.canvas`), terminal (`~/github.com/just3ws/fluffle`), and `media-pipeline` cockpit  
 
@@ -25,7 +25,7 @@
 
 ### Act 1: The Sticker, The Helicopter & The Pivot Plank (00:00 to 03:00)
 - **Cam:** Desk setup, MacBook Air DRR sticker close-up.
-- **Key Beat:** Bridge directly from *The Ship of Theseus* (`R_WagKejbtw`) to the single most important plank replacement: April 2023.
+- **Key Beat:** Bridge directly from Studio Workbench Episode 1 (*The Ship of Theseus*, 1h 19m YouTube master) to the single most important plank replacement: April 2023.
 - **Proof Point:** `ep_0769_travis_scott_comp.srt` (`2021-11-08`, `00:00:49` and `00:14:53`): *"Give it up for Mike Hall... Mike Hall is flying us around the carbon helicopter."*
 
 ### Act 2: Why Not Start on UGtastic? (03:00 to 06:00)

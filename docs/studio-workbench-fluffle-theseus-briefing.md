@@ -11,7 +11,7 @@ sitemap: false
 # Studio Workbench Briefing: The Fluffle & The Ship of Theseus
 
 **Series Context:** The Sound Above (Precursor) & Studio Workbench (Episode 02 Follow-Up)  
-**Predecessor Episode:** *The Ship of Theseus: From Wooden Boat to Space Station* (Recorded 2026-11-10, YouTube `R_WagKejbtw`)  
+**Predecessor Episode:** [Studio Workbench Episode 1: *The Ship of Theseus: From Wooden Boat to Space Station*](/series/studio-workbench/ship-of-theseus/) (Recorded 2026-11-10, [YouTube 1h 19m Master](https://www.youtube.com/watch?v=R_WagKejbtw))  
 **Subject:** *The Fluffle* (`just3ws/fluffle`, April to June 2023)  
 **Host:** Mike Hall  
 **Date:** 2026-11-15  
@@ -20,7 +20,7 @@ sitemap: false
 
 ## 1. Narrative Bridge: From The Ship of Theseus to The Fluffle
 
-In *The Ship of Theseus: From Wooden Boat to Space Station* (`R_WagKejbtw`), you established the central thesis of this entire arc:
+In [Studio Workbench Episode 1: *The Ship of Theseus: From Wooden Boat to Space Station*](/series/studio-workbench/ship-of-theseus/) ([YouTube 1h 19m master](https://www.youtube.com/watch?v=R_WagKejbtw)), you established the central thesis of this entire arc:
 
 1. **Identity lives in invariants, not silicon or syntax.** Zero bytes of 2009 C# or 2017 Bash survive in `media-pipeline`, yet it is the same vessel because **Theseus himself carved and tested every replacement plank**.
 2. **The Physical Mast Survived.** The camera used for the final 2014 UGtastic interviews is the exact camera on the Studio Workbench desk today.
@@ -52,7 +52,7 @@ Every date, commit hash, and artifact count below is verified directly against l
 | **2023-05-18** | `Rakefile` v2 orchestrator started (`e53fe59`) | `fluffle/Rakefile` | Formalizes `podcasts:pull`, `podcasts:load`, `podcasts:convert`, `podcasts:distribute`. |
 | **2023-05-21 to 06-12** | Multi-podcast expansion & `Process 2.0` (`bc4ec64`) | `fluffle/Rakefile`, `fluffle/bin/episode_checker.rb` | Attempts `belief-hole` and `philosophize-this`; hits XML/feed fragility and pauses after 79 commits. |
 | **2026-10-16** | Retrospective & Errata dossier authored | `_posts/2026-10-16-the-fluffle-precursor-distributed-whisper-and-the-dead-rabbit-cluster.md` | Documents the 1,017 `.txt`/`.srt` pairs (2,034 files across 1,073 episode dirs) and imposter syndrome lessons. |
-| **2026-11-10** | *The Ship of Theseus* recorded (`R_WagKejbtw`) | `_data/episodes/workbench-ship-of-theseus.yml` | Connects Fluffle's 5-state dotfile queue to `media-pipeline` on Apple Silicon M4 (103s Whisper Metal). |
+| **2026-11-10** | [Episode 1: *The Ship of Theseus*](/series/studio-workbench/ship-of-theseus/) recorded ([YouTube 1h 19m](https://www.youtube.com/watch?v=R_WagKejbtw)) | `_data/episodes/workbench-ship-of-theseus.yml` | Connects Fluffle's 5-state dotfile queue to `media-pipeline` on Apple Silicon M4 (103s Whisper Metal). |
 
 ---
 
@@ -365,7 +365,7 @@ flowchart LR
 
 ## 6. Episode Rundown: 6-Act Structure (Studio Workbench / The Sound Above)
 
-This rundown directly follows up *The Ship of Theseus* (`R_WagKejbtw`) while honoring the `technical-scriptwriter` 6-act arc and zero em-dash standard.
+This rundown directly follows up [Studio Workbench Episode 1: *The Ship of Theseus*](/series/studio-workbench/ship-of-theseus/) ([YouTube 1h 19m](https://www.youtube.com/watch?v=R_WagKejbtw)) while honoring the `technical-scriptwriter` 6-act arc and zero em-dash standard.
 
 ### Act 1: The Sticker, The Helicopter & The Pivot Plank (00:00 to 03:00)
 - **Visual:** MacBook Air lid showing the Dead Rabbit Radio sticker; cut to `workbench-ship-of-theseus` thumbnail or clip callback.
