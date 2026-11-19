@@ -85,10 +85,36 @@ RSpec.describe Jekyll::RamblinAimblinEpisodeGenerator do
         #{episode['ai_disclosure']}
       ARTICLE
       File.write(article, content)
+      episode_page = File.join(dest, 'series/ramblin-aimblin/episodes/episode-one/index.html')
+      FileUtils.mkdir_p(File.dirname(episode_page))
+      File.write(episode_page, <<~EPISODE)
+        <meta name="robots" content="noindex,follow">
+        <h1>#{episode['title']}</h1>
+        #{episode['anchor_url']}
+        #{episode['article_url']}
+        https://www.youtube.com/playlist?list=PLBL0frEzrqqQ
+        #{episode['source_links'][0]['url']}
+        #{episode['shorts'][0]['url']}
+        #{episode['ai_disclosure']}
+      EPISODE
       rendered_site = instance_double(Jekyll::Site, dest: dest, data: site_data)
 
       expect { RamblinAimblinRenderedArticleContract.validate!(rendered_site) }.not_to raise_error
 
+      File.write(episode_page, '<h1>missing episode content</h1>')
+      expect { RamblinAimblinRenderedArticleContract.validate!(rendered_site) }
+        .to raise_error(Jekyll::Errors::FatalException, /generated episode page/)
+
+      File.write(episode_page, <<~EPISODE)
+        <meta name="robots" content="noindex,follow">
+        <h1>#{episode['title']}</h1>
+        #{episode['anchor_url']}
+        #{episode['article_url']}
+        https://www.youtube.com/playlist?list=PLBL0frEzrqqQ
+        #{episode['source_links'][0]['url']}
+        #{episode['shorts'][0]['url']}
+        #{episode['ai_disclosure']}
+      EPISODE
       File.write(article, 'links removed')
       expect { RamblinAimblinRenderedArticleContract.validate!(rendered_site) }
         .to raise_error(Jekyll::Errors::FatalException, /required links or disclosure/)

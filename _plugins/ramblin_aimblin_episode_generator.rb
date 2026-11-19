@@ -25,11 +25,12 @@ module Jekyll
     def initialize(site, base, slug, episode)
       directory = File.join('series', 'ramblin-aimblin', 'episodes', slug)
       super(site, base, directory, 'index.html')
-      read_yaml(File.join(base, '_layouts'), 'ramblin_aimblin_episode.html')
       data.merge!(episode)
+      data['layout'] = 'minimal'
       data['permalink'] = "/series/ramblin-aimblin/episodes/#{slug}/"
       data['robots'] = 'noindex,follow'
       data['sitemap'] = false
+      self.content = '{% include ramblin_aimblin_episode.html %}'
     end
   end
 
