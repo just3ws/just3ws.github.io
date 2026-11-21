@@ -26,6 +26,19 @@ RSpec.describe Jekyll::RamblinAimblinEpisodeGenerator do
     )
   end
 
+  it 'initializes generated episode pages in memory without reading missing source files' do
+    expect(Jekyll::RamblinAimblinEpisodePage.ancestors).to include(Jekyll::PageWithoutAFile)
+    allow(Jekyll.logger).to receive(:error)
+    real_site = Jekyll::Site.new(Jekyll.configuration('source' => '/tmp', 'quiet' => true))
+
+    page = Jekyll::RamblinAimblinEpisodePage.new(real_site, '/tmp', 'episode-one', episode)
+
+    expect(Jekyll.logger).not_to have_received(:error)
+    expect(page.data['permalink']).to eq('/series/ramblin-aimblin/episodes/episode-one/')
+    expect(page.data['robots']).to eq('noindex,follow')
+    expect(page.content).to eq('{% include ramblin_aimblin_episode.html %}')
+  end
+
   it 'rejects held or draft records instead of copying them into the public site' do
     episode['status'] = 'held'
 

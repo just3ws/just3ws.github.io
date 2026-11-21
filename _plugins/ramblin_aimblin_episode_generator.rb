@@ -21,7 +21,7 @@ module Jekyll
   end
 
   # Generates a noindex episode page from an already released public record.
-  class RamblinAimblinEpisodePage < Page
+  class RamblinAimblinEpisodePage < PageWithoutAFile
     def initialize(site, base, slug, episode)
       directory = File.join('series', 'ramblin-aimblin', 'episodes', slug)
       super(site, base, directory, 'index.html')
