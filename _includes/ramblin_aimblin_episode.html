@@ -1,0 +1,41 @@
+<article class="page series-episode-page">
+  {% include breadcrumbs.html %}
+  <header class="home-header">
+    <p>Ramblin' &amp; AImblin' · Episode</p>
+    <h1>{{ page.title | escape }}</h1>
+    <p>{{ page.summary | escape }}</p>
+  </header>
+
+  <section aria-labelledby="episode-watch">
+    <h2 id="episode-watch">Watch the episode</h2>
+    <p><a href="{{ page.anchor_url }}">Watch the anchor video on YouTube</a></p>
+    <p><a href="https://www.youtube.com/playlist?list={{ page.playlist_id }}">Open the Ramblin' &amp; AImblin' playlist</a></p>
+  </section>
+
+  <section aria-labelledby="episode-article">
+    <h2 id="episode-article">Read the companion article</h2>
+    <p><a href="{{ page.article_url }}">{{ page.article_title | default: page.title | escape }}</a></p>
+  </section>
+
+  {% if page.shorts.size > 0 %}
+  <section aria-labelledby="episode-shorts">
+    <h2 id="episode-shorts">Related Shorts</h2>
+    <ul>
+      {% for short in page.shorts %}
+      <li><a href="{{ short.url }}">{{ short.title | escape }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section aria-labelledby="episode-sources">
+    <h2 id="episode-sources">Sources</h2>
+    <ul>
+      {% for source in page.source_links %}
+      <li><a href="{{ source.url }}">{{ source.label | escape }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <p class="editorial-disclosure">{{ page.ai_disclosure | escape }}</p>
+</article>
