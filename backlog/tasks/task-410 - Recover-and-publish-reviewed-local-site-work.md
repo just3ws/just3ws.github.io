@@ -4,7 +4,7 @@ title: Recover and publish reviewed local site work
 status: In Progress
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
-updated_date: '2026-11-21T00:11:00Z'
+updated_date: '2026-11-21T00:12:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -17,6 +17,7 @@ modified_files:
   - _data/transcripts/ramblin-aimblin-the-dashboard-that-couldnt-hear.yml
   - _plugins/generate_video_assets.rb
   - spec/plugins/video_asset_generator_spec.rb
+  - ai/series/ramblin-aimblin/the-67-year-obituary-of-the-programmer.md
 type: chore
 ---
 
