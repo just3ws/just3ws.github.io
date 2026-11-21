@@ -25,6 +25,7 @@ modified_files:
   - docs/studio-workbench-coderwall-briefing.md
   - obs/bookmarks/the-sound-above-rewatch.html
   - _includes/studio_workbench/coderwall_content.html
+  - _data/panoramic_view.yml
 type: chore
 ---
 
