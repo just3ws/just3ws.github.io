@@ -4,7 +4,7 @@ title: Recover and publish reviewed local site work
 status: In Progress
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
-updated_date: '2026-11-21T00:19:00Z'
+updated_date: '2026-11-21T00:20:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -20,6 +20,7 @@ modified_files:
   - ai/series/ramblin-aimblin/the-67-year-obituary-of-the-programmer.md
   - series/ramblin-aimblin/index.html
   - _data/video_assets.yml
+  - series/studio-workbench/ship-of-theseus.html
 type: chore
 ---
 
@@ -62,4 +63,6 @@ Full RSpec passed 307 examples. Corrected indentation introduced while combining
 Council corrections: label two synthetic narration transcripts and video asset records accurately; remove unsupported 1959 disappearance claim and unverified extended quotations from Programmer Obituary; cite primary NVIDIA, CFR, Salesforce earnings, Diamandis, GitHub keynote and original JRE records; distinguish code-writing forecasts, capability forecasts and hiring plans. Restore human role context for Amodei and Garman. Align current series guide with configured human editorial approval and no generated depictions of real people. Standard historical episode disclosure retained for reciprocal release contracts. YAML parse and git diff --check passed.
 
 Installed HTTPS Chrome smoke passed 11 routes plus desktop/mobile screenshots. Production build passed 1186 pages. Read-only catalog privacy verification of all 20 newly added video IDs found 3 private records (BFA6MAwSgjY, 1cPmiLCkDrc, ffh3Gw7r4DA); retract those public artifacts and preserve local copies before release. Broad strict audit has preexisting unresolved findings; ordinary publication boundary scan reports zero critical findings.
+
+Extended metadata-only verification to all catalog-matched site videos: 57 are private. Backed up affected public manifests/transcripts under /private/tmp/just3ws-private-retractions, then ran the existing SiteSyncService retraction workflow. Regenerate all dependent exports. SEO budget failure was a preexisting duplicate title for Studio Workbench Episode 01 and Ship of Theseus; shorten the latter title without altering the page body.
 <!-- SECTION:NOTES:END -->
