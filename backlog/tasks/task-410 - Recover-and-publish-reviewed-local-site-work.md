@@ -1,10 +1,10 @@
 ---
 id: TASK-410
 title: Recover and publish reviewed local site work
-status: In Progress
+status: Done
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
-updated_date: '2026-11-21T00:28:00Z'
+updated_date: '2026-11-21T02:02:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -213,14 +213,14 @@ Substantial site work remained uncommitted while master also diverged from origi
 
 ## Acceptance Criteria
 <!-- AC:BEGIN -->
-- [ ] #1 Reviewed local work and upstream commits are preserved together.
-- [ ] #2 Public boundary, generated output and installed HTTPS routes pass applicable checks.
-- [ ] #3 Reviewed commits reach origin/master and the Pages deployment is verified.
+- [x] #1 Reviewed local work and upstream commits are preserved together.
+- [x] #2 Public boundary, generated output and installed HTTPS routes pass applicable checks.
+- [x] #3 Reviewed commits reach origin/master and the Pages deployment is verified.
 <!-- AC:END -->
 
 ## Definition of Done
 <!-- DOD:BEGIN -->
-- [ ] #1 AC criteria is completed and the change has been verified
+- [x] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
 
 ## Implementation Plan
@@ -250,4 +250,6 @@ Extended metadata-only verification to all catalog-matched site videos: 57 are p
 Final tests exposed a preexisting SwiftBar expectation missing its live rocket status; allow that supported status. Source patterns are the two identical router smoke assertions; no runtime behavior change. Re-run validation against a stable production build after localhost install is complete.
 
 Independent final review kept the privacy retraction and shortened Studio Workbench title. Final RSpec: 309 examples, zero failures, one existing pending. Final localhost browser checks: 11 public routes, all 57 private routes return 404, desktop/mobile pass. Secret scan passes. Resolving 21 existing broken links without changing publication exclusions or validation gates.
+
+Completed build, full site validation (HTML-Proofer 2,192 internal links, ATS 88.3%, SEO budget 0 duplicate titles), localhost install (1,133 pages), signed commit b70cd905 (117 files), push to origin/master, and verified GitHub Pages deployment run 44847283933 plus live routes on just3ws.com. Dropped superseded stash@{0} (publication-audit-preserve-local-work).
 <!-- SECTION:NOTES:END -->
