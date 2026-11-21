@@ -27,6 +27,8 @@ modified_files:
   - _includes/studio_workbench/coderwall_content.html
   - _data/panoramic_view.yml
   - docs/recording-playbook.md
+  - >-
+    _posts/2026-10-20-the-mirage-of-competence-sovereign-verification-and-the-meters-vs-yards-trap.md
 type: chore
 ---
 
