@@ -4,7 +4,7 @@ title: Recover and publish reviewed local site work
 status: In Progress
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
-updated_date: '2026-11-21T00:12:00Z'
+updated_date: '2026-11-21T00:13:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -57,4 +57,6 @@ Initial remote fetch shows master diverged: three upstream commits and one local
 Merged origin/master preserving both histories. Stash backup retained; all overlapping episode files matched upstream byte-for-byte except registry. Combined registry retains Hall Pass, upstream Dashboard recut, and local Programmer Obituary. Original tracked/untracked work backed up under /private/tmp before merge.
 
 Full RSpec passed 307 examples. Corrected indentation introduced while combining episode registry; rebuilding. Focused generator/quarantine/stdin audit specs passed 22 examples.
+
+Council corrections: label two synthetic narration transcripts and video asset records accurately; remove unsupported 1959 disappearance claim and unverified extended quotations from Programmer Obituary; cite primary NVIDIA, CFR, Salesforce earnings, Diamandis, GitHub keynote and original JRE records; distinguish code-writing forecasts, capability forecasts and hiring plans. Restore human role context for Amodei and Garman. Align current series guide with configured human editorial approval and no generated depictions of real people. Standard historical episode disclosure retained for reciprocal release contracts. YAML parse and git diff --check passed.
 <!-- SECTION:NOTES:END -->
