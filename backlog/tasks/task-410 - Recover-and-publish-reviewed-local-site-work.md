@@ -16,6 +16,7 @@ modified_files:
     _data/transcripts/ramblin-aimblin-hall-pass-to-roam-the-ghost-of-cardboard-cutouts.yml
   - _data/transcripts/ramblin-aimblin-the-dashboard-that-couldnt-hear.yml
   - _plugins/generate_video_assets.rb
+  - spec/plugins/video_asset_generator_spec.rb
 type: chore
 ---
 
