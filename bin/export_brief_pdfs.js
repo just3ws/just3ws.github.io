@@ -28,8 +28,9 @@ const BRIEFS_DIR = path.join(ROOT_DIR, 'exports', 'briefs');
 const PDF_OUTPUT_DIR = path.join(BRIEFS_DIR, 'pdfs');
 const SITE_DIR = path.join(ROOT_DIR, '_site');
 
-if (!fs.existsSync(PDF_OUTPUT_DIR)) {
-  fs.mkdirSync(PDF_OUTPUT_DIR, { recursive: true });
+if (!fs.existsSync(BRIEFS_DIR)) {
+  console.log('No executive briefs directory present; skipping PDF export.');
+  process.exit(0);
 }
 
 // Find all brief directories
@@ -40,6 +41,10 @@ const briefDirs = fs.readdirSync(BRIEFS_DIR, { withFileTypes: true })
 if (briefDirs.length === 0) {
   console.log('No executive briefs found in exports/briefs/');
   process.exit(0);
+}
+
+if (!fs.existsSync(PDF_OUTPUT_DIR)) {
+  fs.mkdirSync(PDF_OUTPUT_DIR, { recursive: true });
 }
 
 // Start temporary static HTTP server on random available port

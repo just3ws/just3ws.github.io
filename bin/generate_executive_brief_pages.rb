@@ -16,9 +16,15 @@ root = File.expand_path("..", __dir__)
 briefs_dir = File.join(root, "docs", "executive-briefs")
 output_dir = File.join(root, "exports", "briefs")
 
-FileUtils.mkdir_p(output_dir)
-
 brief_files = Dir[File.join(briefs_dir, "*.md")].sort
+
+if brief_files.empty?
+  FileUtils.rm_rf(output_dir) if Dir.exist?(output_dir)
+  puts "No active executive briefs in #{briefs_dir}; #{output_dir} is clean."
+  exit 0
+end
+
+FileUtils.mkdir_p(output_dir)
 
 generated_count = 0
 briefs_list = []

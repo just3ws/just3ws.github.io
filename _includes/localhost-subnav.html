@@ -185,7 +185,7 @@
 
       <!-- Localhost Hub Dropdown: Tailored Archetype Resumes & Archive -->
       <div class="lh-dropdown">
-        <button type="button" class="lh-dropdown-btn{% if page.url contains '/resumes/' or page.url contains '/reports/archetype' or page.url contains '/exports/briefs/' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="lh-dropdown-btn{% if page.url contains '/resumes/' or page.url contains '/reports/archetype' %} is-active{% endif %}" aria-haspopup="true" aria-expanded="false">
           <span>📄 Archetypes &amp; Archive</span>
           <span class="lh-caret">▾</span>
         </button>
@@ -207,10 +207,7 @@
             <strong>Senior Software Engineer, Ruby on Rails</strong>
           </a>
           <div class="lh-menu-divider"></div>
-          <div class="lh-menu-header">Cold Storage &amp; Strategy Archive</div>
-          <a href="/exports/briefs/" class="lh-menu-item{% if page.url contains '/exports/briefs/' %} is-active{% endif %}" role="menuitem">
-            <strong>Executive Briefs Hub (Cold Storage Archive)</strong> 📦
-          </a>
+          <div class="lh-menu-header">Strategy Archive</div>
           <a href="/reports/archetype-reader-profiles/" class="lh-menu-item" role="menuitem">
             <strong>Strategy &amp; Reader Profiles</strong> →
           </a>

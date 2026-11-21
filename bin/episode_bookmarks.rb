@@ -80,7 +80,6 @@ class EpisodeBookmarks
       link('Agile Manifesto & Craftsmanship Intersection', "#{SITE}/reports/software-craftsmanship-forensics/agile-manifesto-intersection/"),
       link('Speakers Directory', "#{SITE}/speakers/"),
       link('Interview Topics Directory', "#{SITE}/interviews/topics/"),
-      link('Executive Pitch Briefs Hub (Cold Storage)', "#{SITE}/exports/briefs/"),
       link('LinkedIn Profile Mapping & Export', "#{SITE}/linkedin/")
     ])
 
