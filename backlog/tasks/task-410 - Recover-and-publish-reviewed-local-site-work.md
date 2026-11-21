@@ -4,12 +4,14 @@ title: Recover and publish reviewed local site work
 status: In Progress
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
-updated_date: '2026-11-21T00:09:00Z'
+updated_date: '2026-11-21T00:10:00Z'
 labels: []
 dependencies: []
 documentation:
   - CONTEXT.md
   - docs/persona-review-council.md
+modified_files:
+  - _data/ramblin_aimblin_episodes.yml
 type: chore
 ---
 
@@ -44,4 +46,6 @@ Substantial site work remained uncommitted while master also diverged from origi
 
 <!-- SECTION:NOTES:BEGIN -->
 Initial remote fetch shows master diverged: three upstream commits and one local commit. Upstream includes episode infrastructure and Dashboard That Couldn't Hear; local untracked files overlap those paths. Preserve a local checkpoint before merging. Council found synthetic narrator misattribution and unsupported historical claims requiring correction.
+
+Merged origin/master preserving both histories. Stash backup retained; all overlapping episode files matched upstream byte-for-byte except registry. Combined registry retains Hall Pass, upstream Dashboard recut, and local Programmer Obituary. Original tracked/untracked work backed up under /private/tmp before merge.
 <!-- SECTION:NOTES:END -->
