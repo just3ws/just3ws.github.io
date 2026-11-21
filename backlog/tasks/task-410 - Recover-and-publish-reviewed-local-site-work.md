@@ -24,6 +24,7 @@ modified_files:
   - spec/pipeline/namespacing_and_ponytail_spec.rb
   - docs/studio-workbench-coderwall-briefing.md
   - obs/bookmarks/the-sound-above-rewatch.html
+  - _includes/studio_workbench/coderwall_content.html
 type: chore
 ---
 
