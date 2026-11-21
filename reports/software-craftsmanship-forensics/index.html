@@ -279,7 +279,7 @@ body_class: report-software-craftsmanship-forensics
   <!-- Section 5: Querying the Local Datalake -->
   <section style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 0.625rem; padding: 1.75rem; margin-bottom: 2rem;">
     <h2 style="font-size: 1.4rem; font-weight: 700; margin-top: 0; color: var(--color-heading, #0f172a); border-bottom: 1px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem;">
-      5. Local Datalake & Hister Integration
+      5. Local Datalake & Nogon (formerly Hister) Integration
     </h2>
     <p>
       The complete archaeological dataset is persisted locally in the zdots DuckDB datalake and local search engine:
@@ -290,8 +290,8 @@ body_class: report-software-craftsmanship-forensics
 $ duckdb -light-mode ~/.local/state/zdots/datalake.duckdb \
   <span style="color: #38bdf8;">"SELECT id, signatory_number, name, signed_on FROM scm_signatories WHERE id = 106;"</span>
 
-<span style="color: #94a3b8;"># Search local hister index</span>
-$ hister search <span style="color: #38bdf8;">"softwarecraftsmanship"</span>
+<span style="color: #94a3b8;"># Search local nogon (formerly hister) index</span>
+$ nogon search <span style="color: #38bdf8;">"softwarecraftsmanship"</span>
     </div>
   </section>
 
@@ -354,7 +354,7 @@ $ hister search <span style="color: #38bdf8;">"softwarecraftsmanship"</span>
         <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.8125rem; color: #334155; line-height: 1.5;">
           <li>Hydrated DuckDB (<code>scm_signatories</code>, <code>scm_snapshot_2009</code>, <code>scm_rank_drift</code>, <code>scm_reading_links</code>).</li>
           <li>Audited link decay with live timeouts and status code logging (28.6% dead link rate).</li>
-          <li>Indexed public URLs into the local <code>hister</code> search engine for rapid semantic and lexical query.</li>
+          <li>Indexed public URLs into the local <code>nogon</code> (formerly <code>hister</code>) search engine for rapid semantic and lexical query.</li>
         </ul>
       </div>
 

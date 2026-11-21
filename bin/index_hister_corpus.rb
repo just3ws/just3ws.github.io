@@ -4,14 +4,14 @@
 # ---
 # name: index_hister_corpus.rb
 # domain: data
-# purpose: bin/index_hister_corpus.rb - Index Core Craftsmanship, Agile & Conference Corpus into Hister
+# purpose: bin/index_hister_corpus.rb - Index Core Craftsmanship, Agile & Conference Corpus into Nogon (formerly Hister)
 # usage: ruby bin/index_hister_corpus.rb
 # ---
 
-# bin/index_hister_corpus.rb — Index Core Craftsmanship, Agile & Conference Corpus into Hister
+# bin/index_hister_corpus.rb - Index Core Craftsmanship, Agile & Conference Corpus into Nogon (formerly Hister)
 #
 # Feeds foundational primary sources, conference hubs, user group communities, and
-# archival records into the hister.localhost search engine.
+# archival records into the local nogon (hister.localhost) search engine.
 
 require 'open3'
 require 'uri'
@@ -147,7 +147,7 @@ def extract_datalake_urls
   urls.uniq.reject { |u| u.include?('*') || u.end_with?('.zip') }
 end
 
-puts "🔍 Hister Corpus & Ecosystem Datalake Ingestion Engine"
+puts "🔍 Nogon (formerly Hister) Corpus & Ecosystem Datalake Ingestion Engine"
 puts "======================================================="
 
 sections = CORPUS.dup
@@ -167,7 +167,7 @@ sections.each do |section, urls|
   puts "-------------------------------------------------------"
 
   urls.each_with_index do |url, idx|
-    cmd = ["hister", "index", "--config", HISTER_CONFIG, "--ignore-rules", "--force"]
+    cmd = ["nogon", "index", "--config", HISTER_CONFIG, "--ignore-rules", "--force"]
     cmd += ["--header", "Authorization=Basic Y29kZXBsZXg6bWljcm9zb2Z0"] if url.include?("codeplexarchive.org")
     cmd << url
     stdout, stderr, status = Open3.capture3(*cmd)
