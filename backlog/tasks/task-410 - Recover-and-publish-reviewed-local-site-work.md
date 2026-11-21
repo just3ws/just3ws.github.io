@@ -4,6 +4,7 @@ title: Recover and publish reviewed local site work
 status: In Progress
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
+updated_date: '2026-11-21T00:09:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -29,3 +30,18 @@ Substantial site work remained uncommitted while master also diverged from origi
 <!-- DOD:BEGIN -->
 - [ ] #1 AC criteria is completed and the change has been verified
 <!-- DOD:END -->
+
+## Implementation Plan
+
+<!-- SECTION:PLAN:BEGIN -->
+1. Inventory and preserve the dirty checkout and local-only commit; reconcile three upstream commits without dropping released episode records.
+2. Run council review of public provenance, authorship, quarantine, and generated surfaces; fix concrete findings using existing contracts.
+3. Regenerate, run full CI/public boundary checks, install localhost and smoke test affected HTTPS routes.
+4. Commit exact reviewed paths, push master, monitor Pages deployment and verify production routes.
+<!-- SECTION:PLAN:END -->
+
+## Implementation Notes
+
+<!-- SECTION:NOTES:BEGIN -->
+Initial remote fetch shows master diverged: three upstream commits and one local commit. Upstream includes episode infrastructure and Dashboard That Couldn't Hear; local untracked files overlap those paths. Preserve a local checkpoint before merging. Council found synthetic narrator misattribution and unsupported historical claims requiring correction.
+<!-- SECTION:NOTES:END -->
