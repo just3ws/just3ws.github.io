@@ -4,7 +4,7 @@ title: Recover and publish reviewed local site work
 status: In Progress
 assignee: []
 created_date: '2026-11-21T00:08:00Z'
-updated_date: '2026-11-21T00:24:00Z'
+updated_date: '2026-11-21T00:27:00Z'
 labels: []
 dependencies: []
 documentation:
@@ -22,6 +22,7 @@ modified_files:
   - _data/video_assets.yml
   - series/studio-workbench/ship-of-theseus.html
   - spec/pipeline/namespacing_and_ponytail_spec.rb
+  - docs/studio-workbench-coderwall-briefing.md
 type: chore
 ---
 
