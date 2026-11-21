@@ -12,6 +12,8 @@ documentation:
   - docs/persona-review-council.md
 modified_files:
   - _data/ramblin_aimblin_episodes.yml
+  - >-
+    _data/transcripts/ramblin-aimblin-hall-pass-to-roam-the-ghost-of-cardboard-cutouts.yml
 type: chore
 ---
 
