@@ -98,13 +98,13 @@ RSpec.describe 'Pipeline Namespacing, Ponytail Discipline & Staged Queues' do
     it 'executes media swiftbar cleanly through namespaced router' do
       stdout, stderr, status = Open3.capture3(pipeline_runner, 'media', 'swiftbar')
       expect(status.success?).to be true
-      expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥)/)
+      expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥|🚀)/)
     end
 
     it 'preserves flat legacy aliases' do
       stdout, stderr, status = Open3.capture3(pipeline_runner, 'swiftbar')
       expect(status.success?).to be true
-      expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥)/)
+      expect(stdout.lines.first).to match(/^(🎬|⚡|⚠️|⏸️|🎥|🚀)/)
     end
 
     it 'fails closed instead of invoking legacy media workers when the service is unavailable' do

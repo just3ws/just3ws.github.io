@@ -37,7 +37,7 @@ It was easy to feel like an omnicompetent digital signal processing engineer. In
 
 Yet good engineering craftsmanship requires skepticism, especially toward our own successes.
 
-In the second field recording ([captured in the archive as `ramblin-amblin-ok-next-experiment.yml`](/videos/ramblin-amblin-ok-next-experiment/)), I walked back into the electromagnetic field. I spoke continuously as I approached the conductors, climbed the rise, lingered directly beneath the energized phases, and walked back down.
+In the second field recording, I walked back into the electromagnetic field. I spoke continuously as I approached the conductors, climbed the rise, lingered directly beneath the energized phases, and walked back down.
 
 When we pulled the raw master off the phone and inspected the signal, the reality split cleanly in two:
 

@@ -33,10 +33,10 @@ On November 9, 2026, a digital archaeological query into the Internet Archive Wa
 
 | Episode | Title | Video ID | Wayback Snapshot | Current YouTube Status |
 | :--- | :--- | :--- | :--- | :--- |
-| **Ep. 0** | Welcome to Coderwall | `OWqTkhbcXUM` | [July 23, 2021](http://web.archive.org/web/20210723142835/https://www.youtube.com/watch?v=OWqTkhbcXUM) | Private (Restorable) |
-| **Ep. 1** | GitHub Fork, Clone & PR | `V0c8cKe-heI` | [July 23, 2021](http://web.archive.org/web/20210723161840/https://www.youtube.com/watch?v=V0c8cKe-heI) | Private (Restorable) |
-| **Ep. 2** | Vagrant Up | `8YeVny-X7D0` | [July 23, 2021](http://web.archive.org/web/20210723144507/https://www.youtube.com/watch?v=8YeVny-X7D0) | Private (Restorable) |
-| **Ep. 3** | .env & Stripe Test Integration | `6xXOfQFj98g` | [July 23, 2021](http://web.archive.org/web/20210723141003/https://www.youtube.com/watch?v=6xXOfQFj98g) | Private (Restorable) |
+| **Ep. 0** | Welcome to Coderwall | `OWqTkhbcXUM` | [July 23, 2021](https://web.archive.org/web/20210723142835/https://www.youtube.com/watch?v=OWqTkhbcXUM) | Private (Restorable) |
+| **Ep. 1** | GitHub Fork, Clone & PR | `V0c8cKe-heI` | [July 23, 2021](https://web.archive.org/web/20210723161840/https://www.youtube.com/watch?v=V0c8cKe-heI) | Private (Restorable) |
+| **Ep. 2** | Vagrant Up | `8YeVny-X7D0` | [July 23, 2021](https://web.archive.org/web/20210723144507/https://www.youtube.com/watch?v=8YeVny-X7D0) | Private (Restorable) |
+| **Ep. 3** | .env & Stripe Test Integration | `6xXOfQFj98g` | [July 23, 2021](https://web.archive.org/web/20210723141003/https://www.youtube.com/watch?v=6xXOfQFj98g) | Private (Restorable) |
 
 - **Official Playlist ID:** `PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO`
 - **Official Repository Seam:** `https://raw.githubusercontent.com/coderwall/coderwall-legacy/master/README.md`

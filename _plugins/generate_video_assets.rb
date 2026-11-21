@@ -73,7 +73,9 @@ module Jekyll
           'breadcrumb' => title,
           'breadcrumb_parent_name' => 'Videos',
           'breadcrumb_parent_url' => '/videos/',
-          'asset_id' => id
+          'asset_id' => id,
+          'robots' => Array(asset['tags']).include?('AI-generated') ? 'noindex,follow' : 'index,follow',
+          'sitemap' => !Array(asset['tags']).include?('AI-generated')
         })
       end
     end

@@ -168,6 +168,15 @@ def audit(files)
   end
 end
 
+def artifact_findings(text)
+  DETECTORS.filter_map do |detector|
+    next unless detector.pattern && detector.pattern.match?(text)
+
+    { "detector" => detector.id, "category" => detector.category,
+      "risk" => detector.risk, "confidence" => detector.confidence }
+  end.uniq { |finding| finding.fetch("detector") }
+end
+
 def site_surface_findings
   site_root = File.join(ROOT, "_site")
   return [] unless Dir.exist?(site_root)
@@ -295,9 +304,15 @@ def render_text(findings, files, decisions, verbose: false)
   puts "  ... #{recorded_uncertainty.size - [recorded_uncertainty.size, verbose ? recorded_uncertainty.size : 10].min} more" if !verbose && recorded_uncertainty.size > 10
 end
 
-options = { format: "text", verbose: false, strict: false, report_dir: REPORT_DIR, decide: nil }
+options = {
+  format: "text", verbose: false, strict: false, report_dir: REPORT_DIR,
+  decide: nil, artifact_stdin: false
+}
 OptionParser.new do |parser|
   parser.banner = "Usage: ruby bin/audit_public_surface.rb [options]"
+  parser.on("--artifact-stdin", "Screen stdin and emit finding codes only") do
+    options[:artifact_stdin] = true
+  end
   parser.on("--json", "Emit a redacted JSON report") { options[:format] = "json" }
   parser.on("--verbose", "Print every redacted finding in text mode") { options[:verbose] = true }
   parser.on("--strict", "Fail on high-risk findings or quarantined recollections") { options[:strict] = true }
@@ -317,6 +332,24 @@ OptionParser.new do |parser|
   parser.on("--decide ID=DECISION", "Record a local review decision") { |value| options[:decide] = value }
   parser.on("--help", "Show help") { puts parser; exit 0 }
 end.parse!
+
+if options[:artifact_stdin]
+  max_bytes = 5_000_000
+  text = $stdin.read(max_bytes + 1).force_encoding(Encoding::UTF_8).scrub
+  if text.bytesize > max_bytes
+    puts JSON.generate(tool: "audit_public_surface", status: "rejected", error_code: "input_too_large")
+    exit 2
+  end
+
+  findings = artifact_findings(text)
+  puts JSON.generate(
+    tool: "audit_public_surface",
+    status: findings.empty? ? "no_patterns_detected" : "review_required",
+    findings: findings,
+    privacy_clearance: false
+  )
+  exit(findings.empty? ? 0 : 2)
+end
 
 files = public_files
 findings = audit(files) + site_surface_findings

@@ -215,7 +215,7 @@ bin/broadcast --rewatch 1
 ./obs/scripts/test-audio-routing.sh
 ```
 
-See the [recording cheatsheet](../obs/docs/recording-cheatsheet.md), [audio routing guide](../obs/docs/audio-routing-macos.md), and [livestreaming guidance](../obs/docs/livestreaming-tutorial-and-guidelines.md) for focused references.
+See the [recording cheatsheet](https://github.com/just3ws/just3ws.github.io/blob/master/obs/docs/recording-cheatsheet.md), [audio routing guide](https://github.com/just3ws/just3ws.github.io/blob/master/obs/docs/audio-routing-macos.md), and [livestreaming guidance](https://github.com/just3ws/just3ws.github.io/blob/master/obs/docs/livestreaming-tutorial-and-guidelines.md) for focused references.
 
 ## Upstream references
 

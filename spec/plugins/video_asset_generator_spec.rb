@@ -49,5 +49,24 @@ RSpec.describe Jekyll::VideoAssetGenerator do
       )
       subject.generate(site)
     end
+
+    it 'keeps synthetic video pages out of search indexes and the sitemap' do
+      data['video_assets']['items'][0]['tags'] = ['AI-generated']
+      expect(Jekyll::VideoAssetPage).to receive(:new).with(
+        site, site.source, 'test-asset-1', hash_including(
+          'robots' => 'noindex,follow', 'sitemap' => false
+        )
+      )
+      subject.generate(site)
+    end
+
+    it 'preserves indexing for ordinary archive videos' do
+      expect(Jekyll::VideoAssetPage).to receive(:new).with(
+        site, site.source, 'test-asset-1', hash_including(
+          'robots' => 'index,follow', 'sitemap' => true
+        )
+      )
+      subject.generate(site)
+    end
   end
 end

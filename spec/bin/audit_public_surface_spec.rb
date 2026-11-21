@@ -8,6 +8,33 @@ require "spec_helper"
 RSpec.describe "audit_public_surface" do
   let(:command) { ["ruby", File.expand_path("../../bin/audit_public_surface.rb", __dir__)] }
 
+  it "screens stdin without echoing content or writing a review report" do
+    Dir.mktmpdir("public-surface-stdin") do |root|
+      marker = "SYNTHETIC_PRIVATE_MARKER_42"
+      output, status = Open3.capture2e(
+        { "PUBLIC_SURFACE_AUDIT_ROOT" => root }, *command, "--artifact-stdin",
+        stdin_data: "password: #{marker}\n"
+      )
+
+      expect(status.exitstatus).to eq(2)
+      report = JSON.parse(output)
+      expect(report.fetch("status")).to eq("review_required")
+      expect(report.fetch("findings").map { |finding| finding.fetch("detector") }).to include("credential-assignment")
+      expect(output).not_to include(marker)
+      expect(Dir.exist?(File.join(root, "tmp", "public-surface-audit"))).to be(false)
+    end
+  end
+
+  it "reports no matched patterns without calling the artifact cleared" do
+    output, status = Open3.capture2e(*command, "--artifact-stdin", stdin_data: "A synthetic public story.\n")
+
+    expect(status.exitstatus).to eq(0)
+    report = JSON.parse(output)
+    expect(report.fetch("status")).to eq("no_patterns_detected")
+    expect(report.fetch("privacy_clearance")).to be(false)
+    expect(report.fetch("findings")).to be_empty
+  end
+
   it "emits a redacted, structured report" do
     Dir.mktmpdir("public-surface-structured") do |root|
       FileUtils.mkdir_p(File.join(root, "_posts"))
