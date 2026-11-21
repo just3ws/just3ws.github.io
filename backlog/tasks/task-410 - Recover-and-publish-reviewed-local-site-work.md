@@ -18,6 +18,7 @@ modified_files:
   - _plugins/generate_video_assets.rb
   - spec/plugins/video_asset_generator_spec.rb
   - ai/series/ramblin-aimblin/the-67-year-obituary-of-the-programmer.md
+  - series/ramblin-aimblin/index.html
 type: chore
 ---
 
