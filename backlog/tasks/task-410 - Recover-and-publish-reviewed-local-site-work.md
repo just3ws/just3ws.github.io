@@ -53,4 +53,6 @@ Substantial site work remained uncommitted while master also diverged from origi
 Initial remote fetch shows master diverged: three upstream commits and one local commit. Upstream includes episode infrastructure and Dashboard That Couldn't Hear; local untracked files overlap those paths. Preserve a local checkpoint before merging. Council found synthetic narrator misattribution and unsupported historical claims requiring correction.
 
 Merged origin/master preserving both histories. Stash backup retained; all overlapping episode files matched upstream byte-for-byte except registry. Combined registry retains Hall Pass, upstream Dashboard recut, and local Programmer Obituary. Original tracked/untracked work backed up under /private/tmp before merge.
+
+Full RSpec passed 307 examples. Corrected indentation introduced while combining episode registry; rebuilding. Focused generator/quarantine/stdin audit specs passed 22 examples.
 <!-- SECTION:NOTES:END -->
