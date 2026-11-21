@@ -26,6 +26,7 @@ modified_files:
   - obs/bookmarks/the-sound-above-rewatch.html
   - _includes/studio_workbench/coderwall_content.html
   - _data/panoramic_view.yml
+  - docs/recording-playbook.md
 type: chore
 ---
 
