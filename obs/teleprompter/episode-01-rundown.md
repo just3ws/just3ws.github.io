@@ -43,7 +43,7 @@
 
 ### Part A: Scripted Intro & Context (Acts 1-3 in Textream, ~5-7 min)
 - **Scene 01 (`Starting Soon`) -> Scene 02 (`Monologue / Full Camera`):**
-  - **Act 1 (Cold Open - Scripted):** SCNA 2011 at Swissotel Chicago (Nov 19, 2011), Photo Booth on a 15-inch unibody MacBook Pro. Personal arc: Aug 13, 2008 first meeting off the Metra UP-NW from Crystal Lake; Sergio recorded *you* in the audience; 3 years later you traded places.
+  - **Act 1 (Cold Open - Scripted):** SCNA 2011 at Swissotel Chicago (Nov 19, 2011), Photo Booth on a 15-inch unibody MacBook Pro. Personal arc: Chicago Alt.NET was the first user group where you ever gave a talk; Aug 13, 2008 was your first Chicago Alt.NET meeting off the Metra UP-NW from Crystal Lake where Sergio recorded *you* in the audience; 3 years later you traded places.
   - **Act 2 (Setting the Scene - Scripted):** What Chicago Alt.NET was (working devs improving craft, not ideology), April 2007 Alt.NET Manifesto, late 2007 launch (Derek Lakin, Uriah, Eduardo), 2nd Wednesday 6:30 PM at Redpoint in Sears Tower, 25-person room, your first talk on NHaml (Nov 12, 2008) beside Adam Tybor on Spark.
   - **Act 3 (Three Archival Clicks - Scripted + brief Scene 04 Split Screen):**
     1. Fishbowl debates (Mar 12, 2009 blog recap: Adam Tybor DDD + Sergio `db4o`).
