@@ -17,10 +17,12 @@
 - **Signatory Network Map (#106 Mike / #592 Sergio):** `https://www.just3ws.localhost/reports/software-craftsmanship-forensics/signatory-network/`
 - **Chicago Code Camp Retrospective (`just3ws/ccs`, 24 commits):** `https://www.just3ws.localhost/ai/2026/11/18/chicago-code-camp-2012-code-camp-server-retrospective/`
 - **Contemporary 2008-2009 Blog Posts:**
+  - [Aug 5, 2008: Sergio Pereira on Devlicio.us (Wayback, Nov 14, 2011)](https://web.archive.org/web/20111114202141/http://devlicio.us/blogs/sergio_pereira/archive/2008/08/05/august-s-chicago-alt-net-meeting-on-the-13th.aspx)
   - [Aug 11, 2008: Upcoming Chicago Alt.NET Meeting](https://www.just3ws.localhost/2008/08/11/upcoming-chicago-alt-net-meeting-on-august-13th.html)
   - [Aug 14, 2008: August 13th Meeting Review (Cruise CI)](https://www.just3ws.localhost/2008/08/14/chicago-alt-net-meeting-august-13th-meeting-review.html)
   - [Aug 21, 2008: Video Recorded by Sergio Pereira](https://www.just3ws.localhost/2008/08/21/video-from-chicago-alt-net-meeting.html)
   - [Mar 12, 2009: Fishbowl Recap (DDD & db4o)](https://www.just3ws.localhost/2009/03/12/chicagoalt-net-march-meeting-recap.html)
+  - [Apr 25, 2009: twatio.com /Home/About (Wayback - ASP.NET MVC & SubSonic)](https://web.archive.org/web/20090425135438/http://twatio.com:80/Home/About)
   - [Nov 2008 Chicago Alt.NET Wayback Capture (NHaml & Spark)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home)
 
 ---
