@@ -437,8 +437,7 @@ class EpisodeBookmarks
     entries = [link('Season One working outline', "#{SITE}/series/the-sound-above/")]
     if number.between?(1, 35)
       entries << link('Episode page', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/")
-      workbench_path = File.join(ROOT, 'series', 'the-sound-above', format('episode-%02d-workbench.html', number))
-      entries << link('Live Broadcast Workbench (3-Pane Cockpit)', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/workbench/") if File.file?(workbench_path)
+      entries << link('Live Broadcast Workbench (3-Pane Cockpit)', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/workbench/")
       entries << link('Canonical Interview (Video + Chapters + Transcript)', "#{SITE}/interviews/#{dossier['slug']}/")
     elsif number > 35
       entries << link('Possible later extras in the working outline', "#{SITE}/series/the-sound-above/#series-codas")

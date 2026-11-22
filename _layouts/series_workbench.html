@@ -1,0 +1,592 @@
+---
+layout: none
+---
+{% assign ep = page.episode %}
+{% assign dossier = page.dossier %}
+{% assign ep_num = page.episode_number_formatted %}
+{% assign ep_slug = dossier.slug | default: ep.slug %}
+{% assign ep_title = dossier.title | default: ep.title %}
+{% assign ep_guest = dossier.interviewee | default: ep.interviewee %}
+{% assign ep_conf = dossier.conference | default: ep.conference %}
+{% assign ep_year = dossier.year | default: ep.year %}
+{% assign ep_era = dossier.era_name | default: ep.era_name | default: "The Chicago Workshop" %}
+{% assign ep_inquiry = dossier.narrative.core_inquiry | default: ep.sound_above_inquiry %}
+{% assign ep_cues = dossier.rewatch_cues %}
+{% assign ep_receipts = dossier.archival_receipts %}
+{% assign ep_errata = dossier.errata %}
+{% assign ep_attachments = dossier.research_attachments %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Broadcast Workbench | The Sound Above Ep {{ ep_num }}: {{ ep_title }}</title>
+  <meta name="description" content="Live 3-pane broadcast operational workbench, scene cue tracker, Textream launcher, and unscripted rewatch guide for The Sound Above Episode {{ ep_num }}.">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --dash-bg: #faf8f5;
+      --dash-panel: #ffffff;
+      --dash-panel-header: #f4f0e8;
+      --dash-border: #e3dfd7;
+      --dash-border-subtle: #eeebe3;
+      --dash-active: #0f766e;
+      --dash-accent: #b45309;
+      --dash-green: #15803d;
+      --dash-red: #b91c1c;
+      --dash-ink: #1e232a;
+      --dash-heading: #0f172a;
+      --dash-muted: #525866;
+      --dash-meta: #64748b;
+      --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "SF Mono", "Fira Code", Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background-color: var(--dash-bg); color: var(--dash-ink);
+      margin: 0; padding: 0; height: 100vh; display: flex; flex-direction: column;
+      overflow: hidden; font-family: var(--font-sans); font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .cockpit-hud {
+      background: var(--dash-panel); border-bottom: 1px solid var(--dash-border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-shrink: 0; box-shadow: 0 1px 3px rgba(45, 35, 20, 0.04);
+    }
+    .hud-title-group { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .hud-badge {
+      background: rgba(15, 118, 110, 0.1); border: 1px solid rgba(15, 118, 110, 0.35);
+      color: var(--dash-active); padding: 4px 10px; border-radius: 4px;
+      font-size: 0.78rem; font-weight: 700; font-family: var(--font-mono);
+      letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+    }
+    .hud-title {
+      font-family: var(--font-display); font-size: 1.2rem; font-weight: 700;
+      color: var(--dash-heading); letter-spacing: -0.015em; margin: 0;
+    }
+    .hud-subtitle { font-size: 0.82rem; color: var(--dash-muted); }
+    .hud-telemetry { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+    .telemetry-item { display: flex; flex-direction: column; align-items: flex-end; }
+    .telemetry-val { font-family: var(--font-mono); font-weight: 700; font-size: 1.02rem; color: var(--dash-accent); }
+    .telemetry-val.rec-time { color: var(--dash-red); display: flex; align-items: center; gap: 6px; }
+    .rec-dot { width: 10px; height: 10px; background: var(--dash-red); border-radius: 50%; animation: rec-pulse 1.2s infinite; }
+    @keyframes rec-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.85); } }
+    .telemetry-label { font-size: 0.7rem; color: var(--dash-meta); text-transform: uppercase; letter-spacing: 0.05em; font-family: var(--font-mono); }
+    .cockpit-grid { display: grid; grid-template-columns: 280px 1fr 380px; gap: 12px; padding: 12px; flex: 1; overflow: hidden; min-height: 0; }
+    .cockpit-panel {
+      background: var(--dash-panel); border: 1px solid var(--dash-border); border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(45, 35, 20, 0.04); display: flex; flex-direction: column; overflow: hidden; min-height: 0;
+    }
+    .panel-header {
+      background: var(--dash-panel-header); border-bottom: 1px solid var(--dash-border);
+      padding: 8px 14px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    }
+    .panel-title {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--dash-heading); display: flex; align-items: center; gap: 8px; font-family: var(--font-mono);
+    }
+    .panel-body { padding: 14px; overflow-y: auto; flex: 1; }
+    .scene-list { display: flex; flex-direction: column; gap: 8px; }
+    .scene-cue-card {
+      background: var(--dash-bg); border: 1px solid var(--dash-border); border-radius: 6px;
+      padding: 10px 12px; cursor: pointer; transition: all 0.2s ease; text-align: left; width: 100%; font-family: inherit;
+    }
+    .scene-cue-card:hover { background: #ffffff; border-color: var(--dash-active); box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1); }
+    .scene-cue-card.active { background: #ffffff; border-color: var(--dash-active); border-left: 4px solid var(--dash-active); box-shadow: 0 3px 12px rgba(15, 118, 110, 0.12); }
+    .scene-meta { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--dash-meta); font-family: var(--font-mono); margin-bottom: 4px; }
+    .scene-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--dash-heading); letter-spacing: -0.01em; }
+    .scene-cue-desc { font-size: 0.78rem; color: var(--dash-muted); margin-top: 4px; line-height: 1.38; }
+    .scene-filter-bar {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+      padding: 8px 12px; background: var(--dash-panel-header); border: 1px solid var(--dash-border); border-radius: 6px; font-size: 0.8rem;
+    }
+    .filter-btn-toggle {
+      background: #ffffff; border: 1px solid var(--dash-border); color: var(--dash-muted);
+      font-size: 0.73rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-family: var(--font-mono);
+    }
+    .filter-btn-toggle.active { background: var(--dash-active); border-color: var(--dash-active); color: #ffffff; font-weight: 700; }
+    .callout-warning {
+      background: rgba(180, 83, 9, 0.06); border: 1px solid rgba(180, 83, 9, 0.25);
+      border-left: 4px solid var(--dash-accent); border-radius: 6px; padding: 10px 14px;
+      margin-bottom: 12px; font-size: 0.88rem; line-height: 1.45; color: var(--dash-ink);
+    }
+    .prompt-card {
+      background: var(--dash-bg); border: 1px solid var(--dash-border); border-radius: 8px;
+      padding: 16px 18px; margin-bottom: 14px; transition: opacity 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .prompt-card.dimmed { opacity: 0.38; border-color: var(--dash-border-subtle); }
+    .prompt-card.scene-focused { border-color: var(--dash-active); box-shadow: 0 4px 16px rgba(15, 118, 110, 0.14); background: #ffffff; }
+    .prompt-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+    .prompt-phase { font-family: var(--font-mono); font-size: 0.75rem; color: var(--dash-accent); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+    .prompt-lead { font-family: var(--font-display); font-size: 1.24rem; font-weight: 700; line-height: 1.32; color: var(--dash-heading); margin-bottom: 10px; }
+    .prompt-body { font-size: 0.94rem; line-height: 1.6; color: var(--dash-ink); }
+    .rewatch-cue-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin: 10px 0; border: 1px solid var(--dash-border); border-radius: 6px; overflow: hidden; }
+    .rewatch-cue-table th { background: var(--dash-panel-header); color: var(--dash-muted); text-align: left; padding: 7px 10px; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; border-bottom: 1px solid var(--dash-border); }
+    .rewatch-cue-table td { padding: 8px 10px; border-bottom: 1px solid var(--dash-border-subtle); vertical-align: top; line-height: 1.45; }
+    .rewatch-cue-table tr:last-child td { border-bottom: 0; }
+    .textream-btn {
+      display: inline-flex; align-items: center; gap: 6px; background: var(--dash-active); color: #ffffff;
+      border: 1px solid var(--dash-active); border-radius: 5px; padding: 5px 10px; font-size: 0.74rem;
+      font-family: var(--font-mono); font-weight: 700; text-decoration: none; cursor: pointer;
+    }
+    .textream-btn:hover { background: #0b5d57; color: #ffffff; }
+    .textream-btn.secondary { background: #ffffff; color: var(--dash-active); border-color: var(--dash-active); }
+    .copy-btn {
+      background: var(--dash-panel); border: 1px solid var(--dash-border); color: var(--dash-ink);
+      font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 4px;
+      cursor: pointer; font-family: var(--font-mono); text-decoration: none;
+    }
+    .copy-btn:hover { background: var(--dash-active); color: #ffffff; border-color: var(--dash-active); }
+    .command-box { background: var(--dash-panel-header); border: 1px solid var(--dash-border); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; }
+    .command-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .command-tag { font-size: 0.7rem; text-transform: uppercase; font-family: var(--font-mono); color: var(--dash-meta); font-weight: 600; }
+    .command-code { font-family: var(--font-mono); font-size: 0.8rem; color: var(--dash-active); word-break: break-all; line-height: 1.4; font-weight: 600; }
+    .live-jump-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+    .jump-btn {
+      display: flex; justify-content: space-between; align-items: center; background: #ffffff;
+      border: 1px solid var(--dash-border); color: var(--dash-ink); padding: 7px 10px; border-radius: 6px;
+      font-size: 0.82rem; text-decoration: none; cursor: pointer; font-family: inherit; width: 100%; text-align: left;
+    }
+    .jump-btn:hover { background: var(--dash-panel-header); border-color: var(--dash-active); color: var(--dash-heading); }
+    .jump-timestamp { font-family: var(--font-mono); color: var(--dash-accent); font-weight: 700; font-size: 0.78rem; white-space: nowrap; margin-left: 8px; }
+    @media (max-width: 1080px) {
+      body { height: auto; overflow-y: auto; }
+      .cockpit-grid { grid-template-columns: 1fr; overflow: visible; }
+      .cockpit-panel { max-height: none; }
+      .panel-body { max-height: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+  <header class="cockpit-hud" role="banner">
+    <div class="hud-title-group">
+      <div class="hud-badge">OBS Workbench // Ep {{ ep_num }}</div>
+      <div>
+        <h1 class="hud-title">{{ ep_title }}</h1>
+        <div class="hud-subtitle">The Sound Above · {{ ep_era }} · {{ ep_guest }} ({{ ep_conf }} {{ ep_year }}) · <code>@just3ws-mike</code></div>
+      </div>
+    </div>
+    <div class="hud-telemetry">
+      <div class="telemetry-item">
+        <div class="telemetry-val rec-time"><span class="rec-dot"></span> <span id="timer-display">00:00:00</span></div>
+        <div class="telemetry-label">Session Elapsed</div>
+      </div>
+      <div class="telemetry-item">
+        <div class="telemetry-val" style="color: var(--dash-green);">{{ ep_attachments.size | default: 0 }} SOURCES</div>
+        <div class="telemetry-label">Archival Tabs</div>
+      </div>
+      <div class="telemetry-item" style="flex-direction: row; gap: 8px; align-items: center;">
+        <button id="btn-timer-toggle" class="copy-btn" type="button" style="padding: 6px 12px; font-weight: 700;">START TIMER</button>
+        <a href="/series/the-sound-above/episode-{{ ep_num }}/" class="copy-btn" style="padding: 6px 10px;">Public Page &nearr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="cockpit-grid" role="main">
+
+    <!-- Column 1: OBS Production Flow -->
+    <section class="cockpit-panel" aria-labelledby="heading-scenes">
+      <div class="panel-header">
+        <div class="panel-title" id="heading-scenes">OBS Production Flow</div>
+        <span style="font-size: 0.72rem; color: var(--dash-meta); font-family: var(--font-mono);">6 ACTS</span>
+      </div>
+      <div class="panel-body">
+        <div class="scene-list">
+          <button type="button" class="scene-cue-card active" data-scene="02">
+            <div class="scene-meta"><span>SCENE 01 &rarr; 02 · ACTS 1-2</span><span>INTRO</span></div>
+            <div class="scene-name">Starting Soon VO &rarr; Monologue</div>
+            <div class="scene-cue-desc">Hold on Starting Soon for hook, switch to Monologue for greeting &amp; {{ ep_guest }} context.</div>
+          </button>
+          <button type="button" class="scene-cue-card" data-scene="04">
+            <div class="scene-meta"><span>SCENE 04 · ACT 3</span><span>RECEIPTS</span></div>
+            <div class="scene-name">Split Screen: Archival Receipts</div>
+            <div class="scene-cue-desc">Walk through era-specific Wayback snapshots, blog entries, and primary-source artifacts.</div>
+          </button>
+          <button type="button" class="scene-cue-card" data-scene="03">
+            <div class="scene-meta"><span>SCENE 03 · ACT 4</span><span>UNSCRIPTED</span></div>
+            <div class="scene-name">Open-Ended Rewatch</div>
+            <div class="scene-cue-desc">NO SCRIPT NEEDED. Drive canonical hosted interview page; bounce to Scene 04 for research.</div>
+          </button>
+          <button type="button" class="scene-cue-card" data-scene="05">
+            <div class="scene-meta"><span>SCENE 02 · ACT 5</span><span>SYNTHESIS</span></div>
+            <div class="scene-name">Monologue Wrap-Up</div>
+            <div class="scene-cue-desc">Back on camera: connect 2011 insights to the present-day AI engineering era.</div>
+          </button>
+          <button type="button" class="scene-cue-card" data-scene="08">
+            <div class="scene-meta"><span>SCENE 08 · ACT 6</span><span>OUTRO</span></div>
+            <div class="scene-name">Outro &amp; Next Episode Tease</div>
+            <div class="scene-cue-desc">Thank {{ ep_guest }}, point to just3ws.com/support, invite corrections, tease next episode.</div>
+          </button>
+          {% if ep_errata %}
+          <button type="button" class="scene-cue-card" data-scene="errata">
+            <div class="scene-meta"><span>COMPANION ERRATA</span><span>FREEFORM</span></div>
+            <div class="scene-name">Unscripted Errata Deep Dive</div>
+            <div class="scene-cue-desc">{{ ep_errata.title }}</div>
+          </button>
+          {% endif %}
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 14px 0;">
+        <div class="callout-warning" style="margin-bottom: 0; font-size: 0.8rem;">
+          <strong>Split Screen Geometry Locked:</strong><br>
+          Video: <code>910x1080</code> at <code>(30, 0)</code><br>
+          Research: <code>910x1080</code> at <code>(980, 0)</code><br>
+          Profile: <code>The Sound Above - Staging</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Column 2: Active Rundown, Rewatch Guide & Errata -->
+    <section class="cockpit-panel" aria-labelledby="heading-prompter">
+      <div class="panel-header">
+        <div class="panel-title" id="heading-prompter">Active Rundown &amp; Rewatch Guide</div>
+        <span id="active-scene-indicator" style="font-size: 0.72rem; color: var(--dash-accent); font-family: var(--font-mono); font-weight: 700;">SCENE 01 -> 02</span>
+      </div>
+      <div class="panel-body">
+        <div class="scene-filter-bar">
+          <span style="color: var(--dash-muted); font-size: 0.78rem;">Focus: <strong id="filter-scene-label" style="color: var(--dash-active);">All Phases</strong></span>
+          <div style="display: flex; gap: 6px;">
+            <button id="btn-filter-all" class="filter-btn-toggle active" type="button">ALL PHASES</button>
+            <button id="btn-filter-active" class="filter-btn-toggle" type="button">ACTIVE SCENE ONLY</button>
+          </div>
+        </div>
+
+        {% if ep_inquiry %}
+        <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(15, 118, 110, 0.07); border-color: rgba(15, 118, 110, 0.28);">
+          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dash-active); font-weight: 700; font-family: var(--font-mono); margin-bottom: 4px;">Core Episode Inquiry</div>
+          <div style="font-family: var(--font-display); font-size: 1.02rem; color: var(--dash-heading); font-weight: 700;">{{ ep_inquiry }}</div>
+        </div>
+        {% endif %}
+
+        <!-- Act 1 -->
+        <div class="prompt-card" data-scene="02">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 1 // Scene 01 Starting Soon VO &rarr; Scene 02 Monologue</div>
+            <a href="textream://read" data-textream-acts="act_1" class="textream-btn">&#x25B6; Textream: Act 1</a>
+          </div>
+          <div class="prompt-lead">Cold Open &amp; Personal Context ({{ ep_guest }})</div>
+          <div class="prompt-body">{{ dossier.teleprompter_script.act_1 | newline_to_br }}</div>
+        </div>
+
+        <!-- Act 2 -->
+        <div class="prompt-card" data-scene="02">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 2 // Scene 02 Monologue // Historical Logistics</div>
+            <a href="textream://read" data-textream-acts="act_2" class="textream-btn">&#x25B6; Textream: Act 2</a>
+          </div>
+          <div class="prompt-lead">Setting the Historical Scene</div>
+          <div class="prompt-body">{{ dossier.teleprompter_script.act_2 | newline_to_br }}</div>
+        </div>
+
+        <!-- Act 3 -->
+        <div class="prompt-card" data-scene="04">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 3 // Scene 04 Split Screen // Primary-Source Receipts</div>
+            <a href="textream://read" data-textream-acts="act_3" class="textream-btn">&#x25B6; Textream: Act 3</a>
+          </div>
+          <div class="prompt-lead">Archival Receipts &amp; Core Question</div>
+          <div class="prompt-body">
+            {% if ep_receipts and ep_receipts.size > 0 %}
+            <ol style="margin: 0 0 12px; padding-left: 1.25rem; display: grid; gap: 6px;">
+              {% for r in ep_receipts %}
+              <li><strong><a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.title }}</a>:</strong> {{ r.summary }}</li>
+              {% endfor %}
+            </ol>
+            {% endif %}
+            {{ dossier.teleprompter_script.act_3 | newline_to_br }}
+          </div>
+        </div>
+
+        <!-- Act 4: Unscripted Rewatch -->
+        <div class="prompt-card" data-scene="03" style="border-left: 4px solid var(--dash-accent);">
+          <div class="prompt-card-top">
+            <div class="prompt-phase" style="color: var(--dash-accent);">Act 4 // Scene 03 (Reaction) &amp; Scene 04 (Split) // Unscripted Rewatch</div>
+            <span class="hud-badge" style="background: rgba(180,83,9,0.1); border-color: rgba(180,83,9,0.35); color: var(--dash-accent);">NO SCRIPT NEEDED</span>
+          </div>
+          <div class="prompt-lead">Rewatch Cue Board: {{ ep_guest }} ({{ ep_conf }} {{ ep_year }})</div>
+          <div class="prompt-body">
+            <p style="margin: 0 0 8px;">Drive the canonical hosted interview page from the right-hand controller. Wait a half-second beat after a thought lands before pausing, and bounce into Scene 04 whenever a receipt or Wayback snapshot adds context.</p>
+            {% if ep_cues and ep_cues.size > 0 %}
+            <table class="rewatch-cue-table">
+              <thead><tr><th style="width: 78px;">Jump</th><th>What {{ ep_guest }} Says</th><th>Watch For / Context Tip</th></tr></thead>
+              <tbody>
+                {% for cue in ep_cues %}
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep-seek="{{ cue.seconds }}">{{ cue.time }}</button></td>
+                  <td>{{ cue.guest_says }}</td>
+                  <td>{{ cue.watch_for }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <div style="font-size: 0.9rem; color: var(--dash-muted);">{{ dossier.teleprompter_script.act_4 | newline_to_br }}</div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Act 5 -->
+        <div class="prompt-card" data-scene="05">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 5 // Scene 02 Monologue Wrap-Up // Synthesis</div>
+            <a href="textream://read" data-textream-acts="act_5" class="textream-btn">&#x25B6; Textream: Act 5</a>
+          </div>
+          <div class="prompt-lead">Synthesis &amp; Present-Day AI-Era Echo</div>
+          <div class="prompt-body">{{ dossier.teleprompter_script.act_5 | newline_to_br }}</div>
+        </div>
+
+        <!-- Act 6 -->
+        <div class="prompt-card" data-scene="08">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 6 // Scene 08 Outro // Credits &amp; Next Episode</div>
+            <a href="textream://read" data-textream-acts="act_6" class="textream-btn">&#x25B6; Textream: Act 6</a>
+          </div>
+          <div class="prompt-lead">Outro, Acknowledgments &amp; Next Episode</div>
+          <div class="prompt-body">{{ dossier.teleprompter_script.act_6 | newline_to_br }}</div>
+        </div>
+
+        {% if ep_errata %}
+        <!-- Companion Errata Card -->
+        <div class="prompt-card" data-scene="errata" style="border-left: 4px solid var(--dash-active);">
+          <div class="prompt-card-top">
+            <div class="prompt-phase" style="color: var(--dash-active);">Companion Errata // Unscripted Deep Dive</div>
+            <span class="hud-badge">FREEFORM ERRATA</span>
+          </div>
+          <div class="prompt-lead">{{ ep_errata.title }}</div>
+          <div class="prompt-body">
+            <p style="margin: 0 0 8px;">{{ ep_errata.focus }}</p>
+            {% if ep_errata.unscripted_prompts %}
+            <ul style="margin: 0; padding-left: 1.2rem; display: grid; gap: 5px;">
+              {% for item in ep_errata.unscripted_prompts %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Column 3: Textream Launchers, Canonical Interview Controller & Research Tabs -->
+    <section class="cockpit-panel" aria-labelledby="heading-tools">
+      <div class="panel-header">
+        <div class="panel-title" id="heading-tools">Tool Belt &amp; Launchers</div>
+        <span style="font-size: 0.72rem; color: var(--dash-meta); font-family: var(--font-mono);">TEXTREAM + CUES</span>
+      </div>
+      <div class="panel-body">
+
+        <div class="panel-title" style="margin-bottom: 8px;">Direct Textream App Launchers</div>
+        <div style="display: grid; gap: 6px; margin-bottom: 14px;">
+          <a href="textream://read" data-textream-acts="act_1,act_2,act_3" class="textream-btn" style="justify-content: space-between; padding: 8px 12px;">
+            <span>&#x25B6; Launch Intro (Acts 1-3)</span><span>Intro</span>
+          </a>
+          <a href="textream://read" data-textream-acts="act_5,act_6" class="textream-btn" style="justify-content: space-between; padding: 8px 12px;">
+            <span>&#x25B6; Launch Outro (Acts 5-6)</span><span>Outro</span>
+          </a>
+          <a href="textream://read" data-textream-acts="act_1,act_2,act_3,act_5,act_6" class="textream-btn secondary" style="justify-content: space-between; padding: 7px 12px;">
+            <span>&#x25B6; Launch Full Scripted Acts</span><span>All</span>
+          </a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 12px 0;">
+
+        <div class="panel-title" style="margin-bottom: 6px;">Canonical Interview Stage (Hosted)</div>
+        <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(15, 118, 110, 0.06); border-color: rgba(15, 118, 110, 0.25); margin-bottom: 10px; font-size: 0.82rem;">
+          <strong>Single Source of Truth:</strong> All rewatches run through your hosted interview page with chapters &amp; diarized transcript.
+          <div style="margin-top: 8px; display: flex; gap: 6px;">
+            <button type="button" id="btn-open-canonical" class="textream-btn" style="flex: 1; justify-content: center;">&#x25B6; Open Canonical Interview Window</button>
+          </div>
+        </div>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+          <button type="button" class="copy-btn" data-ep-cmd="play">&#x25B6; Play</button>
+          <button type="button" class="copy-btn" data-ep-cmd="pause">&#x23F8; Pause</button>
+          <button type="button" class="copy-btn" data-ep-seek="0">&#x23EE; 00:00</button>
+          <a href="/interviews/{{ ep_slug }}/" target="just3ws_canonical_interview" class="copy-btn" style="margin-left: auto;">Chapters &amp; Transcript &nearr;</a>
+        </div>
+
+        {% if ep_cues and ep_cues.size > 0 %}
+        <div class="live-jump-list">
+          {% for cue in ep_cues %}
+          <button type="button" class="jump-btn" data-ep-seek="{{ cue.seconds }}">
+            <span>{{ cue.label }}</span>
+            <span class="jump-timestamp">{{ cue.time }}</span>
+          </button>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 14px 0;">
+
+        <div class="panel-title" style="margin-bottom: 8px;">Research &amp; Presentation Tabs</div>
+        <div class="live-jump-list">
+          <a href="/interviews/{{ ep_slug }}/" target="_blank" rel="noopener" class="jump-btn">
+            <span>Canonical Interview &amp; Transcript</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">LOCAL</span>
+          </a>
+          {% for att in ep_attachments %}
+            {% assign clean_url = att.url | replace: "https://just3ws.com", "" | replace: "https://www.just3ws.com", "" %}
+            {% if clean_url == "" %}{% assign clean_url = "/" %}{% endif %}
+            {% unless clean_url contains ep_slug %}
+            <a href="{{ clean_url }}" target="_blank" rel="noopener" class="jump-btn">
+              <span>{{ att.title | truncate: 44 }}</span>
+              <span style="font-size: 0.72rem; color: {% if att.url contains 'web.archive.org' %}var(--dash-accent){% else %}var(--dash-active){% endif %}; font-family: var(--font-mono);">{% if att.url contains 'web.archive.org' %}WAYBACK{% else %}SOURCE{% endif %}</span>
+            </a>
+            {% endunless %}
+          {% endfor %}
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 14px 0;">
+
+        <div class="command-box">
+          <div class="command-header">
+            <span class="command-tag">Open Multi-Page .textream File</span>
+            <button type="button" class="copy-btn" data-copy="open -a Textream ~/github.com/just3ws/just3ws.github.io/obs/teleprompter/episode-{{ ep_num }}.textream">Copy</button>
+          </div>
+          <div class="command-code">open -a Textream obs/teleprompter/episode-{{ ep_num }}.textream</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script id="episode-script-data" type="application/json">{{ dossier.teleprompter_script | jsonify }}</script>
+  <script>
+    (function () {
+      const scriptDataEl = document.getElementById('episode-script-data');
+      if (scriptDataEl) {
+        try {
+          const acts = JSON.parse(scriptDataEl.textContent || '{}');
+          const cleanSpoken = function (raw) {
+            return String(raw || '')
+              .split(/\r?\n/)
+              .filter(function (line) {
+                return !/^\s*\[(?:SCENE|PAUSE|SHOW|FREEFORM|REWATCH)[^\]]*\]\s*$/i.test(line);
+              })
+              .join('\n')
+              .replace(/\n{3,}/g, '\n\n')
+              .trim();
+          };
+          document.querySelectorAll('[data-textream-acts]').forEach(function (link) {
+            const keys = (link.getAttribute('data-textream-acts') || '').split(',');
+            const combined = keys.map(function (k) { return cleanSpoken(acts[k.trim()]); }).filter(Boolean).join('\n\n');
+            if (combined) link.setAttribute('href', 'textream://read?text=' + encodeURIComponent(combined));
+          });
+        } catch (e) {}
+      }
+
+      let timerRunning = false, startTime = 0, timerInterval = null;
+      const timerDisplay = document.getElementById('timer-display');
+      const timerBtn = document.getElementById('btn-timer-toggle');
+      timerBtn.addEventListener('click', function () {
+        if (!timerRunning) {
+          timerRunning = true; startTime = Date.now();
+          timerBtn.textContent = 'STOP TIMER'; timerBtn.style.background = 'var(--dash-red)'; timerBtn.style.color = '#ffffff';
+          timerInterval = setInterval(function () {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const h = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+            const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+            const s = String(elapsed % 60).padStart(2, '0');
+            timerDisplay.textContent = h + ':' + m + ':' + s;
+          }, 1000);
+        } else {
+          timerRunning = false; clearInterval(timerInterval);
+          timerBtn.textContent = 'START TIMER'; timerBtn.style.background = 'var(--dash-panel)'; timerBtn.style.color = 'var(--dash-ink)';
+        }
+      });
+
+      const sceneCards = document.querySelectorAll('.scene-cue-card');
+      const sceneIndicator = document.getElementById('active-scene-indicator');
+      const promptCards = document.querySelectorAll('.prompt-card');
+      const filterSceneLabel = document.getElementById('filter-scene-label');
+      const btnFilterAll = document.getElementById('btn-filter-all');
+      const btnFilterActive = document.getElementById('btn-filter-active');
+      let filterMode = 'all';
+
+      function applySceneSelection(sceneNum, sceneName) {
+        sceneIndicator.textContent = (sceneNum === 'errata' ? 'ERRATA: ' : 'SCENE ' + sceneNum + ': ') + sceneName.toUpperCase();
+        filterSceneLabel.textContent = sceneName;
+        let firstTarget = null;
+        promptCards.forEach(function (card) {
+          const matches = card.getAttribute('data-scene') === sceneNum;
+          if (filterMode === 'active') {
+            card.style.display = matches ? 'block' : 'none';
+            card.classList.remove('dimmed');
+            card.classList.toggle('scene-focused', matches);
+          } else {
+            card.style.display = 'block';
+            card.classList.toggle('dimmed', !matches);
+            card.classList.toggle('scene-focused', matches);
+          }
+          if (matches && !firstTarget) firstTarget = card;
+        });
+        if (firstTarget) firstTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      sceneCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          sceneCards.forEach(function (c) { c.classList.remove('active'); });
+          card.classList.add('active');
+          applySceneSelection(card.getAttribute('data-scene'), card.querySelector('.scene-name').textContent);
+        });
+      });
+
+      btnFilterAll.addEventListener('click', function () {
+        filterMode = 'all'; btnFilterAll.classList.add('active'); btnFilterActive.classList.remove('active');
+        const activeCard = document.querySelector('.scene-cue-card.active');
+        applySceneSelection(activeCard.getAttribute('data-scene'), activeCard.querySelector('.scene-name').textContent);
+      });
+      btnFilterActive.addEventListener('click', function () {
+        filterMode = 'active'; btnFilterActive.classList.add('active'); btnFilterAll.classList.remove('active');
+        const activeCard = document.querySelector('.scene-cue-card.active');
+        applySceneSelection(activeCard.getAttribute('data-scene'), activeCard.querySelector('.scene-name').textContent);
+      });
+      applySceneSelection('02', 'Starting Soon VO -> Monologue');
+
+      const CANONICAL_SLUG = {{ ep_slug | jsonify }};
+      const CANONICAL_BASE = '/interviews/' + CANONICAL_SLUG + '/';
+      const syncChannel = (typeof BroadcastChannel !== 'undefined') ? new BroadcastChannel('just3ws-interview-sync') : null;
+      let canonicalWin = null;
+
+      function openCanonical(sec) {
+        const targetUrl = (typeof sec === 'number') ? (CANONICAL_BASE + '#t=' + Math.floor(sec)) : CANONICAL_BASE;
+        if (!canonicalWin || canonicalWin.closed) {
+          canonicalWin = window.open(targetUrl, 'just3ws_canonical_interview');
+        } else {
+          if (syncChannel && typeof sec === 'number') {
+            syncChannel.postMessage({ slug: CANONICAL_SLUG, action: 'seek', seconds: sec });
+          } else {
+            canonicalWin.location.href = targetUrl;
+          }
+          canonicalWin.focus();
+        }
+      }
+
+      document.getElementById('btn-open-canonical').addEventListener('click', function () { openCanonical(); });
+      document.querySelectorAll('[data-ep-cmd]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const action = btn.getAttribute('data-ep-cmd');
+          if (syncChannel) syncChannel.postMessage({ slug: CANONICAL_SLUG, action: action });
+          if ((!canonicalWin || canonicalWin.closed) && action === 'play') openCanonical(0);
+        });
+      });
+      document.querySelectorAll('[data-ep-seek]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const sec = Number(btn.getAttribute('data-ep-seek') || 0);
+          if (syncChannel) syncChannel.postMessage({ slug: CANONICAL_SLUG, action: 'seek', seconds: sec });
+          if (!canonicalWin || canonicalWin.closed) openCanonical(sec);
+        });
+      });
+      document.querySelectorAll('[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy'));
+          const prev = btn.textContent; btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = prev; }, 1200);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

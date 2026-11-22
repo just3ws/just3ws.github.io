@@ -17,11 +17,22 @@ module Jekyll
 
       episodes.each_with_index do |ep, index|
         num = ep['number']
-        # Episode 1 has a dedicated bespoke editorial page at series/the-sound-above/episode-01.html
-        next if num == 1
-
         formatted_num = sprintf('%02d', num)
         slug = "episode-#{formatted_num}"
+        dossier = site.data.dig('episodes', slug)
+
+        # Auto-generate the data-driven 3-Pane Broadcast Workbench for EVERY episode with a YAML dossier (including Ep 1!)
+        if dossier
+          site.pages << SeriesWorkbenchPage.new(site, site.source, slug, {
+            'title' => "Live Broadcast Workbench | The Sound Above Ep #{formatted_num}: #{dossier['title'] || ep['title']}",
+            'episode' => ep,
+            'dossier' => dossier,
+            'episode_number_formatted' => formatted_num,
+          })
+        end
+
+        # Episode 1 has a dedicated bespoke editorial page at series/the-sound-above/episode-01.html
+        next if num == 1
 
         prev_ep = index > 0 ? episodes[index - 1] : nil
         next_ep = index < total_episodes - 1 ? episodes[index + 1] : nil
@@ -42,6 +53,7 @@ module Jekyll
           'breadcrumb_parent_name' => 'The Sound Above',
           'breadcrumb_parent_url' => '/series/the-sound-above/',
           'episode' => ep,
+          'dossier' => dossier,
           'episode_number_formatted' => formatted_num,
           'prev_episode' => prev_ep,
           'next_episode' => next_ep,
@@ -61,6 +73,20 @@ module Jekyll
       read_yaml(File.join(base, '_layouts'), 'series_episode.html')
       data.merge!(custom_data)
       data['permalink'] = "/series/the-sound-above/#{dir_slug}/"
+    end
+  end
+
+  class SeriesWorkbenchPage < Page
+    def initialize(site, base, dir_slug, custom_data)
+      @site = site
+      @base = base
+      @dir = File.join('series', 'the-sound-above', dir_slug, 'workbench')
+      @name = 'index.html'
+
+      process(@name)
+      read_yaml(File.join(base, '_layouts'), 'series_workbench.html')
+      data.merge!(custom_data)
+      data['permalink'] = "/series/the-sound-above/#{dir_slug}/workbench/"
     end
   end
 end
