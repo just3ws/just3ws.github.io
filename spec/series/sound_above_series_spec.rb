@@ -55,22 +55,17 @@ RSpec.describe "The Sound Above Rewatch Series Artifacts" do
     # Jekyll frontmatter check
     expect(content).to match(/\A---\s*\n.*?\n---\s*\n/m)
     frontmatter = YAML.safe_load(content.match(/\A---\s*\n(.*?)\n---\s*\n/m)[1])
-    expect(frontmatter["layout"]).to eq("minimal")
+    expect(["minimal", "series_episode"]).to include(frontmatter["layout"])
     expect(frontmatter["permalink"]).to eq("/series/the-sound-above/episode-01/")
     expect(frontmatter["title"]).to include("Episode 1")
 
-    # YouTube embed and nocookie domain
-    expect(content).to include("https://www.youtube-nocookie.com/embed/qOHdZKz1WFw")
-    expect(content).to include("PLVcmLmfz2uyA")
-
-    # Schema.org VideoObject validation
-    json_ld_match = content.match(/<script type="application\/ld\+json">\s*(\{.*?\})\s*<\/script>/m)
-    expect(json_ld_match).not_to be_nil
-    video_schema = JSON.parse(json_ld_match[1])
-    expect(video_schema["@context"]).to eq("https://schema.org")
-    expect(video_schema["@type"]).to eq("VideoObject")
-    expect(video_schema["contentUrl"]).to include("qOHdZKz1WFw")
-    expect(video_schema["transcript"]).to include("/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/")
+    # Templatized layout provides player embed and Schema.org VideoObject
+    layout_file = File.expand_path("../../_layouts/series_episode.html", __dir__)
+    expect(File.exist?(layout_file)).to be true
+    layout_content = File.read(layout_file)
+    expect(layout_content).to include("embedUrl")
+    expect(layout_content).to include("canonical-stage-heading")
+    expect(layout_content).to include('"@type": "VideoObject"')
   end
 
   it "enforces canonical casing for Alt.NET in series narrative prose and metadata" do

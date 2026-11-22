@@ -50,7 +50,7 @@ RSpec.describe 'Episode Semantic Dossier & Workbench (TASK-287)' do
     it 'merges human marginalia into compiled teleprompter acts' do
       stdout, stderr, status = Open3.capture3(workbench_bin, 'compile', '1', '--markdown')
       expect(status.success?).to be true
-      expect(stdout).to include('first user group Mike attended')
+      expect(stdout).to include('first user group where Mike ever stood up and gave a presentation')
       expect(stdout).to include('Sergio Pereira Interview Profile')
     end
 
