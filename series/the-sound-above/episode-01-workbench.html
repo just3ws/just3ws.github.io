@@ -1,0 +1,1111 @@
+---
+layout: none
+permalink: /series/the-sound-above/episode-01/workbench/
+title: "Live Broadcast Workbench | The Sound Above Ep 01: Sergio Pereira and Chicago Alt.NET"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Broadcast Workbench | The Sound Above Ep 01: Sergio Pereira and Chicago Alt.NET</title>
+  <meta name="description" content="Live 3-pane broadcast operational workbench, scene cue tracker, Textream launcher, and unscripted rewatch guide for The Sound Above Episode 1.">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      /* Canonical Craftsman Design Tokens */
+      --dash-bg: #faf8f5;
+      --dash-panel: #ffffff;
+      --dash-panel-header: #f4f0e8;
+      --dash-border: #e3dfd7;
+      --dash-border-subtle: #eeebe3;
+      --dash-active: #0f766e;
+      --dash-accent: #b45309;
+      --dash-green: #15803d;
+      --dash-red: #b91c1c;
+      --dash-ink: #1e232a;
+      --dash-heading: #0f172a;
+      --dash-muted: #525866;
+      --dash-meta: #64748b;
+
+      --font-display: "Charter", "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+      --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "SF Mono", "Fira Code", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--dash-bg);
+      color: var(--dash-ink);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top HUD Bar */
+    .cockpit-hud {
+      background: var(--dash-panel);
+      border-bottom: 1px solid var(--dash-border);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(45, 35, 20, 0.04);
+    }
+
+    .hud-title-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .hud-badge {
+      background: rgba(15, 118, 110, 0.1);
+      border: 1px solid rgba(15, 118, 110, 0.35);
+      color: var(--dash-active);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hud-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dash-heading);
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+
+    .hud-subtitle {
+      font-size: 0.82rem;
+      color: var(--dash-muted);
+    }
+
+    .hud-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .telemetry-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .telemetry-val {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: var(--dash-accent);
+    }
+
+    .telemetry-val.rec-time {
+      color: var(--dash-red);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .rec-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--dash-red);
+      border-radius: 50%;
+      animation: rec-pulse 1.2s infinite;
+    }
+
+    @keyframes rec-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.85); }
+    }
+
+    .telemetry-label {
+      font-size: 0.7rem;
+      color: var(--dash-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+    }
+
+    /* Main 3-Pane Cockpit */
+    .cockpit-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr 380px;
+      gap: 12px;
+      padding: 12px;
+      flex: 1;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .cockpit-panel {
+      background: var(--dash-panel);
+      border: 1px solid var(--dash-border);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(45, 35, 20, 0.04);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .panel-header {
+      background: var(--dash-panel-header);
+      border-bottom: 1px solid var(--dash-border);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .panel-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--dash-heading);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .panel-body {
+      padding: 14px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    /* Left Pane: Scene Roadmap */
+    .scene-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .scene-cue-card {
+      background: var(--dash-bg);
+      border: 1px solid var(--dash-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .scene-cue-card:hover {
+      background: #ffffff;
+      border-color: var(--dash-active);
+      box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1);
+    }
+
+    .scene-cue-card.active {
+      background: #ffffff;
+      border-color: var(--dash-active);
+      border-left: 4px solid var(--dash-active);
+      box-shadow: 0 3px 12px rgba(15, 118, 110, 0.12);
+    }
+
+    .scene-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--dash-meta);
+      font-family: var(--font-mono);
+      margin-bottom: 4px;
+    }
+
+    .scene-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dash-heading);
+      letter-spacing: -0.01em;
+    }
+
+    .scene-cue-desc {
+      font-size: 0.78rem;
+      color: var(--dash-muted);
+      margin-top: 4px;
+      line-height: 1.38;
+    }
+
+    /* Center Pane: Active Script & Rewatch Guide */
+    .scene-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      background: var(--dash-panel-header);
+      border: 1px solid var(--dash-border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    .filter-btn-toggle {
+      background: #ffffff;
+      border: 1px solid var(--dash-border);
+      color: var(--dash-muted);
+      font-size: 0.73rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn-toggle:hover {
+      color: var(--dash-heading);
+      border-color: var(--dash-active);
+    }
+
+    .filter-btn-toggle.active {
+      background: var(--dash-active);
+      border-color: var(--dash-active);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .callout-warning {
+      background: rgba(180, 83, 9, 0.06);
+      border: 1px solid rgba(180, 83, 9, 0.25);
+      border-left: 4px solid var(--dash-accent);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      color: var(--dash-ink);
+    }
+
+    .prompt-card {
+      background: var(--dash-bg);
+      border: 1px solid var(--dash-border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      transition: opacity 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .prompt-card.dimmed {
+      opacity: 0.38;
+      border-color: var(--dash-border-subtle);
+    }
+
+    .prompt-card.scene-focused {
+      border-color: var(--dash-active);
+      box-shadow: 0 4px 16px rgba(15, 118, 110, 0.14);
+      background: #ffffff;
+    }
+
+    .prompt-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    .prompt-phase {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--dash-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+
+    .prompt-lead {
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      font-weight: 700;
+      line-height: 1.32;
+      color: var(--dash-heading);
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    .prompt-body {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--dash-ink);
+    }
+
+    .prompt-quote {
+      border-left: 3px solid var(--dash-accent);
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-style: italic;
+      color: var(--dash-ink);
+      background: rgba(180, 83, 9, 0.05);
+      border-radius: 0 6px 6px 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .rewatch-cue-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin: 10px 0;
+      border: 1px solid var(--dash-border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .rewatch-cue-table th {
+      background: var(--dash-panel-header);
+      color: var(--dash-muted);
+      text-align: left;
+      padding: 7px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--dash-border);
+    }
+
+    .rewatch-cue-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--dash-border-subtle);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .rewatch-cue-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Buttons & Tool Belt */
+    .textream-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--dash-active);
+      color: #ffffff;
+      border: 1px solid var(--dash-active);
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .textream-btn:hover {
+      background: #0b5d57;
+      border-color: #0b5d57;
+      color: #ffffff;
+    }
+
+    .textream-btn.secondary {
+      background: #ffffff;
+      color: var(--dash-active);
+      border-color: var(--dash-active);
+    }
+
+    .textream-btn.secondary:hover {
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    .copy-btn {
+      background: var(--dash-panel);
+      border: 1px solid var(--dash-border);
+      color: var(--dash-ink);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .copy-btn:hover {
+      background: var(--dash-active);
+      color: #ffffff;
+      border-color: var(--dash-active);
+    }
+
+    .command-box {
+      background: var(--dash-panel-header);
+      border: 1px solid var(--dash-border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+
+    .command-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .command-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--dash-meta);
+      font-weight: 600;
+    }
+
+    .command-code {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--dash-active);
+      word-break: break-all;
+      line-height: 1.4;
+      font-weight: 600;
+    }
+
+    .live-jump-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .jump-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--dash-border);
+      color: var(--dash-ink);
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      width: 100%;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+
+    .jump-btn:hover {
+      background: var(--dash-panel-header);
+      border-color: var(--dash-active);
+      color: var(--dash-heading);
+    }
+
+    .jump-timestamp {
+      font-family: var(--font-mono);
+      color: var(--dash-accent);
+      font-weight: 700;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    .mini-player-shell {
+      background: #000000;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 10px 0;
+      border: 1px solid var(--dash-border);
+    }
+
+    .mini-player-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+
+    .mini-player-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 1080px) {
+      body { height: auto; overflow-y: auto; }
+      .cockpit-grid { grid-template-columns: 1fr; overflow: visible; }
+      .cockpit-panel { max-height: none; }
+      .panel-body { max-height: 520px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+
+  <!-- Top Real-Time Broadcast Cockpit HUD -->
+  <header class="cockpit-hud" role="banner">
+    <div class="hud-title-group">
+      <div class="hud-badge">OBS Workbench // Ep 01</div>
+      <div>
+        <h1 class="hud-title">Sergio Pereira and Chicago Alt.NET</h1>
+        <div class="hud-subtitle">The Sound Above · Movement 1: The Chicago Workshop · SCNA 2011 (Photo Booth) · <code>@just3ws-mike</code></div>
+      </div>
+    </div>
+
+    <div class="hud-telemetry">
+      <div class="telemetry-item">
+        <div class="telemetry-val rec-time"><span class="rec-dot"></span> <span id="timer-display">00:00:00</span></div>
+        <div class="telemetry-label">Session Elapsed</div>
+      </div>
+      <div class="telemetry-item">
+        <div class="telemetry-val" style="color: var(--dash-green);">44 TURNS · 13 CH</div>
+        <div class="telemetry-label">Verified Transcript</div>
+      </div>
+      <div class="telemetry-item">
+        <div class="telemetry-val">#592 · 24 COMMITS</div>
+        <div class="telemetry-label">Manifesto &amp; CCS</div>
+      </div>
+      <div class="telemetry-item" style="flex-direction: row; gap: 8px; align-items: center;">
+        <button id="btn-timer-toggle" class="copy-btn" type="button" style="padding: 6px 12px; font-weight: 700;">START TIMER</button>
+        <a href="/series/the-sound-above/episode-01/" class="copy-btn" style="padding: 6px 10px;">Public Page &nearr;</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main 3-Pane Broadcast Workbench -->
+  <main id="main-content" class="cockpit-grid" role="main">
+
+    <!-- Column 1: OBS Production Flow & Scene Roadmap -->
+    <section class="cockpit-panel" aria-labelledby="heading-scenes">
+      <div class="panel-header">
+        <div class="panel-title" id="heading-scenes">OBS Production Flow</div>
+        <span style="font-size: 0.72rem; color: var(--dash-meta); font-family: var(--font-mono);">6 ACTS</span>
+      </div>
+      <div class="panel-body">
+        <div class="scene-list">
+          <button type="button" class="scene-cue-card active" data-scene="02">
+            <div class="scene-meta">
+              <span>SCENE 02 · ACTS 1-2</span>
+              <span>00:00 - 05:00</span>
+            </div>
+            <div class="scene-name">Monologue: Cold Open &amp; Scene</div>
+            <div class="scene-cue-desc">SCNA 2011 Photo Booth, Aug 13, 2008 Metra UP-NW from Crystal Lake, Redpoint Sears Tower 6:30 PM, Nov 12, 2008 NHaml talk.</div>
+          </button>
+
+          <button type="button" class="scene-cue-card" data-scene="04">
+            <div class="scene-meta">
+              <span>SCENE 04 · ACT 3</span>
+              <span>05:00 - 07:00</span>
+            </div>
+            <div class="scene-name">Split Screen: 3 Archival Receipts</div>
+            <div class="scene-cue-desc">Mar 12, 2009 Fishbowl (DDD &amp; db4o), twatio.com Twitter overlap app, just3ws/ccs (#592 Grayslake, 24 Rails commits).</div>
+          </button>
+
+          <button type="button" class="scene-cue-card" data-scene="03">
+            <div class="scene-meta">
+              <span>SCENE 03 · ACT 4</span>
+              <span>07:00 - 22:00</span>
+            </div>
+            <div class="scene-name">Unscripted Rewatch (14m Tape)</div>
+            <div class="scene-cue-desc">NO SCRIPT NEEDED. Play qOHdZKz1WFw from 00:00. Watch 7 key pause triggers; jump to Scene 04 for receipts.</div>
+          </button>
+
+          <button type="button" class="scene-cue-card" data-scene="05">
+            <div class="scene-meta">
+              <span>SCENE 05 · ACT 5</span>
+              <span>22:00 - 26:00</span>
+            </div>
+            <div class="scene-name">Workbench: Synthesis &amp; Line 145</div>
+            <div class="scene-cue-desc">15-year transcription arc (many-hands -> fluffle -> Apple Silicon) &amp; 2008 WebForms vs 2026 AI code echo.</div>
+          </button>
+
+          <button type="button" class="scene-cue-card" data-scene="08">
+            <div class="scene-meta">
+              <span>SCENE 08 · ACT 6</span>
+              <span>26:00 - 29:00</span>
+            </div>
+            <div class="scene-name">Outro &amp; Episode 2 Tease</div>
+            <div class="scene-cue-desc">Thank Sergio, point to just3ws.com/support &amp; Episode 1 page, invite room memories, tease Ray Hightower (ChicagoRuby).</div>
+          </button>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 14px 0;">
+
+        <div class="callout-warning" style="margin-bottom: 0; font-size: 0.8rem;">
+          <strong>Split Screen Geometry Locked:</strong><br>
+          Video Window: <code>910x1080</code> at <code>(30, 0)</code><br>
+          Research Window: <code>910x1080</code> at <code>(980, 0)</code><br>
+          OBS Profile: <code>The Sound Above - Staging</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Column 2: Active Teleprompter, Talking Points & Unscripted Rewatch Guide -->
+    <section class="cockpit-panel" aria-labelledby="heading-prompter">
+      <div class="panel-header">
+        <div class="panel-title" id="heading-prompter">Active Rundown &amp; Rewatch Guide</div>
+        <span id="active-scene-indicator" style="font-size: 0.72rem; color: var(--dash-accent); font-family: var(--font-mono); font-weight: 700;">SCENE 02: MONOLOGUE</span>
+      </div>
+      <div class="panel-body">
+
+        <!-- Scene Filter Toolbar -->
+        <div class="scene-filter-bar">
+          <span style="color: var(--dash-muted); font-size: 0.78rem;">Focus: <strong id="filter-scene-label" style="color: var(--dash-active);">Scene 02 (Monologue)</strong></span>
+          <div style="display: flex; gap: 6px;">
+            <button id="btn-filter-all" class="filter-btn-toggle active" type="button">ALL PHASES</button>
+            <button id="btn-filter-active" class="filter-btn-toggle" type="button">ACTIVE SCENE ONLY</button>
+          </div>
+        </div>
+
+        <!-- Core Inquiry Banner -->
+        <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(15, 118, 110, 0.07); border-color: rgba(15, 118, 110, 0.28);">
+          <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dash-active); font-weight: 700; font-family: var(--font-mono); margin-bottom: 4px;">Core Episode Inquiry</div>
+          <div style="font-family: var(--font-display); font-size: 1.02rem; color: var(--dash-heading); font-weight: 700;">
+            What made people come back to Chicago Alt.NET, and how did a monthly room of twenty-five developers cultivate first-time speakers across platform boundaries?
+          </div>
+        </div>
+
+        <!-- ACT 1: Cold Open (Scene 02) -->
+        <div class="prompt-card" data-scene="02">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 1 // Scene 02 // Scripted Cold Open</div>
+            <a href="textream://read" data-textream-acts="act_1" class="textream-btn">&#x25B6; Textream: Act 1</a>
+          </div>
+          <div class="prompt-lead">Photo Booth at SCNA 2011 &amp; Trading Places with Sergio</div>
+          <div class="prompt-body">
+            Start with the physical scene: <strong>Nov 19, 2011</strong>, Swissotel Chicago hallway, 15" unibody MacBook Pro, built-in camera + mic in Photo Booth.
+            <div class="prompt-quote">
+              "My first meeting was Wednesday, August 13, 2008. I rode the Metra UP-NW train in from Crystal Lake to see ThoughtWorks Studios' Cruise CI demo. The person who recorded, edited, and posted that video, including my questions from the audience, was Sergio Pereira. Three years later at SCNA, we traded places."
+            </div>
+            <strong>Freeform beat:</strong> What you remember about riding the Metra in from Crystal Lake and opening Photo Booth in the hallway.
+          </div>
+        </div>
+
+        <!-- ACT 2: Setting the Scene (Scene 02) -->
+        <div class="prompt-card" data-scene="02">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 2 // Scene 02 // Historical Logistics</div>
+            <a href="textream://read" data-textream-acts="act_2" class="textream-btn">&#x25B6; Textream: Act 2</a>
+          </div>
+          <div class="prompt-lead">Redpoint in the Sears Tower, 6:30 PM &amp; Your First Talk (NHaml)</div>
+          <div class="prompt-body">
+            April 2007 Alt.NET Manifesto (David Laribee) &rarr; Oct 2007 Austin Open Spaces &rarr; late 2007 Chicago Alt.NET (Sergio, Derek Lakin, Uriah; later Eduardo).
+            <div class="prompt-quote">
+              "Second Wednesday at 6:30 PM at Redpoint Technologies in the Sears Tower: not too late for Loop workers, early enough for suburban commuters catching the 8:30 PM Metra home. Twenty-five people was the right size for a first-time speaker."
+            </div>
+            <strong>Receipt to show:</strong> <a href="https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home" target="_blank" rel="noopener">Nov 2008 <code>chicagoalt.net</code> Wayback</a> (Nov 12, 2008: Mike Hall on NHaml + Adam Tybor on Spark).
+          </div>
+        </div>
+
+        <!-- ACT 3: Three Archival Receipts (Scene 04) -->
+        <div class="prompt-card" data-scene="04">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 3 // Scene 04 Split Screen // Primary-Source Receipts</div>
+            <a href="textream://read" data-textream-acts="act_3" class="textream-btn">&#x25B6; Textream: Act 3</a>
+          </div>
+          <div class="prompt-lead">Three Archival Artifacts That Click With the Tape</div>
+          <div class="prompt-body">
+            <ol style="margin: 0 0 10px; padding-left: 1.25rem; display: grid; gap: 6px;">
+              <li><strong>Mar 12, 2009 Fishbowl Recap:</strong> 4-chair Fishbowl debate (Adam Tybor on DDD + Sergio on <code>db4o</code> until 9 PM).</li>
+              <li><strong><code>twatio.com</code> Empirical Test:</strong> Friendly Twitter debate with Sergio on retweeting Scott Hanselman &rarr; built ASP.NET MVC overlap app (later redirected to <code>ugtastic.com</code>).</li>
+              <li><strong>Chicago Code Camp (<code>just3ws/ccs</code>):</strong> Resurrected 2010-2012 Rails repo + Manifesto ledger &rarr; Sergio is <strong>Signatory #592</strong> (Grayslake, IL) and <strong>#2 contributor with 24 Ruby/Haml/Sass commits</strong> alongside your 764 commits.</li>
+            </ol>
+            <div class="prompt-quote">
+              "He didn't just talk about crossing platform boundaries. He wrote Ruby on Rails code with us to help run a free community conference."
+            </div>
+          </div>
+        </div>
+
+        <!-- ACT 4: Unscripted Rewatch Guide (Scene 03) -->
+        <div class="prompt-card" data-scene="03" style="border-left: 4px solid var(--dash-accent);">
+          <div class="prompt-card-top">
+            <div class="prompt-phase" style="color: var(--dash-accent);">Act 4 // Scene 03 (Reaction) &amp; Scene 04 (Split) // Unscripted Rewatch (~14m + Pauses)</div>
+            <span class="hud-badge" style="background: rgba(180,83,9,0.1); border-color: rgba(180,83,9,0.35); color: var(--dash-accent);">NO SCRIPT NEEDED</span>
+          </div>
+          <div class="prompt-lead">Rewatch Cue Board: Sergio Pereira at SCNA 2011 (<code>qOHdZKz1WFw</code>)</div>
+          <div class="prompt-body">
+            <p style="margin: 0 0 8px;">
+              Let Sergio's voice carry the middle of the episode. Pick the <strong>3 to 4 moments</strong> that genuinely spark a memory. <strong>Wait a half-second beat</strong> after his sentence lands before pressing <code>Spacebar</code> (gives clean Shorts cut points), and stay quiet while he speaks so Track 2 (mic) and Track 3 (Chromium) stay isolated.
+            </p>
+
+            <table class="rewatch-cue-table">
+              <thead>
+                <tr>
+                  <th style="width: 78px;">Jump</th>
+                  <th>What Sergio Says</th>
+                  <th>Watch For / Context Tip</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="0">00:00</button></td>
+                  <td>Resists defining Alt.NET as a label</td>
+                  <td>Pragmatic, zero-gatekeeping tone. Let it roll and settle into the 2011 Photo Booth energy.</td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="139">02:19</button></td>
+                  <td>2nd Wed 6:30 PM at Redpoint (Sears Tower)</td>
+                  <td><strong>Pause trigger:</strong> Logistics as community design (Loop workers + 8:30 PM Metra to Crystal Lake).</td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="186">03:06</button></td>
+                  <td>~25-person room; cultivating speakers</td>
+                  <td><strong>Pause trigger:</strong> Why 25 is the magic number for first-time speakers; tie to your Nov 2008 NHaml talk.</td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="317">05:17</button></td>
+                  <td>Your thank-you; late 2007 origin; MVC &amp; jQuery</td>
+                  <td>Watch how warmly he credits Derek Lakin &amp; Uriah; note the shift from WebForms to ASP.NET MVC.</td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="429">07:09</button></td>
+                  <td>Seeing TDD, BDD, NHibernate, IronRuby</td>
+                  <td><strong>Anchor quote (Line 145):</strong> <em>"come, see those things, and judge for themselves."</em> Sets up Act 5.</td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="629">10:29</button></td>
+                  <td>Non-.NET regulars, Kanban, Chicago Code Camp</td>
+                  <td><strong>Best Split Screen moment:</strong> Switch to Scene 04 and show <code>just3ws/ccs</code> (24 Rails commits) + Signatory #592.</td>
+                </tr>
+                <tr>
+                  <td><button type="button" class="copy-btn" data-ep01-seek="702">11:42</button></td>
+                  <td>Redpoint pizza, Fishbowls, Eduardo vs ChicagoRuby</td>
+                  <td><strong>Pause trigger:</strong> Mar 12, 2009 4-chair Fishbowl (DDD/db4o). ChicagoRuby shout-out tees up <strong>Ep 2 (Ray Hightower)</strong>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ACT 5: Synthesis (Scene 05) -->
+        <div class="prompt-card" data-scene="05">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 5 // Scene 05 Workbench or Scene 02 // Synthesis</div>
+            <a href="textream://read" data-textream-acts="act_5" class="textream-btn">&#x25B6; Textream: Act 5</a>
+          </div>
+          <div class="prompt-lead">15-Year Transcription Arc &amp; The Line 145 AI-Era Echo</div>
+          <div class="prompt-body">
+            Trace the tooling arc: 2014 <code>many-hands-make-light-work</code> (crowdsourcing stalled) &rarr; 2023 <code>fluffle</code> (5 Raspberry Pis running <code>whisper.cpp</code>) &rarr; 2026 local Apple Silicon <code>media-pipeline</code> (44 turns, 13 chapters).
+            <div class="prompt-quote">
+              "In 2008, the default vendor path was drag-and-drop WebForms wizards that hid HTTP and made unit testing painful. Today, it is generative AI tools producing hundreds of lines of plausible code without explaining domain boundaries. No vendor default does your engineering judgment for you."
+            </div>
+          </div>
+        </div>
+
+        <!-- ACT 6: Outro (Scene 08) -->
+        <div class="prompt-card" data-scene="08">
+          <div class="prompt-card-top">
+            <div class="prompt-phase">Act 6 // Scene 08 // Outro &amp; Next Episode</div>
+            <a href="textream://read" data-textream-acts="act_6" class="textream-btn">&#x25B6; Textream: Act 6</a>
+          </div>
+          <div class="prompt-lead">Thank Sergio, Invite Corrections &amp; Tease Episode 2</div>
+          <div class="prompt-body">
+            Thank Sergio Pereira, point viewers to the Episode 1 page on <code>just3ws.com</code> and <code>just3ws.com/support</code>, invite anyone from ThoughtWorks / Redpoint / Chicago Code Camp / SCNA to comment or correct details, and tease <strong>Episode 2: Ray Hightower &amp; ChicagoRuby</strong>.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Column 3: Textream Launchers, Video Transport & Archival Tool Belt -->
+    <section class="cockpit-panel" aria-labelledby="heading-tools">
+      <div class="panel-header">
+        <div class="panel-title" id="heading-tools">Tool Belt &amp; Launchers</div>
+        <span style="font-size: 0.72rem; color: var(--dash-meta); font-family: var(--font-mono);">TEXTREAM + CUES</span>
+      </div>
+      <div class="panel-body">
+
+        <!-- Direct textream:// Protocol Launchers -->
+        <div class="panel-title" style="margin-bottom: 8px;">Direct Textream App Launchers</div>
+        <div style="display: grid; gap: 6px; margin-bottom: 14px;">
+          <a href="textream://read" data-textream-acts="act_1,act_2,act_3" class="textream-btn" style="justify-content: space-between; padding: 8px 12px;">
+            <span>&#x25B6; Launch Intro (Acts 1-3)</span>
+            <span>5-7m</span>
+          </a>
+          <a href="textream://read" data-textream-acts="act_5,act_6" class="textream-btn" style="justify-content: space-between; padding: 8px 12px;">
+            <span>&#x25B6; Launch Outro (Acts 5-6)</span>
+            <span>4-5m</span>
+          </a>
+          <a href="textream://read" data-textream-acts="act_1,act_2,act_3,act_5,act_6" class="textream-btn secondary" style="justify-content: space-between; padding: 7px 12px;">
+            <span>&#x25B6; Launch Full Scripted Acts</span>
+            <span>All</span>
+          </a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 12px 0;">
+
+        <!-- Embedded Monitor Player + Transport -->
+        <div class="panel-title" style="margin-bottom: 6px;">Reference Player (<code>qOHdZKz1WFw</code>)</div>
+        <div class="mini-player-shell">
+          <div class="mini-player-frame">
+            <iframe
+              id="episode-01-player"
+              src="https://www.youtube-nocookie.com/embed/qOHdZKz1WFw?enablejsapi=1"
+              title="Sergio Pereira on Chicago Alt.NET | SCNA 2011"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
+          <button type="button" class="copy-btn" data-ep01-cmd="playVideo">&#x25B6; Play</button>
+          <button type="button" class="copy-btn" data-ep01-cmd="pauseVideo">&#x23F8; Pause</button>
+          <button type="button" class="copy-btn" data-ep01-seek="0">&#x23EE; 00:00</button>
+          <a href="https://www.youtube.com/watch?v=qOHdZKz1WFw" target="_blank" rel="noopener" class="copy-btn" style="margin-left: auto;">YouTube &nearr;</a>
+        </div>
+
+        <!-- Timestamp Jumps -->
+        <div class="live-jump-list">
+          <button type="button" class="jump-btn" data-ep01-seek="139">
+            <span>01. 6:30 PM Redpoint &amp; Metra</span>
+            <span class="jump-timestamp">02:19</span>
+          </button>
+          <button type="button" class="jump-btn" data-ep01-seek="186">
+            <span>02. 25-Person Room &amp; Speakers</span>
+            <span class="jump-timestamp">03:06</span>
+          </button>
+          <button type="button" class="jump-btn" data-ep01-seek="429">
+            <span>03. Line 145: Judge for Yourself</span>
+            <span class="jump-timestamp">07:09</span>
+          </button>
+          <button type="button" class="jump-btn" data-ep01-seek="629">
+            <span>04. Kanban &amp; Chicago Code Camp</span>
+            <span class="jump-timestamp">10:29</span>
+          </button>
+          <button type="button" class="jump-btn" data-ep01-seek="702">
+            <span>05. Fishbowls &amp; ChicagoRuby</span>
+            <span class="jump-timestamp">11:42</span>
+          </button>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 14px 0;">
+
+        <!-- Research & Presentation Surfaces -->
+        <div class="panel-title" style="margin-bottom: 8px;">Research &amp; Presentation Tabs</div>
+        <div class="live-jump-list">
+          <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" target="_blank" rel="noopener" class="jump-btn">
+            <span>Interactive Transcript (44 turns)</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">LOCAL</span>
+          </a>
+          <a href="https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home" target="_blank" rel="noopener" class="jump-btn">
+            <span>Nov 2008 chicagoalt.net (NHaml)</span>
+            <span style="font-size: 0.72rem; color: var(--dash-accent); font-family: var(--font-mono);">WAYBACK</span>
+          </a>
+          <a href="/reports/software-craftsmanship-forensics/signatory-network/" target="_blank" rel="noopener" class="jump-btn">
+            <span>Signatory Map (#106 / #592)</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">LOCAL</span>
+          </a>
+          <a href="/ai/2026/11/18/chicago-code-camp-2012-code-camp-server-retrospective/" target="_blank" rel="noopener" class="jump-btn">
+            <span>just3ws/ccs Retrospective (24 commits)</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">LOCAL</span>
+          </a>
+          <a href="/2008/08/14/chicago-alt-net-meeting-august-13th-meeting-review.html" target="_blank" rel="noopener" class="jump-btn">
+            <span>Aug 14, 2008 Meeting Review</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">BLOG</span>
+          </a>
+          <a href="/2008/08/21/video-from-chicago-alt-net-meeting.html" target="_blank" rel="noopener" class="jump-btn">
+            <span>Aug 21, 2008 Video by Sergio</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">BLOG</span>
+          </a>
+          <a href="/2009/03/12/chicagoalt-net-march-meeting-recap.html" target="_blank" rel="noopener" class="jump-btn">
+            <span>Mar 12, 2009 Fishbowl (DDD/db4o)</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">BLOG</span>
+          </a>
+          <a href="/youtube/dashboard/#tab-prompter" target="_blank" rel="noopener" class="jump-btn">
+            <span>Web Teleprompter Studio</span>
+            <span style="font-size: 0.72rem; color: var(--dash-active); font-family: var(--font-mono);">TOOL</span>
+          </a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 14px 0;">
+
+        <!-- Quick Terminal Commands -->
+        <div class="command-box">
+          <div class="command-header">
+            <span class="command-tag">Open Multi-Page .textream File</span>
+            <button type="button" class="copy-btn" data-copy="open -a Textream ~/github.com/just3ws/just3ws.github.io/obs/teleprompter/episode-01.textream">Copy</button>
+          </div>
+          <div class="command-code">open -a Textream obs/teleprompter/episode-01.textream</div>
+        </div>
+
+        <div class="command-box">
+          <div class="command-header">
+            <span class="command-tag">Check Pipeline Queue</span>
+            <button type="button" class="copy-btn" data-copy="cd ~/github.com/just3ws/media-pipeline && bin/mp status">Copy</button>
+          </div>
+          <div class="command-code">bin/mp status</div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script id="episode-01-script-data" type="application/json">{{ site.data.episodes['episode-01'].teleprompter_script | jsonify }}</script>
+  <script>
+    (function () {
+      // 1. Wire direct textream://read?text=... links from canonical YAML data
+      const scriptDataEl = document.getElementById('episode-01-script-data');
+      if (scriptDataEl) {
+        try {
+          const acts = JSON.parse(scriptDataEl.textContent || '{}');
+          const cleanSpoken = function (raw) {
+            return String(raw || '')
+              .split(/\r?\n/)
+              .filter(function (line) {
+                return !/^\s*\[(?:SCENE|PAUSE|SHOW|FREEFORM|REWATCH)[^\]]*\]\s*$/i.test(line);
+              })
+              .join('\n')
+              .replace(/\n{3,}/g, '\n\n')
+              .trim();
+          };
+          document.querySelectorAll('[data-textream-acts]').forEach(function (link) {
+            const keys = (link.getAttribute('data-textream-acts') || '').split(',');
+            const combined = keys
+              .map(function (k) { return cleanSpoken(acts[k.trim()]); })
+              .filter(Boolean)
+              .join('\n\n');
+            if (combined) {
+              link.setAttribute('href', 'textream://read?text=' + encodeURIComponent(combined));
+            }
+          });
+        } catch (e) {}
+      }
+
+      // 2. Session Elapsed Timer
+      let timerRunning = false;
+      let startTime = 0;
+      let timerInterval = null;
+      const timerDisplay = document.getElementById('timer-display');
+      const timerBtn = document.getElementById('btn-timer-toggle');
+
+      timerBtn.addEventListener('click', function () {
+        if (!timerRunning) {
+          timerRunning = true;
+          startTime = Date.now();
+          timerBtn.textContent = 'STOP TIMER';
+          timerBtn.style.background = 'var(--dash-red)';
+          timerBtn.style.color = '#ffffff';
+          timerInterval = setInterval(function () {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const h = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+            const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+            const s = String(elapsed % 60).padStart(2, '0');
+            timerDisplay.textContent = h + ':' + m + ':' + s;
+          }, 1000);
+        } else {
+          timerRunning = false;
+          clearInterval(timerInterval);
+          timerBtn.textContent = 'START TIMER';
+          timerBtn.style.background = 'var(--dash-panel)';
+          timerBtn.style.color = 'var(--dash-ink)';
+        }
+      });
+
+      // 3. Scene Roadmap Selector & Filter Synchronizer
+      const sceneCards = document.querySelectorAll('.scene-cue-card');
+      const sceneIndicator = document.getElementById('active-scene-indicator');
+      const promptCards = document.querySelectorAll('.prompt-card');
+      const filterSceneLabel = document.getElementById('filter-scene-label');
+      const btnFilterAll = document.getElementById('btn-filter-all');
+      const btnFilterActive = document.getElementById('btn-filter-active');
+      let filterMode = 'all';
+
+      function applySceneSelection(sceneNum, sceneName) {
+        sceneIndicator.textContent = 'SCENE ' + sceneNum + ': ' + sceneName.toUpperCase();
+        filterSceneLabel.textContent = 'Scene ' + sceneNum + ' (' + sceneName + ')';
+        let firstTarget = null;
+
+        promptCards.forEach(function (card) {
+          const matches = card.getAttribute('data-scene') === sceneNum;
+          if (filterMode === 'active') {
+            card.style.display = matches ? 'block' : 'none';
+            card.classList.remove('dimmed');
+            card.classList.toggle('scene-focused', matches);
+            if (matches && !firstTarget) firstTarget = card;
+          } else {
+            card.style.display = 'block';
+            card.classList.toggle('dimmed', !matches);
+            card.classList.toggle('scene-focused', matches);
+            if (matches && !firstTarget) firstTarget = card;
+          }
+        });
+
+        if (firstTarget) {
+          firstTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      sceneCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          sceneCards.forEach(function (c) { c.classList.remove('active'); });
+          card.classList.add('active');
+          applySceneSelection(card.getAttribute('data-scene'), card.querySelector('.scene-name').textContent);
+        });
+      });
+
+      btnFilterAll.addEventListener('click', function () {
+        filterMode = 'all';
+        btnFilterAll.classList.add('active');
+        btnFilterActive.classList.remove('active');
+        const activeCard = document.querySelector('.scene-cue-card.active');
+        applySceneSelection(activeCard.getAttribute('data-scene'), activeCard.querySelector('.scene-name').textContent);
+      });
+
+      btnFilterActive.addEventListener('click', function () {
+        filterMode = 'active';
+        btnFilterActive.classList.add('active');
+        btnFilterAll.classList.remove('active');
+        const activeCard = document.querySelector('.scene-cue-card.active');
+        applySceneSelection(activeCard.getAttribute('data-scene'), activeCard.querySelector('.scene-name').textContent);
+      });
+
+      applySceneSelection('02', 'Monologue: Cold Open & Scene');
+
+      // 4. YouTube Player Transport & Timestamp Jumps
+      const iframe = document.getElementById('episode-01-player');
+      function sendYT(func, args) {
+        if (!iframe || !iframe.contentWindow) return;
+        iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*');
+      }
+      document.querySelectorAll('[data-ep01-cmd]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          sendYT(btn.getAttribute('data-ep01-cmd'), []);
+        });
+      });
+      document.querySelectorAll('[data-ep01-seek]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          sendYT('seekTo', [Number(btn.getAttribute('data-ep01-seek') || 0), true]);
+          sendYT('playVideo', []);
+        });
+      });
+
+      // 5. Clipboard Copy Buttons
+      document.querySelectorAll('[data-copy]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText(btn.getAttribute('data-copy'));
+          const prev = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(function () { btn.textContent = prev; }, 1200);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
