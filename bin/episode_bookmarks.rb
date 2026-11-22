@@ -460,6 +460,7 @@ class EpisodeBookmarks
       next unless url
 
       url = "#{SITE}#{url}" if url.start_with?('/')
+      url = url.sub(%r{\Ahttps?://(?:www\.)?just3ws\.com(?=/|\z)}, SITE)
       entries << link(attachment['title'] || 'Research source', url)
     end
     folder(title, entries)
