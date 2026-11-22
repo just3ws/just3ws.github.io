@@ -3,6 +3,7 @@ layout: minimal
 body_class: surface-editorial
 ---
 {% assign ep = page.episode %}
+{% assign dossier = page.dossier %}
 {% assign prev = page.prev_episode %}
 {% assign next = page.next_episode %}
 
@@ -71,14 +72,28 @@ body_class: surface-editorial
         </div>
         <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;">
           <a href="/interviews/{{ ep.slug }}/" target="just3ws_canonical_interview" style="background: var(--color-primary, #0f766e); color: #ffffff; text-decoration: none; padding: 0.6rem 1.05rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; white-space: nowrap;">&#x25B6; Open Canonical Interview &rarr;</a>
-          {% if page.dossier %}
+          {% if dossier %}
           <a href="/series/the-sound-above/episode-{{ page.episode_number_formatted }}/workbench/" style="background: var(--color-accent, #b45309); color: #ffffff; text-decoration: none; padding: 0.6rem 1.05rem; border-radius: 8px; font-weight: 700; font-size: 0.9rem; white-space: nowrap;">Open 3-Pane Workbench &rarr;</a>
           {% endif %}
         </div>
       </div>
-      {% if page.dossier.errata %}
+
+      {% if dossier.rewatch_cues and dossier.rewatch_cues.size > 0 %}
+      <div style="padding-top: 0.9rem; border-top: 1px solid var(--color-border, #e3dfd7);">
+        <div style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted, #525866); font-family: var(--font-mono, monospace); margin-bottom: 0.6rem;">
+          Jump Directly Into Canonical Interview Chapters
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" aria-label="Jump to key rewatch timestamps on the canonical interview page">
+          {% for cue in dossier.rewatch_cues %}
+          <a href="/interviews/{{ ep.slug }}/#t={{ cue.seconds }}" target="just3ws_canonical_interview" class="workbench-canvas-btn" style="text-decoration: none;"><code>{{ cue.time }}</code> {{ cue.label }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if dossier.errata %}
       <div style="padding-top: 0.85rem; border-top: 1px solid var(--color-border, #e3dfd7); font-size: 0.88rem; color: var(--color-text-muted, #525866);">
-        <strong>Companion Errata ({{ page.dossier.errata.status | default: 'planned' }}):</strong> {{ page.dossier.errata.title }} - {{ page.dossier.errata.focus }}
+        <strong>Companion Errata ({{ dossier.errata.status | default: 'planned' }}):</strong> {{ dossier.errata.title }} - {{ dossier.errata.focus }}
       </div>
       {% endif %}
     </section>
@@ -133,6 +148,96 @@ body_class: surface-editorial
       </p>
     </section>
 
+    {% if dossier.rewatch_cues and dossier.rewatch_cues.size > 0 %}
+    <!-- Structured Rewatch Cues Board -->
+    <section class="monograph-section" style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--color-heading, #0f172a); border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+        What to Listen For (Rewatch Cues)
+      </h2>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+        Key turns and moments from the {{ ep.year }} recording to track during the rewatch:
+      </p>
+      <div style="overflow-x: auto; margin-bottom: 1.5rem;">
+        <table class="rewatch-cue-table" style="width: 100%; border-collapse: collapse; font-size: 0.92rem; border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; overflow: hidden; background: var(--color-bg-card, #ffffff);">
+          <thead>
+            <tr style="background: var(--color-bg-subtle, #f8f6f0); text-align: left; border-bottom: 2px solid var(--color-border, #e3dfd7);">
+              <th style="padding: 10px 14px; font-family: var(--font-mono, monospace); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted, #525866); width: 90px;">Time</th>
+              <th style="padding: 10px 14px; font-size: 0.85rem; font-weight: 700; color: var(--color-heading, #0f172a);">What {{ ep.interviewee }} Says</th>
+              <th style="padding: 10px 14px; font-size: 0.85rem; font-weight: 700; color: var(--color-heading, #0f172a);">Watch For / Context Tip</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cue in dossier.rewatch_cues %}
+            <tr style="border-bottom: 1px solid var(--color-border-subtle, #eeebe3);">
+              <td style="padding: 10px 14px; vertical-align: top;">
+                <a href="/interviews/{{ ep.slug }}/#t={{ cue.seconds }}" target="just3ws_canonical_interview" style="font-family: var(--font-mono, monospace); font-weight: 700; color: var(--color-primary, #0f766e); text-decoration: none; background: rgba(15, 118, 110, 0.08); padding: 3px 8px; border-radius: 4px; display: inline-block;">{{ cue.time }}</a>
+              </td>
+              <td style="padding: 10px 14px; vertical-align: top; line-height: 1.6; color: var(--color-text-main, #1e232a);">
+                <strong>{{ cue.label }}:</strong> {{ cue.guest_says }}
+              </td>
+              <td style="padding: 10px 14px; vertical-align: top; line-height: 1.6; color: var(--color-text-muted, #525866);">
+                {{ cue.watch_for }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if dossier.archival_receipts and dossier.archival_receipts.size > 0 %}
+    <!-- Archival Receipts & Evidence Ledger -->
+    <section class="monograph-section" style="margin-bottom: 3rem;">
+      <h2 style="font-size: 1.7rem; font-weight: 800; color: var(--color-heading, #0f172a); border-bottom: 2px solid var(--color-border, #e3dfd7); padding-bottom: 0.5rem; margin-bottom: 1.25rem;">
+        Archival Receipts &amp; Evidence Ledger
+      </h2>
+      <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
+        Primary-source records and era-specific captures supporting this episode:
+      </p>
+      <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+        {% for r in dossier.archival_receipts %}
+        <div style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-accent, #b45309); border-radius: 0 8px 8px 0; padding: 1.1rem 1.35rem; box-shadow: var(--shadow-sm, 0 1px 4px rgba(30, 35, 42, 0.04));">
+          <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem;">
+            <a href="{{ r.url }}" target="_blank" rel="noopener" style="color: var(--color-heading, #0f172a); text-decoration: none;">{{ r.title }} &nearr;</a>
+          </div>
+          <p style="margin: 0; font-size: 0.94rem; color: var(--color-text-muted, #525866); line-height: 1.6;">
+            {{ r.summary }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if dossier.errata %}
+    <!-- Track B: Companion Errata Card -->
+    <section class="monograph-section" style="margin-bottom: 3rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: 0 12px 12px 0; padding: 1.5rem 1.75rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.6rem;">
+        <span style="font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary, #0f766e); font-family: var(--font-mono, monospace);">
+          Track B &middot; Companion Errata ({{ dossier.errata.status | default: 'planned' }})
+        </span>
+        <span style="font-size: 0.75rem; font-family: var(--font-mono, monospace); color: var(--color-text-muted, #525866); text-transform: uppercase;">Unscripted Deep Dive</span>
+      </div>
+      <h3 style="margin: 0 0 0.6rem; font-size: 1.35rem; font-weight: 800; color: var(--color-heading, #0f172a);">
+        {{ dossier.errata.title }}
+      </h3>
+      <p style="font-size: 0.98rem; line-height: 1.7; color: var(--color-text-main, #1e232a); margin-bottom: 1rem;">
+        {{ dossier.errata.focus }}
+      </p>
+      {% if dossier.errata.unscripted_prompts and dossier.errata.unscripted_prompts.size > 0 %}
+      <div style="font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-muted, #525866); margin-bottom: 0.4rem; font-family: var(--font-mono, monospace);">
+        Exploration Topics &amp; Demonstrations:
+      </div>
+      <ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.94rem; color: var(--color-text-muted, #525866); line-height: 1.6;">
+        {% for prompt in dossier.errata.unscripted_prompts %}
+        <li>{{ prompt }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </section>
+    {% endif %}
+
     <!-- Interactive Navigation to Transcript and Series -->
     <section class="monograph-section" style="margin-bottom: 3rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 12px; padding: 2rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
       <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--color-heading, #0f172a); margin-bottom: 1rem;">
@@ -142,6 +247,19 @@ body_class: surface-editorial
         <li>
           📖 <a href="/interviews/{{ ep.slug }}/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Interactive Transcript for {{ ep.interviewee }}</a> (Seek into video directly from dialogue turns)
         </li>
+        {% if dossier.research_attachments and dossier.research_attachments.size > 0 %}
+          {% for att in dossier.research_attachments %}
+            {% assign clean_att_url = att.url | replace: "https://just3ws.com", "" | replace: "https://www.just3ws.com", "" %}
+            {% if clean_att_url == "" %}{% assign clean_att_url = "/" %}{% endif %}
+            {% unless clean_att_url contains ep.slug %}
+            <li>
+              {% if att.url contains 'web.archive.org' %}🏛️{% elsif att.type == 'article' %}📝{% else %}📄{% endif %}
+              <a href="{{ clean_att_url }}" {% if att.url contains 'http' %}target="_blank" rel="noopener"{% endif %} style="font-weight: 600; color: var(--color-primary, #0f766e);">{{ att.title }}</a>
+              {% if att.url contains 'web.archive.org' %}<span style="font-size: 0.75rem; font-family: var(--font-mono, monospace); color: var(--color-accent, #b45309);">(Wayback Capture)</span>{% endif %}
+            </li>
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
         <li>
           🏛️ <a href="/timeline/community/" style="font-weight: 600; color: var(--color-primary, #0f766e);">Chicago Community Timeline</a> (Additional dates and context)
         </li>
