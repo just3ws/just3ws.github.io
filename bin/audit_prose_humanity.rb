@@ -242,7 +242,7 @@ OptionParser.new do |opts|
 end.parse!
 
 if ARGV.empty?
-  files_to_audit = Dir.glob("{_data/*.yml,case-studies/*.md,case-studies/*.html,docs/**/*.md,exports/briefs/**/*.md,_posts/**/*.md,ai/**/*.html,chicago-craftsmanship/*.html,panoramic-view/*.html,README.md}").reject { |f| f.include?('vendor/') || f.include?('_site/') }
+  files_to_audit = Dir.glob("{_data/*.yml,case-studies/*.md,case-studies/*.html,docs/**/*.md,_posts/**/*.md,ai/**/*.html,chicago-craftsmanship/*.html,panoramic-view/*.html,README.md}").reject { |f| f.include?('vendor/') || f.include?('_site/') }
 else
   files_to_audit = ARGV
 end

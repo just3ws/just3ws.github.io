@@ -117,8 +117,6 @@ namespace :generate do
     :archetype_resumes,
     :career_datalake,
     :legacy_routes,
-    :executive_briefs,
-    :brief_pdfs,
     :content_opportunities
   ]
 
@@ -132,14 +130,6 @@ namespace :generate do
 
   task :archetype_resumes do
     sh 'ruby ./bin/generate_archetype_resumes.rb'
-  end
-
-  task :executive_briefs do
-    sh 'ruby ./bin/generate_executive_brief_pages.rb'
-  end
-
-  task :brief_pdfs do
-    sh 'node ./bin/export_brief_pdfs.js'
   end
 
   desc 'Generate vector PDF resume packages for all archetypes to $HOME/Desktop/resumes'

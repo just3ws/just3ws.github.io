@@ -45,8 +45,7 @@ TARGETS = [
   'case-studies/index.html',
   'exports/resume.md',
   *Dir[File.join(ROOT, 'resumes/*.md')].map { |f| f.delete_prefix("#{ROOT}/") },
-  *Dir[File.join(ROOT, 'exports/resumes/*.md')].map { |f| f.delete_prefix("#{ROOT}/") },
-  *Dir[File.join(ROOT, 'docs/executive-briefs/*.md')].map { |f| f.delete_prefix("#{ROOT}/") }
+  *Dir[File.join(ROOT, 'exports/resumes/*.md')].map { |f| f.delete_prefix("#{ROOT}/") }
 ].freeze
 
 ALLOWLIST_PATH = File.join(ROOT, '_data/resume_claim_allowlist.yml')

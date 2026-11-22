@@ -90,9 +90,8 @@ graphify query "Which archive themes connect to OpenTelemetry?"
 - `patreon_pipeline.rb`: Patreon API v2 compute funding and attribution.
 - `episode_workbench.rb`: Semantic dossier compiler, batch script packager, and cue runner. Use `prepare N [N ...]` or `prepare --all` for full Markdown and Textream packages.
 
-### 3. Executive Pitch & Resume Generators (`generate_*`)
+### 3. Resume & Data Generators (`generate_*`)
 Scripts that read `_data/*.yml` sources and compile pages/artifacts into Jekyll source:
-- `generate_executive_brief.rb`: Generates custom 1-page executive pitch briefs.
 - `generate_pdf_resume.js`: Playwright script that renders print-optimized PDF packages.
 - `regenerate_resumes`: High-level wrapper script that syncs archetype metadata and renders PDF resumes.
 - `generate_timeline_data.rb`

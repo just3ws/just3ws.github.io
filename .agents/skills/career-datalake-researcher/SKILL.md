@@ -70,7 +70,7 @@ The repository equips a dedicated Model Context Protocol (MCP) server for agents
   * `get_position_dossier` (alias `get_position_details`): Deep dive into specific company tenures, deliverables, and skills.
   * `get_archetype_strategy`: Retrieves tailored pitch strategy, target tier, and cover letter empathy anchors.
   * `query_witc_corpus` & `get_witc_corpus_stats`: Bounded FTS5 search and corpus statistics over the local WITC/UGtastic SQLite database.
-  * `get_narrative_synthesis_baseline` & `generate_executive_brief`: Canonical 3-Act narrative baseline and automated 1-page executive brief generator.
+  * `get_narrative_synthesis_baseline`: Canonical 3-Act narrative baseline for cover letters and outreach.
 
 ---
 

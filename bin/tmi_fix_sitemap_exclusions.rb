@@ -45,10 +45,8 @@ def bold(t);   colorize(t, 1);  end
 # 1. Source files that are known-private by path convention
 # ─────────────────────────────────────────────────────────────────────────────
 PRIVATE_PATH_PATTERNS = [
-  %r{^docs/executive-briefs/},
   %r{^docs/interview-prep/},
   %r{^docs/career-strategy-audhd},
-  %r{^exports/briefs/(?!index)},   # individual brief pages, not the hub index
   %r{^exports/reports/},
 ].freeze
 

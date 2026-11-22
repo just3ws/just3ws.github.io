@@ -35,7 +35,6 @@ EXCLUDED_SOURCE_PATHS = %w[
   docs/mcp-setup-guide.md
   docs/career-datalake-and-mcp-guide.md
   docs/inter-tool-communication-protocol.md
-  docs/executive-brief-generator-protocol.md
   docs/video-archive-platform-and-migration-inventory.md
   docs/witc-corpus.md
   docs/witc-temporal-timeline.md

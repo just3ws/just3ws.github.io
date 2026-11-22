@@ -10,8 +10,6 @@ require 'fileutils'
 #      and private strategy drafts.
 # 2. Public Production Environment (`just3ws.com` / `JEKYLL_ENV=production`):
 #    - Strips all pages, documents, and static files marked `localhost_only: true`.
-#    - Executive pitch briefs (/exports/briefs/) are allowed on production as unlisted assets
-#      (`robots: noindex,nofollow`, `sitemap: false`) so direct outreach links work for recipients.
 
 module Jekyll
   class LocalhostGateGenerator < Generator

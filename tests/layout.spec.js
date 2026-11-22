@@ -397,20 +397,6 @@ test.describe('Site Layout and Aesthetics', () => {
     await page.screenshot({ path: 'tmp/screenshots/engagements.png', fullPage: true });
   });
 
-  test.skip('Executive pitch brief page renders cleanly with PDF download and email actions', async ({ page }) => {
-    await page.setViewportSize({ width: 1440, height: 1000 });
-    await page.goto('/exports/briefs/nextpatient-staff-software-engineer/');
-    await expect(page.locator('h1')).toContainText('NextPatient');
-    await expect(page.locator('.status-badge')).toHaveText('Executive Pitch Brief');
-    await expect(page.getByRole('link', { name: 'Download PDF 📄' })).toHaveAttribute('href', /nextpatient-staff-software-engineer-executive-brief-mike-hall\.pdf$/);
-    await expect(page.getByRole('link', { name: 'Email Recruiter ✉️' })).toBeVisible();
-    await page.screenshot({ path: 'tmp/screenshots/brief-nextpatient.png', fullPage: true });
-
-    await page.getByRole('button', { name: 'Toggle Kanagawa Wave Theme' }).click();
-    await expect(page.locator('html')).toHaveAttribute('data-theme', 'kanagawa');
-    await page.screenshot({ path: 'tmp/screenshots/brief-nextpatient-kanagawa.png', fullPage: true });
-  });
-
   test('Command Palette (Cmd+Shift+K) opens, filters sitemap index, and navigates', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto('/home/');

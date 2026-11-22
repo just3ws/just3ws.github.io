@@ -61,7 +61,7 @@ Optimize for **credibility, clarity, and structural signal**, rejecting emotiona
   Use `Staff Engineer` afterward when the software-engineering context is
   established. Use `Software Engineer` for the underlying profession or an
   exact historical title.
-- **Role Calibration via Executive Briefs**: Use target executive pitch briefs (`exports/briefs/`) and cover letters (not resume title edits) to calibrate scope for each target role (Team Lead, Staff IC, or CTO/Director).
+- **Role Calibration**: Use target cover letters and direct outreach notes (not resume title edits) to calibrate scope for each target role (Team Lead, Staff IC, or CTO/Director).
 - **30-Second Framing Strategy**: When asked why applying across role tiers, frame scope as scale-dependent: care is given to technical challenge, team leverage, and mission over title badges.
 
 ### Omission & Boundary Policies

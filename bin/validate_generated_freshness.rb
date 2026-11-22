@@ -25,7 +25,6 @@ GENERATED_PATHS = [
   '_data/video_assets.yml',
   '_data/video_metadata_completeness.yml',
   'assets/data/site-search-index.json',
-  'exports/briefs',
   'resume/positions'
 ].freeze
 
