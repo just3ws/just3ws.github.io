@@ -145,7 +145,7 @@ RSpec.describe 'Pipeline Namespacing, Ponytail Discipline & Staged Queues' do
     it 'defines staged directory state in media_intake_targets.yml' do
       expect(File.exist?(targets_yml)).to be true
       targets = YAML.safe_load(File.read(targets_yml))
-      channel_targets = targets.dig('channels', 'whoistechcmty', 'targets')
+      channel_targets = targets.dig('channels', 'just3ws-mike', 'targets')
       expect(channel_targets).not_to be_empty
       expect(File.read(targets_yml)).to include('staged/')
     end

@@ -18,7 +18,7 @@ body_class: page-support
         {% if campaign.page_status == "published" %}
         <a class="support-primary-action" href="{{ campaign.campaign_url }}" target="_blank" rel="noopener">Follow free on Patreon</a>
         {% endif %}
-        <a href="https://www.youtube.com/@whoistechcmty" target="_blank" rel="noopener">Watch Ramblin' &amp; Amblin'</a>
+        <a href="https://www.youtube.com/@just3ws-mike" target="_blank" rel="noopener">Watch Ramblin' &amp; Amblin'</a>
       </div>
     </div>
     <figure class="support-hero-figure">

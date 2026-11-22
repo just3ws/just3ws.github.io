@@ -97,7 +97,7 @@ teams.
 | GitHub Sponsors | Open-source developer sponsorship | <https://github.com/sponsors/just3ws> |
 | Buy Me a Coffee | Direct one-time tip support | <https://buymeacoffee.com/just3ws> |
 | just3ws.com/support | Central support and project map | <https://www.just3ws.com/support/> |
-| Ramblin' & Amblin' | Current YouTube series | <https://www.youtube.com/@whoistechcmty> |
+| Ramblin' & Amblin' | Current YouTube series | <https://www.youtube.com/@just3ws-mike> |
 | Interview archive | Historical UGtastic / WHOIS Tech Community record | <https://www.just3ws.com/interviews/> |
 | Phalanx Duel | Independent game project | <https://github.com/phalanxduel/phalanxduel> |
 | Panoramic View | System-cartography method | <https://www.just3ws.com/panoramic-view/> |
@@ -144,8 +144,10 @@ Use this checklist when preparing a new YouTube channel or playlist. The
 source and public context.
 
 1. Record the channel owner as Mike Hall (`just3ws`, `mike@just3ws.com`) and
-   name the project brand separately. Keep `@whoistechcmty` as the channel that
-   hosts both the historical interview archive and Ramblin' & Amblin'.
+   name each project brand separately. Use `@just3ws-mike` (formerly
+   `@whoistechcmty`) as Mike's official channel hosting both the historical
+   UGtastic / WHOIS Tech Community interview archive and current series such as
+   Ramblin' & Amblin'.
 2. Set the spoken and metadata language to **English (United States)** where
    YouTube exposes a language setting. Use Mike's first-person voice in titles,
    descriptions, and captions.

@@ -104,7 +104,8 @@ class EcosystemDatalake
       'provenance_details' => {
         'historical_campaign' => 'WHOIS Tech Community',
         'current_creator_identity' => 'Mike Hall / just3ws',
-        'channel' => '@whoistechcmty'
+        'channel' => '@just3ws-mike',
+        'historical_channel_handle' => '@whoistechcmty'
       }
     },
     {

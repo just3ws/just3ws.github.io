@@ -20,9 +20,9 @@ RSpec.describe 'Media Intake & Cloud-Streaming Publishing Pipeline' do
       expect(config).to have_key('channels')
     end
 
-    it 'defines whoistechcmty targets with required playlists and categories' do
+    it 'defines just3ws-mike targets with required playlists and categories' do
       config = YAML.safe_load(File.read(config_path))
-      targets = config.dig('channels', 'whoistechcmty', 'targets')
+      targets = config.dig('channels', 'just3ws-mike', 'targets')
       expect(targets).to be_a(Hash)
       expect(targets.keys).to include('ramblin-amblin', 'the-sound-above', 'errata')
 

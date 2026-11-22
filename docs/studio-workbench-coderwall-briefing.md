@@ -23,7 +23,7 @@ In September 2014, Coderwall founder Matt Deiters hired Mike Hall to lead the op
 
 In July 2021, YouTube executed an unannounced security update that converted all pre-2017 unlisted videos to Private, causing millions of historical developer videos across the internet to return "This video is unavailable".
 
-On November 9, 2026, a digital archaeological query into the Internet Archive Wayback Machine located the exact July 23, 2021 snapshots capturing the original playlist manifest (`PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO`), video IDs, upload dates (2014-09-29), and verified that the original masters remain preserved in Mike Hall's YouTube Studio content library under `@whoistechcmty`.
+On November 9, 2026, a digital archaeological query into the Internet Archive Wayback Machine located the exact July 23, 2021 snapshots capturing the original playlist manifest (`PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO`), video IDs, upload dates (2014-09-29), and verified that the original masters remain preserved in Mike Hall's YouTube Studio content library under `@just3ws-mike` (historically `@whoistechcmty`).
 
 ---
 
@@ -40,7 +40,7 @@ On November 9, 2026, a digital archaeological query into the Internet Archive Wa
 
 - **Official Playlist ID:** `PLhlPwpqjsgvXK4n8FJBbj7KkvuOw8h3FO`
 - **Official Repository Seam:** `https://raw.githubusercontent.com/coderwall/coderwall-legacy/master/README.md`
-- **Channel Association:** `UserGroupsFantastic` / `WHOIS Tech Community` (`@whoistechcmty`)
+- **Channel Association:** `Mike Hall` (`@just3ws-mike`; historical era brands `UserGroupsFantastic` / `WHOIS Tech Community` `@whoistechcmty`)
 
 ---
 

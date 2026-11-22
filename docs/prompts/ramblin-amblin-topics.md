@@ -1,7 +1,7 @@
 # Ramblin' & Amblin' Proposed Topics & Field Prompts
 
-> **Channel**: Ramblin' & Amblin' (@whoistechcmty)
-> **Updated**: 2026-10-20 15:14 UTC
+> **Channel**: Ramblin' & Amblin' (@just3ws-mike)
+> **Updated**: 2026-11-22 16:04 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
 ## Overview & Purpose
@@ -49,7 +49,7 @@ Conversations on the move: engineering observations, personal history, systems a
 - **Core Inquiry**: What is the physical and emotional reality of being the sole documentarian at technical conferences, and why is listening often the loneliest job in the room?
 
 #### Talking Points & Narrative Arcs:
-1. The physical toll: traveling between crowded conference rooms and hallway tracks recording community interviews on minimal gear.
+1. The physical reality: traveling between crowded conference rooms and hallway tracks recording community interviews on minimal gear.
 1. The sharp contrast: being surrounded by 800 animated engineers while operating as a solitary, detached observer behind the lens.
 1. The discipline of active listening: suppressing your own ego to help the guest articulate what made their work meaningful.
 1. Why grassroots oral history matters more than commercial marketing: catching developers in their authentic, unvarnished state.
@@ -392,23 +392,5 @@ Conversations on the move: engineering observations, personal history, systems a
 1. Relentless resourcefulness: building tools that run within the machine you have right now instead of waiting for ideal conditions.
 
 - **Key Concepts**: SCNA 2011, Photo Booth, Vimeo, Jungle Gym of Constraints, Relentlessly Resourceful
-
----
-
-### Prompt 22: The Frictionless Field: Attention Bleed, the Digital Theremin, and the Uncanny Boundary
-
-- **ID**: `the-frictionless-field-and-the-digital-theremin`
-- **Format**: Field Dispatch & Architectural Reflection (5 to 7 minutes)
-- **Location / Setting**: High-tension transmission corridor and wooded park trail
-- **Historical Anchor**: October 2026 field re-attempt beneath 345kV lines, confronting the uncanny valley of generative media, and reflecting on how transformer self-attention and pixel diffusion eliminate discrete physical boundaries.
-- **Core Inquiry**: Why does generative text and imagery trigger an uncanny valley of hyper-lubricated coherence, why do pixels and tokens bleed together in ways absent from lived experience, and how does the theremin serve as an operating metaphor for navigating continuous generative fields?
-
-#### Talking Points & Narrative Arcs:
-1. The physical photograph vs the diffusion tensor: on a real camera sensor, adjacent pixels share space purely by coincidence of line of sight for an observer, with zero causal or predictive awareness of each other. In generative diffusion, every latent patch is mathematically coupled, melting discrete physical edges into broadstroke blending.
-1. The identical anatomy in text: autoregressive self-attention forces every token to attend to every other token across context. Human writing has mechanical friction, pauses, clipped phrasing, and abrupt collisions. Generative text is an over-lubricated velvet surface where nothing stubs its toe.
-1. The Digital Theremin: an instrument played without frets, keys, or physical contact by moving hands through an invisible electromagnetic field. Without external human grounding and intense physical discipline, the field naturally slides into eerie, continuous, wavering portamento.
-1. Operating in the low-trust panopticon: recognizing that institutional trust in AI systems is categorically low, and building good-faith sovereign provenance through local git, cryptographic commits, and deterministic tests rather than relying on external capture.
-
-- **Key Concepts**: Digital Theremin, Attention Bleed, Universal Mutual Awareness, Uncanny Valley, Sovereign Verification, Low-Trust Panopticon
 
 ---

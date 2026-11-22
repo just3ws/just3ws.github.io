@@ -1,7 +1,7 @@
 # The Sound Above (Errata) Proposed Topics & Deep-Dive Prompts
 
-> **Channel**: The Sound Above: Errata (@whoistechcmty)
-> **Updated**: 2026-10-20 15:14 UTC
+> **Channel**: The Sound Above: Errata (@just3ws-mike)
+> **Updated**: 2026-11-22 16:05 UTC
 > **Source**: Derived from Mike Hall's 20-year archive, writings, and interviews
 
 ## Overview & Purpose
@@ -101,11 +101,11 @@ Solo technical demonstrations, deep-dive forensic walkthroughs, audio restoratio
 
 ---
 
-### Prompt 6: Errata: Fluffle, Five Raspberry Pis and 1K+ Transcript Pairs
+### Prompt 6: Errata: The Fluffle Precursor: Distributed whisper.cpp, Dead Rabbit Radio & Scaling Oral History
 
 - **ID**: `errata-fluffle-distributed-whisper`
 - **Location / Setting**: Distributed Systems, Historical Precursors & Open Source Vulnerability
-- **Core Inquiry**: How five Raspberry Pis and a large Dead Rabbit Radio test set helped Mike learn about transcription queues, audio processing, and the limits of a small distributed setup.
+- **Core Inquiry**: How a 5-node Raspberry Pi cluster transcribing 1,000 episodes of Dead Rabbit Radio in 2023 unlocked the skills and painful lessons that made modern local media automation possible.
 
 #### Talking Points & Narrative Arcs:
 1. The pre-Whisper wall: why 200+ UGtastic interviews sat untranscribed for a decade and why cloud API economics made scaling impossible.

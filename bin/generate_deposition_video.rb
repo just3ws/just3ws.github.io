@@ -17,7 +17,7 @@ ROOT_DIR = File.expand_path('..', __dir__)
 DEPOSITION_DIR = File.join(ROOT_DIR, 'obs', 'assets', 'deposition')
 OUTPUT_MP4 = File.join(DEPOSITION_DIR, 'the-systems-deposition.mp4')
 MEDIA_MP4 = File.join(ROOT_DIR, 'obs', 'media', 'the-systems-deposition.mp4')
-STAGED_DIR = File.expand_path('~/ai/media-pipeline/whoistechcmty/studio-workbench/staged')
+STAGED_DIR = File.expand_path('~/ai/media-pipeline/just3ws-mike/studio-workbench/staged')
 CHROME_BIN = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
 FileUtils.mkdir_p(DEPOSITION_DIR)

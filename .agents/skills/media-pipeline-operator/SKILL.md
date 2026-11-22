@@ -67,7 +67,7 @@ Queue directories are organized by channel and target playlist under:
 - Local NVMe: `~/ai/media-pipeline/<channel>/<target>/`
 - Cloud Google Drive: `~/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline/<channel>/<target>/`
 
-Canonical channel: strictly `whoistechcmty`.
+Canonical channel: strictly `just3ws-mike`.
 Canonical target series: `ramblin-amblin`, `the-sound-above`, `errata`, `phalanx-duel`, `marginalia`, `studio-workbench`.
 
 | Directory | State Purpose | Operator Action |

@@ -110,5 +110,5 @@ Following honorable discharge from the U.S. Army in May 1997, Mike Hall began hi
 
 - **Registration Date**: October 4, 2000 (verified by continuous unbroken WHOIS registry records across 26 years).
 - **Etymology**: Coined during the dot-com era as an affectionate reference to the World Wide Web ("just three 'W's changed the world").
-- **Canonical Architecture**: Serves as the sovereign root namespace for all professional writing, systems cartography, and community archives. All secondary channels (including the legacy `@whoistechcmty` YouTube handle, UGtastic archives, and open-source tooling) resolve back to this primary identity core.
+- **Canonical Architecture**: Serves as the sovereign root namespace for all professional writing, systems cartography, and community archives. All channels and project archives (including the official `@just3ws-mike` YouTube channel consolidated from `@whoistechcmty`, the historical UGtastic / WHOIS Tech Community oral-history project, and open-source tooling) resolve back to this primary identity core.
 

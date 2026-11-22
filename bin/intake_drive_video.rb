@@ -98,9 +98,9 @@ class MediaIntakePipeline
     config = YAML.safe_load(File.read(CONFIG_PATH)) rescue {}
     base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     if base_p && Dir.exist?(base_p)
-      (config.dig('channels', 'whoistechcmty', 'targets') || {}).each do |tname, _|
-        proc_dir = File.join(base_p, 'whoistechcmty', tname, 'processing')
-        pend_dir = File.join(base_p, 'whoistechcmty', tname, 'pending')
+      (config.dig('channels', 'just3ws-mike', 'targets') || {}).each do |tname, _|
+        proc_dir = File.join(base_p, 'just3ws-mike', tname, 'processing')
+        pend_dir = File.join(base_p, 'just3ws-mike', tname, 'pending')
         next unless Dir.exist?(proc_dir)
 
         Dir.glob(File.join(proc_dir, '*')).each do |f|
@@ -183,11 +183,11 @@ class MediaIntakePipeline
     @cloud_archive_path ||= config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
   end
 
-  def channel_config(channel = 'whoistechcmty')
+  def channel_config(channel = 'just3ws-mike')
     config.dig('channels', channel) || raise("Channel '#{channel}' not found in configuration")
   end
 
-  def target_config(target_name, channel = 'whoistechcmty')
+  def target_config(target_name, channel = 'just3ws-mike')
     targets = channel_config(channel)['targets'] || {}
     targets[target_name] || raise("Target '#{target_name}' not found for channel '#{channel}'")
   end
@@ -562,7 +562,7 @@ class MediaIntakePipeline
   end
 
   # Single File Ingestion & State Machine
-  def process_file(file_path, target_name, target_info, channel = 'whoistechcmty')
+  def process_file(file_path, target_name, target_info, channel = 'just3ws-mike')
     filename = File.basename(file_path)
     tracker = JobSubstateTracker.load(filename, file_path, @state_dir)
     target_dir = File.join(base_path, channel, target_name)
@@ -1569,7 +1569,7 @@ if __FILE__ == $PROGRAM_NAME
       exit 1
     end
     tgt = options[:target] || 'ramblin-amblin'
-    chan = options[:channel] || 'whoistechcmty'
+    chan = options[:channel] || 'just3ws-mike'
 
     # Direct ingest to Google Drive folder when configured so local SSD stays lean
     dest_base = (pipeline.cloud_archive_path && Dir.exist?(pipeline.cloud_archive_path)) ? pipeline.cloud_archive_path : pipeline.base_path

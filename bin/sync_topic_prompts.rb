@@ -510,14 +510,14 @@ def sync_prompts
     intro: "- **Setting & Atmosphere**: Ground the listener immediately in where you are (trail, commuter platform, downtown corridor).\n- **The Inciting Spark**: Introduce the specific real-world event, observation, or question that prompted this reflection within the first 60 seconds.\n- **Core Inquiry**: State the guiding inquiry directly so the premise and focus are unmistakable right away.",
     outro: "- **Grounded Synthesis**: Bring the freeform observation back to a durable engineering principle.\n- **Actionable Takeaway**: Provide one concrete takeaway the viewer can apply to their daily engineering craft, team architecture, or career sustainability.\n- **Grounded Sign-off**: Warm, unvarnished parting thought ('Keep your feedback loops fast, keep walking, and verify your code')."
   }
-  ramblin_md = compile_markdown_sheet("Ramblin' & Amblin' Proposed Topics & Field Prompts", "Ramblin' & Amblin' (@whoistechcmty)", ramblin_desc, RAMBLIN_TOPICS, ramblin_structure)
+  ramblin_md = compile_markdown_sheet("Ramblin' & Amblin' Proposed Topics & Field Prompts", "Ramblin' & Amblin' (@just3ws-mike)", ramblin_desc, RAMBLIN_TOPICS, ramblin_structure)
 
   local_ramblin = File.join(PROMPTS_DOCS_DIR, 'ramblin-amblin-topics.md')
   File.write(local_ramblin, ramblin_md)
   puts "✅ Saved local copy: docs/prompts/ramblin-amblin-topics.md"
 
   target_roots.each do |root|
-    drive_ramblin_dir = File.join(root, 'whoistechcmty', 'ramblin-amblin')
+    drive_ramblin_dir = File.join(root, 'just3ws-mike', 'ramblin-amblin')
     if Dir.exist?(drive_ramblin_dir)
       begin
         drive_ramblin_file = File.join(drive_ramblin_dir, 'TOPIC_PROMPTS.md')
@@ -539,14 +539,14 @@ def sync_prompts
     intro: "- **The Problem / AI Hallucination**: State the exact failure mode, vendor myth, or LLM hallucination being investigated within the first 60 seconds.\n- **Scope of Inspection**: Define the exact artifacts, data boundaries, and code interfaces being inspected today.",
     outro: "- **Deterministic Solution**: Demonstrate the verified, working solution or filter with exact reproducible steps.\n- **Defensive Rule of Thumb**: Provide the core engineering takeaway to prevent this failure in production, with direct links to repository code on just3ws.com."
   }
-  errata_md = compile_markdown_sheet("The Sound Above (Errata) Proposed Topics & Deep-Dive Prompts", "The Sound Above: Errata (@whoistechcmty)", errata_desc, ERRATA_TOPICS, errata_structure)
+  errata_md = compile_markdown_sheet("The Sound Above (Errata) Proposed Topics & Deep-Dive Prompts", "The Sound Above: Errata (@just3ws-mike)", errata_desc, ERRATA_TOPICS, errata_structure)
 
   local_errata = File.join(PROMPTS_DOCS_DIR, 'errata-topics.md')
   File.write(local_errata, errata_md)
   puts "✅ Saved local copy: docs/prompts/errata-topics.md"
 
   target_roots.each do |root|
-    drive_errata_dir = File.join(root, 'whoistechcmty', 'errata')
+    drive_errata_dir = File.join(root, 'just3ws-mike', 'errata')
     if Dir.exist?(drive_errata_dir)
       begin
         drive_errata_file = File.join(drive_errata_dir, 'TOPIC_PROMPTS.md')

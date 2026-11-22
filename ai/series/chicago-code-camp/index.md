@@ -21,6 +21,7 @@ sitemap: false
     </p>
     <p>
       <strong>YouTube Playlist:</strong> <a href="https://www.youtube.com/playlist?list=PLFRktsUF3P4o" target="_blank" rel="noopener"><code>PLFRktsUF3P4o</code></a> ·
+      <strong>YouTube Channel:</strong> <a href="https://www.youtube.com/@just3ws-mike" target="_blank" rel="noopener"><code>@just3ws-mike</code></a> ·
       <strong>Source Code (AGPLv3):</strong> <a href="https://github.com/just3ws/ccs" target="_blank" rel="noopener"><code>github.com/just3ws/ccs</code></a>
     </p>
   </header>

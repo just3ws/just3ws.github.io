@@ -416,7 +416,7 @@ class LiveDashboardStreamer
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
     base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
     cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
-    channel = 'whoistechcmty'
+    channel = 'just3ws-mike'
     targets = config.dig('channels', channel, 'targets') || {}
 
     state_dir = @state_dir
@@ -704,7 +704,7 @@ class LiveDashboardStreamer
       config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
       base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
       cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
-      channel = 'whoistechcmty'
+      channel = 'just3ws-mike'
 
       if base_p
         failed_dir = File.join(base_p, channel, target, 'failed')
@@ -791,7 +791,7 @@ class LiveDashboardStreamer
     cloud_p = config['cloud_archive_path'] ? File.expand_path(config['cloud_archive_path']) : nil
     return 0 unless base_p && Dir.exist?(base_p)
 
-    channel = config['channel'] || 'whoistechcmty'
+    channel = config['channel'] || 'just3ws-mike'
     targets = config.dig('channels', channel, 'targets') || config['targets'] || {}
 
     resumed_count = 0
@@ -891,8 +891,8 @@ class LiveDashboardStreamer
     if target && filename
       config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
       base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
-      src = File.join(base_p, 'whoistechcmty', target, 'staged', filename)
-      dst = File.join(base_p, 'whoistechcmty', target, 'pending', filename)
+      src = File.join(base_p, 'just3ws-mike', target, 'staged', filename)
+      dst = File.join(base_p, 'just3ws-mike', target, 'pending', filename)
       if File.exist?(src)
         FileUtils.mv(src, dst)
         broadcast_state!
@@ -951,7 +951,7 @@ class LiveDashboardStreamer
     return unless File.exist?(INTAKE_CONFIG_PATH)
     config = YAML.safe_load(File.read(INTAKE_CONFIG_PATH)) rescue {}
     base_p = config['base_path'] ? File.expand_path(config['base_path']) : nil
-    channel = 'whoistechcmty'
+    channel = 'just3ws-mike'
     targets = config.dig('channels', channel, 'targets') || {}
     targets.each_key do |target_name|
       proc_dir = File.join(base_p, channel, target_name, 'processing')

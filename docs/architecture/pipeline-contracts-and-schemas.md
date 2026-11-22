@@ -252,8 +252,8 @@ targets:
     name: "Ramblin' & Amblin'"
     slug: "ramblin-amblin"
     channel_id: "UCxxxxxxxx"
-    channel_name: "@whoistechcmty"
-    drive_path: "media-pipeline/whoistechcmty/ramblin-amblin"
+    channel_name: "@just3ws-mike"
+    drive_path: "media-pipeline/just3ws-mike/ramblin-amblin"
     playlist_id: "PLxxxxxxxxxxxx"
     default_privacy: "unlisted"
     category_id: "27"
@@ -403,7 +403,7 @@ Written alongside every video in `processed/YYYY-MM/` upon successful publicatio
   "receipt_version": "1.0",
   "source_filename": "VID_20261015_101120773.mp4",
   "processed_at": "2026-10-16T18:15:22Z",
-  "target_channel": "@whoistechcmty",
+  "target_channel": "@just3ws-mike",
   "target_track": "ramblin-amblin",
   "youtube_id": "7YeFpKn5FbU",
   "youtube_url": "https://youtu.be/7YeFpKn5FbU",
@@ -456,7 +456,7 @@ Stored in `~/.local/state/just3ws/jobs/<filename>.state.json` and mirrored as a 
 {
   "version": "1.0",
   "filename": "VID_20261015_095414134.mp4",
-  "file_path": "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline/whoistechcmty/ramblin-amblin/processing/VID_20261015_095414134.mp4",
+  "file_path": "/Users/mike/Library/CloudStorage/GoogleDrive-mike@just3ws.com/My Drive/ai/media-pipeline/just3ws-mike/ramblin-amblin/processing/VID_20261015_095414134.mp4",
   "created_at": "2026-10-16T18:42:16Z",
   "updated_at": "2026-10-16T18:44:37Z",
   "meta_phase": "processing",

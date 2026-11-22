@@ -18,9 +18,10 @@ The public series outline is at `/series/the-sound-above/`.
 
 ## Creator identity and support link
 
-The channel `@whoistechcmty` hosts more than one era of Mike Hall's work; it is
-not the creator identity. Use Mike Hall / `just3ws` as the owner and write
-descriptions in Mike's first-person voice. The cross-project overview is
+The channel `@just3ws-mike` (`Mike Hall`, consolidated from `@whoistechcmty`)
+hosts multiple eras and projects of Mike Hall's work under his canonical
+identity. Use Mike Hall / `just3ws` as the owner and write descriptions in
+Mike's first-person voice. The cross-project overview is
 [`/support/`](https://www.just3ws.com/support/), which connects Ramblin' &
 Amblin', the UGtastic / WHOIS Tech Community archive, Phalanx Duel, and
 Panoramic View. While the Patreon page is a draft, use the public project
