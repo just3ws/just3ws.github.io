@@ -34,16 +34,89 @@ breadcrumb_parent_url: "/series/the-sound-above/"
       wayfinding_id="top"
     %}
 
+    <!-- Broadcast Cockpit & Episode Structure HUD -->
+    <section id="episode-01-cockpit" class="workbench-stage" aria-labelledby="ep01-cockpit-heading" style="margin-bottom: 2rem;">
+      <div class="workbench-stage-header">
+        <div>
+          <span class="workbench-stage-kicker">
+            Episode 01 Broadcast Cockpit &middot; Movement 1: The Chicago Workshop
+          </span>
+          <h2 id="ep01-cockpit-heading" class="workbench-stage-title">
+            6-Act Structure, Textream Links &amp; Unscripted Rewatch Controls
+          </h2>
+        </div>
+        <span class="workbench-stage-badge">
+          ~25-30 min &middot; Split Screen 910x1080
+        </span>
+      </div>
+
+      <div class="workbench-stage-grid" style="margin-bottom: 1.25rem;">
+        <div class="workbench-stage-card">
+          <div class="stage-card-kicker">PART A &middot; ACTS 1-3 (5-7 MIN, SCRIPTED)</div>
+          <div class="stage-card-title">Intro &amp; Archival Receipts</div>
+          <div class="stage-card-body"><strong>Scene 02 &rarr; brief Scene 04:</strong> SCNA 2011 Photo Booth, Aug 13, 2008 Metra &amp; NHaml talk, Mar 2009 Fishbowl (DDD/<code>db4o</code>), <code>twatio.com</code>, and <code>just3ws/ccs</code> (Signatory #592, 24 Rails commits).</div>
+        </div>
+
+        <div class="workbench-stage-card is-highlight">
+          <div class="stage-card-kicker">PART B &middot; ACT 4 (~14 MIN + PAUSES, UNSCRIPTED)</div>
+          <div class="stage-card-title">Live Rewatch (No Script Needed)</div>
+          <div class="stage-card-body"><strong>Scene 03 / Scene 04:</strong> Play <code>qOHdZKz1WFw</code> from <code>00:00</code>. Pick 3-4 pause triggers from the cue board below, leave a half-second beat before pausing, and pull up receipts on the right.</div>
+        </div>
+
+        <div class="workbench-stage-card">
+          <div class="stage-card-kicker">PART C &middot; ACTS 5-6 (4-5 MIN, SCRIPTED)</div>
+          <div class="stage-card-title">Synthesis &amp; Outro</div>
+          <div class="stage-card-body"><strong>Scene 02/05 &rarr; Scene 08:</strong> 15-year transcription arc (<code>many-hands</code> &rarr; <code>fluffle</code> &rarr; Apple Silicon), line 145 AI-era echo, thank Sergio, invite memories, and tease Ep 2 (Ray Hightower).</div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; padding-top: 0.85rem; border-top: 1px solid var(--color-border, #e3dfd7); font-size: 0.86rem; font-family: var(--font-mono, monospace);">
+        <a href="/youtube/dashboard/#tab-prompter" style="background: var(--color-primary, #0f766e); color: #ffffff; text-decoration: none; padding: 0.35rem 0.75rem; border-radius: 6px; font-weight: 700;">Web Teleprompter Studio &rarr;</a>
+        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/episode-01.textream" target="_blank" rel="noopener" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">Textream Script (GitHub) &rarr;</a>
+        <span style="color: #cbd5e1;">&middot;</span>
+        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/episode-01-rundown.md" target="_blank" rel="noopener" style="color: var(--color-primary, #0f766e); font-weight: 700; text-decoration: none;">Rundown &amp; Rewatch Cue Sheet (GitHub) &rarr;</a>
+        <span style="color: #cbd5e1;">&middot;</span>
+        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/_data/episodes/episode-01.yml" target="_blank" rel="noopener" style="color: #0284c7; text-decoration: none;">Episode YAML Dossier &rarr;</a>
+        <span style="color: #cbd5e1;">&middot;</span>
+        <a href="/obs/" style="color: #0284c7; text-decoration: none;">Recording Playbook (/obs/) &rarr;</a>
+      </div>
+    </section>
+
     <!-- Video Stage / Player Embed -->
-    <div style="margin-bottom: 2.5rem; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18);">
+    <div style="margin-bottom: 1rem; background: #000; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.18);">
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
         <iframe
+          id="episode-01-player"
           src="https://www.youtube-nocookie.com/embed/qOHdZKz1WFw?list=PLVcmLmfz2uyA&index=1&enablejsapi=1"
           title="Sergio Pereira on Chicago Alt.NET | SCNA 2011 | The Sound Above Rewatch"
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
+      </div>
+    </div>
+
+    <!-- Interactive Player Transport & Rewatch Cue Controls -->
+    <div class="no-print" style="margin-bottom: 2.5rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1rem 1.25rem; box-shadow: var(--shadow-sm, 0 2px 8px rgba(30, 35, 42, 0.04));">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.85rem;">
+        <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary, #0f766e);">
+          Live Rewatch Transport (Drives Player Above)
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="workbench-canvas-btn" data-ep01-cmd="playVideo">&#x25B6; Play</button>
+          <button type="button" class="workbench-canvas-btn" data-ep01-cmd="pauseVideo">&#x23F8; Pause</button>
+          <button type="button" class="workbench-canvas-btn" data-ep01-seek="0">&#x23EE; 00:00</button>
+          <a href="https://www.youtube.com/watch?v=qOHdZKz1WFw" target="_blank" rel="noopener" class="workbench-canvas-btn" style="text-decoration: none;">Open on YouTube &nearr;</a>
+        </div>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;" aria-label="Jump to key rewatch timestamps">
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="0"><code>00:00</code> Intro &amp; Tone</button>
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="139"><code>02:19</code> 6:30 PM &amp; Metra</button>
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="186"><code>03:06</code> 25-Person Room</button>
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="317"><code>05:17</code> 2007 Origin &amp; MVC</button>
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="429"><code>07:09</code> Line 145: Judge for Yourself</button>
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="629"><code>10:29</code> Kanban &amp; Code Camp</button>
+        <button type="button" class="workbench-canvas-btn" data-ep01-seek="702"><code>11:42</code> Pizza, Fishbowls &amp; ChicagoRuby</button>
       </div>
     </div>
 
@@ -57,6 +130,7 @@ breadcrumb_parent_url: "/series/the-sound-above/"
         <strong>Interviewer:</strong> Mike Hall (Senior Software Developer when recorded; UGtastic Host · Manifesto Signatory #106, Crystal Lake, IL)<br>
         <strong>Recorded At:</strong> Software Craftsmanship North America (SCNA 2011) · November 19, 2011 · Swissotel Chicago<br>
         <strong>Recording Setup:</strong> 15-inch Unibody MacBook Pro built-in camera and microphone via Photo Booth.app<br>
+        <strong>Teleprompter &amp; Cue Materials:</strong> <a href="https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/episode-01-rundown.md" target="_blank" rel="noopener">Broadcast Rundown &amp; Rewatch Cue Sheet</a> &middot; <a href="https://github.com/just3ws/just3ws.github.io/blob/master/obs/teleprompter/episode-01.textream" target="_blank" rel="noopener">Native Textream Script</a> &middot; <a href="/youtube/dashboard/#tab-prompter">Web Teleprompter Studio</a> (<a href="/obs/">Recording Playbook</a>)<br>
         <strong>Season Plan:</strong> <a href="/series/the-sound-above/">View the Season One working outline</a><br>
         <strong>Full Interactive Transcript:</strong> <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/">Read and search all 44 dialogue turns and 13 chapters</a>
       </div>
@@ -101,14 +175,14 @@ breadcrumb_parent_url: "/series/the-sound-above/"
       <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
         Sergio refuses to define Alt.NET as a fixed doctrine. Instead, he describes a room where working .NET developers could see test-driven development, behavior-driven development, NHibernate, CodeSharp, IronRuby, and Kanban, then decide for themselves what worked. Key moments across the recording include:
       </p>
-      <ul style="font-size: 1.0rem; line-height: 1.75; color: var(--color-text-main, #1e232a); padding-left: 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.25rem;">
-        <li><strong><code>00:00</code> · Continuous Improvement Over Labels:</strong> Why Sergio avoids a rigid definition of Alt.NET and focuses on improving software quality and developer practices beyond a single vendor.</li>
-        <li><strong><code>02:19</code> · The Second Wednesday at 6:30 PM:</strong> Meeting monthly at Redpoint Technologies in the Sears Tower on a schedule that worked for both city developers and suburban train commuters.</li>
-        <li><strong><code>03:06</code> · A Room of Twenty-Five and Cultivating Speakers:</strong> Why a twenty-five-person room was the right size to encourage team developers to give their first user group talk.</li>
-        <li><strong><code>05:17</code> · Late 2007 Origins and Platform Evolution:</strong> My thank-you to Sergio for my first user group and first talk, followed by Sergio's recollection of launching the group in late 2007 with Derek Lakin and Uriah and watching Microsoft adopt ASP.NET MVC and jQuery.</li>
-        <li><strong><code>07:09</code> · Seeing TDD and BDD in Action:</strong> Giving everyday developers a place to see ideas from other languages and judge the evidence for themselves.</li>
-        <li><strong><code>10:29</code> · Cross-Platform Regulars, Kanban &amp; Chicago Code Camp:</strong> How non-.NET developers joined for topics like Kanban, and how Sergio carried that multi-platform approach into Chicago Code Camp.</li>
-        <li><strong><code>11:42</code> · Redpoint's Pizza, Fishbowls &amp; Curation with Eduardo:</strong> What worked and what failed when testing open projector nights and fishbowl debates versus curating speakers with Eduardo.</li>
+      <ul style="font-size: 1.0rem; line-height: 1.75; color: var(--color-text-main, #1e232a); padding-left: 1.4rem; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.25rem;">
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="0" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>00:00</code></button><strong>Continuous Improvement Over Labels:</strong> Why Sergio avoids a rigid definition of Alt.NET and focuses on improving software quality and developer practices beyond a single vendor.</li>
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="139" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>02:19</code></button><strong>The Second Wednesday at 6:30 PM:</strong> Meeting monthly at Redpoint Technologies in the Sears Tower on a schedule that worked for both city developers and suburban train commuters. (<a href="/2008/08/11/upcoming-chicago-alt-net-meeting-on-august-13th.html" target="_blank" rel="noopener">Aug 2008 Post</a>)</li>
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="186" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>03:06</code></button><strong>A Room of Twenty-Five and Cultivating Speakers:</strong> Why a twenty-five-person room was the right size to encourage team developers to give their first user group talk. (<a href="https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home" target="_blank" rel="noopener">Nov 2008 Wayback</a>)</li>
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="317" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>05:17</code></button><strong>Late 2007 Origins and Platform Evolution:</strong> My thank-you to Sergio for my first user group and first talk, followed by Sergio's recollection of launching the group in late 2007 with Derek Lakin and Uriah and watching Microsoft adopt ASP.NET MVC and jQuery.</li>
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="429" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>07:09</code></button><strong>Seeing TDD and BDD in Action (Line 145):</strong> Giving everyday developers a place to see ideas from other languages and judge the evidence for themselves. (<a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" target="_blank" rel="noopener">Interactive Transcript</a>)</li>
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="629" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>10:29</code></button><strong>Cross-Platform Regulars, Kanban &amp; Chicago Code Camp:</strong> How non-.NET developers joined for topics like Kanban, and how Sergio carried that multi-platform approach into Chicago Code Camp. (<a href="/ai/2026/11/18/chicago-code-camp-2012-code-camp-server-retrospective/" target="_blank" rel="noopener"><code>just3ws/ccs</code></a> &middot; <a href="/reports/software-craftsmanship-forensics/signatory-network/" target="_blank" rel="noopener">Signatory Map</a>)</li>
+        <li><button type="button" class="workbench-canvas-btn" data-ep01-seek="702" style="padding: 0.1rem 0.45rem; margin-right: 0.35rem;"><code>11:42</code></button><strong>Redpoint's Pizza, Fishbowls &amp; Curation with Eduardo:</strong> What worked and what failed when testing open projector nights and fishbowl debates versus curating speakers with Eduardo, setting up Episode 2 (Ray Hightower &amp; ChicagoRuby). (<a href="/2009/03/12/chicagoalt-net-march-meeting-recap.html" target="_blank" rel="noopener">Mar 2009 Fishbowl</a>)</li>
       </ul>
       <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-main, #1e232a); margin-bottom: 1.25rem;">
         The present-day echo is modest and practical. In 2008, the default vendor path was drag-and-drop WebForms wizards that hid HTTP and made testing difficult; today, it is often generative AI tools that produce plausible code without exposing domain boundaries. Engineers still benefit from small, trusted rooms where people share real work, look across boundaries, and verify new tools together.
@@ -195,6 +269,36 @@ breadcrumb_parent_url: "/series/the-sound-above/"
 
   </div>
 </article>
+
+<script>
+(function () {
+  const iframe = document.getElementById("episode-01-player");
+  if (!iframe) return;
+
+  function sendYouTubeCommand(func, args) {
+    if (!iframe.contentWindow) return;
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: "command", func: func, args: args || [] }),
+      "*"
+    );
+  }
+
+  document.querySelectorAll("[data-ep01-cmd]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      sendYouTubeCommand(btn.getAttribute("data-ep01-cmd"), []);
+    });
+  });
+
+  document.querySelectorAll("[data-ep01-seek]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const seconds = Number(btn.getAttribute("data-ep01-seek") || 0);
+      sendYouTubeCommand("seekTo", [seconds, true]);
+      sendYouTubeCommand("playVideo", []);
+      iframe.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+})();
+</script>
 
 <!-- Schema.org Linked Data for Series Video -->
 <script type="application/ld+json">
