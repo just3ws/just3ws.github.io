@@ -142,7 +142,7 @@ permalink: /assets/data/site-search-index.json
     "url": "/series/the-sound-above/episode-01/workbench/",
     "badge": "Broadcast Workbench",
     "icon": "🎛️",
-    "keywords": "episode 01 broadcast workbench 3-pane cockpit sergio pereira chicago alt.net textream rewatch cue board derik whittaker ryan rinaldi eduardo scoz twatio nhaml fishbowl db4o just3ws/ccs signatory 592"
+    "keywords": "episode 01 broadcast workbench 3-pane cockpit sergio pereira chicago alt.net textream rewatch cue board derik whittaker john nuechterlein jdn eduardo scoz twatio nhaml fishbowl db4o just3ws/ccs signatory 592"
   },
   {
     "title": "Dehum Live Broadcast Workbench (3-Pane Cockpit)",
@@ -248,7 +248,7 @@ permalink: /assets/data/site-search-index.json
     {% assign ep_title = "The Sound Above: Episode " | append: ep.number | append: " · " | append: ep.title %}
     {% assign ep_kw = "the sound above oral history rewatch episode " | append: ep.number | append: " episode " | append: ep_num | append: " " | append: ep.title | append: " " | append: ep.interviewee | append: " " | append: ep.conference | append: " " | append: ep.year | append: " " | append: ep.movement %}
     {% if ep.number == 1 %}
-      {% assign ep_kw = ep_kw | append: " chicago alt.net redpoint sears tower nhaml spark adam tybor derik whittaker ryan rinaldi eduardo scoz twatio fishbowl db4o just3ws/ccs signatory 592 photo booth textream" %}
+      {% assign ep_kw = ep_kw | append: " chicago alt.net redpoint sears tower nhaml spark adam tybor derik whittaker john nuechterlein jdn eduardo scoz twatio fishbowl db4o just3ws/ccs signatory 592 photo booth textream" %}
     {% endif %}
     {
       "title": {{ ep_title | jsonify }},
