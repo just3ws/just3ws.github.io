@@ -851,24 +851,19 @@ title: "Live Broadcast Workbench | The Sound Above Ep 01: Sergio Pereira and Chi
 
         <hr style="border: 0; border-top: 1px solid var(--dash-border); margin: 12px 0;">
 
-        <!-- Embedded Monitor Player + Transport -->
-        <div class="panel-title" style="margin-bottom: 6px;">Reference Player (<code>qOHdZKz1WFw</code>)</div>
-        <div class="mini-player-shell">
-          <div class="mini-player-frame">
-            <iframe
-              id="episode-01-player"
-              src="https://www.youtube-nocookie.com/embed/qOHdZKz1WFw?enablejsapi=1"
-              title="Sergio Pereira on Chicago Alt.NET | SCNA 2011"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+        <!-- Canonical Hosted Interview Controller (Video + Chapters + Diarized Transcript) -->
+        <div class="panel-title" style="margin-bottom: 6px;">Canonical Interview Stage (Hosted)</div>
+        <div class="callout-warning" style="border-left-color: var(--dash-active); background: rgba(15, 118, 110, 0.06); border-color: rgba(15, 118, 110, 0.25); margin-bottom: 10px; font-size: 0.82rem;">
+          <strong>Single Source of Truth:</strong> All rewatches run through your hosted interview page with chapters &amp; 44-turn diarized transcript (backed by YouTube, never raw YouTube tabs).
+          <div style="margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;">
+            <button type="button" id="btn-open-canonical" class="textream-btn" style="flex: 1; justify-content: center;">&#x25B6; Open Canonical Interview Window</button>
           </div>
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px;">
-          <button type="button" class="copy-btn" data-ep01-cmd="playVideo">&#x25B6; Play</button>
-          <button type="button" class="copy-btn" data-ep01-cmd="pauseVideo">&#x23F8; Pause</button>
+          <button type="button" class="copy-btn" data-ep01-cmd="play">&#x25B6; Play</button>
+          <button type="button" class="copy-btn" data-ep01-cmd="pause">&#x23F8; Pause</button>
           <button type="button" class="copy-btn" data-ep01-seek="0">&#x23EE; 00:00</button>
-          <a href="https://www.youtube.com/watch?v=qOHdZKz1WFw" target="_blank" rel="noopener" class="copy-btn" style="margin-left: auto;">YouTube &nearr;</a>
+          <a href="/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/" target="just3ws_canonical_interview" class="copy-btn" style="margin-left: auto;">Chapters &amp; Transcript &nearr;</a>
         </div>
 
         <!-- Timestamp Jumps -->
@@ -1086,21 +1081,54 @@ title: "Live Broadcast Workbench | The Sound Above Ep 01: Sergio Pereira and Chi
 
       applySceneSelection('02', 'Monologue: Cold Open & Scene');
 
-      // 4. YouTube Player Transport & Timestamp Jumps
-      const iframe = document.getElementById('episode-01-player');
-      function sendYT(func, args) {
-        if (!iframe || !iframe.contentWindow) return;
-        iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: args || [] }), '*');
+      // 4. Canonical Hosted Interview Controller (BroadcastChannel + Named Window)
+      const CANONICAL_SLUG = 'sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011';
+      const CANONICAL_BASE = '/interviews/' + CANONICAL_SLUG + '/';
+      const syncChannel = (typeof BroadcastChannel !== 'undefined') ? new BroadcastChannel('just3ws-interview-sync') : null;
+      let canonicalWin = null;
+
+      function openCanonical(sec) {
+        const targetUrl = (typeof sec === 'number') ? (CANONICAL_BASE + '#t=' + Math.floor(sec)) : CANONICAL_BASE;
+        if (!canonicalWin || canonicalWin.closed) {
+          canonicalWin = window.open(targetUrl, 'just3ws_canonical_interview');
+        } else {
+          if (syncChannel && typeof sec === 'number') {
+            syncChannel.postMessage({ slug: CANONICAL_SLUG, action: 'seek', seconds: sec });
+          } else {
+            canonicalWin.location.href = targetUrl;
+          }
+          canonicalWin.focus();
+        }
       }
+
+      const openCanonicalBtn = document.getElementById('btn-open-canonical');
+      if (openCanonicalBtn) {
+        openCanonicalBtn.addEventListener('click', function () {
+          openCanonical();
+        });
+      }
+
       document.querySelectorAll('[data-ep01-cmd]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          sendYT(btn.getAttribute('data-ep01-cmd'), []);
+          const action = btn.getAttribute('data-ep01-cmd');
+          if (syncChannel) {
+            syncChannel.postMessage({ slug: CANONICAL_SLUG, action: action });
+          }
+          if (!canonicalWin || canonicalWin.closed) {
+            if (action === 'play') openCanonical(0);
+          }
         });
       });
+
       document.querySelectorAll('[data-ep01-seek]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          sendYT('seekTo', [Number(btn.getAttribute('data-ep01-seek') || 0), true]);
-          sendYT('playVideo', []);
+          const sec = Number(btn.getAttribute('data-ep01-seek') || 0);
+          if (syncChannel) {
+            syncChannel.postMessage({ slug: CANONICAL_SLUG, action: 'seek', seconds: sec });
+          }
+          if (!canonicalWin || canonicalWin.closed) {
+            openCanonical(sec);
+          }
         });
       });
 

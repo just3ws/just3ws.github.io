@@ -150,9 +150,46 @@
         if (history.replaceState) { history.replaceState(null, "", "#t=" + Math.floor(sec)); }
       });
 
-      // Deep link: land on #t=SEC → seek once the player exists.
+      // Deep link: land on #t=SEC -> seek once the player exists.
       var m = (location.hash || "").match(/[#&]t=(\d+)/);
       if (m) { seek(parseInt(m[1], 10)); }
+
+      window.addEventListener("hashchange", function () {
+        var hm = (location.hash || "").match(/[#&]t=(\d+)/);
+        if (hm) { seek(parseInt(hm[1], 10)); }
+      });
+
+      // Remote cockpit control via BroadcastChannel from Episode Workbench pages.
+      if (typeof BroadcastChannel !== "undefined") {
+        var bc = new BroadcastChannel("just3ws-interview-sync");
+        bc.addEventListener("message", function (ev) {
+          var msg = ev.data || {};
+          if (msg.slug && location.pathname.indexOf(msg.slug) === -1) return;
+          if (msg.action === "seek" && typeof msg.seconds === "number") {
+            seek(msg.seconds);
+            if (history.replaceState) { history.replaceState(null, "", "#t=" + Math.floor(msg.seconds)); }
+          } else if (msg.action === "play" || msg.action === "pause") {
+            var p = getPlayer();
+            if (!p) return;
+            if (msg.action === "play" && p.hasAttribute && p.hasAttribute("data-deferred-embed")) {
+              seek(0);
+              return;
+            }
+            if (p.tagName === "VIDEO") {
+              if (msg.action === "play" && p.play) p.play();
+              if (msg.action === "pause" && p.pause) p.pause();
+            } else if (p.tagName === "IFRAME" && p.contentWindow) {
+              try {
+                p.contentWindow.postMessage(JSON.stringify({
+                  event: "command",
+                  func: msg.action === "play" ? "playVideo" : "pauseVideo",
+                  args: []
+                }), "*");
+              } catch (e) {}
+            }
+          }
+        });
+      }
     })();
   </script>
 {% endif %}

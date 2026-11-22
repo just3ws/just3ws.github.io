@@ -439,11 +439,11 @@ class EpisodeBookmarks
       entries << link('Episode page', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/")
       workbench_path = File.join(ROOT, 'series', 'the-sound-above', format('episode-%02d-workbench.html', number))
       entries << link('Live Broadcast Workbench (3-Pane Cockpit)', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/workbench/") if File.file?(workbench_path)
-      entries << link('Archive interview', "#{SITE}/interviews/#{dossier['slug']}/")
+      entries << link('Canonical Interview (Video + Chapters + Transcript)', "#{SITE}/interviews/#{dossier['slug']}/")
     elsif number > 35
       entries << link('Possible later extras in the working outline', "#{SITE}/series/the-sound-above/#series-codas")
+      entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
     end
-    entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
 
     rundown_path = File.join(ROOT, 'obs', 'teleprompter', format('episode-%02d-rundown.md', number))
     entries << link('Broadcast Rundown & Rewatch Cue Sheet', "file://#{rundown_path}") if File.file?(rundown_path)

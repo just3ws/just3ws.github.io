@@ -35,9 +35,9 @@
 4. **Audio Check:** Track 1 (Mix), Track 2 (Mic isolated), Track 3 (Chromium `sck_audio_capture` isolated). Do a 10-second test recording and verify both mic and Chromium audio play back cleanly without echo.
 5. **Overlay State:** `obs/overlays/overlay-state.json` is cued to Episode 1 (`Sergio Pereira`, `SCNA 2011`, `Mike Hall (@just3ws-mike)`).
 6. **Textream:** Load `obs/teleprompter/episode-01.textream`.
-7. **Chromium Tabs (Left Window: Video | Right Window: Research):**
-   - Left Window (Scene 03 / 04): `https://www.youtube.com/watch?v=qOHdZKz1WFw` cued to `00:00`, theater mode, captions off (you have the interactive transcript on the right).
-   - Right Window (Scene 04): Tab 1 = Interactive Transcript, Tab 2 = Nov 2008 Wayback (`chicagoalt.net`), Tab 3 = Signatory Network Map, Tab 4 = Chicago Code Camp Retrospective (`just3ws/ccs`).
+7. **Chromium Tabs (Left Window: Canonical Interview | Right Window: Research):**
+   - Left Window (Scene 03 / 04): `https://www.just3ws.localhost/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/` (canonical hosted interview with YouTube-backed player, 13 chapters, and 44-turn diarized transcript - driven directly by the 3-Pane Broadcast Workbench).
+   - Right Window (Scene 04): Tab 1 = Nov 2008 Wayback (`chicagoalt.net`), Tab 2 = Signatory Network Map, Tab 3 = Chicago Code Camp Retrospective (`just3ws/ccs`), Tab 4 = `twatio.com/Home/About` (Apr 25, 2009 Wayback).
 
 ---
 
