@@ -137,6 +137,90 @@ permalink: /assets/data/site-search-index.json
     "icon": "⚡",
     "keywords": "control plane dashboard platform link hub hister openobserve llama gemstash local ecosystem services"
   },
+  {
+    "title": "Episode 01 Live Broadcast Workbench (3-Pane Cockpit)",
+    "url": "/series/the-sound-above/episode-01/workbench/",
+    "badge": "Broadcast Workbench",
+    "icon": "🎛️",
+    "keywords": "episode 01 broadcast workbench 3-pane cockpit sergio pereira chicago alt.net textream rewatch cue board derik whittaker ryan rinaldi eduardo scoz twatio nhaml fishbowl db4o just3ws/ccs signatory 592"
+  },
+  {
+    "title": "Dehum Live Broadcast Workbench (3-Pane Cockpit)",
+    "url": "/dehum/dashboard.html",
+    "badge": "Broadcast Workbench",
+    "icon": "🎛️",
+    "keywords": "dehum live broadcast workbench dashboard mirage of competence high tension wires 60hz hum dsp obs teleprompter"
+  },
+  {
+    "title": "OBS Studio Recording Playbook & Scene Guide",
+    "url": "/obs/",
+    "badge": "OBS",
+    "icon": "🎬",
+    "keywords": "obs studio recording playbook scenes split screen 910x1080 overlays camera background audio tracks staging"
+  },
+  {
+    "title": "YouTube Publishing Pipeline & Web Teleprompter Studio",
+    "url": "/youtube/dashboard/",
+    "badge": "Dashboard",
+    "icon": "📺",
+    "keywords": "youtube publishing pipeline overview dashboard queue teleprompter studio web prompter textream"
+  },
+  {
+    "title": "Web Teleprompter Studio (6-Act Prompter)",
+    "url": "/youtube/dashboard/#tab-prompter",
+    "badge": "Teleprompter",
+    "icon": "🎙️",
+    "keywords": "web teleprompter studio prompter textream script acts rundown cue sheet"
+  },
+  {
+    "title": "zdots: Platform Bus & Local Control Plane",
+    "url": "https://zdots.localhost/",
+    "badge": "zdots.localhost",
+    "icon": "🧭",
+    "keywords": "zdots platform bus control plane local ecosystem daemons panoramic view"
+  },
+  {
+    "title": "my.localhost: Personal Platform Dashboard",
+    "url": "https://my.localhost/",
+    "badge": "my.localhost",
+    "icon": "🏠",
+    "keywords": "my localhost personal dashboard vault platform"
+  },
+  {
+    "title": "Jaeger: Distributed Tracing UI",
+    "url": "https://jaeger.localhost/",
+    "badge": "jaeger.localhost",
+    "icon": "📊",
+    "keywords": "jaeger distributed tracing spans otel telemetry observability"
+  },
+  {
+    "title": "llama.localhost: Local LLM Inference",
+    "url": "https://llama.localhost/",
+    "badge": "llama.localhost",
+    "icon": "🧠",
+    "keywords": "llama local llm inference apple silicon mlx model server"
+  },
+  {
+    "title": "embed.localhost: Vector Embeddings Service",
+    "url": "https://embed.localhost/",
+    "badge": "embed.localhost",
+    "icon": "🧬",
+    "keywords": "embed vector embeddings semantic search local inference"
+  },
+  {
+    "title": "gemstash.localhost: Local RubyGems Cache",
+    "url": "https://gemstash.localhost/",
+    "badge": "gemstash.localhost",
+    "icon": "💎",
+    "keywords": "gemstash rubygems cache local mirror bundler"
+  },
+  {
+    "title": "LAN System Map (Topology)",
+    "url": "https://lan.just3ws.com/map",
+    "badge": "Topology",
+    "icon": "🗺️",
+    "keywords": "lan system map topology network nodes services architecture"
+  },
   {% endunless %}
   {
     "title": "10-Year Career Timeline",
@@ -159,13 +243,21 @@ permalink: /assets/data/site-search-index.json
     "icon": "🎙️",
     "keywords": "interviews ugtastic whois tech community oral history archive podcast developer community chicago speakers transcripts"
   },
-  {
-    "title": "The Sound Above: Episode 1 · Sergio Pereira on Chicago Alt.NET",
-    "url": "/series/the-sound-above/episode-01/",
-    "badge": "Rewatch",
-    "icon": "📺",
-    "keywords": "the sound above oral history rewatch episode 01 sergio pereira chicago alt.net livestream broadcast foundation asimov youtube video"
-  },
+  {% for ep in site.data.sound_above_sequence.episodes %}
+    {% assign ep_num = ep.number | prepend: "00" | slice: -2, 2 %}
+    {% assign ep_title = "The Sound Above: Episode " | append: ep.number | append: " · " | append: ep.title %}
+    {% assign ep_kw = "the sound above oral history rewatch episode " | append: ep.number | append: " episode " | append: ep_num | append: " " | append: ep.title | append: " " | append: ep.interviewee | append: " " | append: ep.conference | append: " " | append: ep.year | append: " " | append: ep.movement %}
+    {% if ep.number == 1 %}
+      {% assign ep_kw = ep_kw | append: " chicago alt.net redpoint sears tower nhaml spark adam tybor derik whittaker ryan rinaldi eduardo scoz twatio fishbowl db4o just3ws/ccs signatory 592 photo booth textream" %}
+    {% endif %}
+    {
+      "title": {{ ep_title | jsonify }},
+      "url": "/series/the-sound-above/episode-{{ ep_num }}/",
+      "badge": "Ep {{ ep_num }}",
+      "icon": "📺",
+      "keywords": {{ ep_kw | jsonify }}
+    },
+  {% endfor %}
   {
     "title": "Chicago Community Timeline (Rewatch Context)",
     "url": "/timeline/community/",
@@ -251,12 +343,65 @@ permalink: /assets/data/site-search-index.json
     "keywords": "studio workbench ship of theseus wooden boat space station briefing dialectic objection ai augmented development continuity of care sbar handoff"
   },
   {
+    "title": "Public Support, GitHub Sponsors & Patreon",
+    "url": "/support/",
+    "badge": "Support",
+    "icon": "🤝",
+    "keywords": "support backers credits github sponsors patreon just3ws mike hall community"
+  },
+  {
+    "title": "Studio Workbench: Ep 02 · Fluffle Cluster (5 Raspberry Pis & 1K+ Transcript Pairs)",
+    "url": "/series/studio-workbench/fluffle-cluster/",
+    "badge": "Episode",
+    "icon": "🍓",
+    "keywords": "studio workbench fluffle cluster episode 02 raspberry pi whisper.cpp dead rabbit radio jason carpenter maildir dotfiles 79 commits canvas architecture"
+  },
+  {
+    "title": "Studio Workbench: Fluffle 7-Perspective Mermaid Briefing Dossier",
+    "url": "/docs/studio-workbench-fluffle-theseus-briefing/",
+    "badge": "Workbench",
+    "icon": "🗺️",
+    "keywords": "studio workbench fluffle theseus briefing 7 perspective mermaid dossier raspberry pi cluster"
+  },
+  {
+    "title": "Studio Workbench: Ep 03 · The Lost Coderwall Guides (Open Source, Vagrant & What Survives)",
+    "url": "/series/studio-workbench/the-lost-coderwall-guides/",
+    "badge": "Episode",
+    "icon": "🏺",
+    "keywords": "studio workbench lost coderwall guides episode 03 vagrant virtualbox google hangouts youtube lockdown assembly 634 commits"
+  },
+  {
     "title": "Studio Workbench: The Lost Coderwall Guides (Briefing & Archaeology)",
     "url": "/docs/studio-workbench-coderwall-briefing/",
     "badge": "Workbench",
     "icon": "🏺",
     "keywords": "studio workbench lost coderwall guides open source vagrant virtualbox google hangouts youtube bit rot assembly transition 2014 developer onboarding"
   },
+  {% for p in site.pages %}
+    {% if p.title and p.url %}
+      {% if p.url contains '/ai/' or p.url contains '/reports/' %}
+        {% assign p_badge = "Report" %}
+        {% assign p_icon = "🔬" %}
+        {% if p.url contains '/ai/' %}
+          {% assign p_badge = "AI Archive" %}
+          {% assign p_icon = "🤖" %}
+        {% endif %}
+        {% assign p_kw = p.title | append: " " | append: p.description | append: " " | append: p.url %}
+        {% if p.url contains 'signatory-network' %}
+          {% assign p_kw = p_kw | append: " signatory network map software craftsmanship manifesto 106 mike hall 592 sergio pereira scmc ugtastic" %}
+        {% elsif p.url contains 'chicago-code-camp-2012' %}
+          {% assign p_kw = p_kw | append: " chicago code camp just3ws/ccs rails 24 commits sergio pereira 764 commits college of lake county grayslake" %}
+        {% endif %}
+        {
+          "title": {{ p.title | jsonify }},
+          "url": {{ p.url | jsonify }},
+          "badge": {{ p_badge | jsonify }},
+          "icon": {{ p_icon | jsonify }},
+          "keywords": {{ p_kw | jsonify }}
+        },
+      {% endif %}
+    {% endif %}
+  {% endfor %}
   {% for pos_id in site.data.resume.timeline.history %}
     {% assign pos = site.data.resume.positions[pos_id] %}
     {% if pos and pos.title %}
