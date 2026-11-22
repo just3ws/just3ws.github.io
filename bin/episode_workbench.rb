@@ -324,7 +324,11 @@ class EpisodeWorkbench
       end
 
       rundown = generate_rundown(dossier)
-      pages = rundown[:acts].map { |act| act[:teleprompter_script] }
+      custom_scripts = dossier['teleprompter_script'] || {}
+      pages = rundown[:acts].map do |act|
+        custom_act = custom_scripts["act_#{act[:act_number]}"].to_s
+        custom_act.strip.empty? ? act[:teleprompter_script] : custom_act
+      end
       package_name = format('episode-%02d', number)
       package_dir = File.join(options[:output_dir], package_name)
       files = [File.join(package_dir, 'script.md'), File.join(package_dir, 'episode.textream')]

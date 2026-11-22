@@ -25,13 +25,16 @@ The archive covers Chicago user groups, conferences, and technical conversations
 - **Conference / Date**: SCNA 2011 (2011)
 - **Location**: Chicago, IL
 - **Slug**: `sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011`
-- **The Sound Above Inquiry**: What made people come back to Chicago Alt.NET?
-- **Chicago Context**: A monthly group where members shared talks and discussed software beyond .NET.
-- **Present-day Echo**: Engineers still benefit from places to share work, ask questions, and judge new tools together.
+- **The Sound Above Inquiry**: What made people come back to Chicago Alt.NET, and how did a monthly room of twenty-five developers cultivate first-time speakers across platform boundaries?
+- **Chicago Context**: A monthly group at Redpoint Technologies in the Sears Tower where members shared talks, practiced open formats, and explored software development beyond .NET.
+- **Present-day Echo**: Tools and vendor defaults change every decade, from drag-and-drop WebForms wizards in 2008 to AI code synthesis in 2026. Engineers still benefit from trusted peer rooms to share work, ask questions, and verify new tools empirically together.
 - **Forensic Primary Sources**:
-  - [November 12, 2008 Meeting Archive (Wayback Machine)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home): Mike Hall presented NHaml alongside Adam Tybor on Spark at Redpoint Technologies.
+  - [August 13, 2008 First Meeting Blog Review](/2008/08/14/chicago-alt-net-meeting-august-13th-meeting-review.html) and [Sergio Pereira's Meeting Video Post (August 21, 2008)](/2008/08/21/video-from-chicago-alt-net-meeting.html): Mike Hall's first user group attendance via the Metra train from Crystal Lake, where Sergio recorded the ThoughtWorks Cruise CI demo.
+  - [November 12, 2008 Meeting Archive (Wayback Machine)](https://web.archive.org/web/20081101091417/http://www.chicagoalt.net/Home): Mike Hall presented his first user group talk on NHaml alongside Adam Tybor on Spark at Redpoint Technologies in the Sears Tower.
+  - [March 12, 2009 Fishbowl Meeting Recap](/2009/03/12/chicagoalt-net-march-meeting-recap.html): Four-chair Fishbowl debate on Domain-Driven Design with Adam Tybor and Sergio Pereira's circle discussion on `db4o`.
+  - [Chicago Code Camp (2010-2012) & Code Camp Server (`just3ws/ccs`) Retrospective](/ai/2026/11/18/chicago-code-camp-2012-code-camp-server-retrospective/) and [Signatory Network Map](/reports/software-craftsmanship-forensics/signatory-network/): Confirming Sergio Pereira as Software Craftsmanship Manifesto Signatory #592 (Grayslake, IL), May 2012 speaker, and #2 code contributor (24 commits in Ruby on Rails, Haml, and Sass) to `just3ws/ccs`.
   - [Chicago Alt.NET Slide Decks (SlideShare Archive)](https://www.slideshare.net/chicagoaltnet): Historical slide decks from Sergio Pereira and Chicago community speakers.
-- **Companion Video**: None (Primary Oral History Focus)
+- **Companion Video**: None (Primary Rewatch Focus)
 - **Status**: cued
 
 #### Episode 02: Ray Hightower: The Ambassador: ChicagoRuby & Grassroots Hospitality

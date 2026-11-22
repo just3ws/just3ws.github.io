@@ -48,7 +48,8 @@ def build_html(ep)
   era = ep["era_name"] || "The Chicago Workshop"
   event = "#{ep['conference']} · #{ep['location'] || 'Chicago, IL'}"
   prompt = ep["sound_above_inquiry"] || ep["ai_era_parallel"]
-  role = ep["chicago_context"] ? "Community Practitioner · #{ep['chicago_context'].split('.').first}" : "Community Practitioner"
+  first_sentence = ep["chicago_context"]&.split(/\.(?:\s|\z)/)&.first
+  role = first_sentence ? "Community Practitioner · #{first_sentence}" : "Community Practitioner"
 
   <<~HTML
     <!DOCTYPE html>
@@ -347,12 +348,12 @@ def build_html(ep)
           <img src="../overlays/assets/ugtastic-cube-logo.png" alt="UGtastic Cube" class="brand-cube">
           <div class="series-titles">
             <h1 class="series-name">The Sound Above</h1>
-            <p class="series-tagline">UGtastic Oral History Rewatch · 2009–2026</p>
+            <p class="series-tagline">UGtastic Technical Rewatch · 2009–2026</p>
           </div>
         </div>
         <div class="badge-pill">
           <span class="badge-dot"></span>
-          <span class="badge-text">Oral History Rewatch</span>
+          <span class="badge-text">UGtastic Technical Rewatch</span>
         </div>
       </header>
 

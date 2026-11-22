@@ -45,6 +45,7 @@ class DeepInterviewResearcher
   }.freeze
 
   SUBSEQUENT_HISTORIES = {
+    "sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011" => "Alt.NET's grassroots push for testability, open-source tooling, and MVC architecture reshaped the Microsoft ecosystem (ASP.NET MVC, jQuery in Visual Studio, NuGet, and later cross-platform .NET Core). Forensic archival recovery confirmed Sergio Pereira as Software Craftsmanship Manifesto Signatory #592 (Grayslake, IL) and the #2 code contributor (24 commits in Ruby, Haml, and Sass) to the just3ws/ccs Rails 3.0 application that powered Chicago Code Camp (2010-2012), where he also spoke in May 2012.",
     "jez-humble-goto-conference-2014" => "Continuous Delivery became standard DevOps methodology globally; Jez Humble co-authored 'Lean Enterprise' (2015) and joined UC Berkeley.",
     "robert-martin-software-craftsmanship-north-america-2012" => "Uncle Bob published 'Clean Architecture' (2017) and expanded Clean Coders into a worldwide developer education platform.",
     "obie-fernandez-author-the-rails-way-co-founder-hashrocket-railsconf-2014" => "Rails 5/6/7 evolved into full-stack monoliths with Hotwire; Hashrocket expanded and Obie authored subsequent books on Lean publishing.",

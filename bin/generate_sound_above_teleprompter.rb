@@ -158,7 +158,7 @@ end
 # Save textream document to disk
 def save_textream_file(path, pages)
   FileUtils.mkdir_p(File.dirname(path))
-  File.write(path, JSON.pretty_generate(pages))
+  File.write(path, JSON.pretty_generate(pages) + "\n")
   path
 end
 
