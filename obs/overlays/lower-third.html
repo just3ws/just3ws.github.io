@@ -186,11 +186,11 @@
       <span class="mono-label" id="episode-tag">EPISODE 01</span>
       <div class="fcp-credo-banner" id="credo-banner">
         <img class="credo-logo" src="assets/ugtastic-cube-logo.png" alt="UGtastic">
-        <span id="credo-line-1">WHOIS TECH COMMUNITY</span>
+        <span id="credo-line-1">MIKE HALL (@JUST3WS-MIKE)</span>
         <span class="credo-dot">·</span>
-        <span id="credo-line-2">LEARNING ABOUT PEOPLE</span>
+        <span id="credo-line-2">UGTASTIC ARCHIVE</span>
         <span class="credo-dot">·</span>
-        <span id="credo-line-3">ONE CONVERSATION AT A TIME</span>
+        <span id="credo-line-3">LEARNING ABOUT PEOPLE</span>
       </div>
     </div>
 
@@ -272,18 +272,18 @@
             tagEl.textContent = "PROCESS CINEMA";
             credo1.textContent = "STUDIO WORKBENCH";
             credo2.textContent = "SYSTEMS & DISCOVERY";
-            credo3.textContent = "MIKE HALL";
+            credo3.textContent = "MIKE HALL (@JUST3WS-MIKE)";
           } else if (isDispatch) {
             seriesEl.textContent = (state.stream.series_title || "MIKE HALL").toUpperCase();
             tagEl.textContent = err.mode === "dispatch" ? "STUDIO DISPATCH" : "BEHIND THE SCENES";
             credo1.textContent = "OPEN REFLECTIONS";
             credo2.textContent = "WORKBENCH & CRAFT";
-            credo3.textContent = "MIKE HALL";
+            credo3.textContent = "MIKE HALL (@JUST3WS-MIKE)";
           } else {
             tagEl.textContent = (err.mode || "MARGINALIA").toUpperCase();
             credo1.textContent = "MARGINALIA";
             credo2.textContent = "CLOSE READINGS & ESSAYS";
-            credo3.textContent = "MIKE HALL";
+            credo3.textContent = "MIKE HALL (@JUST3WS-MIKE)";
           }
           nameEl.textContent = err.title;
           ctxEl.textContent = err.citation || (state.stream.series_title || (isWorkbench ? "Studio Workbench" : "Mike Hall"));
@@ -323,9 +323,9 @@
           } else {
             tagEl.textContent = `EPISODE ${String(ep.number).padStart(2, '0')}`;
           }
-          credo1.textContent = "WHOIS TECH COMMUNITY";
-          credo2.textContent = "LEARNING ABOUT PEOPLE";
-          credo3.textContent = "ONE CONVERSATION AT A TIME";
+          credo1.textContent = "MIKE HALL (@JUST3WS-MIKE)";
+          credo2.textContent = "UGTASTIC ARCHIVE";
+          credo3.textContent = "LEARNING ABOUT PEOPLE";
 
           if (isUnspecified && (ep.interviewee === "Mike Hall" || !ep.role || ep.role === "Community Practitioner" || ep.role === "Host & Curator")) {
             nameEl.textContent = ep.title || "The Sound Above";

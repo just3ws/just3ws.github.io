@@ -53,4 +53,4 @@
 
 ### Act 6: Coda & Next on The Sound Above (25:00 to 28:00)
 - **Screen:** `episodes.html` beside `media-pipeline` live cockpit (Apple Silicon M4 Metal, 103s Whisper, 0B permanent SSD waste).
-- **Outro:** Thank Jason Carpenter, Patreon callout (`patreon.com/whoistechcmty`), preview of *The Sound Above*, sign-off: *"Keep your feedback loops fast, and your code humane."*
+- **Outro:** Thank Jason Carpenter, Patreon callout (`patreon.com/c/just3ws` / `just3ws.com/support`), preview of *The Sound Above*, sign-off: *"Keep your feedback loops fast, and your code humane."*
