@@ -177,7 +177,6 @@ class EpisodeBookmarks
       link('Live Broadcast Workbench & A/B Listening Test', "#{SITE}/dehum/dashboard.html"),
       link('Source recording (YouTube 7YeFpKn5FbU)', 'https://www.youtube.com/watch?v=7YeFpKn5FbU'),
       link('Interactive Dehum Audio Forensics Lab', "#{SITE}/dehum/"),
-      link('Practice Run Recording', 'https://www.youtube.com/watch?v=7YeFpKn5FbU'),
       link('Hister search results', "#{HISTORIAN}/search?query=#{af_query}")
     ])
 
@@ -444,6 +443,12 @@ class EpisodeBookmarks
     end
     entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
 
+    rundown_path = File.join(ROOT, 'obs', 'teleprompter', format('episode-%02d-rundown.md', number))
+    entries << link('Broadcast Rundown & Rewatch Cue Sheet', "file://#{rundown_path}") if File.file?(rundown_path)
+
+    textream_path = File.join(ROOT, 'obs', 'teleprompter', format('episode-%02d.textream', number))
+    entries << link('Textream Teleprompter Script', "file://#{textream_path}") if File.file?(textream_path)
+
     query = [dossier['interviewee'], dossier['title'], dossier['conference'], dossier['year']].compact.join(' ')
     payload = CGI.escape(JSON.generate(text: query, limit: 12))
     entries << link('Hister search results', "#{HISTORIAN}/search?query=#{payload}")
@@ -469,7 +474,28 @@ class EpisodeBookmarks
   end
 
   def folder(title, entries)
-    { title: title, entries: entries }
+    { title: title, entries: deduplicate_entries(entries) }
+  end
+
+  def deduplicate_entries(entries)
+    seen_urls = {}
+    entries.each_with_object([]) do |entry, result|
+      if entry[:entries]
+        result << entry
+      else
+        key = canonical_url_key(entry[:url])
+        next if seen_urls[key]
+
+        seen_urls[key] = true
+        result << entry
+      end
+    end
+  end
+
+  def canonical_url_key(url)
+    url.to_s
+       .sub(%r{\Ahttps?://(?:www\.)?just3ws\.com(?=/|\z)}, SITE)
+       .sub(%r{/+\z}, '')
   end
 
   def document(folders)

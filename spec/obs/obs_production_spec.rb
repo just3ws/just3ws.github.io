@@ -56,6 +56,14 @@ RSpec.describe "OBS Studio Production Artifacts & Contracts" do
     camera = reaction.dig("settings", "items").find { |item| item["name"] == "Host Camera" }
     expect(camera["pos"]).to eq({ "x" => 1380.0, "y" => 750.0 })
     expect(camera["bounds"]).to eq({ "x" => 480.0, "y" => 270.0 })
+
+    split = data["sources"].find { |source| source["name"] == "04. Split Screen - Video & Research" }
+    split_video = split.dig("settings", "items").find { |item| item["name"] == "Video Window (Chromium)" }
+    split_research = split.dig("settings", "items").find { |item| item["name"] == "Research Window (just3ws.localhost)" }
+    expect(split_video["pos"]).to eq({ "x" => 30.0, "y" => 0.0 })
+    expect(split_video["bounds"]).to eq({ "x" => 910.0, "y" => 1080.0 })
+    expect(split_research["pos"]).to eq({ "x" => 980.0, "y" => 0.0 })
+    expect(split_research["bounds"]).to eq({ "x" => 910.0, "y" => 1080.0 })
   end
 
   it "verifies basic.ini configures 1080p60 and Apple VideoToolbox hardware acceleration" do

@@ -29,7 +29,7 @@ When reacting to an interview video while cross-referencing archival data:
 | |   (UGtastic Interview)  | |   (just3ws.localhost)       | |
 | |                         | |   Transcripts & Timeline    | |
 | |   Width: 910px          | |   Width: 910px              | |
-| |   Height: 512px         | |   Height: 512px             | |
+| |   Height: 1080px        | |   Height: 1080px            | |
 | +-------------------------+ +-----------------------------+ |
 |               +-------------------------+                   |
 |               |  Host Camera inset     |                   |
