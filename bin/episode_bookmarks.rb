@@ -19,6 +19,7 @@ class EpisodeBookmarks
   EPISODES = File.join(ROOT, '_data', 'episodes')
   DEFAULT_OUTPUT = File.join(ROOT, 'obs', 'bookmarks', 'the-sound-above-rewatch.html')
   CHROMIUM_BOOKMARKS = File.expand_path('~/Library/Application Support/Chromium/Default/Bookmarks')
+  STUDIO_CHROMIUM_BOOKMARKS = File.expand_path('~/Library/Application Support/Chromium-TheSoundAbove/Default/Bookmarks')
   SITE = 'https://www.just3ws.localhost'
   HISTORIAN = 'https://hister.localhost'
 
@@ -338,7 +339,23 @@ class EpisodeBookmarks
   end
 
   def install_to_chromium
-    unless File.file?(CHROMIUM_BOOKMARKS)
+    targets = [CHROMIUM_BOOKMARKS, STUDIO_CHROMIUM_BOOKMARKS].uniq
+    studio_default_dir = File.dirname(STUDIO_CHROMIUM_BOOKMARKS)
+    if File.directory?(studio_default_dir) && !File.file?(STUDIO_CHROMIUM_BOOKMARKS)
+      initial_data = {
+        'checksum' => '',
+        'roots' => {
+          'bookmark_bar' => { 'children' => [], 'date_added' => '0', 'date_modified' => '0', 'id' => '1', 'name' => 'Bookmarks bar', 'type' => 'folder' },
+          'other' => { 'children' => [], 'date_added' => '0', 'date_modified' => '0', 'id' => '2', 'name' => 'Other bookmarks', 'type' => 'folder' },
+          'synced' => { 'children' => [], 'date_added' => '0', 'date_modified' => '0', 'id' => '3', 'name' => 'Mobile bookmarks', 'type' => 'folder' }
+        },
+        'version' => 1
+      }
+      File.write(STUDIO_CHROMIUM_BOOKMARKS, JSON.pretty_generate(initial_data))
+    end
+
+    existing_targets = targets.select { |t| File.file?(t) }
+    if existing_targets.empty?
       warn "Error: Chromium Bookmarks file not found: #{CHROMIUM_BOOKMARKS}"
       return false
     end
@@ -360,39 +377,41 @@ class EpisodeBookmarks
       end
     end
 
-    # Timestamped backup
-    backup_path = "#{CHROMIUM_BOOKMARKS}.backup-#{Time.now.strftime('%Y%m%d-%H%M%S')}"
-    FileUtils.cp(CHROMIUM_BOOKMARKS, backup_path)
-    puts "Created backup of Chromium bookmarks at: #{backup_path}"
+    existing_targets.each do |target_file|
+      # Timestamped backup
+      backup_path = "#{target_file}.backup-#{Time.now.strftime('%Y%m%d-%H%M%S')}"
+      FileUtils.cp(target_file, backup_path)
+      puts "Created backup of Chromium bookmarks at: #{backup_path}"
 
-    b_data = JSON.parse(File.read(CHROMIUM_BOOKMARKS))
-    existing_ids = []
-    scan_ids = lambda do |node|
-      existing_ids << node['id'].to_i if node['id']
-      node['children']&.each { |child| scan_ids.call(child) }
+      b_data = JSON.parse(File.read(target_file))
+      existing_ids = []
+      scan_ids = lambda do |node|
+        existing_ids << node['id'].to_i if node['id']
+        node['children']&.each { |child| scan_ids.call(child) }
+      end
+      b_data['roots'].each_value { |root_node| scan_ids.call(root_node) }
+
+      max_id = existing_ids.max || 1000
+      id_gen = Enumerator.new { |y| (max_id + 1).step { |n| y << n.to_s } }
+      timestamp = (Time.now.to_f * 1_000_000 + 11644473600000000).to_i.to_s
+
+      bar = b_data['roots']['bookmark_bar']
+      preserved_children = bar['children'].select { |c| PRESERVED_BAR_ITEMS.include?(c['name']) }
+
+      bar['children'] = [
+        to_chromium_node(build_localhost_ecosystem, id_gen, timestamp),
+        to_chromium_node(build_obs_studio, id_gen, timestamp)
+      ] + preserved_children + [
+        to_chromium_node(build_phalanx_duel, id_gen, timestamp),
+        to_chromium_node(build_sound_above, id_gen, timestamp),
+        to_chromium_node(build_studio_workbench, id_gen, timestamp),
+        to_chromium_node(build_errata, id_gen, timestamp),
+        to_chromium_node(build_ramblin_amblin, id_gen, timestamp)
+      ]
+
+      File.write(target_file, JSON.pretty_generate(b_data))
+      puts "Successfully updated Chromium Bookmarks at #{target_file} with #{all_series_folders.size} collections."
     end
-    b_data['roots'].each_value { |root_node| scan_ids.call(root_node) }
-
-    max_id = existing_ids.max || 1000
-    id_gen = Enumerator.new { |y| (max_id + 1).step { |n| y << n.to_s } }
-    timestamp = (Time.now.to_f * 1_000_000 + 11644473600000000).to_i.to_s
-
-    bar = b_data['roots']['bookmark_bar']
-    preserved_children = bar['children'].select { |c| PRESERVED_BAR_ITEMS.include?(c['name']) }
-
-    bar['children'] = [
-      to_chromium_node(build_localhost_ecosystem, id_gen, timestamp),
-      to_chromium_node(build_obs_studio, id_gen, timestamp)
-    ] + preserved_children + [
-      to_chromium_node(build_phalanx_duel, id_gen, timestamp),
-      to_chromium_node(build_sound_above, id_gen, timestamp),
-      to_chromium_node(build_studio_workbench, id_gen, timestamp),
-      to_chromium_node(build_errata, id_gen, timestamp),
-      to_chromium_node(build_ramblin_amblin, id_gen, timestamp)
-    ]
-
-    File.write(CHROMIUM_BOOKMARKS, JSON.pretty_generate(b_data))
-    puts "Successfully updated Chromium Bookmarks with #{all_series_folders.size} series and platform folders."
 
     if was_running
       puts 'Relaunching Chromium...'
@@ -432,25 +451,40 @@ class EpisodeBookmarks
   def episode_folder(number)
     dossier = load_yaml(format('episode-%02d.yml', number))
     title = format('Episode %02d: %s', number, dossier.fetch('title'))
-    entries = [link('Season One working outline', "#{SITE}/series/the-sound-above/")]
+
+    episode_entries = [link('Season One working outline', "#{SITE}/series/the-sound-above/")]
     if number.between?(1, 35)
-      entries << link('Episode page', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/")
-      entries << link('Live Broadcast Workbench (3-Pane Cockpit)', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/workbench/")
-      entries << link('Canonical Interview (Video + Chapters + Transcript)', "#{SITE}/interviews/#{dossier['slug']}/")
+      episode_entries << link('Canonical Interview (Video + Chapters + Transcript)', "#{SITE}/interviews/#{dossier['slug']}/")
+      episode_entries << link('Live Broadcast Workbench (3-Pane Cockpit)', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/workbench/")
+      episode_entries << link('Episode page', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/")
     elsif number > 35
-      entries << link('Possible later extras in the working outline', "#{SITE}/series/the-sound-above/#series-codas")
-      entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
+      episode_entries << link('Possible later extras in the working outline', "#{SITE}/series/the-sound-above/#series-codas")
+      episode_entries << link('Source recording', "https://www.youtube.com/watch?v=#{dossier['youtube_video_id']}") if dossier['youtube_video_id']
     end
 
     rundown_path = File.join(ROOT, 'obs', 'teleprompter', format('episode-%02d-rundown.md', number))
-    entries << link('Broadcast Rundown & Rewatch Cue Sheet', "file://#{rundown_path}") if File.file?(rundown_path)
+    episode_entries << link('Broadcast Rundown & Rewatch Cue Sheet', "file://#{rundown_path}") if File.file?(rundown_path)
 
     textream_path = File.join(ROOT, 'obs', 'teleprompter', format('episode-%02d.textream', number))
-    entries << link('Textream Teleprompter Script', "file://#{textream_path}") if File.file?(textream_path)
+    episode_entries << link('Textream Teleprompter Script', "file://#{textream_path}") if File.file?(textream_path)
+
+    Array(dossier['archival_receipts']).each do |receipt|
+      url = receipt['url'] || receipt['path']
+      next unless url
+
+      url = "#{SITE}#{url}" if url.start_with?('/')
+      url = url.sub(%r{\Ahttps?://(?:www\.)?just3ws\.com(?=/|\z)}, SITE)
+      episode_entries << link(receipt['title'] || 'Archival receipt', url)
+    end
+
+    errata_entries = []
+    if dossier['errata']
+      errata_entries << link('Unscripted Discussion Prompts & Audio Forensics', "#{SITE}/series/the-sound-above/episode-#{format('%02d', number)}/workbench/#pane-errata")
+    end
 
     query = [dossier['interviewee'], dossier['title'], dossier['conference'], dossier['year']].compact.join(' ')
     payload = CGI.escape(JSON.generate(text: query, limit: 12))
-    entries << link('Hister search results', "#{HISTORIAN}/search?query=#{payload}")
+    errata_entries << link('Hister Oral History Deep Research Search', "#{HISTORIAN}/search?query=#{payload}")
 
     Array(dossier['research_attachments']).each do |attachment|
       url = attachment['url'] || attachment['path']
@@ -458,9 +492,23 @@ class EpisodeBookmarks
 
       url = "#{SITE}#{url}" if url.start_with?('/')
       url = url.sub(%r{\Ahttps?://(?:www\.)?just3ws\.com(?=/|\z)}, SITE)
-      entries << link(attachment['title'] || 'Research source', url)
+      title_str = attachment['title'].to_s
+      if attachment['kind'] == 'receipt' || title_str.include?('Schedule') || title_str.include?('Conference') || title_str.include?('Git Log')
+        episode_entries << link(title_str.empty? ? 'Research source' : title_str, url)
+      else
+        errata_entries << link(title_str.empty? ? 'Research source' : title_str, url)
+      end
     end
-    folder(title, entries)
+
+    if number <= 17
+      subfolders = [
+        folder('Episode', episode_entries),
+        folder('Errata', errata_entries)
+      ]
+      folder(title, subfolders)
+    else
+      folder(title, episode_entries + errata_entries)
+    end
   rescue Errno::ENOENT
     folder("Episode #{number} dossier missing", [link('Episode workbench', "#{SITE}/series/the-sound-above/")])
   end
