@@ -1,0 +1,107 @@
+---
+# The Sound Above: Canonical Series Configuration & Master Intro/Outro Defaults
+series_name: "The Sound Above"
+series_slug: "the-sound-above"
+channel_root: "just3ws-mike"
+playlist_id: "PLVcmLmfz2uyA"
+curator: "Mike Hall"
+primary_archive_route: "https://just3ws.com/interviews/"
+
+# ─────────────────────────────────────────────────────────────────
+# 1. SERIES MASTER INTRO (REUSABLE COLD OPEN & PREMISE)
+# ─────────────────────────────────────────────────────────────────
+master_intro:
+  title: "The Sound Above: Master Series Cold Open"
+  duration_sec: 210 # ~03:30
+  scene_sequence:
+    - "01. Starting Soon"
+    - "02. Monologue / Full Camera"
+  pre_recorded_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/series-master-intro.mov"
+  voiceover_hook: |
+    [SCENE: 01. Starting Soon (Hold on Starting Soon card for voiceover intro).]
+    If you want to really appreciate Jimi Hendrix, you ask one question: who did Jimi Hendrix listen to?
+    When you go back and hear the players who influenced him, you gain a deeper feel for his music.
+
+    Back in June of 2024, Marcus Parks and Carolina Hidalgo were exploring the German band Can on their music history show, No Dogs in Space.
+    Marcus described their music as: 'Something that deliberately challenges you. The sound above the level you are on.'
+
+    That is the core idea behind The Sound Above.
+  teleprompter_script: |
+    [SCENE: 01. Starting Soon (Hold on Starting Soon card for voiceover intro).]
+    If you want to really appreciate Jimi Hendrix, you ask one question: who did Jimi Hendrix listen to?
+    When you go back and hear the players who influenced him, you gain a deeper feel for his music.
+
+    Back in June of 2024, Marcus Parks and Carolina Hidalgo were exploring the German band Can on their music history show, No Dogs in Space.
+    Marcus described their music as: 'Something that deliberately challenges you. The sound above the level you are on.'
+
+    That is the core idea behind The Sound Above.
+    Rather than meeting the room at eye level with predictable formulas, great artists hold a higher standard and challenge the audience to climb up to meet them.
+
+    [SCENE: Switch to 02. Monologue / Full Camera.]
+    [PAUSE]
+    Welcome to The Sound Above. I am Mike Hall.
+
+    Between 2005 and 2015, a community of working developers around Chicago and North America gathered in suburban libraries, diner booths, and corporate basements.
+    We were pushing back against corporate vendor defaults, exploring test-driven development, and reaching for the sound above our current level.
+
+    I recorded more than two hundred of those working developers in hotel hallways, conference lounges, and meetup rooms for an oral history project called UGtastic.
+    Those tapes were preserved for over a decade.
+
+    Today, in 2026, the tech industry is obsessed with artificial intelligence and rapid code generation.
+    We are generating syntax at blinding speeds, but system comprehension is disappearing.
+    We are at risk of losing our institutional memory.
+
+    I am revisiting those original field recordings one by one, with verified transcripts, era-specific Wayback captures, and recovered source code right beside the tape.
+    Not for backward-looking nostalgia, but because the effort of understanding is not overhead: the effort is the point.
+
+# ─────────────────────────────────────────────────────────────────
+# 2. SERIES MASTER OUTRO (REUSABLE CLOSING & CALL TO ACTION)
+# ─────────────────────────────────────────────────────────────────
+master_outro:
+  title: "The Sound Above: Master Series Outro & Sign-off"
+  duration_sec: 165 # ~02:45
+  scene_sequence:
+    - "02. Monologue / Full Camera"
+    - "08. Outro / Closing Credits"
+  pre_recorded_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/series-master-outro.mov"
+  call_to_action: |
+    [SCENE: Switch to 08. Outro / Closing Credits.]
+    The full interactive transcript, recovered slides, and primary-source receipts are linked on the episode page at just3ws.com.
+    If you were in those rooms or have memories from that era, join the discussion in the comments.
+    You can explore the broader career archive and back this independent research at just3ws.com/support.
+  teleprompter_script: |
+    [SCENE: 02. Monologue / Full Camera.]
+    Early in my career, when I felt completely overwhelmed by the volume of software literature I could not understand, a veteran engineer gave me a piece of advice that changed how I work.
+    He told me: 'Read books you don't understand, and keep reading books that you don't understand. Eventually, you will understand the ones you've read.'
+
+    That advice taught me that true comprehension starts at the boundary of confusion.
+    By sitting with difficult systems and wrestling with stubborn code, you build the perceptual organs necessary to comprehend the architecture.
+
+    In the ancient parable, Cook Ding's cleaver stayed as sharp as a newly whetted razor after nineteen years because he never hacked at the bone.
+    He guided the blade through the open seams where the joints naturally meet.
+
+    In an era where probabilistic machines generate mountains of unverified syntax, do not hack at the bone.
+    Keep your automated feedback loops tight, design clean deterministic seams, and keep reaching for the sound above the level you are on.
+
+    [SCENE: Switch to 08. Outro / Closing Credits.]
+    [PAUSE]
+    The full interactive transcript, historical receipts, and recovered code are linked on the episode page at just3ws.com.
+    If you were in those rooms or have memories from that era, share your story in the comments.
+    You can back this oral history research and community archive at just3ws.com/support.
+
+    Thank you for watching, take care of each other, and keep making room to learn.
+
+# ─────────────────────────────────────────────────────────────────
+# 3. REUSE & INJECTION POLICIES
+# ─────────────────────────────────────────────────────────────────
+injection_policy:
+  default_mode: "series_with_custom_insert"
+  supported_modes:
+    - id: "series_with_custom_insert"
+      description: "Stitches series master intro premise before custom episode hook in Act 1, and appends series master outro sign-off after custom guest appreciation in Act 6."
+    - id: "pre_recorded_bumper"
+      description: "Uses pre-recorded master video bumper assets in media-pipeline for Act 1A and Act 6B; host only records episode-specific segments in the studio."
+    - id: "standalone_master_recording"
+      description: "Compiles standalone teleprompter documents for recording the master intro and outro as reusable media assets."
+    - id: "fully_custom"
+      description: "Uses only the episode-specific teleprompter script exactly as written in the episode dossier."

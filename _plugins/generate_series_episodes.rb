@@ -62,31 +62,25 @@ module Jekyll
     end
   end
 
-  class SeriesEpisodePage < Page
+  class SeriesEpisodePage < PageWithoutAFile
     def initialize(site, base, dir_slug, custom_data)
-      @site = site
-      @base = base
-      @dir = File.join('series', 'the-sound-above', dir_slug)
-      @name = 'index.html'
-
-      process(@name)
-      read_yaml(File.join(base, '_layouts'), 'series_episode.html')
-      data.merge!(custom_data)
-      data['permalink'] = "/series/the-sound-above/#{dir_slug}/"
+      directory = File.join('series', 'the-sound-above', dir_slug)
+      super(site, base, directory, 'index.html')
+      self.content = ''
+      self.data.merge!(custom_data)
+      self.data['layout'] = 'series_episode'
+      self.data['permalink'] = "/series/the-sound-above/#{dir_slug}/"
     end
   end
 
-  class SeriesWorkbenchPage < Page
+  class SeriesWorkbenchPage < PageWithoutAFile
     def initialize(site, base, dir_slug, custom_data)
-      @site = site
-      @base = base
-      @dir = File.join('series', 'the-sound-above', dir_slug, 'workbench')
-      @name = 'index.html'
-
-      process(@name)
-      read_yaml(File.join(base, '_layouts'), 'series_workbench.html')
-      data.merge!(custom_data)
-      data['permalink'] = "/series/the-sound-above/#{dir_slug}/workbench/"
+      directory = File.join('series', 'the-sound-above', dir_slug, 'workbench')
+      super(site, base, directory, 'index.html')
+      self.content = ''
+      self.data.merge!(custom_data)
+      self.data['layout'] = 'series_workbench'
+      self.data['permalink'] = "/series/the-sound-above/#{dir_slug}/workbench/"
     end
   end
 end

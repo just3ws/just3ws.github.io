@@ -1,0 +1,176 @@
+---
+# The Sound Above: Canonical Episode Dossier Template
+# Path: _data/episodes/episode-NN.yml
+# Usage: Copy this template to create a new Sound Above episode dossier.
+
+# ─────────────────────────────────────────────────────────────────
+# 1. CORE EPISODE IDENTITY
+# ─────────────────────────────────────────────────────────────────
+episode: 2
+series: "The Sound Above"
+title: "The Ambassador: ChicagoRuby & Grassroots Hospitality"
+status: scheduled # scheduled | prep | cued | recorded | published
+interviewee: "Ray Hightower"
+conference: "SCNA 2011"
+year: 2011
+location: "Chicago, IL"
+slug: "ray-hightower-chicagoruby-software-craftsmanship-north-america-2011"
+era_id: "the-chicago-workshop"
+era_name: "The Chicago Workshop"
+youtube_broadcast_id: "rUH7UAeka4c"
+youtube_video_id: "XZqGbf5C76E"
+rewatch_youtube_id: null
+
+# ─────────────────────────────────────────────────────────────────
+# 2. INTRO & OUTRO REUSE CONFIGURATION
+# ─────────────────────────────────────────────────────────────────
+intro_outro:
+  # Supported modes:
+  # - series_with_custom_insert: Stitches master intro/outro around custom episode acts
+  # - pre_recorded_bumper: References master .mov assets; host records only episode segments
+  # - fully_custom: Uses custom teleprompter_script acts exactly as written
+  mode: "series_with_custom_insert"
+  series_intro_enabled: true
+  series_outro_enabled: true
+  pre_recorded_intro_asset: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/series-master-intro.mov"
+  pre_recorded_outro_asset: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/series-master-outro.mov"
+  custom_episode_intro: |
+    [SCENE: Switch to 02. Monologue / Full Camera.]
+    [PAUSE]
+    For Episode 2, I am sitting down with Ray Hightower, the founder and longtime organizer of ChicagoRuby.
+    I first met Ray during the early days of WindyCityRails and Chicago technical user groups.
+    Ray served as the welcoming ambassador bridging corporate IT, independent consultants, and open-source practitioners.
+  custom_episode_outro: |
+    [SCENE: Switch to 08. Outro / Closing Credits.]
+    Thank you to Ray Hightower for two decades of radical hospitality in Chicago technical communities.
+    The full interactive transcript, ChicagoRuby historical archives, and meeting recaps are linked at just3ws.com.
+    Next time, Micah Martin and Mike Jansen take us inside 8th Light's residential software apprenticeship.
+
+# ─────────────────────────────────────────────────────────────────
+# 3. NARRATIVE & INTELLECTUAL SPINE
+# ─────────────────────────────────────────────────────────────────
+narrative:
+  theme: "Community Hospitality & Radical Practitioner Inclusion"
+  tone: "Reflective, forensic, and empathetic with craftsman rigor"
+  core_inquiry: "Who showed the early community organizers how to welcome newcomers with radical hospitality? What made ChicagoRuby a durable institution for two decades?"
+  chicago_context: "Ray Hightower served as the welcoming ambassador bridging corporate IT, independent consultants, and open-source practitioners across downtown Chicago and suburban libraries."
+  ai_era_parallel: "In an era of automated code synthesis, human hospitality and community mentorship become more valuable, not less."
+
+# ─────────────────────────────────────────────────────────────────
+# 4. TRACK A: 6-ACT TELEPROMPTER SCRIPT
+# ─────────────────────────────────────────────────────────────────
+teleprompter_script:
+  act_1: |
+    [SCENE: 01. Starting Soon -> 02. Monologue / Full Camera.]
+    Welcome to The Sound Above. I am Mike Hall.
+
+    For Episode 2, I am going back to November 19, 2011, at Software Craftsmanship North America at the Swissotel in downtown Chicago.
+    My interview is with Ray Hightower, founding organizer of ChicagoRuby and president of WisdomGroup.
+
+    [PAUSE]
+    When I first started attending user groups in Chicago, walking into a room full of experienced engineers was intimidating.
+    Ray Hightower was the person standing by the door making sure every single person felt welcomed.
+    He proved that technical excellence is hollow without radical hospitality.
+
+  act_2: |
+    [SCENE: 02. Monologue / Full Camera.]
+    ChicagoRuby began with just five developers meeting in a library basement in Franklin Park.
+    When Ray took over as organizer, he set two foundational rules: consistency and team leadership.
+
+    Members knew a year in advance that ChicagoRuby would meet on the first Tuesday of every month at 6:30 PM.
+    Even when they did not know the speaker, they knew the date, time, and place.
+
+    From the library basement, the group grew into the Aon Center downtown, hosting over one hundred people each month.
+    They established hack nights, coding dojos in Elmhurst, and eventually the WindyCityRails conference.
+
+  act_3: |
+    [SCENE: 04. Split Screen.]
+    In the research pane, we have three recovered primary-source receipts:
+    First, the 2008 ChicagoRuby GitHub repository documentation on how the organizer team functioned.
+    Second, the 2011 SCNA schedule showing how Ray connected open-source Ruby developers with enterprise .NET craftsmen.
+    Third, the historical photos of the Elmhurst clubhouse basement where Saturday coding dojos took place.
+
+    This brings us to our core question:
+    What sustained a monthly practitioner community across twenty years without corporate decay?
+    Let us roll the tape.
+
+  act_4: |
+    [SCENE: 03. Reaction / 04. Split Screen - Live Rewatch Cues (No Script Read Aloud).]
+    00:00 - Intro & Tone: Operations focus and community welcoming.
+    02:15 - Franklin Park Origin: Five people in a suburban library.
+    04:30 - Relentless Consistency: 1st Tuesday at 6:30 PM booked a year in advance.
+    06:45 - Radical Inclusion: No barriers; creating a genuine clubhouse for everyone.
+
+  act_5: |
+    [SCENE: 02. Monologue / Full Camera.]
+    Watching Ray describe those early days reminds us of a critical truth.
+    In the interactive transcript at Turn 37, Ray says: 'With consistency, everybody can plan around that. And once you have that, then you want to get good speakers.'
+
+    In 2026, tech communities are fragmented across remote video calls and algorithmic social feeds.
+    We often think building community requires venture sponsorship or complex platforms.
+    Ray proved that community is built on physical consistency, shared bread, and the courage to welcome newcomers.
+
+  act_6: |
+    [SCENE: 08. Outro / Closing Credits.]
+    Thank you to Ray Hightower for demonstrating how leadership is service, and for welcoming so many of us into the Chicago craft community.
+
+    The full interactive transcript, historical photos, and ChicagoRuby organizing guides are linked on the episode page at just3ws.com.
+    If you attended ChicagoRuby or WindyCityRails, leave a comment and share your memory.
+
+    Next time, Micah Martin and Mike Jansen take us inside 8th Light to examine residential software apprenticeship and martial arts waza practice.
+    Until then, keep your feedback loops tight, take care of each other, and keep making room to learn.
+
+# ─────────────────────────────────────────────────────────────────
+# 5. STRUCTURED REWATCH CUES (MINIMUM 3)
+# ─────────────────────────────────────────────────────────────────
+rewatch_cues:
+  - time: "00:00"
+    seconds: 0
+    label: "Intro & Tone"
+    guest_says: "Introduces ChicagoRuby operations and meeting structure"
+    watch_for: "Welcoming, generous cadence; establishes community organizing as deliberate craft."
+    artifact_label: "Interactive Transcript"
+  - time: "02:15"
+    seconds: 135
+    label: "Franklin Park Library"
+    guest_says: "Started with five guys meeting in a library in Franklin Park"
+    watch_for: "Pause trigger: Small beginnings; refusing to organize alone; recruiting Matt Polito."
+    artifact_label: "Wayback Capture"
+  - time: "04:30"
+    seconds: 270
+    label: "Relentless Consistency"
+    guest_says: "People can put a ChicagoRuby meeting on their calendar a year in advance"
+    watch_for: "Pause trigger: Logistics as psychological safety; consistency removes attendance friction."
+    artifact_label: "ChicagoRuby Calendar"
+
+# ─────────────────────────────────────────────────────────────────
+# 6. ARCHIVAL RECEIPTS & RESEARCH ATTACHMENTS
+# ─────────────────────────────────────────────────────────────────
+archival_receipts:
+  - title: "ChicagoRuby GitHub Organization & How It Works Guide"
+    url: "https://web.archive.org/web/20120115000000/https://github.com/ChicagoRuby"
+    capture_date: "2012-01-15"
+    kind: "git_repository"
+    citation: "Documented organizing structure, alumni roster, and shared responsibility model."
+  - title: "WindyCityRails 2011 Announcement & Speaker Lineup"
+    url: "https://web.archive.org/web/20111005000000/http://windycityrails.org/"
+    capture_date: "2011-10-05"
+    kind: "conference_site"
+    citation: "Chicago community conference bridging regional developers with national leaders."
+
+research_attachments:
+  - title: "Interactive Transcript: Ray Hightower at SCNA 2011"
+    url: "/interviews/ray-hightower-chicagoruby-software-craftsmanship-north-america-2011/"
+    kind: "canonical_transcript"
+  - title: "The Sound Above Episode Dossier & Critical Framework"
+    url: "/docs/research/the-sound-above-dossier/"
+    kind: "research_dossier"
+
+# ─────────────────────────────────────────────────────────────────
+# 7. TRACK B: ERRATA UNCONSTRAINED PROMPTS
+# ─────────────────────────────────────────────────────────────────
+errata:
+  unscripted_prompts:
+    - "Examine the Franklin Park library meeting dynamics and how suburban organizers commuted into Loop tech events."
+    - "Explore the shift from early Rails 2.x/3.x deployments to modern containerized workflows."
+    - "Audit the 2011 audio recording acoustics and how the unibody MacBook microphone responded to room reflections."

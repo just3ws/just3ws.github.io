@@ -39,9 +39,7 @@ class EpisodeBookmarks
     folders = []
     folders << folder('Core Platforms', [
       link('zdots.localhost (Platform Bus & Control Plane)', 'https://zdots.localhost/'),
-      link('my.localhost (Platform Dashboard)', 'https://my.localhost/'),
-      link('just3ws.localhost (Public CareerOS & Archive)', "#{SITE}/"),
-      link('wwworkremote.localhost (Career Intelligence)', 'https://wwworkremote.localhost/')
+      link('just3ws.localhost (Public CareerOS & Archive)', "#{SITE}/")
     ])
 
     folders << folder('Operational Cockpits', [
