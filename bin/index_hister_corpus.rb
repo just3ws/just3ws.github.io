@@ -92,7 +92,9 @@ CORPUS = {
     "https://www.just3ws.localhost/timeline/community/",
     "https://www.just3ws.localhost/portfolio/",
     "https://www.just3ws.localhost/history/",
+    "https://www.just3ws.localhost/series/the-sound-above/episode-01/",
     "https://www.just3ws.localhost/interviews/sergio-pereira-chicago-alt-net-software-craftsmanship-north-america-2011/",
+    "https://www.just3ws.localhost/ai/2026/11/18/chicago-code-camp-2012-code-camp-server-retrospective/",
     "https://www.just3ws.localhost/interviews/scott-seely-lake-county-net-user-group-lcnug-lake-county-net-user-group-lcnug/",
     "https://www.just3ws.localhost/interviews/people/",
     "https://www.meetup.com/london-software-craftsmanship/",
@@ -101,6 +103,11 @@ CORPUS = {
     "https://www.meetup.com/ChicagoRuby/"
   ],
   "Open-Source & Archival Provenance (CodePlex, RubyGems, Clojars, Coderwall, Chocolatey)" => [
+    "https://web.archive.org/web/20070701125236/http://laribee.com/blog/2007/04/10/altnet/",
+    "https://web.archive.org/web/20071012025912/http://martinfowler.com:80/bliki/AltNetConf.html",
+    "https://web.archive.org/web/20111114202141/http://devlicio.us/blogs/sergio_pereira/archive/2008/08/05/august-s-chicago-alt-net-meeting-on-the-13th.aspx",
+    "https://web.archive.org/web/20090212004652/http://devlicio.us/blogs/sergio_pereira/archive/2009/02/09/javascript-5-ways-to-call-a-function.aspx",
+    "https://sergiopereira.com",
     "https://codeplexarchive.org/project/sharpresume",
     "https://codeplexarchive.org/project/nstun",
     "https://rubygems.org/profiles/just3ws",

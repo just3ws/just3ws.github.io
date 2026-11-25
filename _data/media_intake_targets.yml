@@ -25,8 +25,9 @@ channels:
       ramblin-amblin:
         playlist_id: "PLNtb969T2-l0"
         series_name: "Ramblin' & Amblin'"
+        editorial_review_required: false
         archetype: "freeform_field_notes"
-        purpose: "Freeform field notes recorded on the move: engineering observations, systems architecture, career longevity, and practitioner reflections."
+        purpose: "Mike's personal vlog and freeform field notes. Publish promptly into the three-day rotating playlist; use evergreen pinning only for recordings deliberately selected for lasting visibility. Block only on a named guard with a concrete explanation."
         publication_context: >-
           Mike Hall is the host of Ramblin' & Amblin'. For solo reflections, describe
           the ideas in first person where appropriate or identify Mike by name; do not
@@ -66,8 +67,9 @@ channels:
       ramblin-aimblin:
         playlist_id: "PLBL0frEzrqqQ"
         series_name: "Ramblin' & AImblin'"
+        editorial_review_required: false
         archetype: "ai_archive_exploration"
-        purpose: "AI-generated research and creative explorations drawn from public just3ws interviews, articles, code repositories, and project history, including software people used; source-grounded, interpretive, and reviewed before release. Editorial target: one paired short- or medium-length video and article about every 24 hours, independent of the Ramblin' & Amblin' field-notes cadence."
+        purpose: "AI-generated research and creative explorations drawn from public just3ws interviews, articles, code repositories, and project history, including software people used. Automatically release only when exact source, package, render, caption, disclosure, and paired-article evidence checks pass; each failed check must name its reason. Editorial target: one paired short- or medium-length video and article about every 24 hours, independent of the Ramblin' & Amblin' field-notes cadence."
         publication_context: >-
           Explicitly disclose AI use in every episode and companion article. Explain
           that the research and creative synthesis are AI-generated from public
@@ -87,8 +89,10 @@ channels:
           with voiceover; retain context and continue any needed guest rights and
           privacy review. Do not clone voices or use AI-generated
           imagery to depict or misrepresent real people. Do not edit source clips
-          into fabricated dialogue or endorsement. Require human editorial
-          approval. The roughly 24-hour paired video/article cadence is an
+          into fabricated dialogue or endorsement. Use the automated release
+          contract; hold only for a named source, package, render, caption,
+          disclosure, rights, privacy, factuality, or paired-article guard with
+          an actionable explanation. The roughly 24-hour paired video/article cadence is an
           editorial target, not an automatic publisher schedule; review, rights,
           privacy, factuality, shared dispatch, and quota gates can delay release.
         default_privacy: "unlisted"
@@ -107,9 +111,9 @@ channels:
 
           AI disclosure: the research and interpretive connections in this episode were generated with AI from cited public archive materials. Interpretations are hypotheses, not independent historical facts. Repository claims cite public GitHub source records; claims about use by others require direct public evidence. Archive: https://www.just3ws.com/interviews/
 
-          Source voices, images, sounds, and code are attributed in context. Clips from Mike's public-facing videos may be stitched with voiceover; preserve context and review guest rights and privacy. Episodes are reviewed for source accuracy and the existing just3ws TMI, PII, and PHI safeguards before release. Realistic altered or synthetic audio or visuals are disclosed using YouTube's applicable setting. No voice cloning or AI-generated depictions of real people.
+          Source voices, images, sounds, and code are attributed in context. Clips from Mike's public-facing videos may be stitched with voiceover; preserve context and review guest rights and privacy. Automated source-accuracy checks and the existing just3ws TMI, PII, and PHI safeguards run before release; any hold names the specific failing check and evidence. Realistic altered or synthetic audio or visuals are disclosed using YouTube's applicable setting. No voice cloning or AI-generated depictions of real people.
 
-          Editorial target: one short- or medium-length video and companion article about every 24 hours, on a cadence separate from the Ramblin' & Amblin' field notes. Human review and all source, rights, privacy, factuality, dispatch, and quota gates remain mandatory and may delay a release.
+          Editorial target: one short- or medium-length video and companion article about every 24 hours, on a cadence separate from the Ramblin' & Amblin' field notes. Only a named failing source, rights, privacy, factuality, disclosure, pairing, or technical guard, or the shared quota gate, may delay release.
 
           • Series Playlist: https://www.youtube.com/playlist?list=PLBL0frEzrqqQ
           • Public archive: https://www.just3ws.com/interviews/
@@ -172,7 +176,7 @@ channels:
         default_audio_language: "en-US"
         archetype: "game_architecture_and_demos"
         purpose: "Demonstrations, design retrospectives, architectural walkthroughs, and guest presentations exploring Phalanx Duel from tabletop rules to deterministic multiplayer engine."
-        default_privacy: "unlisted"
+        default_privacy: "public"
         category_id: "28"
         transcribe_with_whisper: true
         transcribe_prompt: "Phalanx Duel, tactical card duel, SCMC, Camp Tesomas, Life Points, combat rules, state machine, carryover, suits, formation, Diamonds, Hearts, Clubs, Spades, Conrad Hall, Mike Hall"
@@ -309,7 +313,7 @@ channels:
         archetype: "ai_archive_exploration"
         purpose: >-
           Archival walkthroughs and technical retrospectives of Chicago Code Camp
-          (2010–2012) and the open-source Code Camp Server (ccs) Rails application.
+          (2010-2012) and the open-source Code Camp Server (ccs) Rails application.
         default_privacy: "unlisted"
         category_id: "28"
         auto_title_from_speech: false
@@ -321,7 +325,7 @@ channels:
           - "Software Craftsmanship"
           - "Chicago Tech"
         description_template: |
-          Chicago Code Camp (2010–2012) & Code Camp Server (ccs) Archival Walkthrough
+          Chicago Code Camp (2010-2012) & Code Camp Server (ccs) Archival Walkthrough
           Resurrecting the 2012 Rails 3.0 conference site in Colima, matched against May 2012 Internet Archive snapshots.
 
           • Series Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o

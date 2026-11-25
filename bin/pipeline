@@ -18,7 +18,7 @@ Usage: ./bin/pipeline <domain> <action> [options]
 
 Namespaces:
   media     Media-pipeline operations plus local recording and episode preparation.
-            YouTube publishing runs in media-pipeline. Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, query, status, inventory, assets, corrupt, metadata, service, doctor, panoramic, mp.
+            YouTube publishing runs in media-pipeline. Actions: intake, stream, swiftbar, stage, patreon, episode, youtube, teleprompter, textream, sync-prompts, query, status, inventory, assets, corrupt, metadata, service, doctor, panoramic, mp, podcast.
   validate  Repository hygiene, OBS assertions, rendered site checks.
             Actions: fast, obs, site, all.
   lake      Ecosystem datalake across GitHub orgs, git commits, artifacts, timeline.
@@ -98,6 +98,9 @@ run_media() {
       ;;
     bookmarks)
       ruby bin/episode_bookmarks.rb "$@"
+      ;;
+    podcast|podcast-download)
+      python3 bin/download_podcast_episode.py "$@"
       ;;
     patreon)
       if [ $# -eq 0 ]; then
