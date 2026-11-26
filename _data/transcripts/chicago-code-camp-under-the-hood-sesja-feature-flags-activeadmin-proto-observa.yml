@@ -1,0 +1,44 @@
+---
+speaker_map:
+  M1:
+    name: Mike Hall
+    role: Host, Chicago Code Camp → Code Camp Server
+turns:
+- speaker: M1
+  text: |-
+    Episode 4, Under the Hood of CCS, How Visitors, Speakers,
+    and Organizers Each Experience the App, and the Early Tests
+    and Proto-Observability Already Baked into this 2012 Rails
+    3 Codebase
+    First, why is the talk model named Sessia? Because Session
+    collides with Rails HTTP Session, so Sessia, Polish for Session,
+    avoided the clash while routing publicly at slash sessions
+    Meanwhile, version tag and config application are be
+    partitioned each year's talks via default scope
+    And submitting a talk at slash submissions slash new
+    automatically created a speaker account with a generated
+    temporary password if no user existed for that email
+    Access Control ran on Device 1, Device Invitable, and CanCan's
+    ability class with a four-tier role hierarchy
+    Guest, Attendee, Speaker, and Admin
+    Speakers edited their own profiles and speaker rate links,
+    and a custom email domain validator even ran live DNS MX
+    record lookups on submitted email addresses
+    Organizers ran the entire conference from Active Admin 0, 4,
+    3 at slash admin
+    Managing 11 resources including live database feature flags
+    via feature OK, pre-registrations, image logo, show
+    sponsors, and comments could all be flipped live without a
+    Heroku redeploy
+    Long before OpenTelemetry or GitHub actions, CCS already
+    showed clear observability instincts, RSpec, Cucumber, and
+    Factory Girl for testing
+    SimpleCov configured with ReCov formatter to feed Hudson
+    and Jenkins CI
+    BulletWired in development RB for N plus 1 query detection
+    HopTode notifier for exception tracking
+    And structured Rails logger warnings on DNS and CSV export
+    failures
+    Next in episode 5, why we switched main from GPL to GNU AGPL
+    3, how we preserved 16 years of Git history, and the
+    roadmap to a modern Rails 8 code camp server on Railway

@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-11-24T19:10:23Z",
+    "generated_at": "2026-11-26T13:53:44Z",
     "system": "CareerOS Master Datalake",
     "canonical_url": "https://www.just3ws.com/career_datalake.json",
     "endpoints": {
@@ -15,9 +15,9 @@
     "stats": {
       "total_positions": 28,
       "total_archetypes": 5,
-      "total_articles": 191,
-      "total_interviews": 276,
-      "total_transcripts_indexed": 276,
+      "total_articles": 196,
+      "total_interviews": 308,
+      "total_transcripts_indexed": 308,
       "total_knowledge_graph_nodes": 479,
       "total_technologies_tracked": 127
     }
@@ -7472,6 +7472,111 @@
       ],
       "excerpt": "Reflections on sixteen years of community archives, releasing the fear of apathy, and leaning over the coping as the channel and platform consolidate to just3ws.",
       "url": "/2026/11/08/doing-it-scared-consolidating-to-just3ws/"
+    },
+    {
+      "slug": "phalanx-duel-series-part-1-the-game-and-concepts",
+      "date": "2026-11-26",
+      "year": 2026,
+      "title": "Phalanx Duel Series, Part 1: The Game, Core Concepts & Making Rules Legible",
+      "categories": [
+        "architecture",
+        "craftsmanship",
+        "games"
+      ],
+      "tags": [
+        "phalanx-duel",
+        "game-design",
+        "state-machines",
+        "scmc",
+        "deterministic-systems"
+      ],
+      "excerpt": "Part 1 of the Phalanx Duel series: how a zero-RNG two-deck tactical card game designed at Camp Tesomas evolved into v1.6.0, with canonical links and published video walkthroughs.",
+      "url": "/2026/11/26/phalanx-duel-series-part-1-the-game-and-concepts/"
+    },
+    {
+      "slug": "phalanx-duel-series-part-2-rules-and-combat-cascade",
+      "date": "2026-11-26",
+      "year": 2026,
+      "title": "Phalanx Duel Series, Part 2: Canonical Rules v3.0 & The Combat Cascade",
+      "categories": [
+        "architecture",
+        "craftsmanship",
+        "games"
+      ],
+      "tags": [
+        "phalanx-duel",
+        "rules-engine",
+        "state-machines",
+        "combat-cascade",
+        "typescript"
+      ],
+      "excerpt": "Part 2 of the Phalanx Duel series: the executable 8-phase state machine, column overkill arithmetic, four suit boundaries, Classic vs Cumulative damage modes, and video walkthroughs.",
+      "url": "/2026/11/26/phalanx-duel-series-part-2-rules-and-combat-cascade/"
+    },
+    {
+      "slug": "phalanx-duel-series-part-3-living-architecture-and-diagrams",
+      "date": "2026-11-26",
+      "year": 2026,
+      "title": "Phalanx Duel Series, Part 3: Living Architecture, Diagrams & Freshness Gates",
+      "categories": [
+        "architecture",
+        "craftsmanship",
+        "observability"
+      ],
+      "tags": [
+        "phalanx-duel",
+        "panoramic-view",
+        "c4-model",
+        "diagrams",
+        "system-cartography",
+        "groma"
+      ],
+      "excerpt": "Part 3 of the Phalanx Duel series: applying Panoramic View system cartography to keep 12 wiki diagrams, a Groma C4 explorer, and an automated freshness checker honest.",
+      "url": "/2026/11/26/phalanx-duel-series-part-3-living-architecture-and-diagrams/"
+    },
+    {
+      "slug": "phalanx-duel-series-part-4-engineering-process-and-multi-client-platform",
+      "date": "2026-11-26",
+      "year": 2026,
+      "title": "Phalanx Duel Series, Part 4: The Engineering Process — Deterministic Engine, Multi-Client Platform & Safety Gates",
+      "categories": [
+        "architecture",
+        "craftsmanship",
+        "reliability"
+      ],
+      "tags": [
+        "phalanx-duel",
+        "typescript",
+        "golang",
+        "swiftui",
+        "mcp",
+        "opentelemetry",
+        "postgres",
+        "testing"
+      ],
+      "excerpt": "Part 4 of the Phalanx Duel series (Canonical): how a Ruby rules prototype became a server-authoritative TypeScript platform with MatchActor, Go duel-cli, SwiftUI, MCP, MCTS bots, and strict safety gates.",
+      "url": "/2026/11/26/phalanx-duel-series-part-4-engineering-process-and-multi-client-platform/"
+    },
+    {
+      "slug": "phalanx-duel-series-part-5-automated-video-curriculum-and-media-pipeline",
+      "date": "2026-11-26",
+      "year": 2026,
+      "title": "Phalanx Duel Series, Part 5: Turning Live Gameplay into a 33-Episode Video Curriculum with Media Pipeline",
+      "categories": [
+        "craftsmanship",
+        "automation",
+        "media"
+      ],
+      "tags": [
+        "phalanx-duel",
+        "media-pipeline",
+        "playwright",
+        "video-automation",
+        "youtube",
+        "tutorials"
+      ],
+      "excerpt": "Part 5 of the Phalanx Duel series (Canonical): how Playwright gameplay automation, engine rule-ID telemetry assertions, and media-pipeline produce and syndicate a 33-episode tutorial series.",
+      "url": "/2026/11/26/phalanx-duel-series-part-5-automated-video-curriculum-and-media-pipeline/"
     }
   ],
   "oral_history_corpus": [
@@ -8818,6 +8923,312 @@
       ],
       "transcript_text": "[Music] Alright, great. Hi Matt. One second. This is going to be a fun one. Hi, it's Mike with UGtastic. I'm at SCNA 2013 and I'm sitting down with Chet Hendrickson and Ron Jeffries. Did I say that in the right order? No, I don't know. So we'll find out in a second. But they give a talk about the nature of software development and also we're on the panel yesterday about software quality. So thank you very much for taking the time to sit down with me. Would you consider your company again, please? UGtastic. UGtastic. That's interesting. I wouldn't have guessed that. A lot of people just say UGtastic, which is fine as long as you say it. I don't really care. I'm just happy that anybody's even thinking about it. But we do interviews with people who are doing interesting things in the software development community and I think you guys have known for one or two things that are interesting. And certainly your talk on software here at the end of SCNA. One of the things I had to say I kind of got a kick out of was the simplicity of your images. Everybody else tries to make these really super fancy typography slides. Whereas to convey the information it was simple drawings that could be clearly understood and were not very... Not very artistic or... Not really very good. Not really not good is what I'm pointing for. But it reminded me of Sarah Gray who I just interviewed when she talked about Harold and the Purple Crayon. That you can use simple imagery and metaphors to convey a lot of information without getting bogged down in noise. Is this something that you... Well tell us a little bit more about your thoughts on metaphors. Well that's... That... I... Now I'm messed up. So... Well... But I just was curious is this something that you've been using for a long time? It actually is. Ron bought a tablet, PC, I don't know, eight or ten years ago and we started doing talks with just him drawing. Most of the little graphs and... Little graphs and stuff like that. If you do good it'll go up and if you do bad it'll go down. That's sort of, you know, about that look. And so... And eventually I bought one and didn't use it as much as Ron. Then it sort of evolved until now we do stuff on the iPad using a tool called Paper which allows you to draw very simple things. So... It's a very nice little product. I wish we got some kind of kickback when we mention their name. Yeah, we should. But, you know, it's a simple little drawing tool that works really well in this environment because it's... There's not much to it. You pick a color and you draw. As opposed to all kinds of stuff that more than a standard drawing kind of environment. Which... That becomes... Well now you have to learn this tool and it's crazy. Yes. And it's confusing. Well, and you're... But we are, as you see with the pictures, you're still left with the fact that I can't draw very well. Which is why the pictures are all so simple, really. Right. But it's enough. Probably not. I would really probably draw them simply even if I were like able to draw something that looked real. Because the idea is to catch attention, illuminate the idea, not have people stare at it the way they would stare at great art and not listen to us because the point is perhaps to listen to the words as well as to see the pictures. So there's... And our main purpose in giving a talk is to entertain ourselves. It's up to the audience to entertain themselves. And so we enjoy having these funny little pictures and saying funny little things about them. And in your... In the way you did your presentation, it was back and forth and back and forth. That's... That I've not... I don't think I've ever seen anybody ping pong a presentation quite like that. We've been giving presentations about this kind of subject. I have actually the poster for the first one we gave in 1998. So we've been doing this quite long. Not this talk. Not this talk, but talking together, giving presentations together for 15 years. And so we have developed a style which kind of works for us and oddly enough this is sort of how we work anyway. It turns out, for example, in... We were coming back from the Netherlands and they interview you on the way out of the country to see if you're a terrorist or something. And they asked Chet if we were traveling together and he said yes and so we came up. And they would... The guy would ask us a question and one of us would start the answer and the other would finish the sentence. And he said, \"Well, why are you here? \" And he said, \"Well, we said we were there to teach a class. \" And he said, \"Well, what are you? \" And you're in business or something? Yeah, we're business partners. We're partners, he said. Yeah. We're partners, he said. I'm a business partner. And he said, \"What kind of partners are you? \" And we kind of tried to tell him we were business partners. And so we kept doing this ping pong back and forth while we were being interviewed. And at the end of the thing he said, \"I think I know what kind of partner you are. \" So apparently we're too good at it. So the next time we went to the Netherlands we took our wives. And hoped to meet the same night. In hopes of saying, \"Look, we have beards. \" So we haven't done it for a long time. We tend to finish each other's sentences and it works for us and we hope it works for the audience. Yeah, and it seemed to definitely be well received. And, you know, and just continuing on with the images, I just wonder if, with some of the, in a lot of the talks I've observed, people obsessing over typography and creating these very, what they think are professional looking, where really what I think it is, is the message is what defines professional talk and professional communication. Do you, do you see going to other people's presentations where they have very elaborate fonts, colors? I, I think it is. Here's an example of our typography if you can see that. Yeah. This title is intentionally left blank. Yeah. Getting right in my hand already. Uh, yes. You know, we, we, we intentionally don't do that. Yeah. I suppose, you know, we, I, I would think, we probably think we're not very good at doing those things, but if we spend a little bit of time, I'm sure we could do as well as everyone else does. We tried various tools. We did some stuff from crazy years ago to discover that, you know, when you, when you do that, everyone throws up at the, sometime during the presentation. Yeah. Not because of what we were saying, because of the tool. The tool. And so we, most. Oh, the one that spins around. Spins around. Yeah, it's really cool. Yes, you know. It's cool. It's like an e-ride at Disney World. Uh, and so we, we have gone to this style mostly because I believe, I believe, uh, that we've learned long ago that the movement and the words convey the story. Mm-hmm. Uh, we come out of the old XP small talk world where CRC was used. Mm-hmm. The card, uh, the, the, uh, class responsibility collaboration technique. Mm-hmm. And, and we were taught to do CRC by Ken Beck, who was one of its inventors. If you've ever learned, have you ever done this technique? I, I, when I was going through. Yeah. Agile, I was learning. Uh, Ken doesn't write on the cards. Yeah. The cards are blank. Really? He moves them around and talks about them. Ha! Because the words don't matter. It's what you say and what's going on. And after a while you know that this one, that's the employee over there. Doesn't say anything, but it's the employee and that one is the department or whatever the relationship is. And so it's the motion that gets the, the information across. And so I think we kind of pick that up. To the, to the point where in the middle of the conversation when it becomes clear that there should be another object, people will point to a blank space and say, \"This guy right here. \" Right. Because everybody's got it in their head and then it's clear that the guy that you're talking about should be in this hole or there isn't any object. Um, so you're, you're trying to, you're trying to get an idea into, into people's heads. And, the, the, the beautiful picture doesn't necessarily do that. If it's too good looking, people will, will just look at it and be all taken over. And then people are talking about the slide. The picture, talking about the slide. Um, now we, we did do a talk one time where the, the slide was all done with pictures of cats. With lolcats kinds of, of titles on. Um, that worked well too. But again, it was just a little title. Yeah. From which we spoke for a couple of minutes and then went to another picture of a cat. Um. And so, it's a style and we think, we, you know, it seems to work for us. And, uh, we hope nobody else steals it, I guess. We tend to do all the things this way. If you were for some, you know, go off the deep end and hire us to come in and do some sort of training for you. And we might show up with a slide deck of 200 slides. But we wouldn't show an end to you. Right. We would draw everything live and talk about it as we went along. Right. So those are like your reference, more like your notes. Because people like to have something. Oh. That they can walk away with. Because they can walk away with. Yeah. You know, and mostly we say stuff that's in them. Uh, but we do it live. Uh, because it's, it's that that we think generates the knowledge. If you're just standing there talking about the slide, the people check out. But if you're there talking to them and you're using some tool to help them visualize what it is you're saying. That works better. And the, and the more that's done in the moment, we think that the better it is. And so, as you described it, you've been doing talks for over 15 years. Um, as far as, is the, the, the landscape of conferences and, and, and big technical get togethers to, to discuss, um, our, our industry. Uh, do you have any, anything that you've seen that's changed in particular that, that either for the better or for worse? Yeah. The, uh, the big conferences we're finding more and more boring. Um, not because of the many beginners who always show up because there's always new people coming into the field and that's fine. But because they have become so commercialized and so, so many of the ideas are canned, you know, you must do this and follow this rule and use this tool and, uh, so many things like that, that we find that the content is mostly not interesting to us. Right. And we think almost harmful to, to many of the people who show up. Um, there's a, uh, a huge number of people who are there from a big enterprise because they want to have a flag that says they're Agile. Right. They don't have no intention or ability to do it or at least have no understanding and probably no ability to do it. So we're trying to come to smaller conferences like this one because there you can talk to people and they're interesting and they're more full of people who are really excited about doing stuff. Now I don't know whether I believe this or not, but I have a feeling that those conferences are going to be mostly developer conferences. That it's going to be difficult to find a conference that isn't heavy and the developers that we find exciting. I believe that's probably true because we are at, on the heart, in our hearts we're programmers. Uh, we do the other stuff because... That's where the money is. That's where the money is. Uh... Wait, did I say that? Uh... Only developers. But this is what we care about. You know, we come out of the XP world, we're there to make the world safe for programmers. And it turns out in order to make the world safe for programmers, you have to do a lot of stuff in those other areas, talking with the business people and educating them about stuff. But in our hearts we're here trying to make the world safe for programmers. And that just reminds me of a talk that Corey Haynes came a few years ago to Obtiva and was talking about how developers need to take responsibility for a lot of these needs. And they're kind of, are these craftsmanship concepts, uh, that we're espousing. And, uh, you know, I kind of kicked back saying, well, we can, we're, all of us here in this room, we all agree that we would like to do all these things and that they're good practices, but the person with the purse strings is, is the business. And we can talk all day about how great it would be to do TDD and, and do it, but really you gotta sell. And that sounds like what you think about? Well, the answer to that problem is something that Jim Highsmith said 10 or 12 years ago. It went asked, you know, how do I tell my managers, how do I get permission to do this pair programming, to do this TDD, to do whatever the practice was. And Jim said, don't tell them. Right. They don't know what you're doing now anyway. Right. Do the right thing. And they'll see better results. They may ask you how you got that and you make up whatever answer is appropriate. Right. But, you know, do you need to tell them what editor you're using now? Right. Do you need to tell them how, you know, do they know how you're doing your work now? No, they don't. Well, I mean, as you know, some shops do though. Like, you go into a Microsoft, Microsoft developer shop and try to introduce Ruby. It's not gonna happen. That's another, that's a whole another question. That's a different question. You know, the question of how do you get programmers to work the way programmers do, ought to, if they're saying we have to ask management for permission to program, that's where the problem is. Because you don't have to ask management for permission to program. You might have to ask management for permission to use Clojure. Right. You should. But, to do your craft, no one has the right to tell you you can't do your craft. So, there's some kind of fear thing, and I think particularly younger programmers who haven't gotten to the point of being jaded to the point of saying I'm just going to do this stuff and the rest of you can walk off, feel like they're supposed to be told what to do. You know, because when you were working at McDonald's they told you what to do. That ain't it. This is professional. This is, I am the guy who does this. You don't tell your surgeon how to cut, and you don't tell your programmer how to program. So, but people have to learn that. They have to learn that it is their job to know how to do this thing well. And that's, you know, what this movement is about. Is to, is to get people to know what it is and to know how to do it. Yeah. And, you know, and speaking of experience and getting to a certain point in your career, you know, I, I've had my wife say, what are you going to do when you're after over 50? Are you still going to be a programmer? And I, I'm not mistaken, I believe you gentlemen might be approaching 50 or so. And, and, and, yes. Yes. And I see that. From above in my case. Yeah. And, and mine as well. I'm, it's in the rear view mirror. Um, but I, I, as I walked up to your, to your table to invite you to come for an interview, you were working on code right there at the desk. And so obviously you're still very active in the developer community. For people who are looking down the road, um, at whether or not there's a career in development past 30, um, I'm well past 30 myself, but, you know, looking into the 40s and 50s and beyond, do you, what, do you have any, you obviously might have some insight into that. Well, I, I would not care to work for a living. Um, this is good because no one would hire me. Um, because I'm not the sort of person that works well with people telling me what to do. Um, I imagine I could have programmed as long as I wanted to. Um, but what happens is that your eyes get bigger. Um, you, at some stage early on in your career, you realize you can't program it all by yourself. And so you have to program with a couple of other people. And that means you have to learn to talk to them, you know, and maybe even look them in the eye once in a while. You have to fake that. Um, and as you grow, you don't just continue to grow to say, I really want to be even better at Emacs. You grow to want more things. And those things might be bigger products. They might be that you find joy in bringing up younger people. And so instead of just being a, the senior programmer on the team, maybe you begin to become a mentor. Maybe you become a mentor over many teams. So there's a whole spectrum of world out there. Um, I think it would be silly to imagine at age 25 that you have any clue at all what you'd like to be doing at age 35. Um, if you have something is going to appear in front of you, you're going to be like, oh, that's cool. Go and get that squirrel. Right. Um, and so I, I don't think you have to worry about that. Yeah. Um, if you're good at what you do, stuff will happen to you. They will promote you. They will say, he keeps getting things done. All the teams will have him on and get things done. We should make him into a manager. We should make him into, you know, who knows what. And you gotta be a little careful because you might not choose to go there. But you might. You know, if you could manage teams the way an Agile guy would manage them, that could be kind of a cool job. And it sounds like, kind of what you were saying though, that the management, uh, doesn't have to be management in the way of being a middle manager, but it can be different. Like as you describe mentoring or working with other people in a different capacity. Yeah. You could still, you might have the word manager. I wonder whether conventional, hierarchic management is going to be around. In, in big companies it will be, but, because it takes a long time for those things to die. Right. But if you look at what really gets hot, new, wonderful products done, it's a bunch of people coming together. And then they get funding and then they find somebody to sell it and they do all these things. Um, it's a much more interactive, much less conventional command and control management that happens. And so I think the opportunities are both more human and less like administration and stuff like that. Yeah. I, I've lived my life essentially seeking local maxima. I've done what appeared to make me happy within my short range of view. Uh, and oddly enough that seems to have worked out really well. Is that your cookie? That is not my cookie. Would you like it? You, you won't. I was just local maxima. You know, I, I, the world is too complex a place to make any long term plans as far as I can figure out. Uh, you know, I do what makes me happy every day. And when what I'm doing stops making me happy, I try to look around and see where, where within 10 feet will, will I be happier? Well, it's a, that's a tricky one because all of us who are technical know that local optimization could leave you in a bad place. You know, where there was really great stuff over here and all you did was become vice president of Microsoft. Um, well, okay. The world isn't quite like that. The world isn't a single optimization process. You, something bad happened there? No, it's going away though. Uh, the, the, the world is multi-dimensional. And so, it might really be that the, that the next thing that happens to you is that you hear about an interesting conference to go to. And you go to this interesting conference and you run into some interesting people and they say, what are you doing? Say, I'm working on this sucky job back in Detroit. And they say, well, you know, we really ought to think about what we're doing. Say, what are you doing? And we're building this spaceship. And you, all of a sudden, boom, you've bounced into an entirely different dimension. Right. So, it isn't, it is local optimization. You know, I think of it as just, I just cruise around going wherever the little krill are tastiest and munch them up. But, you know, every now and again something happens, it bounces you to a new dimension and you just do stuff. So, and, and at conferences, going smaller, going to that local, do you ever go to user groups? Do you have a history of going to user groups or participating? We don't hang with them. We go and talk with, you know, give a talk at them. But we mostly don't go and hang out at, at user groups. There are a couple of local to us and they always seem to meet at some time when I'm involved in doing something else. Yeah. And that's mostly just bad luck. We're going to go give a talk. We're actually going to go show up and do something, I don't know exactly what it is, in January at one of the local groups in Ann Arbor. But mostly we, we've stopped the local for some reason, for some reason we don't go to those. One of the things I don't... We're mostly lazy, I think. Well, there's that, but one of the things I don't like about it, and I noticed this at the open spaces that we went to at Dave Hussman's Dev Jam that was last month here. If we go to an open space, we have a tendency to take it over. Because we have so much to say about it, we can't stop. Right. We can't stop ourselves. We know the answers. Right. Or we think we do. And we're not really very good at coaching answers out of other people. That's just kind of not our deal. And so at a user group, we always wind up being more of a focus than we would like to be. Right. It's fun to go and hear an interesting talk. Right. But if it's a user group of people just talking, it doesn't work for us. We don't know if that's going to happen, we would just assume they came to our office at the coffee shop and talk to us about their problems to hear what we had to say about them. Right. So for some reason that particular thing doesn't work for us. But I think it's because we're, I don't mean to say we're above all others, but we're at a different place in our work. And the user groups want to be kind of homogeneous. They want to all be kind of the people who are right now trying to fight their way up to get the company to do something. Or the people who are all right now being entrepreneurial or all whatever. And we're off in this other dimension that kind of doesn't fit with them. Well, do you find that maybe sometimes when you're trying to have a conversation, people, because of your reputations, might be more prone to just deferring? Well, you like that part. I suppose, I suppose. But I mean, I'm sure it must get old, you know, when you're like, come on, challenge me. Well, we're not going to do that. We might lose. Yeah, I mean, I suppose that happens, particularly since at least one of us has a reputation of being really nasty and tough. We're both really teddy bears, but there might be a little bit of that. Yeah. And one of us was also raised by Jesuits and therefore can argue any subject on either side. And so it's really not a good idea. Yes. We have to challenge us. To challenge us unless... I think we would... You've got to ask a challenging question that's really challenging. Right. You know, don't come in again and say, what should I do? You know, refactoring doesn't work because I don't know how to do it. It's like, yeah, it doesn't work because you don't know how to do it. Because we know that answer. We've seen so many people learn how to do these things that this conference is all about and seen they always benefit. And I heard somebody in the lunch line yesterday saying, we tried TDD and it just doesn't work for our kind of software. It's like, no, see, there isn't any kind of software where you can't do that if you're willing to invest in and learn how to do it. There's some where it's very difficult. I seem to have to be inventing TDD for the programming thing you caught us programming with. But if you want to do it, you can do it. And it will give you some benefit. It isn't possible. So we will tend... That kind of challenge doesn't work very well because we know every argument. We've been doing this for 15 years. And so we just crush the poor devil. And that's cruel. And we don't like to be cruel. Even today... Chet does, but I don't like to be cruel. Even today I did an interview with another gentleman, Amitai Schleyer, who is on the NetPSD Foundation. And he talked about how they even have a kernel called Anykernel, which allows them to do testing against a mock kernel. So that they even can unit test and do even security tests against this kind of mock kernel for NetPSD. And if you can unit test the kernel for an operating system, you can test anything. So that kind of just throws that argument right out. But again, I think maybe that's just people just don't know. And that is really the deal. So much of my resistance to doing some new thing is that I don't know. And I don't like not knowing. I don't like going back to the beginning. Who was it who talked yesterday about going into a new language and you sort of have to start all over? And I don't like that feeling of discomfort. I have the luxury that I've programmed in so many languages that I know it's in there to be found. Right. And so I'm a little bit more comfortable. But as Chet knows, if it comes down to, okay, now you've got to install all that crap on your Mac so that you can actually run Ruby and you're going to be able to load up every version of Ruby and all those little stacks. I know that when I go to the internet and say, how do you install that? It will have perfectly clear instructions and I will do exactly those instructions and it won't work. Yeah. And it is really irritating. And so I resist doing some things like that because I don't know how to do it. I think that's always what happens. I think people resist refactoring because they don't know how to do it. So it doesn't work very well. It's because you're not very good at it yet. Nobody likes to be told you're doing it wrong, but the fact remains when we're not performing well, there's something we're doing wrong. And you just have to accept that, that it isn't the world. The computer didn't break your program. I know who broke the program that was broken when you came up to us. I did. And there's no doubt in my mind that it isn't that my iPad is broken or that suddenly Codeia doesn't work or that the language Lua doesn't include if statements. I know I broke this. Right. And that's part we've got to do. Well, thank you very much for taking the time. It's a pleasure. I hope we're going to edit this down to about two minutes. Uh, no. No. Thank you very much. Appreciate the time. All right. [Music] Thank you.",
       "transcript_turns_count": 113
+    },
+    {
+      "id": "chicago-code-camp-four-desperate-css-commits-before-conference-day-may-15-2012",
+      "title": "Four Desperate CSS Commits Before Conference Day (May 15, 2012)",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-four-desperate-css-commits-before-conference-day-may-15-2012",
+      "page_url": "/interviews/chicago-code-camp-four-desperate-css-commits-before-conference-day-may-15-2012/",
+      "youtube_url": "https://youtu.be/OSO8oyCLz_g",
+      "youtube_video_id": "OSO8oyCLz_g",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Four Desperate CSS Commits Before Conference Day (May 15, 2012)\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Live CSS Debugging (2012)\n00:05 The Schedule Line-Height Sprint\n00:31 Watch Episode 01\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Every developer knows the feeling of live CSS debugging\nfour days before launch. Here is the exact 26-minute Git log on May 15, 2012. 12.54 PM, fix the line height on schedules, I think 1.02 PM,\nokay, I'm just guessing at this point 1.06 PM, it's\nimportant. I don't know CSS 1.20 PM, finally fix the bad line height\non schedule items. That final commit, 1B5F639, became Prod2012-05. Explore the full Git archaeology in episode 1 on just3ws.com.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "chicago-code-camp-from-chicago-code-camp-to-agplv3-code-camp-server",
+      "title": "From Chicago Code Camp to AGPLv3 Code Camp Server",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-from-chicago-code-camp-to-agplv3-code-camp-server",
+      "page_url": "/interviews/chicago-code-camp-from-chicago-code-camp-to-agplv3-code-camp-server/",
+      "youtube_url": "https://youtu.be/dPE7FMIEmek",
+      "youtube_video_id": "dPE7FMIEmek",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "From Chicago Code Camp to AGPLv3 Code Camp Server\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/episode-05/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Episode 05: Carrying It Forward\n00:13 Preserving 16 Years of Git Lineage\n00:37 Why GNU AGPL v3 Fits the Original Intent\n00:59 Rails 8 + Railway Generalization\n01:28 Series Finale & Links\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Episode 5, Carrying Chicago CodeCamp Forward, Preserving 16\nYears of Git History, Switching Main to GNU AGPL Version 3,\nand Charting the Rails 8 and Railway Roadmap for CodeCamp\nServer\nWe didn't want to throw away the past or start a\ndisconnected repo, so we tagged the last known good 2012\nproduction commit as Prod 2012, 05, archived the 2018\nmaster branches Archive Master 2018, preserved the 2025, 12\nColey Mach Oracle untouched, and branched a fresh main\ndirectly from 2012 production\nFrom April, 2010 onward, CCS was licensed under GPL v2,\nbecause the intent was always a community-run, share-like\nconference server\nFor a hosted web app, GPL leaves a network loophole, moving\nMain to GNU AGPL Version 3 closes that gap and honors the\noriginal spirit of contributing improvements back to the\ncommunity\nWith the static HTML mirror, 23 screenshots, and this\nseries preserving the 2012 Chicago CodeCamp site\npermanently, the path forward is clean\nPort the 19-table schema and 17 models onto current Ruby\nand Rails 8 right inside Main, extract Chicago-specific\nsettings into event configuration, and deploy a modern,\nreusable CodeCamp server on Railway\nKeeping the Coley Mach 2012 container beside us as the\nbehavioral Oracle\nThank you for walking down memory lane with Chicago CodeCamp\nFollow the code at GitHub Just3WSCCS and the companion\nseries on Just3WS.com",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "chicago-code-camp-proto-observability-in-2012-bullet-hoptoad-dss1",
+      "title": "Proto-Observability in 2012: Bullet, Hoptoad & ?dss=1",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-proto-observability-in-2012-bullet-hoptoad-dss1",
+      "page_url": "/interviews/chicago-code-camp-proto-observability-in-2012-bullet-hoptoad-dss1/",
+      "youtube_url": "https://youtu.be/u-ejk_vf9BE",
+      "youtube_video_id": "u-ejk_vf9BE",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Proto-Observability in 2012: Bullet, Hoptoad & ?dss=1\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Proto-Observability in 2012\n00:06 Diagnostic CSS (?dss=1)\n00:28 Watch Episode 04\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Before OpenTelemetry existed, what did Proto-Observability\nlook like in a 2012 Rails app? Inside Chicago CodeCamp's codebase, bullet-wired in\ndevelopment are beta-catch-n-plus-1-SQL queries,\nhop-to-notifier for exception tracking before it became AirBreak,\nsimple-cover-cover-feeding Hudson and Jenkins CI,\nand a secret question mark TSS equals one query parum that\ninjected diagnostic CSS on demand. See the full technical tour in episode 4 on the playlist.",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "chicago-code-camp-the-anti-corporate-design-triadic-sass-color-proof-2012-a11y",
+      "title": "The Anti-Corporate Design: Triadic Sass, #color-proof & 2012 A11y",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-the-anti-corporate-design-triadic-sass-color-proof-2012-a11y",
+      "page_url": "/interviews/chicago-code-camp-the-anti-corporate-design-triadic-sass-color-proof-2012-a11y/",
+      "youtube_url": "https://youtu.be/J7wW2FSr09M",
+      "youtube_video_id": "J7wW2FSr09M",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "The Anti-Corporate Design: Triadic Sass, #color-proof & 2012 A11y\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/episode-03/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Episode 03: The Anti-Corporate Design\n00:11 Triadic Sass & Lowercase Headings\n00:43 Living Style Guide & ?dss=1\n01:03 Pre-Sprockets JS & IE6/IE7 Fallbacks\n01:32 2012 Formtastic & Pre-ARIA Layout\n01:45 Next: Episode 04 :  Under the Hood\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Episode 3, The Design Ethos of Chicago Code Camp 2012,\nintentionally creative, deliberately non-corporate, and\nbuilt with an early living style guide right inside the app. In app style sheets color sass, the entire site is driven\nby a hand-tuned color triad. Maroon number 800000 is the\nprimary gradient backdrop. Paired with minus 120 degree\nblue number 004080 and plus 120 degree green number 00803F,\neach stepped into 33 and 66% tints, written in indented sass,\nnot SCSS, with lowercase headings across H1 through H5,\nopen sans from Google web fonts,\nand asymmetric rounded cards. Run the app in development\nmode and you see something corporate templates never had. Shared color proof renders the entire triadic swatch bar\nright below the footer, so you can eyeball color harmony\nlive in the browser, add question mark dss equals one to\nany URL, and application helper injects diagnostic CSS on\ndemand. This was 2012, before Rails 3.1 sprockets asset pipeline,\nJavaScript lived in public JavaScript, loaded via\nJavaScript expansions defaults, jQuery replacing prototype,\njQuery validate, jQuery placeholder, and modernizer for\nHTML5 feature detection,\nand IE6 and IE7 still mattered enough to load formtastic IE6\nCSS, formtastic IE7 CSS, and HTML5 SHIV from Google code. Accessibility in 2012 lived in formtastic semantic fields\nset, legend, and label tags, visible here on the call for\npapers form, inside a priori layout of header, content,\nsidebar, and footer divs. Next in episode four, under the hood with CESTA, database\nfeature flags, active admin 0, 4, 3, and the proto observability\nalready baked into CCS. Next in episode four, under the hood with CESTA, database\nfeature flags, active admin 0, 4, 3, and the proto observability\nalready baked into CCS.",
+      "transcript_turns_count": 3
+    },
+    {
+      "id": "chicago-code-camp-the-dev-mode-style-guide-that-annoyed-corporate-minds",
+      "title": "The Dev-Mode Style Guide That Annoyed Corporate Minds",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-the-dev-mode-style-guide-that-annoyed-corporate-minds",
+      "page_url": "/interviews/chicago-code-camp-the-dev-mode-style-guide-that-annoyed-corporate-minds/",
+      "youtube_url": "https://youtu.be/ZZCla4uCTo4",
+      "youtube_video_id": "ZZCla4uCTo4",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "The Dev-Mode Style Guide That Annoyed Corporate Minds\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Dev-Mode Style Guide\n00:05 #color-proof Swatch Bar\n00:26 Watch Episode 03\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Boot Chicago Code Camp 2012 in development mode and look at\nthe bottom of the page\nThat full-width swatch bar is shared color-proof, a living\nTriad XS style guide built right into the app\nMaroon number 800000, Triad Blue number 004080, Triad Green\nnumber 00803F, lowercase headings and asymmetric rounded\ncards\nNot a corporate template in sight\nCheck episode 3 for the full 2012 design breakdown",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "chicago-code-camp-the-time-capsule-booting-2012-chicago-code-camp-on-apple-sil",
+      "title": "The Time Capsule: Booting 2012 Chicago Code Camp on Apple Silicon",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-the-time-capsule-booting-2012-chicago-code-camp-on-apple-sil",
+      "page_url": "/interviews/chicago-code-camp-the-time-capsule-booting-2012-chicago-code-camp-on-apple-sil/",
+      "youtube_url": "https://youtu.be/OuLfNhOCxxc",
+      "youtube_video_id": "OuLfNhOCxxc",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "The Time Capsule: Booting 2012 Chicago Code Camp on Apple Silicon\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/episode-01/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 The Time Capsule (2012 - 2026)\n00:15 Git Provenance (2010-2012)\n00:45 Colima Ruby 1.9.3 Boot\n01:21 1:1 Colima vs Wayback (May 18, 2012)\n01:41 May 2012 Sponsor Lineup\n02:05 May 2012 Speakers & Community\n02:23 Next: Design, Admin & Proto-Observability\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "14 years is an eternity in web software. This is episode 1\nof Chicago CodeCamp to CodeCamp server. Resurrecting the\nMay, 2012, Rails 3 production app on Apple Silicon, and\nmatching it one-to-one against the Internet Archive. The story starts in Git on January 23, 2010, with commit A8\nat 4B11. Across three consecutive May conferences and 796\ncommits, CCS grew from a weekend Rails 2.3 site into a\nRails 3.0.11 conference platform deployed on Heroku at\ncheckagakataCamp.com. Its last 2012 commit, tagged prod 2012-05, landed on May 15,\n2012, four days before the camp. To see what it actually looked like without installing\nancient rubies on macOS, we booted the 2025-12 Docker\nOracle inside KoliMaha, on Apple Silicon, Ruby 1.9.3's 2009\nconfig gas didn't recognize ARM64, and FFI 1.0.11 needed Ubuntu\n14.04's system libfee. Two small Docker file fixes later, we brick on Ruby 1.9.3\nanswered HTTP 200 on local has 3000. Complete with Jane\nAshley's logo, lowercase headings, and the dev mode color-proof\nswatch bar. Place the local Kohli Mahout side-by-side with the Internet\nArchive's May 18, 2012 capture, taken one day before the\nconference, and it's a one-to-one match. The same maroon triadic gradient, the same navigation pills,\nand the same speaker login card, now filled with the real\nMay, 2012, session lineup. Because the local dev database only holds seed rows, the\nWayback Machine fills in the living history. Twelve sponsors on May 6, 2012. Microsoft at Platinum. Platinum Consulting Services at Gold. Eighthlight. Centaur. Groupon. Logic and P. Telerik. ThoughtWorks. And Twilio at Silver. Plus GitHub. JetBrains. And New Design at Bronze. And 32 speakers on the May, 2012 roster. Built by a community that showed up year after year. With contributions in Git from Mike Hall, Sergio Pereira,\nAdam Walters, and Dustin Updike,\nand early speaker archives preserving the memory of\ncommunity friends including Dave Bust. We've anchored Prod 2012-05, archived the old master branch,\nand moved main to GNU AGPL version 3. Next in episode 2, we dig into the design ethos, active\nadmin, feature flags,\nand the proto-observability already baked into this 2012\ncodebase. Check the companion series on just3ws.com.",
+      "transcript_turns_count": 8
+    },
+    {
+      "id": "chicago-code-camp-under-the-hood-sesja-feature-flags-activeadmin-proto-observa",
+      "title": "Under the Hood: Sesja, Feature Flags, ActiveAdmin & Proto-Observability",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-under-the-hood-sesja-feature-flags-activeadmin-proto-observa",
+      "page_url": "/interviews/chicago-code-camp-under-the-hood-sesja-feature-flags-activeadmin-proto-observa/",
+      "youtube_url": "https://youtu.be/KYwZPw0l6ZM",
+      "youtube_video_id": "KYwZPw0l6ZM",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Under the Hood: Sesja, Feature Flags, ActiveAdmin & Proto-Observability\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/episode-04/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Episode 04: Under the Hood\n00:13 Sesja, VERSION_TAG & Frictionless CFP\n00:40 Devise, CanCan & Speaker Profiles\n01:01 ActiveAdmin 0.4.3 & Live Feature Flags\n01:19 Tests, CI & Proto-Observability\n01:47 Next: Episode 05 :  AGPLv3 & Rails 8 Roadmap\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Episode 4, Under the Hood of CCS, How Visitors, Speakers,\nand Organizers Each Experience the App, and the Early Tests\nand Proto-Observability Already Baked into this 2012 Rails\n3 Codebase\nFirst, why is the talk model named Sessia? Because Session\ncollides with Rails HTTP Session, so Sessia, Polish for Session,\navoided the clash while routing publicly at slash sessions\nMeanwhile, version tag and config application are be\npartitioned each year's talks via default scope\nAnd submitting a talk at slash submissions slash new\nautomatically created a speaker account with a generated\ntemporary password if no user existed for that email\nAccess Control ran on Device 1, Device Invitable, and CanCan's\nability class with a four-tier role hierarchy\nGuest, Attendee, Speaker, and Admin\nSpeakers edited their own profiles and speaker rate links,\nand a custom email domain validator even ran live DNS MX\nrecord lookups on submitted email addresses\nOrganizers ran the entire conference from Active Admin 0, 4,\n3 at slash admin\nManaging 11 resources including live database feature flags\nvia feature OK, pre-registrations, image logo, show\nsponsors, and comments could all be flipped live without a\nHeroku redeploy\nLong before OpenTelemetry or GitHub actions, CCS already\nshowed clear observability instincts, RSpec, Cucumber, and\nFactory Girl for testing\nSimpleCov configured with ReCov formatter to feed Hudson\nand Jenkins CI\nBulletWired in development RB for N plus 1 query detection\nHopTode notifier for exception tracking\nAnd structured Rails logger warnings on DNS and CSV export\nfailures\nNext in episode 5, why we switched main from GPL to GNU AGPL\n3, how we preserved 16 years of Git history, and the\nroadmap to a modern Rails 8 code camp server on Railway",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "chicago-code-camp-what-chicago-code-camp-was-all-about-people-sponsors-three-m",
+      "title": "What Chicago Code Camp Was All About: People, Sponsors & Three Mays",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-what-chicago-code-camp-was-all-about-people-sponsors-three-m",
+      "page_url": "/interviews/chicago-code-camp-what-chicago-code-camp-was-all-about-people-sponsors-three-m/",
+      "youtube_url": "https://youtu.be/y506yiwMlSU",
+      "youtube_video_id": "y506yiwMlSU",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "What Chicago Code Camp Was All About: People, Sponsors & Three Mays\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/episode-02/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Episode 02: People, Sponsors & Three Mays\n00:10 The Three-May Cadence\n00:44 Contributors & Design Credit\n01:06 May 2012 Sponsors (12)\n01:31 May 2012 Speakers (32)\n01:56 Next: Episode 03 :  The Anti-Corporate Design\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Episode 2, What Chicago Code Camp Was Really About, The\nPeople, The Sponsors, and The Three-Year May Conference Rhythm\nCaptured in 796 Commits\nLook at the commit cadence in Git and you can feel the\nheartbeat of a free, community-run Saturday conference, in\n2010, 175 commits from January to May, launching on Rails 2,\n3, 5 with GPLV2 locked in on April 7, in 2011, 489 commits,\n155 in February alone, rebuilding everything on Rails 3,\nand in 2012, 132 commits right up to May 15th, four days\nbefore doors opened at the College of Lake County in Brayslake,\nIllinois. Four contributors appear in Git History up to Prod 2012-05,\nMichael D. Hall with 764 commits, Sergio Pereira with 24,\nincluding two early 2010 commits from Windows where Git\nfell back to unknown,\nAdam Walters with 7, and Dustin Updike with 1, and right in\nthe footer, Jane Ashley is credited for the three-ring dot\nlogo. Free conferences don't run on air. The May 6, 2012 Internet Archive Capture preserves the 12\nsponsors who backed Chicago CodeCAM 2012, Microsoft at Platinum,\nPlatinum Consulting Services at Gold, 8thLite, Centaur,\nGroupon, Logic NP Software, Telerik, ThoughtWorks, and Twilio\nat Silver, plus GitHub, JetBrains, and NewDesic at Bronze. And the speakers who gave up a Saturday to teach, 32\nspeakers on the May, 2012, lineup covering, NET, Ruby, Clodger,\nGo, iOS, Java, Node.js, and Software Craftsmanship. Early 2010 speaker headshots in Git also preserved the\nmemory of regional community builders, including Dave Bost,\nwhose warmth and contributions we honor respectfully. Next in episode 3, the design that ruffled corporate\nfeathers, triadic sass, lowercase headings, the dev mode\ncolor proof bar, and 2012 accessibility.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "chicago-code-camp-why-we-named-the-rails-model-sesja",
+      "title": "Why We Named the Rails Model Sesja",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "chicago-code-camp-why-we-named-the-rails-model-sesja",
+      "page_url": "/interviews/chicago-code-camp-why-we-named-the-rails-model-sesja/",
+      "youtube_url": "https://youtu.be/UOJ9T4xwcgg",
+      "youtube_video_id": "UOJ9T4xwcgg",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Why We Named the Rails Model Sesja\n\nCompanion essay & 1:1 archival gallery: https://www.just3ws.com/ai/series/chicago-code-camp/\nRepository (GNU AGPL v3): https://github.com/just3ws/ccs\nSeries Playlist: https://www.youtube.com/playlist?list=PLFRktsUF3P4o\n\nChapters:\n00:00 Why Sesja?\n00:06 Avoiding Rails Session Collision\n00:25 Full Series on Playlist\n\nNarration disclosure: Voiceover generated with macOS text-to-speech (Zoe (Premium)) from source-grounded scripts; all screenshots, dates, and code citations come directly from github.com/just3ws/ccs (prod-2012-05 / 1b5f639) and May 2012 Internet Archive captures.",
+      "tags": [
+        "Chicago Code Camp",
+        "Code Camp Server",
+        "Ruby on Rails",
+        "Software Archaeology",
+        "Software Craftsmanship",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Ever wonder why a Chicago Rails conference app from 2012\nnamed its talk model Sessia? In Ruby on Rails, Session is already reserved for HTTP Session\nState. Instead of fighting the framework, Chicago CodeCamp named\nthe active record model Sessia,\nPolish for Session, and routed it publicly at Slash Sessions. Clean URLs for attendees, zero naming collisions in Rails 3. Watch the full episode for Deep Dive on the Chicago CodeCamp\nto CodeCamp server playlist.",
+      "transcript_turns_count": 2
     },
     {
       "id": "cindy-sprague-goto-conference-2014",
@@ -13249,6 +13660,445 @@
       "transcript_turns_count": 45
     },
     {
+      "id": "phalanx-duel-1v1-live-pvp-creating-joining-auto-reconnecting-matches",
+      "title": "1v1 Live PvP: Creating, Joining & Auto-Reconnecting Matches",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-1v1-live-pvp-creating-joining-auto-reconnecting-matches",
+      "page_url": "/interviews/phalanx-duel-1v1-live-pvp-creating-joining-auto-reconnecting-matches/",
+      "youtube_url": "https://youtu.be/56IffXxKVbM",
+      "youtube_video_id": "56IffXxKVbM",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Create a 1v1 PvP match, share an invite link or join from the public lobby, and see how automatic WebSocket reconnect recovers live matches without losing state.\n\nCompanion guide: https://phalanxduel.com/learn/first-match/\n\nChapters:\n00:00 Create a 1v1 Lobby Match\n00:03 Share Invite Link & Waiting Room\n00:07 Resilient Reconnect & State Recovery\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 3, Episode 10)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42010",
+      "tags": [
+        "Phalanx Duel",
+        "PvP",
+        "1v1",
+        "Multiplayer",
+        "Reconnect",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Playing live against another human is where Phalanx Duel\ntruly shines. Let us walk through creating and joining a 1v\n1 match. Create a match from the lobby to get a one-click invite\nlink, or browse open challenges in the public lobby. Once\nboth players connect, the match transitions straight into\ndeployment. If your browser refreshes or your Wi-Fi blips mid-Duel, the\nserver persists every turn to PostgreSQL and automatically\nrestores your exact board state when you reconnect.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "phalanx-duel-1vbot-training-ladder-scout-grunt-soldier",
+      "title": "1vBot Training Ladder: Scout, Grunt & Soldier",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-1vbot-training-ladder-scout-grunt-soldier",
+      "page_url": "/interviews/phalanx-duel-1vbot-training-ladder-scout-grunt-soldier/",
+      "youtube_url": "https://youtu.be/aS5Q8geLxgo",
+      "youtube_video_id": "aS5Q8geLxgo",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Climb the first three rungs of the 1vBot training ladder: Scout (random), Grunt (legal heuristic), and Soldier (balanced MCTS-100).\n\nCompanion guide: https://phalanxduel.com/learn/foundations/\n\nChapters:\n00:00 Meet the Training Bots\n00:03 Scout (Random) & Grunt (Heuristic)\n00:07 Soldier (Balanced MCTS 100)\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 3, Episode 11)\nFormat: Short (9:16) | Mode: classic | Seed: 42011",
+      "tags": [
+        "Phalanx Duel",
+        "Bots",
+        "AI",
+        "Scout",
+        "Grunt",
+        "Soldier",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Not ready for ranked PvP yet? Phalanx Duel has 8 distinct\nbot tiers, starting with Scout, Grunt, and Soldier. Scout\nplays random legal moves so you can learn controls pressure\n-free. Grunt upgrades to heuristic evaluation, punishing\nexposed columns right away. Soldier introduces Monte Carlo\nTree Search with 100 simulations per turn, planning 1-2\nturns ahead. Next episode, the 5 specialist and champion\nbots.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "phalanx-duel-aces-face-cards-pass-reinforce-victory-conditions",
+      "title": "Aces, Face Cards, Pass, Reinforce & Victory Conditions",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-aces-face-cards-pass-reinforce-victory-conditions",
+      "page_url": "/interviews/phalanx-duel-aces-face-cards-pass-reinforce-victory-conditions/",
+      "youtube_url": "https://youtu.be/c8y8SkhMlvk",
+      "youtube_video_id": "c8y8SkhMlvk",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Complete your Season 1 mastery of Phalanx Duel: Ace and Face Card destruction eligibility, strategic Passing, the Reinforce phase, and every way a match can end.\n\nCompanion guide: https://phalanxduel.com/learn/rules/\n\nChapters:\n00:00 Aces & Face Cards Eligibility\n00:03 Mid-Game Match Against Soldier Bot\n00:06 Passing Turns & Reinforcing Open Columns\n00:10 LP Zero, Forfeit & Liveness Victory\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 1, Episode 5)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42005",
+      "tags": [
+        "Phalanx Duel",
+        "Aces",
+        "Face Cards",
+        "Reinforce",
+        "Victory Conditions",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Welcome to the season 1 finale of Phalanx Duel. Today we\ncover the rules that separate beginners from tournament\ncontenders, aces, face cards, passing, reinforcing, and\nvictory conditions. Aces and face cards follow strict destruction eligibility\nrules, you can just brute force them with any attacker, so\nplacing them in the right column can lock down an entire\nlane. When an attack would put you at a disadvantage, you can\npass to preserve your formation, but watch the pass counter\n. Whenever a column opens up, the reinforce phase lets you\nslide back row defenders forward or deploy fresh units from\nyour hand. A duel ends when a player reaches 0 life points, forfeits,\nor triggers the liveness rule. That wraps up season 1. In season 2, we'll sign up your\naccount, unlock custom card backs, and customize your HUD.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "phalanx-duel-cardbacks-cosmetics-neon-relay-dual-loop-obsidian-heraldry",
+      "title": "Cardbacks & Cosmetics: Neon Relay, Dual Loop & Obsidian Heraldry",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-cardbacks-cosmetics-neon-relay-dual-loop-obsidian-heraldry",
+      "page_url": "/interviews/phalanx-duel-cardbacks-cosmetics-neon-relay-dual-loop-obsidian-heraldry/",
+      "youtube_url": "https://youtu.be/_Silz_TvaCA",
+      "youtube_video_id": "_Silz_TvaCA",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Preview and equip Phalanx Duel cardbacks: Neon Relay, Obsidian Heraldry, and unlock Dual Loop by completing your first match.\n\nCompanion guide: https://phalanxduel.com/learn/first-match/\n\nChapters:\n00:00 Open Cardback & Cosmetics Settings\n00:03 Neon Relay & Obsidian Heraldry\n00:07 Unlock & Equip Dual Loop\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 2, Episode 7)\nFormat: Short (9:16) | Mode: classic | Seed: 42007",
+      "tags": [
+        "Phalanx Duel",
+        "Cardbacks",
+        "Cosmetics",
+        "Neon Relay",
+        "Dual Loop",
+        "Obsidian Heraldry",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Want to customize your deck on the battlefield? Phalanx Due\nl ships with three distinct card-back themes\nNeon Relay brings Electric Cyan and Magenta Clarity, while\nObsidian Heraldry gives your formation a Charcoal, Gold,\nand Crimson finish\nComplete just one match to unlock Dual Loop, Cold\nIndustrial Ink with interlocking paths, then equip it\nstraight from Settings",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-classic-vs-cumulative-damage-modes",
+      "title": "Classic vs Cumulative Damage Modes",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-classic-vs-cumulative-damage-modes",
+      "page_url": "/interviews/phalanx-duel-classic-vs-cumulative-damage-modes/",
+      "youtube_url": "https://youtu.be/DmdoO1k01z0",
+      "youtube_video_id": "DmdoO1k01z0",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Compare Classic mode (between-turn damage reset) vs Cumulative mode (persistent chip damage) plus custom starting Life Points.\n\nCompanion guide: https://phalanxduel.com/learn/rules/\n\nChapters:\n00:00 Classic vs Cumulative Damage Modes\n00:03 Classic: Surviving Cards Reset Between Turns\n00:07 Cumulative: Persistent Chip Damage\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 3, Episode 9)\nFormat: Short (9:16) | Mode: cumulative | Seed: 42009",
+      "tags": [
+        "Phalanx Duel",
+        "Classic Mode",
+        "Cumulative Mode",
+        "Game Modes",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Two damage modes completely change how you build columns in\nPhalanx Duel, Classic and Cumulative\nIn Classic mode, any card that survives an attack heals\nback to full strength at the end of the turn, rewarding\ndecisive breakthroughs\nIn Cumulative mode, damage sticks across turns so attrition\nand multi-turn focus fire can grind down even the toughest\nfront rank\nTry both in custom match options",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-combat-cascade-column-overkill-explained",
+      "title": "Combat Cascade & Column Overkill Explained",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-combat-cascade-column-overkill-explained",
+      "page_url": "/interviews/phalanx-duel-combat-cascade-column-overkill-explained/",
+      "youtube_url": "https://youtu.be/YAnBdzdvQxQ",
+      "youtube_video_id": "YAnBdzdvQxQ",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "See how column combat cascades in Phalanx Duel: front-rank attackers strike the opposing front card, excess damage spills into the back card, and leftover overkill hits enemy Life Points.\n\nCompanion guide: https://phalanxduel.com/learn/rules/\n\nChapters:\n00:00 Opening Combat Board\n00:03 Front-Rank Attack Declaration\n00:06 Front - Back - Life Points Cascade\n00:10 Classic Between-Turn Damage Reset\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 1, Episode 3)\nFormat: Short (9:16) | Mode: classic | Seed: 42003",
+      "tags": [
+        "Phalanx Duel",
+        "Combat Cascade",
+        "Card Game Rules",
+        "Tutorial",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "How does damage actually flow in Phalanx Duel? It all comes\ndown to the column cascade. Only front rank cards can\nattack, and they always strike straight across into the\nmatching enemy column. When an attack destroys the enemy\nfront card, leftover damage cascades straight into the back\ncard behind it, destroy the back card too, and any\nremaining overkill hits the opponent's life points directly\n. And remember, in classic mode, surviving cards reset to\nfull health between turns, so chip damage doesn't stick\nunless you break through. Watch episode 4 next for the F\noursuit Boundaries.",
+      "transcript_turns_count": 2
+    },
+    {
+      "id": "phalanx-duel-deterministic-replays-cryptographic-hash-chain-verification",
+      "title": "Deterministic Replays & Cryptographic Hash-Chain Verification",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-deterministic-replays-cryptographic-hash-chain-verification",
+      "page_url": "/interviews/phalanx-duel-deterministic-replays-cryptographic-hash-chain-verification/",
+      "youtube_url": "https://youtu.be/U1u8AwF_OmI",
+      "youtube_video_id": "U1u8AwF_OmI",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Step through deterministic match replays, inspect per-turn cryptographic state hashes, and verify fair play via the match verification endpoint.\n\nCompanion guide: https://phalanxduel.com/learn/gameplay-assurance/\n\nChapters:\n00:00 Why Deterministic Replays Matter\n00:03 Scrubbing Turn-by-Turn Provenance\n00:07 Canonical State Hash Verification\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 4, Episode 15)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42015",
+      "tags": [
+        "Phalanx Duel",
+        "Replays",
+        "Determinism",
+        "Hash Chain",
+        "Fair Play",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Phalanx Duel is built on a pure, deterministic typescript\nengine, meaning every match is 100% replayable and crypt\nographically verifiable\nOpen any completed match to step turn-by-turn through\ndeployments, attacks, suit modifiers, and event logs with\nfull arithmetic provenance\nEvery turn emits a canonical SHA-256 state hash linked into\na verifiable chain\nAnyone can run the match verify endpoint to prove zero tam\npering from turn zero to game over",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-formation-first-deployment-quick-deploy",
+      "title": "Formation-First Deployment & Quick Deploy",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-formation-first-deployment-quick-deploy",
+      "page_url": "/interviews/phalanx-duel-formation-first-deployment-quick-deploy/",
+      "youtube_url": "https://youtu.be/_7OLhDb4McQ",
+      "youtube_video_id": "_7OLhDb4McQ",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Master formation-first deployment in Phalanx Duel: how hidden hands become a public 2x4 battlefield, why front-rank vs back-rank column placement matters, and when to use Quick Deploy.\n\nCompanion guide: https://phalanxduel.com/learn/foundations/\n\nChapters:\n00:00 Enter Match for Deployment\n00:03 Start Seeded Training Match\n00:06 Hidden Hand vs Public 2x4 Grid\n00:10 Manual Front-Rank Placement\n00:13 Front Rank Attackers & Back Rank Support\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 1, Episode 2)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42002",
+      "tags": [
+        "Phalanx Duel",
+        "Card Game",
+        "Deployment",
+        "Formation Strategy",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "In episode 2 of Phalanx Duel, we break down the most\nimportant phase of the game, formation-first deployment. Let's jump into a training match and look closely at how\nyour opening hand becomes your battlefield. Your hand and draw pile stay hidden, but every card you\ndeploy onto the 2x4 battlefield is face-up in public. That means both players can read every column and calculate\nexact combat math. Click a card in your hand and choose a column slot. Cards in the front rank lead your attacks and absorb\nincoming fire first. Cards in the back rank protect your life points and advance\nforward when the front card falls. When you want faster games or tournament warm-ups, quick\ndeploy fills your formation automatically. But manual deployment lets you line up suit boundaries and\nprotect key back row anchors. Up next in episode 3, Combat Cascade and Column Overkill.",
+      "transcript_turns_count": 3
+    },
+    {
+      "id": "phalanx-duel-hosting-directing-a-local-tournament-admin-portal-runbook",
+      "title": "Hosting & Directing a Local Tournament (Admin Portal & Runbook)",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-hosting-directing-a-local-tournament-admin-portal-runbook",
+      "page_url": "/interviews/phalanx-duel-hosting-directing-a-local-tournament-admin-portal-runbook/",
+      "youtube_url": "https://youtu.be/4dv7ViR10ZY",
+      "youtube_video_id": "4dv7ViR10ZY",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Operator guide to hosting a LAN tournament: pre-flight port & firewall checks (pnpm tournament:ports), starting services (bin/phx up), and monitoring matches in the Admin Portal.\n\nCompanion guide: https://phalanxduel.com/build-with-phalanx/\n\nChapters:\n00:00 Pre-Flight: pnpm tournament:ports & Firewall\n00:04 Launch Stack with bin/phx up\n00:07 Live Monitoring in the Admin Portal\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 5, Episode 18)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42018",
+      "tags": [
+        "Phalanx Duel",
+        "Tournament Hosting",
+        "Admin Portal",
+        "LAN",
+        "Runbook",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Hosting a local Phalanx Duel Tournament? Start with PNPM\nTournament, ports to verify your LAN IP, DNS records, and\nmacOS firewall rules in one glance\nRun BINPHX up to start the game server, web client, and\ndedicated admin portal\nConfirm every endpoint flips to accessible on LAN\nOpen the admin portal to monitor active matches, verify\ncryptographic integrity badges, assist players, or cleanly\nterminate stalled tables",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-how-to-play-in-a-local-lan-tournament",
+      "title": "How to Play in a Local / LAN Tournament",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-how-to-play-in-a-local-lan-tournament",
+      "page_url": "/interviews/phalanx-duel-how-to-play-in-a-local-lan-tournament/",
+      "youtube_url": "https://youtu.be/g_kIYFa4FP4",
+      "youtube_video_id": "g_kIYFa4FP4",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Player checklist for local and LAN Phalanx Duel tournaments: connecting to the LAN domain, signing into persistent accounts, joining bracket matches, and tracking standings.\n\nCompanion guide: https://phalanxduel.com/competitive/\n\nChapters:\n00:00 Connect to the Local Tournament Domain\n00:03 Sign In with Your Tournament Account\n00:07 Joining Pairings & Spectator Casting\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 5, Episode 17)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42017",
+      "tags": [
+        "Phalanx Duel",
+        "Tournament",
+        "LAN",
+        "Competitive",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Playing in a local or land Phalanx duel tournament? Here is\neverything you need to go from check-in to the finals\nSign in with your persistent player account so every\nbracket win, elo update, and replay is tied to your gamert\nag across rounds\nJoin your paired match from the lobby, play clean turns,\nand share the watch link with the tournament projector so\nthe whole room can follow the finals live",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-mastering-specialist-bots-veteran-destroyer-sentinel-blitz-c",
+      "title": "Mastering Specialist Bots (Veteran, Destroyer, Sentinel, Blitz & Champion)",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-mastering-specialist-bots-veteran-destroyer-sentinel-blitz-c",
+      "page_url": "/interviews/phalanx-duel-mastering-specialist-bots-veteran-destroyer-sentinel-blitz-c/",
+      "youtube_url": "https://youtu.be/KqK9tf2cYy8",
+      "youtube_video_id": "KqK9tf2cYy8",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Counter all five specialist MCTS bots :  Veteran, Destroyer, Sentinel, Blitz, and the 1,000-iteration Champion :  by understanding their heuristic weights.\n\nCompanion guide: https://phalanxduel.com/learn/tactical-depth/\n\nChapters:\n00:00 The Five Specialist MCTS Personalities\n00:03 Veteran (Attack) & Destroyer (Column-Clear)\n00:08 Sentinel (Defense) & Blitz (Speed)\n00:11 Champion (MCTS 1000 Apex)\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 3, Episode 12)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42012",
+      "tags": [
+        "Phalanx Duel",
+        "Bots",
+        "MCTS",
+        "Veteran",
+        "Destroyer",
+        "Sentinel",
+        "Blitz",
+        "Champion",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Once you can beat Soldier consistently, 5 specialized MCTS\nopponents test every dimension of your game\nVeteran runs 500 simulations with heavy attack bias,\nhunting your highest value life points lanes\nDestroyer prioritizes dismantling your board presence\ncolumn by column\nSentinel stacks defensive boundaries and preserves life\npoints, while Blitz deploys fast and races for early lethal\nfinishes\nAt the top sits champion, 1,000 balanced MCTS simulations\nper decision, beating champion proves you are tournament\nready",
+      "transcript_turns_count": 1
+    },
+    {
       "id": "phalanx-duel-phalanx-duel-early-version-walkthrough-with-conrad-hall",
       "title": "Phalanx Duel: Early Version Walkthrough with Conrad Hall",
       "interviewee": "Mike Hall",
@@ -13318,6 +14168,314 @@
       ],
       "transcript_text": "Phalanx Duel is a tactical card game for two players. Each\nplayer runs a standard deck of 52 cards and starts with a\npool of life points. You win by breaking through a column\nof your opponent's cards and driving their life points to\nzero. Everything you see here runs from one shuffled seed,\nso the same game plays the same way every time. Each player shuffles their own deck and draws 12 cards. You\nbuild four columns, each with a front card and a back card. Players take turns placing one card face up until each\nboard holds 8 cards and each hand holds 4. The front card\nof every column faces the enemy. The back card waits behind\nit. On your turn you do one thing. You attack, or you pass. To\nattack, pick one of your own front cards and point it at\none enemy column. A card's attack value is its printed\nnumber. 10's count is 10. Face card's count is 11. That\nvalue is the damage the attack starts with. Damage moves through the target column in order. Front card\n, then back card, then life points. Compare the damage to\nthe front card. If the card's value is higher, it survives\nand the attack stops. If the damage meets or beats the card\n, the card is destroyed. Subtract its value and carry the\nrest forward. The leftover damage then hits the back card,\nand whatever remains after that reaches the opponent's life\npoints. Each suit changes the math at one boundary in that chain. It is a timing rule, not a card power. A destroyed diamond\nsubtracts its value from damage carrying on to another card\n. A destroyed heart subtracts its value from damage headed\nto life points. A club attacker doubles the carry over once\n, right after its first kill. A spade attacker doubles the\ndamage that crosses from the cards into the player. After the attack resolves, the defender may reinforce, but\nonly the column that was hit. You play cards from your hand\ninto the open ranks of that one column. Then you draw back\nup to four cards, and now you are the attacker. A card that\nsurvived a hit returns to its full value on your turn. Dam\nage does not carry between turns. The duel ends when one player's life points reach zero. Passing is legal, but three passes in a row, or five passes\nin a game, forfeits the duel. Running out of cards to draw\nis not a loss. There is no reshuffle. So every attack is a\nchoice about which column to break, and when. That is the whole game. Set up four columns, send one card\nat a time, and follow the damage through. The printed rules\nand the face-to-face quick start go deeper on special cards\nand edge cases. Shuffle a deck and play a hand.",
       "transcript_turns_count": 11
+    },
+    {
+      "id": "phalanx-duel-profiles-match-history-rarity-achievements",
+      "title": "Profiles, Match History & Rarity Achievements",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-profiles-match-history-rarity-achievements",
+      "page_url": "/interviews/phalanx-duel-profiles-match-history-rarity-achievements/",
+      "youtube_url": "https://youtu.be/MucIU1Hq2G8",
+      "youtube_video_id": "MucIU1Hq2G8",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Explore public player profiles, review past matches, track global achievement rarity percentages, favorite memorable duels, and follow rivals.\n\nCompanion guide: https://phalanxduel.com/competitive/\n\nChapters:\n00:00 Public Player Profile & Stats\n00:05 Match History & Favoriting Duels\n00:08 Achievements & Global Rarity\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 4, Episode 14)\nFormat: Short (9:16) | Mode: classic | Seed: 42014",
+      "tags": [
+        "Phalanx Duel",
+        "Profiles",
+        "Match History",
+        "Achievements",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Every rated player in Phalanx duel gets a public profile\nshowcasing win rates, seasonal elo, and recent duels\nBrowse your match history to reopen any completed game,\nstar your favorite comebacks, or follow rivals to keep tabs\non their climb\nEvery achievement displays its live global rarity\npercentage across all players, see how rare your best plays\nreally are",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-reading-the-hud-combat-math-inspector-narration-settings",
+      "title": "Reading the HUD, Combat Math Inspector & Narration Settings",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-reading-the-hud-combat-math-inspector-narration-settings",
+      "page_url": "/interviews/phalanx-duel-reading-the-hud-combat-math-inspector-narration-settings/",
+      "youtube_url": "https://youtu.be/b5JYEdbTmlw",
+      "youtube_video_id": "b5JYEdbTmlw",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Tour the Phalanx Duel desktop HUD: inspect engine-authored combat math provenance, configure the Narration Ticker, audio/music controls, and in-game Glossary.\n\nCompanion guide: https://phalanxduel.com/tools/battle-calculator/\n\nChapters:\n00:00 Desktop HUD Layout\n00:03 Inspect Combat Provenance\n00:07 Narration Ticker, Music & Accessibility\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 2, Episode 8)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42008",
+      "tags": [
+        "Phalanx Duel",
+        "HUD",
+        "Combat Math",
+        "Narration",
+        "Settings",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Every number in Phalanx Duel is explainable. In this\nepisode, we tour the full HUD and combat math inspector. Hover or click any engagement in the combat explanation\npanel to see the exact arithmetic chain, base power, suit\nboundary modifiers, and overkill into life points. Use settings to toggle the live narration ticker, adjust\nmusic and sound effects, enable reduced motion choreography\n, or open the glossary and help dialogues mid-match.",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-sign-up-gamertags-account-management",
+      "title": "Sign Up, Gamertags & Account Management",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-sign-up-gamertags-account-management",
+      "page_url": "/interviews/phalanx-duel-sign-up-gamertags-account-management/",
+      "youtube_url": "https://youtu.be/Fax9WCreY8c",
+      "youtube_video_id": "Fax9WCreY8c",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Create your Phalanx Duel account in seconds, choose a valid operative gamertag, manage your profile, and keep your session synced across matches.\n\nCompanion guide: https://phalanxduel.com/learn/getting-started/\n\nChapters:\n00:00 Open Account & Sign Up Panel\n00:03 Choose Gamertag & Register\n00:06 Manage Profile & Password Reset\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 2, Episode 6)\nFormat: Short (9:16) | Mode: classic | Seed: 42006",
+      "tags": [
+        "Phalanx Duel",
+        "Account",
+        "Signup",
+        "Tutorial",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Ready to track your ELO, match history, and unlocked card\nbacks? Let us create your Phalanx Duele account\nOpen the sign-up panel, pick a unique remordag, enter your\nemail and password, and submit\nYour account is immediately ready for rank play\nFrom your account menu you can update preferences, sign out\nsafely, or trigger a password reset anytime\nNext up, unlocking custom card backs",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-spectator-mode-watch-links-delay-fair-play-redaction",
+      "title": "Spectator Mode: Watch Links, Delay & Fair-Play Redaction",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-spectator-mode-watch-links-delay-fair-play-redaction",
+      "page_url": "/interviews/phalanx-duel-spectator-mode-watch-links-delay-fair-play-redaction/",
+      "youtube_url": "https://youtu.be/yg8-nTqxdd8",
+      "youtube_video_id": "yg8-nTqxdd8",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Watch live Phalanx Duel matches with Spectator Mode: share /watch links, observe public formations with fair-play hidden-hand redaction and spectator delay.\n\nCompanion guide: https://phalanxduel.com/competitive/\n\nChapters:\n00:00 Open a Live Spectator Link\n00:03 Hidden-Hand Redaction & Spectator Delay\n00:06 One-Click Watch Link Sharing\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 5, Episode 16)\nFormat: Short (9:16) | Mode: classic | Seed: 42016",
+      "tags": [
+        "Phalanx Duel",
+        "Spectator Mode",
+        "Watch Live",
+        "Esports",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Want to cast a tournament match or watch friends do live? That is what spectator mode is built for\nSpectators see the full public battlefield, life points,\nand live combat narration\nWhile player hands stay strictly redacted by the server\nwith built-in spectator delay to prevent stream sniping\nCopy the watch link straight from any lobby or waiting room\nand drop it in chat, zero account required to spectate",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-the-four-suit-boundaries-diamonds-hearts-clubs-spades",
+      "title": "The Four Suit Boundaries (Diamonds, Hearts, Clubs, Spades)",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-the-four-suit-boundaries-diamonds-hearts-clubs-spades",
+      "page_url": "/interviews/phalanx-duel-the-four-suit-boundaries-diamonds-hearts-clubs-spades/",
+      "youtube_url": "https://youtu.be/KS5A69rM3Tk",
+      "youtube_video_id": "KS5A69rM3Tk",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Understand Phalanx Duel's boundary-based suit rules in 60 seconds: Diamonds, Hearts, Clubs, and Spades modify specific card-to-card and card-to-player transitions :  not global buffs.\n\nCompanion guide: https://phalanxduel.com/suits-strategy/\n\nChapters:\n00:00 Suits Are Transition Boundaries\n00:03 Diamonds & Hearts: Defensive Boundaries\n00:07 Clubs & Spades: Offensive Boundaries\n00:10 Verify Every Calculation in the Inspector\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 1, Episode 4)\nFormat: Short (9:16) | Mode: classic | Seed: 42004",
+      "tags": [
+        "Phalanx Duel",
+        "Suit Rules",
+        "Tactical Card Game",
+        "Tutorial",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "In Phalanx Duel, suits are not global shields or heals,\nthey are precision combat boundaries that fire only when\ndamage crosses a specific step\nDiamonds defend the card to card boundary, absorbing damage\nbefore it spills into your back row\nHearts guard the player boundary, softening damage right\nbefore it hits your life points\nClubs and spades supercharge your offense, amplifying card\nto card breakthroughs and driving extra lethal damage\nacross the column boundary\nEvery single combat calculation is inspectable step by step\nin the HUD\nNext up in episode 5, Aces, Face Cards, Passing, and Rein\nforcing",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-understanding-your-ranking-elo-categories-seasonal-ladders",
+      "title": "Understanding Your Ranking, Elo Categories & Seasonal Ladders",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-understanding-your-ranking-elo-categories-seasonal-ladders",
+      "page_url": "/interviews/phalanx-duel-understanding-your-ranking-elo-categories-seasonal-ladders/",
+      "youtube_url": "https://youtu.be/vzGigTVqByc",
+      "youtube_video_id": "vzGigTVqByc",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Understand Phalanx Duel rankings: separate Elo ladders for PvP and bot categories (baseline 1000, K=32), seasonal windows, and confidence badges.\n\nCompanion guide: https://phalanxduel.com/competitive/\n\nChapters:\n00:00 Tour the Seasonal Leaderboard\n00:05 Four Rating Categories & Elo Math\n00:09 Provisional, Calibrating, Established & Inactive\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 4, Episode 13)\nFormat: Long-Form (16:9) | Mode: classic | Seed: 42013",
+      "tags": [
+        "Phalanx Duel",
+        "Rankings",
+        "Elo",
+        "Leaderboard",
+        "Seasons",
+        "Tutorial",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "How does your ranking work in Phalanx Dual? Let us open the\nleaderboard and decode the ELO system. Ratings are tracked separately across four categories: PvP,\nSP Random, SP Heuristic, and SP MCTS, starting from a 1000\nELO baseline with a K-factor of 32. As you play more rated games in a season, your confidence\nlabel progresses from provisional to calibrating to\nestablished or inactive if you step away for 30 days.",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-what-is-phalanx-duel-60-second-overview",
+      "title": "What Is Phalanx Duel? (60-Second Overview)",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-what-is-phalanx-duel-60-second-overview",
+      "page_url": "/interviews/phalanx-duel-what-is-phalanx-duel-60-second-overview/",
+      "youtube_url": "https://youtu.be/Lktn0-bre5g",
+      "youtube_video_id": "Lktn0-bre5g",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Learn the core objective of Phalanx Duel in under 60 seconds: build a 2x4 formation, break through enemy columns, and drop your opponent's Life Points to zero.\n\nCompanion guide: https://phalanxduel.com/learn/getting-started/\n\nChapters:\n00:00 Welcome to the Lobby\n00:03 Launch Quick Start Match\n00:07 2x4 Battlefield & Life Points\n00:10 Deploy Your First Unit\n\nSeries: Phalanx Duel :  Complete Player & Tournament Guide (Season 1, Episode 1)\nFormat: Short (9:16) | Mode: classic | Seed: 42001",
+      "tags": [
+        "Phalanx Duel",
+        "Card Game",
+        "Tactical Card Game",
+        "Tutorial",
+        "Shorts",
+        "Game Architecture",
+        "Software Craftsmanship",
+        "Deterministic Systems",
+        "Tabletop Games",
+        "State Machines",
+        "SCMC"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Welcome to Phalanx Duel, a deterministic tactical card game\nwhere every move is verifiable and formation is everything\nHit quick start from the lobby to jump straight into a live\nmatch against a training bot\nEach player commands a 2x4 battlefield, a front rank that\nattacks, a back rank that reinforces, and a life points\npool\nDrop your opponent to 0 life points to win\nDeploy your opening cards into columns, trigger suit\nboundaries, and break through to the enemy life points\nCheck the playlist for Episode 2 on Formation Strategy.",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "phalanx-duel-your-first-attack-in-phalanx-duel",
+      "title": "Your First Attack in Phalanx Duel",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "phalanx-duel-your-first-attack-in-phalanx-duel",
+      "page_url": "/interviews/phalanx-duel-your-first-attack-in-phalanx-duel/",
+      "youtube_url": "https://youtu.be/ygf_GOylEQc",
+      "youtube_video_id": "ygf_GOylEQc",
+      "playlist_id": null,
+      "playlist_title": null,
+      "series": null,
+      "description": "Deploy a card, finish a formation, attack a column, and read the result.\n\nCompanion guide: https://phalanxduel.com/learn/getting-started/\n\nChapters:\n00:00 Put a card on the battlefield\n00:07 Finish your formation\n00:13 Attack across a column\n\nSeries: Phalanx Duel | Complete Player & Tournament Guide (Season 1, Episode 1)\nPlaylist: https://www.youtube.com/playlist?list=PLHenvAZhJjHo\nFormat: Short (9:16) | Mode: classic | Seed: 42001",
+      "tags": [
+        "Phalanx Duel",
+        "Card Game",
+        "Tactical Card Game",
+        "Tutorial",
+        "Shorts"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Select a card from your hand, then click an open position. The card is face-up as soon as it reaches the battlefield. Each column has a front and a back position. Quick Deploy fills the rest of your formation so you can start attacking. Select your front card, then the matching enemy column. The engagement log shows exactly what happened. Reduce the other player’s life points to zero to win.",
+      "transcript_turns_count": 2
     },
     {
       "id": "rafael-fran-a-2014-ruby-hero-railsconf-2014",
@@ -13588,6 +14746,39 @@
       ],
       "transcript_text": "If you're wondering about the logic that high-level tech\nleaders are making commitments, and it isn't just tech, it\n's largely, I'm going to say, focused on AI here, is that\nlook at doomsday cults and doomsday prophecies and how you\nwill see a pattern of declaring a date that the world will\nend and that\neverybody should just go all in on this date, anybody who\nis not part of believing in this date is a negative person,\ndeal with them however you have to deal with them\nthe important thing is, is that everybody around the\nprophet understands that the world is ending on the date\nthe prophet said, that any hesitation to throw away all of\nyour goods\nand this doesn't even have to be going back to the 1800s,\n1700s to find examples, and for some reason, they like to\nhappen in America, at least that I'm aware of\nmost of the demons day cults I've ever heard of are, it's\nlike an American thing, like we want the world to end so\nbad\num, or there's a certain tier that wants to end because\nthey think they're going to cash in and get, you know, some\nmagical reward\nbut, uh, we see it in our government, we see it in the, uh,\nobsession around AI\nbut the point is, is that\nit is, everybody has to be all in on the date\neverybody has to give up everything\ndo whatever the prophet tells them they need to do\nand in some cases, it's, you know, give away everything you\nhave\nsell all your material goods\nand we've seen recently with the TikTok, uh, uh, doomsday\nbelievers\nthat they were, uh, on for a period\nsaying how confident they are that the world's going to end\non this, uh, specific date\nand we got to watch in real time\nas that illusion, that delusion, uh, shattered\nand how they responded to it\nand it's consistent with how, uh, doomsday cults have\nalways operated\nand the AI leadership is a doomsday cult\nI use AI\nI'm, I'm not acting like I'm\nyou know, I'm caveating that here\nbut I look at, at, at all of this nonsense\nfrom, uh,\nMusk, Altman\nas, as, as Moday, um, about it\nand, and, um, freaking, remember Bezos was, was talking\nabout this\nas well, everybody's gonna, all, all software engineering\njobs are, are doomed\nuh, that the AI is gonna destroy humanity\nand that somehow, every time they said that\nthe stock would go up\num, because it is delusional\nand people are literally banking on the end of the world\nand that if you're not committed to it\nyou are a, uh, what do they, what do the Scientology call\nthem? um, I forget\nbut there's, there's a word for it\nand I think there's, uh, some, one of them calls, let's\ncall them squirrels\nuh, things like that\nand that, uh, you get shunned and you, you're shut out\nand they come in and they change all the titles for\neverything\nso now we've got Product Engineer\nand Forward Deployed Engineer\nwho decided this? who chose this? this was chosen for us\nby people who, if you disagree with them\nyou are shut out\njust like a doomsday cult\njust like\nhow many preachers have said\nthe world is gonna end on October\nblah blah blah dates\nand, um, and then\nthat date rolls around\ndoesn't happen\nthe thing is, everybody in those cases\nis all worked up and ready for it to go\nand then they're all standing around looking at each other\nthinking they're gonna ascend\nor Heaven's Gate\nwhere they, uh, help it along\nor Jim Jones\nwhere they get it helped along\nwhich I'm a little bit more worried about that one\nright now\nbut, um\nthe point is, is that\nwhat we're seeing here right now\nit's the same pattern\nit is\noh, what\n20, 23, 2022\nwhen they started saying that\nin six\nthree to six months\nand then three to six months passed\nand we still have software engineering\nand\nAI has not replaced everything\nand then I watch\nyou know\nvideos over this time of\nof, uh\nmanufacturing and\nprocessing in other countries\nand\nand keeping up to date\nI'm seeing\nI'm seeing\nyou know\nit's really only seems to be\nstateside\nengineers\nthat are getting the biggest squeeze\nand I wonder why that is\nbut, um\nstateside\nengineers are getting the biggest squeeze\nand having the rules\nrewritten out\nfrom underneath them\nby these\nthese doomsday prophets\nand it's the same thinking\nthey're the same kind of thinking\nas the\nperson who\nwas a preacher\nwho was a prophet\nsaying that the world\nwas going to end\nand then a date comes\nand then they readjust the date\nout a little bit further\nand then\nthe people\nbecause of some\ncost fallacy\nand belief\nand just general\ndisillusionment\nwith\nlife\nwill\nfollow\nand they'll do it again\nand they'll do it again\nmaybe a few less\neach time\nbut still\nsometimes\nthere's replacements\nbecause\nthe important thing\nis just stay on message\nyou stay committed\nto the idea\nthat the world\nis going to end\nand anybody\nthat says otherwise\nis\nagainst it\nwhy\nis that\nso\nappealing\nbecause if you are\nstanding there\nand you've\ngot everything to gain\nit'd be like\nevery day you get up\nand let's say\nbuy a lottery ticket\nand then don't go to work\nI don't know\nyou\nyou buy a lottery ticket\nand you're like\nI'm not going to go to work\nbecause\ntoday's going to be the day\ntoday's going to be the day\nthat they're going to get back to you\nfind out somehow\nwhat you really\ngot to do\nI don't believe\nthat anybody\nfeels the way I do\nabout you now\nsorry\nthe\nlittle song lyric\nthere\nthe ADHD\nkicked in\nas long as you stay committed\nyou have everything\nto gain\nand\nthe\npreachers are very good\nat communicating that\njust like the CEOs\nthey're very good\nat communicating that\nhow much\nyou're going to get\nyou're going to be special\nyou're going to rise above\nyou're going to be the one\nwho saw it\nall these things\nthat give you\nwhatever you need\nto feel\nto\nstay committed\nnow\nand stay believing\neven through\nrepeated\nfailures\nfor the prophecy\nto\nmaterialize\nbut\nit's a cult of personality\nit's a death cult of personality\nand they have everything to gain\nand the thing is\nthey're not going to stop\nbecause\nthey're still\nthey're still making\nmore money\nthan\nany other human beings\nin\nthe history of humanity\nit feels like\nI know that\nIndia Tea Company\nand a bunch of others\nwere\nprobably\nrelatively worse\nbut\nyou get the point\nright now\nit is\nthis cult\nthat is just\npushing\nin\nbelief\nthat\nhey\nas long as we just stay\nfully bought in\nwe're going to\nwe're going to keep\nwe're going to\nwe're going to show them\nand\nthere's enough people\nthat are\nyou know\ngetting a short term benefit\nout of it\nso that's why I'm saying it\nit's not\nperfectly\ndeath cult\nbut man\nit's death cult shaped\nand\nyeah\nanyway\nit's just a tool\nit's a very valuable tool\nAI is\nthe wonder\nof\nof\nof technology\ntruly\nbut it's\nit's a bunch of preachers\nthat just\nwant to make sure that\nthey've got power\nand that\nthey've got\ntheir believers\nand their followers\nand who are going to make\ntheir vision come true\nand the difference between\nthe doomsday cultists\nis like\nI don't want to get\nclose to\nheaven's gate\nor Jim Jones\nbut the way they're acting\nthe way they're carrying on\nabout\nbunkers\nand\nkeep talking about\nthe end of humanity\nis like\nthey've got enough money\nto put a\nput a finger on that scale\nunlike\nyou know\nthe doomsday cultist\nwho has to just\nkeep pushing the day forward\nbecause they can't\nwell make God do anything\nand\nyou know\nthe fun part is\nas somebody who was\nraised with\na lot of\nstrict religious education\nis that\nI was taught early on\nand I'm going to speak\nto like\nscripture here\nis that\nyou know\nthe bible says\nno man\nnot even the son\nknows the day or time\nbut that doesn't\nstop anybody\nthat doesn't stop anybody\nbecause there's too much\nto be gained\nthink about it this way\nagain\nyou\nhave\nyou're a prophet\nyou have nothing to lose\neverything to gain\nin the meantime\nuntil the\nthe check comes due\nyou are\non\non the highest of highs\nwith everybody around you\nand you see them moving\nin\nin your direction\nthey're listening\nthey're hanging on to every word\nbecause\nthey're so disillusioned\nand they're so\nwhatever\nyou know\nthat\nthat\nprep is\nbuilding up\nwhether it's\ngiving them a sense of\nleadership\nor\nuniqueness\nor\nsuperiority\nor\ncollaboration\nor connection\nwith others\nwho also believe in that\nit's a self-feeding cycle\nand I feel like\nI see the same thing\nwith this constant\nmonth after month\nbut the problem is\nis it does wear down\non\nthe status quo\nleadership\nand they have\ntheir own narratives\nthey want to sell\nlike\nAngular\nis going to replace\nall of\nour whales platform\ndoesn't mean anything\nbut\nit sounds good\nto somebody\nwho doesn't know\nany better\nso\nthe cycle\nkeeps going\nso yeah\nyou know\njust like religion\nChristianity\none of the most\nvaluable\nmovements\nin Europe\nvalue\nyou know\nyou know\nbeing that\nit's\nvaluable\nand\nI mean\nVatican City\ncome on\nthere's value there\nthere's a lot of money\nthere's a lot of power\nthere's a lot of control\nand there's a lot of\nimportance in\nmaintaining the faith\nmaintaining the narrative\nmaintaining the status quo\nand keeping everybody\nafraid\nand right now\neverybody's thinking\nthat it's going to be\nend times\nand we're seeing this\nin the\nlike even\npre-AI\na dereliction\nof\nmaintenance\nand infrastructure\nsupport\nbut\nnow\nAI\nhas just given\na supporting\nframework\nfor that narrative\nand it's justified\nso much\nharm\nand it's such a tragedy\nbecause\nit just shows\nhow much value\nthough\nis in these tools\nand in these capabilities\nand that\nif\nthey do\njust like\nthe\nthe Doomsday Prophet\nif\nif\nand they keep\nthe difference is\nit's like\nDoomsday\nthey call this\ncan't affect an outcome\nthese guys can\nand\nthey can\nforce the narrative\nto be close enough\nthat they\nultimately do get their way\nso\nthey can't just\nlook at\nsupernatural\nsavior\nin that\nit's not going to happen\nbecause\nyou know\nlet's\nhey\ncan't test God\ndon't test God\nhe says that\nhe says it in the book\nhe says that in the big book\ndon't test God\nso\nmaybe\nthere is going to be\na doomsday\nbut\nI don't think\nGod's going to do it\non the day\nthat you want it to be\nand\nthe thing is\nis that\nis\nis the\ndoomsday\nthat was prophesized\ndraws closer and closer\nagain\nwith these\nAI tools\nthat is going to\nwipe out humanity\nand\nfirst take out\nall the software\nengineering jobs\nthey can\nforce it\nto be\nclose enough\nthat\nyou can't\nreally tell\nthe difference\nbetween\nan active\nGod\nand an active\nman\nso\nI don't know\nit's frustrating\nI'm out here\nit's been a few\nmonths\nbut I look\nwith AI\nit's really\nimpressive\nbut it is\nreally\nthe same\nkind of\nthinking\nas a death\ncalled\nit's just\nif you keep\nbelieving\nultimately\nyou're going to\nbe proven\nright\nand if it\nwasn't this\ntime\nit's going to\nbe next\ntime\nit's any\nday\nnow\nany day\nnow\nand\nI'm the only\none that knows\nsafety\nI'm the only\none that knows\nthe will\nof God\noh yeah\nreally do you\nnow\nyou know\nthey're the only\nones that know\nhow to tame\nthis super\ndangerous AI\nhere's a thing\nI've read enough\nAI\nto know\nthat you guys\naren't even\nclose\nyou just\nlike\nthe bunch\nof psychopaths\nwho are\ndrunk on\non the power\nthat you have\nfor\nwatching everybody\njump\nand\nand buying\ninto your\nnarrative\nall right\nanyway\nyep\nit doesn't\nchange the\nfacts on the\nground\nbut\nit's just\na perspective\nfrom having\nstudied cults\nI shouldn't\nsay studied\nI mean\nlike\nI've been\ninto\nreading and\nstudying\nparanormal\nand cult\nfor very\nvery cult\nstuff\nfor a very\nvery long\ntime\nmore is\na hobby\nthan a\nactive\ninvestigation\nthere are\nsome people\nthat are\ngreat at\nthat\nmaybe I'll\nadd some\nlinks\nbut\nyeah\nthis\nthis feels\npolitical\nbut it\nisn't\nit's just\nhuman\nall right\nanyway\nall right\nthanks\nbye",
       "transcript_turns_count": 1
+    },
+    {
+      "id": "ramblin-amblin-ai-tools-build-media-pipeline-ramblin-amblin-nov-21-2026",
+      "title": "AI tools build media pipeline | Ramblin' & Amblin' | Nov 21, 2026",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-ai-tools-build-media-pipeline-ramblin-amblin-nov-21-2026",
+      "page_url": "/interviews/ramblin-amblin-ai-tools-build-media-pipeline-ramblin-amblin-nov-21-2026/",
+      "youtube_url": "https://youtu.be/z10Yfr1Pu34",
+      "youtube_video_id": "z10Yfr1Pu34",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer)\nRecorded on the move: engineering observations, systems architecture, and software craftsmanship reflections.\n\n• Series Playlist: https://www.youtube.com/playlist?list=PLNtb969T2-l0\n• The Sound Above Curriculum: https://www.just3ws.com/series/the-sound-above/\n• Canonical Profile: https://www.just3ws.com\n\n\nSpoken Overview:\n\"over my many, many years, let's see, I'm going to get my arm off here a little bit early. I'm getting one of those sticks. I've realized that I need to get one of those selfie sticks because I am taking this pretty seriously and...\"\n\n\nRecorded: November 21, 2026",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "over my many, many years, let's see, I'm going to get my\narm off here a little bit early. I'm getting one of those\nsticks. I've realized that I need to get one of those\nselfie sticks because I am taking this pretty seriously and\nit is working out better than I expected. And there's some interesting things that AI is unlocked for\nme to be able to do with these videos. But that's, you know, I'm going to finish that thread on\nthis recording. The, uh, AI. Alright, so, when AI, as you know it, you know,\nthe LLM revolution, I'll just go and call it, is, uh, when\nit dropped, when, uh, was it 2023, when, uh, 24, something\nlike that, but it doesn't matter. The time happened. Time is, you know, it's just, it's a\nsequence of events is all that matters. I don't really\nthink of time that way. It's, it's, it's, which is a very\nADHD thing. Um, I, I, I have, uh, rate of change and, and\nsequence of events more than, oh, this took so many months\nor that. Um, I mean, I know the cost of, of doing efforts, but that\nin between time, um, that's why there's a lot of, a lot of\nfolks with ADHD struggle with anxiety over, you can never,\nlike, it feels like you're never doing enough because there's\nthis, um, low time, which just feels like you're just\nspinning out in the void. Um, and there's that compression of time. I don't know. Maybe it's a neurotypical thing. I don't know, but I, I\nfeel it. And, uh, so going back, um, to AI and, and what I'll\nbe talking about with the fluffable and, and all of that,\nuh, you know, being like,\nOh, this is a tool that unlocks capabilities for me that,\nuh, today were beyond my ability to, to wrangle. Um, so\nright now I've got a series of, of AI agents that are\nbuilding, that have built, I should say. I've worked with them to define tool chains that allow me\nto edit, process, um, extract content, do the transcriptions,\nall of this, uh, build up the articles, do the publishing\npipeline, um, across multiple projects too. Um, and, uh, with these videos, I started off with just, I've\ngot to get my butt off, get out there. I don't care how bad\nthings are right now. Um, I was unemployed for quite some time and then I became\nunemployed again. Uh, but that's a different story\naltogether, but I'm proud of all of my work. Um, and I do\nnot say that with any regret. I, I, I, my only regret is sometimes reality isn't quite,\nuh, what we wish it would be, but that's a different, uh,\nconversation. So I, I know things were complicated with the world of AI\nand I've seen people who just are like got dollar signs in\ntheir eyes and they're trying to slam it in everywhere they\ncan, uh, because they think they're going to make money. They think it's like the gold rush. And you think about the\npeople that, uh, took off on, on the, uh, um, on the trails\nand that ended up dying because they got to the, uh,\ndestination and realized one, there wasn't any gold. And two, uh, they didn't have tools. They didn't know how\nto survive. Uh, they didn't know how to make it through the\nhard times. Um, and, and, and yeah, there were people that made\ntremendous fortunes. That's part of what makes the allure\nso, so dangerous. Um, but I didn't approach it like that. I, I had a problem that I, I, I felt very acutely and I\nalso knew that all of my stuff was public anyway, or I had\na strong desire to be public. And, uh, uh, walk this way. Um, so I've been building out\ntool chains to, to, to, to do this. I have a Z transcribe,\nwhich is something I expect from my Z dots, like a Z transcribe,\nwhich was the, uh, pipeline that was derived from our work\non a fluffle, which was enabled because of whisper. Um, that's CPT in particular, it's good run on my Raspberry\nPi. Um, building out tool chain through failing stool, um,\nbeing able to automate the systems and, and, and prove that\nyou can actually build functional. Um, and for me, uh, given that I was building it usually\nwith, you know, $20, um, subscriptions, building out, uh,\nthe tooling, um, on a relatively modest budget and, uh,\nthat, that in, in its own way proved that the skills that I\ndeveloped over the years were not imaginary. They weren't just, um, made up. Uh, and then that made me\nhave to face that, listen, I don't have to be the best in\nthe world to be the best where I'm at. And where I'm at doesn't necessarily have to mean that I'm\nin negation of somebody else, but I'm pretty good at what I\ndo. And I've, I've proven that out through a career that is\nheaded ups and downs, but when you sit down with something\nthat has no concept of, uh,\ngood or bad or your history or anything, and you're just\nlike kind of teasing out meaning, um, and, and, and action\nfrom, from something. And it, it is truly, I, I see AI as, you know, it is a Rorschach\ntest of, of, of, of what you're able to articulate. So, um, I'm not the, always the quickest person when I'm\njust talking like, like a normal person. And I'm not, but I am able to sit down and, and articulate\nmy thoughts, um, and be very loquacious in doing so. And that has worked out pretty well. But here, I'm, I'm, I'm, something too much time on that\nbecause the product that relates to this from there,\nfrom failing school was that I finally got to a point where\nI could do a presentation. So I was like, all right, you know, I'm going to go back to\nFCMC and I'm going to do a presentation on do, do the\nskills of soft craftsmanship,\nthat, that, that focusing on these, this domain and, and\nlearning the lessons and the lessons that were learned. Can that be leveraged and, and, and, and help people in the,\nuh, age of, of AI, um, implementation. You know, I'm not talking about the people that are the\nUber, uh, nerds that are building the, uh, the AI,\nbut just the, uh, end product as the user, the, as an\nimplementer. Um, and, and the answer was yes. So I wanted to turn that into presentation. I already known it could generate articles and things like\nthat, but I wanted to create a video. Okay. And that I created a video with failing, for failing school\nfor the, the, um, for the, uh, user group meeting. And I played it and it's, it's, it's a supplement channel. Um, so what it did is it proved. So there's been lots of like experiment. Can I do transcriptions? Yes. Can I use these tools to build new tools? Yes. Can I use these tools to build articles about those tools? Yes. Can I use these tools to, uh, build a, a, a game, um, a non-trivial\ngame? Yes. Um, a, can I use these tools to build a presentation on\nthat game? Yes. Can I build a video based off of that, uh, that\npresentation script? Yes. Uh, can I build tutorials for the game? Yes. Um, now I'm at a point where I've got a full media pipeline. Um, it's based off of these, these tools that I've, I've\nbuilt, um, that's, I've always held\nthis, I don't want to be dependent too much upon a single\nframework, but, you know, I have\nover the years realized that, you know, you spend enough\ntime in one platform. Um, the question is, is now, am I staying in this platform\nbecause it's, it's just so darn useful\nor am I saying it because I've kind of gotten a little, a\nlittle complacent? Um, that's a moot point now. It doesn't matter. Um, but I, I still, you know, largely sandwiched Ruby and\nRails, but I, I implemented things\nin other languages, ported tools. Um, and I've been able to see real tangible takeaways that\ndon't require me to be locked\nin. I, I see what I meant. It's like, I didn't, I, I started a cloud developer way\nback when cloud development was a new thing\nand I just needed a user group or I hope this is recording\naudio. Are we, are we blinking? Yeah. We got light. I'm going to, for this to be annoying, it was one of those\nnew audio, this, this app. See, I'm, maybe I have to do something about that too. Um, so I can see that a little something that lets me know\nthat the audio is being captured. But, um, I can always do this again. Uh, the, uh, tool chain is what, what mattered for me is\nkeeping it lean, keeping it focused,\num, and, and decomposing, uh, and extracting out, uh,\nmodules wherever I could. Um, and that's how I end up with Z transcript derived from\nZ dots, which, uh, I have now the\nmedia pipeline project, um, which is my publishing tool\nchain, which now I've gone and said, can\nI extract out shorts and clips and montages from the videos? Yes. Um, it's, it's fascinating, um, hearing people talk about\nthese, as they're still trying to\nwrap their heads around, um, what these tools are capable\nof doing and they're still staying\nlike, I watched some folks where they are building the\ntools and they're just only working inside\nof the AI. But much like with the cloud, that's where I'm bringing it\nback, is that I always knew that\nif I coupled to their infrastructure, you know, like I said,\nframeworks, at least with the framework,\nI, I have something to take away and I, I keep and I retain\nthat ownership. Um, and I don't depend on an external, uh, permission to be\nable to run it. Um, so I'm not so anxious about that kind of coupling, even\nthough, you know, if the framework\nstops being supported, you know, yes or well. Uh, but when you are entirely dependent upon the good grace\nand permission and learning,\nyou know, I've learned a lesson from Google, they, they\nwill take away the capabilities. Uh, I've watched it for decades. Um, you, you start to depend on something in their\necosystem and then it's gone. Um, and they're all your workforce with it. Um, so I knew that same thing as with AWS, you know, if\nthey, if Bezos or, or any of them\ndecide to change their mind about a direction, you, you're,\nyou're, you're going along with,\nor you're going to be left behind. Um, so I didn't want to be tied too much to a specific, um,\nuh, vendor, right? So I always was working across multiple vendors and, um,\ntrying to build out a local LLM inference\ntool chain, which I did get going for, um, light use, but\nmy machine is, it's not powerful\nenough to really do much more than light inference. Um, uh, so some of the titles and things that get, uh,\nprocessed and I do some, um, some work\nlocally through LLM. So again, I'm always striving to decouple from a vendor,\nbut I see folks working in, in AI\nand they're like, well, with Glockbot, with Cloud, Cowork,\nyou're so coupled to that workflow\nand that tool chain and how they decide to do things that\nif your subscription runs out,\nyou are, that's it. Or they decide to create that tool because they want to use\na different, uh, thing to sell\nyou because they're going to make 0.00001 cents more per\npicosecond. Um, you know, that's, that's the rationale, you've got to\naccept that they work at scale\nthat is almost incomprehensible. So I've even gone through periods where I couldn't afford\nto renew my subscription. That's when it's, it's the, uh, unemployment has been the\nreal experience. It's not my first rodeo though. And, uh, that was also valuable though because I had to\nbridge and determine whether I can support\nor interact with these tools without, um, anti-gravity or\nGemini or Clawd or Codex or whatever. Um, and yeah, I was able to prove that out too. So I do know that you can make durable artifacts that carry\nbeyond just, um, I'm building a workflow\ninside of Clawd or I'm building a workflow inside of Grockmock,\nwhatever. Um, I don't use Grock. That's, if I'm, if I'm forced to, uh, as a condition of\nemployment, we'll cross that bridge\nwhen it gets to it, but I've, I've, uh, you know, sometimes\nyou have to make choices and,\nuh, that's one of mine. Um, not that I'm saying that the other ones are better, but\njust, and Muse, I don't use Muse. No, no, I just, I just, I'm allowed to have my thoughts too. I just don't like them. Um, I don't want to be coupled to their platform one way or\nthe other, good, bad, or indifferent\nbecause I know how this works. I've seen it, the rug pull many, many times. I've, I've been laying on my back at the rug pull enough\ntimes to, um, be, to know what it\nfeels like. Uh, you know, like Lucy pulling that ball, that football\noff from Charlie Brown and even\ngo for it every time. Never kicked. I don't know if he ever did, but the point is, is that you\nend up on your back enough times\nand you, you know, you can't count on these, these systems\nto, uh, to stick around. Um, so building these tools out of the tool, deriving\nthings so that we, you have some tangible\ntakeaways that I've realized is possible. Probably the most poignant moment though was when I printed\nout a, a PDF, uh, tutorial from,\nuh, Bailing Stool that's, uh, I'm holding this, this, this\npiece of paper in my hand and I'm\nknowing what a pain in the butt it was to get the AI to lay\nout, um, the, uh, to lay out\nthe, uh, um, the grid like it did and realizing that this\nis really, like, this is something,\nit's not nothing. Uh, you know, so I, I, then I hear, say, oh, yeah, it's a\nlie. It's this, this, that, I'm like, ah, listen, two things can\nbe true, you know, um, and it's,\nyou know, what I've learned and I'm trying to express\nthrough the, uh, Mirage of Competence,\num, sessions. All of this is because I had a burning need to do something. And, and, and I saw this as an opportunity to be able to\nnot be a gold rush and say I'm\nmaking any money off of any of this and never have. I don't think I've made a single penny off of you-tastic\nexcept for, uh, Dave Thomas who,\nuh, who, uh, sponsored me for, uh, uh, Final Cut Pro. So, and, and I, and maybe, I, I, I don't recall, but maybe\none or two, uh, folks who at least\nshowed up for the Patreon, um, and if I'm just misrecalling,\nit's, again, it's been 15\nyears, I'm trying to, I'm still gathering everything. This, this has all happened so fast. You gotta understand, 15 years of just stuck and then just\nthe floodwaters. Just the dampers and, and, and it's just all of us. It just almost all feels like it all, at all at once. Now, you know, earlier I said about, we need to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up. I'm not going to eat up.",
+      "transcript_turns_count": 168
     },
     {
       "id": "ramblin-amblin-ai-tools-bypass-algorithmic-limits-ramblin-amblin-nov-7-2026",
@@ -14020,6 +15211,72 @@
       ],
       "transcript_text": "when I'm talking to smaller shops than OMF, places like\nthat, and they look at that five years I spent there and\nthey think, and I've had this question asked, it's like, I\nthink when your career is less than a decade, you think\nthat five years means anything, it really doesn't. Oh, another beautiful mushroom, that one got, a little got. Oh, do you think you can work in a less structured\nenvironment? Tell me you've never worked in an enterprise before and had\nany kind of meaningful contribution without telling me you\n've never worked in a large enterprise and made meaningful\ncontributions. Nobody told me to create GeekFest at OMF. I did that, and at the time, the management was like, oh,\ncool, they knew how, what I was able to do. But as that management was eventually driven out and\nreplaced with the new, supple, pliable, narrative-friendly\nmanagement, who were not part of creating the system, the\npeople that they replaced were. They didn't see the value in it because they didn't see the\nvalue in it because they don't have an imagination. And the hierarchy is there to be obeyed, not to be ever\nquestioned or any independent, either it's their idea and\neverything you're doing is to make them look good. Now, if you think, oh, Mike, you're just grousing. No, no, no, no, no, no. Go read the book, Catch-22. What is it? Major Butter, whatever his name was. Captain Butter. I can't remember his name. And his monologue entry about feathers in his cap versus\nblack eyes and how he has to always worry about what the\npeople in, you know, the HQ, his superiors, thought. And whether or not something that happened by one of his\nmen was a black eye or a feather in his cap. And he's sitting there doing this kind of calculus, you\nknow, okay, so-and-so did this and that is, that's a\nfeather in my cap. That looks good. But this other thing didn't work out so good. That's a black eye. And so he's trying to calculate black eyes and there's\nratio of black eyes to feathers in his cap and whether that\n's a favorable. And then he's got his lieutenants that he puts in place who\nare the most supple, succulent sycophants that are possible\nbecause, well, they alleviate his anxiety and make him feel\nbetter about himself. And that's all that matters because at the end, what is the\nprice? Oh, my God, I'm trying to blank on the name. Or was the brilliant one, I forget the other, the\nprotagonist's name, but he's getting out after he's finally\nbeing released. The only way that they're going to sign his release is if\nhe acts like he likes them, you know, smile, joke with him. Boy, do I feel that. Not that everybody's like that, but when you're in a large\nenterprise and the iron rule of bureaucracy does ultimately\nset in, that's exactly what it's like. Not even funny. It's like, it is exactly that. And probably, you know, this is dangerous for me to say,\nyou know, would I ever work in a corporate environment\nagain? At this point, I don't even know if I'm ever going to have\na job again. So what, what am I going to do? Being nice and playing the game didn't really do much for\nme out here on the outside. But, yeah, saying five years in a corporate, I am not in a\ncorporate office. Maybe that should tell you something about me. But unfortunately, you're only going to get the wrong\nlessons because you're going to think that I was ejected\nfor doing a bad job. Or not, you know, whatever. When doing a good job had nothing, nothing to do with\nwhether or not I stayed there or not. It was whether or not I made leaders feel like they were,\nor people that were in charge feel safe and good about\nthemselves. Or if I broke narrative by saying, things are broken, guys,\nand we've got to fix this, otherwise it's going to cause\nsevere problems. It already is. Here's all the risks that we're facing. And realizing finally in the end that all I did was just\nmake people who didn't want to have to work, work. The people that weren't busy helping me were busy up with\nthose guys, making them feel good about themselves. And they're there and I'm not. So, GeekFest at AllMath was not done because I was some\nperson who needed structure and guidance to execute and\nimprove and lead people in a positive way in an environment\nwhere leading in a positive way was not valued or really\nwanted. Because, listen, I always would complain about management\nwho, as they drove people out and replaced them with their\nchosen people, why are we keeping each other isolated? We have a very limited knowledge on how the system works\nand we've got teams that are all working inside the same\ncode base. Let's get them together and let's have coordination. What I didn't realize is that that wasn't the goal. The goal was to have as many teams as possible who all had\na need for more budget, more headcount, and that they\nneeded to hire more to build up their little fiefdoms. And make, put more feathers in their caps. And that fixing the problems under the current constraints\nmeant the leadership, oh, look how efficient you are. We're not going to give you anything more. Because when all that matters is the quarterly EBITDA or\nwhatever it was that they measured, cost cutting is\neverything. As if firing a bunch of people somehow makes a bunch of\nmoney available. You know, if I just stop paying my bills, all of a sudden\nit looks like I have a lot of money. You know? It's, it's, it's this lie that capitalism just fucking\nloves. And, um, the Open Telemetry Initiative, um, and my panor\namic view efforts, which are a culmination of my own\ncreativity and problem solving capabilities and leadership,\ntechnical leadership. were valued in that I would see people in my mural boards\nwho wouldn't talk to me. So what these brilliant people didn't realize is that in\nconfluence and mural,\nwhen you own a board at least, or a page, you can see who's\nin it. And while they never contributed, I would see pairs of SVP\nand his favorite people in meetings I was not invited to. I wasn't even informed of. But then I would just see their names appear inside of the\nmural board. And I'd wait to see if anybody says anything to me. And they didn't. But what that told me, though, is the work I was doing was\nincredibly valuable because they were reading it and they\nwere trying to figure it out. But God forbid they ever actually talk to me because that\nwould fuck up their narrative. That would mean that they're not the ones who are going off\nthe leadership. So what I realized is that collaboration gets used against\nyou. And this is, you know, one of the reasons I particularly\ndespise people like Altman and Musk and Amadei is that they\nare,\nand Zuckerberg is, they will use other people's work\nagainst them and present it as if it's their own. And all I need to do is look at all of AI and the LLM\ntraining nonsense. And literally just the words that they say, I don't even\nneed to reach for anything. You just Google horrible things these so-and-so said. And it's going to be a long list. But it boils down to they got theirs and they're going to\npull up the ladder and they're going to make sure that they\nclose off the garden\nand that you are on the outside and they are the only ones\non the inside. Same thing. And I used to say it's a microcosm, microcosm. And people who didn't want to hear it would get mad at me. So I had, on the other end, I had people that should be\ncollaborating with me, like fellow labor. And even mentioning any kind of collective or bringing in\nany kind of help from the outside was shot down hard. So we had zero bargaining, zero control of our effort, and\nzero say in who gets to stay and who gets to go. They've done a very good job of brainwashing people and\nmaking them scared. And I had people threaten me for even suggesting the idea\nof any kind of collective anything. Threaten. And those same people are also the same ones who I got to\nsee me, see their hands on me as the one underneath the bus\n. So if you say to me, Mike, you spent five years in the\ncorporate world. Are you going to, how are you with structure? Oh, oh, sweet child. I don't care what your title is right now. You have no idea what you're saying. You have no idea what it's really like out there. And if you think that it is guidance and structure, you're\nthinking like in your small to mid-sized business where\neither you do or you don't. There is no try. There's either you succeed or you fail. And you are going to feel the consequences of a decision,\ngood or bad. But in those places where there's so many layers of\nbureaucracy and so many people counting their black eyes\nand feathers in their cap, that's all they see. And anybody that's even indirectly pointing out that they\n've got a whole lot more black eyes, what it recently\ndeparted, Patrick Stewart's famous line, there are four\ncandles. While he's being tortured, what it was in 1984, room 101,\ntwo plus two equals four. And it isn't that you say that it's five. It's that you truly believe it. And you know that it is five because Golderock or Big\nBrother said it is. No, no, no, I've also had people tell me I'm a legend. I'm an absolute legend. They didn't do a whole heck of a lot to you. I don't know what they told anybody else. They told me I was. So do I do I need structure? Do I need corporate oversight? That's kind of a funny question because it's actually\nmissing the entire point of what I do and what I'm capable\nof and what I have done. In the face, it wasn't structure, wasn't support. Structure wasn't support. When we talk about bureaucracy, you know, we want to cut\nbureaucracy. You know, there's people that absolutely want more\nbureaucracy because it's safe. And it makes it so that way you can find a T that wasn't\ncrossed or an I that wasn't dotted. Or somebody said something and their tone was off because\nthey've been just tripping to the brink over and over again\n. Gas lit over and over again. And they get just wound into a circle. At least that's what I did. And I got angrier and angrier. So, no, I don't need to have supervision. But I do know how to work with people. And I do know how to get people moving in the right\ndirection. All I need to know is that you value what I'm doing. And if you don't value it, you've got to tell me what you\ndo value. And as long as we can come to terms and you're focused on a\ngood outcome, I can work with you. I can work with anybody. As long as you want to work. But I don't know. Maybe I'll never get another job again. Maybe I'll publish this and this one video will go viral. And they'll be like, oh, the biggest whiny crybaby in the\nworld. Thanks, you're so special. Look at all these other people. They've done all this amazing stuff that we all know their\nname. And just because you don't know my name doesn't mean I didn\n't do something that mattered. It's just invisible. I've been buried. I've said to my wife and to other people that I wasn't laid\noff. Because they finally were able to bury the thing that I had\ndone, redistribute it to other people. And there was enough time and enough change of headcounts\nthat nobody remembered anything. And I know this because I've been trained on the material\nthat I wrote. I know this because the person who trained me on my own\nmaterial did not know that I was the sole creator of that\nmaterial. But it had happened two, three years prior at that point. And it had traded so many hands in their space that they\nwere just getting people to use this map that I had built. And that's why I know that panoramic view is incredibly\nvaluable and the framework that I have around that. And it's also what I told my wife and friends is that, you\nknow, they can take this. Because I also know that a certain person in leadership,\nwhen I briefed them, and I mean high-level leadership,\nwanted to package it up and sell it as a proposal to get\nbudget to work on something for Palantir. Not for Palantir, per se, but, you know, some project that\nwas going to be a Palantir-based project. And there was a multi-million dollar value put on the check\nthat they could get signed for it. But I knew that they didn't understand what I really did,\nbecause it's a process. It's a way of thinking. It's a way of approaching a system that is ambiguous and\nbuilding a harness into it. And it embraces the reality of the system. It's about taking away any ambiguity. So do I know it's valuable? Yes. Did I do this under anybody's guidance or mandate? No. No. This is me. It was all me. 100%. No ambiguity. And I had to fight for it. And I had many people who didn't understand it in the\nbeginning. And they didn't want to do it. But I had to push for it independently. I worked on my own. I worked independently. Then I had people in years' time train up on it. I had somebody take an early person who did see the value\nin it. Helped visualize the map. So I want to say that that was a major. I'm going to just put that caveat when I see single-hand\nedly. But I built the data that they could build some screens off\nof. And that visualization was just a visualization of the map\nthat I had laid out\nwith the assets that I had already gathered. But even that person I tried to work with. And it was like, it was just a one-off thing for them. And they didn't really need it for the other work that they\nwere being assigned to. So they kind of forgot about it. I was really the only one that was pushing it. But too many people, too many separate times. Too many people in there who were studying it. And I saw them. And then I was ejected. Why? Because I was inconvenient. And I was making my point a little bit too well. And it was just showing how many black eyes they really had\n. But they were so busy putting feathers in their own cap. And they really just wanted people that would just only see\nfeathers. And I was like, no. No, your face is all jacked up. You need to take this seriously. But they didn't need to. Because ultimately, this comes down to the leadership doesn\n't value it. They only see the money they're making now. And as long as they're making money now, tomorrow doesn't\nmatter. How it's today doesn't matter as long as they're going to\nget their check. Anyway. Rambling. This is a rough day. Alright, thanks. Bye.",
       "transcript_turns_count": 53
+    },
+    {
+      "id": "ramblin-amblin-flag-at-depot-park-drooping-ramblin-amblin-nov-20-2026",
+      "title": "Flag at depot park drooping | Ramblin' & Amblin' | Nov 20, 2026",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-flag-at-depot-park-drooping-ramblin-amblin-nov-20-2026",
+      "page_url": "/interviews/ramblin-amblin-flag-at-depot-park-drooping-ramblin-amblin-nov-20-2026/",
+      "youtube_url": "https://youtu.be/LdNSG08XYhc",
+      "youtube_video_id": "LdNSG08XYhc",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer)\nRecorded on the move: engineering observations, systems architecture, and software craftsmanship reflections.\n\n• Series Playlist: https://www.youtube.com/playlist?list=PLNtb969T2-l0\n• The Sound Above Curriculum: https://www.just3ws.com/series/the-sound-above/\n• Canonical Profile: https://www.just3ws.com\n\n\nSpoken Overview:\n\"So, I called the City yesterday, I sent an email, alright so actually let me say this, I sent an email to the City, Crystal Lake, info line, and a few days ago, and that came back as the email doesn't exist, not recognized, so I went,...\"\n\n\nRecorded: November 20, 2026",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "So, I called the City yesterday, I sent an email, alright\nso actually let me say this, I sent an email to the City,\nCrystal Lake, info line, and a few days ago, and that came\nback as the email doesn't exist, not recognized, so I went,\nand I found the form,\nfor submitting a, uh, a inquiry about, um, you know, like,\nsubmitted for a general inquiry about the city, and, uh, I\nsubmitted saying, the flag, for some reason, in Depot Park,\nhas listlessly been drooping at half-mast for over a week\nnow,\nand, uh, I'm just wondering, I'm not seeing any other flags\nin the area, um, at half-mast, is there a reason for this,\nuh, this particular,\nwhere is it, where is it, let's see if we can get, oh there\n, it's, it's so thin, um, that's not mine, um, now it's list\nlessly drooping at full-mast, so, here's, what's funny, is\nthat, uh,\nI never got a response, this was the response I was looking\nto see, I, I did get, and this is funny how people don't\nrealize it, you, you send notifications, but you don't\nrealize it, that, uh, that my, uh,\nuh, response had been closed, without comments, I was like,\nalright, we're gonna see how this goes, it's all, it's\nalways tangled up, this, this flagpole, I think, has issues\n, um,\nbecause it's not, it's never, it's always like this, where\nit's just, bleh, I don't know, what's going on, and you're\nlike, Mike, there's things in the world that really matter,\nyeah, but, it's a detail sometimes, too, guys, sometimes\nyou gotta pay attention to the details, and it's a pretty\nbig freaking detail, you know, like, uh, it's already bad\nenough,\nright now, just, I, it, it, the, I'm, I don't, can't wave a\nflag, because, I know, I was, I've actually done Honor\nGuard, in the U.S. Army, on a military base, deployed, so,\num,\nyou know, I'll pound sand, uh, I'm, I'm aware of what the\nflag code is, I'm an Eagle Scout, and, uh,\nuh, and it, it just seems to be, it's, to be such low\nstakes, and everybody who, remember Trump, he hugged the\nflag, he loves the flag, he also loves the poorly educated,\num, and, and, apparently, the lazy and incompetent, but I'm\nnot trying to associate this with that, I'm just saying\nthat\nif we're gonna have a symbol, have a symbol,\nand act like it's a symbol, it means something, because it\n's supposed to be right here next to this,\num, some gave, all gave some, and some gave all, kind of,\num, uh, uh, uh, display,\nso, if you're gonna have these displays, it's like, at the\nTomb of the Unknown Soldier,\nhad Seth and his goons, uh, hamming it up, and they had to\nbe reprimanded,\nit's, I've been to the Tomb of the Unknown Soldier, my\ngrandfather contributed to the creation of the Eternal\nFlame,\nI'm not, uh, neutral on this topic, uh, and then, yeah, I\nsent, I sent a request, got bounced, sent another inquiry,\nno response, but I saw the notification that it was closed\nout, and the real answer is the flag is, is back up,\nlet's see what's, let's see what they're gonna do next, all\nright, thanks, bye.",
+      "transcript_turns_count": 1
+    },
+    {
+      "id": "ramblin-amblin-forgiveness-and-letting-go-ramblin-amblin-nov-20-2026",
+      "title": "Forgiveness and letting go | Ramblin' & Amblin' | Nov 20, 2026",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-forgiveness-and-letting-go-ramblin-amblin-nov-20-2026",
+      "page_url": "/interviews/ramblin-amblin-forgiveness-and-letting-go-ramblin-amblin-nov-20-2026/",
+      "youtube_url": "https://youtu.be/adsl8zCLSiA",
+      "youtube_video_id": "adsl8zCLSiA",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer)\nRecorded on the move: engineering observations, systems architecture, and software craftsmanship reflections.\n\n• Series Playlist: https://www.youtube.com/playlist?list=PLNtb969T2-l0\n• The Sound Above Curriculum: https://www.just3ws.com/series/the-sound-above/\n• Canonical Profile: https://www.just3ws.com\n\n\nSpoken Overview:\n\"as I think about the videos I want to record and what I want to say, I find myself going back and forth between my own health grievances and frustrations and my history, because this is, you know, effectively a video blog kind of...\"\n\n\nRecorded: November 20, 2026",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "as I think about the videos I want to record and what I\nwant to say, I find myself going back and forth between my\nown health grievances and frustrations and my history,\nbecause this is, you know, effectively a video blog kind of\nexperience. Did I get the light on? Yep, I got the light on. Hopefully\nthis is recording the audio. It's Friday, and I guess most\nof the city is working from home, I guess. This is the quietest walk-in, and I used what would have\notherwise been ideal recording time to think about, listen\nto some music, listen to electronics, electric panoramic,\nthat's my autistic listener right now. Then, Aji and Delpatrine, listen to them, um, on their KEXP\nperformances, and I'm just trying to relax, and, uh, you\nknow, I'm thinking about what I want to say. What is it I'm trying to do here with this video? And,\nthere's sometimes I'm like, I know things, okay? I know things, I know things, I've seen things happen. I've\nseen things that people have, you know, read about these\npeople, um, or, or events, or some of these people have\nbeen to the White House. Some of these people have had to testify in front of\nCongress, um, or indirectly because of the work that I\neither contributed to you or I witnessed. I've seen and experienced some wild things, and I've been\nhurt tremendously, and I've hurt people tremendously. And, uh, I can't just point a finger and say, oh boy, I'm\njust this victim here. That's, uh, not true, but I have been, you know, we, we\ngive and we get. I give and I get. And I've, I've given. And, uh, you've faced me off, you've, uh, you know what I\nmean. And, uh, it's not so easy just to say, here's all the\nthings that, all the people, and I, I can name names. But, what does that, what does that do? I, I need to tell these stories because they're fun. Um, and, and stay focused on that. That's, that's really what I want to do. I'm going to go here. I'm going to visit the, uh, Holy Mother. Like, Holy Mother with Jesus. And, um, you know, I, I have even a story that involves her\n. Uh, not directly, not literally. It's just a priest and a bunch of old MAGA guys. Before MAGA was called MAGA. I don't even know if QAnon was a thing. Like, stuff like that. And, again, it wasn't a metaphysical, um, experience. It was goofy. But, um, I've worked at some places. I've worked with some people. I've interviewed people. I've been and seen and done things that, um, when I look at\nwhere I'm at in my career\nand, and, and, in life, um, like so many people, I, I\nbelieve, I'm frustrated. But I do know the one thing is that I, I got to let it go. And now, I am saying that in, in almost the, um, I am\nsaying that in almost the, I'm saying\nit to myself again. I've, uh, come to a point where, like, part of the thing\nthat even held me back is knowing\nthat I can't really, I didn't feel confident because I was\nworried about, well, I say this, about that,\nI'm not going to say that about me. Um, and always trying to find out how my own culpability in\nthe situation was. But sometimes, you know, you get punched and you punch\nsomebody back. And, uh, then you feel bad because you punch somebody. At least, you know, I would. Metaphorically speaking. Uh, I have been knocked out before. I don't think I've ever knocked anybody else out, though. Um, and that was even, and just a fun story that wasn't\neven, it was violent, but it was more like structured\nviolence. It wasn't supposed to happen. Um, but, uh, every time I try to think about what I'm going\nto say, it just becomes emotional. It becomes, I, I, I can't, uh, let go of the grievance. I can't let go of the unfairness. Or I can't let go of the I told you so-ness of it. Like, I told you guys, you know, stuff. And, uh, that would, that doesn't do anything. Because if I, except make me look like, oh, this is how I,\nI called it. Called it. Called it. But there's been plenty of that in my life. I've, I've, I've, like, okay, here's the thing. I get interpersonal things wrong, uh, direct emotions. I, I, uh, am extremely direct. And, uh, also, um, I was raised, um, discipline was swift. And, um, and, and, and, and cute. But it wasn't cute. Um, and then carried it into my life. And I'm grateful now that I've been able to not, my, my\namazing wife, Aneta. Um, she's put up with so much. Um, it's just how to, how to tell these stories without the\nemotional weight. Um, how to carry it lightly. You know, I've heard some people kind of use it that way. Um, but also, are, are the stories even worth telling? Um, what, what am I trying to do here with this recording\nprocess? And, uh, you know, kind of here in this little fire,\nservants of Mary. I don't know if this is a, uh, meditation area or a dog\nwalk. Um, but, uh, meditating on, on forgiveness and love and\nletting go. Because, I mean, that's really what forgiveness is. Um, you know, you, you let go of the, uh, the thing you're\nholding on to. it doesn't mean you forget about it. Don't get yourself\ninto that situation again. But\nalso how to communicate and tell a story. And I am trying\nto tell a story here through\nthese interviews, but I don't want it to just be, and again\n, it's me. It's I, I, I, I,\nI, I, I, I, I, I, I. It's, it's tedious. But, um, this is a\nvideo log, Ramblin' and\nAmblin'. And, uh, I just want to let go. And I hope that\npeople who have their memories\nof me, maybe, if they remember me at all, um, if I would gr\nieve them, hurt them, that they\ncan let it go, too. And, uh, and we can find a way to, to\ntalk. Cause, you know, like,\nit's even hard for me. I've gotten to a point now where I\ncan't even really listen to podcasts,\nespecially interviews, where I don't get filled with, um,\nthis, this weight, this pit in my\nstomach of what could have been. Um, and it turns into a\nresentment. And, uh, it keeps me from\nbeing able to experience, um, connection. Because I'm, I'm\nso busy thinking about, uh, if I had just\nstuck with it, if I had just not done this, if I had just\nsaid that, if I had just, just,\nif I had just, if I, if I had only, if I had only, but I\ndidn't. And I'm here. And now I'm\ntelling this. So, what does that say? I don't know. If you\n're watching this, I appreciate you\nsticking through this. Maybe you have an idea. But, um,\nletting go. I, uh, just say that I was\non a flight to Santa Fe, um, a few months ago. And, uh, I\nwas sitting in the airport, um, and\nit was, it was, it was very cool. There was this, um,\ndisplay of, of a, um, of a, uh, quantum\ncomputer, um, one of the retired quantum computers from IBM\n. I took a picture of that. And I've\nbeen thinking about, uh, I, I'd spend a lot of time\nthinking about Taoism and, uh, Buddhism\nand trying to understand it. Not, I'm not trying to jump on\nany bandwagons here. Um, not saying\nand I'm a Buddhist or a Taoist or anything, but I, I read\nLao, read some Lao Tzu and read\nsome of Kuang Si. And, um, uh, even learning that, um, Goku\nis based off of, um, oh, my Wukong,\nSun Wukong, um, Journey to the West. And that's, um, yeah,\nabout Buddhism, basically. Just very interesting. And I'm sitting in the airport and I\n'm waiting for my flight and,\num, I'm trying to meditate. I, I, I've heard this idea of\nsitting with Zaza and, and you\nlisten to Alan Watts and try to think of, like, how do I,\nhow do I settle myself? And, uh, I\nthere's a banner hanging above me. And, uh, here's, uh, I\n'll just show, there's a penny\non the ground. Two pennies. I'm not going to take them\nbecause it's a church. Bad mojo to do\nthat. But, um, above me is this banner and it's, it's, it's\n, it's, of all the banners, this one's\ngot a Buddha statue on it. And, uh, I'm not big on, um,\nsupernatural or anything like that. But, you know, there's, you know, there's, uh, uh, I know\nthis wasn't, um, or what are they\ncalled, um, synchronicity. But it was a coincidence. And,\nuh, you know, it was something that was\nin the environment that, uh, caught my eye. And, uh, I took\na picture of it. I have a picture\nof the, uh, of the banner. And then I, you know, I sat\nthere and I tried to meditate and\njust dim my eyes and watch people as they moved across in\nfront of me, you know, going down the\nhallway and, uh, they were people that I'll never cross\npaths with again. And, uh, they will enter into my field of awareness and\nthen cross through it and then exit never,\never to directly cross paths with me again. But they're\nstill out there. These people are out\nthere still, and they're living their lives and they're\nresisting. And there was a moment where I\npassed through their field of awareness and they will never\ncross paths with me again. What did they,\nwhat, what, what residue do they have even their\nsubconscious? And, uh, I, I don't hold on to those\npeople as individuals. I don't hold on to that as a, um, oh\n, this person walked funny or that person,\nthey're just this existence that, that intersected with\nmine for a little while. And then I look back at, at my own career history and in a\nway, it's almost like the pictures and the\nvideos and all of that, um, sorry, there's something pretty\ngross. I'm not going to show some of the,\nthis, um, gross, um, over where I was looking. And that's\nagain, that's nothing. Let it go. Let it go. It's, uh, can't change it. Can't, uh, undo it. Um, can just\nnever do it again or try to avoid\nexperiencing it again. But if somebody wants to do the\nthing again, they're going to do the thing again. And it's, even if it's personal, it's really, is it\npersonal? Whose person is it? But, um,\nI don't hold on to a person crossing my path. Why do I hold on to somebody who offended me or hurt me in\nsome way, um, when they're not here with me\nanymore? Um, what does that holding on to grievance and\nthen thinking about what, uh, uh, uh, uh, um,\nthe Buddha said about, uh, what, where, where pain is, what\n, what is suffering and that it is\nattachment and what keeps me attached to this, you know, is\nit a sense of injustice? Is it a sense of\nwhat is it? What makes me suffer? And it is holding on to so much. And my wife has tried to\ngive me to let go of so much. Um, but I've, uh, struggled. And, and it's hard when you're\nstill in it and when you're still feeling\nthe, the consequences of decisions either that you made or\nsomebody else made or just the circumstances\nchose for you and whatever response you had. And what, what\nwas unseen? You know, it's like\nterrible as a Donald Rumsfeld, uh, this is part of the\ncurrent situation, uh, how we got here. But, um, in America, but, uh, the unknown unknowns, which\nare actually, I believe that was an Arabic,\nuh, poem, uh, poem, uh, which is ironic. Um, but yeah,\nletting go. And that brings me back here to the\ncoincidence of now I'm in this meditative space for, um,\nthe, uh, Holy Mary, the Holy Mother. And, uh,\nHoly Mary, Mother of God. Blessed art thou amongst women. Blessed is the fruit of thy womb, Jesus. Holy Mary. Hail Mary, full of grace. The Lord is with thee. Blessed art thou amongst women. Blessed is the fruit of thy\nwomb, Jesus. Oh my gosh. I'm gonna have to remember. I've been through\nall of CCD, all of communion and, and the sacraments. It's just been a while. And I'm terrible at trying to do\nthings on demand like that. And, um,\neither way, prayer is not supposed to be performative. Um,\nit's supposed to be reflective\non you and, and your, uh, relationship with your faith. I'm\nnot a practicing person, but I, I don't,\nI don't practice, I practice English. You know, I practice\nbeing white. I practice being American. And, and, and I might not actively be pursuing it, but, uh,\nand I still was raised and came up\nthroughout the Catholic faith. So here, you know, any\ncoincidence of the one continuous message that I\nkeep struggling with is, uh, letting go and that's\nforgiveness. But I also think about this story about, um, um, story\nabout the, uh, a Buddhist monk and, and a soldier. Uh, they were, they were running from something and, uh,\nthey came across, or they were traveling,\nand they came across, uh, a woman who needed help crossing\na river. And the monk picked up the woman\nand carried her across the river and then set her down. And\nthen him and the soldier continued on their way. And then later on, when they're making camp, the soldier\nsays to the monk, um,\nyou know, you, you, you broke your vows carrying that, that\nwoman across the, uh, the, uh, river. You're not supposed to ever touch a woman and, or carry,\nyou know, touch a person. And, um,\nthe, uh, monk says,\nOh, that was, uh, that was something I needed to do in a\nmoment that she needed help. But I put her down,\num, but I see that you're still carrying her. Hail Mary, full of grace,\nthe Lord is with you. Blessed art thou amongst women. Blessed is the fruit of thy\nwomb, Jesus. Lord, and your mother of God, pray for sinners, now and at\nthe hour of our death. I think, I think that was it. I think that was the prayer. But, uh, it's been a long time since I did the rosary. But, um, you know, and then is the rosary just any\ndifferent than meditation, prayer beads? I don't know. But I do know that, that I've been carrying something that\nI should have put down a long time ago. And that there are stories to tell. And there is the, the, um, there is a, uh, a task to finish\n. But, um, I don't have to carry a weight\nabout it. I need to carry it lightly. And, uh, there's a reason that people have been struggling\nwith it since the beginning of time, pretty much. It's, uh, it's, uh, you know, the body remembers. And, uh, and, uh, you know, but you can sort of stretch it\nout and work it out. You know, you can move your shoulder a certain way, at the\nside of you, you know. If it's going to get it the wrong way, it still hurts. It's the same thing with, uh, it's the same thing with, uh,\nwith memory. And, uh, trying to re-engage. That's why I am glad I'm, I'm working in the office again. Because I, I, I, I really believe that, uh,\nEspecially in this, in this current era, that finding a way\nto reconnect is, is absolutely critical. And, uh, it's going to be how I learned how to let go. I don't know. Or not. Keep trying. That's all you can do. All right. I hope you can put down whatever you're carrying, that you\n're tired of carrying. Because it's hard. All right. Thanks. Have a good one. Bye.",
+      "transcript_turns_count": 56
     },
     {
       "id": "ramblin-amblin-grinch-meets-kids-at-sports-bar-ramblin-amblin-nov-17-2026",
@@ -14517,6 +15774,39 @@
       ],
       "transcript_text": "When I was in the Army, I was re-enlisting. When I was re-\nenlisting, I went through Fort Leonard Wood, Missouri, for\nprocessing. I was going from National Guard to active duty,\nregular Army. During this time, one of my jobs was to go to the KP Hall\nand help run the KP Hall, and it was me and another soldier\n. I was a specialist, and while I was in there, I was\nresponsible for the dishwashing room. If you've ever been in a kitchen with an industrial-grade\ndishwasher, it's basically a huge steam bath. It just dumps\nwater. There's a center of the mess hall, where on both sides of\nthe center are places where the soldiers, when they finish\nwith the food, they can drop off their trays. And then, it goes on a conveyor belt. Conveyor belt on each\nside. It feeds into this little room, where the dishwasher\nwas, and on each side of the room, you've had soldiers,\neach manning, taking the plates, scraping them, and then\nhanding them off to somebody to rinse with a high-pressure\nrinser. And then stacking them up into a tray so that they can run\nthrough the big, heavy machine for dishwashing. As you can imagine, this comes in waves, right? And the\nwaves are really intense when they're coming through. So, there was downtime, though, between each one of these\ncycles. And one day, I'm standing there. I've got a group\nof female soldiers who were working with me that day. And, uh, I'm making sure that I'm, you know, keeping\ndistance, because it's not what I'm actually going to do. It's the parents, and, uh, make sure that they feel safe in\nthere, too. And just feeling like a big shot there with the same band. I'm, you know, a whole regular army. I'm not being a bully\nor anything. I'm just, like, all right, you know, I'm going\nto use this as a chance to talk with them. And I mean, genuinely talk with them. Like, with them all\ntalking. So, I go around the room and say, \"Hey, I'm trying\nto do my best army voice. What is your MOS? What are you in\nfor?\"\nAnd, uh, one is just a crowd. She's going to be, uh, a\nlinguist. I'm like, \"Awesome. I'm going to listen to be a\nlinguist, too.\"\nThat didn't work out for me, but you give the idea. Um, and\nthen the next is going to be some kind of electronic\nspecialist, and I don't know what. And then the, uh, next soldier, she says she's, uh, going\nto be a truck driver. Now, she's looking down and feels de\njected a bit, because everybody else has got these very\nsophisticated, um, kind of, uh, prestigious MOSs. I'm just going to be a truck driver. And she's going to\npick the baton of the West for me to be, uh, empathetic\nwith, uh, because I said, \"You should be proud of them.\"\nBecause, like, do you know, logistics is, is, is how the\narmy operates. I mean, who do you think gets the food to\nthe front lines, and who do you think is helping the\nsoldiers out? Who's bringing the, uh, the armor and the, uh, munitions? It's truck drivers. So, uh, who do you think is getting\nshot at first? You have an incredibly dangerous job, and the army would be\ncompletely, uh, unable to operate without people like you. And, uh, and, uh, and, uh, she definitely felt better. And,\nuh, I don't know, I'll do a better memory of this, maybe,\nlater, but, um, it was, it's, it's just... The predicament is, is that she thought because what she\nwas doing wasn't glamorous. And why is it glamorous? What\nis, what is, what is, what is so glamorous about being an\nelectronic specialist? Um, uh, because it's got this perception of being smart,\nyou know, and that if you're not a, not one of those, you\n're just a truck driver, you're not smart. I, I'm not a lot of truck driver. And I can tell you, I'm\nnot stupid. Um, logistics is an incredibly challenging\nfield, even if you're out as a, uh, driver. Um, and it is. I, I'm in reward of what I said about how dangerous that\njob is. Uh, but it was more that it was a, uh, impulse. I,\nI just, I am, uh, somebody who, uh, feels things viscerally\nand, uh, will react as such. And I just couldn't stand the idea of this person who is en\nlisted feeling like just standing in a group of soldiers. And somehow she's the lesser of them. And none of them would be doing Jack's squat if it wasn't\nfor people like her. I don't know. I'm crazy like that. I wondered, you know, what, what was it in that moment? I\nwas, you know, in my early twenties, but I just knew. It was also during the time I was still hung up on right\nwing propaganda. But I knew what was right. I knew that we needed people. And that there was no such thing as a glamorous job. There's jobs where you're not necessarily in the line of\nfire. There's jobs where you're doing something pretty important. Every one of them has an important job that the military\nabsolutely needed. But somehow one felt like this better than the other. Somehow this person would be out there doing this\nincredibly important job always thinking that they are less\nthan, you know, the future isn't for it anyway. And some of the people could turn out to do all kinds of\nthings that were less than honorable. And she could have been the one that was an absolute hero. But every day she'd get up and feel somehow like she's\nlesser than. To have to help literally carry the arm metaphorically on\nher back. No, no. Just thinking about that. All right. Thanks, Brad.",
       "transcript_turns_count": 20
+    },
+    {
+      "id": "ramblin-amblin-mike-tests-lavalier-mic-battery-life-ramblin-amblin-nov-21-2",
+      "title": "Mike tests lavalier mic battery life | Ramblin' & Amblin' | Nov 21, 2026",
+      "interviewee": "Mike Hall",
+      "speaker": "Mike Hall",
+      "conference": "",
+      "year": 2026,
+      "category": "field_notes",
+      "primary_platform": "youtube",
+      "transcript_id": "ramblin-amblin-mike-tests-lavalier-mic-battery-life-ramblin-amblin-nov-21-2",
+      "page_url": "/interviews/ramblin-amblin-mike-tests-lavalier-mic-battery-life-ramblin-amblin-nov-21-2/",
+      "youtube_url": "https://youtu.be/E6jenw6Fp9g",
+      "youtube_video_id": "E6jenw6Fp9g",
+      "playlist_id": "PLNtb969T2-l0",
+      "playlist_title": "Ramblin' & Amblin'",
+      "series": "Ramblin' & Amblin'",
+      "description": "Ramblin' & Amblin' Field Notes with Mike Hall (Staff Software Engineer)\nRecorded on the move: engineering observations, systems architecture, and software craftsmanship reflections.\n\n• Series Playlist: https://www.youtube.com/playlist?list=PLNtb969T2-l0\n• The Sound Above Curriculum: https://www.just3ws.com/series/the-sound-above/\n• Canonical Profile: https://www.just3ws.com\n\n\nSpoken Overview:\n\"Learned a unique lesson from trying to do this recording from the lavalier mics as they have a limited life span on the battery and it died about 20 minutes in which is disappointing but that's fine. Hopefully this records. This...\"\n\n\nRecorded: November 21, 2026",
+      "tags": [
+        "Software Craftsmanship",
+        "Ramblin and Amblin",
+        "Field Notes",
+        "Engineering Philosophy",
+        "Chicago Tech"
+      ],
+      "chapters": [
+        {
+          "time": "00:00",
+          "title": "Introduction & Context"
+        }
+      ],
+      "transcript_text": "Learned a unique lesson from trying to do this recording\nfrom the lavalier mics as they have a limited life span on\nthe battery and it died about 20 minutes in which is\ndisappointing but that's fine. Hopefully this records. This\nis just a test to make sure my earpiece is picking up. Alright thanks bye.",
+      "transcript_turns_count": 1
     },
     {
       "id": "ramblin-amblin-mikes-train-crossing-experience-ramblin-amblin-nov-17-2026",
