@@ -12,91 +12,140 @@ primary_archive_route: "https://just3ws.com/interviews/"
 # ─────────────────────────────────────────────────────────────────
 master_intro:
   title: "The Sound Above: Master Series Cold Open"
-  duration_sec: 210 # ~03:30
+  duration_sec: 95 # ~01:35 (includes 25.7s verbatim audio cue)
   scene_sequence:
     - "01. Starting Soon"
     - "02. Monologue / Full Camera"
   pre_recorded_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/series-master-intro.mov"
   cue_audio_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/marcus-parks-the-sound-above-cue.mp3"
+  cue_audio_duration_sec: 25.7
+  cue_attribution:
+    speaker: "Marcus Parks"
+    hosts:
+      - "Marcus Parks"
+      - "Carolina Hidalgo"
+    program: "No Dogs in Space"
+    network: "The Last Podcast Network"
+    series_reference: "Series 3: Can (June-July 2024)"
+    excerpt_duration_sec: 25.7
+    on_screen_credit: |
+      Audio excerpt: Marcus Parks
+      No Dogs in Space, "Can" series (2024)
+      Hosted by Marcus Parks & Carolina Hidalgo | The Last Podcast Network
+    description_citation: "Intro audio citation: Brief 25.7-second excerpt of Marcus Parks from No Dogs in Space (Series 3: Can, 2024), hosted by Marcus Parks and Carolina Hidalgo on The Last Podcast Network. Used under fair use (17 U.S.C. 107) for commentary, criticism, and educational framing. Listen to the full four-part Can series on No Dogs in Space."
   voiceover_hook: |
     [SCENE: 01. Starting Soon (Hold on Starting Soon card for voiceover intro).]
-    If you want to really appreciate Jimi Hendrix, you ask one question: who did Jimi Hendrix listen to?
-    When you go back and hear the players who influenced him, you gain a deeper feel for his music.
+    Who did Jimi Hendrix listen to?
 
-    Back in June of 2024, Marcus Parks and Carolina Hidalgo were exploring the German band Can on their music history show, No Dogs in Space.
-    Marcus described their music as: 'A sound above their own level. If artists only listen to what they already know how to make, they just make more of the same. But when you reach for something you do not quite understand, your brain builds new pathways.'
+    Go back to the players who shaped him, and you hear his music differently.
 
-    That is the core idea behind The Sound Above.
+    [PAUSE]
+
+    On the music history show No Dogs in Space, Marcus Parks and Carolina Hidalgo spent four episodes breaking down the German band Can.
+
+    Here is Marcus explaining an idea that stayed with me.
+
+    [PLAY AUDIO CUE: marcus-parks-the-sound-above-cue.mp3 (25.7s) WITH ON-SCREEN CREDIT]
   teleprompter_script: |
     [SCENE: 01. Starting Soon (Hold on Starting Soon card for voiceover intro).]
-    If you want to really appreciate Jimi Hendrix, you ask one question: who did Jimi Hendrix listen to?
-    When you go back and hear the players who influenced him, you gain a deeper feel for his music.
+    Who did Jimi Hendrix listen to?
 
-    Back in June of 2024, Marcus Parks and Carolina Hidalgo were exploring the German band Can on their music history show, No Dogs in Space.
-    Marcus described their music as: 'A sound above their own level. If artists only listen to what they already know how to make, they just make more of the same. But when you reach for something you do not quite understand, your brain builds new pathways.'
+    Go back to the players who shaped him, and you hear his music differently.
 
-    That is the core idea behind The Sound Above.
-    Rather than meeting the room at eye level with predictable formulas, great artists hold a higher standard and challenge the audience to climb up to meet them.
+    [PAUSE]
+
+    On the music history show No Dogs in Space, Marcus Parks and Carolina Hidalgo spent four episodes breaking down the German band Can.
+
+    Here is Marcus explaining an idea that stayed with me.
+
+    [ON-SCREEN CREDIT: Audio excerpt: Marcus Parks | No Dogs in Space, "Can" series (2024) | Hosted by Marcus Parks & Carolina Hidalgo | The Last Podcast Network]
+    [PLAY AUDIO CUE: marcus-parks-the-sound-above-cue.mp3 (25.7s)]
+
+    [PAUSE]
 
     [SCENE: Switch to 02. Monologue / Full Camera.]
+    That is where this series gets its name.
+
+    Welcome to The Sound Above. I'm Mike Hall.
+
+    After a few years of helping run local developer user groups around Chicago, I started recording conversations with working developers.
+
+    Between 2011 and 2015, I recorded more than two hundred of them.
+
+    Hallways at conferences. Meetup rooms. Library basements.
+
+    That project was called UGtastic.
+
     [PAUSE]
-    Welcome to The Sound Above. I am Mike Hall.
 
-    Between 2005 and 2015, a community of working developers around Chicago and North America gathered in suburban libraries, diner booths, and corporate basements.
-    We were pushing back against corporate vendor defaults, exploring test-driven development, and reaching for the sound above our current level.
+    For years, I wanted to get my arms around that archive, and for a long time it stayed out of reach.
 
-    I recorded more than two hundred of those working developers in hotel hallways, conference lounges, and meetup rooms for an oral history project called UGtastic.
-    Those tapes were preserved for over a decade.
+    Now I am finally recovering it, and the work is ongoing.
 
-    Today, in 2026, the tech industry is obsessed with artificial intelligence and rapid code generation.
-    We are generating syntax at blinding speeds, but system comprehension is disappearing.
-    We are at risk of losing our institutional memory.
+    Transcribing every tape. Finding the old websites in the Wayback Machine. Tracking down the code people were talking about.
 
-    I am revisiting those original field recordings one by one, with verified transcripts, era-specific Wayback captures, and recovered source code right beside the tape.
-    Not for backward-looking nostalgia, but because the effort of understanding is not overhead: the effort is the point.
+    In each episode, I rewatch one of those conversations with that research beside it.
+
+    What were we arguing about? What held up? What did we lose?
+
+    Because the people who came before us already worked through a lot of what we are facing now.
+
+    Let's listen.
 
 # ─────────────────────────────────────────────────────────────────
 # 2. SERIES MASTER OUTRO (REUSABLE CLOSING & CALL TO ACTION)
 # ─────────────────────────────────────────────────────────────────
 master_outro:
   title: "The Sound Above: Master Series Outro & Sign-off"
-  duration_sec: 165 # ~02:45
+  duration_sec: 45 # ~00:45
   scene_sequence:
     - "02. Monologue / Full Camera"
     - "08. Outro / Closing Credits"
   pre_recorded_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/series-master-outro.mov"
+  music_cue_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/ugtastic-jingle-instrumental-tail.mp3"
+  music_source_asset_path: "ai/media-pipeline/just3ws-mike/the-sound-above/assets/ugtastic-jingle-by-suzi-lindner.mp3"
+  music_cue_duration_sec: 9.0
+  music_attribution:
+    artist: "Suzi Lindner"
+    title: "UGtastic Jingle"
+    year: 2013
+    source_url: "https://soundcloud.com/ugtastic/ugtastic-jingle-by-suzi-lindner"
+    license_noted: "Full commercial rights purchased by Mike Hall for UGtastic (2013); SoundCloud public upload tagged CC BY-NC-SA; original receipt archival lookup in progress"
+    on_screen_credit: |
+      Music: "UGtastic Jingle" (instrumental) by Suzi Lindner (2013)
+    description_citation: "Music credit: Instrumental excerpt from \"UGtastic Jingle\" by Suzi Lindner (2013), created for UGtastic (https://soundcloud.com/ugtastic/ugtastic-jingle-by-suzi-lindner)."
   call_to_action: |
     [SCENE: Switch to 08. Outro / Closing Credits.]
-    The full interactive transcript, recovered slides, and primary-source receipts are linked on the episode page at just3ws.com.
-    If you were in those rooms or have memories from that era, join the discussion in the comments.
-    You can explore the broader career archive and back this independent research at just3ws.com/support.
+    [ON-SCREEN CREDIT: Music: "UGtastic Jingle" (instrumental) by Suzi Lindner (2013)]
+    If you want to help keep this research and archive going, you can back it directly at patreon.com/just3ws, or see all the ways to support the work at just3ws.com/support.
+
+    [PLAY AUDIO CUE: ugtastic-jingle-instrumental-tail.mp3 (9.0s) - ducked under final line, then swell to resolve]
+    Take care of each other. And keep reaching for the sound above.
   teleprompter_script: |
     [SCENE: 02. Monologue / Full Camera.]
-    Early in my career, when I felt completely overwhelmed by the volume of software literature I could not understand, a veteran engineer gave me a piece of advice that changed how I work.
-    He told me: 'Read books you don't understand, and keep reading books that you don't understand. Eventually, you will understand the ones you've read.'
+    Thank you for spending this time with me.
 
-    That advice taught me that true comprehension starts at the boundary of confusion.
-    By sitting with difficult systems and wrestling with stubborn code, you build the perceptual organs necessary to comprehend the architecture.
+    And thank you to everyone who sat down in front of my camera all those years ago.
 
-    In the ancient parable, Cook Ding's cleaver stayed as sharp as a newly whetted razor after nineteen years because he never hacked at the bone.
-    He guided the blade through the open seams where the joints naturally meet.
+    [PAUSE]
 
-    In an era where probabilistic machines generate mountains of unverified syntax, do not hack at the bone.
-    Keep your automated feedback loops tight, design clean deterministic seams, and keep reaching for the sound above the level you are on.
+    The transcript, the sources, and the recovered code are on the episode page at just3ws.com.
+
+    If you were in those rooms, I would love to hear your story. Leave it in the comments.
 
     [SCENE: Switch to 08. Outro / Closing Credits.]
+    [ON-SCREEN CREDIT: Music: "UGtastic Jingle" (instrumental) by Suzi Lindner (2013)]
     [PAUSE]
-    The full interactive transcript, historical receipts, and recovered code are linked on the episode page at just3ws.com.
-    If you were in those rooms or have memories from that era, share your story in the comments.
-    You can back this oral history research and community archive at just3ws.com/support.
+    If you want to help keep this research and archive going, you can back it directly at patreon.com/just3ws, or see all the ways to support the work at just3ws.com/support.
 
-    Thank you for watching, take care of each other, and keep making room to learn.
+    [PLAY AUDIO CUE: ugtastic-jingle-instrumental-tail.mp3 (9.0s) - fade in softly under final line, swell to chord resolve]
+    Take care of each other. And keep reaching for the sound above.
 
 # ─────────────────────────────────────────────────────────────────
 # 3. REUSE & INJECTION POLICIES
 # ─────────────────────────────────────────────────────────────────
 injection_policy:
-  default_mode: "series_with_custom_insert"
+  default_mode: "pre_recorded_bumper"
   supported_modes:
     - id: "series_with_custom_insert"
       description: "Stitches series master intro premise before custom episode hook in Act 1, and appends series master outro sign-off after custom guest appreciation in Act 6."
