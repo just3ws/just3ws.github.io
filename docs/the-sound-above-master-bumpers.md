@@ -17,12 +17,6 @@ Reading notes:
 
 [SCENE: 01. Starting Soon / Intro card. Voiceover.]
 
-Who did Jimi Hendrix listen to?
-
-Go back to the players who shaped him, and you hear his music differently.
-
-[PAUSE]
-
 On the music history show No Dogs in Space, Marcus Parks and Carolina Hidalgo spent four episodes breaking down the German band Can.
 
 Here is Marcus explaining an idea that stayed with me.
@@ -57,7 +51,7 @@ For years, I wanted to get my arms around that archive, and for a long time it s
 
 Now I am finally recovering it, and the work is ongoing.
 
-Transcribing every tape. Finding the old websites in the Wayback Machine. Tracking down the code people were talking about.
+Transcribing every recording. Finding the old websites in the Wayback Machine. Tracking down the code people were talking about.
 
 In each episode, I rewatch one of those conversations with that research beside it.
 
