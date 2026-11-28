@@ -14,9 +14,15 @@ tags: [panoramic-view, system-cartography, context-engineering, formal-verificat
 description: "A practical, step-by-step field guide to integrating Panoramic View into a real codebase using human reasoning, bounded context engineering, formal specs, AI prompts, and Z3 proofs."
 ---
 
-AI coding assistants are fast at generating code and dangerously convincing when they guess wrong. **Panoramic View** solves that failure mode by giving both humans and AI agents the same empirical map before anyone edits production code.
+You probably have a system you need to understand right now. Maybe it is a decade-old legacy platform, a multi-team workflow with silent failures, or a codebase where documentation drifted years ago.
 
-This guide shows how to integrate Panoramic View into an existing system using five concrete layers: human reasoning, context engineering, specifications, scoped AI prompts, and machine-checked proofs.
+**Panoramic View is not the solution to that system.** It is the mechanism and discipline for mapping, tracking, and sharpening your understanding over time. By combining instrumentation and observability with plain-language models, it builds shared comprehension across every role: from the developer, to the designer, to the business process owner.
+
+I developed this discipline through manual instrumentation at enterprise scale, tracing customer journeys from desktop browser to mainframe and back again. Today, I run that same discipline as an integrated, AI-assisted workflow across my projects. It is not as complicated as you might think it has to be, and it is not easy either.
+
+AI coding assistants are fast at generating code and convincing when they guess wrong. Giving both humans and AI agents the same empirical map before anyone edits production code keeps everyone honest.
+
+This guide spells out how to apply Panoramic View to your own system across five layers: human reasoning, context engineering, formal specifications, scoped AI prompts, and machine-checked proofs.
 
 ![Integrating Panoramic View workflow from human reasoning and bounded context engineering through AI prompts and formal specifications to Z3 refutation proofs and runtime conformance](/assets/diagrams/panoramic-view-ai-integration.svg)
 
