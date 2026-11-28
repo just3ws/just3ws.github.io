@@ -2,20 +2,22 @@
 layout: post
 title: "Geekfest@OMF, Part 4: From Brown-Bag to Community of Practice and Handoff"
 date: 2026-11-27 09:45:00 -0600
-permalink: /ai/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff/
+permalink: /2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html
+redirect_from:
+  - /ai/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff/
 ai_assisted: true
-ai_generated: true
+ai_generated: false
 human_led: true
 source_kind: ai-augmented-human-led
-robots: noindex,follow
-sitemap: false
+robots: index,follow
+sitemap: true
 series: "Geekfest@OMF"
 categories: [leadership, observability, community]
 tags: [geekfest, geekfest-at-omf, opentelemetry, communities-of-practice, conways-law, stewardship]
 description: "Part 4 of the Geekfest@OMF series: how a weekly Tuesday brown-bag evolved into an enterprise OpenTelemetry Community of Practice and transitioned to permanent full-time stewardship."
 ---
 
-This is **Part 4** of a four-part series documenting **Geekfest@OMF**. In [Part 3](/ai/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos/), I described how scratch OpenTelemetry demos sparked cross-team curiosity. Here I trace how that energy matured into an enterprise Community of Practice and ended with a deliberate stewardship handoff.
+This is **Part 4** of a four-part series documenting **Geekfest@OMF**. In [Part 3](/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos.html), I described how scratch OpenTelemetry demos sparked cross-team curiosity. Here I trace how that energy matured into an enterprise Community of Practice and ended with a deliberate stewardship handoff.
 
 ## The Secret Value Starts Before the First Line of Code
 
@@ -25,11 +27,7 @@ In a long-lived enterprise with heterogeneous stacks (Ruby on Rails, Node.js, Ja
 
 You cannot trace a customer journey across six lanes without asking your neighbors how their service works, what headers survive their gateway, and what constraints they live under. Conway's Law reminds us that systems mirror the communication paths of the organization that built them. If you want a connected, observable distributed system, you have to build connected human communication paths first.
 
-```mermaid
-flowchart LR
-    P1["Phase 1: Geekfest@OMF<br/>(Nov 2022 to Feb 2024)<br/>49+ Weekly Tuesday Sessions"] --> P2["Phase 2: OpenTelemetry WG<br/>(Apr 2024 to Sep 2025)<br/>1st CoP, 40+ Active Engineers"]
-    P2 --> P3["Phase 3: Institutional Handoff<br/>(Sep 12, 2025)<br/>2 Full-Time Roles + 3 Focused WGs"]
-```
+![3-Year Community Evolution from Obtiva Tuesday Geekfest through Geekfest@OMF and the OpenTelemetry Working Group to funded full-time observability stewardship](/assets/diagrams/geekfest-to-otel-arc.svg)
 
 ## Scaling Into a Representative Forum
 
@@ -65,6 +63,14 @@ On **September 12, 2025**, I held my final OpenTelemetry Working Group session a
 
 Stepping back from something you built over three years is never purely mechanical. It takes discipline to let a community evolve under new owners without clinging to control. Yet that handoff was the whole point from day one: turning a Tuesday lunch experiment from November 2022 into permanent institutional capability that no longer depends on one person's calendar.
 
+## What This Arc Means in Practice as a Staff Software Engineer
+
+On [my canonical resume](/), [OneMain Financial role record](/resume/positions/onemain/), and [Staff Platform & Enablement Lead profile](/resumes/mike-hall-staff-platform-lead/), this three-year community arc is the human half of the same architecture work. Without direct reports or top-down authority, hands-on technical leadership still created measurable organizational leverage:
+
+- **Scope:** Bridged six product and platform lanes spanning Ruby on Rails, Node.js, API gateways, Kafka, and mainframes.
+- **Leverage:** Replaced isolated squad experiments with shared W3C Trace Context patterns, pairing loops, and a repeatable Community of Practice template.
+- **Durability:** Ended not with a single champion burning out, but with two newly funded full-time roles and three permanent working groups carrying the work forward.
+
 ## Four Lessons for Staff Engineers Building Internal Communities
 
 If you are trying to spark a similar arc inside a large engineering organization, four lessons travel well:
@@ -85,9 +91,9 @@ During the 2024 to 2025 working group phase, these public talks from my Conway's
 
 ## Series Navigation
 
-- **Part 1:** [Lineage, Charter, and Zero-Friction Design](/ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/)
-- **Part 2:** [A Practical Curriculum for Working Engineers](/ai/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers/)
-- **Part 3:** [Early Local-First AI and OpenTelemetry in the Brown-Bag Room](/ai/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos/)
+- **Part 1:** [Lineage, Charter, and Zero-Friction Design](/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design.html)
+- **Part 2:** [A Practical Curriculum for Working Engineers](/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers.html)
+- **Part 3:** [Early Local-First AI and OpenTelemetry in the Brown-Bag Room](/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos.html)
 - **Part 4 (Current):** From Brown-Bag to Community of Practice and Sustainable Handoff
 
-Related synthesis: [From Geekfest to SRE: The 3-Year Lifecycle of a Sustainable Engineering Community](/ai/2026/08/30/from-geekfest-to-sre-sustainable-engineering-communities/) and [Rolling Out OpenTelemetry in the Real World: Lessons from Rails to Mainframe](/ai/2026/08/30/rolling-out-opentelemetry-in-the-real-world/).
+Related context: [Canonical Resume](/) · [OneMain Financial Role Record](/resume/positions/onemain/) · [Staff Platform & Enablement Lead Resume](/resumes/mike-hall-staff-platform-lead/) · [Download Complete 4-Part Field Guide (PDF)](/exports/geekfest-at-omf-field-guide.pdf) · [EPUB](/exports/geekfest-at-omf-field-guide.epub) · [From Geekfest to SRE Synthesis](/ai/2026/08/30/from-geekfest-to-sre-sustainable-engineering-communities/).

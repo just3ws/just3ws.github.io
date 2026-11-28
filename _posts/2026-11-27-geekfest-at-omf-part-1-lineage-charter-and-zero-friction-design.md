@@ -2,20 +2,22 @@
 layout: post
 title: "Geekfest@OMF, Part 1: Lineage, Charter, and Zero-Friction Design"
 date: 2026-11-27 09:00:00 -0600
-permalink: /ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/
+permalink: /2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design.html
+redirect_from:
+  - /ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/
 ai_assisted: true
-ai_generated: true
+ai_generated: false
 human_led: true
 source_kind: ai-augmented-human-led
-robots: noindex,follow
-sitemap: false
+robots: index,follow
+sitemap: true
 series: "Geekfest@OMF"
 categories: [craftsmanship, community, leadership]
 tags: [geekfest, geekfest-at-omf, communities-of-practice, software-craftsmanship, peer-learning]
 description: "Part 1 of the Geekfest@OMF series: how Obtiva's Tuesday study tradition inspired a weekly, low-friction enterprise peer-learning forum at OneMain Financial."
 ---
 
-This is **Part 1** of a four-part series documenting **Geekfest@OMF**, the internal peer-learning community I started at OneMain Financial in November 2022. This series draws on my session logs, planning notes, and public archive records while excluding proprietary company details and colleague names.
+This is **Part 1** of a four-part series documenting **Geekfest@OMF**, the internal peer-learning community I started at [OneMain Financial](/resume/positions/onemain/) in November 2022. This series draws on my session logs, planning notes, and public archive records while excluding proprietary company details and colleague names.
 
 ## Why Start an Internal Peer Forum?
 
@@ -23,13 +25,13 @@ Large engineering organizations rarely lack smart people. They lack low-stakes r
 
 Daily delivery work pulls teams into narrow lanes. Engineers spend months shipping features inside one service while losing sight of adjacent stacks, shared tools, and emerging practices. Formal corporate tech talks rarely fix that gap. They often require polished slide decks, approval reviews, and top-down agendas that raise the bar too high for everyday practitioners.
 
-I wanted a weekly room with almost zero friction. People needed a place to share what interested them, test rough ideas, and reconnect as craftspeople.
+Operating as a **Staff Software Engineer** (serving as Software Architecture Lead for the Acquisition Lane and later Associate Director, Staff Engineer, a senior IC role with no direct reports), I wanted a weekly room with almost zero friction. People needed a place to share what interested them, test rough ideas, and reconnect as craftspeople without waiting on management mandates.
 
 ## Credit Where It Is Due: The Obtiva Lineage
 
-I did not invent Geekfest. Dave Hoover, Kevin Taylor, and the team at **Obtiva** (later acquired by Groupon) pioneered the original Tuesday Geekfest in Chicago.
+I did not invent Geekfest. Dave Hoover, Kevin Taylor, and the team at **[Obtiva](/resume/positions/obtiva/)** (later acquired by [Groupon](/resume/positions/groupon/)) pioneered the original Tuesday Geekfest in Chicago.
 
-When I worked at Obtiva, Tuesday Geekfest was the highlight of my week. Developers owned the room. Over time, it grew into a trusted space where people rehearsed conference and user-group talks, shared open-source experiments, and ran hands-on micro-hack sessions. Format mattered less than showing up and participating.
+When I worked at Obtiva, Tuesday Geekfest was the highlight of my week. Developers owned the room. Over time, it grew into a trusted space where people rehearsed conference and user-group talks, shared open-source experiments, and ran hands-on micro-hack sessions. Format mattered less than showing up and participating. That same peer-enablement mindset later shaped how I approached engineering onboarding at Groupon and community organizing in [my broader career history](/history/).
 
 If you want the deeper history of that tradition, watch [The Apprenticeship Move: Dave Hoover on GeekFest and Developer Mentorship](/interviews/dave-hoover-geekfest-geekfest/) or the [archived UGtastic YouTube recording with Dave Hoover](https://youtu.be/MytNNjBsBBk) (9m 41s, synced to the public archive).
 
@@ -85,8 +87,8 @@ Those small structural choices turned a personal experiment into a reliable week
 ## Series Navigation
 
 - **Part 1 (Current):** Lineage, Charter, and Zero-Friction Design
-- **Part 2:** [A Practical Curriculum for Working Engineers](/ai/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers/)
-- **Part 3:** [Early Local-First AI and OpenTelemetry in the Brown-Bag Room](/ai/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos/)
-- **Part 4:** [From Brown-Bag to Community of Practice and Sustainable Handoff](/ai/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff/)
+- **Part 2:** [A Practical Curriculum for Working Engineers](/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers.html)
+- **Part 3:** [Early Local-First AI and OpenTelemetry in the Brown-Bag Room](/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos.html)
+- **Part 4:** [From Brown-Bag to Community of Practice and Sustainable Handoff](/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html)
 
-Related synthesis: [From Geekfest to SRE: The 3-Year Lifecycle of a Sustainable Engineering Community](/ai/2026/08/30/from-geekfest-to-sre-sustainable-engineering-communities/).
+Related context: [OneMain Financial Role Record](/resume/positions/onemain/) · [Canonical Resume](/) · [Download Complete 4-Part Field Guide (PDF)](/exports/geekfest-at-omf-field-guide.pdf) · [EPUB](/exports/geekfest-at-omf-field-guide.epub) · [From Geekfest to SRE Synthesis](/ai/2026/08/30/from-geekfest-to-sre-sustainable-engineering-communities/).

@@ -2,20 +2,22 @@
 layout: post
 title: "Geekfest@OMF, Part 2: A Practical Curriculum for Working Engineers"
 date: 2026-11-27 09:15:00 -0600
-permalink: /ai/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers/
+permalink: /2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers.html
+redirect_from:
+  - /ai/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers/
 ai_assisted: true
-ai_generated: true
+ai_generated: false
 human_led: true
 source_kind: ai-augmented-human-led
-robots: noindex,follow
-sitemap: false
+robots: index,follow
+sitemap: true
 series: "Geekfest@OMF"
 categories: [craftsmanship, architecture, engineering]
 tags: [geekfest, geekfest-at-omf, software-craftsmanship, postgresql, ruby, legacy-code]
 description: "Part 2 of the Geekfest@OMF series: how 18 months of Tuesday sessions balanced debugging craft, design fundamentals, polyglot stacks, and daily developer hygiene."
 ---
 
-This is **Part 2** of a four-part series documenting **Geekfest@OMF**. In [Part 1](/ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/), I covered the Obtiva lineage and zero-friction design. Here I look at the actual curriculum across 18 months and 49+ recorded sessions.
+This is **Part 2** of a four-part series documenting **Geekfest@OMF**. In [Part 1](/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design.html), I covered the Obtiva lineage and zero-friction design. Here I look at the actual curriculum across 18 months and 49+ recorded sessions, and how those Tuesdays intersected with real production architecture work on the Acquisition Lane.
 
 ## Balance Variety With Depth
 
@@ -79,6 +81,14 @@ Some of the highest-energy Tuesdays had nothing to do with frameworks. They focu
 - **Regular Expressions (Jun 20, 2023):** A practical tour from `\A` to `\z` without mystique.
 - **Spring Cleaning: Workstation Setup Docs (Feb 7, 2023):** One Tuesday, we skipped lectures altogether and spent 45 minutes updating stale developer onboarding documentation together. Turning a brown-bag into live maintenance showed that peer communities can leave shared artifacts behind.
 
+## How the Curriculum Connected to Production Work
+
+None of these Tuesdays were detached academic lectures. They tracked directly alongside the real engineering problems documented in [my OneMain Financial position record](/resume/positions/onemain/) and [architecture case studies](/case-studies/):
+
+- **Debugging a distributed monolith:** Sessions on reading Ruby dependency source, exporting browser HAR traces, and Michael Feathers' legacy seams built shared diagnostic habits across teams maintaining decade-old acquisition workflows.
+- **Session state resilience:** The May 2023 peer walkthrough evaluating DynamoDB for server-side session state intersected directly with diagnosing and eliminating a Rails session-cookie overflow defect affecting 4% of digital applicant traffic via a zero-downtime migration to AWS DynamoDB.
+- **Enablement through shared hygiene:** Live workstation documentation maintenance and relational database internals reflected the Acquisition Lane enablement team's day-to-day focus on making legacy boundaries legible and safer for delivery squads to change.
+
 ## What Made the Curriculum Work
 
 Three patterns stood out across those 18 months:
@@ -91,7 +101,7 @@ In Part 3, I look at the two emerging topics that shifted Geekfest@OMF from gene
 
 ## Series Navigation
 
-- **Part 1:** [Lineage, Charter, and Zero-Friction Design](/ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/)
+- **Part 1:** [Lineage, Charter, and Zero-Friction Design](/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design.html)
 - **Part 2 (Current):** A Practical Curriculum for Working Engineers
-- **Part 3:** [Early Local-First AI and OpenTelemetry in the Brown-Bag Room](/ai/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos/)
-- **Part 4:** [From Brown-Bag to Community of Practice and Sustainable Handoff](/ai/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff/)
+- **Part 3:** [Early Local-First AI and OpenTelemetry in the Brown-Bag Room](/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos.html)
+- **Part 4:** [From Brown-Bag to Community of Practice and Sustainable Handoff](/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html)

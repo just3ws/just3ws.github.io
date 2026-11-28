@@ -2,20 +2,22 @@
 layout: post
 title: "Geekfest@OMF, Part 3: Early Local-First AI and OpenTelemetry Demos"
 date: 2026-11-27 09:30:00 -0600
-permalink: /ai/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos/
+permalink: /2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos.html
+redirect_from:
+  - /ai/2026/11/27/geekfest-at-omf-part-3-local-first-ai-and-opentelemetry-demos/
 ai_assisted: true
-ai_generated: true
+ai_generated: false
 human_led: true
 source_kind: ai-augmented-human-led
-robots: noindex,follow
-sitemap: false
+robots: index,follow
+sitemap: true
 series: "Geekfest@OMF"
 categories: [architecture, observability, ai]
 tags: [geekfest, geekfest-at-omf, opentelemetry, ollama, local-ai, kubecon, scmc]
 description: "Part 3 of the Geekfest@OMF series: how weekly brown-bag demos introduced privacy-conscious local LLMs and hands-on OpenTelemetry tracing before formal initiatives existed."
 ---
 
-This is **Part 3** of a four-part series documenting **Geekfest@OMF**. Once the weekly Tuesday habit was established ([Part 1](/ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/) and [Part 2](/ai/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers/)), the room became something more valuable than a study group. It became a safe place to test unfamiliar technology before the organization had formal standards for it.
+This is **Part 3** of a four-part series documenting **Geekfest@OMF**. Once the weekly Tuesday habit was established ([Part 1](/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design.html) and [Part 2](/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers.html)), the room became something more valuable than a study group. It became a safe place to test unfamiliar technology before the organization had formal standards for it.
 
 Between April 2023 and February 2024, two threads stood out: **privacy-conscious local AI** and **OpenTelemetry**.
 
@@ -36,7 +38,7 @@ Geekfest@OMF took a pragmatic middle path: run open models locally and inspect t
 - **Local LLM with Ollama (Nov 28, 2023):** Seven months later, local tooling had matured dramatically. I walked through integrating **Ollama** into a Ruby on Rails prototype to analyze and score internal documentation while keeping every byte of data on local hardware. We debugged JSON parsing and streaming responses live on the call.
 - **Spin up SQL with Vanna.ai (Jan 23, 2024):** We opened 2024 with a Python demo exploring natural-language-to-SQL generation, examining both where it helped and where schema ambiguity still required human judgment.
 
-Those sessions planted an important norm: you can learn emerging AI patterns responsibly in a regulated environment by favoring local-first prototypes and honest boundary checks.
+Those sessions planted an important norm: you can learn emerging AI patterns responsibly in a regulated environment by favoring local-first prototypes and honest boundary checks. That same hands-on thread carried directly into my own work outside and inside the enterprise: transcribing the [UGtastic oral history archive](/interviews/) locally with Whisper, and placing in two corporate hackathons (building a Rasa conversational agent prototype in 2022 and an OpenTelemetry-instrumented schema inference pipeline with local Ollama summarization in February 2024, recorded on [my OneMain Financial position page](/resume/positions/onemain/)).
 
 ## The OpenTelemetry Spark
 
@@ -78,9 +80,9 @@ In Part 4, I trace what happened next: how those Tuesday OpenTelemetry demos gre
 
 ## Series Navigation
 
-- **Part 1:** [Lineage, Charter, and Zero-Friction Design](/ai/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design/)
-- **Part 2:** [A Practical Curriculum for Working Engineers](/ai/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers/)
+- **Part 1:** [Lineage, Charter, and Zero-Friction Design](/2026/11/27/geekfest-at-omf-part-1-lineage-charter-and-zero-friction-design.html)
+- **Part 2:** [A Practical Curriculum for Working Engineers](/2026/11/27/geekfest-at-omf-part-2-a-practical-curriculum-for-working-engineers.html)
 - **Part 3 (Current):** Early Local-First AI and OpenTelemetry in the Brown-Bag Room
-- **Part 4:** [From Brown-Bag to Community of Practice and Sustainable Handoff](/ai/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff/)
+- **Part 4:** [From Brown-Bag to Community of Practice and Sustainable Handoff](/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html)
 
-Related synthesis: [Rolling Out OpenTelemetry in the Real World: Lessons from Rails to Mainframe](/ai/2026/08/30/rolling-out-opentelemetry-in-the-real-world/).
+Related context: [Observability & Resilience Specialist Resume](/resumes/mike-hall-observability-resilience-specialist/) · [Rolling Out OpenTelemetry Synthesis](/ai/2026/08/30/rolling-out-opentelemetry-in-the-real-world/).
