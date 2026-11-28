@@ -3,7 +3,6 @@ layout: post
 title: "Phalanx Duel Series, Part 2: Canonical Rules v3.0 & The Combat Cascade"
 date: 2026-11-26 07:46:00 -0600
 permalink: /2026/11/26/phalanx-duel-series-part-2-rules-and-combat-cascade.html
-canonical_url: https://phalanxduel.com/articles/rules-and-combat-cascade/
 originally_published_on: Phalanx Duel
 original_url: https://phalanxduel.com/articles/rules-and-combat-cascade/
 original_published_at: 2026-11-26

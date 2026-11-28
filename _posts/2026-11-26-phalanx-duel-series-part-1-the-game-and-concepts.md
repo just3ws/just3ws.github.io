@@ -3,7 +3,6 @@ layout: post
 title: "Phalanx Duel Series, Part 1: The Game, Core Concepts & Making Rules Legible"
 date: 2026-11-26 07:45:00 -0600
 permalink: /2026/11/26/phalanx-duel-series-part-1-the-game-and-concepts.html
-canonical_url: https://phalanxduel.com/articles/what-is-phalanx-duel/
 originally_published_on: Phalanx Duel
 original_url: https://phalanxduel.com/articles/what-is-phalanx-duel/
 original_published_at: 2026-11-26

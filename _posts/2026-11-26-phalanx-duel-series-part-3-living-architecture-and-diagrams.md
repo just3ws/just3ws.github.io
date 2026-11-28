@@ -3,7 +3,6 @@ layout: post
 title: "Phalanx Duel Series, Part 3: Living Architecture, Diagrams & Freshness Gates"
 date: 2026-11-26 07:47:00 -0600
 permalink: /2026/11/26/phalanx-duel-series-part-3-living-architecture-and-diagrams.html
-canonical_url: https://phalanxduel.com/articles/living-architecture-and-diagrams/
 originally_published_on: Phalanx Duel
 original_url: https://phalanxduel.com/articles/living-architecture-and-diagrams/
 original_published_at: 2026-11-26
