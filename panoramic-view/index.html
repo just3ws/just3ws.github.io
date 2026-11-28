@@ -302,6 +302,37 @@ permalink: /panoramic-view/
       </div>
     </section>
 
+    <!-- FORMAL FOUNDATIONS: PROVABLE SEAMS VS FALSIFIABLE MENTAL MODELS -->
+    <section class="pv-formal-proofs" id="formal-foundations" aria-labelledby="formal-foundations-title" style="margin: 3rem 0; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-primary, #0f766e); border-radius: 12px; padding: 1.75rem 2rem;">
+      <p class="pv-kicker">Formal Foundations &amp; Epistemic Boundary</p>
+      <h2 id="formal-foundations-title" style="margin-top: 0.25rem;">What Is Mathematically Provable vs. Empirically Falsifiable</h2>
+      <p style="font-size: 0.98rem; line-height: 1.65; max-width: 74ch;">
+        Human mental models live in open organizations and cannot be proved from axioms. Panoramic View draws an explicit line: stakeholder assumptions are <strong>empirically falsifiable</strong>, while formalized seams (dependency graphs, state machines, and trace conformance contracts) are <strong>mathematically provable</strong> and checked continuously by automated tests.
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
+        <article style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
+          <p class="pv-card-label">Proof 01 · Graph Theory (DAG)</p>
+          <h3 style="margin: 0.25rem 0 0.4rem; font-size: 1rem;">Cycle-Freedom &amp; Topological Order</h3>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">Proves inverted foreign-key deletion plans are acyclic via Tarjan SCC and verified topological rank (<code>rank[u] &lt; rank[v]</code> for every edge), or emits an exact cycle witness.</p>
+        </article>
+        <article style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
+          <p class="pv-card-label">Proof 02 · Automata (FSM)</p>
+          <h3 style="margin: 0.25rem 0 0.4rem; font-size: 1rem;">Reachability &amp; Deadlock-Freedom</h3>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">Proves every state in a payment or workflow state machine is reachable from the initial state and has a valid path to a terminal or recovery state with zero deadlocks.</p>
+        </article>
+        <article style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
+          <p class="pv-card-label">Proof 03 · Process Mining</p>
+          <h3 style="margin: 0.25rem 0 0.4rem; font-size: 1rem;">Trace-to-Model Conformance</h3>
+          <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">Computes the exact symmetric difference between observed runtime transitions and the formalized model, producing a deterministic conformance fitness score and SHA-256 digest.</p>
+        </article>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.88rem; font-weight: 700;">
+        <a href="/assets/data/panoramic_conformance_proof.json" target="_blank" rel="noopener">Inspect Verified JSON Proof Ledger</a> ·
+        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/src/panoramic_view/conformance.rb" target="_blank" rel="noopener">Verifier Source (Ruby)</a> ·
+        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/spec/panoramic_view_conformance_spec.rb" target="_blank" rel="noopener">RSpec Proof Suite</a>
+      </div>
+    </section>
+
     <div class="pv-dimensions" aria-label="Panoramic View cartography dimensions">
       {% for dim in pv.dimensions %}
         <article class="pv-dimension">
