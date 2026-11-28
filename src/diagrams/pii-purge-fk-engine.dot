@@ -1,0 +1,60 @@
+digraph PiiPurgeEngine {
+  rankdir=LR;
+  bgcolor="transparent";
+  pad="0.25";
+  nodesep="0.45";
+  ranksep="0.55";
+  node [shape=box, style="rounded,filled", fontname="Inter, Helvetica, Arial, sans-serif", fontsize=11, color="#0f766e", fillcolor="#e6f4f1", fontcolor="#1e232a", margin="0.18,0.12"];
+  edge [fontname="Inter, Helvetica, Arial, sans-serif", fontsize=9.5, color="#525866", fontcolor="#525866"];
+
+  subgraph cluster_discovery {
+    label="Phase 1-2: Archaeology & FK Sort";
+    style="rounded,dashed";
+    color="#b45309";
+    fontcolor="#b45309";
+    fontname="Inter, Helvetica, Arial, sans-serif";
+    fontsize=11;
+
+    p1 [label="Phase 1: Candidate Staging\n(Out-of-Band Tombstones)", fillcolor="#f7efe1", color="#b45309"];
+    p2 [label="Phase 2: Inverted FK\nTopological Sort (30+ Tables)", fillcolor="#f7efe1", color="#b45309"];
+    p1 -> p2;
+  }
+
+  subgraph cluster_fk {
+    label="Inverted Leaf-to-Root Purge Order";
+    style="rounded";
+    color="#0f766e";
+    fontcolor="#0f766e";
+    fontname="Inter, Helvetica, Arial, sans-serif";
+    fontsize=11;
+
+    leaf1 [label="Leaf: clarity_* &\nunderwriting_* Orphans"];
+    leaf2 [label="Child: Credit Pulls &\nDocument Artifacts"];
+    mid   [label="Parent: Application\nWorkflow Records"];
+    root  [label="Root: Applicant PII\nAnchor Table"];
+
+    leaf1 -> leaf2 [label="1st"];
+    leaf2 -> mid   [label="2nd"];
+    mid   -> root  [label="3rd (FK Safe)"];
+  }
+
+  subgraph cluster_guardrails {
+    label="Phase 3-5: Online Safety Controls";
+    style="rounded,dashed";
+    color="#525866";
+    fontcolor="#525866";
+    fontname="Inter, Helvetica, Arial, sans-serif";
+    fontsize=11;
+
+    p3 [label="Phase 3: Micro-Batches\n(Lock Timeout < 2s)", fillcolor="#f4f0e8", color="#525866"];
+    p4 [label="Phase 4: Replica Lag\nTelemetry & Throttling", fillcolor="#f4f0e8", color="#525866"];
+    p5 [label="Phase 5: Causal Audit &\nIncremental Vacuum", fillcolor="#f4f0e8", color="#525866"];
+
+    p3 -> p4;
+    p4 -> p5;
+    p4 -> p3 [label="Backpressure", style=dashed, color="#b45309", fontcolor="#b45309"];
+  }
+
+  p2 -> leaf1 [label="Ordered Plan"];
+  root -> p3 [label="Guarded Execution"];
+}

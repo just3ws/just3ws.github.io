@@ -1,0 +1,47 @@
+direction: right
+
+title: "Real-Time Debit Disbursement: Two-Phase State Gate & Reconciler" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+ingress: "1. Ingress & Idempotency" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  signed: "TERMS_SIGNED\n(Borrower E-Sign)"
+  idem: "Cryptographic Idempotency Key\n(Zero Duplicate Payouts)"
+  signed -> idem
+}
+
+gate: "2. Two-Phase State Gate" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  reserved: "FUNDS_RESERVED\n(Balance Verified + Ledger Lock)"
+  inflight: "PUSH_IN_FLIGHT\n(Outbound Instruction Logged)"
+  reserved -> inflight: "Atomic State Lock"
+}
+
+rail: "3. Push-to-Card Network Rail" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  network: "Visa Direct / Mastercard Send\n(Sub-Minute Settlement)"
+}
+
+outcomes: "4. Bounded Outcomes & Reconciliation" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  settled: "DISBURSED_SETTLED\n(200 Authorized)"
+  recovery: "SETTLEMENT_PENDING_RECOVERY\n(Timeout / Unknown State)" {
+    style.fill: "#f7efe1"
+    style.stroke: "#b45309"
+  }
+  reconciler: "15-Minute Continuous Reconciler\n(Ledger Parity Verification)"
+  recovery -> reconciler: "Query Rail Status"
+  reconciler -> settled: "Confirmed Settlement"
+}
+
+ingress.idem -> gate.reserved
+gate.inflight -> rail.network: "Idempotent Push"
+rail.network -> outcomes.settled: "200 Authorized"
+rail.network -> outcomes.recovery: "Timeout / 5xx"

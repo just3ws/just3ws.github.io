@@ -32,16 +32,7 @@ To the modern consumer facing an emergency automotive repair, medical bill, or u
 
 Delivering instant funding is easy to conceptualize. Engineering it safely within a regulated enterprise handling hundreds of millions in loan volume is an exercise in high-consequence platform architecture.
 
-```
-+-------------------------------------------------------------------------+
-|                  THE REAL-TIME DISBURSEMENT PIPELINE                    |
-+-------------------------------------------------------------------------+
-| 1. INGRESS IDEMPOTENCY KEY   --> Cryptographic token (Zero duplicates)  |
-| 2. TWO-PHASE STATE GATE      --> Strict state machine transition lock   |
-| 3. PUSH-TO-CARD NETWORK RAIL --> Sub-minute Visa Direct/Mastercard Send |
-| 4. CONTINUOUS RECONCILER     --> 15-minute ledger parity verification   |
-+-------------------------------------------------------------------------+
-```
+![Real-Time Debit Disbursement Pipeline showing cryptographic idempotency key ingress, two-phase state gate from FUNDS_RESERVED to PUSH_IN_FLIGHT, Visa Direct / Mastercard Send rail, and 15-minute continuous reconciler](/assets/diagrams/instant-money-disbursement.svg)
 
 ---
 

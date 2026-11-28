@@ -128,6 +128,23 @@ body_class: taxonomy-network-page
       </table>
     </div>
   </section>
+
+  <!-- Scoped Build-Time Markmap Explorer (zero client JS on other pages) -->
+  <section class="intel-section" aria-labelledby="taxonomy-markmap-heading">
+    <div class="section-header-editorial">
+      <p class="section-kicker">Expandable hierarchy</p>
+      <h2 id="taxonomy-markmap-heading" class="section-title">Interactive Taxonomy Mind Map</h2>
+      <p class="section-intro">Generated at build time from canonical taxonomy data. Pan, zoom, or click branch nodes to expand conference series, communities, and topics, or <a href="/assets/diagrams/taxonomy-markmap.html" target="_blank" rel="noopener">open the full-screen mind map</a>.</p>
+    </div>
+    <div style="border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; overflow: hidden; background: var(--color-bg-card, #ffffff);">
+      <iframe
+        src="/assets/diagrams/taxonomy-markmap.html"
+        title="Interactive UGtastic and Chicago Craftsmanship Taxonomy Mind Map"
+        loading="lazy"
+        style="width: 100%; height: 540px; border: 0; display: block;"
+      ></iframe>
+    </div>
+  </section>
 </div>
   <!-- Hidden anchor targets for taxonomy link validation -->
   <div style="display:none;" aria-hidden="true">

@@ -37,17 +37,7 @@ Senior backend architects and database administrators know the terrifying truth.
 
 To purge sensitive data safely without risking downtime or data corruption, you need **Database Archaeology** and an automated **5-Phase Deletion Engine**.
 
-```
-+-------------------------------------------------------------------------+
-|                  THE 5-PHASE BATCH DELETION ENGINE                      |
-+-------------------------------------------------------------------------+
-| Phase 1: Candidate Identification & Tombstone Staging (Out-of-Band)     |
-| Phase 2: Foreign Key Topological Sorting (Inverted Cascade)             |
-| Phase 3: Micro-Batched Execution with Lock Timeout Budgets (<2s locks)  |
-| Phase 4: Replication Lag Telemetry & Dynamic Throttling                 |
-| Phase 5: Causal Verification Audit & Incremental Vacuuming              |
-+-------------------------------------------------------------------------+
-```
+![5-Phase Batch Deletion Engine showing candidate staging, inverted foreign key topological sort across 30+ tables from leaf orphans to root applicant anchor, and micro-batched execution with replica lag backpressure](/assets/diagrams/pii-purge-fk-engine.svg)
 
 ---
 

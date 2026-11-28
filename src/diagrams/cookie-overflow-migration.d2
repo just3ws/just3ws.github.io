@@ -1,0 +1,37 @@
+direction: right
+
+title: "Eliminating the 4% Silent Cookie Overflow via Zero-Downtime DynamoDB Migration" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+before: "Before: Client CookieStore (> 4,096 Byte RFC 6265 Limit)" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  payload: "Accumulated Session (~4,200B)\n• Base Auth (~450B)\n• Marketing/Affiliate Tags (~950B)\n• Optimizely Variants (~1,200B)\n• IPQ Multi-Offer State (~1,600B)"
+  overflow: "Silent Cookie Truncation / Reset\n(HTTP 200 OK · 4% E-Sign Drop)" {
+    style.fill: "#fde8e8"
+    style.stroke: "#b91c1c"
+  }
+  payload -> overflow: "Breaches 4KB Limit"
+}
+
+bridge: "Zero-Downtime Cutover" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  rescue: "Custom Rescue Middleware\n(Dual-Read + Telemetry)"
+}
+
+after: "After: Server-Side AWS DynamoDB Session Store" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  cookie: "Lightweight Browser Cookie\n(< 128B Opaque Session ID)"
+  dynamo: "AWS DynamoDB Session Store\n(Up to 400KB Item · TTL Expiry)"
+  stable: "Zero Silent Drops\n(100% E-Sign State Preserved)"
+  cookie -> dynamo: "Server Lookup"
+  dynamo -> stable
+}
+
+before.overflow -> bridge.rescue: "Blue/Green Rollout"
+bridge.rescue -> after.cookie: "Opaque Token Swap"

@@ -1,0 +1,37 @@
+direction: right
+
+title: "Geekfest@OMF to Institutional Stewardship (3-Year Community Arc)" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+roots: "Chicago Roots" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  obtiva: "Obtiva Tuesday Geekfest\n(Dave Hoover & Kevin Taylor)"
+  scmc: "SCMC & UGtastic\n(Peer Practice & Oral History)"
+  obtiva -> scmc
+}
+
+p1: "Phase 1: Geekfest@OMF" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  sessions: "Nov 2022 to Feb 2024\n• 49+ Weekly Tuesday Sessions\n• SOLID, SQL, Legacy Code\n• Local Ollama & OTel Demos"
+}
+
+p2: "Phase 2: OTel Working Group" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  cop: "Apr 2024 to Sep 2025\n• 1st CoP at OneMain Financial\n• 122 Invited / 40+ Active Across 6 Lanes\n• Plain-Language Code of Conduct"
+}
+
+p3: "Phase 3: Funded Stewardship" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  handoff: "Sep 12, 2025 Handoff\n• 2 Dedicated Full-Time Roles\n  (Director + Staff Engineer)\n• 3 Permanent Working Groups"
+}
+
+roots.obtiva -> p1.sessions: "Zero-Friction Format"
+p1.sessions -> p2.cop: "OTel Demos Spark Coalition"
+p2.cop -> p3.handoff: "Proven Enterprise Value"

@@ -1,0 +1,46 @@
+direction: right
+
+title: "Panoramic View: Reconciling Three Realities Before Changing a System" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+models: "Three Partial Realities" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  m1: "1. Interested-Party Mental Model\n(Product, Exec, & Tribal Memory)" {
+    style.fill: "#f7efe1"
+    style.stroke: "#b45309"
+  }
+  m2: "2. Implemented Domain Model\n(Source Code, Schemas, Gateways)" {
+    style.fill: "#e6f4f1"
+    style.stroke: "#0f766e"
+  }
+  m3: "3. Observed Runtime Behavior\n(OTel Traces, HARs, Production Logs)" {
+    style.fill: "#e6f4f1"
+    style.stroke: "#0f766e"
+  }
+}
+
+reconcile: "Panoramic Reconciliation" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  delta: "Delta Inventory\n(Hidden Couplings & Dark Schemas)"
+  seam: "Verified Seam Selection\n(Minimum-Risk Intervention)"
+  delta -> seam: "Evidence Gate"
+}
+
+outcome: "Calm Systems Outcome" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  safe: "Safer Modernization &\nShared Team Legibility"
+}
+
+models.m1 -> reconcile.delta
+models.m2 -> reconcile.delta
+models.m3 -> reconcile.delta
+reconcile.seam -> outcome.safe: "Incremental Rollout"
+outcome.safe -> models.m3: "Continuous Telemetry Feedback" {
+  style.stroke-dash: 4
+}

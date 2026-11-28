@@ -1,0 +1,51 @@
+direction: right
+
+title: "4-Dimensional System Cartography (Browser to Mainframe)" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+d1: "1. Interaction Surfaces" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  web: "Web & Mobile Funnels\n(7 Acquisition Channels)"
+  affiliate: "Affiliate Partner APIs\n& Webhooks"
+  har: "HAR Traces & Payload\nSchemas"
+  web -> har
+  affiliate -> har
+}
+
+d2: "2. Lateral State Flows" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  flags: "Feature Flags &\nExperiment State"
+  fsm: "Rails State Machines\n(Prequal -> Offer -> E-Sign)"
+  tables: "40+ Applicant & Legacy\nDatabase Tables"
+  flags -> fsm
+  fsm -> tables
+}
+
+d3: "3. Full-Stack Topology" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  rails: "Rails Distributed\nMonolith"
+  gateway: "MuleSoft / API\nIntegration Layer"
+  mainframe: "IBM z/OS Mainframe\nCore Ledger"
+  rails -> gateway: "W3C traceparent"
+  gateway -> mainframe: "Enterprise Trace"
+}
+
+d4: "4. Supply Chain & Boundaries" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  bureaus: "Credit Bureau APIs"
+  esign: "E-Sign Vendor\nWebhooks"
+  sec: "Cybersecurity & EMC\nAudit Boundaries"
+  bureaus -> sec
+  esign -> sec
+}
+
+d1 -> d2: "Ingress Context"
+d2 -> d3: "State Transitions"
+d3 -> d4: "External Calls &\nCausal Telemetry"

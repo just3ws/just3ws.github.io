@@ -376,6 +376,10 @@
           Executed via standard POSIX Bash and FFmpeg. Every filter stage is mathematically deterministic, repeatable, and preserves pure <code>-c:v copy</code> video streams without lossy re-encoding.
         </p>
       </div>
+      <figure style="margin: 1.5rem 0 2rem; padding: 1rem; background: var(--bg-card, #ffffff); border: 1px solid var(--border-subtle, #e3dfd7); border-radius: 10px;">
+        <img src="/assets/diagrams/dehum-5-stage-dsp.svg" alt="5-Stage deterministic FFmpeg forensic audio DSP pipeline from 345kV EMI capture through 60Hz notch bank, corona decrackle, clock-drift resampling, EBU R128 loudness, and lossless video stream copy remux" style="width: 100%; height: auto; display: block;" loading="lazy">
+        <figcaption style="font-size: 0.85rem; color: var(--text-muted, #525866); margin-top: 0.6rem; text-align: center;">5-Stage Forensic Audio DSP Signal Chain (<a href="/assets/diagrams/dehum-5-stage-dsp.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
+      </figure>
 
       <div class="pipeline-list" role="list">
         <div class="pipeline-step" role="listitem">

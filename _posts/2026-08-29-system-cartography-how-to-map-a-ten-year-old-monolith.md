@@ -34,16 +34,7 @@ When engineering teams encounter this degree of complexity, they usually choose 
 
 A third, far more reliable path exists: **System Cartography**.
 
-```
-+-------------------------------------------------------------------------+
-|                  THE 4 DIMENSIONS OF SYSTEM CARTOGRAPHY                 |
-+-------------------------------------------------------------------------+
-| 1. INTERACTION SURFACES      --> Every ingress, webhook, and API payload |
-| 2. LATERAL STATE FLOWS       --> State machines, feature flags, DB mutations|
-| 3. FULL-STACK TOPOLOGY       --> Distributed trace context across runtimes|
-| 4. SUPPLY CHAIN & BOUNDARIES --> Third-party bureaus, webhooks, compliance|
-+-------------------------------------------------------------------------+
-```
+![4-Dimensional System Cartography from browser funnels through Rails state machines and MuleSoft gateways to IBM z/OS mainframe and external audit boundaries](/assets/diagrams/monolith-4d-cartography.svg)
 
 ---
 

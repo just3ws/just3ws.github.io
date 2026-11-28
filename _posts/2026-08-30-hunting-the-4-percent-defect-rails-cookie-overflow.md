@@ -38,19 +38,7 @@ The most dangerous bugs in enterprise web platforms do not throw 500 errors.
 
 They are silent failure modes: edge-case state corruptions that return HTTP 200 OK responses, log nothing suspicious to standard error tracking, and silently abandon customer workflows midway through the conversion funnel.
 
-```
-+-------------------------------------------------------------------------+
-|                  THE SILENT SESSION BOUNDARY BREAKDOWN                  |
-+-------------------------------------------------------------------------+
-| [Customer Funnel]  --> Progresses: Landing -> Prequal -> Offers -> E-Sign
-|         │
-|         v (Accumulates state: Optimizely variants + Marketing tags + Offers)
-| [CookieStore]      --> Serialized session cookie grows: 1KB -> 2KB -> 3KB...
-|         │
-|         v (Breaches RFC 6265 4,096-byte limit)
-| [Session-cookie overflow] --> Cookie truncated or reset -> 4% APPLICATIONS LOST
-+-------------------------------------------------------------------------+
-```
+![Eliminating the 4 percent silent Rails CookieStore overflow via custom rescue middleware and zero-downtime blue/green migration to AWS DynamoDB session storage](/assets/diagrams/cookie-overflow-migration.svg)
 
 ---
 

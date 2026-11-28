@@ -1,0 +1,34 @@
+direction: right
+
+title: "Dehum: 5-Stage Forensic Audio DSP Restoration Pipeline" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+raw: "Raw Field Capture" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  emi: "345kV High-Voltage EMI\n• 60Hz + Harmonics Hum\n• Corona Discharge Crackle\n• Crystal Clock Drift"
+}
+
+dsp: "5-Stage Deterministic FFmpeg DSP Chain" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  s1: "Stage 1: High-Pass &\n60Hz Harmonic Notch Bank"
+  s2: "Stage 2: Spectral Corona\nDecrackle & De-Click"
+  s3: "Stage 3: Linear Clock-Drift\nResampling (A/V Sync)"
+  s4: "Stage 4: Gentle Dynamics &\nEBU R128 Loudness"
+  s5: "Stage 5: Lossless Video\nStream Copy Remux (-c:v copy)"
+
+  s1 -> s2 -> s3 -> s4 -> s5
+}
+
+out: "Verified Master" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  master: "Clean Speech + Synced Video\n(Zero Re-Encode Loss)"
+}
+
+raw.emi -> dsp.s1
+dsp.s5 -> out.master

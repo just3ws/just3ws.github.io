@@ -78,6 +78,10 @@ permalink: /panoramic-view/
         {% endfor %}
       </div>
       <p class="pv-delta-note">{{ pv.reconciliation.delta }}</p>
+      <figure style="margin: 1.75rem 0 0; padding: 1rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px;">
+        <img src="/assets/diagrams/panoramic-view-reconciliation.svg" alt="Panoramic View reconciliation loop combining interested-party mental models, implemented domain models, and observed runtime behavior into a delta inventory and verified seam selection" style="width: 100%; height: auto; display: block;" loading="lazy">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin-top: 0.6rem; text-align: center;">Build-time vector map of the Panoramic View 3-model reconciliation loop (<a href="/assets/diagrams/panoramic-view-reconciliation.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
+      </figure>
     </div>
 
     {% if pv.example_case_study %}

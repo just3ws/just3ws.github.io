@@ -1,0 +1,39 @@
+direction: right
+
+title: "Phalanx Duel v3.0: Deterministic Combat Cascade & Replay Verification" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+intent: "1. Player Intent" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  attack: "Front-Rank Attacker\nTargets Opposing Column"
+}
+
+cascade: "2. Pure Column Cascade (Zero RNG)" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  vanguard: "Front Vanguard Card\n(Absorbs Initial Strike)"
+  suit1: "Suit Boundary\n♦ Reduces · ♣ Doubles Overflow"
+  flank: "Back Flank Card\n(Receives Carryover)"
+  suit2: "LP Boundary\n♥ Shields · ♠ Doubles LP Hit"
+  lp: "Defender Life Points\n(20 LP -> 0 LP = Victory)"
+
+  vanguard -> suit1: "Destroyed -> Overflow"
+  suit1 -> flank
+  flank -> suit2: "Destroyed -> Overflow"
+  suit2 -> lp
+}
+
+authority: "3. Server Authority & Proof" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  engine: "TypeScript Pure Engine\n(Identical to Tabletop Rules)"
+  hash: "Cryptographic Hash-Chained\nReplay & Spectators"
+  engine -> hash
+}
+
+intent.attack -> cascade.vanguard
+cascade.lp -> authority.engine: "Deterministic State Delta"
