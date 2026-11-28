@@ -1,0 +1,26 @@
+{
+  "schema": "panoramic-view-z3-certificate.v1",
+  "prover": "Z3 version 5.4.1 - 64 bit",
+  "proof_source": "src/panoramic_view/proofs.smt2",
+  "proof_source_sha256": "8b669685a35501cb1c094484aa45a04d9e55f44aae15b963ee656f35eee4f0ab",
+  "verification_command": "z3 src/panoramic_view/proofs.smt2",
+  "all_theorems_proved": true,
+  "theorems": {
+    "THEOREM_1_DAG_STRICT_ORDER": {
+      "refutation_verdict": "unsat",
+      "proved": true
+    },
+    "THEOREM_2A_FSM_STRICT_TERMINATION": {
+      "refutation_verdict": "unsat",
+      "proved": true
+    },
+    "THEOREM_2B_ZERO_DUPLICATE_PAYOUT_INDUCTIVE": {
+      "refutation_verdict": "unsat",
+      "proved": true
+    },
+    "THEOREM_3_CONFORMANCE_EQUIVALENCE": {
+      "refutation_verdict": "unsat",
+      "proved": true
+    }
+  }
+}
