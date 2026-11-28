@@ -13,7 +13,7 @@ permalink: /panoramic-view/
 <article class="page pv-page">
   {% include breadcrumbs.html %}
 
-  <!-- SECTION 1: HERO & PREMISE -->
+  <!-- BAND 1: HERO & CORE PREMISE -->
   <header class="pv-hero">
     <p class="pv-eyebrow">{{ pv.meta.eyebrow }}</p>
     <h1>{{ pv.meta.title }}</h1>
@@ -22,102 +22,19 @@ permalink: /panoramic-view/
     <div class="pv-actions" aria-label="Panoramic View actions">
       <a class="pv-button" href="#the-model">See the model</a>
       <a class="pv-text-link" href="#proof-terrains">Four proof terrains</a>
-      <a class="pv-text-link" href="#story-of-zdots">The story of zdots</a>
+      <a class="pv-text-link" href="#formal-foundations">Z3 formal proofs</a>
+      <a class="pv-text-link" href="/2026/11/27/integrating-panoramic-view-with-ai-prompts-specs-context-and-proofs.html">AI + Specs Guide</a>
       <a class="pv-text-link" href="/exports/panoramic-view-field-manual.pdf">Field Manual (PDF)</a>
-      <a class="pv-text-link" href="/">Review my resume</a>
+      <a class="pv-text-link" href="/">Resume</a>
     </div>
   </header>
 
-  <section class="pv-value" aria-labelledby="value-title">
-    <p class="pv-kicker">Find the seam</p>
-    <h2 id="value-title">See where the next action belongs.</h2>
-    <p>
-      Panoramic View starts with the situation as it is. It turns scattered
-      knowledge into a working map of how a decision moves through a real
-      system, so the right questions, evidence, and next step can emerge.
-    </p>
-    <div class="pv-value-grid">
-      <article>
-        <h3>Inheriting a system?</h3>
-        <p>Build a usable picture of what you own, what depends on it, and where the important unknowns remain.</p>
-      </article>
-      <article>
-        <h3>Crossing a boundary?</h3>
-        <p>Bring the people, services, and decisions on both sides of the seam into the same conversation.</p>
-      </article>
-      <article>
-        <h3>Planning risky change?</h3>
-        <p>Connect business intent to observed system behavior before choosing what to change and how to measure it.</p>
-      </article>
-      <article>
-        <h3>Recovering context?</h3>
-        <p>Turn scattered records, lived knowledge, and evidence into a handoff that another team can carry forward.</p>
-      </article>
-    </div>
-    <p class="pv-value-result"><strong>The result:</strong> less forcing, less guesswork, and safer decisions that people can explain together.</p>
-  </section>
-
-  <!-- SECTION 2: THE GOVERNING QUESTIONS & RECONCILIATION -->
-  <section class="pv-premise" aria-labelledby="premise-title">
-    <p class="pv-kicker">The Governing Questions</p>
-    <h2 id="premise-title">Where vision meets reality.</h2>
-    <ol>
-      {% for question in pv.core_questions %}
-        <li>
-          <span aria-hidden="true">0{{ forloop.index }}</span>
-          <strong>{{ question }}</strong>
-        </li>
-      {% endfor %}
-    </ol>
-    <div class="pv-reconciliation" aria-labelledby="reconciliation-title">
-      <h3 id="reconciliation-title">{{ pv.reconciliation.title }}</h3>
-      <div>
-        {% for model in pv.reconciliation.models %}
-          <article>
-            <h4>{{ model.name }}</h4>
-            <p>{{ model.text }}</p>
-          </article>
-        {% endfor %}
-      </div>
-      <p class="pv-delta-note">{{ pv.reconciliation.delta }}</p>
-      <figure style="margin: 1.75rem 0 0; padding: 1rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px;">
-        <img src="/assets/diagrams/panoramic-view-reconciliation.svg" alt="Panoramic View reconciliation loop combining interested-party mental models, implemented domain models, and observed runtime behavior into a delta inventory and verified seam selection" style="width: 100%; height: auto; display: block;" loading="lazy">
-        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin-top: 0.6rem; text-align: center;">Build-time vector map of the Panoramic View 3-model reconciliation loop (<a href="/assets/diagrams/panoramic-view-reconciliation.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
-      </figure>
-    </div>
-
-    {% if pv.example_case_study %}
-    <div class="pv-case-grounding" style="margin-top: 2.5rem; background: var(--pv-surface, #2a2a37); border: 1px solid var(--pv-border, #363646); border-radius: 12px; padding: 2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-      <p class="pv-kicker" style="margin-bottom: 0.5rem;">{{ pv.example_case_study.eyebrow }}</p>
-      <h3 style="font-size: 1.5rem; font-weight: 800; margin: 0 0 0.75rem; color: var(--color-heading, var(--pv-ink, #dcd7ba));">{{ pv.example_case_study.title }}</h3>
-      <p style="font-size: 1.05rem; line-height: 1.6; color: var(--pv-ink, #dcd7ba); margin-bottom: 1.5rem;">{{ pv.example_case_study.problem }}</p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 1.5rem;">
-        {% for step in pv.example_case_study.reconciliation %}
-        <div style="background: var(--color-bg-base, #1a1b2f); border: 1px solid var(--pv-border, #363646); border-radius: 8px; padding: 1.25rem;">
-          <h4 style="font-size: 0.95rem; font-weight: 800; color: var(--pv-accent, #7e9cd8); margin: 0 0 0.5rem;">{{ step.perspective }}</h4>
-          <p style="font-size: 0.88rem; line-height: 1.55; color: var(--pv-muted, #c8c093); margin: 0;">{{ step.finding }}</p>
-        </div>
-        {% endfor %}
-      </div>
-      
-      <p style="font-size: 0.98rem; line-height: 1.6; color: var(--pv-ink, #dcd7ba); margin-bottom: 1.25rem;">
-        <strong>The Resolution:</strong> {{ pv.example_case_study.outcome }}
-      </p>
-      
-      <div>
-        <a href="{{ pv.example_case_study.link_href }}" class="pv-text-link" style="font-weight: 700;">{{ pv.example_case_study.link_label }}</a>
-      </div>
-    </div>
-    {% endif %}
-  </section>
-
-  <!-- SECTION 3: THE MODEL (JOURNEY & SYSTEM WAVE) -->
+  <!-- BAND 2: THE MODEL + INTERACTIVE WAVE INSPECTOR + 3-ACCOUNT RECONCILIATION -->
   <section class="pv-model" id="the-model" aria-labelledby="model-title">
     <div class="pv-section-heading">
       <p class="pv-kicker">The Model</p>
       <h2 id="model-title">A journey across. A system wave down and back.</h2>
-      <p>The interface is the horizon. Every choice reveals the execution terrain beneath it.</p>
+      <p>The interface is the horizon. Every choice sends a vertical request-response wave through application, services, integration, and state. Select a wave below to inspect a real production trace.</p>
     </div>
 
     <figure class="pv-map">
@@ -174,167 +91,19 @@ permalink: /panoramic-view/
           <text x="671" y="435">receive</text>
         </g>
       </svg>
-      <figcaption>
-        The actor advances horizontally. Each interaction creates a vertical request-response wave whose evidence can be correlated at every layer. Select a wave below to inspect a real-world trace.
-      </figcaption>
       <div class="pv-wave-inspector" aria-label="Interactive wave inspector">
         <div class="pv-wave-tabs" role="tablist" aria-label="Inspect a system wave">
-          <button type="button" class="pv-wave-btn active" data-wave="choose" role="tab" aria-selected="true">Wave 1: Choose (Discovery &amp; Funnel Ingress)</button>
+          <button type="button" class="pv-wave-btn active" data-wave="choose" role="tab" aria-selected="true">Wave 1: Choose (7-Funnel Ingress)</button>
           <button type="button" class="pv-wave-btn" data-wave="commit" role="tab" aria-selected="false">Wave 2: Commit (4% Cookie Overflow -> DynamoDB)</button>
           <button type="button" class="pv-wave-btn" data-wave="receive" role="tab" aria-selected="false">Wave 3: Receive (Instant Debit Disbursement)</button>
         </div>
         <div class="pv-wave-detail" id="pvWaveDetail" role="tabpanel">
-          <strong>Choose (Ingress &amp; Prequalification):</strong> Browser or Affiliate API submits applicant intent -> Rails Acquisition state machine evaluates offer options -> MuleSoft gateway queries credit bureaus -> Mainframe returns underwriting tier -> Browser renders tailored terms across 7 lending funnels.
+          <strong>Choose (Ingress &amp; Prequalification):</strong> Browser or Affiliate API submits applicant intent &rarr; Rails Acquisition state machine evaluates offer options &rarr; MuleSoft gateway queries credit bureaus &rarr; Mainframe returns underwriting tier &rarr; Browser renders tailored terms across 7 lending funnels.
         </div>
       </div>
     </figure>
 
-    {% if pv.actor_scope and pv.flagship_context %}
-    <div class="pv-context-pair" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 2rem 0;">
-      <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.35rem;">
-        <p class="pv-card-label">Actor Scope</p>
-        <h3 style="margin: 0.25rem 0 0.5rem;">{{ pv.actor_scope.title }}</h3>
-        <p style="margin: 0; font-size: 0.94rem; line-height: 1.6;">{{ pv.actor_scope.text }}</p>
-      </article>
-      <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.35rem;">
-        <p class="pv-card-label">Flagship Proving Ground</p>
-        <h3 style="margin: 0.25rem 0 0.5rem;">{{ pv.flagship_context.title }}</h3>
-        <p style="margin: 0; font-size: 0.94rem; line-height: 1.6;">{{ pv.flagship_context.text }}</p>
-      </article>
-    </div>
-    {% endif %}
-
-    {% if pv.discovery_loop %}
-    <div class="pv-discovery-loop" style="margin: 2rem 0; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 12px; padding: 1.5rem;">
-      <p class="pv-kicker" style="margin-bottom: 0.25rem;">The 5-Step Discovery Loop</p>
-      <h3 style="margin: 0 0 1rem;">How a Panoramic View investigation moves from premise to navigable map</h3>
-      <ol style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0;">
-        {% for step in pv.discovery_loop %}
-        <li style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
-          <span style="display: inline-block; font-size: 0.72rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase; letter-spacing: 0.06em;">Step 0{{ forloop.index }}</span>
-          <h4 style="margin: 0.25rem 0 0.35rem; font-size: 0.98rem;">{{ step.title }}</h4>
-          <p style="margin: 0; font-size: 0.86rem; line-height: 1.5; color: var(--color-text-muted, #525866);">{{ step.text }}</p>
-        </li>
-        {% endfor %}
-      </ol>
-    </div>
-    {% endif %}
-
-    <!-- ONE METHOD, FOUR PROOF TERRAINS -->
-    <section class="pv-proof-terrains" id="proof-terrains" aria-labelledby="proof-terrains-title" style="margin: 2.5rem 0;">
-      <div class="pv-section-heading">
-        <p class="pv-kicker">Cross-Domain Proof</p>
-        <h2 id="proof-terrains-title">One method, four proof terrains.</h2>
-        <p>Panoramic View is not a single-employer anecdote. The same longitudinal and latitudinal discipline transfers across enterprise monoliths, autonomous media pipelines, deterministic game engines, and forensic audio restoration.</p>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
-        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-primary, #0f766e); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
-          <div>
-            <p class="pv-card-label">Terrain 01 · Regulated Enterprise</p>
-            <h3 style="margin: 0.25rem 0 0.5rem;">OneMain Financial Acquisition Monolith</h3>
-            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Mapped 7 lending funnels end-to-end from browser through Rails and MuleSoft to IBM z/OS mainframe; eliminated a 4% silent e-sign cookie overflow, built a 5-phase PII purge across 30+ tables, and scaled the OTel Working Group to 122 members.</p>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
-            <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html">Monolith Map</a> ·
-            <a href="/2026/08/29/database-archaeology-safely-purging-sensitive-records.html">PII Purge</a> ·
-            <a href="/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html">OTel WG</a>
-          </div>
-        </article>
-
-        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-accent, #b45309); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
-          <div>
-            <p class="pv-card-label">Terrain 02 · Autonomous Media Ops</p>
-            <h3 style="margin: 0.25rem 0 0.5rem;">media-pipeline Synthetic Tracer &amp; BPMN</h3>
-            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Tracks every video across 11 correlated checkpoints via OMG BPMN 2.0 subprocesses (<code>media-publication.v3</code> -> <code>ztranscribe.v1</code>), keeping editorial offramps and calibration limits honest.</p>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
-            <a href="/ai/2026/11/02/panoramic-view-media-publishing-control-run/">Control Run Draft</a> ·
-            <a href="https://www.youtube.com/playlist?list=PLGFa67DrGfg4" target="_blank" rel="noopener">Tracer Playlist</a>
-          </div>
-        </article>
-
-        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-primary, #0f766e); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
-          <div>
-            <p class="pv-card-label">Terrain 03 · Deterministic Game Engine</p>
-            <h3 style="margin: 0.25rem 0 0.5rem;">Phalanx Duel Living Architecture</h3>
-            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Applies Panoramic View to keep 12 architecture diagrams, a Groma C4 explorer, and an automated freshness checker synchronized against production TypeScript rules and Go CLI clients.</p>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
-            <a href="/2026/11/26/phalanx-duel-series-part-3-living-architecture-and-diagrams.html">Living Architecture</a> ·
-            <a href="/phalanx-duel/">Combat Cascade</a>
-          </div>
-        </article>
-
-        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-accent, #b45309); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
-          <div>
-            <p class="pv-card-label">Terrain 04 · Forensic Signal &amp; Archive</p>
-            <h3 style="margin: 0.25rem 0 0.5rem;">Dehum DSP &amp; UGtastic Oral History</h3>
-            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Treats 345kV EMI audio restoration as a 5-stage deterministic pipeline and preserves 185+ community interviews with full provenance across SQLite FTS5, DuckDB, and static web exports.</p>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
-            <a href="/dehum/">Dehum Lab</a> ·
-            <a href="/taxonomy/">Archive Map</a> ·
-            <a href="/chicago-craftsmanship/">Monograph</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- THE STORY OF ZDOTS & PANORAMIC VIEW LABS (PVL) -->
-    <section class="pv-zdots-story" id="story-of-zdots" aria-labelledby="zdots-story-title" style="margin: 3rem 0; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: 0 12px 12px 0; padding: 1.75rem 2rem;">
-      <p class="pv-kicker">The Root Platform</p>
-      <h2 id="zdots-story-title" style="margin-top: 0.25rem;">The Story of <code>zdots</code> &amp; Panoramic View Labs (PVL)</h2>
-      <p style="font-size: 1rem; line-height: 1.65; max-width: 72ch;">
-        <strong>Panoramic View</strong> is the investigation technique. <strong>Panoramic View Labs (PVL</strong>, pronounced "Pavel") is the organizational umbrella, and <strong><code>zdots</code></strong> is the root local-system platform where every PVL capability actually runs.
-      </p>
-      <p style="font-size: 0.96rem; line-height: 1.65; max-width: 72ch;">
-        In May 2017, I stopped treating dotfiles as fragile symlinks and began engineering <code>zdots</code> (<code>~/.config/zsh</code>) as an observable personal control plane, followed a week later by <code>vdots</code> (Neovim as a workbench) and <code>adots</code> (bare-repo versioning for <code>$HOME</code>), with <code>my</code> kept strictly decoupled as a private vault behind a publication gate. Over nine years, that calm local foundation absorbed TLS-backed localhost routing, health checks, a cross-repo message bus, local LLM runtimes, and forensic transcription pipelines. When AI-augmented development arrived, the machine was already ready because the seams were already legible.
-      </p>
-      <figure style="margin: 1.5rem 0; padding: 1rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px;">
-        <img src="/assets/diagrams/pvl-zdots-ecosystem.svg" alt="Panoramic View Labs and zdots root control plane diagram showing Panoramic View method, Pavel specialist agent, zdots with adots and vdots, decoupled my vault, and four downstream projects" style="width: 100%; height: auto; display: block;" loading="lazy">
-        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin-top: 0.6rem; text-align: center;">How Panoramic View (method), Panoramic View Labs (initiative), and <code>zdots</code> (root platform) connect across projects (<a href="/assets/diagrams/pvl-zdots-ecosystem.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
-      </figure>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.88rem; font-weight: 700;">
-        <a href="/ai/2026/09/02/zdots-the-shell-became-a-control-plane/">When Dotfiles Became a Control Plane</a> ·
-        <a href="/ai/2026/09/02/adots-versioning-the-place-i-return-to/">adots</a> ·
-        <a href="/ai/2026/09/02/vdots-the-editor-as-a-workbench/">vdots</a> ·
-        <a href="/ai/2026/10/02/without-zdots-there-was-nothing/">Without zdots, There Was Nothing</a>
-      </div>
-    </section>
-
-    <!-- FORMAL FOUNDATIONS: PROVABLE SEAMS VS FALSIFIABLE MENTAL MODELS -->
-    <section class="pv-formal-proofs" id="formal-foundations" aria-labelledby="formal-foundations-title" style="margin: 3rem 0; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-primary, #0f766e); border-radius: 12px; padding: 1.75rem 2rem;">
-      <p class="pv-kicker">Formal Foundations &amp; Epistemic Boundary</p>
-      <h2 id="formal-foundations-title" style="margin-top: 0.25rem;">What Is Mathematically Provable vs. Empirically Falsifiable</h2>
-      <p style="font-size: 0.98rem; line-height: 1.65; max-width: 74ch;">
-        Human mental models live in open organizations and cannot be proved from axioms. Panoramic View draws an explicit line: stakeholder assumptions are <strong>empirically falsifiable</strong>, while formalized seams (dependency graphs, state machines, and trace conformance contracts) are <strong>mathematically provable</strong> and checked continuously by automated tests.
-      </p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin: 1.25rem 0;">
-        <article style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
-          <p class="pv-card-label">Proof 01 · Graph Theory (DAG)</p>
-          <h3 style="margin: 0.25rem 0 0.4rem; font-size: 1rem;">Cycle-Freedom &amp; Topological Order</h3>
-          <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">Proves inverted foreign-key deletion plans are acyclic via Tarjan SCC and verified topological rank (<code>rank[u] &lt; rank[v]</code> for every edge), or emits an exact cycle witness.</p>
-        </article>
-        <article style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
-          <p class="pv-card-label">Proof 02 · Automata (FSM)</p>
-          <h3 style="margin: 0.25rem 0 0.4rem; font-size: 1rem;">Reachability &amp; Deadlock-Freedom</h3>
-          <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">Proves every state in a payment or workflow state machine is reachable from the initial state and has a valid path to a terminal or recovery state with zero deadlocks.</p>
-        </article>
-        <article style="background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
-          <p class="pv-card-label">Proof 03 · Process Mining</p>
-          <h3 style="margin: 0.25rem 0 0.4rem; font-size: 1rem;">Trace-to-Model Conformance</h3>
-          <p style="margin: 0; font-size: 0.88rem; line-height: 1.55;">Computes the exact symmetric difference between observed runtime transitions and the formalized model, producing a deterministic conformance fitness score and SHA-256 digest.</p>
-        </article>
-      </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.88rem; font-weight: 700;">
-        <a href="/assets/data/panoramic_z3_proof_certificate.json" target="_blank" rel="noopener">Z3 Proof Certificate (4/4 unsat)</a> ·
-        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/src/panoramic_view/proofs.smt2" target="_blank" rel="noopener">SMT-LIB 2 Formal Proof</a> ·
-        <a href="/assets/data/panoramic_conformance_proof.json" target="_blank" rel="noopener">Runtime Conformance Ledger</a> ·
-        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/src/panoramic_view/conformance.rb" target="_blank" rel="noopener">Ruby Verifier</a> ·
-        <a href="https://github.com/just3ws/just3ws.github.io/blob/master/spec/panoramic_view_conformance_spec.rb" target="_blank" rel="noopener">RSpec Suite</a>
-      </div>
-    </section>
-
+    <!-- The 4 Dimensions (directly anchored to The Model) -->
     <div class="pv-dimensions" aria-label="Panoramic View cartography dimensions">
       {% for dim in pv.dimensions %}
         <article class="pv-dimension">
@@ -344,250 +113,238 @@ permalink: /panoramic-view/
         </article>
       {% endfor %}
     </div>
-  </section>
 
-  <!-- SECTION 4: FIELD VOCABULARY -->
-  <section class="pv-vocabulary" id="vocabulary" aria-labelledby="vocabulary-title">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Field Vocabulary</p>
-      <h2 id="vocabulary-title">Start with the idea. Add the term when it helps.</h2>
-      <p>{{ pv.vocabulary.lede }}</p>
-    </div>
-    <p class="pv-vocabulary-note">{{ pv.vocabulary.note }}</p>
-    <div class="pv-vocabulary-grid">
-      {% for mapping in pv.vocabulary.mappings %}
-        <article class="pv-vocabulary-card">
-          <p class="pv-vocabulary-plain">{{ mapping.plain }}</p>
-          <p class="pv-vocabulary-label">You may also hear:</p>
-          <h3>{{ mapping.related }}</h3>
-          <p>{{ mapping.meaning }}</p>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- SECTION 5: INTERACTIVE OPERATING SEQUENCE MATRIX -->
-  <section class="pv-sequence" aria-labelledby="operating-sequence">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Three inspection views of the operating loop</p>
-      <h2 id="operating-sequence">Look, map, and change safely</h2>
-      <p style="font-size:1.05rem; color:var(--pv-muted, #938aa9); margin-top:0.5rem;">
-        Inspect the three practical phases of the operating loop. Select a phase to see its questions, artifacts, and case-study evidence.
-      </p>
-    </div>
-
-    <!-- Matrix Tab Switcher -->
-    <div class="pv-matrix-switcher" role="tablist" aria-label="Operating sequence phases">
-      <button type="button" class="pv-matrix-tab active" data-phase="stabilize" role="tab" aria-selected="true" aria-controls="panel-stabilize">
-        <span class="step-num">01</span>
-        <strong>Stabilize</strong>
-        <small>Risk & Boundaries</small>
-      </button>
-      <button type="button" class="pv-matrix-tab" data-phase="understand" role="tab" aria-selected="false" aria-controls="panel-understand">
-        <span class="step-num">02</span>
-        <strong>Understand</strong>
-        <small>Map & Reconcile</small>
-      </button>
-      <button type="button" class="pv-matrix-tab" data-phase="improve" role="tab" aria-selected="false" aria-controls="panel-improve">
-        <span class="step-num">03</span>
-        <strong>Improve</strong>
-        <small>Safe Modernization</small>
-      </button>
-    </div>
-
-    <!-- Matrix Panels -->
-    <div class="pv-matrix-panels">
-      <div class="pv-matrix-panel active" id="panel-stabilize" role="tabpanel">
-        <div class="pv-panel-card">
-          <div class="pv-panel-header">
-            <h3>Phase 1: Stabilize</h3>
-            <span class="pv-card-badge">Risk Containment</span>
-          </div>
-          <p class="pv-panel-summary">Make immediate operational risk, team ownership, regulatory and privacy boundaries (PII, PCI, HIPAA), and release safety limits visible before altering production code.</p>
-          <div class="pv-panel-grid">
-            <div class="pv-panel-col">
-              <h4>🔍 Empirical Focus</h4>
-              <ul>
-                <li>Contain unmonitored production failures & silent exception swallowing</li>
-                <li>Enforce explicit compliance boundaries & credentials isolation</li>
-                <li>Freeze untracked schema mutations & audit vendor dependencies</li>
-              </ul>
-            </div>
-            <div class="pv-panel-col">
-              <h4>📄 Key Artifacts</h4>
-              <ul>
-                <li>Supply Chain Exposure Ledger (vendor gates mapped)</li>
-                <li>Zero-Downtime Release & Rollback Gate Schema</li>
-                <li>Continuous Integration & Automated Test Suite</li>
-              </ul>
-            </div>
-          </div>
-          <div class="pv-panel-link-row">
-            <a href="/case-studies/" class="pv-text-link">Review System Cartography Case Studies →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pv-matrix-panel" id="panel-understand" style="display:none;" role="tabpanel">
-        <div class="pv-panel-card">
-          <div class="pv-panel-header">
-            <h3>Phase 2: Understand</h3>
-            <span class="pv-card-badge">System Cartography</span>
-          </div>
-          <p class="pv-panel-summary">Reconcile interested-party understanding with the implemented domain model and observed runtime behavior. Uncover hidden assumptions and structural debt.</p>
-          <div class="pv-panel-grid">
-            <div class="pv-panel-col">
-              <h4>🔍 Empirical Focus</h4>
-              <ul>
-                <li>Trace request-response system waves across UI, application, and storage</li>
-                <li>Identify discrepancies between intended business rules and code execution</li>
-                <li>Document system topology and institutional memory in public-safe form</li>
-              </ul>
-            </div>
-            <div class="pv-panel-col">
-              <h4>📄 Key Artifacts</h4>
-              <ul>
-                <li>4-Dimensional System Cartography Map</li>
-                <li>Actor & Domain Model Reconciliation Ledger</li>
-                <li>Empirical Trace & Telemetry Correlation Matrix</li>
-              </ul>
-            </div>
-          </div>
-          <div class="pv-panel-link-row">
-            <a href="/case-studies/" class="pv-text-link">Review System Cartography Case Studies →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pv-matrix-panel" id="panel-improve" style="display:none;" role="tabpanel">
-        <div class="pv-panel-card">
-          <div class="pv-panel-header">
-            <h3>Phase 3: Improve</h3>
-            <span class="pv-card-badge">Modernization</span>
-          </div>
-          <p class="pv-panel-summary">Execute incremental, evidence-backed refactoring, architecture modernization, and performance optimization without disrupting business operations.</p>
-          <div class="pv-panel-grid">
-            <div class="pv-panel-col">
-              <h4>🔍 Empirical Focus</h4>
-              <ul>
-                <li>Strangler Fig migration of legacy monolithic bottlenecks</li>
-                <li>Decouple domain models with explicit interface contracts</li>
-                <li>Accelerate team delivery velocity with automated verification</li>
-              </ul>
-            </div>
-            <div class="pv-panel-col">
-              <h4>📄 Key Artifacts</h4>
-              <ul>
-                <li>Incremental Modernization Roadmap</li>
-                <li>Contract Verification & Playwright Test Suite</li>
-                <li>Executive Pitch Briefs & Modernization Summaries</li>
-              </ul>
-            </div>
-          </div>
-          <div class="pv-panel-link-row">
-            <a href="/case-studies/" class="pv-text-link">Review System Cartography Case Studies →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 5: PRACTICE AREAS & LEADERSHIP APPLICATION -->
-  <section class="pv-applications" aria-labelledby="applied-scale">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">Practical Application</p>
-      <h2 id="applied-scale">Leadership Practice</h2>
-      <p>How system cartography brings clarity to complex architecture, engineering teams, and strategic transitions.</p>
-    </div>
-
-    <div class="pv-application-grid">
-      {% for practice in pv.practice_areas %}
-        <article class="pv-application">
-          <p class="pv-card-label">Practice Area</p>
-          <h3>{{ practice.title }}</h3>
-          <p>{{ practice.text }}</p>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- SECTION 6: THE SYSTEMS HEALTH LATTICE WORK & CORPORATE ROSETTA STONE -->
-  {% if pv.lattice_work %}
-  <section class="pv-lattice" aria-labelledby="lattice-heading" style="margin-top: 3.5rem; margin-bottom: 3.5rem;">
-    <div class="pv-section-heading">
-      <p class="pv-kicker">{{ pv.lattice_work.eyebrow }}</p>
-      <h2 id="lattice-heading">{{ pv.lattice_work.title }}</h2>
-      <p style="font-size:1.05rem; line-height:1.6; color:var(--pv-muted, #938aa9); margin-top:0.5rem; max-width:850px;">
-        {{ pv.lattice_work.lede }}
-      </p>
-    </div>
-
-    <!-- The Corporate Rosetta Stone Table -->
-    <div style="margin-top: 2rem; margin-bottom: 2.5rem; overflow-x: auto; background: var(--pv-surface, #2a2a37); border: 1px solid var(--pv-border, #363646); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-      <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin: 0 0 1rem 0;">The Universal Health Rosetta Stone</h3>
-      <table style="width: 100%; min-width: 780px; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
-        <thead>
-          <tr style="border-bottom: 2px solid var(--pv-border, #363646); color: var(--pv-accent, #7e9cd8);">
-            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Dimension</th>
-            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Clinical Care (EHR)</th>
-            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Corporate OKRs</th>
-            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">SRE Reliability</th>
-            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Panoramic View</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for row in pv.lattice_work.rosetta_stone %}
-          <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--pv-ink, #dcd7ba);">
-            <td style="padding: 0.65rem 0.75rem; font-weight: 700; color: var(--pv-accent, #7e9cd8); white-space: nowrap;">{{ row.dimension }}</td>
-            <td style="padding: 0.65rem 0.75rem;">{{ row.clinical }}</td>
-            <td style="padding: 0.65rem 0.75rem;">{{ row.okr }}</td>
-            <td style="padding: 0.65rem 0.75rem;">{{ row.sre }}</td>
-            <td style="padding: 0.65rem 0.75rem; font-weight: 600;">{{ row.cartography }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Key Implementations Grid -->
-    <div style="margin-top: 2rem;">
-      <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--color-heading, #dcd7ba); margin: 0 0 1rem 0;">Living Platform Implementations &amp; Evidence</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
-        {% for impl in pv.lattice_work.implementations %}
-        <div style="background: var(--pv-surface, #2a2a37); border: 1px solid var(--pv-border, #363646); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-              <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--pv-ink, #dcd7ba); margin: 0;">{{ impl.title }}</h4>
-              <span style="font-size: 0.7rem; font-weight: 800; background: rgba(126,156,216,0.15); color: var(--pv-accent, #7e9cd8); padding: 0.15rem 0.5rem; border-radius: 4px; text-transform: uppercase;">{{ impl.badge }}</span>
-            </div>
-            <p style="font-size: 0.85rem; line-height: 1.55; color: var(--pv-muted, #938aa9); margin: 0 0 1rem 0;">{{ impl.description }}</p>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid var(--pv-border, #363646); padding-top: 0.75rem;">
-            {% for link in impl.links %}
-              {% if link.url %}
-                <a href="{{ link.url }}" target="_blank" rel="noopener" style="font-size: 0.78rem; font-weight: 700; color: var(--pv-accent, #7e9cd8); text-decoration: none; padding: 0.25rem 0.5rem; background: rgba(126,156,216,0.1); border-radius: 4px;">{{ link.label }}</a>
-              {% elsif link.code %}
-                <code style="font-size: 0.75rem; background: rgba(0,0,0,0.3); color: #34d399; padding: 0.25rem 0.5rem; border-radius: 4px; font-family: ui-monospace, monospace;">$ {{ link.code }}</code>
-              {% elsif link.path %}
-                <code style="font-size: 0.75rem; background: rgba(0,0,0,0.3); color: #cbd5e1; padding: 0.25rem 0.5rem; border-radius: 4px; font-family: ui-monospace, monospace;">{{ link.path }}</code>
-              {% endif %}
-            {% endfor %}
-          </div>
-        </div>
+    <!-- 3-Account Reconciliation Diagram -->
+    <div class="pv-reconcile-block">
+      <h3>{{ pv.reconciliation.title }}</h3>
+      <div class="pv-reconcile-grid">
+        {% for model in pv.reconciliation.models %}
+          <article class="pv-card">
+            <h4>{{ model.name }}</h4>
+            <p>{{ model.text }}</p>
+          </article>
         {% endfor %}
       </div>
+      <p class="pv-delta-note">{{ pv.reconciliation.delta }}</p>
+      <figure class="pv-diagram-frame">
+        <img src="/assets/diagrams/panoramic-view-reconciliation.svg" alt="Panoramic View reconciliation loop combining interested-party mental models, implemented domain models, and observed runtime behavior into a delta inventory and verified seam selection" loading="lazy">
+        <figcaption>Build-time vector map of the 3-account reconciliation loop (<a href="/assets/diagrams/panoramic-view-reconciliation.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
+      </figure>
     </div>
   </section>
-  {% endif %}
+
+  <!-- BAND 3: ONE METHOD, FOUR PROOF TERRAINS (UNIFIED EVIDENCE HUB) -->
+  <section class="pv-section" id="proof-terrains" aria-labelledby="proof-terrains-title">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Unified Evidence Hub</p>
+      <h2 id="proof-terrains-title">One method, four proof terrains.</h2>
+      <p>Panoramic View is not a single-employer anecdote. The same longitudinal and latitudinal discipline transfers across enterprise monoliths, autonomous media pipelines, deterministic game engines, and forensic audio restoration.</p>
+    </div>
+    <div class="pv-terrain-grid">
+      <article class="pv-card pv-card-teal">
+        <div>
+          <p class="pv-card-label">Terrain 01 · Regulated Enterprise</p>
+          <h3>OneMain Financial Acquisition Monolith</h3>
+          <p>Mapped 7 lending funnels end-to-end from browser through Rails and MuleSoft to IBM z/OS mainframe; resolved a 4% silent e-sign cookie overflow via zero-downtime DynamoDB migration, built a 5-phase PII purge across 30+ tables, and scaled the OTel Working Group to 122 members.</p>
+        </div>
+        <div class="pv-link-bar">
+          <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html">Monolith Map</a> ·
+          <a href="/2026/08/29/database-archaeology-safely-purging-sensitive-records.html">PII Purge</a> ·
+          <a href="/2026/08/30/hunting-the-4-percent-defect-rails-cookie-overflow.html">4% Defect</a> ·
+          <a href="/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html">OTel WG</a>
+        </div>
+      </article>
+
+      <article class="pv-card pv-card-amber">
+        <div>
+          <p class="pv-card-label">Terrain 02 · Autonomous Media Ops</p>
+          <h3>media-pipeline Synthetic Tracer &amp; BPMN 2.0</h3>
+          <p>Tracks every video across 11 correlated checkpoints via OMG BPMN 2.0 subprocesses (<code>media-publication.v3</code> &rarr; <code>ztranscribe.v1</code>), keeping editorial offramps (<code>title_review_required</code>) and calibration limits explicit.</p>
+        </div>
+        <div class="pv-link-bar">
+          <a href="/ai/2026/11/02/panoramic-view-media-publishing-control-run/">Control Run Draft</a> ·
+          <a href="https://www.youtube.com/playlist?list=PLGFa67DrGfg4" target="_blank" rel="noopener">Tracer Playlist</a>
+        </div>
+      </article>
+
+      <article class="pv-card pv-card-teal">
+        <div>
+          <p class="pv-card-label">Terrain 03 · Deterministic Game Engine</p>
+          <h3>Phalanx Duel Living Architecture</h3>
+          <p>Applies Panoramic View to keep 12 architecture diagrams, a Groma C4 explorer, and an automated freshness checker synchronized against production TypeScript rules, Go CLI clients, and hash-chained replays.</p>
+        </div>
+        <div class="pv-link-bar">
+          <a href="/2026/11/26/phalanx-duel-series-part-3-living-architecture-and-diagrams.html">Living Architecture</a> ·
+          <a href="/phalanx-duel/">Combat Cascade &amp; Deck</a>
+        </div>
+      </article>
+
+      <article class="pv-card pv-card-amber">
+        <div>
+          <p class="pv-card-label">Terrain 04 · Forensic Signal &amp; Archive</p>
+          <h3>Dehum DSP &amp; UGtastic Oral History</h3>
+          <p>Treats 345kV EMI audio restoration as a 5-stage deterministic FFmpeg pipeline and preserves 185+ community interviews with full provenance across SQLite FTS5, DuckDB, and offline Markmap explorers.</p>
+        </div>
+        <div class="pv-link-bar">
+          <a href="/dehum/">Dehum Lab</a> ·
+          <a href="/taxonomy/">Archive Map</a> ·
+          <a href="/chicago-craftsmanship/">Monograph</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BAND 4: FORMAL FOUNDATIONS & AI INTEGRATION -->
+  <section class="pv-section pv-callout-teal" id="formal-foundations" aria-labelledby="formal-foundations-title">
+    <p class="pv-kicker">Formal Foundations &amp; Epistemic Boundary</p>
+    <h2 id="formal-foundations-title">What Is Mathematically Provable vs. Empirically Falsifiable</h2>
+    <p class="pv-lead-copy">
+      Human mental models live in open organizations and remain <strong>empirically falsifiable</strong>. Formalized seams (dependency DAGs, finite state machines, and trace conformance contracts) are <strong>mathematically provable</strong> and machine-checked via Z3 (<code>4/4</code> theorems proved <code>unsat</code>) plus RSpec.
+    </p>
+    <div class="pv-three-col">
+      <article class="pv-subcard">
+        <p class="pv-card-label">Proof 01 · Graph Theory (DAG)</p>
+        <h3>Cycle-Freedom &amp; Topological Order</h3>
+        <p>Proves inverted FK deletion plans are acyclic via Z3 strict ranking (<code>rank[u] &lt; rank[v]</code>) and Tarjan SCC, or emits an exact cycle witness.</p>
+      </article>
+      <article class="pv-subcard">
+        <p class="pv-card-label">Proof 02 · Automata (FSM)</p>
+        <h3>Termination &amp; Zero-Duplicate Payout</h3>
+        <p>Inductive Z3 proof that every payment transition strictly decreases the termination variant (&le; 4 steps, zero deadlocks) and never disburses twice (<code>p &le; 1</code>).</p>
+      </article>
+      <article class="pv-subcard">
+        <p class="pv-card-label">Proof 03 · Process Mining</p>
+        <h3>Trace-to-Model Conformance</h3>
+        <p>Universal Z3 equivalence proof that empty symmetric difference (&Delta; = &empty;) guarantees exact graph equality between runtime traces and formalized specs.</p>
+      </article>
+    </div>
+    <div class="pv-link-bar">
+      <a href="/2026/11/27/integrating-panoramic-view-with-ai-prompts-specs-context-and-proofs.html">Read the AI Prompts, Specs &amp; Proofs Integration Guide &rarr;</a> ·
+      <a href="/assets/data/panoramic_z3_proof_certificate.json" target="_blank" rel="noopener">Z3 Proof Certificate (4/4 unsat)</a> ·
+      <a href="https://github.com/just3ws/just3ws.github.io/blob/master/src/panoramic_view/proofs.smt2" target="_blank" rel="noopener">SMT-LIB 2 Source</a> ·
+      <a href="/assets/data/panoramic_conformance_proof.json" target="_blank" rel="noopener">Runtime Conformance Ledger</a>
+    </div>
+  </section>
+
+  <!-- BAND 5: THE STORY OF ZDOTS & PANORAMIC VIEW LABS (PVL) -->
+  <section class="pv-section pv-callout-subtle" id="story-of-zdots" aria-labelledby="zdots-story-title">
+    <p class="pv-kicker">The Root Platform</p>
+    <h2 id="zdots-story-title">The Story of <code>zdots</code> &amp; Panoramic View Labs (PVL)</h2>
+    <p class="pv-lead-copy">
+      <strong>Panoramic View</strong> is the investigation technique. <strong>Panoramic View Labs (PVL</strong>, pronounced "Pavel") is the organizational umbrella, and <strong><code>zdots</code></strong> is the root local-system platform where every PVL capability runs.
+    </p>
+    <p class="pv-lead-copy">
+      In May 2017, I stopped treating dotfiles as fragile symlinks and began engineering <code>zdots</code> (<code>~/.config/zsh</code>) as an observable personal control plane, paired with <code>vdots</code> (Neovim as a workbench), <code>adots</code> (bare-repo versioning for <code>$HOME</code>), and <code>my</code> kept strictly decoupled as a private vault behind a publication gate. When AI-augmented development arrived, the machine was already ready because the seams were already legible.
+    </p>
+    <figure class="pv-diagram-frame">
+      <img src="/assets/diagrams/pvl-zdots-ecosystem.svg" alt="Panoramic View Labs and zdots root control plane diagram showing Panoramic View method, Pavel specialist agent, zdots with adots and vdots, decoupled my vault, and four downstream projects" loading="lazy">
+      <figcaption>How Panoramic View (method), Panoramic View Labs (initiative), and <code>zdots</code> (root platform) connect across projects (<a href="/assets/diagrams/pvl-zdots-ecosystem.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
+    </figure>
+    <div class="pv-link-bar">
+      <a href="/ai/2026/09/02/zdots-the-shell-became-a-control-plane/">When Dotfiles Became a Control Plane</a> ·
+      <a href="/ai/2026/09/02/adots-versioning-the-place-i-return-to/">adots</a> ·
+      <a href="/ai/2026/09/02/vdots-the-editor-as-a-workbench/">vdots</a> ·
+      <a href="/ai/2026/10/02/without-zdots-there-was-nothing/">Without zdots, There Was Nothing</a>
+    </div>
+  </section>
+
+  <!-- BAND 6: REFERENCE APPENDIX (PROGRESSIVE DISCLOSURE DRAWERS) -->
+  <section class="pv-section" id="reference-appendix" aria-labelledby="reference-appendix-title">
+    <div class="pv-section-heading">
+      <p class="pv-kicker">Reference Appendix</p>
+      <h2 id="reference-appendix-title">Operating Loops, Field Vocabulary, and Rosetta Stone</h2>
+      <p>Expand any reference drawer below, or download the complete <a href="/exports/panoramic-view-field-manual.pdf">Panoramic View Field Manual (PDF)</a> / <a href="/exports/panoramic-view-field-manual.epub">EPUB</a>.</p>
+    </div>
+
+    <details class="pv-drawer">
+      <summary class="pv-drawer-summary">
+        <span><strong>01. Operating Loop (Stabilize &rarr; Understand &rarr; Improve) &amp; 5-Step Discovery Loop</strong></span>
+        <span class="pv-drawer-cue">Expand</span>
+      </summary>
+      <div class="pv-drawer-body">
+        <div class="pv-three-col" style="margin-bottom: 1.25rem;">
+          {% for phase in pv.operating_sequence %}
+          <article class="pv-subcard">
+            <p class="pv-card-label">Phase 0{{ forloop.index }}</p>
+            <h3>{{ phase.name }}</h3>
+            <p>{{ phase.summary }}</p>
+          </article>
+          {% endfor %}
+        </div>
+        <ol class="pv-step-list">
+          {% for step in pv.discovery_loop %}
+          <li><strong>Step 0{{ forloop.index }} ({{ step.title }}):</strong> {{ step.text }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </details>
+
+    <details class="pv-drawer" id="vocabulary">
+      <summary class="pv-drawer-summary">
+        <span><strong>02. Field Vocabulary ({{ pv.vocabulary.mappings | size }} Plain-Language Mappings)</strong></span>
+        <span class="pv-drawer-cue">Expand</span>
+      </summary>
+      <div class="pv-drawer-body">
+        <p class="pv-vocabulary-note">{{ pv.vocabulary.lede }} {{ pv.vocabulary.note }}</p>
+        <div class="pv-vocabulary-grid">
+          {% for mapping in pv.vocabulary.mappings %}
+            <article class="pv-vocabulary-card">
+              <p class="pv-vocabulary-plain">{{ mapping.plain }}</p>
+              <p class="pv-vocabulary-label">Related terms:</p>
+              <h3>{{ mapping.related }}</h3>
+              <p>{{ mapping.meaning }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </details>
+
+    {% if pv.lattice_work %}
+    <details class="pv-drawer">
+      <summary class="pv-drawer-summary">
+        <span><strong>03. The Universal Health Rosetta Stone (Clinical EHR &middot; OKRs &middot; SRE &middot; Panoramic View)</strong></span>
+        <span class="pv-drawer-cue">Expand</span>
+      </summary>
+      <div class="pv-drawer-body">
+        <p class="pv-lead-copy">{{ pv.lattice_work.lede }}</p>
+        <div class="pv-table-wrap">
+          <table class="pv-rosetta-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Clinical Care (EHR)</th>
+                <th>Corporate OKRs</th>
+                <th>SRE Reliability</th>
+                <th>Panoramic View</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in pv.lattice_work.rosetta_stone %}
+              <tr>
+                <td><strong>{{ row.dimension }}</strong></td>
+                <td>{{ row.clinical }}</td>
+                <td>{{ row.okr }}</td>
+                <td>{{ row.sre }}</td>
+                <td><strong>{{ row.cartography }}</strong></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+    {% endif %}
+  </section>
 
   <!-- FOOTER -->
   <footer class="pv-footer">
     <p class="pv-kicker">Engineering leadership without guesswork</p>
     <h2>Make the system legible. Make the team capable.</h2>
-    <p>I use Panoramic View as part of hands-on engineering leadership for complex systems, transitions, and modernization. <a href="/ai/2026/11/02/panoramic-view-media-publishing-control-run/">Read the AI-assisted, no-index case-study draft about the synthetic media tracer</a>; it describes a control test, not operational performance.</p>
+    <p>I apply Panoramic View as a Staff Software Engineer for complex systems, legacy modernization, and AI-grounded architecture.</p>
     <div class="pv-actions">
       <a class="pv-button" href="/exports/panoramic-view-field-manual.pdf">Download Field Manual (PDF)</a>
       <a class="pv-text-link" href="/exports/panoramic-view-field-manual.epub">Download EPUB</a>
+      <a class="pv-text-link" href="/2026/11/27/integrating-panoramic-view-with-ai-prompts-specs-context-and-proofs.html">AI + Specs Integration Guide</a>
       <a class="pv-text-link" href="/contact/">Start a conversation</a>
       <a class="pv-text-link" href="/">Read the resume</a>
     </div>
@@ -595,6 +352,15 @@ permalink: /panoramic-view/
 </article>
 
 <style>
+.pv-section {
+  margin: 2.75rem 0;
+}
+.pv-lead-copy {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  max-width: 74ch;
+  color: var(--color-text-main, #1e232a);
+}
 .pv-wave-path {
   cursor: pointer;
   opacity: 0.45;
@@ -639,145 +405,173 @@ permalink: /panoramic-view/
   line-height: 1.6;
   color: var(--color-text-main, #1e232a);
 }
-.pv-matrix-switcher {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+.pv-reconcile-block {
   margin-top: 2rem;
-  margin-bottom: 1.5rem;
 }
-.pv-matrix-tab {
-  background: var(--pv-surface, #2a2a37);
-  border: 2px solid var(--pv-border, #363646);
+.pv-reconcile-grid,
+.pv-three-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.pv-terrain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.pv-card {
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e3dfd7);
   border-radius: 10px;
-  padding: 1rem 1.25rem;
-  text-align: left;
-  cursor: pointer;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  transition: all 0.2s ease;
-  color: var(--pv-ink, #dcd7ba);
-}
-.pv-matrix-tab:hover {
-  border-color: var(--pv-accent, #7e9cd8);
-}
-.pv-matrix-tab.active {
-  border-color: var(--pv-accent, #7e9cd8);
-  background: var(--pv-surface-2, rgba(126,156,216,0.12));
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-.pv-matrix-tab .step-num {
-  font-size: 0.75rem;
-  font-weight: 900;
-  color: var(--pv-accent, #7e9cd8);
-}
-.pv-matrix-tab strong {
-  font-size: 1.1rem;
-  font-weight: 800;
-}
-.pv-matrix-tab small {
-  font-size: 0.82rem;
-  color: var(--pv-muted, #938aa9);
-}
-.pv-panel-card {
-  background: var(--pv-surface, #2a2a37);
-  border: 1px solid var(--pv-border, #363646);
-  border-radius: 12px;
-  padding: 1.75rem;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-.pv-panel-header {
-  display: flex;
   justify-content: space-between;
+  gap: 0.75rem;
+  color: var(--color-text-main, #1e232a);
+}
+.pv-card h3,
+.pv-card h4 {
+  margin: 0.2rem 0 0.45rem;
+  color: var(--color-heading, #0f172a);
+}
+.pv-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.pv-card-teal {
+  border-top: 3px solid var(--color-primary, #0f766e);
+}
+.pv-card-amber {
+  border-top: 3px solid var(--color-accent, #b45309);
+}
+.pv-subcard {
+  background: var(--color-bg-subtle, #f4f0e8);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.pv-subcard h3 {
+  margin: 0.2rem 0 0.35rem;
+  font-size: 0.98rem;
+  color: var(--color-heading, #0f172a);
+}
+.pv-subcard p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text-main, #1e232a);
+}
+.pv-callout-teal {
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-top: 3px solid var(--color-primary, #0f766e);
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+}
+.pv-callout-subtle {
+  background: var(--color-bg-subtle, #f4f0e8);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-left: 4px solid var(--color-primary, #0f766e);
+  border-radius: 0 12px 12px 0;
+  padding: 1.75rem 2rem;
+}
+.pv-diagram-frame {
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-radius: 10px;
+}
+.pv-diagram-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pv-diagram-frame figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #525866);
+  margin-top: 0.6rem;
+  text-align: center;
+}
+.pv-link-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+.pv-drawer {
+  background: var(--color-bg-card, #ffffff);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+}
+.pv-drawer-summary {
+  display: flex;
   align-items: center;
-  margin-bottom: 0.75rem;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 48px;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--color-heading, #0f172a);
 }
-.pv-panel-header h3 {
-  font-size: 1.4rem;
-  font-weight: 800;
+.pv-drawer-summary::-webkit-details-marker {
+  display: none;
+}
+.pv-drawer-cue {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary, #0f766e);
+  flex-shrink: 0;
+}
+.pv-drawer[open] .pv-drawer-cue {
+  opacity: 0.7;
+}
+.pv-drawer-body {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--color-border, #e3dfd7);
+}
+.pv-step-list {
   margin: 0;
-}
-.pv-card-badge {
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.25rem 0.6rem;
-  background: var(--pv-surface-2, rgba(126,156,216,0.15));
-  color: var(--pv-accent, #7e9cd8);
-  border-radius: 4px;
-}
-.pv-panel-summary {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--pv-ink, #dcd7ba);
-  margin-bottom: 1.5rem;
-}
-.pv-panel-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-.pv-panel-col h4 {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--pv-accent, #7e9cd8);
-  margin: 0 0 0.5rem;
-}
-.pv-panel-col ul {
-  margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 1.25rem;
   font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--pv-muted, #c8c093);
+  color: var(--color-text-main, #1e232a);
 }
-.pv-panel-link-row {
-  border-top: 1px solid var(--pv-border, #363646);
-  padding-top: 1rem;
-  margin-top: 1rem;
+.pv-step-list li + li {
+  margin-top: 0.4rem;
 }
-
-@media (max-width: 768px) {
-  .pv-matrix-switcher {
-    grid-template-columns: 1fr;
-  }
-  .pv-panel-grid {
-    grid-template-columns: 1fr;
-  }
+.pv-table-wrap {
+  overflow-x: auto;
+}
+.pv-rosetta-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+.pv-rosetta-table th,
+.pv-rosetta-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-border, #e3dfd7);
+  color: var(--color-text-main, #1e232a);
+}
+.pv-rosetta-table th {
+  color: var(--color-primary, #0f766e);
+  font-weight: 800;
 }
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const tabs = document.querySelectorAll('.pv-matrix-tab');
-  const panels = document.querySelectorAll('.pv-matrix-panel');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetPhase = tab.getAttribute('data-phase');
-
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      panels.forEach(p => {
-        p.classList.remove('active');
-        p.style.display = 'none';
-      });
-
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-
-      const activePanel = document.getElementById('panel-' + targetPhase);
-      if (activePanel) {
-        activePanel.classList.add('active');
-        activePanel.style.display = 'block';
-      }
-    });
-  });
-
-  // Interactive Journey x Wave Inspector
   const waveData = {
     choose: '<strong>Choose (Ingress &amp; Prequalification):</strong> Browser or Affiliate API submits applicant intent &rarr; Rails Acquisition state machine evaluates offer options &rarr; MuleSoft gateway queries credit bureaus &rarr; Mainframe returns underwriting tier &rarr; Browser renders tailored terms across 7 lending funnels.',
     commit: '<strong>Commit (4% Cookie Overflow &rarr; DynamoDB):</strong> Borrower selects loan terms &rarr; Client CookieStore breaches 4,096-byte RFC 6265 limit &rarr; Custom rescue middleware captures truncated state &rarr; Zero-downtime cutover moves session payload to AWS DynamoDB (&lt;128B opaque browser token) &rarr; E-sign completes with zero silent drops.',

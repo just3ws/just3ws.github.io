@@ -1,0 +1,45 @@
+direction: right
+
+title: "Integrating Panoramic View: Human Reasoning, Context, Specs, AI Prompts & Z3 Proofs" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+s1: "1. Human Reasoning" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  premise: "Name Actor, Outcome &\nSuspected Seam First"
+}
+
+s2: "2. Context Engineering" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  ctx: "Bounded Evidence Packet\n• CONTEXT.md + ADRs\n• Live Schema / Routes\n• Sample OTel / HAR Trace"
+}
+
+s3: "3. AI Assistant Prompts" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  prompt: "Role-Scoped Prompts\n• Extract Inventory\n• Surface Delta (Spec vs Trace)\n• Propose Minimum Seam"
+}
+
+s4: "4. Formal Specifications" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  spec: "Machine-Readable Seams\n• D2 / Graphviz DAG\n• FSM Transition Table\n• SMT-LIB 2 Invariants"
+}
+
+s5: "5. Machine-Checked Proof" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  z3: "Z3 Refutation (unsat)\n+ RSpec Trace Conformance\n+ SHA-256 Proof Ledger"
+}
+
+s1.premise -> s2.ctx: "Scope Boundary"
+s2.ctx -> s3.prompt: "Grounded Input"
+s3.prompt -> s4.spec: "Draft Artifacts"
+s4.spec -> s5.z3: "Formal Check"
+s5.z3 -> s1.premise: "Counterexample / Delta Loop" {
+  style.stroke-dash: 4
+}
