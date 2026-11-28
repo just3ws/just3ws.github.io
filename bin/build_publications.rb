@@ -11,6 +11,7 @@
 require "fileutils"
 require "open3"
 require "tmpdir"
+require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
 EXPORTS_DIR = File.join(ROOT, "exports")
@@ -132,6 +133,86 @@ Dir.mktmpdir("just3ws-pubs") do |tmp|
       "-o", gf_epub
     )
   end
+
+  # 4. Compile Panoramic View Field Manual (PDF + EPUB) from _data/panoramic_view.yml
+  pv_path = File.join(ROOT, "_data", "panoramic_view.yml")
+  if File.exist?(pv_path)
+    pv = YAML.safe_load_file(pv_path)
+    pv_md = [
+      "# Panoramic View: System Cartography Field Manual",
+      "",
+      "**Author:** Mike Hall (Staff Software Engineer) · **Canonical Route:** https://www.just3ws.com/panoramic-view/",
+      "",
+      pv.dig("meta", "lede").to_s,
+      "",
+      pv.dig("meta", "scope").to_s,
+      "",
+      "## Origin & Flagship Context",
+      "",
+      pv.dig("meta", "origin").to_s,
+      "",
+      "**#{pv.dig('flagship_context', 'title')}** #{pv.dig('flagship_context', 'text')}",
+      "",
+      "## Three Accounts of One System",
+      ""
+    ]
+    Array(pv.dig("reconciliation", "models")).each do |m|
+      pv_md << "- **#{m['name']}:** #{m['text']}"
+    end
+    pv_md << ""
+    pv_md << pv.dig("reconciliation", "delta").to_s
+    pv_md << ""
+    pv_md << "## The Four Dimensions"
+    pv_md << ""
+    Array(pv["dimensions"]).each do |d|
+      pv_md << "- **#{d['name']} (#{d['label']}):** #{d['summary']}"
+    end
+    pv_md << ""
+    pv_md << "## The 5-Step Discovery Loop"
+    pv_md << ""
+    Array(pv["discovery_loop"]).each_with_index do |step, idx|
+      pv_md << "#{idx + 1}. **#{step['title']}:** #{step['text']}"
+    end
+    pv_md << ""
+    pv_md << "## One Method, Four Proof Terrains"
+    pv_md << ""
+    pv_md << "- **OneMain Financial (Enterprise Legacy Lending):** Mapped 7 acquisition funnels end-to-end from browser through Rails and MuleSoft to IBM z/OS mainframe; eliminated a 4% silent e-sign cookie overflow via zero-downtime DynamoDB migration; engineered a 5-phase PII purge across 30+ tables."
+    pv_md << "- **media-pipeline (Autonomous Media Ops):** 11-checkpoint synthetic tracer, OMG BPMN 2.0 subprocess orchestration, explicit failure offramps, and honest calibration snapshots."
+    pv_md << "- **Phalanx Duel (Deterministic Game Engine):** Living architecture with 12 wiki diagrams, a Groma C4 explorer, and automated freshness gates synchronized to production TypeScript and Go code."
+    pv_md << "- **zdots & just3ws.com (Personal Control Plane & Archive):** Observable Zsh control plane (founded May 2017) serving as the root platform for Panoramic View Labs (PVL), paired with adots, vdots, and a 185-interview oral history datalake."
+    pv_md << ""
+    pv_md << "## Field Vocabulary"
+    pv_md << ""
+    Array(pv.dig("vocabulary", "mappings")).each do |v|
+      pv_md << "- **#{v['plain']}** (*#{v['related']}*): #{v['meaning']}"
+    end
+
+    pv_src = File.join(tmp, "panoramic-view-field-manual.md")
+    File.write(pv_src, pv_md.join("\n") + "\n")
+
+    pv_pdf = File.join(EXPORTS_DIR, "panoramic-view-field-manual.pdf")
+    pv_epub = File.join(EXPORTS_DIR, "panoramic-view-field-manual.epub")
+
+    puts "[typst+pandoc] _data/panoramic_view.yml -> exports/panoramic-view-field-manual.pdf"
+    run_cmd(
+      "pandoc", pv_src,
+      "--from=gfm",
+      "--pdf-engine=typst",
+      "--template=#{File.join(TEMPLATES_DIR, 'monograph.typ')}",
+      "-o", pv_pdf
+    )
+
+    puts "[pandoc] _data/panoramic_view.yml -> exports/panoramic-view-field-manual.epub"
+    run_cmd(
+      "pandoc", pv_src,
+      "--from=gfm",
+      "--to=epub3",
+      "--metadata=title:Panoramic View: System Cartography Field Manual",
+      "--metadata=author:Mike Hall",
+      "--metadata=lang:en-US",
+      "-o", pv_epub
+    )
+  end
 end
 
-puts "Built Typst + Pandoc monographs (Chicago Craftsmanship + Geekfest@OMF PDF/EPUB) and Typst resume PDF."
+puts "Built Typst + Pandoc monographs (Chicago Craftsmanship, Geekfest@OMF, Panoramic View Field Manual) and Typst resume PDF."

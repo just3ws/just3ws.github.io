@@ -1,0 +1,44 @@
+direction: right
+
+title: "Panoramic View Labs (PVL) & the zdots Root Control Plane" {
+  near: top-center
+  style.font-size: 20
+  style.bold: true
+}
+
+method: "The Technique" {
+  style.fill: "#f7efe1"
+  style.stroke: "#b45309"
+  pv: "Panoramic View\n(4D System Cartography Method)"
+}
+
+initiative: "Panoramic View Labs (PVL)" {
+  style.fill: "#e6f4f1"
+  style.stroke: "#0f766e"
+  pavel: "Pavel\n(PVL Specialist Agent)"
+  zdots: "zdots (Root Platform · Since May 2017)\n• Observable Zsh Control Plane\n• Local TLS/Nginx + Message Bus\n• adots ($HOME) + vdots (Neovim)"
+  vault: "my (Decoupled Private Vault · ADR-0004)\nStrict Publication Gate" {
+    style.fill: "#f4f0e8"
+    style.stroke: "#525866"
+    style.stroke-dash: 4
+  }
+  pavel -> zdots: "Runs On"
+  zdots -> vault: "Sanitized Seam Only" {
+    style.stroke-dash: 4
+  }
+}
+
+terrains: "Downstream Proof Terrains" {
+  style.fill: "#f4f0e8"
+  style.stroke: "#525866"
+  j3w: "just3ws.com\nPublic Archive, Resume & Datalake"
+  mp: "media-pipeline\n11-Checkpoint BPMN Tracer & YouTube Ops"
+  pd: "phalanxduel\nLiving C4/Groma Diagrams & Pure Engine"
+  wwr: "wwworkremote\nLocal-First Career Intelligence Peer"
+}
+
+method.pv -> initiative.pavel: "Applied By"
+initiative.zdots -> terrains.j3w
+initiative.zdots -> terrains.mp
+initiative.zdots -> terrains.pd
+initiative.zdots -> terrains.wwr

@@ -21,8 +21,10 @@ permalink: /panoramic-view/
     <p class="pv-scope">{{ pv.meta.scope }}</p>
     <div class="pv-actions" aria-label="Panoramic View actions">
       <a class="pv-button" href="#the-model">See the model</a>
-      <a class="pv-text-link" href="#vocabulary">Learn the vocabulary</a>
-      <a class="pv-text-link" href="/resume/">Review my experience</a>
+      <a class="pv-text-link" href="#proof-terrains">Four proof terrains</a>
+      <a class="pv-text-link" href="#story-of-zdots">The story of zdots</a>
+      <a class="pv-text-link" href="/exports/panoramic-view-field-manual.pdf">Field Manual (PDF)</a>
+      <a class="pv-text-link" href="/">Review my resume</a>
     </div>
   </header>
 
@@ -152,9 +154,9 @@ permalink: /panoramic-view/
         </g>
 
         <g class="pv-svg-waves" fill="none" marker-end="url(#pv-arrow)" aria-hidden="true">
-          <path d="M 245 105 C 245 210, 245 355, 315 378 C 385 355, 385 210, 385 105"></path>
-          <path d="M 465 105 C 465 210, 465 355, 535 378 C 605 355, 605 210, 605 105"></path>
-          <path d="M 665 105 C 665 210, 665 355, 720 378 C 775 355, 775 210, 775 105"></path>
+          <path class="pv-wave-path active" data-wave="choose" d="M 245 105 C 245 210, 245 355, 315 378 C 385 355, 385 210, 385 105"></path>
+          <path class="pv-wave-path" data-wave="commit" d="M 465 105 C 465 210, 465 355, 535 378 C 605 355, 605 210, 605 105"></path>
+          <path class="pv-wave-path" data-wave="receive" d="M 665 105 C 665 210, 665 355, 720 378 C 775 355, 775 210, 775 105"></path>
         </g>
 
         <g class="pv-svg-events" aria-hidden="true">
@@ -173,9 +175,132 @@ permalink: /panoramic-view/
         </g>
       </svg>
       <figcaption>
-        The actor advances horizontally. Each interaction creates a vertical request-response wave whose evidence can be correlated at every layer.
+        The actor advances horizontally. Each interaction creates a vertical request-response wave whose evidence can be correlated at every layer. Select a wave below to inspect a real-world trace.
       </figcaption>
+      <div class="pv-wave-inspector" aria-label="Interactive wave inspector">
+        <div class="pv-wave-tabs" role="tablist" aria-label="Inspect a system wave">
+          <button type="button" class="pv-wave-btn active" data-wave="choose" role="tab" aria-selected="true">Wave 1: Choose (Discovery &amp; Funnel Ingress)</button>
+          <button type="button" class="pv-wave-btn" data-wave="commit" role="tab" aria-selected="false">Wave 2: Commit (4% Cookie Overflow -> DynamoDB)</button>
+          <button type="button" class="pv-wave-btn" data-wave="receive" role="tab" aria-selected="false">Wave 3: Receive (Instant Debit Disbursement)</button>
+        </div>
+        <div class="pv-wave-detail" id="pvWaveDetail" role="tabpanel">
+          <strong>Choose (Ingress &amp; Prequalification):</strong> Browser or Affiliate API submits applicant intent -> Rails Acquisition state machine evaluates offer options -> MuleSoft gateway queries credit bureaus -> Mainframe returns underwriting tier -> Browser renders tailored terms across 7 lending funnels.
+        </div>
+      </div>
     </figure>
+
+    {% if pv.actor_scope and pv.flagship_context %}
+    <div class="pv-context-pair" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 2rem 0;">
+      <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.35rem;">
+        <p class="pv-card-label">Actor Scope</p>
+        <h3 style="margin: 0.25rem 0 0.5rem;">{{ pv.actor_scope.title }}</h3>
+        <p style="margin: 0; font-size: 0.94rem; line-height: 1.6;">{{ pv.actor_scope.text }}</p>
+      </article>
+      <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px; padding: 1.35rem;">
+        <p class="pv-card-label">Flagship Proving Ground</p>
+        <h3 style="margin: 0.25rem 0 0.5rem;">{{ pv.flagship_context.title }}</h3>
+        <p style="margin: 0; font-size: 0.94rem; line-height: 1.6;">{{ pv.flagship_context.text }}</p>
+      </article>
+    </div>
+    {% endif %}
+
+    {% if pv.discovery_loop %}
+    <div class="pv-discovery-loop" style="margin: 2rem 0; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-radius: 12px; padding: 1.5rem;">
+      <p class="pv-kicker" style="margin-bottom: 0.25rem;">The 5-Step Discovery Loop</p>
+      <h3 style="margin: 0 0 1rem;">How a Panoramic View investigation moves from premise to navigable map</h3>
+      <ol style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0;">
+        {% for step in pv.discovery_loop %}
+        <li style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 8px; padding: 1rem;">
+          <span style="display: inline-block; font-size: 0.72rem; font-weight: 800; color: var(--color-primary, #0f766e); text-transform: uppercase; letter-spacing: 0.06em;">Step 0{{ forloop.index }}</span>
+          <h4 style="margin: 0.25rem 0 0.35rem; font-size: 0.98rem;">{{ step.title }}</h4>
+          <p style="margin: 0; font-size: 0.86rem; line-height: 1.5; color: var(--color-text-muted, #525866);">{{ step.text }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+    {% endif %}
+
+    <!-- ONE METHOD, FOUR PROOF TERRAINS -->
+    <section class="pv-proof-terrains" id="proof-terrains" aria-labelledby="proof-terrains-title" style="margin: 2.5rem 0;">
+      <div class="pv-section-heading">
+        <p class="pv-kicker">Cross-Domain Proof</p>
+        <h2 id="proof-terrains-title">One method, four proof terrains.</h2>
+        <p>Panoramic View is not a single-employer anecdote. The same longitudinal and latitudinal discipline transfers across enterprise monoliths, autonomous media pipelines, deterministic game engines, and forensic audio restoration.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-primary, #0f766e); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
+          <div>
+            <p class="pv-card-label">Terrain 01 · Regulated Enterprise</p>
+            <h3 style="margin: 0.25rem 0 0.5rem;">OneMain Financial Acquisition Monolith</h3>
+            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Mapped 7 lending funnels end-to-end from browser through Rails and MuleSoft to IBM z/OS mainframe; eliminated a 4% silent e-sign cookie overflow, built a 5-phase PII purge across 30+ tables, and scaled the OTel Working Group to 122 members.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
+            <a href="/2026/08/29/system-cartography-how-to-map-a-ten-year-old-monolith.html">Monolith Map</a> ·
+            <a href="/2026/08/29/database-archaeology-safely-purging-sensitive-records.html">PII Purge</a> ·
+            <a href="/2026/11/27/geekfest-at-omf-part-4-from-brown-bag-to-community-of-practice-and-handoff.html">OTel WG</a>
+          </div>
+        </article>
+
+        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-accent, #b45309); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
+          <div>
+            <p class="pv-card-label">Terrain 02 · Autonomous Media Ops</p>
+            <h3 style="margin: 0.25rem 0 0.5rem;">media-pipeline Synthetic Tracer &amp; BPMN</h3>
+            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Tracks every video across 11 correlated checkpoints via OMG BPMN 2.0 subprocesses (<code>media-publication.v3</code> -> <code>ztranscribe.v1</code>), keeping editorial offramps and calibration limits honest.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
+            <a href="/ai/2026/11/02/panoramic-view-media-publishing-control-run/">Control Run Draft</a> ·
+            <a href="https://www.youtube.com/playlist?list=PLGFa67DrGfg4" target="_blank" rel="noopener">Tracer Playlist</a>
+          </div>
+        </article>
+
+        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-primary, #0f766e); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
+          <div>
+            <p class="pv-card-label">Terrain 03 · Deterministic Game Engine</p>
+            <h3 style="margin: 0.25rem 0 0.5rem;">Phalanx Duel Living Architecture</h3>
+            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Applies Panoramic View to keep 12 architecture diagrams, a Groma C4 explorer, and an automated freshness checker synchronized against production TypeScript rules and Go CLI clients.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
+            <a href="/2026/11/26/phalanx-duel-series-part-3-living-architecture-and-diagrams.html">Living Architecture</a> ·
+            <a href="/phalanx-duel/">Combat Cascade</a>
+          </div>
+        </article>
+
+        <article style="background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-top: 3px solid var(--color-accent, #b45309); border-radius: 10px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.75rem;">
+          <div>
+            <p class="pv-card-label">Terrain 04 · Forensic Signal &amp; Archive</p>
+            <h3 style="margin: 0.25rem 0 0.5rem;">Dehum DSP &amp; UGtastic Oral History</h3>
+            <p style="font-size: 0.9rem; line-height: 1.55; margin: 0;">Treats 345kV EMI audio restoration as a 5-stage deterministic pipeline and preserves 185+ community interviews with full provenance across SQLite FTS5, DuckDB, and static web exports.</p>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.84rem; font-weight: 700;">
+            <a href="/dehum/">Dehum Lab</a> ·
+            <a href="/taxonomy/">Archive Map</a> ·
+            <a href="/chicago-craftsmanship/">Monograph</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- THE STORY OF ZDOTS & PANORAMIC VIEW LABS (PVL) -->
+    <section class="pv-zdots-story" id="story-of-zdots" aria-labelledby="zdots-story-title" style="margin: 3rem 0; background: var(--color-bg-subtle, #f4f0e8); border: 1px solid var(--color-border, #e3dfd7); border-left: 4px solid var(--color-primary, #0f766e); border-radius: 0 12px 12px 0; padding: 1.75rem 2rem;">
+      <p class="pv-kicker">The Root Platform</p>
+      <h2 id="zdots-story-title" style="margin-top: 0.25rem;">The Story of <code>zdots</code> &amp; Panoramic View Labs (PVL)</h2>
+      <p style="font-size: 1rem; line-height: 1.65; max-width: 72ch;">
+        <strong>Panoramic View</strong> is the investigation technique. <strong>Panoramic View Labs (PVL</strong>, pronounced "Pavel") is the organizational umbrella, and <strong><code>zdots</code></strong> is the root local-system platform where every PVL capability actually runs.
+      </p>
+      <p style="font-size: 0.96rem; line-height: 1.65; max-width: 72ch;">
+        In May 2017, I stopped treating dotfiles as fragile symlinks and began engineering <code>zdots</code> (<code>~/.config/zsh</code>) as an observable personal control plane, followed a week later by <code>vdots</code> (Neovim as a workbench) and <code>adots</code> (bare-repo versioning for <code>$HOME</code>), with <code>my</code> kept strictly decoupled as a private vault behind a publication gate. Over nine years, that calm local foundation absorbed TLS-backed localhost routing, health checks, a cross-repo message bus, local LLM runtimes, and forensic transcription pipelines. When AI-augmented development arrived, the machine was already ready because the seams were already legible.
+      </p>
+      <figure style="margin: 1.5rem 0; padding: 1rem; background: var(--color-bg-card, #ffffff); border: 1px solid var(--color-border, #e3dfd7); border-radius: 10px;">
+        <img src="/assets/diagrams/pvl-zdots-ecosystem.svg" alt="Panoramic View Labs and zdots root control plane diagram showing Panoramic View method, Pavel specialist agent, zdots with adots and vdots, decoupled my vault, and four downstream projects" style="width: 100%; height: auto; display: block;" loading="lazy">
+        <figcaption style="font-size: 0.85rem; color: var(--color-text-muted, #525866); margin-top: 0.6rem; text-align: center;">How Panoramic View (method), Panoramic View Labs (initiative), and <code>zdots</code> (root platform) connect across projects (<a href="/assets/diagrams/pvl-zdots-ecosystem.svg" target="_blank" rel="noopener">open full-size SVG</a>).</figcaption>
+      </figure>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.88rem; font-weight: 700;">
+        <a href="/ai/2026/09/02/zdots-the-shell-became-a-control-plane/">When Dotfiles Became a Control Plane</a> ·
+        <a href="/ai/2026/09/02/adots-versioning-the-place-i-return-to/">adots</a> ·
+        <a href="/ai/2026/09/02/vdots-the-editor-as-a-workbench/">vdots</a> ·
+        <a href="/ai/2026/10/02/without-zdots-there-was-nothing/">Without zdots, There Was Nothing</a>
+      </div>
+    </section>
 
     <div class="pv-dimensions" aria-label="Panoramic View cartography dimensions">
       {% for dim in pv.dimensions %}
@@ -245,7 +370,7 @@ permalink: /panoramic-view/
             <h3>Phase 1: Stabilize</h3>
             <span class="pv-card-badge">Risk Containment</span>
           </div>
-          <p class="pv-panel-summary">Make immediate operational risk, team ownership, HIPAA / PHI boundaries, and release safety limits visible before altering production code.</p>
+          <p class="pv-panel-summary">Make immediate operational risk, team ownership, regulatory and privacy boundaries (PII, PCI, HIPAA), and release safety limits visible before altering production code.</p>
           <div class="pv-panel-grid">
             <div class="pv-panel-col">
               <h4>🔍 Empirical Focus</h4>
@@ -374,7 +499,7 @@ permalink: /panoramic-view/
             <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Clinical Care (EHR)</th>
             <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Corporate OKRs</th>
             <th style="padding: 0.6rem 0.75rem; font-weight: 800;">SRE Reliability</th>
-            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Panoramic View &amp; PCMS</th>
+            <th style="padding: 0.6rem 0.75rem; font-weight: 800;">Panoramic View</th>
           </tr>
         </thead>
         <tbody>
@@ -428,13 +553,59 @@ permalink: /panoramic-view/
     <h2>Make the system legible. Make the team capable.</h2>
     <p>I use Panoramic View as part of hands-on engineering leadership for complex systems, transitions, and modernization. <a href="/ai/2026/11/02/panoramic-view-media-publishing-control-run/">Read the AI-assisted, no-index case-study draft about the synthetic media tracer</a>; it describes a control test, not operational performance.</p>
     <div class="pv-actions">
-      <a class="pv-button" href="/contact/">Start a conversation</a>
-      <a class="pv-text-link" href="/">Read the résumé</a>
+      <a class="pv-button" href="/exports/panoramic-view-field-manual.pdf">Download Field Manual (PDF)</a>
+      <a class="pv-text-link" href="/exports/panoramic-view-field-manual.epub">Download EPUB</a>
+      <a class="pv-text-link" href="/contact/">Start a conversation</a>
+      <a class="pv-text-link" href="/">Read the resume</a>
     </div>
   </footer>
 </article>
 
 <style>
+.pv-wave-path {
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
+}
+.pv-wave-path.active,
+.pv-wave-path:hover {
+  opacity: 1;
+  stroke-width: 4;
+}
+.pv-wave-inspector {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-subtle, #f4f0e8);
+  border: 1px solid var(--color-border, #e3dfd7);
+  border-radius: 10px;
+}
+.pv-wave-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.pv-wave-btn {
+  min-height: 44px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #e3dfd7);
+  background: var(--color-bg-card, #ffffff);
+  color: var(--color-text-main, #1e232a);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pv-wave-btn.active {
+  border-color: var(--color-primary, #0f766e);
+  background: var(--color-primary, #0f766e);
+  color: #ffffff;
+}
+.pv-wave-detail {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text-main, #1e232a);
+}
 .pv-matrix-switcher {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -572,5 +743,32 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
+
+  // Interactive Journey x Wave Inspector
+  const waveData = {
+    choose: '<strong>Choose (Ingress &amp; Prequalification):</strong> Browser or Affiliate API submits applicant intent &rarr; Rails Acquisition state machine evaluates offer options &rarr; MuleSoft gateway queries credit bureaus &rarr; Mainframe returns underwriting tier &rarr; Browser renders tailored terms across 7 lending funnels.',
+    commit: '<strong>Commit (4% Cookie Overflow &rarr; DynamoDB):</strong> Borrower selects loan terms &rarr; Client CookieStore breaches 4,096-byte RFC 6265 limit &rarr; Custom rescue middleware captures truncated state &rarr; Zero-downtime cutover moves session payload to AWS DynamoDB (&lt;128B opaque browser token) &rarr; E-sign completes with zero silent drops.',
+    receive: '<strong>Receive (Instant Debit Disbursement):</strong> Signed promissory note carries cryptographic idempotency key &rarr; Two-phase state gate locks <code>FUNDS_RESERVED</code> &rarr; <code>PUSH_IN_FLIGHT</code> &rarr; Visa Direct / Mastercard Send settles to debit card in minutes &rarr; 15-minute continuous reconciler verifies ledger parity.'
+  };
+  const waveBtns = document.querySelectorAll('.pv-wave-btn');
+  const wavePaths = document.querySelectorAll('.pv-wave-path');
+  const waveDetail = document.getElementById('pvWaveDetail');
+
+  function selectWave(name) {
+    waveBtns.forEach(b => {
+      const on = b.getAttribute('data-wave') === name;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    wavePaths.forEach(p => {
+      p.classList.toggle('active', p.getAttribute('data-wave') === name);
+    });
+    if (waveDetail && waveData[name]) {
+      waveDetail.innerHTML = waveData[name];
+    }
+  }
+
+  waveBtns.forEach(b => b.addEventListener('click', () => selectWave(b.getAttribute('data-wave'))));
+  wavePaths.forEach(p => p.addEventListener('click', () => selectWave(p.getAttribute('data-wave'))));
 });
 </script>
